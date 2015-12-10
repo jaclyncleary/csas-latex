@@ -1,7 +1,7 @@
 % mainDoc.tex - Main part of the document
 
 \nonumsection*{ABSTRACT}\addcontentsline{toc}{section}{ABSTRACT}
-\fishname\ (\emph{\sciencename}, \commonname) is an important component of the bottom trawl fishery in \bc. \fishname\ is managed as a coastwide stock, with a TAC of 15,000 t and catch of 10,679 t in 2014. Prior to the introduction of freezer trawlers in the mid-2000s, most of the historical catch of \fishname\ is understood to have been discarded at sea. Proteolysis occurs in the muscle tissue of this species a short time after it is caught, making the flesh unpalatable. In the past five years, markets have been established for fillets that have been frozen at sea, and the freezer trawl fleet has taken an increasing proportion of the coastwide catch . The \fishname\ stock was last assessed in 2001. The current assessment fits a female only Bayesian age-structured model to catch, survey and age-composition data from the years 1996-2014, for management areas 3CD (West Coast Vancouver Island), 5AB (Queen Charlotte Sound), 5CD (Hecate Strait), and 5E (West Coast Haida Gwaii). Catch data prior to the introduction of at-sea observers in 1996 were considered too unreliable for inclusion in the assessment due to unknown quantities of discarding at sea. The Reference Case presented here estimates the female spawning biomass to have been on a flat to increasing trajectory since 1996, consistent with the catch and survey data. A set of sensitivity analyses was done to test the effects of fixed parameters and assumed prior probability distributions on model outcomes. In all scenarios, there was strong confounding among parameters representing productivity and scale of the population, indicating that there was limited information in the short time series of available data to resolve the population scale. The Reference Case estimates age-at-50\%-harvest in the trawl fishery to be 9.45 y, consistent with the observations of few young fish in the commercial age composition data. Female \amat\ for this species is estimated to be around 5 y, implying that individuals have the opportunity to spawn several times before becoming vulnerable to the fishery. This resulted in estimates of optimal harvest rate \emph{U}\subscr{MSY} approaching 1. Commercial trawl selectivity is considered a primary axis of uncertainty in this assessment because ages from the freezer trawl fleet were under-represented in the age composition data. Fishery reference points based on estimated unfished spawning biomass (\emph{B}\subscr{0}) are therefore presented alongside the DFO default \emph{B}\subscr{MSY}-based reference points, because \emph{B}\subscr{0}-based reference points may be less reliant on estimated selectivity. Management advice is provided in the form of decision tables which forecast the impacts of a range of 2015 catch levels on \fishname\ stock status relative to these reference points. The Reference Case decision table suggests that a 2015 catch equal to any of the catch levels tested, ranging from 0 t to 30,000 t (twice the 2014 TAC), would result in a 2016 biomass above all of the candidate biomass-based reference points tested, and 2015 harvest rate below the estimated \emph{U}\subscr{MSY}. Given the uncertainty in fishery selectivity, an alternative "what-if" decision table is presented where the fishery selectivity-at-age ogive was fixed to be the same as the maturity-at-age ogive. The advice from this decision table was very similar to that from the Reference Case due to rescaling of both the estimated population size and the reference points. A number of uncertainties and research needs are identified. The magnitude of catch and discards prior to 1996 is a major source of uncertainty in this assessment that could provide critical information about the scale and productivity of this stock. Ageing of archived otoliths from the freezer trawl fleet is a high priority recommendation. Development of a two fleet model with the freezer trawlers represented as a separate fleet may help to resolve uncertainties in fishery selectivity. Analysis of stock structure in \bc\ is also recommended.\\
+\fishname\ (\emph{\sciencename}, \commonname) are an important component of the bottom trawl fishery in \bc. They are managed as a coastwide stock, with a TAC of 15,000 t and catch of 10,679 t in 2014. Prior to the introduction of freezer trawlers in the mid-2000s, most of the historical catch of \fishname\ is understood to have been discarded at sea. This was largely due to proteolysis, which occurs in the muscle tissue of this species a short time after it is caught, making the flesh unpalatable. In the past five years, markets have been established for fillets that have been frozen at sea, and the freezer trawl fleet has taken an increasing proportion of the coastwide catch. This assessment fits a female only Bayesian age-structured model to catch, survey and age-composition data from the years 1996-2014, for management areas 3CD (West Coast Vancouver Island), 5AB (Queen Charlotte Sound), 5CD (Hecate Strait), and 5E (West Coast Haida Gwaii). Catch data prior to the introduction of at-sea observers in 1996 were considered too unreliable for inclusion in the assessment due to unknown quantities of discarding at sea. The Reference Case model presented in this assessment estimates the female spawning biomass to have been on a flat to increasing trajectory since 1996, consistent with the catch and survey data. A set of sensitivity analyses was done to test the effects of fixed parameters and assumed prior probability distributions on model outcomes. In all scenarios, there was strong confounding among parameters representing productivity and scale of the population, indicating that there was limited information in the short time series of available data to resolve the population scale. Management advice is provided in the form of decision tables which forecast the impacts of a range of 2015 catch levels on \fishname\ stock status relative to these reference points. The Reference Case decision table suggests that a 2015 catch equal to any of the catch levels tested, ranging from 0 t to 30,000 t (twice the 2014 TAC), would result in a 2016 biomass above all of the candidate biomass-based reference points tested, and 2015 harvest rate below the estimated \emph{U}\subscr{MSY}. Large uncertainty in the assessment is however, emphasised. The magnitude of catch and discards prior to 1996 is a major source of uncertainty in this assessment that could provide critical information about the scale and productivity of this stock. Ageing of archived otoliths from the freezer trawl fleet is a high priority recommendation.\\
 
 \newpage	%French abstract must appear on new page
 
@@ -141,7 +141,7 @@ where $CV_y$ is the CV for year $y$.
 One thousand bootstrap replicates with replacement were constructed from the survey data to estimate bias-corrected 95\% confidence regions for each survey year (\citet{efro82}). Mean survey biomass estimates obtained from Eq. \ref{eq:sweptareaindex} with CVs (Eq. \ref{eq:indexcv}) are presented for the four fishery-independent surveys in Table \ref{tab:Indices}.
 
 \subsubsection{Age Data} \label{sec:agedata}
-Extensive ageing was done for this assessment including over 6,000 otoliths aged for years spanning 1996--2014, from commercial bottom trawl samples as well as the four research surveys' samples. The samples were aged by the break-and-bake method which involves placing a large number of otoliths in a tray, baking them in a specially-designed oven, then breaking them to perform age reads. During this process, if the person ageing the otoliths finds one which is not baked enough, they will burn the otolith manually to give it the right contrast for age reading. This extra burning step makes this method equivalent to the traditional break-and-burn method in which the age-reader burns each otolith individually (S. Wischniowski, Sclerochronology Laboratory, Pacific Biological Station, Pers. Comm.).\\
+Extensive ageing was done for this assessment including 4,787 otoliths aged for years spanning 1996--2014, from commercial bottom trawl samples as well as the four research surveys' samples. The samples were aged by the break-and-bake method which involves placing a large number of otoliths in a tray, baking them in a specially-designed oven, then breaking them to perform age reads. During this process, if the person ageing the otoliths finds one which is not baked enough, they will burn the otolith manually to give it the right contrast for age reading. This extra burning step makes this method equivalent to the traditional break-and-burn method in which the age-reader burns each otolith individually (S. Wischniowski, Sclerochronology Laboratory, Pacific Biological Station, Pers. Comm.).\\
 
 Age composition data represented the whole coast, for the following years:
 \begin{enumerate}[noitemsep,nolistsep]
@@ -197,7 +197,7 @@ Uniform prior probability distributions were assumed for $\ln(R_0)$, $\ln(\overl
 A normal distribution was assumed for $\ln(M)$ with mean = $\ln(0.2)$ and SD = $0.2$ in log space. \citet{rocksole2014} reviewed the literature and stock assessments and assumed a prior probability distribution for $M$ with mean = $0.2$ in their assessment of \bc\ Rock Sole (\emph{Lepidopsetta spp.}). \citet{arf2013} assumed a value of $M=0.2$ for females in the assessment of Gulf of Alaska \fishname\, as did \citet{spies2013} for the Bering Sea Aleutian Islands stock.\\
 \bigskip
 
-Normal prior probability distributions were assumed for the survey catchability parameters $q_k$ for each gear $k$. Normal distributions with mean = $\ln(0.5)$ and SD = $1.0$ in log space were selected because the survey estimates of biomass were derived from swept area analysis (Eqs. \ref{eq:sweptareaindex}, \ref{eq:cpuecalc}, and \ref{eq:indexvariance}) and could therefore reasonably be expected to be within 1--2 orders of magnitude of unity. A large standard deviation was used to reflect ignorance of the scale of the swept area analysis compared with the true biomass.\\
+Normal prior probability distributions were assumed for the survey catchability parameters $q_k$ for each survey $k$, where $2<=k<=5$. Normal distributions with mean = $\ln(0.5)$ and SD = $1.0$ in log space were selected because the survey estimates of biomass were derived from swept area analysis (Eqs. \ref{eq:sweptareaindex}, \ref{eq:cpuecalc}, and \ref{eq:indexvariance}) and could therefore reasonably be expected to be within 1--2 orders of magnitude of unity. A large standard deviation was used to reflect ignorance of the scale of the swept area analysis compared with the true biomass.\\
 
 \subsubsection{Fishery reference points} \label{sec:FisheryRefPoints}
 The DFO Fishery Decision-making Framework Incorporating the Precautionary Approach (PA) policy (\citet{dfo09}) requires stock status to be characterized using three reference points:
@@ -232,7 +232,7 @@ Prior and posterior probability distributions of estimated parameters are shown 
 Posterior probability estimates of $\ln(M)$ tended to be higher than the prior values, with all of the posterior density located in the right-hand tail of the prior distribution (Figure \ref{fig:priorsvsposts}). Normal prior probability distributions were used for the log catchability parameters $\ln(q_k)$ for the Hecate Strait Assemblage Survey and the three Synoptic Surveys (Figure \ref{fig:priors}). Posterior estimates tended to overlap with the left-hand tail of the prior distributions for each survey (Figures \ref{fig:priors} and  \ref{fig:priorsvsposts}). Sensitivity analyses (discussed in Section \ref{sec:priorsurveyq}) indicated that posterior estimates of catchability were sensitive to the mean and standard deviation of the prior distribution.\\
 \bigskip
 
-Pairs plots of posterior samples (Figure \ref{fig:pairs}) indicated that posterior estimates of $R_0$, $\overline{R}$, and $M$ were strongly negatively correlated with survey catchability parameters $q_1$ -- $q_4$ . This and the influence of the prior distributions on posterior estimates of catchability indicated that there was limited information in the available data to estimate these important scaling parameters. Posterior estimates of $R_0$ and $\overline{R}$ were also positively correlated with $\ln(M)$, (Figure \ref{fig:traces}) again indicating that there was insufficient information in the data to unconfound the productivity and scale of the population.\\
+Pairs plots of posterior samples (Figure \ref{fig:pairs}) indicated that posterior estimates of $R_0$, $\overline{R}$, and $M$ were strongly negatively correlated with survey catchability parameters $q_2$ -- $q_5$ . This and the influence of the prior distributions on posterior estimates of catchability indicated that there was limited information in the available data to estimate these important scaling parameters. Posterior estimates of $R_0$ and $\overline{R}$ were also positively correlated with $\ln(M)$, (Figure \ref{fig:traces}) again indicating that there was insufficient information in the data to unconfound the productivity and scale of the population.\\
 
 \subsubsection{Selectivity} \label{sec:selectivity}
 Gear selectivity-at-age was estimated for the trawl fishery and the three synoptic surveys (Figure \ref{fig:selex}). Posterior estimates of age-at-50\%-harvest ($\hat{a}_1$) and the standard deviation in the logistic selectivity ogive ($\hat{\gamma}_1$) are provided in Table \ref{tab:paramest}. The median posterior estimate of age-at-50\%-harvest in the trawl fishery was $9.45$ y. This estimate was further to the right than expected, but was consistent with the available age composition data (Figure \ref{fig:agecomps-trawl}), which indicate very few observations of younger fish, especially in the latter part of the time series. Numerous tests of alternative model configurations did not result in a lower estimate of age-at-50\%-harvest in the trawl fishery. Female \fishname\ are thought to mature at around $5.6$ years of age (Figure \ref{fig:matage}). Therefore, it appears that individuals have several opportunities to spawn before they become vulnerable to the fishery. This in turn resulted in estimates of maximum sustainable harvest rate \emph{U}\subscr{MSY} approaching 1 (discussed in section \ref{sec:resultsFishRefPoints}), implying that under theoretical equilibrium conditions, all of the vulnerable (i.e., fully-selected) biomass could be harvested because the population could be sustained by younger spawners that are invulnerable to the fishery. We emphasise that this is a theoretical condition subject to the assumptions in the stock assessment model and the data limitations therein. We strongly advise against this as a harvest strategy and suggest that the age-at-50\%-harvest in the trawl fishery is a primary axis of uncertainty in this stock assessment. As discussed above, catches since 2008 have increasingly been represented by the freezer trawler fleet and age composition data from this fleet were under-represented. Model sensitivity to selectivity in the trawl fishery, in terms of spawning biomass and stock status, is presented in a later section. We recommend as a high priority that future aging requests should include a representative proportion of ages from the freezer trawl fleet for all years since 2005.\\
@@ -285,7 +285,7 @@ We tested sensitivity of the model outputs to the following assumptions:
   \item The assumed fixed value of variance parameters $\vartheta^2$ and $\rho$
   \item The prior probability distribution for steepness ($h$)
   \item The prior probability distribution for $\ln(M)$
-  \item The prior probability distribution for survey catchability ($q_k$)
+  \item The prior probability distribution for survey catchability ($q_k$, $2<=k<=5$)
   \item The estimated fishery selectivity parameters
 \end{enumerate}
 
@@ -330,19 +330,19 @@ Increasing the mean in Scenario 9 resulted in a re-scaling of the estimated popu
 Model outcomes were therefore influenced by the assumed prior probability distribution for $\ln(M)$. Alternative assumptions for the mean and standard deviation of the prior tended to increase the median and credibility interval of posterior estimates of $B_0$ and recent spawning biomass.\\
 
 \subsubsection{Prior probablity distribution for survey catchability ($q_k$)} \label{sec:priorsurveyq}
-The Reference Case assumed a normal prior probability distribution for $\ln(q_k)$, with mean = $\ln(0.5)$ and standard deviation = 1.0 in log space, for all surveys $k$. Two scenarios were run to test sensitivity of model outcomes to the mean and standard deviation assumed for this prior distribution:
+The Reference Case assumed a normal prior probability distribution for $\ln(q_k)$, with mean = $\ln(0.5)$ and standard deviation = 1.0 in log space, for all surveys $k$, $2<=k<=5$. Two scenarios were run to test sensitivity of model outcomes to the mean and standard deviation assumed for this prior distribution:
 \begin{enumerate}[noitemsep,nolistsep]
   \item mean = $\ln(1.0)$, standard deviation = 1.0 (Scenario 10)
   \item mean = $\ln(0.5)$, standard deviation = 1.5 (Scenario 11)
 \end{enumerate}
 
-Increasing the mean of the prior distribution in Scenario 10 resulted in higher posterior estimates of $q_k$ for all surveys compared to the reference case model (Table \ref{tab:sensitivities-q}). Correspondingly, posterior estimates of spawning biomass and recruitment were lower than in the Reference Case (Figures \ref{fig:sens-q-biomass} and \ref{fig:sens-q-recruitment}). Conversely, increasing the standard deviation of the prior distribution in Scenario 11 resulted in lower posterior estimates of $q_k$ for all surveys. Correspondingly, estimates of spawning biomass and recruitment were higher than in the Reference Case, with a much broader confidence interval (Figures \ref{fig:sens-qsd-biomass} and \ref{fig:sens-qsd-recruitment}).\\
+Increasing the mean of the prior distribution in Scenario 10 resulted in higher posterior estimates of $q_k$ for all surveys compared to the reference case model (Table \ref{tab:sensitivities-q}). Correspondingly, posterior estimates of spawning biomass and recruitment were lower than in the Reference Case (Figures \ref{fig:sens-q-biomass} and \ref{fig:sens-q-recruitment}). Conversely, increasing the standard deviation of the prior distribution in Scenario 11 resulted in lower posterior estimates of $q_k$ for all surveys. Correspondingly, estimates of spawning biomass and recruitment were higher than in the Reference Case, with a much broader credible interval (Figures \ref{fig:sens-qsd-biomass} and \ref{fig:sens-qsd-recruitment}).\\
 \bigskip
 
 While Scenario 10 illustrates that the assumed prior probability distribution did affect posterior estimates of $q_k$ for all surveys, we do not consider a prior centred on 1 to be reasonable, given that the swept area methodology described in Eqs. \ref{eq:sweptareaindex} -- \ref{eq:indexcv} did not attempt to inflate estimated biomass for the whole coast. The lower posterior estimates for $q_k$ obtained for all surveys in Scenario 11, may or may not be plausible, given the lack of information in the data for informing population scale in this assessment.\\
 
 \subsubsection{Effect of fixing fishery selectivity parameters}
-In an earlier section, we noted that the estimated selectivity ogive for the trawl fishery (Figure \ref{fig:selex}) was quite far to the right of the maturity ogive (Figure \ref{fig:matage}), resulting in estimates of \emph{U}\subscr{MSY} approaching 1. We concluded that the estimated age-at-50\%-harvest in the trawl fishery (median = 9.45 y) was consistent with the fishery age composition data (Figure \ref{fig:agecomps-trawl}) but that these data may not be representative of ages in the freezer trawl fleet due to lack of age samples from this fleet. While we recommend ageing of archival otoliths from the freezer trawl fleet as a future research priority, we ran two simple scenarios in the current assessment to evaluate the effect of alternative fishery selectivity ogives on model outcomes. Trial runs suggested that fixing age-at-50\%-harvest at lower values resulted in poor fits to the age composition data and poor model convergence. Therefore, for the two sensitvity runs presented here, the fishery age composition data were removed from the assessment and two alternative fixed ages-at-50\%-harvest were assumed:
+In an earlier section, we noted that the estimated selectivity ogive for the trawl fishery was quite far to the right of the maturity ogive (Figure \ref{fig:selex}), resulting in estimates of \emph{U}\subscr{MSY} approaching 1. We concluded that the estimated age-at-50\%-harvest in the trawl fishery (median = 9.45 y) was consistent with the fishery age composition data (Figure \ref{fig:agecomps-trawl}) but that these data may not be representative of ages in the freezer trawl fleet due to lack of age samples from this fleet. While we recommend ageing of archival otoliths from the freezer trawl fleet as a future research priority, we ran two simple scenarios in the current assessment to evaluate the effect of alternative fishery selectivity ogives on model outcomes. Trial runs suggested that fixing age-at-50\%-harvest at lower values resulted in poor fits to the age composition data and poor model convergence. Therefore, for the two sensitvity runs presented here, the fishery age composition data were removed from the assessment and two alternative fixed ages-at-50\%-harvest were assumed:
 
 \begin{enumerate}[noitemsep,nolistsep]
   \item selectivity ogive = maturity ogive (Scenario 12)
@@ -402,7 +402,7 @@ Stock structure of \fishname\ is poorly understood in \bc. A number of approache
 
 \section{ACKNOWLEDGEMENTS}
 
-We thank the members of the \fishname\ Technical Working Group (Paul Starr, Rowan Haigh, Kendra Holt, Rob Kronlund, Barry Ackerman, Greg Workman, Bruce Turris, and Brian Mose) for their valuable advice as this project progressed. Paul Starr, Rowan Haigh, and Andrew Edwards contributed material for Appendices \ref{chap:agecompweight} and \ref{chap:propfemale}. Steve Martell and Kendra Holt provided material for Appendix \ref{chap:equations}. We thank participants of the Regional Peer Review meeting for their comments at the meeting, and Rowan Haigh for chairing. We especially thank reviewers Joanne Morgan and Carey McGilliard for their written reviews of the working paper. We also thank Steve Wischniowski and the members of the Sclerochronology Laboratory at the Pacific Biological Station for their processing of over 6,000 \fishname\ otoliths in 2014.\\
+We thank the members of the \fishname\ Technical Working Group (Paul Starr, Rowan Haigh, Kendra Holt, Rob Kronlund, Barry Ackerman, Greg Workman, Bruce Turris, and Brian Mose) for their valuable advice as this project progressed. Paul Starr, Rowan Haigh, and Andrew Edwards contributed material for Appendices \ref{chap:propfemale} and \ref{chap:agecompweight}. Steve Martell and Kendra Holt provided material for Appendix \ref{chap:equations}. We thank participants of the Regional Peer Review meeting for their comments at the meeting, and Rowan Haigh for chairing. We especially thank reviewers Joanne Morgan and Carey McGilliard for their written reviews of the working paper. We also thank Steve Wischniowski and the members of the Sclerochronology Laboratory at the Pacific Biological Station for their processing of 4,787 \fishname\ otoliths in 2014.\\
 
 \addcontentsline{toc}{section}{BIBLIOGRAPHY}
 \bibliographystyle{resDoc}
@@ -462,8 +462,8 @@ Log mean recruitment ($\ln(\overline{R})$)                  &  1 & [-2,6]  & Uni
 Log initial recruitment ($\ln(\overline{R}_{init})$)         &  1  & [-2,6] & Uniform \\
 Variance ratio ($\rho$)                                     &  0 & Fixed   & $0.059$ \\
 Inverse total variance ($\vartheta^2$)                     &  0 & Fixed   & $1.471$ \\
-Survey age at 50\% selectivity ($\hat{a}_k$)               &  3 & [0,1]   & Uniform \\
-Fishery age at 50\% selectivity ($\hat{a}_k$)               &  1 & [0,1]   & Uniform \\
+Survey age at 50\% selectivity ($\hat{a}_k$)               &  3 & [0,1]   & None \\
+Fishery age at 50\% selectivity ($\hat{a}_k$)               &  1 & [0,1]   & None \\
 Survey SD of logistic selectivity ($\hat{\gamma}_k$)        &  3 & [0,Inf) & None \\
 Fishery SD of logistic selectivity ($\hat{\gamma}_k$)       &  1 & [0,Inf) & None \\
 Survey catchability ($q_k$)                                 &  4 & None    & Normal($0.5$,$1.0$) \\
@@ -575,7 +575,7 @@ makeTable(12, 7, ci=ci, burnthin=burnthin, digits=3, retxtable=TRUE, xcaption=ca
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=9, fig.width=8>>=
+<<totalcatch, fig.height=9, fig.width=8>>=
 oldPar <- par(no.readonly=TRUE)
 layout(matrix(c(1,1,2,3), 2, 2, byrow=TRUE))
 plotCatch(1, 2, opacity=opacity, add=TRUE,indletter=1)
@@ -595,7 +595,7 @@ par(oldPar)
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=5, fig.width=8>>=
+<<agecomps-trawl, fig.height=5, fig.width=8>>=
 plotBiology(plotNum=11, compFitSex=0, index=1, showtitle=FALSE, scenario=1)
 @
 \end{center}
@@ -607,7 +607,7 @@ plotBiology(plotNum=11, compFitSex=0, index=1, showtitle=FALSE, scenario=1)
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=9, fig.width=8>>=
+<<agecomps-surveys, fig.height=9, fig.width=8>>=
 oldPar <- par(no.readonly=TRUE)
 layout(matrix(c(1,2,3,0), 2, 2, byrow=TRUE))
 plotBiology(plotNum=11, compFitSex=0, index=2, showtitle=FALSE, scenario=1, add=TRUE, indletter=1)
@@ -627,7 +627,7 @@ par(oldPar)
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=9, fig.width=8>>=
+<<lengthsubfleet, fig.height=9, fig.width=8>>=
 oldPar <- par(no.readonly=TRUE)
 layout(matrix(c(1,2,3,4), 2, 2, byrow=TRUE))
 plotBiology(plotNum=17, scenario=1, plotsubfleet=TRUE, lengthcompsex=2, add=TRUE, indletter=1)
@@ -648,12 +648,12 @@ par(oldPar)
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<>>=
+<<priors>>=
 plotConvergence(1, 5, burnthin=burnthin, showtitle=FALSE, priorsonly=TRUE, latexnames=TRUE)
 @
 \end{center}
 %\vspace{0mm}
-\caption{Prior probability distributions used in the Reference Case. Parameters $q_k$ represent gears with: $k=1$ is the QCSSS, $k=2$ is the HSMSAS, $k=3$ is the HSSS, and $k=4$ is the WCVISS.}
+\caption{Prior probability distributions used in the Reference Case. Parameters $q_k$ represent gears where: $k=2$ is the QCSSS, $k=3$ is the HSMSAS, $k=4$ is the HSSS, and $k=5$ is the WCVISS.}
 \label{fig:priors}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -662,9 +662,9 @@ plotConvergence(1, 5, burnthin=burnthin, showtitle=FALSE, priorsonly=TRUE, latex
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=5,fig.width=8>>=
+<<hcrillustration, fig.height=5,fig.width=8>>=
 # Plot harvest control rule illustation. This uses no data so it is embedded her
-plot(c(0,30), c(0,0.4), type="n", axes=FALSE, xaxs="i", yaxs="i", ylab="Stock Status", xlab="Removal Rate")
+plot(c(0,30), c(0,0.4), type="n", axes=FALSE, xaxs="i", yaxs="i", xlab="Stock Status", ylab="Removal Rate")
 # Plot the vertical bars (LRP and USR)
 segments(4, 0, 4, 0.4, col="black", lty=3, lwd=1)
 segments(9, 0, 9, 0.4, col="black", lty=3, lwd=1)
@@ -673,8 +673,8 @@ segments(0, 0, 4, 0,   col="blue", lty=1, lwd=4)
 segments(4, 0, 9, 0.3, col="blue", lty=1, lwd=4)
 segments(9, 0.3, 30, 0.3, col="blue", lty=1, lwd=4)
 # Add axes and labels
-axis(side=1)
-axis(side=2)
+#axis(side=1)
+#axis(side=2)
 box()
 text(4, 0.35, "LRP", col="red")
 text(9, 0.35, "USR", col="red")
@@ -690,7 +690,7 @@ text(20,0.33, "LRR", col="red")
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=8, fig.width=8>>=
+<<traces, fig.height=8, fig.width=8>>=
 plotConvergence(1, 1, burnthin=burnthin, showtitle=FALSE, latexnames=TRUE)
 @
 \end{center}
@@ -702,7 +702,7 @@ plotConvergence(1, 1, burnthin=burnthin, showtitle=FALSE, latexnames=TRUE)
 \clearpage
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=8, fig.width=8>>=
+<<autocor, fig.height=8, fig.width=8>>=
 plotConvergence(1, 2, burnthin=burnthin, showtitle=FALSE, latexnames=TRUE)
 @
 \end{center}
@@ -717,7 +717,7 @@ plotConvergence(1, 2, burnthin=burnthin, showtitle=FALSE, latexnames=TRUE)
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=9, fig.width=8>>=
+<<indexfits, fig.height=9, fig.width=8>>=
 oldPar <- par(no.readonly=TRUE)
 layout(matrix(c(1,2,3,4), 2, 2, byrow=TRUE))
 plotTS(1, 7, index=2, showtitle=FALSE, indfixaxis=TRUE, leg=NULL, indletter=1, add=TRUE, opacity=opacity)
@@ -738,7 +738,7 @@ par(oldPar)
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=5, fig.width=8, fig.show='hold'>>=
+<<agecomps-fits-trawl, fig.height=5, fig.width=8, fig.show='hold'>>=
 #oldPar <- par(no.readonly=TRUE)
 #layout(matrix(c(1,2),2,1,byrow=FALSE))
 plotBiology(plotNum=12, compFitSex=0, index=1, showtitle=FALSE, scenario=1)
@@ -755,7 +755,7 @@ plotBiology(plotNum=13, compFitSex=0, index=1, showtitle=FALSE, scenario=1)
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=5, fig.width=8, fig.show='hold'>>=
+<<agecomps-fits-qcsss, fig.height=5, fig.width=8, fig.show='hold'>>=
 #oldPar <- par(no.readonly=TRUE)
 #layout(matrix(c(1,2),2,1,byrow=FALSE))
 plotBiology(plotNum=12, compFitSex=0, index=2, showtitle=FALSE, scenario=1)
@@ -772,7 +772,7 @@ plotBiology(plotNum=13, compFitSex=0, index=2, showtitle=FALSE, scenario=1)
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=5, fig.width=8, fig.show='hold'>>=
+<<agecomps-fits-hsss, fig.height=5, fig.width=8, fig.show='hold'>>=
 #oldPar <- par(no.readonly=TRUE)
 #layout(matrix(c(1,2),2,1,byrow=FALSE))
 plotBiology(plotNum=12, compFitSex=0, index=4, showtitle=FALSE, scenario=1)
@@ -789,7 +789,7 @@ plotBiology(plotNum=13, compFitSex=0, index=4, showtitle=FALSE, scenario=1)
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=5, fig.width=8, fig.show='hold'>>=
+<<agecomps-fits-wcviss, fig.height=5, fig.width=8, fig.show='hold'>>=
 #oldPar <- par(no.readonly=TRUE)
 #layout(matrix(c(1,2),2,1,byrow=FALSE))
 plotBiology(plotNum=12, compFitSex=0, index=5, showtitle=FALSE, scenario=1)
@@ -807,12 +807,12 @@ plotBiology(plotNum=13, compFitSex=0, index=5, showtitle=FALSE, scenario=1)
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<>>=
+<<priorsvsposts>>=
 plotConvergence(1, 5, burnthin=burnthin, showtitle=FALSE, priorsonly=FALSE, latexnames=TRUE)
 @
 \end{center}
 %\vspace{0mm}
-\caption{Prior probability distributions used in the Reference with comparative posterior histograms.  Parameters $q_k$ represent gears with: $k=1$ is QCSSS; $k=2$ is HSMSAS; $k=3$ is HSSS; $k=4$ is WCVISS. The dotted red lines are the MPD estimates from the Reference Case.}
+\caption{Prior probability distributions used in the Reference with comparative posterior histograms. Parameters $q_k$ represent gears where: $k=2$ is the QCSSS, $k=3$ is the HSMSAS, $k=4$ is the HSSS, and $k=5$ is the WCVISS. The dotted red lines are the MPD estimates from the Reference Case.}
 \label{fig:priorsvsposts}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -820,7 +820,7 @@ plotConvergence(1, 5, burnthin=burnthin, showtitle=FALSE, priorsonly=FALSE, late
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=8, fig.width=8>>=
+<<pairs, fig.height=8, fig.width=8>>=
 plotConvergence(1, 4, burnthin=burnthin, showtitle=FALSE, latexnames=TRUE)
 @
 \end{center}
@@ -835,12 +835,12 @@ plotConvergence(1, 4, burnthin=burnthin, showtitle=FALSE, latexnames=TRUE)
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=5,fig.width=8>>=
-plotSelex(1,2,showtitle=FALSE,leg="bottomright")
+<<selex, fig.height=5,fig.width=8>>=
+plotSelex(1,2,showtitle=FALSE,leg="bottomright",showmat=TRUE)
 @
 %\end{center}
 %\vspace{0mm}
-\caption{Estimated and Fixed selectivities for the Reference Case.}
+\caption{Estimated and Fixed selectivities for the Reference Case, compared with female maturity.}
 \label{fig:selex}
 %\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -849,12 +849,12 @@ plotSelex(1,2,showtitle=FALSE,leg="bottomright")
 %%%%%%%%%%%%%%%%%%%%%%%
 %\begin{figure}[htp]
 %\begin{center}
-<<fig.height=5,fig.width=8>>=
+<<refpoints, fig.height=5,fig.width=8>>=
 plotTS(plotNum=10,  ci=ci, burnthin=burnthin, plotMCMC=TRUE, showumsy=TRUE, showtitle=FALSE, opacity=opacity)
 @
 \end{center}
 %\vspace{0mm}
-\caption{Posterior reference points for the Reference Case. Bars represent \mcmcci\ confidence intervals.}
+\caption{Posterior reference points for the Reference Case. Bars represent \mcmcci\ credible intervals.}
 \label{fig:refpoints}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -864,7 +864,7 @@ plotTS(plotNum=10,  ci=ci, burnthin=burnthin, plotMCMC=TRUE, showumsy=TRUE, show
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=9, fig.width=7.5>>=
+<<spawnbiomass, fig.height=9, fig.width=7.5>>=
 oldPar <- par(no.readonly=TRUE)
 layout(matrix(c(1,2),2,1,byrow=FALSE))
 plotTS(1, 1, ci=ci, burnthin=burnthin, plotMCMC=TRUE, leg=NULL, showtitle=FALSE, showB0Ref=TRUE, showBMSYRef=FALSE, indletter=1, add=TRUE, opacity=opacity)
@@ -873,7 +873,7 @@ par(oldPar)
 @
 \end{center}
 %\vspace{0mm}
-\caption{Median posterior spawning biomass for the Reference Case. The shaded area represents the \mcmcci\ confidence interval. The point and bars represent the median estimate of $B_0$ and with a confidence interval of \mcmcci. Panel (a) shows posterior median estimates of reference points $0.2$\emph{B}\subscr{0} and $0.4$\emph{B}\subscr{0}, Panel (b) shows posterior median estimates of reference points $0.4$\emph{B}\subscr{MSY} and $0.8$\emph{B}\subscr{MSY}}
+\caption{Median posterior spawning biomass for the Reference Case. The shaded area represents the \mcmcci\ credible interval. The point and bars represent the median estimate of $B_0$ and with a credible interval of \mcmcci. Panel (a) shows posterior median estimates of reference points $0.2$\emph{B}\subscr{0} and $0.4$\emph{B}\subscr{0}, Panel (b) shows posterior median estimates of reference points $0.4$\emph{B}\subscr{MSY} and $0.8$\emph{B}\subscr{MSY}}
 \label{fig:spawnbiomass}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -883,11 +883,11 @@ par(oldPar)
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=5, fig.width=8>>=
+<<vuln-spawn-biomass, fig.height=5, fig.width=8>>=
 plotTS(1, 12, ci=ci, burnthin=burnthin, plotMCMC=TRUE, showSbio=TRUE, leg="topleft", showtitle=FALSE, showB0Ref=FALSE, showBMSYRef=FALSE, opacity=opacity)
 @
 \end{center}
-\caption{Median posterior vulnerable and spawning biomass for the Reference Case. The shaded area represents the \mcmcci\ confidence interval.}
+\caption{Median posterior vulnerable and spawning biomass for the Reference Case. The shaded area represents the \mcmcci\ credible interval.}
 \label{fig:vuln-spawn-biomass}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -897,7 +897,7 @@ plotTS(1, 12, ci=ci, burnthin=burnthin, plotMCMC=TRUE, showSbio=TRUE, leg="tople
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=9, fig.width=8>>=
+<<recruitment, fig.height=9, fig.width=8>>=
 oldPar <- par(no.readonly=TRUE)
 layout(matrix(c(1,2),2,1,byrow=FALSE))
 plotTS(1, 5, ci=ci, burnthin=burnthin, plotMCMC=TRUE, leg=NULL, showtitle=FALSE, indletter=1, add=TRUE, opacity=opacity)
@@ -906,7 +906,7 @@ par(oldPar)
 @
 \end{center}
 %\vspace{0mm}
-\caption{Median posterior recruitment (a) and recruitment deviations (b) for the Reference Case. The bars represent the \mcmcci\ confidence interval. The red line is the long-term mean; the green line is the long-term median.}
+\caption{Median posterior recruitment (a) and recruitment deviations (b) for the Reference Case. The bars represent the \mcmcci\ credible interval. The red line is the long-term mean; the green line is the long-term median.}
 \label{fig:recruitment}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -916,12 +916,12 @@ par(oldPar)
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=5,fig.width=8>>=
+<<F, fig.height=5,fig.width=8>>=
 plotTS(1, 9, ci=ci, burnthin=burnthin, plotMCMC=TRUE, leg=NULL, showtitle=FALSE, opacity=opacity)
 @
 %\end{center}
 %\vspace{0mm}
-\caption{Fishing mortality for the Reference Case. The shaded area represente the \mcmcci\ confidence interval.}
+\caption{Fishing mortality for the Reference Case. The shaded area represente the \mcmcci\ credible interval.}
 \label{fig:F}
 %\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -930,11 +930,11 @@ plotTS(1, 9, ci=ci, burnthin=burnthin, plotMCMC=TRUE, leg=NULL, showtitle=FALSE,
 %%%%%%%%%%%%%%%%%%%%%%%
 %\begin{figure}[htp]
 %\begin{center}
-<<fig.height=5, fig.width=8>>=
+<<depletion, fig.height=5, fig.width=8>>=
 plotTS(1, 3, ci=ci, burnthin=burnthin, plotMCMC=TRUE, leg=NULL, showtitle=FALSE, showB0Ref=TRUE, showBMSYRef=FALSE, opacity=opacity)
 @
 \end{center}
-\caption{Relative median posterior spawning biomass for the Reference Case. The shaded area represents the \mcmcci\ confidence interval.}
+\caption{Relative median posterior spawning biomass for the Reference Case. The shaded area represents the \mcmcci\ credible interval.}
 \label{fig:depletion}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -947,7 +947,7 @@ plotTS(1, 3, ci=ci, burnthin=burnthin, plotMCMC=TRUE, leg=NULL, showtitle=FALSE,
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=9, fig.width=8>>=
+<<sens-sig-indices, fig.height=9, fig.width=8>>=
 # Plot indices for sens group 1
 g <- 1
 oldPar <- par(no.readonly=TRUE)
@@ -969,13 +969,13 @@ par(oldPar)
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=5, fig.width=8>>=
+<<sens-sig-biomass, fig.height=5, fig.width=8>>=
 g <- 1 # group number
 plotTS(plotNum=1, sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
 @
 \end{center}
 %\vspace{0mm}
-\caption{Estimated median spawning biomass with \mcmcci\ confidence intervals, for models examining sensitivity to the $\sigma$ parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ confidence interval.}
+\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to the $\sigma$ parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
 \label{fig:sens-sig-biomass}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -984,7 +984,7 @@ plotTS(plotNum=1, sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=9, fig.width=8>>=
+<<sens-sig-recruitment, fig.height=9, fig.width=8>>=
 # Plot recruitment and deviations for sens group 1
 g <- 1 # group number
 oldPar <- par(no.readonly=TRUE)
@@ -995,7 +995,7 @@ par(oldPar)
 @
 \end{center}
 %\vspace{0mm}
-\caption{Estimated recruitment (a) and recruitment deviations (b) with \mcmcci\ confidence intervals, for models examining sensitivity to the $\sigma$ parameter.}
+\caption{Estimated recruitment (a) and recruitment deviations (b) with \mcmcci\ credible intervals, for models examining sensitivity to the $\sigma$ parameter.}
 \label{fig:sens-sig-recruitment}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -1005,7 +1005,7 @@ par(oldPar)
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=9, fig.width=8>>=
+<<sens-tau-recruitment, fig.height=9, fig.width=8>>=
 # Plot recruitment and deviations for sens group 2
 g <- 2
 oldPar <- par(no.readonly=TRUE)
@@ -1016,7 +1016,7 @@ par(oldPar)
 @
 \end{center}
 %\vspace{0mm}
-\caption{Estimated recruitment (a) and recruitment deviations (b) with \mcmcci\ confidence intervals, for models examining sensitivity to the $\tau$ parameter.}
+\caption{Estimated recruitment (a) and recruitment deviations (b) with \mcmcci\ credible intervals, for models examining sensitivity to the $\tau$ parameter.}
 \label{fig:sens-tau-recruitment}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -1025,27 +1025,27 @@ par(oldPar)
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=5,fig.width=8>>=
+<<sens-tau-biomass, fig.height=5,fig.width=8>>=
 # Plot biomass for sens group 2
 g <- 2
 plotTS(plotNum=1,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
 @
 %\end{center}
 %\vspace{0mm}
-\caption{Estimated median spawning biomass with \mcmcci\ confidence intervals, for models examining sensitivity to the $\tau$ parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ confidence interval.}
+\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to the $\tau$ parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
 \label{fig:sens-tau-biomass}
 %\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %\begin{figure}[htp]
 %\begin{center}
-<<fig.height=5,fig.width=8>>=
+<<sens-tau-depletion, fig.height=5,fig.width=8>>=
 g <- 2
 plotTS(plotNum=3,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
 @
 \end{center}
 %\vspace{0mm}
-\caption{Estimated relative median spawning biomass with \mcmcci\ confidence intervals, for models examining sensitivity to the $\tau$ parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ confidence interval.}
+\caption{Estimated relative median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to the $\tau$ parameter.}
 \label{fig:sens-tau-depletion}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -1055,28 +1055,28 @@ plotTS(plotNum=3,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCM
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=5,fig.width=8>>=
+<<sens-h-biomass, fig.height=5,fig.width=8>>=
 # Plot biomass for sens group 3
 g <- 3
 plotTS(plotNum=1,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
 @
 %\end{center}
 %\vspace{0mm}
-\caption{Estimated median spawning biomass with \mcmcci\ confidence intervals, for models examining sensitivity to the steepness parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ confidence interval.}
+\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to the steepness parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
 \label{fig:sens-h-biomass}
 %\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %\begin{figure}[htp]
 %\begin{center}
-<<fig.height=5,fig.width=8>>=
+<<sens-h-recruitment, fig.height=5,fig.width=8>>=
 # Plot recruitment for sens group 3
 g <- 3
 plotTS(plotNum=5,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
 @
 \end{center}
 %\vspace{0mm}
-\caption{Estimated median recruitment with \mcmcci\ confidence intervals, for models examining sensitivity to the steepness parameter.}
+\caption{Estimated median recruitment with \mcmcci\ credible intervals, for models examining sensitivity to the steepness parameter.}
 \label{fig:sens-h-recruitment}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -1086,28 +1086,28 @@ plotTS(plotNum=5,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCM
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=5,fig.width=8>>=
+<<sens-msd-biomass, fig.height=5,fig.width=8>>=
 # Plot biomass for sens group 4
 g <- 4
 plotTS(plotNum=1,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
 @
 %\end{center}
 %\vspace{0mm}
-\caption{Estimated median spawning biomass with \mcmcci\ confidence intervals, for models examining sensitivity to the standard deviation of the natural mortality  parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ confidence interval.}
+\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to the standard deviation of the natural mortality  parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
 \label{fig:sens-msd-biomass}
 %\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %\begin{figure}[htp]
 %\begin{center}
-<<fig.height=5,fig.width=8>>=
+<<sens-msd-recruitment, fig.height=5,fig.width=8>>=
 # Plot recruitment for sens group 4
 g <- 4
 plotTS(plotNum=5, sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
 @
 \end{center}
 %\vspace{0mm}
-\caption{Estimated median recruitment with \mcmcci\ confidence intervals, for models examining sensitivity to the standard deviation of the natural mortality  parameter.}
+\caption{Estimated median recruitment with \mcmcci\ credible intervals, for models examining sensitivity to the standard deviation of the natural mortality  parameter.}
 \label{fig:sens-msd-recruitment}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -1117,28 +1117,28 @@ plotTS(plotNum=5, sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=5,fig.width=8>>=
+<<sens-m-biomass, fig.height=5,fig.width=8>>=
 # Plot biomass for sens group 5
 g <- 5
 plotTS(plotNum=1,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
 @
 %\end{center}
 %\vspace{0mm}
-\caption{Estimated median spawning biomass with \mcmcci\ confidence intervals, for models examining sensitivity to the natural mortality parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ confidence interval.}
+\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to the natural mortality parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
 \label{fig:sens-m-biomass}
 %\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %\begin{figure}[htp]
 %\begin{center}
-<<fig.height=5,fig.width=8>>=
+<<sens-m-recruitment, fig.height=5,fig.width=8>>=
 # Plot recruitment for sens group 5
 g <- 5
 plotTS(plotNum=5,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
 @
 \end{center}
 %\vspace{0mm}
-\caption{Estimated median recruitment with \mcmcci\ confidence intervals, for models examining sensitivity to the natural mortality parameter.}
+\caption{Estimated median recruitment with \mcmcci\ credible intervals, for models examining sensitivity to the natural mortality parameter.}
 \label{fig:sens-m-recruitment}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -1148,28 +1148,28 @@ plotTS(plotNum=5,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCM
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=5,fig.width=8>>=
+<<sens-q-biomass, fig.height=5,fig.width=8>>=
 # Plot biomass for sens group 6
 g <- 6
 plotTS(plotNum=1,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
 @
 %\end{center}
 %\vspace{0mm}
-\caption{Estimated median spawning biomass with \mcmcci\ confidence intervals, for models examining sensitivity to the catchability parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ confidence interval.}
+\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to the catchability parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
 \label{fig:sens-q-biomass}
 %\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %\begin{figure}[htp]
 %\begin{center}
-<<fig.height=5,fig.width=8>>=
+<<sens-q-recruitment, fig.height=5,fig.width=8>>=
 # Plot recruitment for sens group 6
 g <- 6
 plotTS(plotNum=5,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
 @
 \end{center}
 %\vspace{0mm}
-\caption{Estimated recruitment with \mcmcci\ confidence intervals, for models examining sensitivity to the catchability parameter.}
+\caption{Estimated recruitment with \mcmcci\ credible intervals, for models examining sensitivity to the catchability parameter.}
 \label{fig:sens-q-recruitment}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -1179,28 +1179,28 @@ plotTS(plotNum=5,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCM
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=5,fig.width=8>>=
+<<sens-qsd-biomass, fig.height=5,fig.width=8>>=
 # Plot biomass for sens group 7
 g <- 7
 plotTS(plotNum=1,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], indletter=1, opacity=opacity)
 @
 %\end{center}
 %\vspace{0mm}
-\caption{Estimated median spawning biomass with \mcmcci\ confidence intervals, for models examining sensitivity to the catchability standard deviation parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ confidence interval.}
+\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to the catchability standard deviation parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
 \label{fig:sens-qsd-biomass}
 %\end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %\begin{figure}[htp]
 %\begin{center}
-<<fig.height=5,fig.width=8>>=
+<<sens-qsd-recruitment, fig.height=5,fig.width=8>>=
 # Plot recruitment for sens group 7
 g <- 7
 plotTS(plotNum=5,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], indletter=1, opacity=opacity)
 @
 \end{center}
 %\vspace{0mm}
-\caption{Estimated recruitment with \mcmcci\ confidence intervals, for models examining sensitivity to the catchability standard deviation parameter.}
+\caption{Estimated recruitment with \mcmcci\ credible intervals, for models examining sensitivity to the catchability standard deviation parameter.}
 \label{fig:sens-qsd-recruitment}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -1232,7 +1232,7 @@ plotTS(plotNum=5,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCM
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=5,fig.width=8>>=
+<<sens-trawl-selex, fig.height=5,fig.width=8>>=
 g <- 8
 plotSelex(plotNum=1,  index=1, sensGroup=g, multiple=TRUE, leg="bottomright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]])
 @
@@ -1245,13 +1245,13 @@ plotSelex(plotNum=1,  index=1, sensGroup=g, multiple=TRUE, leg="bottomright", sh
 %%%%%%%%%%%%%%%%%%%%%%%
 %\begin{figure}[htp]
 %\begin{center}
-<<fig.height=5,fig.width=8>>=
+<<sens-trawl-selex-biomass, fig.height=5,fig.width=8>>=
 g <- 8
 plotTS(plotNum=1,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
 @
 \end{center}
 %\vspace{0mm}
-\caption{Estimated median spawning biomass with \mcmcci\ confidence intervals, for models examining sensitivity to trawl selectivity. Points and bars represent the estimates of $B_0$ with \mcmcci\ confidence interval.}
+\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to trawl selectivity. Points and bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
 \label{fig:sens-trawl-selex-biomass}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -1260,15 +1260,15 @@ plotTS(plotNum=1,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCM
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=5,fig.width=8>>=
+<<sens-trawl-selex-refpoints, fig.height=5,fig.width=8>>=
 # Plot Umsy/Bmsy boxplots for sens group 8
 g <- 8
-shortnames <- c("Ref","Sc 12","Sc 13"))
+shortnames <- c("Ref","Sc 12","Sc 13")
 plotTS(plotNum=10,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, showumsy=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], shortnames=shortnames, opacity=opacity)
 @
 \end{center}
 %\vspace{0mm}
-\caption{Posterior reference points for models examining sensitivity to trawl selectivity. Bars represent \mcmcci\ confidence intervals.}
+\caption{Posterior reference points for models examining sensitivity to trawl selectivity. Bars represent \mcmcci\ credible intervals.}
 \label{fig:sens-trawl-selex-refpoints}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%

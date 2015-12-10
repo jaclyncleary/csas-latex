@@ -37,10 +37,10 @@ and the density-dependent term is given by:
 \[\beta=\frac{\kappa-1}{R_{{o}}\phi_{{E}}}\]
 which simplifies to Eq. \ref{eq:df14}.
 
-The equilibrium yield $C_e$ for a given fishing mortality rate is given by Eq. \ref{eq:df15}. These steady-state conditions are critical for determining various reference points such as F\subscr{MSY} and B\subscr{MSY}.
+The equilibrium yield $C_e$ for a given fishing mortality rate is given by Eq. \ref{eq:df15}. These steady-state conditions are critical for determining various reference points such as \emph{F}\subscr{MSY} and \emph{B}\subscr{MSY}.
 .
 \subsection{MSY-based Reference Points}
-When defining reference points for this assessment, only the commercial trawl fishery was used to calculate MSY quantities. In the case of a single fishery, iSCAM calculates F\subscr{MSY} by finding the value of $F_e$ that results in the zero derivative of \ref{eq:df15}. This is accomplished numerically using a Newton-Raphson method where an initial guess for F\subscr{MSY} is set equal to $M$. Given an estimate of F\subscr{MSY}, other reference points such as MSY and B\subscr{MSY} are calculated using the equations in Table \ref{tab:steady-state-model}.
+When defining reference points for this assessment, only the commercial trawl fishery was used to calculate MSY quantities. In the case of a single fishery, iSCAM calculates \emph{F}\subscr{MSY} by finding the value of \emph{F}\subscr{e} that results in the zero derivative of \ref{eq:df15}. This is accomplished numerically using a Newton-Raphson method where an initial guess for \emph{F}\subscr{MSY} is set equal to $M$. Given an estimate of \emph{F}\subscr{MSY}, other reference points such as MSY and \emph{B}\subscr{MSY} are calculated using the equations in Table \ref{tab:steady-state-model}.
 
 \section{ANALYTIC METHODS: STATE DYNAMICS}
 The estimated parameter vector in iSCAM is defined in Eq. \ref{eq:df16} of Table \ref{tab:catch-age-model}. The estimated parameters $R_0$, $h$, and $M$, are the leading population parameters that define the overall scale and productivity of the population.\\
@@ -49,7 +49,7 @@ Variance components of the model were partitioned using an errors in variables a
 \bigskip
 
 The unobserved state variables in Eq. \ref{eq:df18} include the numbers-at-age in year $t$ of sex $s$ ($N_{t,a,s}$), the spawning stock biomass in year $t$ of sex $s$ ($B_{t,s}$), and the total age- and sex-specific total mortality rate ($Z_{t,a,s}$).
-The initial numbers-at-age in the first year (Eq. \ref{eq:df19}) and the annual recruits (Eq. \ref{eq:df20}) are treated as estimated parameters and used to initialize the numbers-at-age array. 
+The initial numbers-at-age in the first year (Eq. \ref{eq:df19}) and the annual recruits (Eq. \ref{eq:df20}) are treated as estimated parameters and used to initialize the numbers-at-age array.
 
 Vulnerability-at-age is here assumed time-invariant and is modelled using a two-parameter logistic function (Eq. \ref{eq:df21}). The annual fishing mortality for each gear $k$ in year $t$ is the exponent of the estimated vector $\Gamma_{k,t}$ (Eq. \ref{eq:df22}). The vector of log fishing mortality rate parameters $\Gamma_{k,t}$ is a bounded vector with a minimum value of $-30.0$ and an upper bound of $3.0$. In arithmetic space this corresponds to a minimum value of $9.36e^{-14}$ and a maximum value of $20.01$ for annual fishing mortality rates. In years where there are zero reported catches for a given fleet, no corresponding fishing mortality rate parameter is estimated and the implicit assumption is there was no fishery in that year.
 

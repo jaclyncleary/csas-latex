@@ -28,23 +28,30 @@
 
 % For hyperlinked references (figures and citations, etc.). The bookmarksdepthlevel allows
 %  the TOC to be shown in the bookmarks tree in the output PDF.
-\usepackage[bookmarks,bookmarksopen,bookmarksdepth=4]{hyperref}
-\hypersetup{                   % Set up the hyperref options here
-    pdftitle={Arrowtooth Flounder},
-    pdfauthor={Chris Grandin},
-    pdfsubject={Stock Assessment},
-    %pdfkeywords={keyword1, keyword2},
-    bookmarksnumbered=true,
-    bookmarksopen=true,
-    bookmarksopenlevel=1,
-    colorlinks=true,
-    linkcolor=blue,
-    allcolors=blue,
-    citecolor=cyan,
-    pdfstartview=Fit,
-    pdfpagemode=UseOutlines
-    %pdfpagelayout=TwoPageRight
-}
+
+%% START - COMMENTED OUT TO AVOID HYPERREF COLLISIONS
+%% \usepackage[bookmarks,bookmarksopen,bookmarksdepth=4]{hyperref}
+
+%% \hypersetup{                   % Set up the hyperref options here
+%%     pdftitle={Arrowtooth Flounder},
+%%     pdfauthor={Chris Grandin},
+%%     pdfsubject={Stock Assessment},
+%%     %pdfkeywords={keyword1, keyword2},
+%%     bookmarksnumbered=true,
+%%     bookmarksopen=true,
+%%     bookmarksopenlevel=1,
+%%     colorlinks=false,   % Must be false for CSAS submission. This makes it harder to find the links but they stupidly require it.
+%%     hidelinks=true,     % Necessary to remove boxes around hyperlinks for submission
+%%     %linkcolor=blue,    % Commented out for the submission
+%%     %allcolors=blue,    % Commented out for the submission
+%%     %citecolor=cyan,    % Commented out for the submission
+%%     pdfstartview=Fit,
+%%     pdfpagemode=UseOutlines,
+%%     breaklinks=true     % Allows the list of figures and tables to have wrapping text (since they are actually hyperlinks).
+%%     %pdfpagelayout=TwoPageRight
+%% }
+%% END - COMMENTED OUT TO AVOID HYPERREF COLLISIONS
+
 % Use the following codes for references within the document.
 %   chap: chapter
 %    sec: section
@@ -177,10 +184,16 @@
 
 \begin{document}
 
-\def \KnitrHomePath {C:/github/csas-latex/doc}
 % Load iscam-gui list object scenarios - Make sure all are set up in correct order before running this
 % Also, set up standard plot sizes for the document
-<<>>=
+%%<<echo=TRUE,  message=TRUE, results='asis', warning=TRUE>>=
+<<echo=FALSE,  message=FALSE, results='hide', warning=FALSE>>=
+opts_chunk$set(dev='cairo_ps',fig.path='knitr-cache/', fig.dpi=96, fig.width=7.5,
+              fig.height=4, echo=FALSE, results=FALSE, message=FALSE, warning=FALSE,
+               results='hide', cache=TRUE, cache.path='knitr-cache/')
+## opts_chunk$set(dev='cairo_ps',fig.path='knitr-cache/', fig.dpi=96, fig.width=7.5,
+##                fig.height=4, echo=TRUE, results='asis', message=TRUE, warning=TRUE, error=FALSE,
+##                cache=TRUE, cache.path='knitr-cache/')
 # If you source the file, it will load all the scenarios. A quicker way is to load the Rdata file
 # directly from the gui directory. Make sure all scenarios are correct and then do iscam(T) from the
 # .Rdata environment in the iscam-gui directory and save the file when you close Rgui. Then this will
@@ -189,6 +202,7 @@
 #setwd('../../iscam-gui')
 #source('iscam-gui.r')
 #iscam(showgui=FALSE)
+
 load("../../iscam-gui/.RData")
 require(PBSmodelling)
 require(tcltk)
@@ -285,25 +299,26 @@ modelnames[[8]] <- list("Reference Model","Trawl selex fixed at maturity","Trawl
 %  including the Appendix (chapter) names (not sections or
 %  subsections):
 
-\lfoot{Arrowtooth Flounder - Coastwide}
+\lfoot{\fishname\ - Coastwide}
 
-\rfoot{Appendix A -- Request for Science Advice}
-<<advice-request, child='app-requestforscienceadvice/app-requestforscienceadvice.Rnw'>>=
-@
+%% RSIA no longer to be included in the document
+%% \rfoot{Appendix A -- Request for Science Advice}
+%% <<advice-request, child='app-requestforscienceadvice/app-requestforscienceadvice.Rnw'>>=
+%% @
 
-\rfoot{Appendix B -- Biological Data}
+\rfoot{Appendix A -- Biological Data}
 <<biological-data, child='app-biology/app-biology.Rnw'>>=
 @
 
-\rfoot{Appendix C -- Proportion Female Analysis}
+\rfoot{Appendix B -- Proportion Female Analysis}
 <<prop-female, child='app-propfemale/app-propfemale.Rnw'>>=
 @
 
-\rfoot{Appendix D -- Age Composition weighting}
+\rfoot{Appendix C -- Age Composition weighting}
 <<agecomp-weighting, child='app-agecompweighting/app-agecompweighting.Rnw'>>=
 @
 
-\rfoot{Appendix E -- Model Equations}
+\rfoot{Appendix D -- Model Equations}
 <<model-equations, child='app-equations/app-equations.Rnw'>>=
 @
 

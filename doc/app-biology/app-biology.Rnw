@@ -70,7 +70,7 @@ Sex                                           & valid sex observation (1 or 2 ) 
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=7, fig.width=8>>=
+<<vonb, fig.height=7, fig.width=8>>=
 plotGrowth(leg="bottomright")
 @
 \end{center}
@@ -82,7 +82,7 @@ plotGrowth(leg="bottomright")
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=7, fig.width=8>>=
+<<lw, fig.height=7, fig.width=8>>=
 plotLW(leg="topleft")
 @
 \end{center}
@@ -94,7 +94,7 @@ plotLW(leg="topleft")
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<fig.height=7, fig.width=8>>=
+<<matage, fig.height=7, fig.width=8>>=
 plotMA(leg="bottomright")
 @
 \end{center}
