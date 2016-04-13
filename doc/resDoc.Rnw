@@ -210,6 +210,7 @@ require(coda)
 require(ggplot2) # Only used for Observed landings plot.
 require(reshape2)
 require(Hmisc)
+require(methods)
 require(xtable) # For tables which can be inserted into latex docs with knitr
 ci <- 95
 ps <- list(res=300,w=400,h=300)
