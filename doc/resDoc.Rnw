@@ -175,8 +175,8 @@
 \newcommand{\FixM}{`Fix \emph{M}'}
 
 % MCMC globals to use in all MCMC related text and discussions
-\newcommand{\mcmclength}{10 million} % MCMC Chain length
-\newcommand{\mcmcsampfreq}{5,000}    % Sampling frequency
+\newcommand{\mcmclength}{15 million} % MCMC Chain length
+\newcommand{\mcmcsampfreq}{7,500}    % Sampling frequency
 \newcommand{\mcmcnsamp}{2,000}       % Number of samples saved
 \newcommand{\mcmcburnin}{1,000}      % Number of samples removed from the beginning of the chain
 \newcommand{\mcmcndata}{1,000}       % nsamp - burnin, this is the actual number of samples used
