@@ -264,3 +264,36 @@
 %  (from a .tex file by Ian Jonsen):
 % \bibpunct[, ]{(}{)}{;}{a}{}{,}
 % \bibstyle{cjfas}
+
+%%====================================================================
+%% Create special itemize and enumerate environments for CSAS Res Docs
+%% Added in October 2016 from Rowan Haigh's example.
+%%====================================================================
+% Note that leftmargin = labelindent + labelwidth + (labelsep - itemintent) % from enumitem documentation
+\newenvironment{itemize_csas}{%
+  \renewcommand{\labelitemi}{$\bullet$}%
+  \renewcommand{\labelitemii}{$\circ$}%
+  \setlength\labelwidth{0.1in}%
+  \setlength\labelsep{0.15in}%
+  %\setlength\itemindent{0.25in}% doesn't seem to have any effect
+  \setlength{\leftmargini}{0.25in}%  CSAS -- left indent 0 in, hanging indent 0.25in
+  \setlength{\leftmarginii}{0.25in}% CSAP -- left indent 0.25 in, hanging indent 0.25in
+  \begin{itemize}% some settings have to come after the call to begin{itemize} wtf?
+    \setlength{\itemsep}{3pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}}
+{\end{itemize}}
+
+\newenvironment{enumerate_csas}{
+  \renewcommand{\labelenumi}{\arabic{enumi}.}
+  \renewcommand{\labelenumii}{\alph{enumii}.}
+  \setlength\labelwidth{0.1in}%
+  \setlength\labelsep{0.15in}%
+  \setlength{\leftmargini}{0.25in}%  CSAS -- left indent 0 in, hanging indent 0.25in
+  \setlength{\leftmarginii}{0.25in}% CSAP -- left indent 0.25 in, hanging indent 0.25in
+  \begin{enumerate}
+    \setlength{\itemsep}{3pt}
+    \setlength{\parskip}{0pt}
+    \setlength{\parsep}{0pt}}
+{\end{enumerate}}
+%%--------------------------------------------------------------------

@@ -465,7 +465,7 @@ Log recruitment ($\ln(R_0)$)                                &  1 & [-2,6]  & Uni
 Steepness ($h$)                                            &  1 & [0.2,1] & Beta($\alpha=13.4$,$\beta=2.40$) \\
 Log natural mortality ($\ln(M)$)                           &  1 & [-5,0]  & Normal($\ln(0.2)$,$0.2$) \\
 Log mean recruitment ($\ln(\overline{R})$)                  &  1 & [-2,6]  & Uniform \\
-Log initial recruitment ($\ln(\overline{R}_{init})$)         &  1  & [-2,10] & Uniform \\
+Log initial recruitment ($\ln(\overline{R}_{init})$)         &  1  & [-5,10] & Uniform \\
 Variance ratio ($\rho$)                                     &  0 & Fixed   & $0.059$ \\
 Inverse total variance ($\vartheta^2$)                     &  0 & Fixed   & $1.471$ \\
 Survey age at 50\% selectivity ($\hat{a}_k$)               &  3 & [0,1]   & None \\
