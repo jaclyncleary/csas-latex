@@ -22,7 +22,7 @@
 \usepackage{xifthen}           % provides \ifthenelse and \isempty
 \usepackage{color, colortbl}
 \usepackage{arydshln}          % For dashed lines in tables (has to be loaded after other stuff)
-\usepackage{pdfpages}          % So we can import PDFs into the document (e.g. request for science advice).
+% \usepackage{pdfpages}          % So we can import PDFs into the document (e.g. request for science advice).
 \usepackage[parfill]{parskip}  % So paragraphs will have a blank line between them
 \setlength{\parskip}{12pt}
 
