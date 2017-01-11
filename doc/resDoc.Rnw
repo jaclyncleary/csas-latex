@@ -185,6 +185,7 @@
 \renewcommand{\bibname}{REFERENCES}
 \renewcommand{\bibsection}{\section{\bibname}}  % To make it a section and
                                                 %  then number it
+
 %\usepackage{sectsty}
 %\sectionfont{\bfseries\Large\raggedright}
 \begin{document}
