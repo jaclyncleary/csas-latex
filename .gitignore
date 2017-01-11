@@ -27,4 +27,7 @@ doc/scrkbase.sty
 doc/scrlfile.sty
 doc/ulem.sty
 doc/xifthen.sty
+doc/sectsty.sty
+doc/textpos.sty
+doc/titlesec.sty
 doc/knitr-cache/

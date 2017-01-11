@@ -1,7 +1,10 @@
 
 \clearpage
 
-\chapter{BIOLOGICAL DATA}
+\chapter*{APPENDIX~\thechapter. BIOLOGICAL DATA}
+\rfoot{Appendix~\thechapter~-- Biological Data}
+\addcontentsline{toc}{chapter}{APPENDIX~\thechapter. BIOLOGICAL DATA}
+
 \label{chap:biological}
 
 All biological parameters were estimated from survey data only. These data were aggregated from the four surveys used as indices of abundance in this assessment, the Queen Charlotte Syound Synoptic, Hecate Strait Multispecies Assemblage, Hecate Strait Synoptic, and the West Coast Vancouver Island survey.

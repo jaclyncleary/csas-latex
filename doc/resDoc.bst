@@ -443,7 +443,7 @@ FUNCTION {format.names}
   numnames 'namesleft :=
     { namesleft #0 > }
     { s nameptr
-      %%"{vv~}{ll}{, f.}{, jj}"
+      %%"{vv~}{ll}{, f.}{, jj}"     
       %% From other cjfas.bst, removes space between initials:
       "{vv~}{ll}{, jj}{, f{.}.}"
       format.name$
@@ -858,7 +858,7 @@ FUNCTION {format.journal.pages}
     { swap$ duplicate$ empty$
         { pop$ pop$ format.pages }
         {
-          ": " *
+          ". " *
           swap$
           n.dashify
           "pages" bibinfo.check
@@ -873,7 +873,7 @@ FUNCTION {format.journal.eid}
   duplicate$ empty$ 'pop$
     { swap$ duplicate$ empty$ 'skip$
       {
-          ": " *
+          ". " *
       }
       if$
       swap$ *
@@ -887,7 +887,6 @@ FUNCTION {format.vol.num.pages}
       "volume" bibinfo.check
     }
   if$
-  bolden
   number "number" bibinfo.check duplicate$ empty$ 'skip$
     {
       swap$ duplicate$ empty$

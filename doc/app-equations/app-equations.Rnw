@@ -9,7 +9,9 @@
 
 \clearpage
 
-\chapter{MODEL DESCRIPTION AND EQUATIONS}
+\chapter*{APPENDIX~\thechapter. MODEL DESCRIPTION AND EQUATIONS}
+\rfoot{Appendix~\thechapter~-- Model Description and Equations}
+\addcontentsline{toc}{chapter}{APPENDIX~\thechapter. MODEL DESCRIPTION AND EQUATIONS}
 \label{chap:equations}
 
 \section{INTRODUCTION}

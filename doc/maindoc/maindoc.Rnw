@@ -410,7 +410,7 @@ Stock structure of \fishname\ is poorly understood in \bc. A number of approache
 
 We thank the members of the \fishname\ Technical Working Group (Paul Starr, Rowan Haigh, Kendra Holt, Rob Kronlund, Barry Ackerman, Greg Workman, Bruce Turris, and Brian Mose) for their valuable advice as this project progressed. Paul Starr, Rowan Haigh, and Andrew Edwards contributed material for Appendices \ref{chap:agecompweight} and \ref{chap:propfemale}. Steve Martell and Kendra Holt provided material for Appendix \ref{chap:equations}. We thank participants of the Regional Peer Review meeting for their comments at the meeting, and Rowan Haigh for chairing. We especially thank reviewers Joanne Morgan and Carey McGilliard for their written reviews of the working paper. We also thank Steve Wischniowski and the members of the Sclerochronology Laboratory at the Pacific Biological Station for their processing of 4,787 \fishname\ otoliths in 2014.\\
 
-\addcontentsline{toc}{section}{BIBLIOGRAPHY}
+%\addcontentsline{toc}{section}{REFERENCES}
 \bibliographystyle{resDoc}
 \bibliography{../../all}
 

@@ -1,7 +1,9 @@
 % appendix-propfemale.tex
 
 \clearpage
-\chapter{PROPORTION FEMALE ANALYSIS}
+\chapter*{APPENDIX~\thechapter. PROPORTION FEMALE ANALYSIS}
+\rfoot{Appendix~\thechapter~-- Proportion Female Analysis}
+\addcontentsline{toc}{chapter}{APPENDIX~\thechapter. PROPORTION FEMALE ANALYSIS}
 \label{chap:propfemale}
 
 \section{INTRODUCTION}

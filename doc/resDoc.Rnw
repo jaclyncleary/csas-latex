@@ -1,9 +1,9 @@
-% resDoc.tex
-
-\documentclass[11pt]{book}
+\documentclass[12pt]{report}
 \usepackage{resDocSty}
-\usepackage{appendix}
+%\usepackage{appendix}
+\usepackage[titletoc]{appendix}
 \usepackage{cite}
+
 
 \usepackage{longtable,array}   % need array when specifying a ragged right column:  >{\raggedright\arraybackslash}{p2in}.
 % \renewcommand{\chaptername}{Appendix}
@@ -153,8 +153,8 @@
 % \lhead{DRAFT -- Non-citable working paper}  % Omit for final ResDoc.
 \lhead{}
 \rhead{}
-\lfoot{\fishname}           % Species common name for left footer
-\rfoot{DRAFT - DO NOT CITE}           % The area of the assessment for right footer
+% \lfoot{\fishname}           % Species common name for left footer
+% \rfoot{DRAFT - DO NOT CITE}           % The area of the assessment for right footer
 %\rfoot{WP 2012/P02a}       % Change to appendix number for appendices
                             % Will probably delete footers in main text
                             %  for final Res Doc.
@@ -182,6 +182,11 @@
 \newcommand{\mcmcndata}{1,000}       % nsamp - burnin, this is the actual number of samples used
 \newcommand{\mcmcci}{95\%}           % The confidence interval used in MCMC. Must be the same as what's in the knitr code block
 
+\renewcommand{\bibname}{REFERENCES}
+\renewcommand{\bibsection}{\section{\bibname}}  % To make it a section and
+                                                %  then number it
+%\usepackage{sectsty}
+%\sectionfont{\bfseries\Large\raggedright}
 \begin{document}
 
 % Load iscam-gui list object scenarios - Make sure all are set up in correct order before running this
@@ -274,7 +279,8 @@ modelnames[[8]] <- list("Reference Model","Trawl selex fixed at maturity","Trawl
 
 % To number sections, tables etc. as 1, 2, 3, not 1.1 etc. (where
 %  the first 1 would be chapter number).
-\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\thesection}{\arabic{section}.}
+\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
 \renewcommand{\thetable}{\arabic{table}}
 \renewcommand{\thefigure}{\arabic{figure}}
 \renewcommand{\theequation}{\arabic{equation}}
@@ -284,9 +290,10 @@ modelnames[[8]] <- list("Reference Model","Trawl selex fixed at maturity","Trawl
 
 \clearpage
 
-\addtocontents{toc}{\par {\bf \vspace{10mm} APPENDICES} \par}
 \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
-\appendix
+\appendix % Everything from now on will be an Appendix
+%\setcounter{chapter}{1}    % Need this for first Appendix heading
+\hypersetup{bookmarksopenlevel=0}
 
 % Now want to number sections, tables etc. as A.1, A.2, etc.
 % Thought these wouldn't be with the appendix package, as
@@ -296,32 +303,57 @@ modelnames[[8]] <- list("Reference Model","Trawl selex fixed at maturity","Trawl
 \renewcommand{\thefigure}{\thechapter.\arabic{figure}}
 \renewcommand{\theequation}{\thechapter.\arabic{equation}}
 
+% Now want section headings left-justified not centered; this
+%  is same as in resDocSty.sty but without \centering
+\makeatletter
+\renewcommand{\section}{\@startsection
+{section}{1}{0mm}                 % name, level, indent
+{-3.5ex \@plus -1ex \@minus -.2ex}% beforeskip
+{2.3ex \@plus.2ex}                % afterskip
+{\normalfont\large\bfseries\MakeUppercase}} % style
+\makeatother
+
 % Not including Appendix figures and tables in contents, and just
 %  including the Appendix (chapter) names (not sections or
 %  subsections):
 
-\lfoot{\fishname\ - Coastwide}
+\lfoot{\fishname}
+
+\clearpage
+
+% Need these for the appendix numbering.
+%\addtocounter{chapter}{1}     % Not needed for first appendix.
+%% \setcounter{section}{0}
+%% \setcounter{table}{0}
+%% \setcounter{figure}{0}
+%% \setcounter{equation}{0}
 
 %% RSIA no longer to be included in the document
 %% \rfoot{Appendix A -- Request for Science Advice}
 %% <<advice-request, child='app-requestforscienceadvice/app-requestforscienceadvice.Rnw'>>=
 %% @
-
-\rfoot{Appendix A -- Biological Data}
+%\begin{appendices}
+%  \renewcommand{\appendixname}{APPENDIX}
+\setcounter{chapter}{1}    % Need this for first Appendix heading
+%\rfoot{Appendix A -- Biological Data}
 <<biological-data, child='app-biology/app-biology.Rnw'>>=
 @
 
-\rfoot{Appendix B -- Proportion Female Analysis}
+\setcounter{chapter}{2}    % Need this for first Appendix heading
+%\rfoot{Appendix B -- Proportion Female Analysis}
 <<prop-female, child='app-propfemale/app-propfemale.Rnw'>>=
 @
 
-\rfoot{Appendix C -- Age Composition weighting}
+\setcounter{chapter}{3}    % Need this for first Appendix heading
+%\rfoot{Appendix C -- Age Composition weighting}
 <<agecomp-weighting, child='app-agecompweighting/app-agecompweighting.Rnw'>>=
 @
 
-\rfoot{Appendix D -- Model Equations}
+\setcounter{chapter}{4}    % Need this for first Appendix heading
+%\rfoot{Appendix D -- Model Equations}
 <<model-equations, child='app-equations/app-equations.Rnw'>>=
 @
+%\end{appendices}
 
 %%Used when you need to insert outside documents:
 %%\setcounter{page}{68}
