@@ -1,28 +1,14 @@
-\documentclass[12pt]{report}
+\documentclass[11pt]{book}
 \usepackage{resDocSty}
-%\usepackage{appendix}
-\usepackage[titletoc]{appendix}
 \usepackage{cite}
-
-
-\usepackage{longtable,array}   % need array when specifying a ragged right column:  >{\raggedright\arraybackslash}{p2in}.
-% \renewcommand{\chaptername}{Appendix}
-% \renewcommand*{\chaptername}{Appendix}
-% \addto\captionsenglish{\renewcommand\chaptername{Part}}
+% need array when specifying a ragged right column:  >{\raggedright\arraybackslash}{p2in}.
+\usepackage{longtable,array}
 \usepackage{import}            % for figures in chapter subdirectories
-%\usepackage{float}             % Allow figures and tables to be controlled better (avoid the floating).
-
-% Had these for YMR Eqns appendix:
-% \renewcommand{\footrulewidth}{0.4pt}
-% \renewcommand{\headrulewidth}{0pt}
-
-% For appendices:
 \usepackage{graphicx}          % For inclusion of figures
 \usepackage{verbatim,fancyvrb} % Check - may be in .sty file
 \usepackage{xifthen}           % provides \ifthenelse and \isempty
 \usepackage{color, colortbl}
 \usepackage{arydshln}          % For dashed lines in tables (has to be loaded after other stuff)
-% \usepackage{pdfpages}          % So we can import PDFs into the document (e.g. request for science advice).
 \usepackage[parfill]{parskip}  % So paragraphs will have a blank line between them
 \setlength{\parskip}{12pt}
 
@@ -53,7 +39,7 @@
 %% END - COMMENTED OUT TO AVOID HYPERREF COLLISIONS
 
 % Use the following codes for references within the document.
-%   chap: chapter
+%   chap: appendix
 %    sec: section
 % subsec: subsection
 %    fig: figure
@@ -63,11 +49,8 @@
 %    itm: enumerated list item
 %    app: appendix subsection
 \usepackage{hypcap}            % So links will anchor at figure, not caption
-
 \usepackage{subfig}            % For two-panel plots
-\usepackage{scrextend}         % For indenting blocks of text with 'addmargin'
 \usepackage{relsize}           % For mathlarger, which makes equations bigger
-%\usepackage{mathtools}        % For mathmboxes for use in the equations appendix
 \usepackage{algorithm}         % For display of pseudocode
 \usepackage{algpseudocode}     % For display of pseudocode
 \usepackage{linegoal}          % For display of pseudocode
@@ -131,7 +114,6 @@
 \newcommand{\bM}[1]{\mathlarger{\mathlarger{#1}}}
 % Allow newline breaks in a table cell: syntax is \specialcell{first line\\secondline}
 \newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
-
 \newcommand{\fishname}{Arrowtooth Flounder}
 % sciencename - Science name for the species being assessed
 \newcommand{\sciencename}{Atheresthes stomias}
@@ -140,7 +122,6 @@
 \newcommand{\Avuln}{Age-at-50\%-vulnerability}
 \newcommand{\Amat}{Age-at-50\%-maturity}
 \newcommand{\amat}{age-at-50\%-maturity}
-
 \newcommand{\bc}{British Columbia}
 
 % For subscripts in text mode
@@ -286,6 +267,8 @@ modelnames[[8]] <- list("Reference Model","Trawl selex fixed at maturity","Trawl
 \renewcommand{\thefigure}{\arabic{figure}}
 \renewcommand{\theequation}{\arabic{equation}}
 
+\setcounter{chapter}{0}    % Need this for first Appendix heading
+
 <<main-doc, child='maindoc/maindoc.Rnw'>>=
 @
 
@@ -294,7 +277,7 @@ modelnames[[8]] <- list("Reference Model","Trawl selex fixed at maturity","Trawl
 \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
 \appendix % Everything from now on will be an Appendix
 %\setcounter{chapter}{1}    % Need this for first Appendix heading
-\hypersetup{bookmarksopenlevel=0}
+% \hypersetup{bookmarksopenlevel=0}
 
 % Now want to number sections, tables etc. as A.1, A.2, etc.
 % Thought these wouldn't be with the appendix package, as
@@ -335,22 +318,25 @@ modelnames[[8]] <- list("Reference Model","Trawl selex fixed at maturity","Trawl
 %% @
 %\begin{appendices}
 %  \renewcommand{\appendixname}{APPENDIX}
-\setcounter{chapter}{1}    % Need this for first Appendix heading
+\refstepcounter{chapter}
 %\rfoot{Appendix A -- Biological Data}
 <<biological-data, child='app-biology/app-biology.Rnw'>>=
 @
 
-\setcounter{chapter}{2}    % Need this for first Appendix heading
+\refstepcounter{chapter}
+%\setcounter{chapter}{2}    % Need this for first Appendix heading
 %\rfoot{Appendix B -- Proportion Female Analysis}
 <<prop-female, child='app-propfemale/app-propfemale.Rnw'>>=
 @
 
-\setcounter{chapter}{3}    % Need this for first Appendix heading
+\refstepcounter{chapter}
+%\setcounter{chapter}{3}    % Need this for first Appendix heading
 %\rfoot{Appendix C -- Age Composition weighting}
 <<agecomp-weighting, child='app-agecompweighting/app-agecompweighting.Rnw'>>=
 @
 
-\setcounter{chapter}{4}    % Need this for first Appendix heading
+\refstepcounter{chapter}
+%\setcounter{chapter}{4}    % Need this for first Appendix heading
 %\rfoot{Appendix D -- Model Equations}
 <<model-equations, child='app-equations/app-equations.Rnw'>>=
 @

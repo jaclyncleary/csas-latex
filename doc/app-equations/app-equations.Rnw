@@ -9,20 +9,20 @@
 
 \clearpage
 
-\chapter*{APPENDIX~\thechapter. MODEL DESCRIPTION AND EQUATIONS}
-\rfoot{Appendix~\thechapter~-- Model Description and Equations}
-\addcontentsline{toc}{chapter}{APPENDIX~\thechapter. MODEL DESCRIPTION AND EQUATIONS}
+\chapter*{APPENDIX~\thechapter. MODEL DESCRIPTION}
 \label{chap:equations}
+\rfoot{Appendix~\thechapter~-- Model Description}
+\addcontentsline{toc}{chapter}{APPENDIX~\thechapter. MODEL DESCRIPTION}
 
 \section{INTRODUCTION}
 
-Stock Assessment modelling was done using the Integrated Statistical Catch Age Model (iSCAM), developed by S. Martell (\citet{martell2011}). iSCAM is written in AD Model Builder and the source code and documentation for the original iSCAM is available at \hyperref[https://github.com/smartell/iSCAM]{\color{blue}https://github.com/smartell/iSCAM}. Code for the version used in this assessment can be found at \hyperref[https://github.com/cgrandin/iSCAM]{\color{blue}https://github.com/cgrandin/iSCAM}. iSCAM uses a statistical catch-at-age model implemented in a Bayesian estimation framework.
+Stock Assessment modelling was done using the Integrated Statistical Catch Age Model (iSCAM), developed by S. Martell (\citet{martell2011}). iSCAM is written in AD Model Builder and the source code and documentation for both are available online. iSCAM uses a statistical catch-at-age model implemented in a Bayesian estimation framework.
 
-Running of iSCAM and compilation of results figures was streamlined using the iscam-gui software package developed at the Pacific Biological Station by C. Grandin (\hyperref[https://github.com/cgrandin/iscam-gui]{\color{blue}https://github.com/cgrandin/iscam-gui}). iscam-gui is written in the statistical language R, and provides a graphical user interface that allows users to run and show output of multiple iSCAM model scenarios in a comparative fashion.
+Running of iSCAM and compilation of results figures was streamlined using the iscam-gui software package developed at the Pacific Biological Station. iscam-gui is written in the statistical language R, and provides a graphical user interface that allows users to run and show output of multiple iSCAM model scenarios in a comparative fashion.
 
 \section{MODEL DESCRIPTION}
 
-This section contains the documentation in mathematical form of the underlying iSCAM age-structured model, its steady state version that is used to calculate reference points, the observation models used in predicting observations, and the components of the objective function that formulate the statistical criterion used to estimate model parameters. A documented list of symbols used in model equations is given in Table \ref{tab:variables}. The documentation presented here is a revised version of the iscam user guide available at \hyperref[https://github.com/smartell/iSCAM]{\color{blue}https://github.com/smartell/iSCAM}. Much of the text and many of the equations have been taken directly from the original iSCAM user guide.
+This section contains the documentation in mathematical form of the underlying iSCAM age-structured model, its steady state version that is used to calculate reference points, the observation models used in predicting observations, and the components of the objective function that formulate the statistical criterion used to estimate model parameters. A documented list of symbols used in model equations is given in Table \ref{tab:variables}. The documentation presented here is a revised version of the iscam user guide available online. Much of the text and many of the equations have been taken directly from the original iSCAM user guide.
 
 Note that all the model equations are presented for a sex structured model with $S$ sexes. Models can therefore be constructed with data for females only, for males and females, or with unsexed data. This \fishname\ assessment is a female only model with $S=1$.
 
@@ -45,10 +45,9 @@ The equilibrium yield $C_e$ for a given fishing mortality rate is given by Eq. \
 When defining reference points for this assessment, only the commercial trawl fishery was used to calculate MSY quantities. In the case of a single fishery, iSCAM calculates \emph{F}\subscr{MSY} by finding the value of \emph{F}\subscr{e} that results in the zero derivative of \ref{eq:df15}. This is accomplished numerically using a Newton-Raphson method where an initial guess for \emph{F}\subscr{MSY} is set equal to $M$. Given an estimate of \emph{F}\subscr{MSY}, other reference points such as MSY and \emph{B}\subscr{MSY} are calculated using the equations in Table \ref{tab:steady-state-model}.
 
 \section{ANALYTIC METHODS: STATE DYNAMICS}
-The estimated parameter vector in iSCAM is defined in Eq. \ref{eq:df16} of Table \ref{tab:catch-age-model}. The estimated parameters $R_0$, $h$, and $M$, are the leading population parameters that define the overall scale and productivity of the population.\\
+The estimated parameter vector in iSCAM is defined in Eq. \ref{eq:df16} of Table \ref{tab:catch-age-model}. The estimated parameters $R_0$, $h$, and $M$, are the leading population parameters that define the overall scale and productivity of the population.
 
-Variance components of the model were partitioned using an errors in variables approach. The key variance parameter is the inverse of the total variance $\vartheta^2$ (i.e., total precision). This parameter can be fixed or estimated, and was fixed for this model. The total variance is partitioned into observation and process error components by the model parameter $\rho$, which represents the proportion of the total variance that is due to observation error (Eq. \ref{eq:df17}) (\citet{punt1999} and \citet{deriso2007}).\\
-\bigskip
+Variance components of the model were partitioned using an errors in variables approach. The key variance parameter is the inverse of the total variance $\vartheta^2$ (i.e., total precision). This parameter can be fixed or estimated, and was fixed for this model. The total variance is partitioned into observation and process error components by the model parameter $\rho$, which represents the proportion of the total variance that is due to observation error (Eq. \ref{eq:df17}) (\citet{punt1999} and \citet{deriso2007}).
 
 The unobserved state variables in Eq. \ref{eq:df18} include the numbers-at-age in year $t$ of sex $s$ ($N_{t,a,s}$), the spawning stock biomass in year $t$ of sex $s$ ($B_{t,s}$), and the total age- and sex-specific total mortality rate ($Z_{t,a,s}$).
 The initial numbers-at-age in the first year (Eq. \ref{eq:df19}) and the annual recruits (Eq. \ref{eq:df20}) are treated as estimated parameters and used to initialize the numbers-at-age array.
@@ -82,60 +81,44 @@ It is assumed that the measurement errors in the catch observations are log-norm
 \begin{equation}\label{eq:df28}
 \eta_{k,t}=\ln(C_{k,t}+o) - \ln(\hat{C}_{k,t}+o)
 \end{equation}
-\begin{addmargin}[3em]{1em}
 where $o$ is a small constant ($e^{-10}$) to ensure the residual is defined in the case of a zero catch observation.
-\end{addmargin}
 The residuals are assumed to be normally distributed with a user-specified standard deviation $\sigma_{C}$. At present, it is assumed that observed catches for each gear $k$ have the same standard deviation. The negative loglikelihood (ignoring the scaling constant) for the catch data is given by:
 \begin{equation}\label{eq:df29}
 \ell_C = \sum_k\left[ T_k\ln(\sigma_C)+\frac{\sum_t(\eta_{k,t})^2}{2\sigma_C^2}\right]
 \end{equation}
-\begin{addmargin}[3em]{1em}
 where $T_k$ is the total number of catch observations for gear type $k$.
-\end{addmargin}
 
 \subsection{Relative Abundance Data}
 The relative abundance data are assumed to be proportional to biomass that is vulnerable to the sampling gear:
 \begin{equation}\label{eq:df30}
 V_{k,t} = \sum_a N_{t,a} e^{-\lambda_{k,t} Z_{t,a}} v_{k,a} w_a
 \end{equation}
-\begin{addmargin}[3em]{1em}
 where $v_{k,a}$ is the age-specific selectivity of gear $k$, and $w_a$ is the mean-weight-at-age. A user specified fraction of the total mortality $\lambda_{k,t}$ adjusts the numbers-at-age to correct for survey timing. The residuals between the observed and predicted relative abundance index is given by:
-\end{addmargin}
 
 \begin{equation}\label{eq:df31}
 \epsilon_{k,t} = \ln(I_{k,t}) - \ln(q_k)+\ln(V_{k,t})
 \end{equation}
-\begin{addmargin}[3em]{1em}
 where $I_{k,t}$ is the observed relative abundance index, $q_k$ is the catchability coefficient for index $k$, and $V_{k,t}$ is the predicted vulnerable biomass at the time of sampling. The catchability coefficient $q_k$ is evaluated at its conditional maximum likelihood estimate:
-\end{addmargin}
 \[
 q_k =\frac{1}{N_k} \sum_{t \in I_{k,t}} \ln(I_{k,t}) - \ln(V_{k,t})
 \]
-\begin{addmargin}[3em]{1em}
 where $N_k$ is the number of relative abundance observations for index $k$ \citep[see][for more information]{walters1994}. The negative loglikelihood for relative abundance data is given by:
-\end{addmargin}
 
 \begin{equation}\label{eq:df32}
 \ell_I = \sum_k \sum_{t \in I_{k,t}} \ln(\sigma_{k,t})+\frac{\epsilon_{k,t}^2}{2\sigma_{k,t}^2}
 \end{equation}
-\begin{addmargin}[3em]{1em}
 where\\
-\end{addmargin}
 \[
 \sigma_{k,t} = \frac{\rho \varphi^2}{ \omega_{k,t}}
 \]
-\begin{addmargin}[3em]{1em}
 where $\rho \varphi^2$ is the proportion of the total error that is associated with observation errors, and $\omega_{k,t}$ is a user specified relative weight for observation $t$ from gear $k$.
-\end{addmargin}
 
 %% \begin{align}
 %% \ell_I &= \sum_k \sum_{t \in I_{k,t}} \ln(\sigma_{k,t})+\frac{\epsilon_{k,t}^2}{2\sigma_{k,t}^2} \label{eq:df32}\\
 %% \mbox{where}\nonumber\\
 %% \sigma_{k,t} &= \frac{\rho \varphi^2}{ \omega_{k,t}}, \nonumber
 %% \end{align}
-%% \begin{addmargin}[3em]{1em}
 %% where $\rho \varphi^2$ is the proportion of the total error that is associated with observation errors, and $\omega_{k,t}$ is a user specified relative weight for observation $t$ from gear $k$.
-%% \end{addmargin}
 
 The $ \omega_{k,t}$ terms allow each observation to be weighted relative to the total error $\rho \varphi^2$; for example, to omit a particular observation, set $\omega_{k,t}=0$, or to give 2 times the weight, then set $\omega_{k,t}=2.0$. To assume all observations have the same variance then simply set $\omega_{k,t}=1$. Note that if $\omega_{k,t}=0$ then equation \ref{eq:df32} is undefined; therefore, iSCAM adds a small constant to $\omega_{k,t}$ ($e^{-10}$, which is equivalent to assuming an extremely large variance) to ensure the likelihood can be evaluated. In this assessment, values for $\omega{k,t}$ were set to inverse of the annual CVs from the survey (Table \ref{tab:Indices})
 
@@ -180,9 +163,7 @@ s_o = \frac{\kappa}{\phi_E}
 \begin{equation}\label{eq:df38}
 \beta = \frac{\kappa-1}{B_o}\ \ \  (Beverton-Holt)
 \end{equation}
-\begin{addmargin}[3em]{1em}
 where $s_o$ is the maximum juvenile survival rate, and $\beta$ is the density effect on recruitment.
-\end{addmargin}
 
 \clearpage
 
@@ -198,24 +179,24 @@ where $s_o$ is the maximum juvenile survival rate, and $\beta$ is the density ef
 \hline
 %\hline \ \\[-.5ex]
 %
-\multicolumn{3}{l}{\underline{Indices}}\\
+\multicolumn{3}{l}{\textbf{Indices}}\\
 $s$ & & Index for sex\\
 $a$ & & Index for age\\
 $t$ & & Index for year\\
 $k$ & & Index for gear\\
-\multicolumn{3}{l}{\underline{Model dimensions}}\\
+\multicolumn{3}{l}{\textbf{Model dimensions}}\\
 $S$ & $\Sexpr{op[[1]]$inputs$data$nsex}$ & Number of sexes\\
 $\acute{a}, A$ & $\Sexpr{op[[1]]$inputs$data$sage}$, $\Sexpr{op[[1]]$inputs$data$nage}$ & Youngest and oldest age class ($A$ is a plus group)\\
 $\acute{t}, T$ & $\Sexpr{op[[1]]$inputs$data$syr}$, $\Sexpr{op[[1]]$inputs$data$nyr}$ & First and last year of catch data\\
 $K$ & $\Sexpr{op[[1]]$inputs$data$ngear}$ & Number of gears including survey gears\\
-\multicolumn{3}{l}{\underline{Observations (data)}}\\
+\multicolumn{3}{l}{\textbf{Observations (data)}}\\
 $C_{k,t}$ & & catch in weight by gear $k$ in year $t$\\
 $I_{k,t}$ & & relative abundance index for gear $k$ in year $t$\\
-\multicolumn{3}{l}{\underline{Fixed parameters}}\\
+\multicolumn{3}{l}{\textbf{Fixed parameters}}\\
 $\rho$ & & Fraction of the total variance associated with observation error\\
 $\vartheta^2$ & & Total precision (inverse of variance) of the total error\\
 %$\vec{\gamma}_k$ & & Vector of selectivity parameters for gear $k$ \\
-\multicolumn{3}{l}{\underline{Estimated parameters}}\\
+\multicolumn{3}{l}{\textbf{Estimated parameters}}\\
 $R_o$ & & Age-$\acute{a}$ recruits in unfished conditions\\
 $h$ & & Steepness of the stock-rectruitment relationship\\
 $\bar{R}$ & & Average age-$\acute{a}$ recruitment from year $\acute{t}$ to $T$\\
@@ -226,14 +207,14 @@ $\Gamma_{k,t}$ & & Logarithm of the instantaneous fishing mortality for gear $k$
 $\omega_t$ & & Age-$\acute{a}$ deviates from $\bar{R}$ for years $\acute{t}$ to $T$\\
 $\omega_{init,t}$ & & Age-$\acute{a}$ deviates from $\bar{R}_{init}$ for year $\acute{t}$\\
 $q_s$ & & Catchability parameter for survey $k$\\
-\multicolumn{3}{l}{\underline{Standard deviations}}\\
+\multicolumn{3}{l}{\textbf{Standard deviations}}\\
 $\sigma$ & & Standard deviation for observation errors in survey index\\
 $\tau$ & & Standard deviation in process errors (recruitment deviations)\\
 $\sigma_C$ & & Standard deviation in observed catch by gear\\
-\multicolumn{3}{l}{\underline{Residuals}}\\
+\multicolumn{3}{l}{\textbf{Residuals}}\\
 $\delta_t$ & & Annual recruitment residual\\
 $\eta_t$ & & Residual error in predicted catch\\
-\multicolumn{3}{l}{\underline{Fixed Growth \& maturity parameters}}\\
+\multicolumn{3}{l}{\textbf{Fixed Growth \& maturity parameters}}\\
 $l_{\infty s}$ & & Asymptotic length in mm sex $s$ \\
 $\acute{k}_s$ & & Brody growth coefficient sex $s$ \\
 $t_{o s}$ & & Theoretical age at zero length sex $s$ \\

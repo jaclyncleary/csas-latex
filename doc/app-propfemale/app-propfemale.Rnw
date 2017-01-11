@@ -2,9 +2,9 @@
 
 \clearpage
 \chapter*{APPENDIX~\thechapter. PROPORTION FEMALE ANALYSIS}
+\label{chap:propfemale}
 \rfoot{Appendix~\thechapter~-- Proportion Female Analysis}
 \addcontentsline{toc}{chapter}{APPENDIX~\thechapter. PROPORTION FEMALE ANALYSIS}
-\label{chap:propfemale}
 
 \section{INTRODUCTION}
 We elected to use a female-only stock assessment model because catch and survey data suggested the majority of the catch is female. Proportion of females in the fishery and surveys is quantified in this appendix. The weighting algorithm and proportion generation algorithm is similar to algorithm 2 in the 2014 Rock Sole assessment (\citet{rocksole2014}). The analysis presented here assumes a coastwide stock.
@@ -58,66 +58,48 @@ single events which occur linearly through a reletively short period of 1-2 mont
 \begin{align} \label{eq:lw}
 \hat{w}_{ijs}=\alpha_sl_{ijs}^{\beta_s}
 \end{align}
-\begin{addmargin}[3em]{1em}
 where $\alpha_s$ and $\beta_s$ are parameters for sex $s$ and $w_{ijs}$ and $l_{ijs}$ are paired length-weight observations for specimen $i$ in sample $j$.
-\end{addmargin}
 
 \begin{align} \label{eq:samplewt}
 W_{jst}=\sum_{i=1}^{N_{jst}}\hat{w}_{ijst}
 \end{align}
-\begin{addmargin}[3em]{1em}
 where $W_{jst}$ is the total weight for sample $j$, sex $s$, trip $t$, and $N_{jst}$ is the number of specimens in sample $j$ for sex $s$
-\end{addmargin}
 
 \begin{align} \label{eq:totaltripwt}
 W_{st}=\frac{\sum\limits_{j=1}^{K_t}W_{jst}S_{jt}}{\sum\limits_{j=1}^{K_t}S_{jt}}
 \end{align}
-\begin{addmargin}[3em]{1em}
 where $W_{st}$ is the mean weight for sex $s$ and trip $t$, weighted by sample weight, where $K_t$ is the number of samples in trip $t$, and $S_{jt}$ is the sample weight for sample $j$ from trip $t$.
-\end{addmargin}
 
 \begin{align} \label{eq:totaltripcatchwt}
 C_t=\sum\limits_{j=1}^{K_t}C_{jt}
 \end{align}
-\begin{addmargin}[3em]{1em}
 where $C_t$ is the total catch weight for sampled hauls for trip $t$, $K_t$ is the number of samples in trip $t$, and $C_{jt}$ is the catch weight associted with sample $j$ and trip $t$.
-\end{addmargin}
 
 \begin{align} \label{eq:totalquarterwt}
 W_{qs}=\frac{\sum\limits_{t=1}^{T_q}W_{qst}R_{qt}}{\sum\limits_{t=1}^{T_q}R_{qt}}
 \end{align}
-\begin{addmargin}[3em]{1em}
 where $W_{qs}$ is the total weight for sex $s$ and quarter of year $q$, $R_{qt}$ is the trip weight for all sampled trips in quarter $q$,
 and $T_q$ is the number of sampled trips in quarter $q$.
-\end{addmargin}
 
 \begin{align} \label{eq:totalquartercatchwt}
 C_q=\sum\limits_{t=1}^{K_q}C_{t}
 \end{align}
-\begin{addmargin}[3em]{1em}
 where $C_q$ is the total catch weight for sampled hauls for quarter $q$, $K_q$ is the number of trips in quarter $q$, and $C_t$ is the catch weight associted with trip $t$.
-\end{addmargin}
 
 \begin{align} \label{eq:totalyearwt}
 W_{ys}=\frac{\sum\limits_{q=1}^{4}W_{qys}C_{qy}}{\sum\limits_{q=1}^{4}C_{qy}}
 \end{align}
-\begin{addmargin}[3em]{1em}
 where $W_{sy}$ is the total weight for year $y$, sex $s$, $W_{qys}$ is the weight in quarter $q$ of year $y$, and $C_{qy}$ is the catch in quarter $q$ of year $y$.
-\end{addmargin}
 
 \begin{align} \label{eq:totalyearcatchwt}
 C_y=\sum\limits_{q=1}^{4}C_{qy}
 \end{align}
-\begin{addmargin}[3em]{1em}
 where $C_y$ is the total catch weight for sampled hauls for year $y$, and $C_{qy}$ is the catch weight associted with quarter $q$ in year $y$.
-\end{addmargin}
 
 \begin{align} \label{eq:propfemale}
 P_y=\frac{W_{s=Female,y}}{W_{s=Female,y}+W_{s=Male,y}}
 \end{align}
-\begin{addmargin}[3em]{1em}
 where $P_y$ is the proportion female by weight for year $y$.
-\end{addmargin}
 
 \clearpage
 

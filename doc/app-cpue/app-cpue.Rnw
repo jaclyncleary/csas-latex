@@ -18,18 +18,14 @@ Arithmetic CPUE $\left(\hat{A}_y\right)$ in year $y$ was calculated as the total
 \begin{align} \label{eq:cpueArith}
 \hat{A}_y=\bM{\frac{\sum\limits_{i=1}^{n_y}{C_{i,y}}}{\sum\limits_{i=1}^{n_y}{E_{i,y}}}}
 \end{align}
-\begin{addmargin}[3em]{1em}
 where $C_{i,y}$ is the catch, $E_{i,y}=T_{i,y}$ (tows) or $E_{i,y}=H_{i,y}$ (hours fished) for record $i$ in year $y$, and $n_y$ is the number of records in year $y$.
-\end{addmargin}
 
 Unstandardised (geometric) CPUE assumes a log-normal error distribution. An unstandardised index of CPUE $\left(\hat{G}_y\right)$ in year y was calculated as the geometric mean of the ratio of catch to effort for each record i in year y using  equation~\ref{eq:cpueGeom}:
 
 \begin{align} \label{eq:cpueGeom}
 \bM{\hat{G}_y=\bM{e^{\frac{\sum\limits_{i=1}^{n_y}{ln{\frac{C_{i,y}}{E_{i,y}}}}}{n_y}}}}
 \end{align}
-\begin{addmargin}[3em]{1em}
 where $C_{i,y}$, $E_{i,y}$, and $n_y$ are as defined for equation~\ref{eq:cpueArith}.
-\end{addmargin}
 
 \subsection{Standardised CPUE}
 
@@ -42,9 +38,7 @@ Standardised CPUE assumes a lognormal error distribution, with explanatory varia
 \begin{align} \label{eq:cpueLognormal}
 \bM{ln(I_i)=B+Y_{y_i}+\alpha_{a_i}+\beta_{b_i}+...+f(\chi_i)+f(\delta_i)+...+\varepsilon_i}
 \end{align}
-\begin{addmargin}[3em]{1em}
 where $I_i=C_i$ (where: $B$ is the intercept; $Y_{y_i}$ is the year coefficient for the year corresponding to the $i$th record; $\alpha_{a_i}$ and $\beta_{b_i}$ are the coefficients for factorial variables $a$ and $b$ corresponding to the $i$th record; $f(\chi_i)$ and $f(\delta_i)$ are polynomial functions (to the 3\textsuperscript{rd} order) of the continuous variables $\chi_i$ and $\delta_i$ corresponding to the $i$th record; and $\varepsilon_i$ is an error term.
-\end{addmargin}
 
 The actual number of factorial and continuous explanatory variables in each model depends on the model selection criteria. Because each record represents a single tow, $C_i$ has an implicit associated effort of one tow. Hours fished for the tow is represented on the right-hand side of the equation, usually as a continuous (polynomial) variable.
 
@@ -65,9 +59,7 @@ A combined model, integrating the two sets of relative annual changes estimated 
 \begin{align} \label{eq:cpueGeom}
 \bM{^CY_y=\frac{^LY_y}{\left(1-P_0\left(1-\frac{1}{^BY_y}\right)\right)}}
 \end{align}
-\begin{addmargin}[3em]{1em}
 where $^cY_y$ = combined index for year $y$, $^LY_y$ = lognormal index for year $I$, $^BY_y$ = binomial index for year $I$, and $P_0$ is the proportion zero for base year $0$. 
-\end{addmargin}
 
 \citet{francis2001} suggests that a bootstrap procedure is the appropriate way to estimate the variability of the combined index. Therefore, confidence bounds for the combined model were estimated using a bootstrap procedure based on 500 replicates, drawn with replacement.
 

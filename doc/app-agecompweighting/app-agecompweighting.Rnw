@@ -1,9 +1,9 @@
 \clearpage
 
 \chapter*{APPENDIX~\thechapter. WEIGHTING OF AGE PROPORTIONS}
+\label{chap:agecompweight}
 \rfoot{Appendix~\thechapter~-- Weighting of Age Proportions}
 \addcontentsline{toc}{chapter}{APPENDIX~\thechapter. WEIGHTING OF AGE PROPORTIONS}
-\label{chap:agecompweight}
 
 This appendix summarizes a method for representing commercial and survey age structures for a given species through weighting observed age frequencies~$x_a$ or proportions~$x^\prime_a$ by \eor{catch}{density} in defined strata. The methodology presented in this appendix is based on that presented by \citet{rocksole2014} for Rock Sole.\\
 \bigskip

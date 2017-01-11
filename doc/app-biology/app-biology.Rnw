@@ -2,10 +2,9 @@
 \clearpage
 
 \chapter*{APPENDIX~\thechapter. BIOLOGICAL DATA}
+\label{chap:biological}
 \rfoot{Appendix~\thechapter~-- Biological Data}
 \addcontentsline{toc}{chapter}{APPENDIX~\thechapter. BIOLOGICAL DATA}
-
-\label{chap:biological}
 
 All biological parameters were estimated from survey data only. These data were aggregated from the four surveys used as indices of abundance in this assessment, the Queen Charlotte Syound Synoptic, Hecate Strait Multispecies Assemblage, Hecate Strait Synoptic, and the West Coast Vancouver Island survey.
 
@@ -16,9 +15,7 @@ All valid length/weight pairs of data were extracted based on the criteria shown
 \begin{align} \label{eq:lw}
 W_s=\alpha_s L_s^{\beta_s}
 \end{align}
-\begin{addmargin}[3em]{1em}
 where $\alpha_s$ and $\beta_s$ are parameters for sex $s$ and $L_s$ and $W_s$ are paired length-weight observations.
-\end{addmargin}
 
 We applied Eq. \ref{eq:lw} to survey observations for the four surveys used in this assessment, QCSSS, HSMASS, HSSS, and WCVISS (Survey series ID = 1,2,3,4) from PMFC areas 3CD and 5ABCDE combined (Table \ref{tab:biocrit}).
 
@@ -29,9 +26,7 @@ We used the von-Bertalanffy function to estimate growth rates for \fishname:
 \begin{align} \label{eq:vonb}
 L_s=L_{\infty_s}(1-e^{-k_s(a_s-t_{0_s})})
 \end{align}
-\begin{addmargin}[3em]{1em}
 where $L_{\infty_s}$, $k_s$, and $t_{0_s}$ are parameters specific to sex $s$ and $L_s$ and $a_s$ are paired length-age observations.
-\end{addmargin}
 
 We applied Eq. \ref{eq:vonb} to survey observations for the four surveys used in this assessment, QCSSS, HSMASS, HSSS, and WCVISS (Survey series ID = 1,2,3,4) from PMFC areas 3CD and 5ABCDE combined (Table \ref{tab:biocrit}).
 
@@ -42,9 +37,7 @@ The maturity-at-age model used for \fishname\ estimates age-at-50\% maturity and
 \begin{align} \label{eq:matage}
 P_{a_s}=\frac{1}{1+e^{-\left[\frac{a_s-a_{s_{50\%}}}{\sigma_{a_{s_{50\%}}}}\right]}}
 \end{align}
-\begin{addmargin}[3em]{1em}
 where $P_{a_s}$ is the observed proportion mature at age $a_s$ for sex $s$.
-\end{addmargin}
 
 We applied Eq. \ref{eq:matage} to survey observations for the four surveys used in this assessment, QCSSS, HSMASS, HSSS, and WCVISS (Survey series ID = 1,2,3,4) from PMFC areas 3CD and 5ABCDE combined (Table \ref{tab:biocrit}).
 
