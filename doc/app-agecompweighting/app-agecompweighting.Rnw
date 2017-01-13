@@ -1,6 +1,7 @@
 \clearpage
 
 \chapter*{APPENDIX~\thechapter. WEIGHTING OF AGE PROPORTIONS}
+\phantomsection
 \label{chap:agecompweight}
 \rfoot{Appendix~\thechapter~-- Weighting of Age Proportions}
 \addcontentsline{toc}{chapter}{APPENDIX~\thechapter. WEIGHTING OF AGE PROPORTIONS}

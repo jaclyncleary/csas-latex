@@ -1,7 +1,7 @@
 
 \clearpage
-
 \chapter*{APPENDIX~\thechapter. BIOLOGICAL DATA}
+\phantomsection
 \label{chap:biological}
 \rfoot{Appendix~\thechapter~-- Biological Data}
 \addcontentsline{toc}{chapter}{APPENDIX~\thechapter. BIOLOGICAL DATA}

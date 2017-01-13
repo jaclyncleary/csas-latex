@@ -492,10 +492,7 @@ makeTable(1, 9, ci=ci, burnthin=burnthin, digits=3, retxtable=TRUE, xcaption=cap
 13          & Age-at-50\%-harvest set to 6 yrs              & $\hat{a}$ = $6.00$ yrs; $\hat{\gamma}$ = $1.00$ yrs \\
 \hline
 \end{tabular}
-\end{table}
-
-\begin{table}[b]
-\centering
+\vspace{7mm}
 \caption{\label{tab:sensitivities-q}Sensitivity cases for $q_k$; posterior quantiles. For sensitivity case descriptions, see Table \ref{tab:sensitivities}.}
 \begin{tabular}{lcccccc}
 \hline
@@ -511,17 +508,34 @@ WCVISS & 0.061 & 0.104 & 0.172 & 0.022 & 0.059 & 0.118 \\
 \end{tabular}
 \end{table}
 
+\newgeometry{hmargin=1in,vmargin=1in}
+\thispagestyle{csaplscape}
+\pagestyle{csaplscape}
+\begin{landscape}
+  \centering
 <<results='asis', echo=FALSE>>=
 # Note that the first column will not be set to have any decimal digits because it is the TAC/Catch projection
 cap <- "Decision Table for the Reference Case showing posterior probabilities that 2016 projected biomass B\\subscr{t} is below a set of candidate reference points and benchmarks (Table \\ref{tab:refpoints}), and probabilities that the 2015 projected harvest rate U\\subscr{t} is above U\\subscr{2014} or U\\subscr{MSY} for a given level of female-only catch. Total catch is shown in columns 2 and 3 and is calculated by adding the male proportion based on the average of the last 4 years' proportions (column 2) and the average of the entire time series proportions (column 3). See table \\ref{tab:propfemale} for proportion values."
 makeTable(1, 7, ci=ci, burnthin=burnthin, digits=3, retxtable=TRUE, xcaption=cap, xlabel="tab:Decisions")
 @
+\end{landscape}
+\restoregeometry
+\pagestyle{csapfancy}
+\clearpage
+
+\newgeometry{hmargin=1in,vmargin=1in}
+\thispagestyle{csaplscape}
+\pagestyle{csaplscape}
+\begin{landscape}
+  \centering
 <<results='asis', echo=FALSE>>=
 # Note that the first column will not be set to have any decimal digits because it is the TAC/Catch projection
 cap <- "Decision Table for a sensitivity model (Selectivity = Maturity, Table \\ref{tab:sensitivities}) showing posterior probabilities that 2016 projected biomass B\\subscr{t} is below a set of candidate reference points and benchmarks (Table \\ref{tab:refpoints}), and probabilities that the 2015 projected harvest rate U\\subscr{t} is above U\\subscr{2014} or U\\subscr{MSY} for a given level of female-only catch. Total catch is shown in columns 2 and 3 and is calculated by adding the male proportion based on the average of the last 4 years' proportions (column 2) and the average of the entire time series proportions (column 3). See table \\ref{tab:propfemale} for proportion values."
 makeTable(12, 7, ci=ci, burnthin=burnthin, digits=3, retxtable=TRUE, xcaption=cap, xlabel="tab:DecisionsSelMat")
 @
-
+\end{landscape}
+\restoregeometry
+\pagestyle{csapfancy}
 \clearpage
 
 \section{FIGURES}

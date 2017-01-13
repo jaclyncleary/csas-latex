@@ -2,6 +2,7 @@
 
 \clearpage
 \chapter*{APPENDIX~\thechapter. PROPORTION FEMALE ANALYSIS}
+\phantomsection
 \label{chap:propfemale}
 \rfoot{Appendix~\thechapter~-- Proportion Female Analysis}
 \addcontentsline{toc}{chapter}{APPENDIX~\thechapter. PROPORTION FEMALE ANALYSIS}
@@ -104,6 +105,7 @@ where $P_y$ is the proportion female by weight for year $y$.
 \clearpage
 
 \subsection{Pseudocode} \label{sec:propfemale-pseudocode}
+The following outlines the method used for calculating the proportion of female fish for each year.
 \begin{algorithm}[h]
 \caption{Algortihm for calculating the proportion female}
 \begin{algorithmic}[1]

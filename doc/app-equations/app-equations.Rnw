@@ -10,6 +10,7 @@
 \clearpage
 
 \chapter*{APPENDIX~\thechapter. MODEL DESCRIPTION}
+\phantomsection
 \label{chap:equations}
 \rfoot{Appendix~\thechapter~-- Model Description}
 \addcontentsline{toc}{chapter}{APPENDIX~\thechapter. MODEL DESCRIPTION}
