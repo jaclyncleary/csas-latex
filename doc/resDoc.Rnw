@@ -1,76 +1,5 @@
 \documentclass[11pt]{book}
 \usepackage{resDocSty}
-\usepackage{cite}
-% need array when specifying a ragged right column:  >{\raggedright\arraybackslash}{p2in}.
-\usepackage{longtable,array}
-\usepackage{import}            % for figures in chapter subdirectories
-\usepackage{graphicx}          % For inclusion of figures
-\usepackage{verbatim,fancyvrb} % Check - may be in .sty file
-\usepackage{xifthen}           % provides \ifthenelse and \isempty
-\usepackage{color, colortbl}
-\usepackage{arydshln}          % For dashed lines in tables (has to be loaded after other stuff)
-\usepackage[parfill]{parskip}  % So paragraphs will have a blank line between them
-\setlength{\parskip}{12pt}
-
-% For hyperlinked references (figures and citations, etc.). The bookmarksdepthlevel allows
-%  the TOC to be shown in the bookmarks tree in the output PDF.
-
-%% START - COMMENTED OUT TO AVOID HYPERREF COLLISIONS
-%% \usepackage[bookmarks,bookmarksopen,bookmarksdepth=4]{hyperref}
-
-%% \hypersetup{                   % Set up the hyperref options here
-%%     pdftitle={Arrowtooth Flounder},
-%%     pdfauthor={Chris Grandin},
-%%     pdfsubject={Stock Assessment},
-%%     %pdfkeywords={keyword1, keyword2},
-%%     bookmarksnumbered=true,
-%%     bookmarksopen=true,
-%%     bookmarksopenlevel=1,
-%%     colorlinks=false,   % Must be false for CSAS submission. This makes it harder to find the links but they stupidly require it.
-%%     hidelinks=true,     % Necessary to remove boxes around hyperlinks for submission
-%%     %linkcolor=blue,    % Commented out for the submission
-%%     %allcolors=blue,    % Commented out for the submission
-%%     %citecolor=cyan,    % Commented out for the submission
-%%     pdfstartview=Fit,
-%%     pdfpagemode=UseOutlines,
-%%     breaklinks=true     % Allows the list of figures and tables to have wrapping text (since they are actually hyperlinks).
-%%     %pdfpagelayout=TwoPageRight
-%% }
-%% END - COMMENTED OUT TO AVOID HYPERREF COLLISIONS
-
-% Use the following codes for references within the document.
-%   chap: appendix
-%    sec: section
-% subsec: subsection
-%    fig: figure
-%    tab: table
-%     eq: equation
-%    lst: code listing
-%    itm: enumerated list item
-%    app: appendix subsection
-\usepackage{hypcap}            % So links will anchor at figure, not caption
-\usepackage{subfig}            % For two-panel plots
-\usepackage{relsize}           % For mathlarger, which makes equations bigger
-\usepackage{algorithm}         % For display of pseudocode
-\usepackage{algpseudocode}     % For display of pseudocode
-\usepackage{linegoal}          % For display of pseudocode
-% A \Let command for defining assignments within the algorithmic environment which
-% supports automatic indentation when the second argument is too long to fit
-% on one line
-\newcommand*{\Let}[2]{\State #1 $\gets$
-\parbox[t]{\linegoal}{#2\strut}}
-% A \State command that supports automatic indentation when the argument's
-% content is too long to fit on one line
-\newcommand*{\LongState}[1]{\State
-\parbox[t]{\linegoal}{#1\strut}}
-
-\usepackage{enumitem}          % To remove spacing between list items [noitemsep,nolistsep]
-\newlist{longitem}{enumerate}{5}
-\setlist[longitem,1]{label=\arabic*)}
-\setlist[longitem,2]{label=\alph*)}
-\setlist[longitem,3]{label=\roman*)}
-\setlist[longitem,4]{label=\arabic*)}
-\setlist[longitem,5]{label=\alph*)}
 
 \definecolor{rowclr}{RGB}{255, 192, 203}
 \newcommand{\sQuote}[1]{`#1'}
@@ -105,17 +34,16 @@
 		{\caption[#4]{#2}\vspace{-2ex}}
 	\label{fig:#1}
 	\end{figure}
-	%\clearpage
 }
 
-% eor - Show two things with a vertical bar between them
+%% eor - Show two things with a vertical bar between them
 \newcommand{\eor}[2]{{#1$\Vert$#2}}
-% bM - makes equations larger
+%% bM - makes equations larger
 \newcommand{\bM}[1]{\mathlarger{\mathlarger{#1}}}
-% Allow newline breaks in a table cell: syntax is \specialcell{first line\\secondline}
+%% Allow newline breaks in a table cell:
+%%  syntax is \specialcell{first line\\second line}
 \newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 \newcommand{\fishname}{Arrowtooth Flounder}
-% sciencename - Science name for the species being assessed
 \newcommand{\sciencename}{Atheresthes stomias}
 \newcommand{\familyname}{Pleuronectidae}
 \newcommand{\commonname}{Turbot}
@@ -127,26 +55,14 @@
 % For subscripts in text mode
 \newcommand{\subscr}[1]{$_{\text{#1}}$}
 
-% Headers and footers
-% For Res Doc, best to have a left and a right footer
-%  (and/or header), not just one (for double-sided printing).
-%
-% \lhead{DRAFT -- Non-citable working paper}  % Omit for final ResDoc.
+%% ------------------------------------------------------------------------------
+%% Headers and footers
+%% \lhead{DRAFT -- Non-citable working paper}
 \lhead{}
 \rhead{}
-% \lfoot{\fishname}           % Species common name for left footer
-% \rfoot{DRAFT - DO NOT CITE}           % The area of the assessment for right footer
-%\rfoot{WP 2012/P02a}       % Change to appendix number for appendices
-                            % Will probably delete footers in main text
-                            %  for final Res Doc.
-
-% \linenumbers              % uncomment to add in line numbers
-% \modulolinenumbers[5]     % just number every 5th line
-
-% \def\AppLet{F}            % Appendix letter - we had this
-                            %  to number equations in Appendix
-                            %  F as (F.17) etc.
-% \def\StartP{102}          % page start
+% \lfoot{\fishname}
+%% \rfoot{DRAFT - DO NOT CITE}
+%% ------------------------------------------------------------------------------
 
 \newcommand{\Bmsy}{B_\mathrm{MSY}}
 \newcommand{\umsy}{u_\mathrm{MSY}}
@@ -163,12 +79,6 @@
 \newcommand{\mcmcndata}{1,000}       % nsamp - burnin, this is the actual number of samples used
 \newcommand{\mcmcci}{95\%}           % The confidence interval used in MCMC. Must be the same as what's in the knitr code block
 
-\renewcommand{\bibname}{REFERENCES}
-\renewcommand{\bibsection}{\section{\bibname}}  % To make it a section and
-                                                %  then number it
-
-%\usepackage{sectsty}
-%\sectionfont{\bfseries\Large\raggedright}
 \begin{document}
 
 % Load iscam-gui list object scenarios - Make sure all are set up in correct order before running this
@@ -178,9 +88,6 @@
 opts_chunk$set(dev='cairo_ps',fig.path='knitr-cache/', fig.dpi=96, fig.width=7.5,
               fig.height=4, echo=FALSE, results=FALSE, message=FALSE, warning=FALSE,
                results='hide', cache=TRUE, cache.path='knitr-cache/')
-## opts_chunk$set(dev='cairo_ps',fig.path='knitr-cache/', fig.dpi=96, fig.width=7.5,
-##                fig.height=4, echo=TRUE, results='asis', message=TRUE, warning=TRUE, error=FALSE,
-##                cache=TRUE, cache.path='knitr-cache/')
 # If you source the file, it will load all the scenarios. A quicker way is to load the Rdata file
 # directly from the gui directory. Make sure all scenarios are correct and then do iscam(T) from the
 # .Rdata environment in the iscam-gui directory and save the file when you close Rgui. Then this will
@@ -253,96 +160,29 @@ modellinetypes[[8]] <- list(1,1,1)
 modelnames[[8]] <- list("Reference Model","Trawl selex fixed at maturity","Trawl selex fixed at 6yr")
 @
 
-\input{preamble}              % Table of contents, etc.
-% \setcounter{chapter}{0}
-% \setcounter{table}{0}
-% \setcounter{figure}{0}
-\setcounter{secnumdepth}{5}    % To number subsubheadings-ish
-
-% To number sections, tables etc. as 1, 2, 3, not 1.1 etc. (where
-%  the first 1 would be chapter number).
-\renewcommand{\thesection}{\arabic{section}.}
-\renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
-\renewcommand{\thetable}{\arabic{table}}
-\renewcommand{\thefigure}{\arabic{figure}}
-\renewcommand{\theequation}{\arabic{equation}}
-
-\setcounter{chapter}{0}    % Need this for first Appendix heading
+\InsertTOC
+\ApplyMainSectioning % Must come after \InsertTOC
 
 <<main-doc, child='maindoc/maindoc.Rnw'>>=
 @
 
-\clearpage
+\appendix
+\ApplyAppendixSectioning % Must come after \appendix
 
-\addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
-\appendix % Everything from now on will be an Appendix
-%\setcounter{chapter}{1}    % Need this for first Appendix heading
-% \hypersetup{bookmarksopenlevel=0}
-
-% Now want to number sections, tables etc. as A.1, A.2, etc.
-% Thought these wouldn't be with the appendix package, as
-%  automatic, but do need them even if use \begin{appendices}:
-\renewcommand{\thesection}{\thechapter.\arabic{section}}
-\renewcommand{\thetable}{\thechapter.\arabic{table}}
-\renewcommand{\thefigure}{\thechapter.\arabic{figure}}
-\renewcommand{\theequation}{\thechapter.\arabic{equation}}
-
-% Now want section headings left-justified not centered; this
-%  is same as in resDocSty.sty but without \centering
-\makeatletter
-\renewcommand{\section}{\@startsection
-{section}{1}{0mm}                 % name, level, indent
-{-3.5ex \@plus -1ex \@minus -.2ex}% beforeskip
-{2.3ex \@plus.2ex}                % afterskip
-{\normalfont\large\bfseries\MakeUppercase}} % style
-\makeatother
-
-% Not including Appendix figures and tables in contents, and just
-%  including the Appendix (chapter) names (not sections or
-%  subsections):
-
-\lfoot{\fishname}
-
-\clearpage
-
-% Need these for the appendix numbering.
-%\addtocounter{chapter}{1}     % Not needed for first appendix.
-%% \setcounter{section}{0}
-%% \setcounter{table}{0}
-%% \setcounter{figure}{0}
-%% \setcounter{equation}{0}
-
-%% RSIA no longer to be included in the document
-%% \rfoot{Appendix A -- Request for Science Advice}
-%% <<advice-request, child='app-requestforscienceadvice/app-requestforscienceadvice.Rnw'>>=
-%% @
-%\begin{appendices}
-%  \renewcommand{\appendixname}{APPENDIX}
 \refstepcounter{chapter}
-%\rfoot{Appendix A -- Biological Data}
 <<biological-data, child='app-biology/app-biology.Rnw'>>=
 @
 
 \refstepcounter{chapter}
-%\setcounter{chapter}{2}    % Need this for first Appendix heading
-%\rfoot{Appendix B -- Proportion Female Analysis}
 <<prop-female, child='app-propfemale/app-propfemale.Rnw'>>=
 @
 
 \refstepcounter{chapter}
-%\setcounter{chapter}{3}    % Need this for first Appendix heading
-%\rfoot{Appendix C -- Age Composition weighting}
 <<agecomp-weighting, child='app-agecompweighting/app-agecompweighting.Rnw'>>=
 @
 
 \refstepcounter{chapter}
-%\setcounter{chapter}{4}    % Need this for first Appendix heading
-%\rfoot{Appendix D -- Model Equations}
 <<model-equations, child='app-equations/app-equations.Rnw'>>=
 @
-%\end{appendices}
-
-%%Used when you need to insert outside documents:
-%%\setcounter{page}{68}
 
 \end{document}

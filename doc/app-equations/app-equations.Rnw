@@ -15,19 +15,19 @@
 \rfoot{Appendix~\thechapter~-- Model Description}
 \addcontentsline{toc}{chapter}{APPENDIX~\thechapter. MODEL DESCRIPTION}
 
-\section{INTRODUCTION}
+\appsection{INTRODUCTION}
 
 Stock Assessment modelling was done using the Integrated Statistical Catch Age Model (iSCAM), developed by S. Martell (\citet{martell2011}). iSCAM is written in AD Model Builder and the source code and documentation for both are available online. iSCAM uses a statistical catch-at-age model implemented in a Bayesian estimation framework.
 
 Running of iSCAM and compilation of results figures was streamlined using the iscam-gui software package developed at the Pacific Biological Station. iscam-gui is written in the statistical language R, and provides a graphical user interface that allows users to run and show output of multiple iSCAM model scenarios in a comparative fashion.
 
-\section{MODEL DESCRIPTION}
+\appsection{MODEL DESCRIPTION}
 
 This section contains the documentation in mathematical form of the underlying iSCAM age-structured model, its steady state version that is used to calculate reference points, the observation models used in predicting observations, and the components of the objective function that formulate the statistical criterion used to estimate model parameters. A documented list of symbols used in model equations is given in Table \ref{tab:variables}. The documentation presented here is a revised version of the iscam user guide available online. Much of the text and many of the equations have been taken directly from the original iSCAM user guide.
 
 Note that all the model equations are presented for a sex structured model with $S$ sexes. Models can therefore be constructed with data for females only, for males and females, or with unsexed data. This \fishname\ assessment is a female only model with $S=1$.
 
-\section{ANALYTIC METHODS: EQUILIBRIUM CONSIDERATIONS}
+\appsection{ANALYTIC METHODS: EQUILIBRIUM CONSIDERATIONS}
 
 \subsection{A Steady-State Age-Structured Model}
 
@@ -45,7 +45,7 @@ The equilibrium yield $C_e$ for a given fishing mortality rate is given by Eq. \
 \subsection{MSY-based Reference Points}
 When defining reference points for this assessment, only the commercial trawl fishery was used to calculate MSY quantities. In the case of a single fishery, iSCAM calculates \emph{F}\subscr{MSY} by finding the value of \emph{F}\subscr{e} that results in the zero derivative of \ref{eq:df15}. This is accomplished numerically using a Newton-Raphson method where an initial guess for \emph{F}\subscr{MSY} is set equal to $M$. Given an estimate of \emph{F}\subscr{MSY}, other reference points such as MSY and \emph{B}\subscr{MSY} are calculated using the equations in Table \ref{tab:steady-state-model}.
 
-\section{ANALYTIC METHODS: STATE DYNAMICS}
+\appsection{ANALYTIC METHODS: STATE DYNAMICS}
 The estimated parameter vector in iSCAM is defined in Eq. \ref{eq:df16} of Table \ref{tab:catch-age-model}. The estimated parameters $R_0$, $h$, and $M$, are the leading population parameters that define the overall scale and productivity of the population.
 
 Variance components of the model were partitioned using an errors in variables approach. The key variance parameter is the inverse of the total variance $\vartheta^2$ (i.e., total precision). This parameter can be fixed or estimated, and was fixed for this model. The total variance is partitioned into observation and process error components by the model parameter $\rho$, which represents the proportion of the total variance that is due to observation error (Eq. \ref{eq:df17}) (\citet{punt1999} and \citet{deriso2007}).
@@ -58,7 +58,7 @@ Vulnerability-at-age is here assumed time-invariant and is modelled using a two-
 State variables in each year are updated using Eqns. \ref{eq:df23}--\ref{eq:df26}, where the spawning biomass is the product of the numbers-at-age and the mature biomass-at-age (Eq. \ref{eq:df23}). The total mortality rate is given by Eq. \ref{eq:df24}, and the total catch (in weight) for each gear is given by Eq. \ref{eq:df25}, assuming that both natural and fishing mortality occur simultaneously throughout the year. The sex-specific numbers-at-age are propagated over time using Eq. \ref{eq:df26}, where members of the plus group (age $A$) are all assumed to have the same total mortality rate.
 Recruitment to age $k$ is assumed to follow a Beverton-Holt model for \fishname\ (Eq. \ref{eq:df27}) where the maximum juvenile survival rate ($s_o$) is defined by $s_o=\frac{\kappa}{\phi_E}$. For the Beverton-Holt model, $\beta$ is derived by solving Eq. \ref{eq:df27} for $\beta$ conditional on estimates of $h$ and $R_o$.
 
-\section{RESIDUALS, LIKELIHOODS, AND OBJECTIVE FUNCTION VALUE COMPONENTS}
+\appsection{RESIDUALS, LIKELIHOODS, AND OBJECTIVE FUNCTION VALUE COMPONENTS}
 The objective function contains five major components:
 \begin{enumerate}[noitemsep,nolistsep]
   \item The negative log-likelihood for the catch data
@@ -168,7 +168,7 @@ where $s_o$ is the maximum juvenile survival rate, and $\beta$ is the density ef
 
 \clearpage
 
-\section{TABLES}
+\appsection{TABLES}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % ********************** Table 1 ************************************
 \begin{table}[!h]

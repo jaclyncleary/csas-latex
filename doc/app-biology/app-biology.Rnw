@@ -8,7 +8,7 @@
 
 All biological parameters were estimated from survey data only. These data were aggregated from the four surveys used as indices of abundance in this assessment, the Queen Charlotte Syound Synoptic, Hecate Strait Multispecies Assemblage, Hecate Strait Synoptic, and the West Coast Vancouver Island survey.
 
-\section{Length and Weight model}
+\appsection{Length and Weight model}
 
 All valid length/weight pairs of data were extracted based on the criteria shown in table~\ref{tab:biocrit}. The length-weight equation used was:
 
@@ -19,7 +19,7 @@ where $\alpha_s$ and $\beta_s$ are parameters for sex $s$ and $L_s$ and $W_s$ ar
 
 We applied Eq. \ref{eq:lw} to survey observations for the four surveys used in this assessment, QCSSS, HSMASS, HSSS, and WCVISS (Survey series ID = 1,2,3,4) from PMFC areas 3CD and 5ABCDE combined (Table \ref{tab:biocrit}).
 
-\section{von-Bertalanffy model}
+\appsection{von-Bertalanffy model}
 
 We used the von-Bertalanffy function to estimate growth rates for \fishname:
 
@@ -30,7 +30,7 @@ where $L_{\infty_s}$, $k_s$, and $t_{0_s}$ are parameters specific to sex $s$ an
 
 We applied Eq. \ref{eq:vonb} to survey observations for the four surveys used in this assessment, QCSSS, HSMASS, HSSS, and WCVISS (Survey series ID = 1,2,3,4) from PMFC areas 3CD and 5ABCDE combined (Table \ref{tab:biocrit}).
 
-\section{maturity-at-age model}
+\appsection{maturity-at-age model}
 
 The maturity-at-age model used for \fishname\ estimates age-at-50\% maturity and standard deviation of age-at-50\% maturity as follows:
 
@@ -43,7 +43,7 @@ We applied Eq. \ref{eq:matage} to survey observations for the four surveys used 
 
 \clearpage
 
-\section{TABLES}
+\appsection{TABLES}
 \begin{table}[!htp]
 \centering
 \caption{\label{tab:biocrit} Criteria for biological data extraction.}
@@ -61,7 +61,7 @@ Sex                                           & valid sex observation (1 or 2 ) 
 
 \clearpage
 
-\section{FIGURES}
+\appsection{FIGURES}
 
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]

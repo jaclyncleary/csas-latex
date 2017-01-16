@@ -7,10 +7,10 @@
 \rfoot{Appendix~\thechapter~-- Proportion Female Analysis}
 \addcontentsline{toc}{chapter}{APPENDIX~\thechapter. PROPORTION FEMALE ANALYSIS}
 
-\section{INTRODUCTION}
+\appsection{INTRODUCTION}
 We elected to use a female-only stock assessment model because catch and survey data suggested the majority of the catch is female. Proportion of females in the fishery and surveys is quantified in this appendix. The weighting algorithm and proportion generation algorithm is similar to algorithm 2 in the 2014 Rock Sole assessment (\citet{rocksole2014}). The analysis presented here assumes a coastwide stock.
 
-\section{DATA SELECTION}
+\appsection{DATA SELECTION}
 Age data were selected based on the following attributes:\\
 \bigskip
 
@@ -42,7 +42,7 @@ Greater than or equal to 1996 \\
 \textbf{Sex}: \\
 Male or female only, no unknowns or null fields \\
 
-\section{ALGORITHM}
+\appsection{ALGORITHM}
 Pseudocode has been provided in Section \ref{sec:propfemale-pseudocode} to describe the weighting algorithm.
 
 \subsection{Trawl Fishery}

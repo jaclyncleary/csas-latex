@@ -1,82 +1,50 @@
-% resDocSty.sty - Unoffocial LaTeX style file for Canadian
-%  Science Advisory Secretariat Research Documents.
-% Authors:
-% Andrew Edwards
-% Rowan Haigh
-% Chris Grandin
+%% resDocSty.sty - Unoffocial LaTeX style file for Canadian
+%%  Science Advisory Secretariat Research Documents.
+%% Authors:
+%% Andrew Edwards
+%% Rowan Haigh
+%% Chris Grandin
 
-% This is not an official template, but my attempt at developing
-%  the correct CSAS formatting for Research Documents.
+%% Notes on installing a package when the MikTex servers are down:
+%% Go to CTAN and get your package. Unzip, and mvoe contents to:
+%% C:Program Files/MiKTeX 2.6/tex/latex/PACKAGE_NAME where
+%%  PACKAGE_NAME is whatever the name of the package you are
+%%  installing is. In this directory, there are files called
+%%  .dtx and .ins files. Run this on a command line:
+%%   latex PACKAGE_NAME.ins
+%%  which will create the .sty files from the .ins files.
+%%  Now you have to refresh FNDB:
+%% Go to Start->Programs->Maintenance(Admin)->MikTex Settings(Admin)
 
-% I haven't attempted to format the first few pages, seems easier
-%  to stick with the Word 'template' RES2011_nnn-eng.doc
-%  (which looks like it might change every year), available at
-%  http://www.dfo-mpo.gc.ca/csas-sccs/process-processus/res-docs-rech/index-eng.htm
+%% Notes on installing the required Arial font:
+%% Make a empty directory called C:\texlocal
+%% Go to this URL:
+%% http://mirrors.ctan.org/install/fonts/urw/arial.tds.zip
+%% Download the TDS-compliant zip and unzip into C:\texlocal
+%% The directory should contain three subdirectories: doc, fonts, and tex.
+%% Be sure that the directory under `fonts' includes `type1' not `type' (rename if necesary)
+%% Go to Start->Programs->Maintenance(Admin)->MikTex Settings(Admin)
+%%  - Go to the Roots tab
+%%  - Click `Add' and add C:\texlocal
+%%  - Go to `General' tab
+%%  - Click `Refresh FNDB' button
+%%  - Click `Update Formats' button
+%% Open a command line:
+%%  - Run the following command:
+%%     initexmf --edit-config-file updmap
+%%  - Insert the following line:
+%%     Map ua1.map
+%%  - Save the file and close the editor.
+%%  - Run the following command to rebuild the font map files:
+%%     initexmf --mkmaps
+%% ------------------------------------------------------------------------------
 
-% This means that the CSAP/CSAS people can insert things like the
-%  Res Doc number and French translation of title and abstract.
-
-% ** Packages **
-% For installation, the caption package said to look at the
-%  following three, but I didn't find them helpful:
-% If you need help for installation please visit:
-% http://www.tex.ac.uk/cgi-bin/texfaq2html?label=inst-miktex*
-% http://www.tex.ac.uk/cgi-bin/texfaq2html?label=installthings
-% http://www.tex.ac.uk/cgi-bin/texfaq2html?label=privinst
-
-% For caption it took me a while, it seems that you can't just
-%  simply download a .sty file and stick it in the right
-%  directory, there are things called .dtx and .ins files
-%  instead. I use MikTex, but the automatic installer didn't
-%  seem to work.
-% I ended up downloading the caption package as a .zip file,
-%  unzipping and moving the folder to
-%  C:Program Files/MiKTeX 2.6/tex/latex/caption,
-%  then in there ran latex caption.ins, which (finally) created
-%  the .sty files from the .ins files.
-%  Then have to refresh FNDB: Start-Programs-MikTex-Settings.
-
-% ***Start of Rowan's that Andy commenting out***
-% Andy putting %space in front of all Rowan's, so when uncommenting
-%  you know which lines he actually had commented (a lot)
-
-% %http://tex.stackexchange.com/questions/664/why-should-i-use-usepackaget1fontenc
-% \usepackage[T1]{fontenc}
-% %\usepackage{lmodern}
-% %% http://www.ctan.org/tex-archive/fonts/urw/arial/
-% %% Grab the TDS-compliant zip and unzip in you localtexmf directory (which is registered as one of your MiKTeX roots).
-% %% Be sure that the directory under `fonts' includes `type1' not `type' (rename if necesary)
-% %% In MiKTeX Settings, press the `Refresh FNDB' and `Update Formats' buttons.
-% %% OR (http://tex.stackexchange.com/questions/22453/new-map-file-with-miktex)
-% %%  1. Run initexmf --edit-config-file updmap
-% %%  2. Insert the following line at the end of the file (relevant to the font in question):
-% %%     Map ua1.map
-% %%  3. Save the file and close the editor.
-% %%  4. Run initexmf --mkmaps to rebuild the font map files.
-
-% %% Redefine default font to pseudo-Arial (LaTeX only):
-% \usepackage[scaled=1.00]{uarial}
-% \renewcommand{\rmdefault}{ua1} %phv}% Arial vs. Helvetica
-% \renewcommand{\sfdefault}{ua1} %phv}% Arial vs. Helvetica
-
-% Try real Arial built by RH from TTF (cannot get font to look darker in PDF)
-%\usepackage{arial}
-%\renewcommand{\rmdefault}{ari}
-%\renewcommand{\sfdefault}{ari}   % Arial truetype
-
-% %% All this nonsense is to get the reference section to contain blue underlined hyperlinks (RH).
-% %% Note: in your *.bib file, the Title field needs to contain: \urldfo{http://www.somewhere.ca}{The actual title of the aricle}
-% %% See: http://tex.stackexchange.com/questions/76174/set-doi-link-on-journal-name-with-bibtex-bst
-% %% ----------------------------------------------
-\usepackage{natbib}                     % use resDoc.bst file: e.g., \bibliographystyle{resDoc}
-% \setlength{\bibhang}{1cm}               % set the DFO overhang
-% \setlength{\bibsep}{6pt}                % paragraph spacing
-% CSAP wants hyperlinks in references  % Think this may do the bookmarks
+%% Uses resDoc.bst file
+\usepackage{natbib}
 \usepackage[breaklinks=true,
             bookmarksopen=true,
             bookmarksdepth=3]
            {hyperref}
-% \usepackage[normalem]{ulem}             % The ulem package: underlining for emphasis
 \hypersetup{colorlinks,
             plainpages=true,
             linkcolor=black,
@@ -84,21 +52,10 @@
             urlcolor=blue,
             bookmarksopen=true,
             bookmarksopenlevel=1}
-% % Create a blue underlined hyperlink (e.g., http://tex.stackexchange.com/questions/233668/new-ulem-command-not-working)
-% \newcommand\bluline{\bgroup\markoverwith
-%   {\textcolor{blue}{\rule[-0.5ex]{2pt}{0.4pt}}}\ULon} % wtf
-% \newcommand\urldfo[2]{\href{#1}{\bluline{#2}}}
-% \renewcommand{\bibname}{References}
-% %%---------END hyperref chicanery----------------
 
-% %% !!!!! Load nccmath AFTER hyperref !!!!!
-% %% (http://tex.stackexchange.com/questions/170353/nccmath-fleqn-numbering)
-% \usepackage{nccmath} % from web for fleqn (flus-left equations)
-
-%% ***End of Rowan's that Andy commenting out***
-
-\usepackage{nccmath} % from web for fleqn
-% If you want to add line numbers in
+%% from web for fleqn
+\usepackage{nccmath}
+%% If you want to add line numbers in
 \usepackage[pagewise]
            {lineno}
 \usepackage[top=1in,
@@ -106,7 +63,8 @@
             left=1in,
             right=1in]
            {geometry}
-% To add in headers and footers
+
+%% To add in headers and footers
 \usepackage{fancyhdr}
 \usepackage[format=plain,
             indention=0cm,
@@ -116,88 +74,92 @@
             singlelinecheck=false]
            {caption}
 
-% ------------------------------------------------------------------------------
-% Table of Contents
+%% ------------------------------------------------------------------------------
+%% Table of Contents
 \usepackage{tocloft}
-% Enable dots for chapters in the TOC
+%% Enable dots for chapters in the TOC
 \renewcommand{\cftchapleader}{\cftdotfill{\cftdotsep}}
-% Un-bold the chapter text in the TOC
+%% Un-bold the chapter text in the TOC
 \renewcommand{\cftchapfont}{\mdseries}
-% Un-bold the chapter page numbers in the TOC
+%% Un-bold the chapter page numbers in the TOC
 \renewcommand{\cftchappagefont}{\mdseries}
-% Make the chapter entries the same indentation as the sections (entry,indent,numWidth)
-% See the tocloft documentation to get these values
+%% Make the chapter entries the same indentation as the sections (entry,indent,numWidth)
+%% See the tocloft documentation to get these values
 \cftsetindents{chapter}{1.5em}{2.3em}
-% Make vertical spacing between chapter entries in TOC = zero.
+%% Make vertical spacing between chapter entries in TOC = zero.
 \setlength{\cftbeforechapskip}{0pt}
-% ------------------------------------------------------------------------------
+%% ------------------------------------------------------------------------------
 
 \captionsetup[table]{position=above, skip=5pt}
-% To have less whitespace after Table
-%  caption. 'above' tells it to put the
-%  skip after caption, but you may still
-%  need to have the caption before
-%  the table in .tex.
-\usepackage{epsfig}   % for epsfbox
-\usepackage{graphicx} % for \includegraphics (eps and others)
+%% To have less whitespace after Table
+%%  caption. 'above' tells it to put the
+%%  skip after caption, but you may still
+%%  need to have the caption before
+%%  the table in .tex.
+\usepackage{epsfig}   %% for epsfbox
+\usepackage{graphicx} %% for \includegraphics (eps and others)
 
-\raggedright  % For ragged right margins (yes, ugly,
-              %  but that's the rules, which of course
-              %  exist because right justified in Word
-              %  always looks so bad).
+\raggedright  %% For ragged right margins (yes, ugly,
+              %%  but that's the rules, which of course
+              %%  exist because right justified in Word
+              %%  always looks so bad).
 \raggedbottom
-% I had also tried the newer \RaggedRight
-%   from the ragged2e package, but it
-%   seems to introduce lots of hyphens.
-% \usepackage{ragged2e}   % For RaggedRight which is apparently
-%  a better word-breaking algorithm,
-%  (raggedright tries to avoid hyphens).
-% You actually need the ms package (Martin
-%  Schroeder), as ragged2e calls others.
-% \RaggedRight
+%% I had also tried the newer \RaggedRight
+%%   from the ragged2e package, but it
+%%   seems to introduce lots of hyphens.
+%% \usepackage{ragged2e}   %% For RaggedRight which is apparently
+%%  a better word-breaking algorithm,
+%%  (raggedright tries to avoid hyphens).
+%% You actually need the ms package (Martin
+%%  Schroeder), as ragged2e calls others.
+%% \RaggedRight
 
-% Headers and footers - see \lhead etc. at the start of .tex
+%% Headers and footers - see \lhead etc. at the start of .tex
 \pagestyle{fancy}
 \renewcommand{\footrulewidth}
   {0.4pt}
 \renewcommand{\headrulewidth}
   {0.4pt}
-% For Res Doc, best to have a left and a right footer (header), not
-%  just one (for double-sided printing). Though I remember from my
-%  thesis there's a way to make it a header always be on the
-%  'outside' corner, so have a Google around.
+%% For Res Doc, best to have a left and a right footer (header), not
+%%  just one (for double-sided printing). Though I remember from my
+%%  thesis there's a way to make it a header always be on the
+%%  'outside' corner, so have a Google around.
 
-\setlength\parindent{0pt}    % To not indent paragraphs.
-\parskip 2ex   % was 3ex     % To increase white space between
-                             %  paragraphs (since not indenting).
-                             % For POP 2011 I did this, presumably
-                             %  because we did it in the Word version.
-                             % See resDocSty-rh.sty if want it all in pt units
+\setlength\parindent{0pt}    %% To not indent paragraphs.
+\parskip 2ex   %% was 3ex     %% To increase white space between
+                             %%  paragraphs (since not indenting).
+                             %% For POP 2011 I did this, presumably
+                             %%  because we did it in the Word version.
+                             %% See resDocSty-rh.sty if want it all in pt units
 
-\def\headc{\vspace{-2ex}} % contraction after 'fake' subsubheading
-% Fake subsubsubheading
+\def\headc{\vspace{-2ex}} %% contraction after 'fake' subsubheading
+%% Fake subsubsubheading
 \def\subsubsub#1{\vspace{1ex} \noindent {\underline{#1}} \vspace{1ex}}
 
-% From Rowan, and see resDocSty-rh.sty for his settings using pt.
-% http://tex.stackexchange.com/questions/64756/what-is-glue-stretching
-% In TeX any glue is composed by a fixed part, a stretchable part and a
-% shrinkable part. Each of these parts can be zero.
-% The general form to express a glue is: <fixed part> plus <stretchable part>
-% minus <shrinkable part>. Each of these parts can be expressed in any of TeX
-% units (mm, cm, pt, em, etc.). For example 2cm plus 2mm minus 1mm.
+%% From Rowan, and see resDocSty-rh.sty for his settings using pt.
+%% http://tex.stackexchange.com/questions/64756/what-is-glue-stretching
+%% In TeX any glue is composed by a fixed part, a stretchable part and a
+%% shrinkable part. Each of these parts can be zero.
+%% The general form to express a glue is: <fixed part> plus <stretchable part>
+%% minus <shrinkable part>. Each of these parts can be expressed in any of TeX
+%% units (mm, cm, pt, em, etc.). For example 2cm plus 2mm minus 1mm.
 
-% ------------------------------------------------------------------------------
-% Section and Chapter commands which match the CSAS template guide.
-% http://help-csli.stanford.edu/tex/latex-sections.shtml#section
-% http://zoonek.free.fr/LaTeX/LaTeX_samples_section/0.html
-% Font sizes I think will actually be 10.95pt
-%   for normal and 11.75pt for \large, according to the table in
-% http://en.wikibooks.org/wiki/LaTeX/Formatting#Sizing_text
-\makeatletter % Need this and \makeatother around these.
+%% ------------------------------------------------------------------------------
+%% Section and Chapter commands which match the CSAS template guide.
+%% http://help-csli.stanford.edu/tex/latex-sections.shtml#section
+%% http://zoonek.free.fr/LaTeX/LaTeX_samples_section/0.html
+%% Font sizes I think will actually be 10.95pt
+%%   for normal and 11.75pt for \large, according to the table in
+%% http://en.wikibooks.org/wiki/LaTeX/Formatting#Sizing_text
+\makeatletter
+%% These two commands are required to use Arial for the document.
+\renewcommand{\rmdefault}{phv}
+\renewcommand{\sfdefault}{phv}
+
 \newcommand{\nonumsection}{\@startsection
-{section}{1}{0mm}                 % name, level, indent
-{-3.5ex \@plus -1ex \@minus -.2ex}% beforeskip
-{2.3ex \@plus.2ex}                % afterskip
+{section}{1}{0mm}                 %% name, level, indent
+{-3.5ex \@plus -1ex \@minus -.2ex}%% beforeskip
+{2.3ex \@plus.2ex}                %% afterskip
 {\centering\normalfont\large\bfseries\MakeUppercase}}
 
 \renewcommand{\section}{\@startsection
@@ -209,7 +171,7 @@
 \renewcommand{\subsection}{\@startsection
 {subsection}{2}{0mm}
 {-3.25ex plus -1ex minus  -.2ex}{1.5ex plus .2ex}
-% {1ex}{0.1ex plus -2ex}
+%% {1ex}{0.1ex plus -2ex}
 {\normalfont\bf\MakeUppercase}}
 
 \renewcommand{\subsubsection}{\@startsection
@@ -223,125 +185,124 @@
 {2.3ex \@plus.2ex}
 {\centering\normalfont\large\bfseries\MakeUppercase}}
 
-% http://stackoverflow.com/questions/1321721/how-do-i-change-the-amount-of-whitespace-between-sections-in-latex   :
-%\makeatletter
-% \renewcommand\section{\@startsection {section}{1}{\z@}%
-%     {-2.5ex \@plus -1ex \@minus -.2ex}%
-%     {1.3ex \@plus.2ex}%
-%    {\centering\bfseries}}
-% \@startsection {NAME}{LEVEL}{INDENT}{BEFORESKIP}{AFTERSKIP}{STYLE}
-%            optional * [ALTHEADING]{HEADING}
-%    Generic command to start a section.
-%    NAME       : e.g., 'subsection'
-%    LEVEL      : a number, denoting depth of section -- e.g., chapter=1,
-%                 section = 2, etc.  A section number will be printed if
-%                 and only if LEVEL gt or eq the value of the secnumdepth
-%                 counter.
-%    INDENT     : Indentation of heading from left margin
-%    BEFORESKIP : Absolute value = skip to leave above the heading.
-%                 If negative, then paragraph indent of text following
-%                 heading is suppressed.
-%    AFTERSKIP  : if positive, then skip to leave below heading,
-%                       else - skip to leave to right of run-in heading.
-%    STYLE      : commands to set style
-%  If '*' missing, then increments the counter.  If it is present, then
-%  there should be no [ALTHEADING] argument.  A sectioning command
-%  is normally defined to \@startsection + its first six arguments.
+%% Section headings in appendices must be left-justified not centered;
+%%  this is same as \section above but without \centering
+\newcommand{\appsection}{\@startsection
+{section}{1}{0mm}                 %% name, level, indent
+{-3.5ex \@plus -1ex \@minus -.2ex}%% beforeskip
+{2.3ex \@plus.2ex}                %% afterskip
+{\normalfont\large\bfseries\MakeUppercase}} %% style
 
-% From:
-% http://stackoverflow.com/questions/2009420/how-to-put-a-figure-on-the-top-of-a-page-on-its-own-in-latex
-% to make a float on its own page appear at the top (not centered). Not sure what fpsep does, separation
-%  between floats I think.
+\newcommand\ApplyMainSectioning{
+  %% To number the main document sections, tables, etc.
+  %%  as 1.1, 1.2, etc.
+  \renewcommand{\thesection}{\arabic{section}.}
+  \renewcommand{\thesubsection}{\arabic{section}.\arabic{subsection}}
+  \renewcommand{\thesubsubsection}{\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+  \renewcommand{\thetable}{\arabic{table}}
+  \renewcommand{\thefigure}{\arabic{figure}}
+  \renewcommand{\theequation}{\arabic{equation}}
+}
+
+\newcommand\ApplyAppendixSectioning{
+  %% To number appendix sections, tables etc.
+  %%  as A.1, A.2, etc.
+  %% Always start a new page for appendices
+  \newpage
+  \renewcommand{\thesection}{\thechapter.\arabic{section}}
+  \renewcommand{\thesubsection}{\thechapter.\arabic{section}.\arabic{subsection}}
+  \renewcommand{\thesubsubsection}{\thechapter.\arabic{section}.\arabic{subsection}.\arabic{subsubsection}}
+  \renewcommand{\thetable}{\thechapter.\arabic{table}}
+  \renewcommand{\thefigure}{\thechapter.\arabic{figure}}
+  \renewcommand{\theequation}{\thechapter.\arabic{equation}}
+  %% Set up Appendices in the TOC to not show subsections
+  \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
+  %% Set up first Appendix heading value
+  \setcounter{chapter}{0}
+}
+
+\newcommand\InsertTOC{
+  %% preamble.tex - Table of contents
+  \thispagestyle{fancyplain}
+  \pagenumbering{roman}
+  %% TOC is required by CSAS to be on page iii.
+  \setcounter{page}{3}
+  \renewcommand{\contentsname}{\bf \large \vspace{-25mm} TABLE OF CONTENTS}
+  \addtocontents{toc}{\protect\thispagestyle{fancy}}
+  \begin{center}
+    \tableofcontents
+  \end{center}
+  \newpage
+  %% Start citation indentation
+  \leftskip=3em
+  \parindent=-3em
+  {\bf Correct citation for this publication:}
+
+  Non-citable Working Paper.	%%(req'mt by CSAS)
+
+  %% Cleary, J.S. and Haist, V. 2012.****
+  %% Stock Assessment and Management Advice for the British Columbia Pacific Herring Stocks: 2012 Assessment and 2013 Forecasts.
+  %% DFO Can. Sci. Advis. Sec. Res. Doc. 2012/xxx. xii + 151 p.
+
+  %% end citation indentation
+  \leftskip=0em
+  \parindent=-0em
+  %% To number subsubheadings
+  \setcounter{secnumdepth}{5}
+}
+
+%% Changes the name of the bibliography to REFERENCES.
+\renewcommand{\bibname}{REFERENCES}
+%% To make REFERENCES a section and then number it
+\renewcommand{\bibsection}{\section{\bibname}}
+
+%% Makes figures stick to the top of the page. i.e. if there is a single figure
+%%  on a page, it will be placed in the center. This forces it to stick to the top.
 \setlength\@fptop{0pt}
-% \setlength\@fpsep{8pt plus 1fil}
-% \setlength\@fpbot{0pt}  % presumably for bottom float.
-% The website says that the defaults are:
-% From source2e, glue is inserted at the top and bottom of the page, and between
-%  each float on the page. This inserted glue is given by the following
-%  parameters:
-%\setlength\@fptop{0\p@ \@plus 1fil}
-%\setlength\@fpsep{8\p@ \@plus 2fil}
-%\setlength\@fpbot{0\p@ \@plus 1fil}
-\makeatother % Need this after the renewcommands
-% ------------------------------------------------------------------------------
+\makeatother
+%% ------------------------------------------------------------------------------
 
-% Think this was fiddling around because of having equations in
-%  tables.
-%   To make equations left flush, so use in Tables.
-%\def\beq{\vspace{-5ex} \begin{fleqn} \begin{equation}}
-%\def\eeq{\end{equation} \end{fleqn} \vspace{-5ex}}
-
-% Andy's usual command for equations:
-\newcommand{\eb}
-  {\begin{eqnarray}}
-\newcommand{\ee}
-  {\end{eqnarray}}
-% \def\tabline{\vspace{2ex} \hrule \vspace{2ex}}  % For second page
-                                                  % of a table.
-% Some Arial thing I presume:
-\renewcommand{\rmdefault}
-  {phv}
-\renewcommand{\sfdefault}
-  {phv}
-
-% From RH:
-% % If using pdfLaTeX (only to get DFO-style hyperlinks in Bibliogrpahy), eps files need to be converted to pdf (RH).
-% % PDF files are only created when using pdflatex; doesn't hurt to load this package when using latex compiler.
-% %\usepackage{eps2pdf}
-%
-% % If using XeLateX, redefine default font to Arial (RH)
-% %\usepackage{xltxtra} % xltxtra loads fontspec + xunicode.
-% %\setmainfont{Arial}
-
-% I haven't checked this, but try for punctuation of references
-%  (from a .tex file by Ian Jonsen):
-% \bibpunct[, ]{(}{)}{;}{a}{}{,}
-% \bibstyle{cjfas}
-
-% Remaining is all from Rowan, commenting out.
-% %% RH (2016-02-16)----------------------------------------------------
-% %% CSAP headers and footers - see above where Andy had invoked fancy to start the ball rolling
-% %% http://texblog.org/2007/11/07/headerfooter-in-latex-with-fancyhdr/
-% %%--------------------------------------------------------------------
-\fancypagestyle{csapfancy}{%
-  % \fancyhead[L]{}%{DRAFT -- Non-citable working paper}
-  % \fancyhead[R]{}%{CSAP WP2016zzzxx}
-  % \fancyfoot[L]{}%{Appendix \thechapter -- Model Results}
-  % \fancyfoot[R]{}%{\Sexpr{paste0(sppname," (",area.name,")")}}
+%% ------------------------------------------------------------------------------
+%% Defines the header and footer rules for a CSAS paper.
+\fancypagestyle{csapfancy}{%%
+  %% \fancyhead[L]{}%%{DRAFT -- Non-citable working paper}
+  %% \fancyhead[R]{}%%{CSAP WP2016zzzxx}
+  %% \fancyfoot[L]{}%%{Appendix \thechapter -- Model Results}
+  %% \fancyfoot[R]{}%%{\Sexpr{paste0(sppname," (",area.name,")")}}
   \fancyfoot[C]{\thepage}
   \renewcommand{\headrulewidth}
     {0.4pt}
   \renewcommand{\footrulewidth}
     {0.4pt}
 }
+%% ------------------------------------------------------------------------------
 
-% ------------------------------------------------------------------------------
-% Landscape settings
-% %% In your document just after the \chapter command (or first \section command)
-% %% define your headers and footers so they can be retained after landscape
-% %%  pages
-%  Andy not bothering, just reset lfoot and rfoot if necessary; rfoot changes
-%  between appendices anyway.
-% % \newcommand{\LH}{DRAFT -- Non-citable working paper}  % Set to {} for final ResDoc
-% % \newcommand{\RH}{CSAP WP2014GRF04}
-% % \newcommand{\LF}{Appendix \thechapter -- Model Results}
-% % \newcommand{\RF}{Shortspine Thornyhead (BC coast)}
-%
-% %% RH (2016-02-16)----------------------------------------------------
-% %% CSAS's penchant for landscape with borders along the long edge.
-% %% http://tex.stackexchange.com/questions/9071/how-to-translate-and-rotate-the-heading-of-landscaped-pages
-% %% http://handyfloss.net/2007.05/latex-the-textpos-package/
-% %% -------------------------------------------------------------------
-\usepackage{pdflscape} % landscape pages
+%% ------------------------------------------------------------------------------
+%% For landscape pages.
+%% To do it properly, i.e. top and bottom lines and page number also rotated to
+%%  landscape, do this:
+%% \newgeometry{hmargin=1in,vmargin=1in}
+%% \thispagestyle{csaplscape}
+%% \pagestyle{csaplscape}
+%% \begin{landscape}
+%%   \centering
+%%
+%% Table code here, or knitr code chunk which prints an xtable.
+%%
+%% \end{landscape}
+%% \restoregeometry
+%% \pagestyle{csapfancy}
+
+\usepackage{pdflscape}
 \usepackage[absolute]{textpos}
 \setlength{\TPHorizModule}
   {8.5in}
 \setlength{\TPVertModule}
   {11.0in}
 \fancypagestyle{csaplscape}{
-  % clear all header and footer fields
+  %% clear all header and footer fields
   \fancyhf{}
-  \fancyfoot{}%
+  \fancyfoot{}%%
   \begin{textblock}
     {1}(0.1,0.0909)
     {\rotatebox{90}
@@ -361,60 +322,85 @@
     }
   \end{textblock}
   \renewcommand{\headrulewidth}
-    {0pt}% get rid of lines along sides of landscape page
+    {0pt} %% Get rid of lines along sides of landscape page
   \renewcommand{\footrulewidth}
     {0pt}
 }
-% %% In your CSAP manuscript, when you want a landscape page:
-% %  \newgeometry{hmargin=1in,vmargin=1in}
-% %  \thispagestyle{csaplscape}
-% %  \pagestyle{csaplscape}
-% %  \begin{landscape}
-% %  <<your stuff here>>
-% %  \end{landscape}
-% %  \restoregeometry
-% %  \pagestyle{csapfancy}    % Andy not doing
-% %  \lhead{\LH}\rhead{\RH}\lfoot{\LF}\rfoot{\RF}   % Or whatever they should be
-% ------------------------------------------------------------------------------
+%% ------------------------------------------------------------------------------
 
-% ------------------------------------------------------------------------------
-% %% How can I change the margins for only part of the text?
-% %% http://tex.stackexchange.com/questions/588/how-can-i-change-the-margins-for-only-part-of-the-text
-% \def\changemargin#1#2#3{\list{}{\rightmargin#2\leftmargin#1\topsep=#3}\item[]}
-% \let\endchangemargin=\endlist
-% % Implementation:
-% %    \begin{changemargin}{<arg>}{<arg>}
-% %    \end{changemargin}
-% % where <arg> is the distance you want to include on the margin (the first one
-% % defines the right-hand side margin, and the second defines the left-hand side one).
-% % So, for example, to add 0.5 cm to the margins on either side, you would have:
-% %    \begin{changemargin}{0.5cm}{0.5cm}
-% %       your text here
-% %    \end{changemargin}
-% ------------------------------------------------------------------------------
-
-% ------------------------------------------------------------------------------
-% Indentation and numbering of enumerated or bullet-point lists
+%% ------------------------------------------------------------------------------
+%% Indentation, types, and numbering of enumerated or bullet-point lists
 \usepackage{enumerate}
-% These are done manually here -- doesn't perfectly flush left since
-%  need to allow space if you get up to double-digit enumeration. Is fine
-%  though.
-\setlength{\leftmargini}{6mm}  % not actually based on enumerate package
-\setlength{\leftmarginii}{4mm} %  (had already been done).
+%% These are done manually here -- doesn't perfectly flush left since
+%%  need to allow space if you get up to double-digit enumeration. Is fine
+%%  though.
+\setlength{\leftmargini}{6mm}  %% not actually based on enumerate package
+\setlength{\leftmarginii}{4mm} %%  (had already been done).
 \setlength{\leftmarginiii}{4mm}
 \setlength{\leftmarginiv}{4mm}
 
-% The following controls the look of the second-level in an enumeration list
+%% The following controls the look of the second-level in an enumeration list
 \renewcommand{\labelenumii}{\theenumii}
-% This will make list items like 1.1, 1.2, etc
-%\renewcommand{\theenumii}{\theenumi.\arabic{enumii}.}
-% This will make list items like A., B., etc.
-%\renewcommand{\theenumii}{\Alph{enumii}.}
-% This will make list items like a., b., etc.
+%% This will make list items like 1.1, 1.2, etc
+%%\renewcommand{\theenumii}{\theenumi.\arabic{enumii}.}
+%% This will make list items like A., B., etc.
+%%\renewcommand{\theenumii}{\Alph{enumii}.}
+%% This will make list items like a., b., etc.
 \renewcommand{\theenumii}{\alph{enumii}.}
 
-% The following controls the look of the second-level in an enumeration list
-% This will make list items circles instead of stars
+%% The following controls the look of the second-level in an enumeration list
+%% This will make list items circles instead of stars
 \renewcommand{\labelitemii}{$\circ$}
-% ------------------------------------------------------------------------------
+%% Sets up the levels of lists with types to use for each,
+%%  e.g. level 2 uses small alphabetic characters and
+%%  level 3 uses roman numerals.
+\usepackage{enumitem}
+\newlist{longitem}{enumerate}{5}
+\setlist[longitem,1]{label=\arabic*)}
+\setlist[longitem,2]{label=\alph*)}
+\setlist[longitem,3]{label=\roman*)}
+\setlist[longitem,4]{label=\arabic*)}
+\setlist[longitem,5]{label=\alph*)}
+%% ------------------------------------------------------------------------------
 
+%% ------------------------------------------------------------------------------
+%% Included packages
+\usepackage{cite}
+%% Need array when specifying a ragged right column:
+%%  >{\raggedright\arraybackslash}{p2in}.
+\usepackage{longtable,array}
+\usepackage{import}            % for figures in chapter subdirectories
+\usepackage{graphicx}          % For inclusion of figures
+\usepackage{verbatim,fancyvrb} % Check - may be in .sty file
+\usepackage{xifthen}           % provides \ifthenelse and \isempty
+\usepackage{color, colortbl}
+\usepackage{arydshln}          % For dashed lines in tables (has to be loaded after other stuff)
+\usepackage[parfill]{parskip}  % So paragraphs will have a blank line between them
+\setlength{\parskip}{12pt}
+
+% Use the following codes for references within the document.
+%   chap: appendix
+%    sec: section
+% subsec: subsection
+%    fig: figure
+%    tab: table
+%     eq: equation
+%    lst: code listing
+%    itm: enumerated list item
+%    app: appendix subsection
+\usepackage{hypcap}            % So links will anchor at figure, not caption
+\usepackage{subfig}            % For two-panel plots
+\usepackage{relsize}           % For mathlarger, which makes equations bigger
+\usepackage{algorithm}         % For display of pseudocode
+\usepackage{algpseudocode}     % For display of pseudocode
+\usepackage{linegoal}          % For display of pseudocode
+% A \Let command for defining assignments within the algorithmic environment which
+% supports automatic indentation when the second argument is too long to fit
+% on one line
+\newcommand*{\Let}[2]{\State #1 $\gets$
+\parbox[t]{\linegoal}{#2\strut}}
+% A \State command that supports automatic indentation when the argument's
+% content is too long to fit on one line
+\newcommand*{\LongState}[1]{\State
+\parbox[t]{\linegoal}{#1\strut}}
+%% ------------------------------------------------------------------------------

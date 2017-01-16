@@ -13,8 +13,6 @@ Management advice is provided in the form of decision tables which forecast the 
 % \section*{R\'esum\'e}\addcontentsline{toc}{section}{R\'ESUM\'E}
 \nonumsection*{R\'ESUM\'E}\addcontentsline{toc}{section}{R\'ESUM\'E}
 
-% \addcontentsline{toc}{section}{R\'ESUM\'E}
-
 \clearpage
 
 % Need numbering back to Arabic.
@@ -513,7 +511,7 @@ WCVISS & 0.061 & 0.104 & 0.172 & 0.022 & 0.059 & 0.118 \\
 \pagestyle{csaplscape}
 \begin{landscape}
   \centering
-<<results='asis', echo=FALSE>>=
+<<decision-table-base, results='asis', echo=FALSE>>=
 # Note that the first column will not be set to have any decimal digits because it is the TAC/Catch projection
 cap <- "Decision Table for the Reference Case showing posterior probabilities that 2016 projected biomass B\\subscr{t} is below a set of candidate reference points and benchmarks (Table \\ref{tab:refpoints}), and probabilities that the 2015 projected harvest rate U\\subscr{t} is above U\\subscr{2014} or U\\subscr{MSY} for a given level of female-only catch. Total catch is shown in columns 2 and 3 and is calculated by adding the male proportion based on the average of the last 4 years' proportions (column 2) and the average of the entire time series proportions (column 3). See table \\ref{tab:propfemale} for proportion values."
 makeTable(1, 7, ci=ci, burnthin=burnthin, digits=3, retxtable=TRUE, xcaption=cap, xlabel="tab:Decisions")
@@ -528,7 +526,7 @@ makeTable(1, 7, ci=ci, burnthin=burnthin, digits=3, retxtable=TRUE, xcaption=cap
 \pagestyle{csaplscape}
 \begin{landscape}
   \centering
-<<results='asis', echo=FALSE>>=
+<<decision-table-sens, results='asis', echo=FALSE>>=
 # Note that the first column will not be set to have any decimal digits because it is the TAC/Catch projection
 cap <- "Decision Table for a sensitivity model (Selectivity = Maturity, Table \\ref{tab:sensitivities}) showing posterior probabilities that 2016 projected biomass B\\subscr{t} is below a set of candidate reference points and benchmarks (Table \\ref{tab:refpoints}), and probabilities that the 2015 projected harvest rate U\\subscr{t} is above U\\subscr{2014} or U\\subscr{MSY} for a given level of female-only catch. Total catch is shown in columns 2 and 3 and is calculated by adding the male proportion based on the average of the last 4 years' proportions (column 2) and the average of the entire time series proportions (column 3). See table \\ref{tab:propfemale} for proportion values."
 makeTable(12, 7, ci=ci, burnthin=burnthin, digits=3, retxtable=TRUE, xcaption=cap, xlabel="tab:DecisionsSelMat")
@@ -1056,7 +1054,7 @@ g <- 3
 plotTS(plotNum=5,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topleft", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
 @
 \end{center}
-%\vspace{0mm}
+\vspace{-3mm}
 \caption{Estimated median recruitment with \mcmcci\ credible intervals, for models examining sensitivity to the steepness parameter.}
 \label{fig:sens-h-recruitment}
 \end{figure}
@@ -1087,7 +1085,7 @@ g <- 4
 plotTS(plotNum=5, sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topleft", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
 @
 \end{center}
-%\vspace{0mm}
+\vspace{-3mm}
 \caption{Estimated median recruitment with \mcmcci\ credible intervals, for models examining sensitivity to the standard deviation of the natural mortality  parameter.}
 \label{fig:sens-msd-recruitment}
 \end{figure}
@@ -1118,7 +1116,7 @@ g <- 5
 plotTS(plotNum=5,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topleft", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
 @
 \end{center}
-%\vspace{0mm}
+\vspace{-3mm}
 \caption{Estimated median recruitment with \mcmcci\ credible intervals, for models examining sensitivity to the natural mortality parameter.}
 \label{fig:sens-m-recruitment}
 \end{figure}
@@ -1149,7 +1147,7 @@ g <- 6
 plotTS(plotNum=5,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topleft", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
 @
 \end{center}
-%\vspace{0mm}
+\vspace{-3mm}
 \caption{Estimated recruitment with \mcmcci\ credible intervals, for models examining sensitivity to the catchability parameter.}
 \label{fig:sens-q-recruitment}
 \end{figure}
@@ -1180,7 +1178,7 @@ g <- 7
 plotTS(plotNum=5,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topleft", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
 @
 \end{center}
-%\vspace{0mm}
+\vspace{-3mm}
 \caption{Estimated recruitment with \mcmcci\ credible intervals, for models examining sensitivity to the catchability standard deviation parameter.}
 \label{fig:sens-qsd-recruitment}
 \end{figure}
