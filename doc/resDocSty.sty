@@ -39,7 +39,8 @@
 %%     initexmf --mkmaps
 %% ------------------------------------------------------------------------------
 
-%% Uses resDoc.bst file
+%% ------------------------------------------------------------------------------
+%% Use the resDoc.bst file for bibliography style.
 \usepackage{natbib}
 \usepackage[breaklinks=true,
             bookmarksopen=true,
@@ -52,8 +53,9 @@
             urlcolor=blue,
             bookmarksopen=true,
             bookmarksopenlevel=1}
+%% ------------------------------------------------------------------------------
 
-%% from web for fleqn
+%% For fleqn
 \usepackage{nccmath}
 %% If you want to add line numbers in
 \usepackage[pagewise]
@@ -99,10 +101,11 @@
 \usepackage{epsfig}   %% for epsfbox
 \usepackage{graphicx} %% for \includegraphics (eps and others)
 
-\raggedright  %% For ragged right margins (yes, ugly,
-              %%  but that's the rules, which of course
-              %%  exist because right justified in Word
-              %%  always looks so bad).
+%% For ragged right margins (yes, ugly,
+%%  but that's the rules, which of course
+%%  exist because right justified in Word
+%%  always looks so bad).
+\raggedright
 \raggedbottom
 %% I had also tried the newer \RaggedRight
 %%   from the ragged2e package, but it
@@ -125,24 +128,23 @@
 %%  thesis there's a way to make it a header always be on the
 %%  'outside' corner, so have a Google around.
 
-\setlength\parindent{0pt}    %% To not indent paragraphs.
-\parskip 2ex   %% was 3ex     %% To increase white space between
-                             %%  paragraphs (since not indenting).
-                             %% For POP 2011 I did this, presumably
-                             %%  because we did it in the Word version.
-                             %% See resDocSty-rh.sty if want it all in pt units
+%% To not indent paragraphs.
+\setlength\parindent{0pt}
+%% To increase white space between paragraphs (since not indenting).
+\parskip 2ex
 
-\def\headc{\vspace{-2ex}} %% contraction after 'fake' subsubheading
+%% contraction after 'fake' subsubheading
+\def\headc{\vspace{-2ex}}
 %% Fake subsubsubheading
 \def\subsubsub#1{\vspace{1ex} \noindent {\underline{#1}} \vspace{1ex}}
 
 %% From Rowan, and see resDocSty-rh.sty for his settings using pt.
 %% http://tex.stackexchange.com/questions/64756/what-is-glue-stretching
 %% In TeX any glue is composed by a fixed part, a stretchable part and a
-%% shrinkable part. Each of these parts can be zero.
+%%  shrinkable part. Each of these parts can be zero.
 %% The general form to express a glue is: <fixed part> plus <stretchable part>
-%% minus <shrinkable part>. Each of these parts can be expressed in any of TeX
-%% units (mm, cm, pt, em, etc.). For example 2cm plus 2mm minus 1mm.
+%%  minus <shrinkable part>. Each of these parts can be expressed in any of TeX
+%%  units (mm, cm, pt, em, etc.). For example 2cm plus 2mm minus 1mm.
 
 %% ------------------------------------------------------------------------------
 %% Section and Chapter commands which match the CSAS template guide.
@@ -193,7 +195,35 @@
 {2.3ex \@plus.2ex}                %% afterskip
 {\normalfont\large\bfseries\MakeUppercase}} %% style
 
-\newcommand\ApplyMainSectioning{
+\newcommand\TableOfContents{
+  \thispagestyle{fancyplain}
+  \pagenumbering{roman}
+  %% TOC is required by CSAS to be on page iii.
+  \setcounter{page}{3}
+  \renewcommand{\contentsname}{\bf \large \vspace{-25mm} TABLE OF CONTENTS}
+  \addtocontents{toc}{\protect\thispagestyle{fancy}}
+  \begin{center}
+    \tableofcontents
+  \end{center}
+  \newpage
+  %% To number subsubheadings
+  \setcounter{secnumdepth}{5}
+}
+
+\newcommand\Citation[1]{
+  %% Start citation indentation
+  \leftskip=3em
+  \parindent=-3em
+  {\bf Correct citation for this publication:}
+
+  #1
+
+  %% End citation indentation
+  \leftskip=0em
+  \parindent=-0em
+}
+
+\newcommand\Main{
   %% To number the main document sections, tables, etc.
   %%  as 1.1, 1.2, etc.
   \renewcommand{\thesection}{\arabic{section}.}
@@ -204,9 +234,11 @@
   \renewcommand{\theequation}{\arabic{equation}}
 }
 
-\newcommand\ApplyAppendixSectioning{
-  %% To number appendix sections, tables etc.
-  %%  as A.1, A.2, etc.
+\newcommand\Appendices{
+  %% Start appendices. Sets up numbering for appendix sections
+  %%  and their contents (tables, figures) to look like:
+  %%  A.1, A.2, A.1.2
+  \appendix
   %% Always start a new page for appendices
   \newpage
   \renewcommand{\thesection}{\thechapter.\arabic{section}}
@@ -219,36 +251,6 @@
   \addtocontents{toc}{\protect\setcounter{tocdepth}{0}}
   %% Set up first Appendix heading value
   \setcounter{chapter}{0}
-}
-
-\newcommand\InsertTOC{
-  %% preamble.tex - Table of contents
-  \thispagestyle{fancyplain}
-  \pagenumbering{roman}
-  %% TOC is required by CSAS to be on page iii.
-  \setcounter{page}{3}
-  \renewcommand{\contentsname}{\bf \large \vspace{-25mm} TABLE OF CONTENTS}
-  \addtocontents{toc}{\protect\thispagestyle{fancy}}
-  \begin{center}
-    \tableofcontents
-  \end{center}
-  \newpage
-  %% Start citation indentation
-  \leftskip=3em
-  \parindent=-3em
-  {\bf Correct citation for this publication:}
-
-  Non-citable Working Paper.	%%(req'mt by CSAS)
-
-  %% Cleary, J.S. and Haist, V. 2012.****
-  %% Stock Assessment and Management Advice for the British Columbia Pacific Herring Stocks: 2012 Assessment and 2013 Forecasts.
-  %% DFO Can. Sci. Advis. Sec. Res. Doc. 2012/xxx. xii + 151 p.
-
-  %% end citation indentation
-  \leftskip=0em
-  \parindent=-0em
-  %% To number subsubheadings
-  \setcounter{secnumdepth}{5}
 }
 
 %% Changes the name of the bibliography to REFERENCES.

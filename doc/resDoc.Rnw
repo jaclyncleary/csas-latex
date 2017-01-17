@@ -1,42 +1,16 @@
 \documentclass[11pt]{book}
+
 \usepackage{resDocSty}
 
-\definecolor{rowclr}{RGB}{255, 192, 203}
+%% ------------------------------------------------------------------------------
+%% Custom commands for this assessment
 \newcommand{\sQuote}[1]{`#1'}
 \newcommand{\dQuote}[1]{``#1''}
 \newcommand{\eqn}[1]{\begin{equation}#1\end{equation}}
 \newcommand{\gfrac}[2]{\genfrac{}{}{}{0}{#1}{#2}}
-
-\newcommand\bestfig[6]{ % #1=filename, #2=main caption, #3=figure height, #4=short caption #5=file extension #6=directory
-	% needs package epstopdf to work
-	\begin{figure}[htpb] %[htbp]
-	\centering
-	\ifthenelse{ \isempty{#5} \OR \equal{#5}{eps} }
-		{\includegraphics[width=6.5in,height=#3in,keepaspectratio=TRUE]{#6#1.eps}}
-		{\setlength\fboxsep{0pt}
-		 \setlength\fboxrule{0pt}
-		 \fbox{\includegraphics[width=6.5in,height=#3in,keepaspectratio=TRUE]{#6#1.#5}}}
-	% source: http://xelatex.blogspot.ca/2008/03/newcommand-with-optional-argument.html
-	\ifthenelse{\isempty{#4}}
-		{\caption[#2]{#2}}  % \vspace{-2ex}} AME removing
-		{\caption[#4]{#2}}  % \vspace{-2ex}}  ``
-	\label{fig:#1}
-	\end{figure}
-        }
-
-\newcommand\pbsfig[5]{    % #1=filename, #2=main caption, #3=figure height, #4=short caption, #5=directory
-	\begin{figure}[tp] %[htbp]  Rowan had ht!
-	\centering
-	\includegraphics[width=6.5in,height=#3in,keepaspectratio=TRUE]{#5#1.eps}
-	% source: http://xelatex.blogspot.ca/2008/03/newcommand-with-optional-argument.html
-	\ifthenelse{\isempty{#4}}
-		{\caption[#2]{#2}\vspace{-2ex}}
-		{\caption[#4]{#2}\vspace{-2ex}}
-	\label{fig:#1}
-	\end{figure}
-}
-
-%% eor - Show two things with a vertical bar between them
+%% For subscripts in text mode
+\newcommand{\subscr}[1]{$_{\text{#1}}$}
+%% eor - Show two things with a vertical bar between them. e.g. A|B
 \newcommand{\eor}[2]{{#1$\Vert$#2}}
 %% bM - makes equations larger
 \newcommand{\bM}[1]{\mathlarger{\mathlarger{#1}}}
@@ -51,9 +25,17 @@
 \newcommand{\Amat}{Age-at-50\%-maturity}
 \newcommand{\amat}{age-at-50\%-maturity}
 \newcommand{\bc}{British Columbia}
-
-% For subscripts in text mode
-\newcommand{\subscr}[1]{$_{\text{#1}}$}
+\newcommand{\Bmsy}{B_\mathrm{MSY}}
+\newcommand{\umsy}{u_\mathrm{MSY}}
+%% MCMC globals to use in all MCMC related text and discussions
+\newcommand{\mcmclength}{15 million}
+\newcommand{\mcmcsampfreq}{7,500}
+\newcommand{\mcmcnsamp}{2,000}
+\newcommand{\mcmcburnin}{1,000}
+%% The confidence interval used in MCMC. Must be the same as what's in
+%%  the knitr code block.
+\newcommand{\mcmcci}{95\%}
+%% ------------------------------------------------------------------------------
 
 %% ------------------------------------------------------------------------------
 %% Headers and footers
@@ -64,38 +46,20 @@
 %% \rfoot{DRAFT - DO NOT CITE}
 %% ------------------------------------------------------------------------------
 
-\newcommand{\Bmsy}{B_\mathrm{MSY}}
-\newcommand{\umsy}{u_\mathrm{MSY}}
-\newcommand{\MapData}{C:/Work/ArrowtoothFlounder/2014Assessment/data/MapData}
-
-\newcommand{\EstM}{`Estimate \emph{M}'}
-\newcommand{\FixM}{`Fix \emph{M}'}
-
-% MCMC globals to use in all MCMC related text and discussions
-\newcommand{\mcmclength}{15 million} % MCMC Chain length
-\newcommand{\mcmcsampfreq}{7,500}    % Sampling frequency
-\newcommand{\mcmcnsamp}{2,000}       % Number of samples saved
-\newcommand{\mcmcburnin}{1,000}      % Number of samples removed from the beginning of the chain
-\newcommand{\mcmcndata}{1,000}       % nsamp - burnin, this is the actual number of samples used
-\newcommand{\mcmcci}{95\%}           % The confidence interval used in MCMC. Must be the same as what's in the knitr code block
-
 \begin{document}
 
-% Load iscam-gui list object scenarios - Make sure all are set up in correct order before running this
-% Also, set up standard plot sizes for the document
-%%<<echo=TRUE,  message=TRUE, results='asis', warning=TRUE>>=
 <<echo=FALSE,  message=FALSE, results='hide', warning=FALSE>>=
 opts_chunk$set(dev='cairo_ps',fig.path='knitr-cache/', fig.dpi=96, fig.width=7.5,
               fig.height=4, echo=FALSE, results=FALSE, message=FALSE, warning=FALSE,
                results='hide', cache=TRUE, cache.path='knitr-cache/')
-# If you source the file, it will load all the scenarios. A quicker way is to load the Rdata file
-# directly from the gui directory. Make sure all scenarios are correct and then do iscam(T) from the
-# .Rdata environment in the iscam-gui directory and save the file when you close Rgui. Then this will
-# source that binary file directly, which is much faster.
-#
+## If you source the file, it will load all the scenarios. A quicker way is to load the Rdata file
+## directly from the gui directory. Make sure all scenarios are correct and then do iscam(T) from the
+## .Rdata environment in the iscam-gui directory and save the file when you close Rgui. Then this will
+## source that binary file directly, which is much faster.
+##
 #setwd('../../iscam-gui')
-#source('iscam-gui.r')
-#iscam(showgui=FALSE)
+##source('iscam-gui.r')
+##iscam(showgui=FALSE)
 
 load("../../iscam-gui/.RData")
 require(PBSmodelling)
@@ -160,15 +124,24 @@ modellinetypes[[8]] <- list(1,1,1)
 modelnames[[8]] <- list("Reference Model","Trawl selex fixed at maturity","Trawl selex fixed at 6yr")
 @
 
-\InsertTOC
-\ApplyMainSectioning % Must come after \InsertTOC
+\TableOfContents
+
+%% \Citation{
+%% %% Non-citable Working Paper.
+%% Grandin, C. J. and Forrest, R. E., 2015.
+%% Arrowtooth Flounder (\emph{\sciencename}) Stock Assessment for the West Coast of British Columbia
+%% DFO Can. Sci. Advis. Sec. Res. Doc. 2015/xxx. xii + 89 p.
+%% }
+
+\Main
 
 <<main-doc, child='maindoc/maindoc.Rnw'>>=
 @
 
-\appendix
-\ApplyAppendixSectioning % Must come after \appendix
+\Appendices
 
+%% Need \refstepcounter{chapter} before every new appendix
+%%  to increment the appendix letter.
 \refstepcounter{chapter}
 <<biological-data, child='app-biology/app-biology.Rnw'>>=
 @
