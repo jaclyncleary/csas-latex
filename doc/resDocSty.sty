@@ -5,6 +5,17 @@
 %% Rowan Haigh
 %% Chris Grandin
 
+%% Use the following codes for references within the document:
+%%   chap: appendix
+%%    sec: section
+%% subsec: subsection
+%%    fig: figure
+%%    tab: table
+%%     eq: equation
+%%    lst: code listing
+%%    itm: enumerated list item
+%%    app: appendix subsection
+%%
 %% Notes on installing a package when the MikTex servers are down:
 %% Go to CTAN and get your package. Unzip, and mvoe contents to:
 %% C:Program Files/MiKTeX 2.6/tex/latex/PACKAGE_NAME where
@@ -22,7 +33,8 @@
 %% http://mirrors.ctan.org/install/fonts/urw/arial.tds.zip
 %% Download the TDS-compliant zip and unzip into C:\texlocal
 %% The directory should contain three subdirectories: doc, fonts, and tex.
-%% Be sure that the directory under `fonts' includes `type1' not `type' (rename if necesary)
+%% Be sure that the directory under `fonts' includes `type1' not `type'
+%%  (rename if necesary)
 %% Go to Start->Programs->Maintenance(Admin)->MikTex Settings(Admin)
 %%  - Go to the Roots tab
 %%  - Click `Add' and add C:\texlocal
@@ -42,6 +54,10 @@
 %% ------------------------------------------------------------------------------
 %% Use the resDoc.bst file for bibliography style.
 \usepackage{natbib}
+%% ------------------------------------------------------------------------------
+
+%% ------------------------------------------------------------------------------
+%% Load hyperlink package and set up link colors
 \usepackage[breaklinks=true,
             bookmarksopen=true,
             bookmarksdepth=3]
@@ -55,9 +71,13 @@
             bookmarksopenlevel=1}
 %% ------------------------------------------------------------------------------
 
-%% For fleqn
+%% ------------------------------------------------------------------------------
+%% For fleqn, which aligns equations
 \usepackage{nccmath}
-%% If you want to add line numbers in
+%% ------------------------------------------------------------------------------
+
+%% ------------------------------------------------------------------------------
+%% If you want to show line numbers in the document
 \usepackage[pagewise]
            {lineno}
 \usepackage[top=1in,
@@ -65,7 +85,9 @@
             left=1in,
             right=1in]
            {geometry}
+%% ------------------------------------------------------------------------------
 
+%% ------------------------------------------------------------------------------
 %% To add in headers and footers
 \usepackage{fancyhdr}
 \usepackage[format=plain,
@@ -75,6 +97,7 @@
             justification=raggedright,
             singlelinecheck=false]
            {caption}
+%% ------------------------------------------------------------------------------
 
 %% ------------------------------------------------------------------------------
 %% Table of Contents
@@ -92,67 +115,50 @@
 \setlength{\cftbeforechapskip}{0pt}
 %% ------------------------------------------------------------------------------
 
+%% ------------------------------------------------------------------------------
+%% To have less whitespace after Table caption. 'above' tells it to put the
+%%  skip after caption, but you may still need to have the caption before the
+%%  table in .tex
 \captionsetup[table]{position=above, skip=5pt}
-%% To have less whitespace after Table
-%%  caption. 'above' tells it to put the
-%%  skip after caption, but you may still
-%%  need to have the caption before
-%%  the table in .tex.
-\usepackage{epsfig}   %% for epsfbox
-\usepackage{graphicx} %% for \includegraphics (eps and others)
+%% ------------------------------------------------------------------------------
 
-%% For ragged right margins (yes, ugly,
-%%  but that's the rules, which of course
-%%  exist because right justified in Word
-%%  always looks so bad).
+%% ------------------------------------------------------------------------------
+%% If you are including EPS files these are necessary
+%% For epsfbox
+\usepackage{epsfig}
+%% for \includegraphics (eps and others)
+\usepackage{graphicx}
+%% ------------------------------------------------------------------------------
+
+%% ------------------------------------------------------------------------------
+%% For ragged right and bottom margins (yes, ugly, but that's the rules, which
+%%  of course exist because right justified in Word always looks so bad)
 \raggedright
 \raggedbottom
-%% I had also tried the newer \RaggedRight
-%%   from the ragged2e package, but it
-%%   seems to introduce lots of hyphens.
-%% \usepackage{ragged2e}   %% For RaggedRight which is apparently
-%%  a better word-breaking algorithm,
-%%  (raggedright tries to avoid hyphens).
-%% You actually need the ms package (Martin
-%%  Schroeder), as ragged2e calls others.
-%% \RaggedRight
+%% ------------------------------------------------------------------------------
 
-%% Headers and footers - see \lhead etc. at the start of .tex
-\pagestyle{fancy}
-\renewcommand{\footrulewidth}
-  {0.4pt}
-\renewcommand{\headrulewidth}
-  {0.4pt}
-%% For Res Doc, best to have a left and a right footer (header), not
-%%  just one (for double-sided printing). Though I remember from my
-%%  thesis there's a way to make it a header always be on the
-%%  'outside' corner, so have a Google around.
-
+%% ------------------------------------------------------------------------------
+%% Paragraph text settings
 %% To not indent paragraphs.
 \setlength\parindent{0pt}
 %% To increase white space between paragraphs (since not indenting).
 \parskip 2ex
+%% ------------------------------------------------------------------------------
 
-%% contraction after 'fake' subsubheading
+%% ------------------------------------------------------------------------------
+%% Contraction after fake subsubheading
 \def\headc{\vspace{-2ex}}
 %% Fake subsubsubheading
 \def\subsubsub#1{\vspace{1ex} \noindent {\underline{#1}} \vspace{1ex}}
-
-%% From Rowan, and see resDocSty-rh.sty for his settings using pt.
-%% http://tex.stackexchange.com/questions/64756/what-is-glue-stretching
-%% In TeX any glue is composed by a fixed part, a stretchable part and a
-%%  shrinkable part. Each of these parts can be zero.
-%% The general form to express a glue is: <fixed part> plus <stretchable part>
-%%  minus <shrinkable part>. Each of these parts can be expressed in any of TeX
-%%  units (mm, cm, pt, em, etc.). For example 2cm plus 2mm minus 1mm.
+%% ------------------------------------------------------------------------------
 
 %% ------------------------------------------------------------------------------
-%% Section and Chapter commands which match the CSAS template guide.
-%% http://help-csli.stanford.edu/tex/latex-sections.shtml#section
-%% http://zoonek.free.fr/LaTeX/LaTeX_samples_section/0.html
-%% Font sizes I think will actually be 10.95pt
-%%   for normal and 11.75pt for \large, according to the table in
-%% http://en.wikibooks.org/wiki/LaTeX/Formatting#Sizing_text
+%% Commands which match the CSAS template guide for sections, subsections,
+%%  subsubsections, and chapters. There is also a command for appsection, which
+%%  left-justifies sections in the appendices as they are now below chapters.
+%% There are also macros to set up the table of contents, main body, and
+%%  appendices correctly for CSAS.
+%% The bibliography is renamed REFERENCES as well.
 \makeatletter
 %% These two commands are required to use Arial for the document.
 \renewcommand{\rmdefault}{phv}
@@ -266,16 +272,15 @@
 
 %% ------------------------------------------------------------------------------
 %% Defines the header and footer rules for a CSAS paper.
+\pagestyle{fancy}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headrulewidth}{0.4pt}
 \fancypagestyle{csapfancy}{%%
   %% \fancyhead[L]{}%%{DRAFT -- Non-citable working paper}
   %% \fancyhead[R]{}%%{CSAP WP2016zzzxx}
   %% \fancyfoot[L]{}%%{Appendix \thechapter -- Model Results}
   %% \fancyfoot[R]{}%%{\Sexpr{paste0(sppname," (",area.name,")")}}
   \fancyfoot[C]{\thepage}
-  \renewcommand{\headrulewidth}
-    {0.4pt}
-  \renewcommand{\footrulewidth}
-    {0.4pt}
 }
 %% ------------------------------------------------------------------------------
 
@@ -366,36 +371,10 @@
 %% ------------------------------------------------------------------------------
 
 %% ------------------------------------------------------------------------------
-%% Included packages
-\usepackage{cite}
-%% Need array when specifying a ragged right column:
-%%  >{\raggedright\arraybackslash}{p2in}.
-\usepackage{longtable,array}
-\usepackage{import}            % for figures in chapter subdirectories
-\usepackage{graphicx}          % For inclusion of figures
-\usepackage{verbatim,fancyvrb} % Check - may be in .sty file
-\usepackage{xifthen}           % provides \ifthenelse and \isempty
-\usepackage{color, colortbl}
-\usepackage{arydshln}          % For dashed lines in tables (has to be loaded after other stuff)
-\usepackage[parfill]{parskip}  % So paragraphs will have a blank line between them
-\setlength{\parskip}{12pt}
-
-% Use the following codes for references within the document.
-%   chap: appendix
-%    sec: section
-% subsec: subsection
-%    fig: figure
-%    tab: table
-%     eq: equation
-%    lst: code listing
-%    itm: enumerated list item
-%    app: appendix subsection
-\usepackage{hypcap}            % So links will anchor at figure, not caption
-\usepackage{subfig}            % For two-panel plots
-\usepackage{relsize}           % For mathlarger, which makes equations bigger
-\usepackage{algorithm}         % For display of pseudocode
-\usepackage{algpseudocode}     % For display of pseudocode
-\usepackage{linegoal}          % For display of pseudocode
+%% For display of pseudocode
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{linegoal}
 % A \Let command for defining assignments within the algorithmic environment which
 % supports automatic indentation when the second argument is too long to fit
 % on one line
@@ -405,4 +384,31 @@
 % content is too long to fit on one line
 \newcommand*{\LongState}[1]{\State
 \parbox[t]{\linegoal}{#1\strut}}
+%% ------------------------------------------------------------------------------
+
+%% ------------------------------------------------------------------------------
+%% Other included packages
+\usepackage{cite}
+%% Need array when specifying a ragged right column:
+%%  >{\raggedright\arraybackslash}{p2in}.
+\usepackage{longtable,array}
+%% For figures in chapter subdirectories
+\usepackage{import}
+%% For inclusion of figures
+\usepackage{graphicx}
+\usepackage{verbatim,fancyvrb}
+%% Provides \ifthenelse and \isempty
+\usepackage{xifthen}
+\usepackage{color, colortbl}
+%% For dashed lines in tables
+\usepackage{arydshln}
+%% So paragraphs will have a blank line between them
+\usepackage[parfill]{parskip}
+\setlength{\parskip}{12pt}
+%% So links will anchor at figure, not caption
+\usepackage{hypcap}
+%% For two-panel plots
+\usepackage{subfig}
+%% For mathlarger, which makes equations bigger
+\usepackage{relsize}
 %% ------------------------------------------------------------------------------
