@@ -17,10 +17,9 @@
 %% Allow newline breaks in a table cell:
 %%  syntax is \specialcell{first line\\second line}
 \newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
-\newcommand{\fishname}{Arrowtooth Flounder}
-\newcommand{\sciencename}{Atheresthes stomias}
-\newcommand{\familyname}{Pleuronectidae}
-\newcommand{\commonname}{Turbot}
+\newcommand{\fishname}{Fave fish}
+\newcommand{\sciencename}{Latin fish}
+\newcommand{\commonname}{Fishy-fish}
 \newcommand{\Avuln}{Age-at-50\%-vulnerability}
 \newcommand{\Amat}{Age-at-50\%-maturity}
 \newcommand{\amat}{age-at-50\%-maturity}
@@ -48,89 +47,36 @@
 
 \begin{document}
 
+%% This is the initial code chunk where you load your R workspace.
+%% This gives access to all objects in the RData file for the entirety
+%%  of the document. Use \Sexpr{objname} to put values in text.
+%% Note that libraries need to be loaded as they are not saved in
+%%  the RData file.
 <<echo=FALSE,  message=FALSE, results='hide', warning=FALSE>>=
-opts_chunk$set(dev='cairo_ps',fig.path='knitr-cache/', fig.dpi=96, fig.width=7.5,
-              fig.height=4, echo=FALSE, results=FALSE, message=FALSE, warning=FALSE,
-               results='hide', cache=TRUE, cache.path='knitr-cache/')
-## If you source the file, it will load all the scenarios. A quicker way is to load the Rdata file
-## directly from the gui directory. Make sure all scenarios are correct and then do iscam(T) from the
-## .Rdata environment in the iscam-gui directory and save the file when you close Rgui. Then this will
-## source that binary file directly, which is much faster.
-##
-#setwd('../../iscam-gui')
-##source('iscam-gui.r')
-##iscam(showgui=FALSE)
-
-load("../../iscam-gui/.RData")
+opts_chunk$set(dev = 'cairo_ps',
+               fig.path = 'knitr-cache/',
+               fig.dpi = 96,
+               fig.width = 7.5,
+               fig.height=4,
+               echo = FALSE,
+               results = FALSE,
+               message = FALSE,
+               warning = FALSE,
+               results = 'hide',
+               cache = TRUE,
+               cache.path = 'knitr-cache/')
+## Must include any libraries here as they are not stored in the RData file.
 require(PBSmodelling)
-require(tcltk)
-require(coda)
-require(ggplot2) # Only used for Observed landings plot.
-require(reshape2)
-require(Hmisc)
-require(methods)
-require(xtable) # For tables which can be inserted into latex docs with knitr
-ci <- 95
-ps <- list(res=300,w=400,h=300)
-burnthin <- list(1000,1)
-opacity <- 30 # opaqueness of the envelope plots, i.e. biomass, depletion, and any barplots
-# 'sens' is the object required by the iscam-gui plot routines. It defines groups to be used for
-# sensitivities. It is a list of vectors, with the list's index being the sensGroup number passed to
-# the plotting routines. All sensitivities can be set up here and used in the maindoc. The names are
-# what will be displayed on plots. The lines can be any color or linetype.
-sens <- list()
-modelcolors <- list()
-modellinetypes <- list()
-modelnames <- list()
-# Sensitivity group 1, changing sigma
-sens[[1]] <- c(1,2,3)
-modelcolors[[1]] <- list("black","red","green")
-modellinetypes[[1]] <- list(1,1,1)
-modelnames[[1]] <- list("Reference Model","Sigma=0.1","Estimated Total Variance")
-# Sensitivity group 2, changing tau
-sens[[2]] <- c(1,4,5)
-modelcolors[[2]] <- list("black","red","green")
-modellinetypes[[2]] <- list(1,1,1)
-modelnames[[2]] <- list("Reference Model, Tau=0.8","Tau=1.0","Tau=0.6")
-# Sensitivity group 3, changing steepness
-sens[[3]] <- c(1,6)
-modelcolors[[3]] <- list("black","red")
-modellinetypes[[3]] <- list(1,1)
-modelnames[[3]] <- list("Reference Model","Low steepness")
-# Sensitivity group 4, changing M standard deviation
-sens[[4]] <- c(1,7,8)
-modelcolors[[4]] <- list("black","red","green")
-modellinetypes[[4]] <- list(1,1,1)
-modelnames[[4]] <- list("Reference Model","M=0.2, SD=0.05","M=0.2, SD=0.25")
-# Sensitivity group 5, changing M value
-sens[[5]] <- c(1,9)
-modelcolors[[5]] <- list("black","red")
-modellinetypes[[5]] <- list(1,1)
-modelnames[[5]] <- list("Reference Model","M=0.3, SD=0.2")
-# Sensitivity group 6, changing priors on Q (value)
-sens[[6]] <- c(1,10)
-modelcolors[[6]] <- list("black","red")
-modellinetypes[[6]] <- list(1,1)
-modelnames[[6]] <- list("Reference Model","Q priors, mean=ln(1), SD=1")
-# Sensitivity group 7, changing priors on Q (standard deviation)
-sens[[7]] <- c(1,11)
-modelcolors[[7]] <- list("black","red")
-modellinetypes[[7]] <- list(1,1)
-modelnames[[7]] <- list("Reference Model","Q priors, mean=ln(0.5), SD=1.5")
-# Sensitivity group 8, fixing trawl selectivity
-sens[[8]] <- c(1,12,13)
-modelcolors[[8]] <- list("black","red","green")
-modellinetypes[[8]] <- list(1,1,1)
-modelnames[[8]] <- list("Reference Model","Trawl selex fixed at maturity","Trawl selex fixed at 6yr")
+load(".RData")
 @
 
 \TableOfContents
 
 %% \Citation{
 %% %% Non-citable Working Paper.
-%% Grandin, C. J. and Forrest, R. E., 2015.
-%% Arrowtooth Flounder (\emph{\sciencename}) Stock Assessment for the West Coast of British Columbia
-%% DFO Can. Sci. Advis. Sec. Res. Doc. 2015/xxx. xii + 89 p.
+%% Author, B.
+%% \fishname\ (\emph{\sciencename}) Stock Assessment for the West Coast of British Columbia
+%% DFO Can. Sci. Advis. Sec. Res. Doc. 2016/xxx. xii + XX p.
 %% }
 
 \Main
@@ -143,15 +89,7 @@ modelnames[[8]] <- list("Reference Model","Trawl selex fixed at maturity","Trawl
 %% Need \refstepcounter{chapter} before every new appendix
 %%  to increment the appendix letter.
 \refstepcounter{chapter}
-<<biological-data, child='app-biology/app-biology.Rnw'>>=
-@
-
-\refstepcounter{chapter}
 <<prop-female, child='app-propfemale/app-propfemale.Rnw'>>=
-@
-
-\refstepcounter{chapter}
-<<agecomp-weighting, child='app-agecompweighting/app-agecompweighting.Rnw'>>=
 @
 
 \refstepcounter{chapter}
