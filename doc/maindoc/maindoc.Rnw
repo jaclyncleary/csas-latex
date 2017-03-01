@@ -1,87 +1,128 @@
-\nonumsection*{ABSTRACT}\addcontentsline{toc}{section}{ABSTRACT}
-\fishname\ (\emph{\sciencename}, \commonname) are an important component of the bottom trawl fishery in \bc.
+\abstract{}
 
-%% French abstract must appear on new page
-\newpage
+Insert abstract text here
 
-\nonumsection*{R\'ESUM\'E}\addcontentsline{toc}{section}{R\'ESUM\'E}
+\frenchabtract{
+  Insert French abstract title here
+}
 
-\clearpage
+Insert French abstract text here
 
-% Need numbering back to Arabic.
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
 \section{INTRODUCTION}
-\fishname\ (\emph{\sciencename}, Family \familyname), also commonly called \commonname, is a species of fish that occurs in the offshore waters of \bc. \fishname\ are primarily taken by the groundfish bottom trawl fishery, although they are also encountered by hook and line fisheries, particularly those targeting Pacific Halibut (\emph{Hippoglossus stenolepis}) \citet{arf2001}.
+\fishname\ (\emph{\sciencename}, Family \familyname), also commonly called
+\commonname, is a species of fish that occurs in the offshore waters of \bc.
+\fishname\ are primarily taken by the groundfish bottom trawl fishery, although
+they are also encountered by hook and line fisheries, particularly those
+targeting Pacific Halibut (\emph{Hippoglossus stenolepis}) \citet{arf2001}.
 
 \subsection{PURPOSE OF DOCUMENT}
-\fishname\ is managed as a coastwide stock in \bc, with the majority of the catch coming from Pacific Marine Fisheries Commission (PMFC) major areas 3CD (West Coast Vancouver Island), 5AB (Queen Charlotte Sound) and 5CD (Hecate Strait) (Figures \ref{fig:cpue} and \ref{fig:totalcatch}, Table \ref{tab:totalcatch}).
+\fishname\ is managed as a coastwide stock in \bc, with the majority of the
+catch coming from Pacific Marine Fisheries Commission (PMFC) major areas 3CD
+(West Coast Vancouver Island), 5AB (Queen Charlotte Sound) and 5CD
+(Hecate Strait) (Figures \ref{fig:cpue} and \ref{fig:totalcatch},
+Table \ref{tab:totalcatch}).
 
 \subsection{BIOLOGICAL BACKGROUND}
-\fishname\ are distinguished by everyone's preference for eating them, for which the species is named (\citet{hart1973}).
+\fishname\ are distinguished by everyone's preference for eating them, for which
+the species is named (\citet{hart1973}).
 
 %% Get the value linf from R
 Theoretical maximum length, $L_\infty$, is estimated to be $\Sexpr{linf}$ cm.
 
-Juvenile \fishname\ feed primarily on mobile prey such as cumaceans, carideans and amphipods. Adults are piscivorous and cannibalistic, feeding on Pacific Herring (\emph{Clupea pallasii}), juvenile Walleye Pollock (\emph{Theragra chalcogramma}) and Pacific Sandlance (\emph{Ammodytes hexapterus}), among other species (\citet{fargo1981}).
+Juvenile \fishname\ feed primarily on mobile prey such as cumaceans, carideans
+and amphipods. Adults are piscivorous and cannibalistic, feeding on Pacific
+Herring (\emph{Clupea pallasii}), juvenile Walleye Pollock
+(\emph{Theragra chalcogramma}) and Pacific Sandlance
+(\emph{Ammodytes hexapterus}), among other species (\citet{fargo1981}).
 
 \subsection{FISHERY AND MANAGEMENT HISTORY} \label{sec:managementhistory}
 \fishname\ has been managed on a status-quo basis in recent years.
 
-
 \subsection{ASSESSMENT HISTORY}
-The coastwide \fishname\ stock was last assessed by \citet{arf2001}, who presented summaries of catch, commercial and survey catch-pre-unit-of-effort (CPUE) analyses, and biological data.
+The coastwide \fishname\ stock was last assessed by \citet{arf2001}, who
+presented summaries of catch, commercial and survey
+catch-pre-unit-of-effort (CPUE) analyses, and biological data.
 
 \section{STOCK ASSESSMENT MODELLING}
-We applied a female-only statistical catch-at-age model in a Bayesian estimation framework to assess the coastwide stock of \fishname. Analysis of the sex composition of the catch data indicated that commercial catches have been 80-90\% female; see Appendix \ref{chap:propfemale}, Table \ref{tab:propfemale}.
+We applied a female-only statistical catch-at-age model in a Bayesian estimation
+framework to assess the coastwide stock of \fishname. Analysis of the sex
+composition of the catch data indicated that commercial catches have been
+80-90\% female; see Appendix \ref{chap:propfemale}, Table \ref{tab:propfemale}.
 
-Reference points based on Maximum Sustainable Yield (MSY), including the female spawning biomass (\emph{B}\subscr{MSY}) and the annual harvest rate producing MSY (\emph{U}\subscr{MSY}), were estimated, along with reference points based on estimated equilibrium unfished spawning biomass (\emph{B}\subscr{0}) (Section \ref{sec:FisheryRefPoints}).
+Reference points based on Maximum Sustainable Yield (MSY), including the female
+spawning biomass (\emph{B}\subscr{MSY}) and the annual harvest rate producing MSY
+(\emph{U}\subscr{MSY}), were estimated, along with reference points based on
+estimated equilibrium unfished spawning biomass (\emph{B}\subscr{0})
+(Section \ref{sec:FisheryRefPoints}).
 
 \subsection{DATA INPUTS}
 \subsubsection{Data Sources}
 Data were extracted from three different databases:
-\begin{enumerate}[noitemsep,nolistsep]
-  \item GFBio - Biological samples and research cruise database. This data archive includes most of the groundfish specimen data collected since the 1950s.  It includes data from a variety of sources (port and at-sea commercial sampling, research survey sampling), collected using a variety of sampling methods.
-  \item PacHarvTrawl - Canadian trawl landings, 1996 to March 31, 2007. SQL Server database, Groundfish Section, Marine Ecosystems and Aquaculture Division, Science Branch, Fisheries and Oceans Canada, Pacific Biological Station.
-  \item GFFOS - Canadian trawl landings, April 1, 2007 to 2014. View of the Fisheries and Oceans Canada (DFO) Fishery Operations (FOS) database. Groundfish Section, Marine Ecosystems and Aquaculture Division, Science Branch, Fisheries and Oceans Canada, Pacific Biological Station.
-\end{enumerate}
+\begin{resdoclist}
+  \item GFBio - Biological samples and research cruise database. This data
+    archive includes most of the groundfish specimen data collected since the
+    1950s.  It includes data from a variety of sources (port and at-sea
+    commercial sampling, research survey sampling), collected using a variety of
+    sampling methods.
+  \item PacHarvTrawl - Canadian trawl landings, 1996 to March 31, 2007. SQL
+    Server database, Groundfish Section, Marine Ecosystems and Aquaculture
+    Division, Science Branch, Fisheries and Oceans Canada, Pacific Biological
+    Station.
+  \item GFFOS - Canadian trawl landings, April 1, 2007 to 2014. View of the
+    Fisheries and Oceans Canada (DFO) Fishery Operations (FOS) database.
+    Groundfish Section, Marine Ecosystems and Aquaculture Division, Science
+    Branch, Fisheries and Oceans Canada, Pacific Biological Station.
+\end{resdoclist}
 
 \subsubsection{Catch Data} \label{sec:catchdata}
-Commercial fishing data are presented in this document for the period January 1, 1996 to December 31, 2014. Landings and discards are shown in Table \ref{tab:totalcatch}.
+Commercial fishing data are presented in this document for the period January
+1, 1996 to December 31, 2014. Landings and discards are shown in
+Table \ref{tab:totalcatch}.
 
-See Section \ref{sec:future-research} for further discussion and research recommendations on catch.
+See Section \ref{sec:future-research} for further discussion and research
+recommendations on catch.
 
 \subsubsection{Abundance Indices}
-Four sets of fishery independent survey indices of abundance were used in this assessment. Each series was multiplied by its respective proportion female (calculated in Appendix \ref{chap:propfemale}), to give female-only indices of abundance (Table \ref{tab:Indices}). The surveys used in this assessment were:
+Four sets of fishery independent survey indices of abundance were used in this
+assessment. Each series was multiplied by its respective proportion female
+(calculated in Appendix \ref{chap:propfemale}), to give female-only indices of
+abundance (Table \ref{tab:Indices}). The surveys used in this assessment were:
 
-\begin{enumerate}[noitemsep,nolistsep]
+\begin{resdoclist}
   \item The Hecate Strait Multispecies Assemblage Survey (HSMAS)
   \item The Hecate Strait Synoptic Survey (HSSS)
   \item The Queen Charlotte Sound Synoptic Survey (QCSSS)
   \item The West Coast Vancouver Island Synoptic Survey (WCVISS)
-\end{enumerate}
+\end{resdoclist}
 
 \textbf{Swept area analysis for Indices of abundance} \\
-For all surveys, the swept area estimate of biomass in year $y$ was obtained by summing the product of the CPUE and the area surveyed across the surveyed strata $i$:
+For all surveys, the swept area estimate of biomass in year $y$ was obtained by
+summing the product of the CPUE and the area surveyed across the surveyed
+strata $i$:
 
 \begin{align} \label{eq:sweptareaindex}
 B_y = \sum_{i=1}^kC_{y_i}A_i=\sum_{i=1}^kB_{y_i}
 \end{align}
-where $C_{y_i}$ is the mean CPUE density ($kg/km^2$) for species $s$ in stratum $i$, $A_i$ is the area of stratum $i$, $B_{y_i}$ is the biomass of \fishname\ in stratum $i$ for year $y$, and $k$ is the number of strata.
+where $C_{y_i}$ is the mean CPUE density ($kg/km^2$) for species $s$ in stratum
+$i$, $A_i$ is the area of stratum $i$, $B_{y_i}$ is the biomass of \fishname\ in
+stratum $i$ for year $y$, and $k$ is the number of strata.
 
-CPUE ($C_{y_i}$) for \fishname\ in stratum $i$ for year $y$ was calculated as a density in $kg/km^2$ by:
+CPUE ($C_{y_i}$) for \fishname\ in stratum $i$ for year $y$ was calculated as a
+density in $kg/km^2$ by:
 
 \subsubsection{Age Data} \label{sec:agedata}
 Extensive ageing was done for this assessment.
 
 Age composition data represented the whole coast, for the following years:
-\begin{enumerate}[noitemsep,nolistsep]
+\begin{resdoclist}
   \item Commercial trawl
   \item QCSSS
   \item HSSS
   \item WCVISS
-\end{enumerate}
+\end{resdoclist}
 
 \subsubsection{Commercial length data} \label{sec:commercial-length-data}
 Length data from the freezer trawler and shoreside fleets.\\
@@ -89,68 +130,92 @@ Length data from the freezer trawler and shoreside fleets.\\
 \subsection{STATISTICAL CATCH-AT-AGE MODEL}
 
 \subsubsection{Model Description}
-A female-only, Bayesian statistical catch-at-age model was applied to assess the coastwide stock status of \fishname. The model is based on the Integrated Statistical Catch Age Model (iSCAM) framework, \citet{martell2011}. Full model details are provided in Appendix \ref{chap:equations}.\\
+A female-only, Bayesian statistical catch-at-age model was applied to assess the
+coastwide stock status of \fishname. The model is based on the Integrated
+Statistical Catch Age Model (iSCAM) framework, \citet{martell2011}. Full model
+details are provided in Appendix \ref{chap:equations}.\\
 
 \subsubsection{Prior Probability Distributions} \label{sec:priors}
-Prior probability distributions for the Reference Case are shown in Figure \ref{fig:priors}.\\
+Prior probability distributions for the Reference Case are shown in
+Figure \ref{fig:priors}.\\
 
 \subsubsection{Fishery reference points} \label{sec:FisheryRefPoints}
-The DFO Fishery Decision-making Framework Incorporating the Precautionary Approach (PA) policy (\citet{dfo09}) requires stock status to be characterized using three reference points:
+The DFO Fishery Decision-making Framework Incorporating the Precautionary
+Approach (PA) policy (\citet{dfo09}) requires stock status to be
+characterized using three reference points:
 
-\begin{enumerate}[noitemsep,nolistsep]
+\begin{resdoclist}
   \item a Reference Removal Rate
   \item an Upper Stock Reference point (USR)
   \item a Limit Reference Point (LRP)
-\end{enumerate}
+\end{resdoclist}
 
 Harvest control rule: Figure \ref{fig:hcrillustration}.\\
 
 \subsection{RESULTS} \label{sec:results}
 \subsubsection{Model diagnostics}
-The joint posterior distribution was numerically approximated using the Markov Chain Monte Carlo (MCMC) routines built into AD Model Builder (\citet{fournier2012}).\\
+The joint posterior distribution was numerically approximated using the Markov
+Chain Monte Carlo (MCMC) routines built into AD Model Builder
+(\citet{fournier2012}).\\
 
 \subsubsection{Fits to data}
-Maximum posterior density (MPD) model fits to the four indices of abundance are shown.\\
+Maximum posterior density (MPD) model fits to the four indices of abundance are
+shown.\\
 
 \subsubsection{Relative spawning biomass}
-Median posterior estimates (and 95\% credibility interval) of relative female spawning biomass $\frac{B_t}{B_0}$ are shown.\\
+Median posterior estimates (and 95\% credibility interval) of relative female
+spawning biomass $\frac{B_t}{B_0}$ are shown.\\
 
 \subsection{SENSITIVITY ANALYSES} \label{sec:sensitivities}
 The full list of sensitivity scenarios is provided.\\
 
-\subsubsection{Alternative values of variance parameters $\vartheta^2$ and $\rho$} \label{sec:variance}
-The Reference Case used fixed values for variance parameters $\vartheta^2$ and $\rho$.\\
+\subsubsection{Alternative values of variance parameters $\vartheta^2$
+  and $\rho$} \label{sec:variance}
+The Reference Case used fixed values for variance parameters $\vartheta^2$
+and $\rho$.\\
 
-\subsubsection{Prior probablility distribution for steepness ($h$)} \label{sec:priorsteepness}
+\subsubsection{Prior probablility distribution for
+  steepness ($h$)} \label{sec:priorsteepness}
 Sensitivity to the assumed prior probability distribution for steepness.\\
 
 \subsubsection{Prior probabliity distribution for $\ln(M)$} \label{sec:priorm}
-The Reference Case assumed a normal prior probability distribution for $\ln(M)$, with mean = $\ln(0.2)$.\\
+The Reference Case assumed a normal prior probability distribution for $\ln(M)$,
+with mean = $\ln(0.2)$.\\
 
-\subsubsection{Prior probablity distribution for survey catchability ($q_k$)} \label{sec:priorsurveyq}
-Given that the swept area methodology described in Eq. \ref{eq:sweptareaindex} did not attempt to inflate estimated biomass.\\
+\subsubsection{Prior probablity distribution for survey
+  catchability ($q_k$)} \label{sec:priorsurveyq}
+Given that the swept area methodology described in Eq. \ref{eq:sweptareaindex}
+did not attempt to inflate estimated biomass.\\
 
 \section{RECOMMENDATIONS AND YIELD OPTIONS}
 
 \subsection{DECISION TABLES} \label{sec:DecisionTables}
 
 \subsubsection{Reference Case}
-Performance measures were calculated over a sequence of alternative projected catch levels.
+Performance measures were calculated over a sequence of alternative projected
+catch levels.
 
-Ratio $\frac{B_{2016}}{B_{ReferencePoint}} < 1$. An undesirable fishing mortality-based performance measure is defined to occur when projected 2015 fishing mortality is above the reference point, i.e., $\frac{F_{2015}}{F_{ReferencePoint}} > 1$.
+Ratio $\frac{B_{2016}}{B_{ReferencePoint}} < 1$. An undesirable fishing
+mortality-based performance measure is defined to occur when projected 2015
+fishing mortality is above the reference point,
+i.e., $\frac{F_{2015}}{F_{ReferencePoint}} > 1$.
 
 \section{FUTURE RESEARCH AND DATA REQUIREMENTS} \label{sec:future-research}
-As with all fishery stock assessments, there are two major types of uncertainty in the advice presented in this document:
+As with all fishery stock assessments, there are two major types of
+uncertainty in the advice presented in this document:
 
-\begin{enumerate}[noitemsep,nolistsep]
+\begin{resdoclist}
   \item Uncertainty in the estimates of model parameters within the assessment
-  \item Structural uncertainty arising from processes and data that were not included in the assessment
-\end{enumerate}
+  \item Structural uncertainty arising from processes and data that were not
+    included in the assessment
+\end{resdoclist}
 
 
 \section{ACKNOWLEDGEMENTS}
 
-We thank the members of the \fishname\ Technical Working Group for their valuable advice as this project progressed. They contributed material for Appendix \ref{chap:propfemale}.\\
+We thank the members of the \fishname\ Technical Working Group for their
+valuable advice as this project progressed. They contributed material for
+Appendix \ref{chap:propfemale}.\\
 
 \bibliographystyle{resDoc}
 \bibliography{../../all}
@@ -161,12 +226,24 @@ We thank the members of the \fishname\ Technical Working Group for their valuabl
 
 <<results='asis', echo=FALSE>>=
 cap <- "Coastwide landings and discards in tonnes for \\fishname. See also Figure \\ref{fig:totalcatch}."
-makeTable(1, 10, digits=3, retxtable=TRUE, xcaption=cap, xlabel="tab:totalcatch")
+makeTable(1,
+          10,
+          digits = 3,
+          retxtable = TRUE,
+          xcaption = cap,
+          xlabel = "tab:totalcatch")
 @
 
 <<results='asis', echo=FALSE>>=
 cap <- "Annual female-only indices of abundance and CVs for the four indices used in this assessment."
-makeTable(1, 8, ci=ci, burnthin=burnthin, digits=3, retxtable=TRUE, xcaption=cap, xlabel="tab:Indices")
+makeTable(1,
+          8,
+          ci = ci,
+          burnthin = burnthin,
+          digits = 3,
+          retxtable = TRUE,
+          xcaption = cap,
+          xlabel = "tab:Indices")
 @
 
 \clearpage
@@ -176,10 +253,15 @@ makeTable(1, 8, ci=ci, burnthin=burnthin, digits=3, retxtable=TRUE, xcaption=cap
 \begin{center}
 \includegraphics[width=6in,keepaspectratio=true]{cpueFigures/ARF-1996-2014-CPUE.eps}
 \end{center}
-%\vspace{0mm}
-% To get the grid size in km^2 for the caption:
-% While in the gui for the map, type mean(xtcall(PBSmap)$pdata$area) for the map you currently have loaded.
-\caption{Mean catch-per-unit-effort (CPUE, kg/h) of \fishname\ in grid cells 0.1$^\circ$ longitude by 0.075$^\circ$ latitude (roughly 57.8~km$^2$). The shaded cells give an approximation of the area where \fishname\ was encountered by fishing events from the groundfish trawl fishery from January 1, 1996 to October 7, 2014. Contours are 200 m and 1000 m isobaths. Red lines are PFMA area boundaries.}
+%% To get the grid size in km^2 for the caption:
+%% While in the gui for the map, type mean(xtcall(PBSmap)$pdata$area) for the map
+%%  you currently have loaded.
+\caption{Mean catch-per-unit-effort (CPUE, kg/h) of \fishname\ in grid cells
+  0.1$^\circ$ longitude by 0.075$^\circ$ latitude (roughly 57.8~km$^2$). The
+  shaded cells give an approximation of the area where \fishname\ was
+  encountered by fishing events from the groundfish trawl fishery from
+  January 1, 1996 to October 7, 2014. Contours are 200 m and 1000 m isobaths.
+  Red lines are PFMA area boundaries.}
 \label{fig:cpue}
 \end{figure}
 
@@ -199,7 +281,9 @@ par(oldPar)
 @
 \end{center}
 %\vspace{0mm}
-\caption{Total coastwide catch of \fishname, including both landings and discards (a). Panels (b) and (c) represent areas 3CD and 5ABCDE respectively. See Table \ref{tab:totalcatch} for values.}
+\caption{Total coastwide catch of \fishname, including both landings and discards
+  (a). Panels (b) and (c) represent areas 3CD and 5ABCDE respectively. See
+  Table \ref{tab:totalcatch} for values.}
 \label{fig:totalcatch}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -214,7 +298,9 @@ plotBiology(plotNum=11, compFitSex=0, index=1, showtitle=FALSE, scenario=1)
 @
 \end{center}
 %\vspace{0mm}
-\caption{Age composition data for the Reference Case for the commercial trawl fishery. Blue points represent zero samples. N values represent the number of specimens aged in each year.}
+\caption{Age composition data for the Reference Case for the commercial trawl
+  fishery. Blue points represent zero samples. N values represent the number of
+  specimens aged in each year.}
 \label{fig:agecomps-trawl}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -223,15 +309,38 @@ plotBiology(plotNum=11, compFitSex=0, index=1, showtitle=FALSE, scenario=1)
 \begin{center}
 <<agecomps-surveys, fig.height=9, fig.width=8>>=
 oldPar <- par(no.readonly=TRUE)
-layout(matrix(c(1,2,3,0), 2, 2, byrow=TRUE))
-plotBiology(plotNum=11, compFitSex=0, index=2, showtitle=FALSE, scenario=1, add=TRUE, indletter=1)
-plotBiology(plotNum=11, compFitSex=0, index=4, showtitle=FALSE, scenario=1, add=TRUE, indletter=2)
-plotBiology(plotNum=11, compFitSex=0, index=5, showtitle=FALSE, scenario=1, add=TRUE, indletter=3)
+layout(matrix(c(1, 2, 3, 0),
+              2,
+              2,
+              byrow = TRUE))
+plotBiology(plotNum = 11,
+            compFitSex = 0,
+            index = 2,
+            showtitle = FALSE,
+            scenario = 1,
+            add = TRUE,
+            indletter = 1)
+plotBiology(plotNum = 11,
+            compFitSex = 0,
+            index = 4,
+            showtitle = FALSE,
+            scenario = 1,
+            add = TRUE,
+            indletter = 2)
+plotBiology(plotNum = 11,
+            compFitSex = 0,
+            index = 5,
+            showtitle = FALSE,
+            scenario = 1,
+            add = TRUE,
+            indletter = 3)
 par(oldPar)
 @
 \end{center}
 %\vspace{0mm}
-\caption{Age composition data for the Reference Case for the surveys (a) QCSSS, (b) HSSS, and (c) WCVISS. Blue points represent zero samples. N values represent the number of specimens aged in each year.}
+\caption{Age composition data for the Reference Case for the surveys (a) QCSSS,
+  (b) HSSS, and (c) WCVISS. Blue points represent zero samples. N values
+  represent the number of specimens aged in each year.}
 \label{fig:agecomps-surveys}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -243,16 +352,43 @@ par(oldPar)
 \begin{center}
 <<lengthsubfleet, fig.height=9, fig.width=8>>=
 oldPar <- par(no.readonly=TRUE)
-layout(matrix(c(1,2,3,4), 2, 2, byrow=TRUE))
-plotBiology(plotNum=17, scenario=1, plotsubfleet=TRUE, lengthcompsex=2, add=TRUE, indletter=1)
-plotBiology(plotNum=17, scenario=1, plotsubfleet=FALSE, lengthcompsex=2, add=TRUE, indletter=2)
-plotBiology(plotNum=17, scenario=1, plotsubfleet=TRUE, lengthcompsex=1, add=TRUE, indletter=3)
-plotBiology(plotNum=17, scenario=1, plotsubfleet=FALSE, lengthcompsex=1, add=TRUE, indletter=4)
+layout(matrix(c(1, 2, 3, 4),
+              2,
+              2,
+              byrow = TRUE))
+plotBiology(plotNum = 17,
+            scenario = 1,
+            plotsubfleet = TRUE,
+            lengthcompsex = 2,
+            add = TRUE,
+            indletter = 1)
+plotBiology(plotNum = 17,
+            scenario = 1,
+            plotsubfleet = FALSE,
+            lengthcompsex = 2,
+            add = TRUE,
+            indletter = 2)
+plotBiology(plotNum = 17,
+            scenario = 1,
+            plotsubfleet = TRUE,
+            lengthcompsex = 1,
+            add = TRUE,
+            indletter = 3)
+plotBiology(plotNum = 17,
+            scenario = 1,
+            plotsubfleet = FALSE,
+            lengthcompsex = 1,
+            add = TRUE,
+            indletter = 4)
 par(oldPar)
 @
 \end{center}
 %\vspace{0mm}
-\caption{Length quantiles (2.5\textsuperscript{th}, 50\textsuperscript{th}, and 97.5\textsuperscript{th} percentiles) from samples taken on freezer trawler vessels (a and c) and shoreside vessels (b and d) for females (a and b) and males (c and d). N is the number of specimens sampled for length for the given year.}
+\caption{Length quantiles (2.5\textsuperscript{th}, 50\textsuperscript{th}, and
+  97.5\textsuperscript{th} percentiles) from samples taken on freezer trawler
+  vessels (a and c) and shoreside vessels (b and d) for females (a and b) and
+  males (c and d). N is the number of specimens sampled for length for the
+  given year.}
 \label{fig:lengthsubfleet}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -263,7 +399,10 @@ par(oldPar)
 \begin{figure}[htp]
 \begin{center}
 <<priors>>=
-plotConvergence(1, 5, burnthin=burnthin, showtitle=FALSE, priorsonly=TRUE, latexnames=TRUE)
+plotConvergence(1,
+                5,
+                burnthin = burnthin,
+                showtitle=FALSE, priorsonly=TRUE, latexnames=TRUE)
 @
 \end{center}
 %\vspace{0mm}

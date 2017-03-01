@@ -52,6 +52,12 @@
 %% ------------------------------------------------------------------------------
 
 %% ------------------------------------------------------------------------------
+%% Remove space between the Table of contents title and it's content.
+\usepackage{tocloft}
+\setlength\cftaftertoctitleskip{6pt}
+%% ------------------------------------------------------------------------------
+
+%% ------------------------------------------------------------------------------
 %% Use the resDoc.bst file for bibliography style.
 \usepackage{natbib}
 %% ------------------------------------------------------------------------------
@@ -69,6 +75,12 @@
             urlcolor=blue,
             bookmarksopen=true,
             bookmarksopenlevel=1}
+%% ------------------------------------------------------------------------------
+
+%% ------------------------------------------------------------------------------
+%% Set up numbering of bookmarks in the final pdf
+\usepackage{bookmark}
+\bookmarksetup{numbered}
 %% ------------------------------------------------------------------------------
 
 %% ------------------------------------------------------------------------------
@@ -267,39 +279,63 @@
 %% Makes figures stick to the top of the page. i.e. if there is a single figure
 %%  on a page, it will be placed in the center. This forces it to stick to the top.
 \setlength\@fptop{0pt}
+
+%% Make all minipages be ragged right like the main text
+\let\@minipagerestore=\raggedright
+
+%% Make appendices have entry in the table of contents
+\newcommand{\starredchapter}[1]{
+  \clearpage
+  %% Make spacing between top of page and heading less.
+  \vspace*{-50\p@}
+  \phantomsection
+  %% Add the appendix name to the table of contents.
+  \addcontentsline{toc}{chapter}{#1}\chapter*{#1}
+}
+
+%% Make English abstract have entry in the table of contents
+\newcommand{\abstract}{
+  \clearpage
+  %% Make spacing between top of page and heading less.
+  \vspace*{-50\p@}
+  \phantomsection
+  %% Add the appendix name to the table of contents.
+  \addcontentsline{toc}{section}{ABSTRACT}\nonumsection*{ABSTRACT}
+}
+
+%% Make French abstract have entry in the table of contents
+\newcommand{\frenchabstract}[1]{
+  \clearpage
+  %% Make spacing between top of page and heading less.
+  \vspace*{-30\p@}
+  \phantomsection
+  \begin{center}
+    \Large \textbf{#1}
+  \end{center}
+  \vspace{-6mm}
+  %% Add the appendix name to the table of contents.
+  \addcontentsline{toc}{section}{R\'ESUM\'E}\nonumsection*{R\'ESUM\'E}
+}
+
+%% Make a landscape page properly, with the page numbers and bars rotated to
+%%  be along the long side for ease of reading in a PDF viewer.
+\newenvironment{landscapepage}[1]{
+  \newgeometry{hmargin=1in,vmargin=1in}
+  \thispagestyle{csaplscape}
+  \begin{landscape}
+    \centering
+    #1
+}{
+  \end{landscape}
+  \restoregeometry
+  \clearpage
+}
+
 \makeatother
 %% ------------------------------------------------------------------------------
 
 %% ------------------------------------------------------------------------------
-%% Defines the header and footer rules for a CSAS paper.
-\pagestyle{fancy}
-\renewcommand{\footrulewidth}{0.4pt}
-\renewcommand{\headrulewidth}{0.4pt}
-\fancypagestyle{csapfancy}{%%
-  %% \fancyhead[L]{}%%{DRAFT -- Non-citable working paper}
-  %% \fancyhead[R]{}%%{CSAP WP2016zzzxx}
-  %% \fancyfoot[L]{}%%{Appendix \thechapter -- Model Results}
-  %% \fancyfoot[R]{}%%{\Sexpr{paste0(sppname," (",area.name,")")}}
-  \fancyfoot[C]{\thepage}
-}
-%% ------------------------------------------------------------------------------
-
-%% ------------------------------------------------------------------------------
-%% For landscape pages.
-%% To do it properly, i.e. top and bottom lines and page number also rotated to
-%%  landscape, do this:
-%% \newgeometry{hmargin=1in,vmargin=1in}
-%% \thispagestyle{csaplscape}
-%% \pagestyle{csaplscape}
-%% \begin{landscape}
-%%   \centering
-%%
-%% Table code here, or knitr code chunk which prints an xtable.
-%%
-%% \end{landscape}
-%% \restoregeometry
-%% \pagestyle{csapfancy}
-
+%% For landscape pages in CSAS documents
 \usepackage{pdflscape}
 \usepackage[absolute]{textpos}
 \setlength{\TPHorizModule}
@@ -307,9 +343,21 @@
 \setlength{\TPVertModule}
   {11.0in}
 \fancypagestyle{csaplscape}{
+  %% The argument is the left footer text
   %% clear all header and footer fields
   \fancyhf{}
-  \fancyfoot{}%%
+  \fancyfoot{}
+  %% Make the footers appear in landscape mode
+  %% The 25pt in the first line adjusts the height (in landscape mode)
+  %%  and the 90 rotates the footer name. The \footskip+0.0 makes it align
+  %%  with the footer bar, like the pages in portrait mode do.
+  %% Left footer:
+  \fancyfoot[L]{\makebox[\textwidth+25pt][r]{
+      \smash{\raisebox{\dimexpr\footskip+0.0\textheight}{\rotatebox{90}{\fishname}}}}}
+  %% Right footer - uncomment and change DRAFT to whatever the value for the right
+  %%  footer is and the 1.3 to fit it. This is a hack, no time to figure it out.
+%%  \fancyfoot[R]{\makebox[\textwidth+25pt][r]{
+%%    \smash{\raisebox{\dimexpr\footskip+1.3\textheight}{\rotatebox{90}{DRAFT}}}}}
   \begin{textblock}
     {1}(0.1,0.0909)
     {\rotatebox{90}
@@ -328,10 +376,27 @@
       {\thepage}
     }
   \end{textblock}
+  %% Get rid of lines along sides of landscape page
   \renewcommand{\headrulewidth}
-    {0pt} %% Get rid of lines along sides of landscape page
+    {0pt}
   \renewcommand{\footrulewidth}
     {0pt}
+}
+%% ------------------------------------------------------------------------------
+
+%% ------------------------------------------------------------------------------
+%% Defines the header and footer rules for a CSAS paper.
+\pagestyle{fancy}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancypagestyle{csapfancy}{%%
+  %% \fancyhead[L]{}%%{DRAFT -- Non-citable working paper}
+  %% \fancyhead[R]{}%%{CSAP WP2016zzzxx}
+  %% \fancyfoot[L]{}%%{Appendix \thechapter -- Model Results}
+  %% \fancyfoot[R]{}%%{\Sexpr{paste0(sppname," (",area.name,")")}}
+  \fancyfoot[C]{\thepage}
+  \renewcommand{\footrulewidth}{0.4pt}
+  \renewcommand{\headrulewidth}{0.4pt}
 }
 %% ------------------------------------------------------------------------------
 
@@ -362,12 +427,21 @@
 %%  e.g. level 2 uses small alphabetic characters and
 %%  level 3 uses roman numerals.
 \usepackage{enumitem}
-\newlist{longitem}{enumerate}{5}
-\setlist[longitem,1]{label=\arabic*)}
-\setlist[longitem,2]{label=\alph*)}
-\setlist[longitem,3]{label=\roman*)}
-\setlist[longitem,4]{label=\arabic*)}
-\setlist[longitem,5]{label=\alph*)}
+\newlist{resdoclist}{enumerate}{5}
+\setlist[resdoclist]{
+  align=left,       % Left align labels
+  topsep=0pt,       % Vertical space before the list
+  labelindent=18pt, % Space betw. margin of list and label
+  labelsep*=-6pt,   % Space betw. numbers and text (note * is req'd)
+  leftmargin=!,     % No space betw. margin of list and following lines
+  itemindent=0pt    % Hanging indentation (after first line)
+}
+\setlist[resdoclist,1]{label=\arabic*.}
+\setlist[resdoclist,2]{label=\alph*.}
+\setlist[resdoclist,3]{label=\roman*.}
+\setlist[resdoclist,4]{label=\arabic*.}
+\setlist[resdoclist,5]{label=\alph*.}
+\setlist{nosep} % Remove all space between list items globally
 %% ------------------------------------------------------------------------------
 
 %% ------------------------------------------------------------------------------
@@ -411,4 +485,9 @@
 \usepackage{subfig}
 %% For mathlarger, which makes equations bigger
 \usepackage{relsize}
+%% Allows the french abstract to be pasted in with special characters intact
+%% Make sure maindoc.rnw is saved in utf8 encoding.
+%% In emacs you can change the coding with Ctrl-x Ctrl-m f
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 %% ------------------------------------------------------------------------------
