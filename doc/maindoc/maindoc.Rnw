@@ -2,22 +2,25 @@
 
 Insert abstract text here
 
-\frenchabtract{
+\frenchabstract{
   Insert French abstract title here
 }
 
 Insert French abstract text here
 
+%% The next two lines are required to start off numbering
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
+%% Section names must be in all caps
 \section{INTRODUCTION}
-\fishname\ (\emph{\sciencename}, Family \familyname), also commonly called
-\commonname, is a species of fish that occurs in the offshore waters of \bc.
+\fishname\ (\emph{\sciencename}, Family \familyname), is a species of fish that
+occurs in the offshore waters of \bc.
 \fishname\ are primarily taken by the groundfish bottom trawl fishery, although
 they are also encountered by hook and line fisheries, particularly those
 targeting Pacific Halibut (\emph{Hippoglossus stenolepis}) \citet{arf2001}.
 
+%% Subsection names must be in all caps
 \subsection{PURPOSE OF DOCUMENT}
 \fishname\ is managed as a coastwide stock in \bc, with the majority of the
 catch coming from Pacific Marine Fisheries Commission (PMFC) major areas 3CD
@@ -47,7 +50,7 @@ presented summaries of catch, commercial and survey
 catch-pre-unit-of-effort (CPUE) analyses, and biological data.
 
 \section{STOCK ASSESSMENT MODELLING}
-We applied a female-only statistical catch-at-age model in a Bayesian estimation
+We applied a statistical catch-at-age model in a Bayesian estimation
 framework to assess the coastwide stock of \fishname. Analysis of the sex
 composition of the catch data indicated that commercial catches have been
 80-90\% female; see Appendix \ref{chap:propfemale}, Table \ref{tab:propfemale}.
@@ -61,6 +64,8 @@ estimated equilibrium unfished spawning biomass (\emph{B}\subscr{0})
 \subsection{DATA INPUTS}
 \subsubsection{Data Sources}
 Data were extracted from three different databases:
+%% Use resdoclist for all lists to ensure you meet CSAS formatting style.
+%% resdoclist is defined in ResDocSty.sty
 \begin{resdoclist}
   \item GFBio - Biological samples and research cruise database. This data
     archive includes most of the groundfish specimen data collected since the
@@ -129,6 +134,7 @@ Length data from the freezer trawler and shoreside fleets.\\
 
 \subsection{STATISTICAL CATCH-AT-AGE MODEL}
 
+%% Subsubsections are not all caps
 \subsubsection{Model Description}
 A female-only, Bayesian statistical catch-at-age model was applied to assess the
 coastwide stock status of \fishname. The model is based on the Integrated
@@ -249,23 +255,6 @@ makeTable(1,
 \clearpage
 
 \section{FIGURES}
-\begin{figure}[!htp]
-\begin{center}
-\includegraphics[width=6in,keepaspectratio=true]{cpueFigures/ARF-1996-2014-CPUE.eps}
-\end{center}
-%% To get the grid size in km^2 for the caption:
-%% While in the gui for the map, type mean(xtcall(PBSmap)$pdata$area) for the map
-%%  you currently have loaded.
-\caption{Mean catch-per-unit-effort (CPUE, kg/h) of \fishname\ in grid cells
-  0.1$^\circ$ longitude by 0.075$^\circ$ latitude (roughly 57.8~km$^2$). The
-  shaded cells give an approximation of the area where \fishname\ was
-  encountered by fishing events from the groundfish trawl fishery from
-  January 1, 1996 to October 7, 2014. Contours are 200 m and 1000 m isobaths.
-  Red lines are PFMA area boundaries.}
-\label{fig:cpue}
-\end{figure}
-
-\clearpage
 
 % CATCH PLOTS
 %%%%%%%%%%%%%%%%%%%%%%%
