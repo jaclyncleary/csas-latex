@@ -17,6 +17,8 @@ load.iscam.files <- function(model.dir,
   model$ctl <- read.control.file(model$ctl.file,
                                  model$dat$num.gears,
                                  model$dat$num.age.gears)
+  model$proj <- read.projection.file(model$proj.file)
+  model$par <- read.par.file(file.path(model.dir, par.file))
   ## Load MPD results
   model$mpd <- rep.to.r.list(file.path(model.dir, rep.file))
   ## Load the data, control, and projection file for the model
@@ -1069,132 +1071,142 @@ read.control.file <- function(file = NULL,
   tmp
 }
 
-readProjection <- function(file = NULL, verbose = FALSE){
+read.projection.file <- function(file = NULL,
+                                 verbose = FALSE){
   ## Read in the projection file given by 'file'
   ## Parses the file into its constituent parts
-  ## And returns a list of the contents
+  ##  and returns a list of the contents
 
-  data <- readLines(file, warn=FALSE)
+  data <- readLines(file, warn = FALSE)
 
   ## Remove any empty lines
   data <- data[data != ""]
 
   ## remove preceeding whitespace if it exists
-  data <- gsub("^[[:blank:]]+","",data)
+  data <- gsub("^[[:blank:]]+", "", data)
 
   ## Get the element numbers which start with #.
-  dat <- grep("^#.*",data)
+  dat <- grep("^#.*", data)
   ## remove the lines that start with #.
   dat <- data[-dat]
 
   ## remove comments which come at the end of a line
-  dat <- gsub("#.*","",dat)
+  dat <- gsub("#.*", "", dat)
 
   ## remove preceeding and trailing whitespace
-  dat <- gsub("^[[:blank:]]+","",dat)
-  dat <- gsub("[[:blank:]]+$","",dat)
+  dat <- gsub("^[[:blank:]]+", "", dat)
+  dat <- gsub("[[:blank:]]+$", "", dat)
 
   ## Now we have a nice bunch of string elements which are the inputs for iscam.
-  ## Here we parse them into a list structure
+  ## Here we parse them into a list structure.
   ## This is dependent on the current format of the DAT file and needs to
-  ## be updated whenever the DAT file changes format
+  ##  be updated whenever the proj file changes format.
   tmp <- list()
   ind <- 0
 
   ## Get the TAC values
-  tmp$ntac  <- as.numeric(dat[ind <- ind + 1])
-  for(tac in 1:tmp$ntac){
-    tmp$tacvec[tac] <- as.numeric(dat[ind <- ind + 1])
+  tmp$num.tac  <- as.numeric(dat[ind <- ind + 1])
+  for(tac in 1:tmp$num.tac){
+    ## Read in the tacs, one, per line
+    tmp$tac.vec[tac] <- as.numeric(dat[ind <- ind + 1])
   }
-  ## Below used if the tac vector is on one line
-  ## tmp$tacvec <- as.numeric(strsplit(dat[ind <- ind + 1],"[[:blank:]]+")[[1]])
+
+  ## If the tac vector is on one line
+  ##tmp$tac.vec <- as.numeric(strsplit(dat[ind <- ind + 1],"[[:blank:]]+")[[1]])
 
   ## Get the control options vector
-  tmp$ncntrloptions <- as.numeric(dat[ind <- ind + 1])
-  nrows <- tmp$ncntrloptions
-  ncols <- 1
-  tmp$cntrloptions  <- matrix (NA, nrow = nrows, ncol = ncols)
-  for(row in 1:nrows){
-    tmp$cntrloptions[row,1] <- as.numeric(dat[ind <- ind + 1])
+  tmp$num.ctl.options <- as.numeric(dat[ind <- ind + 1])
+  n.rows <- tmp$num.ctl.options
+  n.cols <- 1
+  tmp$ctl.options  <- matrix (NA, nrow = n.rows, ncol = n.cols)
+  for(row in 1:n.rows){
+    tmp$ctl.options[row, 1] <- as.numeric(dat[ind <- ind + 1])
   }
-
-  ## Rownames here are hardwired, so if you add a new row you must add a name for it here
-  rownames(tmp$cntrloptions) <- c("syrmeanm",
-                                  "nyrmeanm",
-                                  "syrmeanfecwtageproj",
-                                  "nyrmeanfecwtageproj",
-                                  "syrmeanrecproj",
-                                  "nyrmeanrecproj",
-                                  "shortcntrlpts",
-                                  "longcntrlpts",
-                                  "bmin")
+  ## Rownames here are hardwired, so if you add a new row you must add a name
+  ##  or it here.
+  option.names <- c("syrmeanm",
+                    "nyrmeanm",
+                    "syrmeanfecwtageproj",
+                    "nyrmeanfecwtageproj",
+                    "syrmeanrecproj",
+                    "nyrmeanrecproj",
+                    "shortcntrlpts",
+                    "longcntrlpts",
+                    "bmin")
+  rownames(tmp$ctl.options) <- option.names[1:tmp$num.ctl.options]
   tmp$eof <- as.numeric(dat[ind <- ind + 1])
-  return(tmp)
+  tmp
 }
 
-readPar <- function(file = NULL, verbose = FALSE){
-  # Read in the parameter estimates file given by 'file'
-  # Parses the file into its constituent parts
-  # And returns a list of the contents
+read.par.file <- function(file = NULL,
+                          verbose = FALSE){
+  ## Read in the parameter estimates file given by 'file'
+  ## Parses the file into its constituent parts
+  ## And returns a list of the contents
 
-  data <- readLines(file, warn=FALSE)
+  data <- readLines(file, warn = FALSE)
   tmp <- list()
   ind <- 0
 
-  # Remove preceeding #
-  convCheck <- gsub("^#[[:blank:]]*","",data[1])
-  # Remove all letters, except 'e'
-  #convCheck <- gsub("[[:alpha:]]+","",convCheck)
-  convCheck <- gsub("[abcdfghijklmnopqrstuvwxyz]","",convCheck, ignore.case=T)
-  # Remove the equals signs
-  convCheck <- gsub("=","",convCheck)
-  # Remove all preceeding and trailing whitespace
-  convCheck <- gsub("^[[:blank:]]+","",convCheck)
-  convCheck <- gsub("[[:blank:]]+$","",convCheck)
-  # Get the values, round is used to force non-scientific notation
-  convCheck <- as.numeric(strsplit(convCheck,"[[:blank:]]+")[[1]])
-  # Remove all NA's from the vector (these were just 'e's on their own.)
-  convCheck <- convCheck[!is.na(convCheck)]
+  ## Remove preceeding #
+  conv.check <- gsub("^#[[:blank:]]*", "", data[1])
+  ## Remove all letters, except 'e'
+  ##convCheck <- gsub("[[:alpha:]]+","",convCheck)
+  convCheck <- gsub("[abcdfghijklmnopqrstuvwxyz]",
+                    "",
+                    conv.check,
+                    ignore.case = TRUE)
+  ## Remove the equals signs
+  conv.check <- gsub("=", "", conv.check)
+  ## Remove all preceeding and trailing whitespace
+  conv.check <- gsub("^[[:blank:]]+", "", conv.check)
+  conv.check <- gsub("[[:blank:]]+$", "", conv.check)
+  ## Get the values, round is used to force non-scientific notation
+  conv.check <- as.numeric(strsplit(conv.check, "[[:blank:]]+")[[1]])
+  ## Remove all NA's from the vector (these were just 'e's on their own.)
+  conv.check <- conv.check[!is.na(conv.check)]
 
-  # The following values are saved for appending to the tmp list later
-  numParams   <- convCheck[1]
-  objFunValue <-  format(convCheck[2], digits=6, scientific=FALSE)
-  maxGradient <-  format(convCheck[3], digits=8, scientific=FALSE)
+  ## The following values are saved for appending to the tmp list later
+  num.params   <- conv.check[1]
+  obj.fun.val <-  format(conv.check[2], digits = 6, scientific = FALSE)
+  max.gradient <-  format(conv.check[3], digits = 8, scientific = FALSE)
 
-  # Remove the first line from the par data since we already parsed it and saved the values
+  ##Remove the first line from the par data since we already parsed it and saved the values
   data <- data[-1]
 
-  # At this point, every odd line is a comment and every even line is the value.
-  # Parse the names from the odd lines (oddData) and parse the
-  # values from the even lines (evenData)
-  oddElem <- seq(1,length(data),2)
-  evenElem <- seq(2,length(data),2)
-  oddData <- data[oddElem]
-  evenData <- data[evenElem]
+  ## At this point, every odd line is a comment and every even line is the value.
+  ## Parse the names from the odd lines (oddData) and parse the
+  ## values from the even lines (evenData)
+  odd.elem <- seq(1, length(data), 2)
+  even.elem <- seq(2, length(data), 2)
+  odd.data <- data[odd.elem]
+  even.data <- data[even.elem]
 
-  # remove preceeding and trailing whitespace if it exists from both names and values
-  names <- gsub("^[[:blank:]]+","",oddData)
-  names <- gsub("[[:blank:]]+$","",names)
-  values <- gsub("^[[:blank:]]+","",evenData)
-  values <- gsub("[[:blank:]]+$","",values)
+  ## Remove preceeding and trailing whitespace if it exists from both
+  ##  names and values.
+  names <- gsub("^[[:blank:]]+", "", odd.data)
+  names <- gsub("[[:blank:]]+$", "", names)
+  values <- gsub("^[[:blank:]]+", "", even.data)
+  values <- gsub("[[:blank:]]+$", "", values)
 
-  # Remove the preceeding # and whitespace and the trailing : from the names
+  ## Remove the preceeding # and whitespace and the trailing : from the names
   pattern <- "^#[[:blank:]]*(.*)[[:blank:]]*:"
-  names <- sub(pattern,"\\1",names)
+  names <- sub(pattern, "\\1", names)
 
-  # Remove any square brackets from the names
-  names <- gsub("\\[|\\]","",names)
+  ## Remove any square brackets from the names
+  names <- gsub("\\[|\\]", "", names)
 
-  dataLength <- length(names)
-  for(item in 1:(dataLength)){
-    tmp[[item]] <- as.numeric(strsplit(values[ind <- ind + 1],"[[:blank:]]+")[[1]])
+  data.length <- length(names)
+  for(item in 1:(data.length)){
+    tmp[[item]] <-
+      as.numeric(strsplit(values[ind <- ind + 1], "[[:blank:]]+")[[1]])
   }
 
   names(tmp) <- names
-  tmp$numParams <- numParams
-  tmp$objFunValue <- objFunValue
-  tmp$maxGradient <- maxGradient
-  return(tmp)
+  tmp$num.params <- num.params
+  tmp$obj.fun.val <- as.numeric(obj.fun.val)
+  tmp$max.gradient <- as.numeric(max.gradient)
+  tmp
 }
 
 readMCMC <- function(dired = NULL, verbose = TRUE){
