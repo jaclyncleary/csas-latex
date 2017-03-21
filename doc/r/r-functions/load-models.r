@@ -14,6 +14,9 @@ load.iscam.files <- function(model.dir,
 
   ## Load the input files
   model$dat <- read.data.file(model$dat.file)
+  model$ctl <- read.control.file(model$ctl.file,
+                                 model$dat$num.gears,
+                                 model$dat$num.age.gears)
   ## Load MPD results
   model$mpd <- rep.to.r.list(file.path(model.dir, rep.file))
   ## Load the data, control, and projection file for the model
@@ -646,7 +649,8 @@ rep.to.r.list <- function(fn){
   return(ret)
 }
 
-read.data.file <- function(file = NULL, verbose = FALSE){
+read.data.file <- function(file = NULL,
+                           verbose = FALSE){
   ## Read in the iscam datafile given by 'file'
   ## Parses the file into its constituent parts
   ## And returns a list of the contents
@@ -876,4 +880,358 @@ read.data.file <- function(file = NULL, verbose = FALSE){
   }
   tmp$eof <- as.numeric(dat[ind <- ind + 1])
   tmp
+}
+
+read.control.file <- function(file = NULL,
+                              num.gears = NULL,
+                              num.age.gears = NULL,
+                              verbose = FALSE){
+  ## Read in the iscam control file given by 'file'
+  ## Parses the file into its constituent parts and returns a list of the
+  ##  contents.
+  ## num.gears is the total number of gears in the datafile
+  ## num.age.gears in the number of gears with age composition information in the
+  ##  datafile
+
+  curr.func <- get.curr.func.name()
+  if(is.null(num.gears)){
+    cat0(curr.func,
+         "You must supply the total number of gears (num.gears). ",
+         "Returning NULL.")
+    return(NULL)
+  }
+  if(is.null(num.age.gears)){
+    cat0(curr.func,
+         "You must supply the number of gears with age composition ",
+         "(num.age.gears). Returning NULL.")
+    return(NULL)
+  }
+
+  data <- readLines(file, warn = FALSE)
+
+  ## Remove any empty lines
+  data <- data[data != ""]
+
+  ## Remove preceeding whitespace if it exists
+  data <- gsub("^[[:blank:]]+", "", data)
+
+  ## Get the element numbers which start with #.
+  dat <- grep("^#.*", data)
+  ## Remove the lines that start with #.
+  dat <- data[-dat]
+
+  ## Save the parameter names, since they are comments and will be deleted in
+  ##  subsequent steps.
+  ## To get the npar, remove any comments and preceeding and trailing
+  ##  whitespace for it.
+  dat1 <- gsub("#.*", "", dat[1])
+  dat1 <- gsub("^[[:blank:]]+", "", dat1)
+  dat1 <- gsub("[[:blank:]]+$", "", dat1)
+  n.par <- as.numeric(dat1)
+  param.names <- vector()
+  ## Lazy matching with # so that the first instance matches, not any other
+  pattern <- "^.*?#([[:alnum:]]+_*[[:alnum:]]*).*"
+  for(param.name in 1:n.par){
+    ## Each parameter line in dat which starts at index 2,
+    ##  retrieve the parameter name for that line
+    param.names[param.name] <- sub(pattern, "\\1", dat[param.name + 1])
+  }
+  ## Now that parameter names are stored, parse the file.
+  ##  remove comments which come at the end of a line
+  dat <- gsub("#.*", "", dat)
+
+  ## Remove preceeding and trailing whitespace
+  dat <- gsub("^[[:blank:]]+", "", dat)
+  dat <- gsub("[[:blank:]]+$", "", dat)
+
+  ## Now we have a nice bunch of string elements which are the inputs for iscam.
+  ## Here we parse them into a list structure.
+  ## This is dependent on the current format of the CTL file and needs to
+  ## be updated whenever the CTL file changes format.
+  tmp <- list()
+  ind <- 0
+  tmp$num.params <- as.numeric(dat[ind <- ind + 1])
+  tmp$params <- matrix(NA, nrow = tmp$num.params, ncol = 7)
+  for(param in 1:tmp$num.params){
+    tmp$params[param,] <-
+      as.numeric(strsplit(dat[ind <- ind + 1],"[[:blank:]]+")[[1]])
+  }
+  colnames(tmp$params) <- c("ival","lb","ub","phz","prior","p1","p2")
+  ## param.names is retreived at the beginning of this function
+  rownames(tmp$params) <- param.names
+
+  ## Age and size composition control parameters and likelihood types
+  nrows <- 8
+  ncols <- num.age.gears
+  tmp$age.size <- matrix(NA, nrow = nrows, ncol = ncols)
+  for(row in 1:nrows){
+    tmp$age.size[row,] <-
+      as.numeric(strsplit(dat[ind <- ind + 1],"[[:blank:]]+")[[1]])
+  }
+  ## Rownames here are hardwired, so if you add a new row you must add a name
+  ##  for it here
+  rownames(tmp$age.size) <- c("gearind",
+                              "likelihoodtype",
+                              "minprop",
+                              "comprenorm",
+                              "logagetau2phase",
+                              "phi1phase",
+                              "phi2phase",
+                              "degfreephase")
+  ## Ignore the int check value
+  ind <- ind + 1
+
+  ## Selectivity parameters for all gears
+  nrows <- 10
+  ncols <- num.gears
+  tmp$sel <- matrix(NA, nrow = nrows, ncol = ncols)
+  for(row in 1:nrows){
+    tmp$sel[row,] <-
+      as.numeric(strsplit(dat[ind <- ind + 1],"[[:blank:]]+")[[1]])
+  }
+  ## Rownames here are hardwired, so if you add a new row you must add a name
+  ##  for it here
+  rownames(tmp$sel) <- c("iseltype",
+                         "agelen50log",
+                         "std50log",
+                         "nagenodes",
+                         "nyearnodes",
+                         "estphase",
+                         "penwt2nddiff",
+                         "penwtdome",
+                         "penwttvs",
+                         "nselblocks")
+
+  ## Start year for time blocks, one for each gear
+  max.block <- max(tmp$sel[10,])
+  tmp$start.yr.time.block <- matrix(nrow = num.gears, ncol = max.block)
+  for(ng in 1:num.gears){
+    ## Pad the vector with NA's to make it the right size if it isn't
+    ##  maxblocks size.
+    tmp.vec <- as.numeric(strsplit(dat[ind <- ind + 1],"[[:blank:]]+")[[1]])
+    if(length(tmp.vec) < max.block){
+      for(i in (length(tmp.vec) + 1):max.block){
+        tmp.vec[i] <- NA
+      }
+    }
+    tmp$start.yr.time.block[ng,] <- tmp.vec
+  }
+
+  ## Priors for survey Q, one column for each survey
+  tmp$num.indices <- as.numeric(dat[ind <- ind + 1])
+  nrows <- 3
+  ncols <- tmp$num.indices
+  tmp$surv.q <- matrix(NA, nrow = nrows, ncol = ncols)
+  for(row in 1:nrows){
+    tmp$surv.q[row,] <-
+      as.numeric(strsplit(dat[ind <- ind + 1],"[[:blank:]]+")[[1]])
+  }
+  ## Rownames here are hardwired, so if you add a new row you must add a name
+  ##  for it here.
+  rownames(tmp$surv.q) <- c("priortype",
+                            "priormeanlog",
+                            "priorsd")
+
+  ## Controls for fitting to mean weight data
+  tmp$fit.mean.weight <- as.numeric(dat[ind <- ind + 1])
+  tmp$num.mean.weight.cv <- as.numeric(dat[ind <- ind + 1])
+  n.vals <- tmp$num.mean.weight.cv
+  tmp$weight.sig <-  vector(length = n.vals)
+  for(val in 1:n.vals){
+    tmp$weight.sig[val] <- as.numeric(dat[ind <- ind + 1])
+  }
+
+  ## Miscellaneous controls
+  n.rows <- 16
+  tmp$misc <- matrix(NA, nrow = n.rows, ncol = 1)
+  for(row in 1:n.rows){
+    tmp$misc[row, 1] <- as.numeric(dat[ind <- ind + 1])
+  }
+  ## Rownames here are hardwired, so if you add a new row you must add a name
+  ##  for it here.
+  rownames(tmp$misc) <- c("verbose",
+                          "rectype",
+                          "sdobscatchfirstphase",
+                          "sdobscatchlastphase",
+                          "unfishedfirstyear",
+                          "maternaleffects",
+                          "meanF",
+                          "sdmeanFfirstphase",
+                          "sdmeanFlastphase",
+                          "mdevphase",
+                          "sdmdev",
+                          "mnumestnodes",
+                          "fracZpriorspawn",
+                          "agecompliketype",
+                          "IFDdist",
+                          "fitToMeanWeight")
+  tmp$eof <- as.numeric(dat[ind <- ind + 1])
+  tmp
+}
+
+readProjection <- function(file = NULL, verbose = FALSE){
+  ## Read in the projection file given by 'file'
+  ## Parses the file into its constituent parts
+  ## And returns a list of the contents
+
+  data <- readLines(file, warn=FALSE)
+
+  ## Remove any empty lines
+  data <- data[data != ""]
+
+  ## remove preceeding whitespace if it exists
+  data <- gsub("^[[:blank:]]+","",data)
+
+  ## Get the element numbers which start with #.
+  dat <- grep("^#.*",data)
+  ## remove the lines that start with #.
+  dat <- data[-dat]
+
+  ## remove comments which come at the end of a line
+  dat <- gsub("#.*","",dat)
+
+  ## remove preceeding and trailing whitespace
+  dat <- gsub("^[[:blank:]]+","",dat)
+  dat <- gsub("[[:blank:]]+$","",dat)
+
+  ## Now we have a nice bunch of string elements which are the inputs for iscam.
+  ## Here we parse them into a list structure
+  ## This is dependent on the current format of the DAT file and needs to
+  ## be updated whenever the DAT file changes format
+  tmp <- list()
+  ind <- 0
+
+  ## Get the TAC values
+  tmp$ntac  <- as.numeric(dat[ind <- ind + 1])
+  for(tac in 1:tmp$ntac){
+    tmp$tacvec[tac] <- as.numeric(dat[ind <- ind + 1])
+  }
+  ## Below used if the tac vector is on one line
+  ## tmp$tacvec <- as.numeric(strsplit(dat[ind <- ind + 1],"[[:blank:]]+")[[1]])
+
+  ## Get the control options vector
+  tmp$ncntrloptions <- as.numeric(dat[ind <- ind + 1])
+  nrows <- tmp$ncntrloptions
+  ncols <- 1
+  tmp$cntrloptions  <- matrix (NA, nrow = nrows, ncol = ncols)
+  for(row in 1:nrows){
+    tmp$cntrloptions[row,1] <- as.numeric(dat[ind <- ind + 1])
+  }
+
+  ## Rownames here are hardwired, so if you add a new row you must add a name for it here
+  rownames(tmp$cntrloptions) <- c("syrmeanm",
+                                  "nyrmeanm",
+                                  "syrmeanfecwtageproj",
+                                  "nyrmeanfecwtageproj",
+                                  "syrmeanrecproj",
+                                  "nyrmeanrecproj",
+                                  "shortcntrlpts",
+                                  "longcntrlpts",
+                                  "bmin")
+  tmp$eof <- as.numeric(dat[ind <- ind + 1])
+  return(tmp)
+}
+
+readPar <- function(file = NULL, verbose = FALSE){
+  # Read in the parameter estimates file given by 'file'
+  # Parses the file into its constituent parts
+  # And returns a list of the contents
+
+  data <- readLines(file, warn=FALSE)
+  tmp <- list()
+  ind <- 0
+
+  # Remove preceeding #
+  convCheck <- gsub("^#[[:blank:]]*","",data[1])
+  # Remove all letters, except 'e'
+  #convCheck <- gsub("[[:alpha:]]+","",convCheck)
+  convCheck <- gsub("[abcdfghijklmnopqrstuvwxyz]","",convCheck, ignore.case=T)
+  # Remove the equals signs
+  convCheck <- gsub("=","",convCheck)
+  # Remove all preceeding and trailing whitespace
+  convCheck <- gsub("^[[:blank:]]+","",convCheck)
+  convCheck <- gsub("[[:blank:]]+$","",convCheck)
+  # Get the values, round is used to force non-scientific notation
+  convCheck <- as.numeric(strsplit(convCheck,"[[:blank:]]+")[[1]])
+  # Remove all NA's from the vector (these were just 'e's on their own.)
+  convCheck <- convCheck[!is.na(convCheck)]
+
+  # The following values are saved for appending to the tmp list later
+  numParams   <- convCheck[1]
+  objFunValue <-  format(convCheck[2], digits=6, scientific=FALSE)
+  maxGradient <-  format(convCheck[3], digits=8, scientific=FALSE)
+
+  # Remove the first line from the par data since we already parsed it and saved the values
+  data <- data[-1]
+
+  # At this point, every odd line is a comment and every even line is the value.
+  # Parse the names from the odd lines (oddData) and parse the
+  # values from the even lines (evenData)
+  oddElem <- seq(1,length(data),2)
+  evenElem <- seq(2,length(data),2)
+  oddData <- data[oddElem]
+  evenData <- data[evenElem]
+
+  # remove preceeding and trailing whitespace if it exists from both names and values
+  names <- gsub("^[[:blank:]]+","",oddData)
+  names <- gsub("[[:blank:]]+$","",names)
+  values <- gsub("^[[:blank:]]+","",evenData)
+  values <- gsub("[[:blank:]]+$","",values)
+
+  # Remove the preceeding # and whitespace and the trailing : from the names
+  pattern <- "^#[[:blank:]]*(.*)[[:blank:]]*:"
+  names <- sub(pattern,"\\1",names)
+
+  # Remove any square brackets from the names
+  names <- gsub("\\[|\\]","",names)
+
+  dataLength <- length(names)
+  for(item in 1:(dataLength)){
+    tmp[[item]] <- as.numeric(strsplit(values[ind <- ind + 1],"[[:blank:]]+")[[1]])
+  }
+
+  names(tmp) <- names
+  tmp$numParams <- numParams
+  tmp$objFunValue <- objFunValue
+  tmp$maxGradient <- maxGradient
+  return(tmp)
+}
+
+readMCMC <- function(dired = NULL, verbose = TRUE){
+  # Read in the MCMC results from an iscam model run found in the directory dired.
+  # Returns a list of the mcmc outputs, or NULL if there was a problem or
+  # There are no MCMC outputs
+
+  if(is.null(dired)){
+    cat0(.PROJECT_NAME,"->",currFuncName,"You must supply a directory name (dired). Returning NULL.")
+    return(NULL)
+  }
+  mcmcfn     <- file.path(dired,.MCMC_FILE_NAME)
+  mcmcsbtfn  <- file.path(dired,.MCMC_BIOMASS_FILE_NAME)
+  mcmcrtfn   <- file.path(dired,.MCMC_RECRUITMENT_FILE_NAME)
+  mcmcrdevfn <- file.path(dired,.MCMC_RECRUITMENT_DEVS_FILE_NAME)
+  mcmcftfn   <- file.path(dired,.MCMC_FISHING_MORT_FILE_NAME)
+  mcmcutfn   <- file.path(dired,.MCMC_FISHING_MORT_U_FILE_NAME)
+  mcmcvbtfn  <- file.path(dired,.MCMC_VULN_BIOMASS_FILE_NAME)
+  mcmcprojfn <- file.path(dired,.MCMC_PROJ_FILE_NAME)
+
+  tmp        <- list()
+  tmp$params <- read.csv(mcmcfn)
+  sbt        <- read.csv(mcmcsbtfn)
+  tmp$sbt    <- extractGroupMatrices(sbt, prefix = "sbt")
+  rt         <- read.csv(mcmcrtfn)
+  tmp$rt     <- extractGroupMatrices(rt, prefix = "rt")
+  ft         <- read.csv(mcmcftfn)
+  tmp$ft     <- extractAreaSexMatrices(ft, prefix = "ft")
+  ut         <- read.csv(mcmcutfn)
+  tmp$ut     <- extractAreaSexMatrices(ut, prefix = "ut")
+  rdev       <- read.csv(mcmcrdevfn)
+  tmp$rdev   <- extractGroupMatrices(rdev, prefix = "rdev")
+  vbt        <- read.csv(mcmcvbtfn)
+  tmp$vbt    <- extractAreaSexMatrices(vbt, prefix = "vbt")
+  tmp$proj <- NULL
+  if(file.exists(mcmcprojfn)){
+    tmp$proj   <- read.csv(mcmcprojfn)
+  }
+  return(tmp)
 }
