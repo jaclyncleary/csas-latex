@@ -14,7 +14,7 @@ Insert French abstract text here
 
 %% Section names must be in all caps
 \section{INTRODUCTION}
-\fishname\ (\emph{\sciencename}, Family \familyname), is a species of fish that
+\fishname\ (\sciencename, Family \familyname), is a species of fish that
 occurs in the offshore waters of \bc.
 \fishname\ are primarily taken by the groundfish bottom trawl fishery, although
 they are also encountered by hook and line fisheries, particularly those
