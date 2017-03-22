@@ -32,9 +32,6 @@ Table \ref{tab:totalcatch}).
 \fishname\ are distinguished by everyone's preference for eating them, for which
 the species is named (\citet{hart1973}).
 
-%% Get the value linf from R
-Theoretical maximum length, $L_\infty$, is estimated to be $\Sexpr{linf}$ cm.
-
 Juvenile \fishname\ feed primarily on mobile prey such as cumaceans, carideans
 and amphipods. Adults are piscivorous and cannibalistic, feeding on Pacific
 Herring (\emph{Clupea pallasii}), juvenile Walleye Pollock
@@ -43,6 +40,37 @@ Herring (\emph{Clupea pallasii}), juvenile Walleye Pollock
 
 \subsection{FISHERY AND MANAGEMENT HISTORY} \label{sec:managementhistory}
 \fishname\ has been managed on a status-quo basis in recent years.
+
+\subsubsection{Catches} \label{sec:catches}
+A summary of catches can been found in Figure~\ref{fig:es-catches} and
+Table~\ref{tab:es-catches}
+%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[!b]
+\begin{center}
+<<ex.total.catches, fig.height=4, fig.width=8>>=
+make.catches.plot(catches,
+                  leg.y.loc = 520) ## leg.y.loc is y-coord to place legend at
+@
+\end{center}
+\caption{Total \fishname\ catch used in the assessment by sector, \Sexpr{start.yr}--\Sexpr{last.data.yr}.
+  U.S. tribal catches are included in the sectors where they are represented.}
+\label{fig:es-catches}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+<<ex.total.catches.table, results='asis', echo=FALSE>>=
+make.catches.table(catches,
+                   start.yr = 2006,
+                   end.yr = assess.yr - 1,
+                   weight.factor = 1000,
+                   xcaption <- "Recent commercial fishery catch (t). Tribal catches are included in the sector totals. Research catch includes landed catch associated with certain research-related activities. Catch associated with surveys and discarded bycatch in fisheries not targeting hake are not currently included in the model.",
+                   xlabel <- "tab:es-catches",
+                   font.size = 9,
+                   space.size = 10,
+                   placement = "tbp")
+@
+
+A summary of catches and TACs can be found in Table~\ref{tab:es-landings-tac}
 
 \subsection{ASSESSMENT HISTORY}
 The coastwide \fishname\ stock was last assessed by \citet{arf2001}, who
@@ -258,760 +286,756 @@ makeTable(1,
 
 % CATCH PLOTS
 %%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
+%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[!b]
 \begin{center}
-<<totalcatch, fig.height=9, fig.width=8>>=
-oldPar <- par(no.readonly=TRUE)
-layout(matrix(c(1,1,2,3), 2, 2, byrow=TRUE))
-plotCatch(1, 2, opacity=opacity, add=TRUE,indletter=1)
-plotCatch(1, 4, areas=c("3C","3D"), opacity=opacity, add=TRUE, leg=NULL, indletter=2, ylim=c(0,10000))
-plotCatch(1, 4, areas=c("5A","5B","5C","5D","5E"), opacity=opacity, add=TRUE, leg=NULL, indletter=3, ylim=c(0,10000))
-par(oldPar)
+<<total.catches, fig.height=4, fig.width=8>>=
+make.catches.plot(catches,
+                  leg.y.loc = 520) ## leg.y.loc is y-coord to place legend at
 @
 \end{center}
 %\vspace{0mm}
-\caption{Total coastwide catch of \fishname, including both landings and discards
-  (a). Panels (b) and (c) represent areas 3CD and 5ABCDE respectively. See
-  Table \ref{tab:totalcatch} for values.}
-\label{fig:totalcatch}
+\caption{Total \fishname\ catch used in the assessment by sector, \Sexpr{start.yr}--\Sexpr{last.data.yr}.
+  U.S. tribal catches are included in the sectors where they are represented.}
+\label{fig:main-catches}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
 
 % AGE COMPOSITION PLOTS (DATA ONLY)
 %%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<agecomps-trawl, fig.height=5, fig.width=8>>=
-plotBiology(plotNum=11, compFitSex=0, index=1, showtitle=FALSE, scenario=1)
-@
-\end{center}
-%\vspace{0mm}
-\caption{Age composition data for the Reference Case for the commercial trawl
-  fishery. Blue points represent zero samples. N values represent the number of
-  specimens aged in each year.}
-\label{fig:agecomps-trawl}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<agecomps-surveys, fig.height=9, fig.width=8>>=
-oldPar <- par(no.readonly=TRUE)
-layout(matrix(c(1, 2, 3, 0),
-              2,
-              2,
-              byrow = TRUE))
-plotBiology(plotNum = 11,
-            compFitSex = 0,
-            index = 2,
-            showtitle = FALSE,
-            scenario = 1,
-            add = TRUE,
-            indletter = 1)
-plotBiology(plotNum = 11,
-            compFitSex = 0,
-            index = 4,
-            showtitle = FALSE,
-            scenario = 1,
-            add = TRUE,
-            indletter = 2)
-plotBiology(plotNum = 11,
-            compFitSex = 0,
-            index = 5,
-            showtitle = FALSE,
-            scenario = 1,
-            add = TRUE,
-            indletter = 3)
-par(oldPar)
-@
-\end{center}
-%\vspace{0mm}
-\caption{Age composition data for the Reference Case for the surveys (a) QCSSS,
-  (b) HSSS, and (c) WCVISS. Blue points represent zero samples. N values
-  represent the number of specimens aged in each year.}
-\label{fig:agecomps-surveys}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-
-% LENGTH COMPARISON PLOT
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<lengthsubfleet, fig.height=9, fig.width=8>>=
-oldPar <- par(no.readonly=TRUE)
-layout(matrix(c(1, 2, 3, 4),
-              2,
-              2,
-              byrow = TRUE))
-plotBiology(plotNum = 17,
-            scenario = 1,
-            plotsubfleet = TRUE,
-            lengthcompsex = 2,
-            add = TRUE,
-            indletter = 1)
-plotBiology(plotNum = 17,
-            scenario = 1,
-            plotsubfleet = FALSE,
-            lengthcompsex = 2,
-            add = TRUE,
-            indletter = 2)
-plotBiology(plotNum = 17,
-            scenario = 1,
-            plotsubfleet = TRUE,
-            lengthcompsex = 1,
-            add = TRUE,
-            indletter = 3)
-plotBiology(plotNum = 17,
-            scenario = 1,
-            plotsubfleet = FALSE,
-            lengthcompsex = 1,
-            add = TRUE,
-            indletter = 4)
-par(oldPar)
-@
-\end{center}
-%\vspace{0mm}
-\caption{Length quantiles (2.5\textsuperscript{th}, 50\textsuperscript{th}, and
-  97.5\textsuperscript{th} percentiles) from samples taken on freezer trawler
-  vessels (a and c) and shoreside vessels (b and d) for females (a and b) and
-  males (c and d). N is the number of specimens sampled for length for the
-  given year.}
-\label{fig:lengthsubfleet}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-
-% MCMC DIAGNOSTICS PLOTS
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<priors>>=
-plotConvergence(1,
-                5,
-                burnthin = burnthin,
-                showtitle=FALSE, priorsonly=TRUE, latexnames=TRUE)
-@
-\end{center}
-%\vspace{0mm}
-\caption{Prior probability distributions used in the Reference Case. Parameters $q_k$ represent gears where: $k=2$ is the QCSSS, $k=3$ is the HSMSAS, $k=4$ is the HSSS, and $k=5$ is the WCVISS.}
-\label{fig:priors}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-
-% HARVEST CONTROL RULE ILLUSTRATION PLOT
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<hcrillustration, fig.height=5,fig.width=8>>=
-# Plot harvest control rule illustation. This uses no data so it is embedded her
-plot(c(0,30), c(0,0.4), type="n", axes=FALSE, xaxs="i", yaxs="i", xlab="Stock Status", ylab="Removal Rate")
-# Plot the vertical bars (LRP and USR)
-segments(4, 0, 4, 0.4, col="black", lty=3, lwd=1)
-segments(9, 0, 9, 0.4, col="black", lty=3, lwd=1)
-# Plot removal rate lines
-segments(0, 0, 4, 0,   col="blue", lty=1, lwd=4)
-segments(4, 0, 9, 0.3, col="blue", lty=1, lwd=4)
-segments(9, 0.3, 30, 0.3, col="blue", lty=1, lwd=4)
-# Add axes and labels
-#axis(side=1)
-#axis(side=2)
-box()
-text(4, 0.35, "LRP", col="red")
-text(9, 0.35, "USR", col="red")
-text(20,0.33, "LRR", col="red")
-@
-\end{center}
-%\vspace{0mm}
-\caption{Illustration of a harvest control rule consistent with the Precautionary Approach for a hypothetical stock. The biomass-based reference points are shown as vertical dotted lines. The limit removal rate is shown as a horizontal blue line. In this illustration, biomass (unspecified units) is shown on the bottom axis. LRP = Limit Reference Point; USR = Upper Stock Reference; LRR = Limit Removal Rate. See \citet{dfo09} for more detail.}
-\label{fig:hcrillustration}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<traces, fig.height=8, fig.width=8>>=
-plotConvergence(1, 1, burnthin=burnthin, showtitle=FALSE, latexnames=TRUE)
-@
-\end{center}
-%\vspace{0mm}
-\caption{Trace plots for MCMC output of estimated parameters in the Reference Case. The MCMC run had chain length \mcmclength, with a sample taken at every \mcmcsampfreq th iteration. Of the \mcmcnsamp samples saved, the first \mcmcburnin\ were removed as a burn-in period. Parameters $q_k$ (catchability), $\hat{a}_k$ (selectivity-at-age-50\%), and $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as follows: $k=1$: commercial trawl; $k=2$: QCSSS: $k=3$; HSMSAS: $k=4$; HSSS, and $k=5$; WCVISS. The HSMAS did not have estimates selectivity, so there are no $\hat{a}_3$ or $\hat{\gamma}_3$ parameters.}
-\label{fig:traces}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-\begin{figure}[htp]
-\begin{center}
-<<autocor, fig.height=8, fig.width=8>>=
-plotConvergence(1, 2, burnthin=burnthin, showtitle=FALSE, latexnames=TRUE)
-@
-\end{center}
-%\vspace{0mm}
-\caption{Autocorrelation plots for MCMC output of estimated parameters in the Reference Case. See Figure \ref{fig:traces} for parameter descriptions.}
-\label{fig:autocor}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-
-% INDEX FIT PLOT
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<indexfits, fig.height=9, fig.width=8>>=
-oldPar <- par(no.readonly=TRUE)
-layout(matrix(c(1,2,3,4), 2, 2, byrow=TRUE))
-plotTS(1, 7, index=2, showtitle=FALSE, indfixaxis=TRUE, leg=NULL, indletter=1, add=TRUE, opacity=opacity)
-plotTS(1, 7, index=3, showtitle=FALSE, indfixaxis=TRUE, leg=NULL, indletter=2, add=TRUE, opacity=opacity)
-plotTS(1, 7, index=4, showtitle=FALSE, indfixaxis=TRUE, leg=NULL, indletter=3, add=TRUE, opacity=opacity)
-plotTS(1, 7, index=5, showtitle=FALSE, indfixaxis=TRUE, leg=NULL, indletter=4, add=TRUE, opacity=opacity)
-par(oldPar)
-@
-\end{center}
-%\vspace{0mm}
-\caption{Reference Case MPD Index fits for (a) QSSS, (b) HSMAS, (c) HSSS, (d) WCVISS.}
-\label{fig:indexfits}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-
-% AGE COMP FITS PLOTS
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<agecomps-fits-trawl, fig.height=5, fig.width=8, fig.show='hold'>>=
-#oldPar <- par(no.readonly=TRUE)
-#layout(matrix(c(1,2),2,1,byrow=FALSE))
-plotBiology(plotNum=12, compFitSex=0, index=1, showtitle=FALSE, scenario=1)
-plotBiology(plotNum=13, compFitSex=0, index=1, showtitle=FALSE, scenario=1)
-#par(oldPar)
-@
-\end{center}
-%\vspace{0mm}
-\caption{Age composition fits and residuals for the Reference Case for the commercial trawl fishery. Blue points represent zero samples, red are positive residuals, and black are negative residuals. N values represent the number of specimens aged in each year.}
-\label{fig:agecomps-fits-trawl}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<agecomps-fits-qcsss, fig.height=5, fig.width=8, fig.show='hold'>>=
-#oldPar <- par(no.readonly=TRUE)
-#layout(matrix(c(1,2),2,1,byrow=FALSE))
-plotBiology(plotNum=12, compFitSex=0, index=2, showtitle=FALSE, scenario=1)
-plotBiology(plotNum=13, compFitSex=0, index=2, showtitle=FALSE, scenario=1)
-#par(oldPar)
-@
-\end{center}
-%\vspace{0mm}
-\caption{Age composition fits and residuals for the Reference Case for the QCSSS. Blue points represent zero samples, red are positive residuals, and black are negative residuals. N values represent the number of specimens aged in each year.}
-\label{fig:agecomps-fits-qcsss}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<agecomps-fits-hsss, fig.height=5, fig.width=8, fig.show='hold'>>=
-#oldPar <- par(no.readonly=TRUE)
-#layout(matrix(c(1,2),2,1,byrow=FALSE))
-plotBiology(plotNum=12, compFitSex=0, index=4, showtitle=FALSE, scenario=1)
-plotBiology(plotNum=13, compFitSex=0, index=4, showtitle=FALSE, scenario=1)
-#par(oldPar)
-@
-\end{center}
-%\vspace{0mm}
-\caption{Age composition fits and residuals for the Reference Case for the HSSS. Blue points represent zero samples, red are positive residuals, and black are negative residuals. N values represent the number of specimens aged in each year.}
-\label{fig:agecomps-fits-hsss}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<agecomps-fits-wcviss, fig.height=5, fig.width=8, fig.show='hold'>>=
-#oldPar <- par(no.readonly=TRUE)
-#layout(matrix(c(1,2),2,1,byrow=FALSE))
-plotBiology(plotNum=12, compFitSex=0, index=5, showtitle=FALSE, scenario=1)
-plotBiology(plotNum=13, compFitSex=0, index=5, showtitle=FALSE, scenario=1)
-#par(oldPar)
-@
-\end{center}
-%\vspace{0mm}
-\caption{Age composition fits and residuals for the Reference Case for the WCVISS. Blue points represent zero samples, red are positive residuals, and black are negative residuals. N values represent the number of specimens aged in each year.}
-\label{fig:agecomps-fits-wcviss}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<priorsvsposts>>=
-plotConvergence(1, 5, burnthin=burnthin, showtitle=FALSE, priorsonly=FALSE, latexnames=TRUE)
-@
-\end{center}
-%\vspace{0mm}
-\caption{Prior probability distributions used in the Reference case with comparative posterior histograms. Parameters $q_k$ represent gears where: $k=2$ is the QCSSS, $k=3$ is the HSMSAS, $k=4$ is the HSSS, and $k=5$ is the WCVISS. The dotted red lines are the MPD estimates from the Reference Case.}
-\label{fig:priorsvsposts}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<pairs, fig.height=8, fig.width=8>>=
-plotConvergence(1, 4, burnthin=burnthin, showtitle=FALSE, latexnames=TRUE)
-@
-\end{center}
-%\vspace{0mm}
-\caption{Pairs plots for MCMC output of estimated parameters in the Reference Case. See Figure \ref{fig:traces} for parameter descriptions.}
-\label{fig:pairs}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-
-% SELECTIVITY PLOT
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<selex, fig.height=5,fig.width=8>>=
-plotSelex(1,2,showtitle=FALSE,leg="bottomright",showmat=TRUE)
-@
-%\end{center}
-%\vspace{0mm}
-\caption{Estimated and Fixed selectivities for the Reference Case, compared with female maturity.}
-\label{fig:selex}
-%\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-
-% REFERENCE POINT PLOT
-%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{figure}[htp]
-%\begin{center}
-<<refpoints, fig.height=5,fig.width=8>>=
-plotTS(plotNum=10,  ci=ci, burnthin=burnthin, plotMCMC=TRUE, showumsy=TRUE, showtitle=FALSE, opacity=opacity)
-@
-\end{center}
-%\vspace{0mm}
-\caption{Posterior reference points for the Reference Case. Bars represent \mcmcci\ credible intervals.}
-\label{fig:refpoints}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-
-% SPAWNING BIOMASS PLOT
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<spawnbiomass, fig.height=9, fig.width=7.5>>=
-oldPar <- par(no.readonly=TRUE)
-layout(matrix(c(1,2),2,1,byrow=FALSE))
-plotTS(1, 1, ci=ci, burnthin=burnthin, plotMCMC=TRUE, leg=NULL, showtitle=FALSE, showB0Ref=TRUE, showBMSYRef=FALSE, indletter=1, add=TRUE, opacity=opacity)
-plotTS(1, 1, ci=ci, burnthin=burnthin, plotMCMC=TRUE, leg=NULL, showtitle=FALSE, showB0Ref=FALSE, showBMSYRef=TRUE, indletter=2, add=TRUE, opacity=opacity)
-par(oldPar)
-@
-\end{center}
-%\vspace{0mm}
-\caption{Median posterior spawning biomass for the Reference Case. The shaded area represents the \mcmcci\ credible interval. The point and bars represent the median estimate of $B_0$ and with a credible interval of \mcmcci. Panel (a) shows posterior median estimates of reference points $0.2$\emph{B}\subscr{0} and $0.4$\emph{B}\subscr{0}, Panel (b) shows posterior median estimates of reference points $0.4$\emph{B}\subscr{MSY} and $0.8$\emph{B}\subscr{MSY}}
-\label{fig:spawnbiomass}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-
-% VULNERABLE BIOMASS PLOT
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<vuln-spawn-biomass, fig.height=5, fig.width=8>>=
-plotTS(1, 12, ci=ci, burnthin=burnthin, plotMCMC=TRUE, showSbio=TRUE, leg="topleft", showtitle=FALSE, showB0Ref=FALSE, showBMSYRef=FALSE, opacity=opacity)
-@
-\end{center}
-\caption{Median posterior vulnerable and spawning biomass for the Reference Case. The shaded area represents the \mcmcci\ credible interval.}
-\label{fig:vuln-spawn-biomass}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-
-% RECRUITMENT PLOT
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<recruitment, fig.height=9, fig.width=8>>=
-oldPar <- par(no.readonly=TRUE)
-layout(matrix(c(1,2),2,1,byrow=FALSE))
-plotTS(1, 5, ci=ci, burnthin=burnthin, plotMCMC=TRUE, leg=NULL, showtitle=FALSE, indletter=1, add=TRUE, opacity=opacity)
-plotTS(1, 11, ci=ci, burnthin=burnthin, plotMCMC=TRUE, leg=NULL, showtitle=FALSE, indletter=2, add=TRUE, opacity=opacity)
-par(oldPar)
-@
-\end{center}
-%\vspace{0mm}
-\caption{Median posterior recruitment (a) and recruitment deviations (b) for the Reference Case. The bars represent the \mcmcci\ credible interval. The red line is the long-term mean; the green line is the long-term median.}
-\label{fig:recruitment}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-
-% FISHING MORTALITY PLOT
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<F, fig.height=5,fig.width=8>>=
-plotTS(1, 9, ci=ci, burnthin=burnthin, plotMCMC=TRUE, leg=NULL, showtitle=FALSE, opacity=opacity)
-@
-%\end{center}
-%\vspace{0mm}
-\caption{Fishing mortality for the Reference Case. The shaded area represents the \mcmcci\ credible interval.}
-\label{fig:F}
-%\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-
-% RELATIVE SPAWNING BIOMASS PLOT
-%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{figure}[htp]
-%\begin{center}
-<<depletion, fig.height=5, fig.width=8>>=
-plotTS(1, 3, ci=ci, burnthin=burnthin, plotMCMC=TRUE, leg=NULL, showtitle=FALSE, showB0Ref=TRUE, showBMSYRef=FALSE, opacity=opacity)
-@
-\end{center}
-\caption{Relative median posterior spawning biomass for the Reference Case. The shaded area represents the \mcmcci\ credible interval.}
-\label{fig:depletion}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-
-%%%%%%%%%%%%%%%%%%%%%%%
-% SENSITIVITY PLOTS
-%%%%%%%%%%%%%%%%%%%%%%%
-
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<sens-sig-indices, fig.height=9, fig.width=8>>=
-# Plot indices for sens group 1
-g <- 1
-oldPar <- par(no.readonly=TRUE)
-layout(matrix(c(1,2,3,4), 2, 2, byrow=TRUE))
-plotTS(plotNum=7, index=2, sensGroup=1, multiple=TRUE, showtitle=FALSE, indfixaxis=TRUE, leg="bottomright", colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], indletter=1, opacity=opacity, add=TRUE)
-plotTS(plotNum=7, index=3, sensGroup=1, multiple=TRUE, showtitle=FALSE, indfixaxis=TRUE, leg=NULL,          colors=modelcolors[[g]], linetypes=modellinetypes[[g]], indletter=2, opacity=opacity, add=TRUE)
-plotTS(plotNum=7, index=4, sensGroup=1, multiple=TRUE, showtitle=FALSE, indfixaxis=TRUE, leg=NULL,          colors=modelcolors[[g]], linetypes=modellinetypes[[g]], indletter=3, opacity=opacity, add=TRUE)
-plotTS(plotNum=7, index=5, sensGroup=1, multiple=TRUE, showtitle=FALSE, indfixaxis=TRUE, leg=NULL,          colors=modelcolors[[g]], linetypes=modellinetypes[[g]], indletter=4, opacity=opacity, add=TRUE)
-par(oldPar)
-@
-\end{center}
-%\vspace{0mm}
-\caption{MPD Index fits for (a) QSSS, (b) HSMAS, (c) HSSS, (d) WCVISS for models examining sensitivity to the $\sigma$ parameter.}
-\label{fig:sens-sig-indices}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<sens-sig-biomass, fig.height=5, fig.width=8>>=
-g <- 1 # group number
-plotTS(plotNum=1, sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
-@
-\end{center}
-%\vspace{0mm}
-\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to the $\sigma$ parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
-\label{fig:sens-sig-biomass}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<sens-sig-recruitment, fig.height=9, fig.width=8>>=
-# Plot recruitment and deviations for sens group 1
-g <- 1 # group number
-oldPar <- par(no.readonly=TRUE)
-layout(matrix(c(1,2),2,1,byrow=FALSE))
-plotTS(plotNum=5, sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], indletter=1, opacity=opacity, add=TRUE)
-plotTS(plotNum=11, sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg=NULL, showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], indletter=2, opacity=opacity, add=TRUE)
-par(oldPar)
-@
-\end{center}
-%\vspace{0mm}
-\caption{Estimated recruitment (a) and recruitment deviations (b) with \mcmcci\ credible intervals, for models examining sensitivity to the $\sigma$ parameter.}
-\label{fig:sens-sig-recruitment}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-
-% Sensitivity group 2
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<sens-tau-recruitment, fig.height=9, fig.width=8>>=
-# Plot recruitment and deviations for sens group 2
-g <- 2
-oldPar <- par(no.readonly=TRUE)
-layout(matrix(c(1,2),2,1,byrow=FALSE))
-plotTS(plotNum=5,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], indletter=1, opacity=opacity, add=TRUE)
-plotTS(plotNum=11, sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg=NULL, showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], indletter=2, opacity=opacity, add=TRUE)
-par(oldPar)
-@
-\end{center}
-%\vspace{0mm}
-\caption{Estimated recruitment (a) and recruitment deviations (b) with \mcmcci\ credible intervals, for models examining sensitivity to the $\tau$ parameter.}
-\label{fig:sens-tau-recruitment}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<sens-tau-biomass, fig.height=5,fig.width=8>>=
-# Plot biomass for sens group 2
-g <- 2
-plotTS(plotNum=1,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
-@
-%\end{center}
-%\vspace{0mm}
-\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to the $\tau$ parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
-\label{fig:sens-tau-biomass}
-%\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{figure}[htp]
-%\begin{center}
-<<sens-tau-depletion, fig.height=5,fig.width=8>>=
-g <- 2
-plotTS(plotNum=3,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
-@
-\end{center}
-%\vspace{0mm}
-\caption{Estimated relative median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to the $\tau$ parameter.}
-\label{fig:sens-tau-depletion}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-
-% Sensitivity group 3
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<sens-h-biomass, fig.height=5,fig.width=8>>=
-# Plot biomass for sens group 3
-g <- 3
-plotTS(plotNum=1,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
-@
-%\end{center}
-%\vspace{0mm}
-\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to the steepness parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
-\label{fig:sens-h-biomass}
-%\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{figure}[htp]
-%\begin{center}
-<<sens-h-recruitment, fig.height=5,fig.width=8>>=
-# Plot recruitment for sens group 3
-g <- 3
-plotTS(plotNum=5,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topleft", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
-@
-\end{center}
-\vspace{-3mm}
-\caption{Estimated median recruitment with \mcmcci\ credible intervals, for models examining sensitivity to the steepness parameter.}
-\label{fig:sens-h-recruitment}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-
-% Sensitivity group 4
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<sens-msd-biomass, fig.height=5,fig.width=8>>=
-# Plot biomass for sens group 4
-g <- 4
-plotTS(plotNum=1,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
-@
-%\end{center}
-%\vspace{0mm}
-\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to the standard deviation of the natural mortality  parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
-\label{fig:sens-msd-biomass}
-%\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{figure}[htp]
-%\begin{center}
-<<sens-msd-recruitment, fig.height=5,fig.width=8>>=
-# Plot recruitment for sens group 4
-g <- 4
-plotTS(plotNum=5, sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topleft", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
-@
-\end{center}
-\vspace{-3mm}
-\caption{Estimated median recruitment with \mcmcci\ credible intervals, for models examining sensitivity to the standard deviation of the natural mortality  parameter.}
-\label{fig:sens-msd-recruitment}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-
-% Sensitivity group 5
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<sens-m-biomass, fig.height=5,fig.width=8>>=
-# Plot biomass for sens group 5
-g <- 5
-plotTS(plotNum=1,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
-@
-%\end{center}
-%\vspace{0mm}
-\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to the natural mortality parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
-\label{fig:sens-m-biomass}
-%\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{figure}[htp]
-%\begin{center}
-<<sens-m-recruitment, fig.height=5,fig.width=8>>=
-# Plot recruitment for sens group 5
-g <- 5
-plotTS(plotNum=5,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topleft", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
-@
-\end{center}
-\vspace{-3mm}
-\caption{Estimated median recruitment with \mcmcci\ credible intervals, for models examining sensitivity to the natural mortality parameter.}
-\label{fig:sens-m-recruitment}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-
-% Sensitivity group 6
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<sens-q-biomass, fig.height=5,fig.width=8>>=
-# Plot biomass for sens group 6
-g <- 6
-plotTS(plotNum=1,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
-@
-%\end{center}
-%\vspace{0mm}
-\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to the catchability parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
-\label{fig:sens-q-biomass}
-%\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{figure}[htp]
-%\begin{center}
-<<sens-q-recruitment, fig.height=5,fig.width=8>>=
-# Plot recruitment for sens group 6
-g <- 6
-plotTS(plotNum=5,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topleft", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
-@
-\end{center}
-\vspace{-3mm}
-\caption{Estimated recruitment with \mcmcci\ credible intervals, for models examining sensitivity to the catchability parameter.}
-\label{fig:sens-q-recruitment}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-
-% Sensitivity group 7
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<sens-qsd-biomass, fig.height=5,fig.width=8>>=
-# Plot biomass for sens group 7
-g <- 7
-plotTS(plotNum=1,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
-@
-%\end{center}
-%\vspace{0mm}
-\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to the catchability standard deviation parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
-\label{fig:sens-qsd-biomass}
-%\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{figure}[htp]
-%\begin{center}
-<<sens-qsd-recruitment, fig.height=5,fig.width=8>>=
-# Plot recruitment for sens group 7
-g <- 7
-plotTS(plotNum=5,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topleft", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
-@
-\end{center}
-\vspace{-3mm}
-\caption{Estimated recruitment with \mcmcci\ credible intervals, for models examining sensitivity to the catchability standard deviation parameter.}
-\label{fig:sens-qsd-recruitment}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
-
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<agecomps-trawl, fig.height=5, fig.width=8>>=
+%% plotBiology(plotNum=11, compFitSex=0, index=1, showtitle=FALSE, scenario=1)
+%% @
+%% \end{center}
+%% %\vspace{0mm}
+%% \caption{Age composition data for the Reference Case for the commercial trawl
+%%   fishery. Blue points represent zero samples. N values represent the number of
+%%   specimens aged in each year.}
+%% \label{fig:agecomps-trawl}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
 %% %%%%%%%%%%%%%%%%%%%%%%%
 %% \begin{figure}[htp]
 %% \begin{center}
-%% <<fig.height=9, fig.width=8>>=
-%% # Plot selectivities for sensitivity group 7
-%% g <- 7
+%% <<agecomps-surveys, fig.height=9, fig.width=8>>=
 %% oldPar <- par(no.readonly=TRUE)
-%% layout(matrix(c(1,2,3,4),2,2,byrow=TRUE))
-%% plotSelex(plotNum=1,  index=1, sensGroup=g, multiple=TRUE, leg="bottomright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], indletter=1, add=TRUE)
-%% plotSelex(plotNum=1,  index=2, sensGroup=g, multiple=TRUE, leg=NULL, showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], indletter=2, add=TRUE)
-%% plotSelex(plotNum=1,  index=4, sensGroup=g, multiple=TRUE, leg=NULL, showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], indletter=3, add=TRUE)
-%% plotSelex(plotNum=1,  index=5, sensGroup=g, multiple=TRUE, leg=NULL, showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], indletter=4, add=TRUE)
+%% layout(matrix(c(1, 2, 3, 0),
+%%               2,
+%%               2,
+%%               byrow = TRUE))
+%% plotBiology(plotNum = 11,
+%%             compFitSex = 0,
+%%             index = 2,
+%%             showtitle = FALSE,
+%%             scenario = 1,
+%%             add = TRUE,
+%%             indletter = 1)
+%% plotBiology(plotNum = 11,
+%%             compFitSex = 0,
+%%             index = 4,
+%%             showtitle = FALSE,
+%%             scenario = 1,
+%%             add = TRUE,
+%%             indletter = 2)
+%% plotBiology(plotNum = 11,
+%%             compFitSex = 0,
+%%             index = 5,
+%%             showtitle = FALSE,
+%%             scenario = 1,
+%%             add = TRUE,
+%%             indletter = 3)
 %% par(oldPar)
 %% @
 %% \end{center}
 %% %\vspace{0mm}
-%% \caption{Selectivity estimates for models examining sensitivity to the catchability standard deviation parameter. (a) is the trawl fishery selectivity, (b) is the QCSSS selectivity, (c) is the HSSS selectivity, and (d) is the WCVISS selectivity.}
-%% \label{fig:sens-qsd-selex}
+%% \caption{Age composition data for the Reference Case for the surveys (a) QCSSS,
+%%   (b) HSSS, and (c) WCVISS. Blue points represent zero samples. N values
+%%   represent the number of specimens aged in each year.}
+%% \label{fig:agecomps-surveys}
 %% \end{figure}
 %% %%%%%%%%%%%%%%%%%%%%%%%
 %% \clearpage
 
-% Sensitivity group 8
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<sens-trawl-selex, fig.height=5,fig.width=8>>=
-g <- 8
-plotSelex(plotNum=1,  index=1, sensGroup=g, multiple=TRUE, leg="bottomright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]])
-@
-%\end{center}
-%\vspace{0mm}
-\caption{Trawl selectivity for models examining sensitivity to trawl selectivity.}
-\label{fig:sens-trawl-selex}
-%\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%
-%\begin{figure}[htp]
-%\begin{center}
-<<sens-trawl-selex-biomass, fig.height=5,fig.width=8>>=
-g <- 8
-plotTS(plotNum=1,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
-@
-\end{center}
-%\vspace{0mm}
-\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to trawl selectivity. Points and bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
-\label{fig:sens-trawl-selex-biomass}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
+%% % LENGTH COMPARISON PLOT
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<lengthsubfleet, fig.height=9, fig.width=8>>=
+%% oldPar <- par(no.readonly=TRUE)
+%% layout(matrix(c(1, 2, 3, 4),
+%%               2,
+%%               2,
+%%               byrow = TRUE))
+%% plotBiology(plotNum = 17,
+%%             scenario = 1,
+%%             plotsubfleet = TRUE,
+%%             lengthcompsex = 2,
+%%             add = TRUE,
+%%             indletter = 1)
+%% plotBiology(plotNum = 17,
+%%             scenario = 1,
+%%             plotsubfleet = FALSE,
+%%             lengthcompsex = 2,
+%%             add = TRUE,
+%%             indletter = 2)
+%% plotBiology(plotNum = 17,
+%%             scenario = 1,
+%%             plotsubfleet = TRUE,
+%%             lengthcompsex = 1,
+%%             add = TRUE,
+%%             indletter = 3)
+%% plotBiology(plotNum = 17,
+%%             scenario = 1,
+%%             plotsubfleet = FALSE,
+%%             lengthcompsex = 1,
+%%             add = TRUE,
+%%             indletter = 4)
+%% par(oldPar)
+%% @
+%% \end{center}
+%% %\vspace{0mm}
+%% \caption{Length quantiles (2.5\textsuperscript{th}, 50\textsuperscript{th}, and
+%%   97.5\textsuperscript{th} percentiles) from samples taken on freezer trawler
+%%   vessels (a and c) and shoreside vessels (b and d) for females (a and b) and
+%%   males (c and d). N is the number of specimens sampled for length for the
+%%   given year.}
+%% \label{fig:lengthsubfleet}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
 
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[htp]
-\begin{center}
-<<sens-trawl-selex-refpoints, fig.height=5,fig.width=8>>=
-# Plot Umsy/Bmsy boxplots for sens group 8
-g <- 8
-shortnames <- c("Ref","Sc 12","Sc 13")
-plotTS(plotNum=10,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, showumsy=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], shortnames=shortnames, opacity=opacity)
-@
-\end{center}
-%\vspace{0mm}
-\caption{Posterior reference points for models examining sensitivity to trawl selectivity. Bars represent \mcmcci\ credible intervals.}
-\label{fig:sens-trawl-selex-refpoints}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-\clearpage
+%% % MCMC DIAGNOSTICS PLOTS
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<priors>>=
+%% plotConvergence(1,
+%%                 5,
+%%                 burnthin = burnthin,
+%%                 showtitle=FALSE, priorsonly=TRUE, latexnames=TRUE)
+%% @
+%% \end{center}
+%% %\vspace{0mm}
+%% \caption{Prior probability distributions used in the Reference Case. Parameters $q_k$ represent gears where: $k=2$ is the QCSSS, $k=3$ is the HSMSAS, $k=4$ is the HSSS, and $k=5$ is the WCVISS.}
+%% \label{fig:priors}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+
+%% % HARVEST CONTROL RULE ILLUSTRATION PLOT
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<hcrillustration, fig.height=5,fig.width=8>>=
+%% # Plot harvest control rule illustation. This uses no data so it is embedded her
+%% plot(c(0,30), c(0,0.4), type="n", axes=FALSE, xaxs="i", yaxs="i", xlab="Stock Status", ylab="Removal Rate")
+%% # Plot the vertical bars (LRP and USR)
+%% segments(4, 0, 4, 0.4, col="black", lty=3, lwd=1)
+%% segments(9, 0, 9, 0.4, col="black", lty=3, lwd=1)
+%% # Plot removal rate lines
+%% segments(0, 0, 4, 0,   col="blue", lty=1, lwd=4)
+%% segments(4, 0, 9, 0.3, col="blue", lty=1, lwd=4)
+%% segments(9, 0.3, 30, 0.3, col="blue", lty=1, lwd=4)
+%% # Add axes and labels
+%% #axis(side=1)
+%% #axis(side=2)
+%% box()
+%% text(4, 0.35, "LRP", col="red")
+%% text(9, 0.35, "USR", col="red")
+%% text(20,0.33, "LRR", col="red")
+%% @
+%% \end{center}
+%% %\vspace{0mm}
+%% \caption{Illustration of a harvest control rule consistent with the Precautionary Approach for a hypothetical stock. The biomass-based reference points are shown as vertical dotted lines. The limit removal rate is shown as a horizontal blue line. In this illustration, biomass (unspecified units) is shown on the bottom axis. LRP = Limit Reference Point; USR = Upper Stock Reference; LRR = Limit Removal Rate. See \citet{dfo09} for more detail.}
+%% \label{fig:hcrillustration}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<traces, fig.height=8, fig.width=8>>=
+%% plotConvergence(1, 1, burnthin=burnthin, showtitle=FALSE, latexnames=TRUE)
+%% @
+%% \end{center}
+%% %\vspace{0mm}
+%% \caption{Trace plots for MCMC output of estimated parameters in the Reference Case. The MCMC run had chain length \mcmclength, with a sample taken at every \mcmcsampfreq th iteration. Of the \mcmcnsamp samples saved, the first \mcmcburnin\ were removed as a burn-in period. Parameters $q_k$ (catchability), $\hat{a}_k$ (selectivity-at-age-50\%), and $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as follows: $k=1$: commercial trawl; $k=2$: QCSSS: $k=3$; HSMSAS: $k=4$; HSSS, and $k=5$; WCVISS. The HSMAS did not have estimates selectivity, so there are no $\hat{a}_3$ or $\hat{\gamma}_3$ parameters.}
+%% \label{fig:traces}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<autocor, fig.height=8, fig.width=8>>=
+%% plotConvergence(1, 2, burnthin=burnthin, showtitle=FALSE, latexnames=TRUE)
+%% @
+%% \end{center}
+%% %\vspace{0mm}
+%% \caption{Autocorrelation plots for MCMC output of estimated parameters in the Reference Case. See Figure \ref{fig:traces} for parameter descriptions.}
+%% \label{fig:autocor}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
+
+%% % INDEX FIT PLOT
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<indexfits, fig.height=9, fig.width=8>>=
+%% oldPar <- par(no.readonly=TRUE)
+%% layout(matrix(c(1,2,3,4), 2, 2, byrow=TRUE))
+%% plotTS(1, 7, index=2, showtitle=FALSE, indfixaxis=TRUE, leg=NULL, indletter=1, add=TRUE, opacity=opacity)
+%% plotTS(1, 7, index=3, showtitle=FALSE, indfixaxis=TRUE, leg=NULL, indletter=2, add=TRUE, opacity=opacity)
+%% plotTS(1, 7, index=4, showtitle=FALSE, indfixaxis=TRUE, leg=NULL, indletter=3, add=TRUE, opacity=opacity)
+%% plotTS(1, 7, index=5, showtitle=FALSE, indfixaxis=TRUE, leg=NULL, indletter=4, add=TRUE, opacity=opacity)
+%% par(oldPar)
+%% @
+%% \end{center}
+%% %\vspace{0mm}
+%% \caption{Reference Case MPD Index fits for (a) QSSS, (b) HSMAS, (c) HSSS, (d) WCVISS.}
+%% \label{fig:indexfits}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
+
+%% % AGE COMP FITS PLOTS
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<agecomps-fits-trawl, fig.height=5, fig.width=8, fig.show='hold'>>=
+%% #oldPar <- par(no.readonly=TRUE)
+%% #layout(matrix(c(1,2),2,1,byrow=FALSE))
+%% plotBiology(plotNum=12, compFitSex=0, index=1, showtitle=FALSE, scenario=1)
+%% plotBiology(plotNum=13, compFitSex=0, index=1, showtitle=FALSE, scenario=1)
+%% #par(oldPar)
+%% @
+%% \end{center}
+%% %\vspace{0mm}
+%% \caption{Age composition fits and residuals for the Reference Case for the commercial trawl fishery. Blue points represent zero samples, red are positive residuals, and black are negative residuals. N values represent the number of specimens aged in each year.}
+%% \label{fig:agecomps-fits-trawl}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<agecomps-fits-qcsss, fig.height=5, fig.width=8, fig.show='hold'>>=
+%% #oldPar <- par(no.readonly=TRUE)
+%% #layout(matrix(c(1,2),2,1,byrow=FALSE))
+%% plotBiology(plotNum=12, compFitSex=0, index=2, showtitle=FALSE, scenario=1)
+%% plotBiology(plotNum=13, compFitSex=0, index=2, showtitle=FALSE, scenario=1)
+%% #par(oldPar)
+%% @
+%% \end{center}
+%% %\vspace{0mm}
+%% \caption{Age composition fits and residuals for the Reference Case for the QCSSS. Blue points represent zero samples, red are positive residuals, and black are negative residuals. N values represent the number of specimens aged in each year.}
+%% \label{fig:agecomps-fits-qcsss}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<agecomps-fits-hsss, fig.height=5, fig.width=8, fig.show='hold'>>=
+%% #oldPar <- par(no.readonly=TRUE)
+%% #layout(matrix(c(1,2),2,1,byrow=FALSE))
+%% plotBiology(plotNum=12, compFitSex=0, index=4, showtitle=FALSE, scenario=1)
+%% plotBiology(plotNum=13, compFitSex=0, index=4, showtitle=FALSE, scenario=1)
+%% #par(oldPar)
+%% @
+%% \end{center}
+%% %\vspace{0mm}
+%% \caption{Age composition fits and residuals for the Reference Case for the HSSS. Blue points represent zero samples, red are positive residuals, and black are negative residuals. N values represent the number of specimens aged in each year.}
+%% \label{fig:agecomps-fits-hsss}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<agecomps-fits-wcviss, fig.height=5, fig.width=8, fig.show='hold'>>=
+%% #oldPar <- par(no.readonly=TRUE)
+%% #layout(matrix(c(1,2),2,1,byrow=FALSE))
+%% plotBiology(plotNum=12, compFitSex=0, index=5, showtitle=FALSE, scenario=1)
+%% plotBiology(plotNum=13, compFitSex=0, index=5, showtitle=FALSE, scenario=1)
+%% #par(oldPar)
+%% @
+%% \end{center}
+%% %\vspace{0mm}
+%% \caption{Age composition fits and residuals for the Reference Case for the WCVISS. Blue points represent zero samples, red are positive residuals, and black are negative residuals. N values represent the number of specimens aged in each year.}
+%% \label{fig:agecomps-fits-wcviss}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
+
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<priorsvsposts>>=
+%% plotConvergence(1, 5, burnthin=burnthin, showtitle=FALSE, priorsonly=FALSE, latexnames=TRUE)
+%% @
+%% \end{center}
+%% %\vspace{0mm}
+%% \caption{Prior probability distributions used in the Reference case with comparative posterior histograms. Parameters $q_k$ represent gears where: $k=2$ is the QCSSS, $k=3$ is the HSMSAS, $k=4$ is the HSSS, and $k=5$ is the WCVISS. The dotted red lines are the MPD estimates from the Reference Case.}
+%% \label{fig:priorsvsposts}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<pairs, fig.height=8, fig.width=8>>=
+%% plotConvergence(1, 4, burnthin=burnthin, showtitle=FALSE, latexnames=TRUE)
+%% @
+%% \end{center}
+%% %\vspace{0mm}
+%% \caption{Pairs plots for MCMC output of estimated parameters in the Reference Case. See Figure \ref{fig:traces} for parameter descriptions.}
+%% \label{fig:pairs}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
+
+%% % SELECTIVITY PLOT
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<selex, fig.height=5,fig.width=8>>=
+%% plotSelex(1,2,showtitle=FALSE,leg="bottomright",showmat=TRUE)
+%% @
+%% %\end{center}
+%% %\vspace{0mm}
+%% \caption{Estimated and Fixed selectivities for the Reference Case, compared with female maturity.}
+%% \label{fig:selex}
+%% %\end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+
+%% % REFERENCE POINT PLOT
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% %\begin{figure}[htp]
+%% %\begin{center}
+%% <<refpoints, fig.height=5,fig.width=8>>=
+%% plotTS(plotNum=10,  ci=ci, burnthin=burnthin, plotMCMC=TRUE, showumsy=TRUE, showtitle=FALSE, opacity=opacity)
+%% @
+%% \end{center}
+%% %\vspace{0mm}
+%% \caption{Posterior reference points for the Reference Case. Bars represent \mcmcci\ credible intervals.}
+%% \label{fig:refpoints}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
+
+%% % SPAWNING BIOMASS PLOT
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<spawnbiomass, fig.height=9, fig.width=7.5>>=
+%% oldPar <- par(no.readonly=TRUE)
+%% layout(matrix(c(1,2),2,1,byrow=FALSE))
+%% plotTS(1, 1, ci=ci, burnthin=burnthin, plotMCMC=TRUE, leg=NULL, showtitle=FALSE, showB0Ref=TRUE, showBMSYRef=FALSE, indletter=1, add=TRUE, opacity=opacity)
+%% plotTS(1, 1, ci=ci, burnthin=burnthin, plotMCMC=TRUE, leg=NULL, showtitle=FALSE, showB0Ref=FALSE, showBMSYRef=TRUE, indletter=2, add=TRUE, opacity=opacity)
+%% par(oldPar)
+%% @
+%% \end{center}
+%% %\vspace{0mm}
+%% \caption{Median posterior spawning biomass for the Reference Case. The shaded area represents the \mcmcci\ credible interval. The point and bars represent the median estimate of $B_0$ and with a credible interval of \mcmcci. Panel (a) shows posterior median estimates of reference points $0.2$\emph{B}\subscr{0} and $0.4$\emph{B}\subscr{0}, Panel (b) shows posterior median estimates of reference points $0.4$\emph{B}\subscr{MSY} and $0.8$\emph{B}\subscr{MSY}}
+%% \label{fig:spawnbiomass}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
+
+%% % VULNERABLE BIOMASS PLOT
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<vuln-spawn-biomass, fig.height=5, fig.width=8>>=
+%% plotTS(1, 12, ci=ci, burnthin=burnthin, plotMCMC=TRUE, showSbio=TRUE, leg="topleft", showtitle=FALSE, showB0Ref=FALSE, showBMSYRef=FALSE, opacity=opacity)
+%% @
+%% \end{center}
+%% \caption{Median posterior vulnerable and spawning biomass for the Reference Case. The shaded area represents the \mcmcci\ credible interval.}
+%% \label{fig:vuln-spawn-biomass}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
+
+%% % RECRUITMENT PLOT
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<recruitment, fig.height=9, fig.width=8>>=
+%% oldPar <- par(no.readonly=TRUE)
+%% layout(matrix(c(1,2),2,1,byrow=FALSE))
+%% plotTS(1, 5, ci=ci, burnthin=burnthin, plotMCMC=TRUE, leg=NULL, showtitle=FALSE, indletter=1, add=TRUE, opacity=opacity)
+%% plotTS(1, 11, ci=ci, burnthin=burnthin, plotMCMC=TRUE, leg=NULL, showtitle=FALSE, indletter=2, add=TRUE, opacity=opacity)
+%% par(oldPar)
+%% @
+%% \end{center}
+%% %\vspace{0mm}
+%% \caption{Median posterior recruitment (a) and recruitment deviations (b) for the Reference Case. The bars represent the \mcmcci\ credible interval. The red line is the long-term mean; the green line is the long-term median.}
+%% \label{fig:recruitment}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
+
+%% % FISHING MORTALITY PLOT
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<F, fig.height=5,fig.width=8>>=
+%% plotTS(1, 9, ci=ci, burnthin=burnthin, plotMCMC=TRUE, leg=NULL, showtitle=FALSE, opacity=opacity)
+%% @
+%% %\end{center}
+%% %\vspace{0mm}
+%% \caption{Fishing mortality for the Reference Case. The shaded area represents the \mcmcci\ credible interval.}
+%% \label{fig:F}
+%% %\end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+
+%% % RELATIVE SPAWNING BIOMASS PLOT
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% %\begin{figure}[htp]
+%% %\begin{center}
+%% <<depletion, fig.height=5, fig.width=8>>=
+%% plotTS(1, 3, ci=ci, burnthin=burnthin, plotMCMC=TRUE, leg=NULL, showtitle=FALSE, showB0Ref=TRUE, showBMSYRef=FALSE, opacity=opacity)
+%% @
+%% \end{center}
+%% \caption{Relative median posterior spawning biomass for the Reference Case. The shaded area represents the \mcmcci\ credible interval.}
+%% \label{fig:depletion}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
+
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% % SENSITIVITY PLOTS
+%% %%%%%%%%%%%%%%%%%%%%%%%
+
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<sens-sig-indices, fig.height=9, fig.width=8>>=
+%% # Plot indices for sens group 1
+%% g <- 1
+%% oldPar <- par(no.readonly=TRUE)
+%% layout(matrix(c(1,2,3,4), 2, 2, byrow=TRUE))
+%% plotTS(plotNum=7, index=2, sensGroup=1, multiple=TRUE, showtitle=FALSE, indfixaxis=TRUE, leg="bottomright", colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], indletter=1, opacity=opacity, add=TRUE)
+%% plotTS(plotNum=7, index=3, sensGroup=1, multiple=TRUE, showtitle=FALSE, indfixaxis=TRUE, leg=NULL,          colors=modelcolors[[g]], linetypes=modellinetypes[[g]], indletter=2, opacity=opacity, add=TRUE)
+%% plotTS(plotNum=7, index=4, sensGroup=1, multiple=TRUE, showtitle=FALSE, indfixaxis=TRUE, leg=NULL,          colors=modelcolors[[g]], linetypes=modellinetypes[[g]], indletter=3, opacity=opacity, add=TRUE)
+%% plotTS(plotNum=7, index=5, sensGroup=1, multiple=TRUE, showtitle=FALSE, indfixaxis=TRUE, leg=NULL,          colors=modelcolors[[g]], linetypes=modellinetypes[[g]], indletter=4, opacity=opacity, add=TRUE)
+%% par(oldPar)
+%% @
+%% \end{center}
+%% %\vspace{0mm}
+%% \caption{MPD Index fits for (a) QSSS, (b) HSMAS, (c) HSSS, (d) WCVISS for models examining sensitivity to the $\sigma$ parameter.}
+%% \label{fig:sens-sig-indices}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
+
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<sens-sig-biomass, fig.height=5, fig.width=8>>=
+%% g <- 1 # group number
+%% plotTS(plotNum=1, sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
+%% @
+%% \end{center}
+%% %\vspace{0mm}
+%% \caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to the $\sigma$ parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
+%% \label{fig:sens-sig-biomass}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
+
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<sens-sig-recruitment, fig.height=9, fig.width=8>>=
+%% # Plot recruitment and deviations for sens group 1
+%% g <- 1 # group number
+%% oldPar <- par(no.readonly=TRUE)
+%% layout(matrix(c(1,2),2,1,byrow=FALSE))
+%% plotTS(plotNum=5, sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], indletter=1, opacity=opacity, add=TRUE)
+%% plotTS(plotNum=11, sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg=NULL, showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], indletter=2, opacity=opacity, add=TRUE)
+%% par(oldPar)
+%% @
+%% \end{center}
+%% %\vspace{0mm}
+%% \caption{Estimated recruitment (a) and recruitment deviations (b) with \mcmcci\ credible intervals, for models examining sensitivity to the $\sigma$ parameter.}
+%% \label{fig:sens-sig-recruitment}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
+
+%% % Sensitivity group 2
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<sens-tau-recruitment, fig.height=9, fig.width=8>>=
+%% # Plot recruitment and deviations for sens group 2
+%% g <- 2
+%% oldPar <- par(no.readonly=TRUE)
+%% layout(matrix(c(1,2),2,1,byrow=FALSE))
+%% plotTS(plotNum=5,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], indletter=1, opacity=opacity, add=TRUE)
+%% plotTS(plotNum=11, sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg=NULL, showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], indletter=2, opacity=opacity, add=TRUE)
+%% par(oldPar)
+%% @
+%% \end{center}
+%% %\vspace{0mm}
+%% \caption{Estimated recruitment (a) and recruitment deviations (b) with \mcmcci\ credible intervals, for models examining sensitivity to the $\tau$ parameter.}
+%% \label{fig:sens-tau-recruitment}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
+
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<sens-tau-biomass, fig.height=5,fig.width=8>>=
+%% # Plot biomass for sens group 2
+%% g <- 2
+%% plotTS(plotNum=1,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
+%% @
+%% %\end{center}
+%% %\vspace{0mm}
+%% \caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to the $\tau$ parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
+%% \label{fig:sens-tau-biomass}
+%% %\end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% %\begin{figure}[htp]
+%% %\begin{center}
+%% <<sens-tau-depletion, fig.height=5,fig.width=8>>=
+%% g <- 2
+%% plotTS(plotNum=3,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
+%% @
+%% \end{center}
+%% %\vspace{0mm}
+%% \caption{Estimated relative median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to the $\tau$ parameter.}
+%% \label{fig:sens-tau-depletion}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
+
+%% % Sensitivity group 3
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<sens-h-biomass, fig.height=5,fig.width=8>>=
+%% # Plot biomass for sens group 3
+%% g <- 3
+%% plotTS(plotNum=1,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
+%% @
+%% %\end{center}
+%% %\vspace{0mm}
+%% \caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to the steepness parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
+%% \label{fig:sens-h-biomass}
+%% %\end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% %\begin{figure}[htp]
+%% %\begin{center}
+%% <<sens-h-recruitment, fig.height=5,fig.width=8>>=
+%% # Plot recruitment for sens group 3
+%% g <- 3
+%% plotTS(plotNum=5,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topleft", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
+%% @
+%% \end{center}
+%% \vspace{-3mm}
+%% \caption{Estimated median recruitment with \mcmcci\ credible intervals, for models examining sensitivity to the steepness parameter.}
+%% \label{fig:sens-h-recruitment}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
+
+%% % Sensitivity group 4
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<sens-msd-biomass, fig.height=5,fig.width=8>>=
+%% # Plot biomass for sens group 4
+%% g <- 4
+%% plotTS(plotNum=1,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
+%% @
+%% %\end{center}
+%% %\vspace{0mm}
+%% \caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to the standard deviation of the natural mortality  parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
+%% \label{fig:sens-msd-biomass}
+%% %\end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% %\begin{figure}[htp]
+%% %\begin{center}
+%% <<sens-msd-recruitment, fig.height=5,fig.width=8>>=
+%% # Plot recruitment for sens group 4
+%% g <- 4
+%% plotTS(plotNum=5, sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topleft", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
+%% @
+%% \end{center}
+%% \vspace{-3mm}
+%% \caption{Estimated median recruitment with \mcmcci\ credible intervals, for models examining sensitivity to the standard deviation of the natural mortality  parameter.}
+%% \label{fig:sens-msd-recruitment}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
+
+%% % Sensitivity group 5
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<sens-m-biomass, fig.height=5,fig.width=8>>=
+%% # Plot biomass for sens group 5
+%% g <- 5
+%% plotTS(plotNum=1,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
+%% @
+%% %\end{center}
+%% %\vspace{0mm}
+%% \caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to the natural mortality parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
+%% \label{fig:sens-m-biomass}
+%% %\end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% %\begin{figure}[htp]
+%% %\begin{center}
+%% <<sens-m-recruitment, fig.height=5,fig.width=8>>=
+%% # Plot recruitment for sens group 5
+%% g <- 5
+%% plotTS(plotNum=5,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topleft", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
+%% @
+%% \end{center}
+%% \vspace{-3mm}
+%% \caption{Estimated median recruitment with \mcmcci\ credible intervals, for models examining sensitivity to the natural mortality parameter.}
+%% \label{fig:sens-m-recruitment}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
+
+%% % Sensitivity group 6
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<sens-q-biomass, fig.height=5,fig.width=8>>=
+%% # Plot biomass for sens group 6
+%% g <- 6
+%% plotTS(plotNum=1,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
+%% @
+%% %\end{center}
+%% %\vspace{0mm}
+%% \caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to the catchability parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
+%% \label{fig:sens-q-biomass}
+%% %\end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% %\begin{figure}[htp]
+%% %\begin{center}
+%% <<sens-q-recruitment, fig.height=5,fig.width=8>>=
+%% # Plot recruitment for sens group 6
+%% g <- 6
+%% plotTS(plotNum=5,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topleft", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
+%% @
+%% \end{center}
+%% \vspace{-3mm}
+%% \caption{Estimated recruitment with \mcmcci\ credible intervals, for models examining sensitivity to the catchability parameter.}
+%% \label{fig:sens-q-recruitment}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
+
+%% % Sensitivity group 7
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<sens-qsd-biomass, fig.height=5,fig.width=8>>=
+%% # Plot biomass for sens group 7
+%% g <- 7
+%% plotTS(plotNum=1,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
+%% @
+%% %\end{center}
+%% %\vspace{0mm}
+%% \caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to the catchability standard deviation parameter. Points and bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
+%% \label{fig:sens-qsd-biomass}
+%% %\end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% %\begin{figure}[htp]
+%% %\begin{center}
+%% <<sens-qsd-recruitment, fig.height=5,fig.width=8>>=
+%% # Plot recruitment for sens group 7
+%% g <- 7
+%% plotTS(plotNum=5,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topleft", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
+%% @
+%% \end{center}
+%% \vspace{-3mm}
+%% \caption{Estimated recruitment with \mcmcci\ credible intervals, for models examining sensitivity to the catchability standard deviation parameter.}
+%% \label{fig:sens-qsd-recruitment}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
+
+%% %% %%%%%%%%%%%%%%%%%%%%%%%
+%% %% \begin{figure}[htp]
+%% %% \begin{center}
+%% %% <<fig.height=9, fig.width=8>>=
+%% %% # Plot selectivities for sensitivity group 7
+%% %% g <- 7
+%% %% oldPar <- par(no.readonly=TRUE)
+%% %% layout(matrix(c(1,2,3,4),2,2,byrow=TRUE))
+%% %% plotSelex(plotNum=1,  index=1, sensGroup=g, multiple=TRUE, leg="bottomright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], indletter=1, add=TRUE)
+%% %% plotSelex(plotNum=1,  index=2, sensGroup=g, multiple=TRUE, leg=NULL, showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], indletter=2, add=TRUE)
+%% %% plotSelex(plotNum=1,  index=4, sensGroup=g, multiple=TRUE, leg=NULL, showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], indletter=3, add=TRUE)
+%% %% plotSelex(plotNum=1,  index=5, sensGroup=g, multiple=TRUE, leg=NULL, showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], indletter=4, add=TRUE)
+%% %% par(oldPar)
+%% %% @
+%% %% \end{center}
+%% %% %\vspace{0mm}
+%% %% \caption{Selectivity estimates for models examining sensitivity to the catchability standard deviation parameter. (a) is the trawl fishery selectivity, (b) is the QCSSS selectivity, (c) is the HSSS selectivity, and (d) is the WCVISS selectivity.}
+%% %% \label{fig:sens-qsd-selex}
+%% %% \end{figure}
+%% %% %%%%%%%%%%%%%%%%%%%%%%%
+%% %% \clearpage
+
+%% % Sensitivity group 8
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<sens-trawl-selex, fig.height=5,fig.width=8>>=
+%% g <- 8
+%% plotSelex(plotNum=1,  index=1, sensGroup=g, multiple=TRUE, leg="bottomright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]])
+%% @
+%% %\end{center}
+%% %\vspace{0mm}
+%% \caption{Trawl selectivity for models examining sensitivity to trawl selectivity.}
+%% \label{fig:sens-trawl-selex}
+%% %\end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% %\begin{figure}[htp]
+%% %\begin{center}
+%% <<sens-trawl-selex-biomass, fig.height=5,fig.width=8>>=
+%% g <- 8
+%% plotTS(plotNum=1,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], opacity=opacity)
+%% @
+%% \end{center}
+%% %\vspace{0mm}
+%% \caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for models examining sensitivity to trawl selectivity. Points and bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
+%% \label{fig:sens-trawl-selex-biomass}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage
+
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \begin{figure}[htp]
+%% \begin{center}
+%% <<sens-trawl-selex-refpoints, fig.height=5,fig.width=8>>=
+%% # Plot Umsy/Bmsy boxplots for sens group 8
+%% g <- 8
+%% shortnames <- c("Ref","Sc 12","Sc 13")
+%% plotTS(plotNum=10,  sensGroup=g, ci=ci, burnthin=burnthin, multiple=TRUE, plotMCMC=TRUE, showumsy=TRUE, leg="topright", showtitle=FALSE, colors=modelcolors[[g]], linetypes=modellinetypes[[g]], names=modelnames[[g]], shortnames=shortnames, opacity=opacity)
+%% @
+%% \end{center}
+%% %\vspace{0mm}
+%% \caption{Posterior reference points for models examining sensitivity to trawl selectivity. Bars represent \mcmcci\ credible intervals.}
+%% \label{fig:sens-trawl-selex-refpoints}
+%% \end{figure}
+%% %%%%%%%%%%%%%%%%%%%%%%%
+%% \clearpage

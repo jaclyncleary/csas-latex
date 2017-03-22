@@ -20,7 +20,6 @@ install.packages.if.needed("devtools", "devtools", github=FALSE)
 install.packages.if.needed("caTools", "caTools", github=FALSE)
 install.packages.if.needed("stringi", "stringi", github=FALSE)
 install.packages.if.needed("date", "date", github=FALSE)
-install.packages.if.needed("r4ss", "r4ss/r4ss", github=TRUE)
 install.packages.if.needed("xtable", "xtable", github=FALSE)
 install.packages.if.needed("PBSmapping", "PBSmapping", github=FALSE)
 install.packages.if.needed("PBSmodelling", "PBSmodelling", github=FALSE)
@@ -44,10 +43,10 @@ require(maptools)
 require(lubridate)
 require(knitr)
 
-## source(file.path(func.dir, "catches.r"))      ## Code to load the catch/TAC data, making catch figures, and making tables for catch/TAC.
+source(file.path(func.dir, "catches.r"))      ## Code to load the catch/TAC data, making catch figures, and making tables for catch/TAC.
 source(file.path(func.dir, "load-models.r"))  ## Code to load the models from the model directories.
 ## source(file.path(func.dir, "survey.r"))       ## Code to load the survey data, making survey figures, and making tables for survey.
-## source(file.path(func.dir, "load-data.r"))    ## Code to load data tables from the data directory.
+source(file.path(func.dir, "load-data.r"))    ## Code to load data tables from the data directory.
 ## source(file.path(func.dir, "read-list.r"))    ## Code to read a user file into an R list (for model setup).
 
 ## source(file.path(func.dir, "figures-timeseries.r"))
@@ -77,6 +76,6 @@ source("model-setup.r")                 ## Code to setup the model names, and
                                         ##  in the models.
 #source("forecast-catch-levels.r")       ## Code to setup forecast model runs.
 #source("retrospective-setup.r")         ## Code to setup retro model runs.
-#source("data-tables.r")                 ## Set up variables for data tables
+source("data-tables.r")                 ## Set up variables for data tables
                                         ##  (from csv files).
 

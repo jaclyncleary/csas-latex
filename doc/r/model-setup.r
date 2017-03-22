@@ -49,12 +49,6 @@ if(verbose) cat0("iscam starter file: \n  ", starter.file.name)
 ## -----------------------------------------------------------------------------
 ## Data start and endpoint variables
 ## -----------------------------------------------------------------------------
-## Recruitment deviations start year
-recruit.dev.start.yr <- 1946
-if(verbose) cat0("Recruitment deviations start year: \n  ", recruit.dev.start.yr)
-## Unfished equilibrium year.
-unfished.eq.yr <- 1964
-if(verbose) cat0("Unfished equilibrium year: \n  ", unfished.eq.yr)
 ## Start year for the models
 start.yr <- 1996
 if(verbose) cat0("Start year for catch data: \n  ", start.yr)
@@ -120,9 +114,9 @@ model.dir.names <- c(base.model.dir.name,
 load.models.into.parent.env <- function(){
   base.model         <<- load.models(model.dir, base.model.dir.name)
 
-##  sens.models.1      <<- load.models(model.dir, sens.model.dir.names.1)
+  sens.models.1      <<- load.models(model.dir, sens.model.dir.names.1)
   ## Sensitivity group 2 has only one sensitivity model in it, so set TRUE below
-##  sens.models.2      <<- load.models(model.dir, sens.model.dir.names.2, TRUE)
+  sens.models.2      <<- load.models(model.dir, sens.model.dir.names.2, TRUE)
 }
 
 build <- function(run.fore = FALSE,
@@ -153,7 +147,7 @@ build <- function(run.fore = FALSE,
                     my.retro.yrs = retro.yrs,
                     verbose = ss.verbose)
 
-  ## Bridge and sensitivity models need to be unlisted from their groups
+  ## Sensitivity models need to be unlisted from their groups
   ##  and placed into a single list for the FOR loop to work right
   mnv <- c(unlist(sens.model.dir.names.1),
            unlist(sens.model.dir.names.2))
@@ -165,16 +159,16 @@ build <- function(run.fore = FALSE,
   model.names.list <- as.list(unique(mnv))
 
   ## Sensitivity models
-  ## for(model.nm in model.names.list){
-  ##   create.rdata.file(
-  ##     model.name = model.nm,
-  ##     ovwrt.rdata = FALSE,
-  ##     run.forecasts = FALSE,
-  ##     fore.yrs = forecast.yrs,
-  ##     forecast.probs = forecast.probs,
-  ##     forecast.catch.levels = catch.levels,
-  ##     run.retros = FALSE,
-  ##     my.retro.yrs = retro.yrs,
-  ##     verbose = ss.verbose)
-  ## }
+  for(model.nm in model.names.list){
+    create.rdata.file(
+      model.name = model.nm,
+      ovwrt.rdata = FALSE,
+      run.forecasts = FALSE,
+      fore.yrs = forecast.yrs,
+      forecast.probs = forecast.probs,
+      forecast.catch.levels = catch.levels,
+      run.retros = FALSE,
+      my.retro.yrs = retro.yrs,
+      verbose = ss.verbose)
+  }
 }

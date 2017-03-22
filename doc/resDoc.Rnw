@@ -65,9 +65,18 @@ opts_chunk$set(dev = 'cairo_ps',
                results = 'hide',
                cache = TRUE,
                cache.path = 'knitr-cache/')
-## Must include any libraries here as they are not stored in the RData file.
-require(PBSmodelling)
-load(".RData")
+setwd("r")
+## Load all R code and the package libraries.
+source("all.r")
+
+## If you want to reload all model outputs, set to TRUE
+## The load.models.into.parent.env function is located at bottom of model-setup.r.
+if(TRUE){
+  load.models.into.parent.env()
+}
+## This has to be sourced after loading the models in because it depends
+##  on the model output.
+source("custom-knitr-variables.r")
 @
 
 \TableOfContents

@@ -1,7 +1,8 @@
 load.iscam.files <- function(model.dir,
                              verbose = FALSE){
   ## Load all the iscam files for output and input, and return the model object.
-  ## If MCMC directory is present, load that and perform calculations for mcmc parameters.
+  ## If MCMC directory is present, load that and perform calculations for mcmc
+  ##  parameters.
 
   curr.func.name <- get.curr.func.name()
   model <- list()
@@ -25,15 +26,14 @@ load.iscam.files <- function(model.dir,
   ## Set default mcmc members to NA. Later code depends on this.
   model$mcmc <- NA
   ## Set the mcmc path. This doesn't mean it exists.
-  mcmc.dir <- file.path(model.dir, "mcmc")
-  model$mcmcpath <- mcmc.dir
+  model$mcmcpath <- file.path(model.dir, "mcmc")
 
-  ## If it has an 'mcmc' sub-directory, load that as well
-  if(dir.exists(mcmc.dir)){
-    model$mcmc <- read.mcmc(mcmc.dir)
+  ## If it has an 'mcmc' sub-directory, load it
+  if(dir.exists(model$mcmcpath)){
+    model$mcmc <- read.mcmc(model$mcmcpath)
+    ## Do the mcmc quantile calculations
+    model$mcmccalcs <- calc.mcmc(model$mcmc)
   }
-  ## Do the mcmc quantile calculations
-  model$mcmccalcs <- calc.mcmc(model$mcmc)
   model
 }
 
@@ -52,6 +52,16 @@ delete.rdata.files <- function(
   }else{
     cat("No files were deleted.\n")
   }
+}
+
+delete.dirs <- function(models.dir = model.dir, ## Directory name for all models location
+                        sub.dir = NULL){        ## The subdirectory to delete recursively
+  ## Delete all directories and files of sub.dir
+  dirs <- dir(models.dir)
+  files <- file.path(models.dir, dirs, sub.dir)
+  unlink(files, recursive = TRUE, force = TRUE)
+  cat("All files and directories were deleted from the",
+      sub.dir, "directory in each model directory.\n")
 }
 
 create.rdata.file <- function(
