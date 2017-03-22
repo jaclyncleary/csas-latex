@@ -54,16 +54,6 @@ delete.rdata.files <- function(
   }
 }
 
-delete.dirs <- function(models.dir = model.dir, ## Directory name for all models location
-                        sub.dir = NULL){        ## The subdirectory to delete recursively
-  ## Delete all directories and files of sub.dir
-  dirs <- dir(models.dir)
-  files <- file.path(models.dir, dirs, sub.dir)
-  unlink(files, recursive = TRUE, force = TRUE)
-  cat("All files and directories were deleted from the",
-      sub.dir, "directory in each model directory.\n")
-}
-
 create.rdata.file <- function(
            models.dir = model.dir,          ## Directory name for all models location
            model.name,                      ## Directory name of model to be loaded
@@ -798,12 +788,11 @@ read.par.file <- function(file = NULL,
   ## Remove all preceeding and trailing whitespace
   conv.check <- gsub("^[[:blank:]]+", "", conv.check)
   conv.check <- gsub("[[:blank:]]+$", "", conv.check)
-  ## Get the values, round is used to force non-scientific notation
-  conv.check <- as.numeric(strsplit(conv.check, "[[:blank:]]+")[[1]])
-  ## Remove all NA's from the vector (these were just 'e's on their own.)
-  conv.check <- conv.check[!is.na(conv.check)]
-
+  ## Remove the non-numeric parts
+  conv.check <- strsplit(conv.check, " +")[[1]]
+  conv.check <- conv.check[grep("^[[:digit:]]", conv.check)]
   ## The following values are saved for appending to the tmp list later
+
   num.params   <- conv.check[1]
   obj.fun.val <-  format(conv.check[2], digits = 6, scientific = FALSE)
   max.gradient <-  format(conv.check[3], digits = 8, scientific = FALSE)
