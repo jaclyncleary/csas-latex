@@ -20,10 +20,7 @@ load.iscam.files <- function(model.dir,
   model$proj <- read.projection.file(model$proj.file)
   model$par <- read.par.file(file.path(model.dir, par.file))
   ## Load MPD results
-  model$mpd <- rep.to.r.list(file.path(model.dir, rep.file))
-  ## Load the data, control, and projection file for the model
-  ## Get the file whose name contains "_data.ss" and "_control.ss"
-  ## If there is not exactly one of each, stop with error.
+  model$mpd <- read.report.file(file.path(model.dir, rep.file))
   model.dir.listing <- dir(model.dir)
   ## Set default mcmc members to NA. Later code depends on this.
   model$mcmc <- NA
@@ -32,18 +29,11 @@ load.iscam.files <- function(model.dir,
   model$mcmcpath <- mcmc.dir
 
   ## If it has an 'mcmc' sub-directory, load that as well
-  ## if(dir.exists(mcmc.dir)){
-  ##   model$mcmc <- data.frame(SSgetMCMC(dir = mcmc.dir,
-  ##                                      writecsv = FALSE,
-  ##                                      verbose = ss.verbose)$model1)
-  ##   create.key.nuisance.posteriors.files(model,
-  ##                                        key.posts,
-  ##                                        key.posts.fn,
-  ##                                        nuisance.posts.fn)
-  ##   ## Do the mcmc calculations, e.g. quantiles for SB, SPB, DEPL, RECR, RECRDEVS
-  ##   model$mcmccalcs <- calc.mcmc(model$mcmc)
-
-  ## }
+  if(dir.exists(mcmc.dir)){
+    model$mcmc <- read.mcmc(mcmc.dir)
+  }
+  ## Do the mcmc quantile calculations
+  model$mcmccalcs <- calc.mcmc(model$mcmc)
   model
 }
 
@@ -182,359 +172,6 @@ create.rdata.file <- function(
   return(invisible())
 }
 
-calc.mcmc <- function(mcmc,            ## mcmc is the output of the SS_getMCMC
-                                       ##  function from the r4ss package as a data.frame
-                      lower = 0.025,   ## Lower quantile for confidence interval calcs
-                      upper = 0.975    ## Upper quantile for confidence interval calcs
-                      ){
-  ## Do the mcmc calculations, e.g. quantiles for SB, SPB, DEPL, RECR, RECRDEVS, SPR
-  ## Returns a list of them all
-
-  ## 2e6 used here because biomass will be shown in the millions of tonnes and it is female only
-  spb <- mcmc[,grep("SPB",names(mcmc))]/2e6
-  svirg <- quantile(spb[,names(spb) == "SPB_Virgin"], c(lower, 0.5, upper))
-  sinit <- quantile(spb[,names(spb) == "SPB_Initial"], c(lower, 0.5, upper))
-
-  ## sinit.post is saved here so that depletion calculations can be done for each posterior,
-  sinit.post <- spb[,names(spb) == "SPB_Initial"]
-
-  names(spb) <- gsub("SPB_","",names(spb))
-  cols.to.strip <- c("Virgin", "Initial")
-  spb <- strip.columns(spb, cols.to.strip)
-
-  slower <- apply(spb,2,quantile,prob=lower)
-  smed   <- apply(spb,2,quantile,prob=0.5)
-  supper <- apply(spb,2,quantile,prob=upper)
-
-  depl   <- apply(spb,2,function(x){x/sinit.post})
-  dlower <- apply(depl,2,quantile,prob=lower)
-  dmed   <- apply(depl,2,quantile,prob=0.5)
-  dupper <- apply(depl,2,quantile,prob=upper)
-
-  ## 1e6 used here because recruitment will be shown in the millions of tonnes
-  recr <- mcmc[,grep("Recr_",names(mcmc))]/1e6
-  recr <- recr[,-grep("Fore",names(recr))]
-  names(recr) <- gsub("Recr_","",names(recr))
-  rvirg <- quantile(recr[,names(recr) == "Virgin"], c(lower, 0.5, upper))
-  rinit <- quantile(recr[,names(recr) == "Initial"], c(lower, 0.5, upper))
-  runfished <- quantile(recr[,names(recr) == "Unfished"], c(lower, 0.5, upper))
-
-  cols.to.strip <- c("Virgin", "Initial","Unfished")
-  recr <- strip.columns(recr, cols.to.strip)
-
-  rmed <- apply(recr, 2, quantile, prob=0.5)
-  rmean <- apply(recr, 2, mean)
-  rlower <- apply(recr, 2, quantile,prob=lower)
-  rupper <- apply(recr, 2, quantile,prob=upper)
-
-  dev <- mcmc[,c(grep("Early_InitAge_", names(mcmc)),
-                 grep("Early_RecrDev_", names(mcmc)),
-                 grep("Main_RecrDev_", names(mcmc)),
-                 grep("Late_RecrDev_", names(mcmc)),
-                 grep("ForeRecr_", names(mcmc)))]
-
-  names(dev) <- gsub("Early_RecrDev_", "", names(dev))
-  names(dev) <- gsub("Main_RecrDev_", "", names(dev))
-  names(dev) <- gsub("Late_RecrDev_", "", names(dev))
-  names(dev) <- gsub("ForeRecr_", "", names(dev))
-
-  ## Change the Early_Init names to be the correct preceeding years
-  start.yr <- as.numeric(min(names(dev)))
-  early <- grep("Early_InitAge_",names(dev))
-  num.early.yrs <- length(early)
-  early.yrs <- seq(start.yr - num.early.yrs, start.yr - 1, 1)
-  late.yrs <- names(dev[-early])
-  names(dev) <- c(as.character(early.yrs), late.yrs)
-
-  devlower <- apply(dev, 2, quantile, prob=lower)
-  devmed <- apply(dev, 2, quantile, prob=0.5)
-  devupper <- apply(dev, 2, quantile, prob=upper)
-
-  spr <- mcmc[,grep("SPRratio_", names(mcmc))]
-  names(spr) <- gsub("SPRratio_", "", names(spr))
-
-  plower <- apply(spr, 2, quantile, prob=lower)
-  pmed <- apply(spr, 2, quantile, prob=0.5)
-  pupper <- apply(spr, 2, quantile, prob=upper)
-
-  f <- mcmc[,grep("F_", names(mcmc))]
-  names(f) <- gsub("F_", "", names(f))
-  flower <- apply(f, 2, quantile, prob=lower)
-  fmed   <- apply(f, 2, quantile, prob=0.5)
-  fupper <- apply(f, 2, quantile, prob=upper)
-
-  list(svirg=svirg, sinit=sinit, slower=slower, smed=smed, supper=supper,
-       dlower=dlower, dmed=dmed, dupper=dupper,
-       rvirg=rvirg, rinit=rinit, runfihed=runfished,
-       rlower=rlower, rmed=rmed, rupper=rupper, rmean=rmean,
-       devlower=devlower, devmed=devmed, devupper=devupper,
-       plower=plower, pmed=pmed, pupper=pupper,
-       flower=flower, fmed=fmed, fupper=fupper)
-}
-
-run.forecasts <- function(model,
-                          forecast.yrs,
-                          forecast.probs,
-                          catch.levels){
-  ## Run forecasting for the model supplied. If there is no mcmc component
-  ##  to the model, an error will be given and the program will be stopped.
-  curr.func.name <- get.curr.func.name()
-
-  mcmc.path <- model$mcmcpath
-  ## forecast.yrs <- forecast.yrs[-length(forecast.yrs)]
-  ## Extract the catch level names from the list into a vector
-  catch.levels.names <- sapply(catch.levels, "[[", 3)
-  ## Make the catch level values a matrix where the columns represent the cases in catch.names
-  catch.levels <- sapply(catch.levels, "[[", 1)
-  forecasts.path <- file.path(mcmc.path, "forecasts")
-
-  cat0(curr.func.name, "Running forecasts for model located in ", mcmc.path, "...\n")
-  dir.create(forecasts.path, showWarnings = FALSE)
-
-  for(i in 1:length(forecast.yrs)){
-    fore.path <- file.path(forecasts.path, paste0("forecast-year-", forecast.yrs[i]))
-    dir.create(fore.path, showWarnings = FALSE)
-    for(level.ind in 1:ncol(catch.levels)){
-      ## Create a new sub-directory for each catch projection
-      name <- catch.levels.names[level.ind]
-      new.forecast.dir <- file.path(fore.path, name)
-      dir.create(new.forecast.dir, showWarnings = FALSE)
-
-      ## Copy all model files into this new forecast directory
-      file.copy(file.path(mcmc.path, list.files(mcmc.path)),
-                file.path(new.forecast.dir, list.files(mcmc.path)), copy.mode = TRUE)
-
-      ## Insert fixed catches into forecast file (depending on i)
-      forecast.file <- file.path(new.forecast.dir, "forecast.ss")
-      fore <- SS_readforecast(forecast.file, Nfleets = 1, Nareas = 1, nseas = 1, verbose = FALSE)
-      fore$Ncatch <- length(forecast.yrs[1:i])
-      ## fore$ForeCatch <- data.frame(Year = forecast.yrs[1:i], Seas = 1, Fleet = 1, Catch_or_F = catch.levels[[level.ind]][1:i])
-      fore$ForeCatch <- data.frame(Year = forecast.yrs[1:i], Seas = 1, Fleet = 1, Catch_or_F = catch.levels[,level.ind][1:i])
-      SS_writeforecast(fore, dir = new.forecast.dir, overwrite = TRUE, verbose = FALSE)
-
-      ## Evaluate the model using mceval option of ADMB, and retrieve the output
-      shell.command <- paste0("cd ", new.forecast.dir, " & ss3 -mceval")
-      shell(shell.command)
-    }
-  }
-
-  cat0(curr.func.name, "Finished running forecasts for model located in ", model$path, "...\n")
-}
-
-fetch.forecasts <- function(mcmc.path,
-                            forecast.yrs,
-                            catch.levels,
-                            fore.probs = NULL){ ## Probabilities for table
-  ## Fetch the output from previously-run forecasting
-  ## If the forecasts directory does not exist or there is a problem
-  ##  loading the forecasts, return NA.
-
-  ## outputs.list holds the outputs from the mcmc models as read in by SSgetMCMC
-  curr.func.name <- get.curr.func.name()
-
-  ## Extract the catch level names from the list into a vector
-  catch.levels.names <- sapply(catch.levels, "[[", 3)
-
-  ## outputs.list <- vector(mode = "list", length = length(catch.levels))
-  outputs.list <- vector(mode = "list", length = length(forecast.yrs))
-  for(i in 1:length(forecast.yrs)){
-    outputs.list[[i]] <- vector(mode = "list", length = length(catch.levels))
-  }
-  if(is.null(mcmc.path)){
-    return(NA)
-  }
-  forecasts.path <- file.path(mcmc.path, "forecasts")
-  if(!dir.exists(forecasts.path)){
-    return(NA)
-  }
-  ## Get the directory listing and choose the last one for loading
-  dir.listing <- dir(forecasts.path)
-
-  for(i in 1:length(forecast.yrs)){
-    fore.path <- file.path(forecasts.path, paste0("forecast-year-", forecast.yrs[i]))
-    ## fore.path <- file.path(forecasts.path, dir.listing[length(dir.listing)])
-    ## Get the directory listing of the last year's forecasts directory and make sure
-    ##  it matches what the catch levels are.
-    dir.listing <- dir(fore.path)
-    if(!identical(catch.levels.names, dir.listing)){
-      stop(curr.func.name, "There is a discrepancy between what you have set ",
-           "for the catch.levels names \n and what appears in the forecasts directory '",
-           fore.path,"'. \n Check the names in both and try again.\n\n")
-    }
-    for(level.ind in 1:length(catch.levels.names)){
-      fore.level.path <- file.path(fore.path, catch.levels.names[level.ind])
-      mcmc.out <- SSgetMCMC(dir = fore.level.path, writecsv = FALSE)$model1
-      ## Get the values of interest, namely Spawning biomass and SPR for the two
-      ## decision tables in the executive summary
-      sb <- mcmc.out[,grep("Bratio_",names(mcmc.out))]
-      spr <- mcmc.out[,grep("SPRratio_",names(mcmc.out))]
-
-      ## Strip out the Bratio_ and SPRratio_ headers so columns are years only
-      names(sb) <- gsub("Bratio_", "",names(sb))
-      names(spr) <- gsub("SPRratio_", "",names(spr))
-
-      ## Now, filter out the projected years only
-      sb.proj.cols <- sb[,names(sb) %in% forecast.yrs]
-      spr.proj.cols <- spr[,names(spr) %in% forecast.yrs]
-
-      outputs.list[[i]][[level.ind]]$biomass <- t(apply(sb.proj.cols, 2, quantile, probs=fore.probs))
-      outputs.list[[i]][[level.ind]]$spr <- t(apply(spr.proj.cols, 2, quantile, probs=fore.probs))
-      outputs.list[[i]][[level.ind]]$mcmccalcs <- calc.mcmc(mcmc.out)
-      outputs.list[[i]][[level.ind]]$outputs <- mcmc.out
-      names(outputs.list[[i]]) <- catch.levels.names
-    }
-  }
-  names(outputs.list) <- forecast.yrs
-  outputs.list
-}
-
-calc.risk <- function(forecast.outputs, ## A list of length = number of forecast years.
-                                        ## Each element of the list is a list of the output of the
-                                        ## SS_getMCMC function, 1 for each catch.level
-                      forecast.yrs){    ## A vector of years to do projections for
-  ## Calculate the probablities of being under several reference points from one forecast year to the next
-  ## risk.list will hold the probabilities of being under several reference points.
-  ##  it will be of length 1 less than the number of forecast years, and each element
-  ##  will itself be a data.frame of catch levels with those holding the probabilities.
-  ## For example, list element 1 will hold the probabilities for each catch.level of being under
-  ##  several reference points for the first two years in the forecast.yrs vector
-  ## If forecast.outputs is NA, NA will be returned, otherwise the risk.list will be returned.
-
-  if(length(forecast.outputs) == 1){
-    if(is.na(forecast.outputs)){
-      return(NA)
-    }
-  }
-  curr.func.name <- get.curr.func.name()
-
-  metric <- function(x, yr){
-    out <- NULL
-    out[1] <- max(x[, paste0("ForeCatch_", yr)])
-    out[2] <- sum(x[, paste0("SPB_", yr + 1)] < x[, paste0("SPB_", yr)]) / nrow(x) * 100.0
-    out[3] <- sum(x[, paste0("Bratio_", yr + 1)] < 0.40) / nrow(x) * 100.0
-    out[4] <- sum(x[, paste0("Bratio_", yr + 1)] < 0.25) / nrow(x) * 100.0
-    out[5] <- sum(x[, paste0("Bratio_", yr + 1)] < 0.10) / nrow(x) * 100.0
-    out[6] <- sum(x[, paste0("SPRratio_", yr)] > 1.00) / nrow(x) * 100.0
-    out[7] <- sum(x[, paste0("ForeCatch_", yr + 1)] < out[1]) / nrow(x) * 100.0
-    names(out) <- c(paste0("ForeCatch_", yr),
-                    paste0("SPB_", yr + 1, "<SPB_", yr),
-                    paste0("Bratio_", yr + 1, "<0.40"),
-                    paste0("Bratio_", yr + 1, "<0.25"),
-                    paste0("Bratio_", yr + 1, "<0.10"),
-                    paste0("SPRratio_", yr, ">1.00"),
-                    paste0("ForeCatch_", yr + 1, "<ForeCatch_", yr))
-    out
-  }
-  risk.list <- vector(mode = "list", length = length(forecast.yrs) - 1)
-  for(yr in 1:(length(forecast.yrs) - 1)){
-    ## outputs is a list of one data frame per case, for the current year yr
-    outputs <- lapply(forecast.outputs[[yr]], "[[", "outputs")
-    ## This call calculates the metrics for each element in the list (each catch case)
-    ##  and binds them together into a data frame. If there was a problem,
-    ##  (e.g. a bridge model is set up for forecasting) it will be set to NA.
-    risk.list[[yr]] <- tryCatch({
-      do.call("rbind",
-              lapply(outputs,
-                     function(x, yr){metric(x, yr)}, yr = forecast.yrs[yr]))
-    }, error = function(e){
-      NA
-    })
-    }
-  names(risk.list) <- names(forecast.outputs[1:(length(forecast.outputs)-1)])
-  return(risk.list)
-}
-
-run.retrospectives <- function(model,
-                               yrs = 1:15,            ## A vector of years to subtract from the model's data to run on.
-                               remove.blocks = FALSE,
-                               extras = "-nox",       ## Extra switches for the command line.
-                               verbose = TRUE){
-  ## Runs retrospectives for the given model and for the vector of years given
-  ## This will create a 'retrospectives' directory in the same directory as the model resides,
-  ##  create a directory for each restrospective year, copy all model files into each directory,
-  ##  run the retrospectives, and make a list of the SS_output() call to each
-  ## Warning - This function will completely delete all previous retrospectives that have been run without notice.
-
-  ## Create the directory 'retrospectives' which will hold the runs
-  ##  erasing the directory recursively if necessary
-  if(is.na(model$retropath)){
-    return(invisible())
-  }
-
-  retros.dir <- model$retropath
-  dir.create(retros.dir, showWarnings = FALSE)
-
-  ## Create a list for the retros' output to be saved to
-  retros.list <- list()
-
-  ## Create a directory for each retrospective, copy files, and run retro
-  for(retro in 1:length(yrs)){
-    retro.dir <- file.path(retros.dir, paste0("retro-", pad.num(yrs[retro], 2)))
-    dir.create(retro.dir, showWarnings = FALSE)
-
-    ## Copy all required model files into the retrospective directory
-    files.to.copy <- file.path(model$path, c(exe.file.name,
-                                             starter.file.name,
-                                             forecast.file.name,
-                                             weight.at.age.file.name,
-                                             model$ctl.file,
-                                             model$dat.file))
-    file.copy(file.path(model$path, files.to.copy), retro.dir)
-    starter.file <- file.path(retro.dir, starter.file.name)
-    starter <- SS_readstarter(starter.file, verbose = verbose)
-    starter$retro_yr <- -yrs[retro]
-    starter$init_values_src <- 0
-    SS_writestarter(starter, dir = retro.dir, verbose = verbose, overwrite = TRUE)
-    if(remove.blocks){
-      ctl.file <- file.path(retro.dir, model$ctl.file)
-      ctl <- readLines(ctl.file)
-      ctl[grep("block designs", ctl)] <- "0 # Number of block designs for time varying parameters"
-      ctl[grep("blocks per design", ctl) + 0:2] <- "# blocks deleted"
-      unlink(ctl.file)
-      writeLines(ctl, ctl.file)
-    }
-    covar.file <- file.path(retro.dir, "covar.sso")
-    file.remove(covar.file)
-    shell.command <- paste0("cd ", retro.dir, " & ss3 ", extras)
-    shell(shell.command)
-  }
-}
-
-fetch.retros <- function(retro.path, ## The full or reletive path in which the retrospective directories live
-                         retro.yrs,  ## A vector of years for the retrospectives
-                         verbose = FALSE,
-                         printstats = FALSE  ## print info on each model loaded via SS_output
-                         ){
-  ## Fetch the retrospectives and return a list of each. If there are no retrospective
-  ##  directories or there is some other problem, NA will be returned.
-  curr.func.name <- get.curr.func.name()
-  if(is.na(retro.path)){
-    return(NA)
-  }
-  if(!dir.exists(retro.path)){
-    return(NA)
-  }
-  retros.paths <- file.path(retro.path, paste0("retro-", pad.num(retro.yrs, 2)))
-  if(all(dir.exists(retros.paths))){
-    message(curr.func.name, "Loading retrospectives...\n")
-    retros.list <- list()
-    for(retro in 1:length(retro.yrs)){
-      retro.dir <- file.path(retro.path, paste0("retro-", pad.num(retro.yrs[retro], 2)))
-      retros.list[[retro]] <- SS_output(dir = retro.dir, verbose = verbose,
-                                        printstats = printstats)
-    }
-    message(curr.func.name, "Retrospectives loaded for '", retro.path, "'")
-  }else{
-    message(curr.func.name, "Not all retrospective directories exist in ",
-            "'", retro.path ,"'",
-            "Look at retrospective-setup.r and your directories ",
-            "to make sure they are both the same",
-            "or set run.retros = TRUE.")
-    return(NA)
-  }
-  retros.list
-}
-
 load.models <- function(model.dir,
                         model.dir.names,
                         ret.single.list = FALSE){
@@ -577,7 +214,7 @@ fetch.file.names <- function(path, ## Full path to the file
        file.path(path, d[3]))
 }
 
-rep.to.r.list <- function(fn){
+read.report.file <- function(fn){
   # Read in the data from the REP file given as 'fn'.
   # File structure:
   # It is assumed that each text label will be on its own line,
@@ -1209,41 +846,273 @@ read.par.file <- function(file = NULL,
   tmp
 }
 
-readMCMC <- function(dired = NULL, verbose = TRUE){
-  # Read in the MCMC results from an iscam model run found in the directory dired.
-  # Returns a list of the mcmc outputs, or NULL if there was a problem or
-  # There are no MCMC outputs
+read.mcmc <- function(model.dir = NULL,
+                      verbose = TRUE){
+  ## Read in the MCMC results from an iscam model run found in the directory
+  ##  model.dir.
+  ## Returns a list of the mcmc outputs, or NULL if there was a problem or
+  ##  there are no MCMC outputs.
 
-  if(is.null(dired)){
-    cat0(.PROJECT_NAME,"->",currFuncName,"You must supply a directory name (dired). Returning NULL.")
+  curr.func <- get.curr.func.name()
+  if(is.null(model.dir)){
+    cat0(curr.func,
+         "You must supply a directory name (model.dir). Returning NULL.")
     return(NULL)
   }
-  mcmcfn     <- file.path(dired,.MCMC_FILE_NAME)
-  mcmcsbtfn  <- file.path(dired,.MCMC_BIOMASS_FILE_NAME)
-  mcmcrtfn   <- file.path(dired,.MCMC_RECRUITMENT_FILE_NAME)
-  mcmcrdevfn <- file.path(dired,.MCMC_RECRUITMENT_DEVS_FILE_NAME)
-  mcmcftfn   <- file.path(dired,.MCMC_FISHING_MORT_FILE_NAME)
-  mcmcutfn   <- file.path(dired,.MCMC_FISHING_MORT_U_FILE_NAME)
-  mcmcvbtfn  <- file.path(dired,.MCMC_VULN_BIOMASS_FILE_NAME)
-  mcmcprojfn <- file.path(dired,.MCMC_PROJ_FILE_NAME)
+  mcmcfn     <- file.path(model.dir, mcmc.file)
+  mcmcsbtfn  <- file.path(model.dir, mcmc.biomass.file)
+  mcmcrtfn   <- file.path(model.dir, mcmc.recr.file)
+  mcmcrdevfn <- file.path(model.dir, mcmc.recr.devs.file)
+  mcmcftfn   <- file.path(model.dir, mcmc.fishing.mort.file)
+  mcmcutfn   <- file.path(model.dir, mcmc.fishing.mort.u.file)
+  mcmcvbtfn  <- file.path(model.dir, mcmc.vuln.biomass.file)
+  mcmcprojfn <- file.path(model.dir, mcmc.proj.file)
 
   tmp        <- list()
-  tmp$params <- read.csv(mcmcfn)
-  sbt        <- read.csv(mcmcsbtfn)
-  tmp$sbt    <- extractGroupMatrices(sbt, prefix = "sbt")
-  rt         <- read.csv(mcmcrtfn)
-  tmp$rt     <- extractGroupMatrices(rt, prefix = "rt")
-  ft         <- read.csv(mcmcftfn)
-  tmp$ft     <- extractAreaSexMatrices(ft, prefix = "ft")
-  ut         <- read.csv(mcmcutfn)
-  tmp$ut     <- extractAreaSexMatrices(ut, prefix = "ut")
-  rdev       <- read.csv(mcmcrdevfn)
-  tmp$rdev   <- extractGroupMatrices(rdev, prefix = "rdev")
-  vbt        <- read.csv(mcmcvbtfn)
-  tmp$vbt    <- extractAreaSexMatrices(vbt, prefix = "vbt")
+  if(file.exists(mcmcfn)){
+    tmp$params <- read.csv(mcmcfn)
+  }
+  if(file.exists(mcmcsbtfn)){
+    sbt        <- read.csv(mcmcsbtfn)
+    tmp$sbt    <- extract.group.matrices(sbt, prefix = "sbt")
+  }
+  if(file.exists(mcmcrtfn)){
+    rt         <- read.csv(mcmcrtfn)
+    tmp$rt     <- extract.group.matrices(rt, prefix = "rt")
+  }
+  if(file.exists(mcmcftfn)){
+    ft         <- read.csv(mcmcftfn)
+    tmp$ft     <- extract.area.sex.matrices(ft, prefix = "ft")
+  }
+  if(file.exists(mcmcutfn)){
+    ut         <- read.csv(mcmcutfn)
+    tmp$ut     <- extract.area.sex.matrices(ut, prefix = "ut")
+  }
+  if(file.exists(mcmcrdevfn)){
+    rdev       <- read.csv(mcmcrdevfn)
+    tmp$rdev   <- extract.group.matrices(rdev, prefix = "rdev")
+  }
+  if(file.exists(mcmcvbtfn)){
+    vbt        <- read.csv(mcmcvbtfn)
+    tmp$vbt    <- extract.area.sex.matrices(vbt, prefix = "vbt")
+  }
   tmp$proj <- NULL
   if(file.exists(mcmcprojfn)){
     tmp$proj   <- read.csv(mcmcprojfn)
   }
-  return(tmp)
+  tmp
+}
+
+extract.group.matrices <- function(data = NULL,
+                                   prefix = NULL){
+  ## Extract the data frame given (data) by unflattening into a list of matrices
+  ## by group. The group number is located in the names of the columns of the
+  ## data frame in this format: "prefix[groupnum]_year" where [groupnum] is one
+  ## or more digits representing the group number and prefix is the string
+  ## given as an argument to the function.
+  ## Returns a list of matrices, one element per group.
+
+  curr.func.name <- get.curr.func.name()
+  if(is.null(data) || is.null(prefix)){
+    cat0(curr.func.name,
+         "You must give two arguments (data & prefix). Returning NULL.")
+    return(NULL)
+  }
+  tmp <- list()
+
+  names <- names(data)
+  pattern <- paste0(prefix, "([[:digit:]]+)_[[:digit:]]+")
+  groups  <- sub(pattern, "\\1", names)
+  unique.groups <- unique(as.numeric(groups))
+  tmp <- vector("list", length = length(unique.groups))
+  ## This code assumes that the groups are numbered sequentially from 1,2,3...N
+  for(group in 1:length(unique.groups)){
+    ## Get all the column names (group.names) for this group by making a specific
+    ##  pattern for it
+    group.pattern <- paste0(prefix, group, "_[[:digit:]]+")
+    group.names   <- names[grep(group.pattern, names)]
+    ## Remove the group number in the name, as it is not needed anymore
+    pattern      <- paste0(prefix, "[[:digit:]]+_([[:digit:]]+)")
+    group.names   <- sub(pattern, "\\1", group.names)
+
+    # Now, the data must be extracted
+    # Get the column numbers that this group are included in
+    dat <- data[,grep(group.pattern, names)]
+    colnames(dat) <- group.names
+    tmp[[group]]  <- dat
+  }
+  tmp
+}
+
+extract.area.sex.matrices <- function(data = NULL,
+                                      prefix = NULL){
+  ## Extract the data frame given (data) by unflattening into a list of matrices
+  ##  by area-sex and gear. The area-sex number is located in the names of the
+  ##  columns of the data frame in this format:
+  ##  "prefix[areasexnum]_gear[gearnum]_year" where [areasexnum] and [gearnum]
+  ##  are one or more digits and prefix is the string given as an argument
+  ##  to the function.
+  ## Returns a list (area-sex) of lists (gears) of matrices, one element
+  ##  per group.
+
+  curr.func.name <- get.curr.func.name()
+  if(is.null(data) || is.null(prefix)){
+    cat0(curr.func.name,
+         "You must give two arguments (data & prefix). Returning NULL.")
+    return(NULL)
+  }
+
+  names <- names(data)
+  pattern <- paste0(prefix, "([[:digit:]]+)_gear[[:digit:]]+_[[:digit:]]+")
+  groups  <- sub(pattern, "\\1", names)
+  unique.groups <- unique(as.numeric(groups))
+  tmp <- vector("list", length = length(unique.groups))
+  ## This code assumes that the groups are numbered sequentially from 1,2,3...N
+  for(group in 1:length(unique.groups)){
+    ## Get all the column names (group.names) for this group by making a
+    ##  specific pattern for it
+    group.pattern <- paste0(prefix, group, "_gear[[:digit:]]+_[[:digit:]]+")
+    group.names <- names[grep(group.pattern, names)]
+    ## Remove the group number in the name, as it is not needed anymore
+    pattern <- paste0(prefix, "[[:digit:]]+_gear([[:digit:]]+_[[:digit:]]+)")
+    group.names <- sub(pattern, "\\1", group.names)
+    ## At this point, group.names' elements look like this: 1_1963
+    ## The first value is the gear, and the second, the year.
+    ## Get the unique gears for this area-sex group
+    pattern <- "([[:digit:]]+)_[[:digit:]]+"
+    gears <- sub(pattern, "\\1", group.names)
+    unique.gears <- unique(as.numeric(gears))
+    tmp2 <- vector("list", length = length(unique.gears))
+    for(gear in 1:length(unique.gears)){
+      gear.pattern <- paste0(prefix, group,"_gear", gear, "_[[:digit:]]+")
+      ## Now, the data must be extracted
+      ## Get the column numbers that this group are included in
+      dat <- data[,grep(gear.pattern, names)]
+      ##colnames(dat) <- groupNames
+      tmp2[[gear]] <- dat
+    }
+    tmp[[group]] <- tmp2
+  }
+  tmp
+}
+
+calc.mcmc <- function(mcmc = NULL,     ## mcmc is the output of the read.mcmc
+                                       ##  function
+                      lower = 0.025,   ## Lower quantile for confidence interval calcs
+                      upper = 0.975    ## Upper quantile for confidence interval calcs
+                      ){
+  ## Do the mcmc calculations, e.g. quantiles for sbt, recr, recdevs, F, U, vbt
+  ## Returns a list of them all
+
+  curr.func.name <- get.curr.func.name()
+  if(is.null(mcmc)){
+    cat0(curr.func.name,
+         "The mcmc list was null. Check read.mcmc function. Returning NULL.")
+    return(NULL)
+  }
+
+  ## Quantiles for the parameters will be in a data frame of 3 rows
+  param.quants <- apply(mcmc$params, 2, quantile, prob = c(lower, 0.5, upper))
+
+  ## Spawning biomass
+  sbt.lower <- apply(mcmc$sbt[[1]], 2, quantile, prob = lower)
+  sbt.med   <- apply(mcmc$sbt[[1]], 2, quantile, prob = 0.5)
+  sbt.upper <- apply(mcmc$sbt[[1]], 2, quantile, prob = upper)
+
+  ## Depletion
+  depl   <- apply(mcmc$sbt[[1]], 2, function(x){x/mcmc$params$bo})
+  depl.lower <- apply(depl, 2, quantile, prob = lower)
+  depl.med   <- apply(depl, 2, quantile, prob = 0.5)
+  depl.upper <- apply(depl, 2, quantile, prob = upper)
+
+  ## Recruitment
+  recr.mean <- apply(mcmc$rt[[1]], 2, mean)
+  recr.lower <- apply(mcmc$rt[[1]], 2, quantile, prob = lower)
+  recr.med <- apply(mcmc$rt[[1]], 2, quantile, prob = 0.5)
+  recr.upper <- apply(mcmc$rt[[1]], 2, quantile, prob = upper)
+
+  ## Recruitment deviations
+  recr.devs.lower <- apply(mcmc$rdev[[1]], 2, quantile, prob = lower)
+  recr.devs.med <- apply(mcmc$rdev[[1]], 2, quantile, prob = 0.5)
+  recr.devs.upper <- apply(mcmc$rdev[[1]], 2, quantile, prob = upper)
+
+  ## Vulnerable biomass by gear (list of data frames)
+  vuln.biomass.lower <- lapply(mcmc$vbt[[1]],
+                               function(x){apply(x,
+                                                 2,
+                                                 quantile,
+                                                 prob = lower,
+                                                 na.rm = TRUE)})
+  vuln.biomass.med <- lapply(mcmc$vbt[[1]],
+                             function(x){apply(x,
+                                               2,
+                                               quantile,
+                                               prob = 0.5,
+                                               na.rm = TRUE)})
+  vuln.biomass.upper <- lapply(mcmc$vbt[[1]],
+                               function(x){apply(x,
+                                                 2,
+                                                 quantile,
+                                                 prob = upper,
+                                                 na.rm = TRUE)})
+
+  ## Fishing mortalities by gear (list of data frames)
+  f.lower <- lapply(mcmc$ft[[1]],
+                    function(x){apply(x,
+                                      2,
+                                      quantile,
+                                      prob = lower,
+                                      na.rm = TRUE)})
+  f.med <- lapply(mcmc$ft[[1]],
+                    function(x){apply(x,
+                                      2,
+                                      quantile,
+                                      prob = 0.5,
+                                      na.rm = TRUE)})
+  f.upper <- lapply(mcmc$ft[[1]],
+                    function(x){apply(x,
+                                      2,
+                                      quantile,
+                                      prob = upper,
+                                      na.rm = TRUE)})
+  u.lower <- lapply(mcmc$ut[[1]],
+                    function(x){apply(x,
+                                      2,
+                                      quantile,
+                                      prob = lower,
+                                      na.rm = TRUE)})
+  u.med <- lapply(mcmc$ut[[1]],
+                    function(x){apply(x,
+                                      2,
+                                      quantile,
+                                      prob = 0.5,
+                                      na.rm = TRUE)})
+  u.upper <- lapply(mcmc$ut[[1]],
+                    function(x){apply(x,
+                                      2,
+                                      quantile,
+                                      prob = upper,
+                                      na.rm = TRUE)})
+  list(sbt.lower = sbt.lower,
+       sbt.med = sbt.med,
+       sbt.upper = sbt.upper,
+       depl.lower = depl.lower,
+       depl.med = depl.med,
+       depl.upper = depl.upper,
+       recr.mean = recr.mean,
+       recr.lower = recr.lower,
+       recr.med = recr.med,
+       recr.upper = recr.upper,
+       recr.devs.lower = recr.devs.lower,
+       recr.devs.med = recr.devs.med,
+       recr.devs.upper = recr.devs.upper,
+       vuln.biomass.lower = vuln.biomass.lower,
+       vuln.biomass.med = vuln.biomass.med,
+       vuln.biomass.upper = vuln.biomass.upper,
+       f.lower = f.lower,
+       f.med = f.med,
+       f.upper = f.upper,
+       u.lower = u.lower,
+       u.med = u.med,
+       u.upper = u.upper)
 }

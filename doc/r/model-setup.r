@@ -7,6 +7,15 @@ verbose <- TRUE
 ## iscam files with names that don't change depending on model
 rep.file <- "iscam.rep"
 par.file <- "iscam.par"
+mcmc.file <- "iscam_mcmc.csv"
+mcmc.biomass.file <- "iscam_sbt_mcmc.csv"
+mcmc.recr.file <- "iscam_rt_mcmc.csv"
+mcmc.recr.devs.file <- "iscam_rdev_mcmc.csv"
+mcmc.fishing.mort.file <- "iscam_ft_mcmc.csv"
+mcmc.fishing.mort.u.file <- "iscam_ut_mcmc.csv"
+mcmc.vuln.biomass.file <- "iscam_vbt_mcmc.csv"
+mcmc.proj.file <- "iscammcmc_proj_Gear1.csv"
+mpd.proj.file <- "iscammpd_proj_Gear1.csv"
 ## -----------------------------------------------------------------------------
 
 ## -----------------------------------------------------------------------------
