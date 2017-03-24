@@ -42,35 +42,8 @@ Herring (\emph{Clupea pallasii}), juvenile Walleye Pollock
 \fishname\ has been managed on a status-quo basis in recent years.
 
 \subsubsection{Catches} \label{sec:catches}
-A summary of catches can been found in Figure~\ref{fig:es-catches} and
-Table~\ref{tab:es-catches}
-%%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[!b]
-\begin{center}
-<<ex.total.catches, fig.height=4, fig.width=8>>=
-make.catches.plot(catches,
-                  leg.y.loc = 520) ## leg.y.loc is y-coord to place legend at
-@
-\end{center}
-\caption{Total \fishname\ catch used in the assessment by sector, \Sexpr{start.yr}--\Sexpr{last.data.yr}.
-  U.S. tribal catches are included in the sectors where they are represented.}
-\label{fig:es-catches}
-\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
-
-<<ex.total.catches.table, results='asis', echo=FALSE>>=
-make.catches.table(catches,
-                   start.yr = 2006,
-                   end.yr = assess.yr - 1,
-                   weight.factor = 1000,
-                   xcaption <- "Recent commercial fishery catch (t). Tribal catches are included in the sector totals. Research catch includes landed catch associated with certain research-related activities. Catch associated with surveys and discarded bycatch in fisheries not targeting hake are not currently included in the model.",
-                   xlabel <- "tab:es-catches",
-                   font.size = 9,
-                   space.size = 10,
-                   placement = "tbp")
-@
-
-A summary of catches and TACs can be found in Table~\ref{tab:es-landings-tac}
+A summary of catches can been found in Figure~\ref{fig:main-catches} and
+Table~\ref{tab:main-catches}
 
 \subsection{ASSESSMENT HISTORY}
 The coastwide \fishname\ stock was last assessed by \citet{arf2001}, who
@@ -257,28 +230,47 @@ Appendix \ref{chap:propfemale}.\\
 \clearpage
 
 \section{TABLES}
-
-<<results='asis', echo=FALSE>>=
-cap <- "Coastwide landings and discards in tonnes for \\fishname. See also Figure \\ref{fig:totalcatch}."
-makeTable(1,
-          10,
-          digits = 3,
-          retxtable = TRUE,
-          xcaption = cap,
-          xlabel = "tab:totalcatch")
+<<ex.total.catches.table, results='asis', echo=FALSE>>=
+cap <- paste0("Recent commercial fishery catch (t).",
+              "Tribal catches are included in the sector ",
+              "totals. Research catch includes landed ",
+              "catch associated with certain ",
+              "research-related activities. Catch ",
+              "associated with surveys and discarded ",
+              "bycatch in fisheries not targeting hake are ",
+              "not currently included in the model.")
+make.catches.table(catches,
+                   start.yr = 2006,
+                   end.yr = assess.yr - 1,
+                   weight.factor = 1000,
+                   xcaption <- cap,
+                   xlabel <- "tab:main-catches",
+                   font.size = 9,
+                   space.size = 10,
+                   placement = "H")
 @
 
-<<results='asis', echo=FALSE>>=
-cap <- "Annual female-only indices of abundance and CVs for the four indices used in this assessment."
-makeTable(1,
-          8,
-          ci = ci,
-          burnthin = burnthin,
-          digits = 3,
-          retxtable = TRUE,
-          xcaption = cap,
-          xlabel = "tab:Indices")
-@
+%% <<results='asis', echo=FALSE>>=
+%% cap <- "Coastwide landings and discards in tonnes for \\fishname. See also Figure \\ref{fig:totalcatch}."
+%% makeTable(1,
+%%           10,
+%%           digits = 3,
+%%           retxtable = TRUE,
+%%           xcaption = cap,
+%%           xlabel = "tab:totalcatch")
+%% @
+
+%% <<results='asis', echo=FALSE>>=
+%% cap <- "Annual female-only indices of abundance and CVs for the four indices used in this assessment."
+%% makeTable(1,
+%%           8,
+%%           ci = ci,
+%%           burnthin = burnthin,
+%%           digits = 3,
+%%           retxtable = TRUE,
+%%           xcaption = cap,
+%%           xlabel = "tab:Indices")
+%% @
 
 \clearpage
 
@@ -287,16 +279,16 @@ makeTable(1,
 % CATCH PLOTS
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[!b]
+\begin{figure}[H]
 \begin{center}
 <<total.catches, fig.height=4, fig.width=8>>=
 make.catches.plot(catches,
-                  leg.y.loc = 520) ## leg.y.loc is y-coord to place legend at
+                  leg.y.loc = 520)
 @
 \end{center}
 %\vspace{0mm}
-\caption{Total \fishname\ catch used in the assessment by sector, \Sexpr{start.yr}--\Sexpr{last.data.yr}.
-  U.S. tribal catches are included in the sectors where they are represented.}
+\caption{Total \fishname\ catch used in the assessment by sector,
+  \Sexpr{start.yr}--\Sexpr{last.data.yr}.}
 \label{fig:main-catches}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%

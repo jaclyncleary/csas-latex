@@ -14,9 +14,10 @@
 \newcommand{\eor}[2]{{#1$\Vert$#2}}
 %% bM - makes equations larger
 \newcommand{\bM}[1]{\mathlarger{\mathlarger{#1}}}
-%% Allow newline breaks in a table cell:
-%%  syntax is \specialcell{first line\\second line}
-\newcommand{\specialcell}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+%% Allow newline breaks in a table cell = Multi-Line-Cell = mlc
+%%  syntax is \mlc{first line\\second line}
+%% Don't change the name of this, as it is embedded in R xtable code.
+\newcommand{\mlc}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
 \newcommand{\fishname}{Fishname}
 \newcommand{\sciencename}{\emph{Latin name}}
 \newcommand{\familyname}{\emph{Family name}}

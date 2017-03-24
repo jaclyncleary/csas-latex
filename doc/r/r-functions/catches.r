@@ -1,7 +1,7 @@
 ## Functions to load catches table from a csv file, display it as a table,
 ## and plot the figure. Also calculates years.Can.JV.catch.eq.0.
 
-make.catches.table <- function(catches,              ## The output of the load.catches function above.
+make.catches.table <- function(catches,              ## The output of load.catches()
                                start.yr,             ## start.yr is the first year to show in the table
                                end.yr,               ## end.yr is the last year to show in the table
                                weight.factor = 1000, ## divide catches by this factor
@@ -11,22 +11,22 @@ make.catches.table <- function(catches,              ## The output of the load.c
                                space.size = 10,      ## Size of the spaces for the table
                                placement = "H"       ## Placement of table
                                ){
-  ## Returns an xtable in the proper format for the executive summary catches
+  ## Returns an xtable in the proper format
   if(start.yr > 1991){
     ## If start.yr > 1991 then US foreign, US JV, and Canadian foreign will be removed since they are all zeroes.
     catches <- catches[,c("Year","atSea_US_MS","atSea_US_CP","US_shore","USresearch","Ustotal",
                           "CAN_JV","CAN_Shoreside","CAN_FreezeTrawl","CANtotal","TOTAL")]
-    colnames(catches) <- c("\\specialcell{\\textbf{Year}}",
-                           "\\specialcell{\\textbf{US}\\\\\\textbf{Mother-}\\\\\\textbf{ship}}",
-                           "\\specialcell{\\textbf{US}\\\\\\textbf{Catcher}-\\\\\\textbf{Processor}}",
-                           "\\specialcell{\\textbf{US}\\\\\\textbf{Shore-}\\\\\\textbf{based}}",
-                           "\\specialcell{\\textbf{US}\\\\\\textbf{Research}}",
-                           "\\specialcell{\\textbf{US}\\\\\\textbf{Total}}",
-                           "\\specialcell{\\textbf{CAN}\\\\\\textbf{Joint}\\\\\\textbf{Venture}}",
-                           "\\specialcell{\\textbf{CAN}\\\\\\textbf{Shore-}\\\\\\textbf{side}}",
-                           "\\specialcell{\\textbf{CAN}\\\\\\textbf{Freezer-}\\\\\\textbf{Trawler}}",
-                           "\\specialcell{\\textbf{CAN}\\\\\\textbf{Total}}",
-                           "\\specialcell{\\textbf{Total}}")
+    colnames(catches) <- c("\\mlc{\\textbf{Year}}",
+                           "\\mlc{\\textbf{US}\\\\\\textbf{Mother-}\\\\\\textbf{ship}}",
+                           "\\mlc{\\textbf{US}\\\\\\textbf{Catcher}-\\\\\\textbf{Processor}}",
+                           "\\mlc{\\textbf{US}\\\\\\textbf{Shore-}\\\\\\textbf{based}}",
+                           "\\mlc{\\textbf{US}\\\\\\textbf{Research}}",
+                           "\\mlc{\\textbf{US}\\\\\\textbf{Total}}",
+                           "\\mlc{\\textbf{CAN}\\\\\\textbf{Joint}\\\\\\textbf{Venture}}",
+                           "\\mlc{\\textbf{CAN}\\\\\\textbf{Shore-}\\\\\\textbf{side}}",
+                           "\\mlc{\\textbf{CAN}\\\\\\textbf{Freezer-}\\\\\\textbf{Trawler}}",
+                           "\\mlc{\\textbf{CAN}\\\\\\textbf{Total}}",
+                           "\\mlc{\\textbf{Total}}")
   }else{
     colnames(catches) <- c("Year","US\nForeign","US\nJV","US\nMother-\nship","US\nCatcher-\nProcessor","US\nShore-\nbased","US\nResearch","US\nTotal",
                            "CAN\nForeign","CAN\nJoint-\nVenture","CAN\nShoreside","CAN\nFreezer-Trawler","CAN\nTotal","Total")
@@ -102,15 +102,15 @@ make.landings.tac.table <- function(landings.vs.tac,
   tab[,6] <- tab[,7]
   tab[,7] <- tmp
   colnames(tab) <- c("\\textbf{Year}",
-                     "\\specialcell{\\textbf{US}\\\\\\textbf{landings (t)}}",
-                     "\\specialcell{\\textbf{Canadian}\\\\\\textbf{landings (t)}}",
-                     "\\specialcell{\\textbf{Total}\\\\\\textbf{landings (t)}}",
-                     "\\specialcell{\\textbf{Coast-wide}\\\\\\textbf{(US+Canada)}\\\\\\textbf{catch}\\\\\\textbf{target (t)}}",
-                     "\\specialcell{\\textbf{US}\\\\\\textbf{catch}\\\\\\textbf{target (t)}}",
-                     "\\specialcell{\\textbf{Canada}\\\\\\textbf{catch}\\\\\\textbf{target (t)}}",
-                     "\\specialcell{\\textbf{US}\\\\\\textbf{proportion}\\\\\\textbf{of catch}\\\\\\textbf{target}\\\\\\textbf{removed}}",
-                     "\\specialcell{\\textbf{Canada}\\\\\\textbf{proportion}\\\\\\textbf{of catch}\\\\\\textbf{target}\\\\\\textbf{removed}}",
-                     "\\specialcell{\\textbf{Total}\\\\\\textbf{proportion}\\\\\\textbf{of catch}\\\\\\textbf{target}\\\\\\textbf{removed}}")
+                     "\\mlc{\\textbf{US}\\\\\\textbf{landings (t)}}",
+                     "\\mlc{\\textbf{Canadian}\\\\\\textbf{landings (t)}}",
+                     "\\mlc{\\textbf{Total}\\\\\\textbf{landings (t)}}",
+                     "\\mlc{\\textbf{Coast-wide}\\\\\\textbf{(US+Canada)}\\\\\\textbf{catch}\\\\\\textbf{target (t)}}",
+                     "\\mlc{\\textbf{US}\\\\\\textbf{catch}\\\\\\textbf{target (t)}}",
+                     "\\mlc{\\textbf{Canada}\\\\\\textbf{catch}\\\\\\textbf{target (t)}}",
+                     "\\mlc{\\textbf{US}\\\\\\textbf{proportion}\\\\\\textbf{of catch}\\\\\\textbf{target}\\\\\\textbf{removed}}",
+                     "\\mlc{\\textbf{Canada}\\\\\\textbf{proportion}\\\\\\textbf{of catch}\\\\\\textbf{target}\\\\\\textbf{removed}}",
+                     "\\mlc{\\textbf{Total}\\\\\\textbf{proportion}\\\\\\textbf{of catch}\\\\\\textbf{target}\\\\\\textbf{removed}}")
   ## Make the size string for font and space size
   size.string <- paste0("\\fontsize{", font.size, "}{", space.size, "}\\selectfont")
   return(print(xtable(tab,
