@@ -29,6 +29,24 @@ f <- function(x, dec.points = 0){
   return(format(round(x,dec.points), big.mark = ",", nsmall = dec.points))
 }
 
+## Functions to make table code simpler:
+## multi-line-cell constants
+bold <- function(txt){
+  ## Returns the given text with the latex \\textbf{} macro around it
+  paste0("\\textbf{", txt, "}")
+}
+
+mlc <- function(latex.vec, make.bold = TRUE){
+  ## Returns a string which has been glued together using multi-line-cell
+  ##  macro for latex. If make.bold is TRUE, the \textbf macro will be
+  ##  inserted.
+  if(make.bold){
+    latex.vec <- sapply(latex.vec, bold)
+  }
+  latex.str <- paste(latex.vec, collapse = "\\\\")
+  paste0("\\mlc{", latex.str, "}")
+}
+
 install.packages.if.needed <- function(package.name, package.install.name, github=FALSE){
   if(github){
     if(!(package.name %in% rownames(installed.packages()))){

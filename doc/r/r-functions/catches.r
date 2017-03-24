@@ -1,37 +1,50 @@
-## Functions to load catches table from a csv file, display it as a table,
-## and plot the figure. Also calculates years.Can.JV.catch.eq.0.
+make.catches.table <- function(catches,
+                               start.yr,
+                               end.yr,
+                               weight.factor = 1000,
+                               xcaption = "default",
+                               xlabel   = "default",
+                               font.size = 9,
+                               space.size = 10,
+                               placement = "H"){
+  ## Returns an xtable
+  ## Assumes multi-line-cell macro (\mlc) is defined in the latex code
+  ## mlc() and bold() are located in utilities.r
+  ##
+  ## start.yr - the first year to show in the table
+  ## end.yr - the last year to show in the table
+  ## weight.factor - divide the weights by this factor
+  ## xcaption - Caption to use
+  ## xlabel - Latex label to use
+  ## font.size - Size of the font for the table
+  ## space.size - Size of the spaces for the table
+  ## placement - Latex code for placement of table
 
-make.catches.table <- function(catches,              ## The output of load.catches()
-                               start.yr,             ## start.yr is the first year to show in the table
-                               end.yr,               ## end.yr is the last year to show in the table
-                               weight.factor = 1000, ## divide catches by this factor
-                               xcaption = "default", ## Caption to use
-                               xlabel   = "default", ## Latex label to use
-                               font.size = 9,        ## Size of the font for the table
-                               space.size = 10,      ## Size of the spaces for the table
-                               placement = "H"       ## Placement of table
-                               ){
-  ## Returns an xtable in the proper format
-  if(start.yr > 1991){
-    ## If start.yr > 1991 then US foreign, US JV, and Canadian foreign will be removed since they are all zeroes.
-    catches <- catches[,c("Year","atSea_US_MS","atSea_US_CP","US_shore","USresearch","Ustotal",
-                          "CAN_JV","CAN_Shoreside","CAN_FreezeTrawl","CANtotal","TOTAL")]
-    colnames(catches) <- c("\\mlc{\\textbf{Year}}",
-                           "\\mlc{\\textbf{US}\\\\\\textbf{Mother-}\\\\\\textbf{ship}}",
-                           "\\mlc{\\textbf{US}\\\\\\textbf{Catcher}-\\\\\\textbf{Processor}}",
-                           "\\mlc{\\textbf{US}\\\\\\textbf{Shore-}\\\\\\textbf{based}}",
-                           "\\mlc{\\textbf{US}\\\\\\textbf{Research}}",
-                           "\\mlc{\\textbf{US}\\\\\\textbf{Total}}",
-                           "\\mlc{\\textbf{CAN}\\\\\\textbf{Joint}\\\\\\textbf{Venture}}",
-                           "\\mlc{\\textbf{CAN}\\\\\\textbf{Shore-}\\\\\\textbf{side}}",
-                           "\\mlc{\\textbf{CAN}\\\\\\textbf{Freezer-}\\\\\\textbf{Trawler}}",
-                           "\\mlc{\\textbf{CAN}\\\\\\textbf{Total}}",
-                           "\\mlc{\\textbf{Total}}")
-  }else{
-    colnames(catches) <- c("Year","US\nForeign","US\nJV","US\nMother-\nship","US\nCatcher-\nProcessor","US\nShore-\nbased","US\nResearch","US\nTotal",
-                           "CAN\nForeign","CAN\nJoint-\nVenture","CAN\nShoreside","CAN\nFreezer-Trawler","CAN\nTotal","Total")
-  }
-  ## Filter for correct years to show and make thousand-seperated numbers (year assumed to be column 1)
+  catches <- catches[,c("Year",
+                        "atSea_US_MS",
+                        "atSea_US_CP",
+                        "US_shore",
+                        "USresearch",
+                        "Ustotal",
+                        "CAN_JV",
+                        "CAN_Shoreside",
+                        "CAN_FreezeTrawl",
+                        "CANtotal",
+                        "TOTAL")]
+  colnames(catches) <-
+    c(bold("Year"),
+      mlc(c("US", "Mother-", "ship")),
+      mlc(c("US", "Catcher", "Processor")),
+      mlc(c("US", "Shore-", "based")),
+      mlc(c("US", "Research")),
+      mlc(c("US", "Total")),
+      mlc(c("CAN", "Joint", "Venture")),
+      mlc(c("CAN", "Shore-", "side")),
+      mlc(c("CAN", "Freezer", "Trawler")),
+      mlc(c("CAN", "Total")),
+      bold("Total"))
+  ## Filter for correct years to show and make thousand-seperated numbers (year
+  ##  assumed to be column 1)
   catches <- catches[catches[,1] >= start.yr & catches[,1] <= end.yr,]
   ## -1 below means leave the years alone and don't comma-seperate them
   catches[,-1] <-f(catches[-1])
@@ -50,43 +63,110 @@ make.catches.table <- function(catches,              ## The output of load.catch
 }
 
 make.catches.plot <- function(catches,
-                              leg.y.loc = 430, ## Y-based location to place the legend
-                              leg.cex = 1      ## Text size for legend
+                              leg.y.loc = 430,
+                              leg.cex = 1
                               ){
   ## Plot the catches in a stacked-barplot with legend
   years <- catches$Year
-  catches <- catches[,c("CAN_forgn","CAN_JV","CAN_Shoreside","CAN_FreezeTrawl","US_foreign","US_JV","atSea_US_MS","atSea_US_CP","US_shore")]
-  cols <- c(rgb(0,0.8,0), rgb(0,0.6,0), rgb(0.8,0,0), rgb(0.4,0,0), rgb(0,0.2,0),
-            rgb(0,0.4,0), rgb(0,0,0.7), rgb(0,0,0.4), rgb(0,0,1))
-  legOrder <- c(6,5,2,1,4,3,NA,NA,9,8,7)
+  catches <- catches[,c("CAN_forgn",
+                        "CAN_JV",
+                        "CAN_Shoreside",
+                        "CAN_FreezeTrawl",
+                        "US_foreign",
+                        "US_JV",
+                        "atSea_US_MS",
+                        "atSea_US_CP",
+                        "US_shore")]
+  cols <- c(rgb(0, 0.8, 0),
+            rgb(0, 0.6, 0),
+            rgb(0.8, 0, 0),
+            rgb(0.4, 0, 0),
+            rgb(0, 0.2, 0),
+            rgb(0, 0.4, 0),
+            rgb(0, 0, 0.7),
+            rgb(0, 0, 0.4),
+            rgb(0, 0, 1))
+  legOrder <- c(6, 5, 2, 1, 4, 3, NA, NA, 9, 8, 7)
   oldpar <- par()
-  par(las=1,mar=c(4, 4, 6, 2) + 0.1,cex.axis=0.9)
-  tmp <- barplot(t(as.matrix(catches))/1000, beside=FALSE, names=catches[,1],
-                 col=cols,xlab="Year", ylab="", cex.lab=1, xaxt="n", mgp=c(2.2,1,0))
-  axis(1,at=tmp, labels=years, line=-0.12)
-  grid(NA,NULL,lty=1,lwd = 1)
-  mtext("Catch (thousand t)",side=2,line=2.8,las=0,cex=1.3)
-  barplot(t(as.matrix(catches))/1000,beside=FALSE,names=catches[,1],
-          col=cols, xlab="Year",ylab="",cex.lab=1,xaxt="n",add=TRUE,mgp=c(2.2,1,0))
-
-  legend(x=0,y=leg.y.loc,
-         c("Canadian Foreign","Canadian Joint-Venture","Canadian Shoreside","Canadian Freezer Trawl",
-           "U.S. Foreign","U.S. Joint-Venture","U.S. MS","U.S. CP","U.S. Shore-based")[legOrder],
-         bg = "white",horiz=FALSE,xpd=NA,cex=leg.cex,ncol=3,fill=cols[legOrder],border=cols[legOrder],bty="n")
+  par(las = 1,
+      mar = c(4, 4, 6, 2) + 0.1,
+      cex.axis = 0.9)
+  tmp <- barplot(t(as.matrix(catches)) / 1000,
+                 beside = FALSE,
+                 names = catches[,1],
+                 col = cols,
+                 xlab = "Year",
+                 ylab = "",
+                 cex.lab = 1,
+                 xaxt = "n",
+                 mgp = c(2.2, 1, 0))
+  axis(1,
+       at = tmp,
+       labels = years,
+       line = -0.12)
+  grid(NA,
+       NULL,
+       lty = 1,
+       lwd = 1)
+  mtext("Catch (thousand t)",
+        side = 2,
+        line = 2.8,
+        las = 0,
+        cex = 1.3)
+  barplot(t(as.matrix(catches)) / 1000,
+          beside = FALSE,
+          names = catches[,1],
+          col = cols,
+          xlab = "Year",
+          ylab = "",
+          cex.lab = 1,
+          xaxt = "n",
+          add = TRUE,
+          mgp = c(2.2, 1, 0))
+  legend(x = 0,
+         y = leg.y.loc,
+         c("Canadian Foreign",
+           "Canadian Joint-Venture",
+           "Canadian Shoreside",
+           "Canadian Freezer Trawl",
+           "U.S. Foreign",
+           "U.S. Joint-Venture",
+           "U.S. MS",
+           "U.S. CP",
+           "U.S. Shore-based")[legOrder],
+         bg = "white",
+         horiz = FALSE,
+         xpd = NA,
+         cex = leg.cex,
+         ncol = 3,
+         fill = cols[legOrder],
+         border = cols[legOrder],
+         bty = "n")
   par <- oldpar
 }
 
 make.landings.tac.table <- function(landings.vs.tac,
-                                    start.yr,             ## start.yr is the first year to show in the table
-                                    end.yr,               ## end.yr is the last year to show in the table
-                                    xcaption = "default", ## Caption to use
-                                    xlabel   = "default", ## Latex label to use
-                                    font.size = 9,        ## Size of the font for the table
-                                    space.size = 10,      ## Size of the spaces for the table
-                                    placement = "H",      ## Placement of table
-                                    tabular.env = "tabular" ## Type of table
+                                    start.yr,
+                                    end.yr,
+                                    xcaption = "default",
+                                    xlabel   = "default",
+                                    font.size = 9,
+                                    space.size = 10,
+                                    placement = "H",
+                                    tabular.env = "tabular"
                                     ){
-  ## Returns an xtable in the proper format for the executive summary landings vs. TAC for management performance section
+  ## Returns an xtable in the proper format for the executive summary landings
+  ##  vs. TAC for management performance section
+  ##
+  ## start.yr - the first year to show in the table
+  ## end.yr - the last year to show in the table
+  ## xcaption - Caption to use
+  ## xlabel - Latex label to use
+  ## font.size - Size of the font for the table
+  ## space.size - Size of the spaces for the table
+  ## placement - Latex code for placement of table
+  ## tabular.env - Type of table, e.g. "tabular" or "tabularx"
+
   tab <- landings.vs.tac
 
   ## Filter for correct years to show and make thousand-seperated numbers (year assumed to be column 1)
