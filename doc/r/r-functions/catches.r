@@ -2,71 +2,203 @@ make.catches.table <- function(catches,
                                start.yr,
                                end.yr,
                                weight.factor = 1000,
+                               digits = 3,
+                               areas = NULL,
                                xcaption = "default",
                                xlabel   = "default",
                                font.size = 9,
                                space.size = 10,
                                placement = "H"){
-  ## Returns an xtable
-  ## Assumes multi-line-cell macro (\mlc) is defined in the latex code
-  ## mlc() and bold() are located in utilities.r
+  ## Returns an xtable in the proper format for catch and discards.
+  ## Depends on the format of the catch.csv file. The function
+  ##  requires that the input data frame 'catches' has at least
+  ##  3 columns called 'Year', 'CatchKG', and 'DiscardedKG'
   ##
+  ## catches - output of the load.catches function above.
   ## start.yr - the first year to show in the table
   ## end.yr - the last year to show in the table
-  ## weight.factor - divide the weights by this factor
-  ## xcaption - Caption to use
-  ## xlabel - Latex label to use
-  ## font.size - Size of the font for the table
-  ## space.size - Size of the spaces for the table
-  ## placement - Latex code for placement of table
+  ## weight.factor - value to divide catches by
+  ## areas - a list of vectors of areas to group together, e.g.:
+  ##  areas <- list(c(3,4), c(5,6,7,8,9) means 3CD together, and 5ABCDE
+  ##  together as two groups. If NULL, a summary table of catch/discard
+  ##  by year will be produced
+  ## xcaption - caption to appear in the calling document
+  ## digits - number of digits after decimal point to show in the catch
+  ## xlabel - the label used to reference the table in latex
+  ## font.size - size of the font for the table
+  ## space.size - size of the vertical spaces for the table
+  ## digits - number of decimal points on % columns
+  ## placement - latex code for placement of the table in document
 
-  catches <- catches[,c("Year",
-                        "atSea_US_MS",
-                        "atSea_US_CP",
-                        "US_shore",
-                        "USresearch",
-                        "Ustotal",
-                        "CAN_JV",
-                        "CAN_Shoreside",
-                        "CAN_FreezeTrawl",
-                        "CANtotal",
-                        "TOTAL")]
-  colnames(catches) <-
-    c(bold("Year"),
-      mlc(c("US", "Mother-", "ship")),
-      mlc(c("US", "Catcher", "Processor")),
-      mlc(c("US", "Shore-", "based")),
-      mlc(c("US", "Research")),
-      mlc(c("US", "Total")),
-      mlc(c("CAN", "Joint", "Venture")),
-      mlc(c("CAN", "Shore-", "side")),
-      mlc(c("CAN", "Freezer", "Trawler")),
-      mlc(c("CAN", "Total")),
-      bold("Total"))
-  ## Filter for correct years to show and make thousand-seperated numbers (year
-  ##  assumed to be column 1)
-  catches <- catches[catches[,1] >= start.yr & catches[,1] <= end.yr,]
-  ## -1 below means leave the years alone and don't comma-seperate them
-  catches[,-1] <-f(catches[-1])
+  curr.func.name <- get.curr.func.name()
 
-  ## Make the size string for font and space size
-  size.string <- paste0("\\fontsize{",font.size,"}{",space.size,"}\\selectfont")
-  return(print(xtable(catches,
-                      caption = xcaption,
-                      label = xlabel,
-                      align = get.align(ncol(catches))),
-               caption.placement = "top",
-               include.rownames = FALSE,
-               table.placement = placement,
-               sanitize.text.function = function(x){x},
-               size = size.string))
+  yrs <- start.yr:end.yr
+  catches <- catches[catches$Year %in% yrs,]
+
+  agg <- function(d, nm){
+    ## Aggregate the data frame d by Year for the column name given in nm
+    ## Also applies the weight factor
+    d <- d[, c("Year", nm)]
+    ct <- aggregate(d[, nm],
+                    list(d$Year),
+                    sum,
+                    na.rm = TRUE)
+    colnames(ct) <- c("year", "catch")
+    ct$catch <- ct$catch / weight.factor
+    ct
+  }
+
+  if(!is.null(areas)){
+    tab <- data.frame()
+    header.vec <- NULL
+    for(area.grp in 1:length(areas)){
+      curr.area.grp <- areas[[area.grp]]
+      tmp <- catches[catches$AreaCode %in% curr.area.grp,]
+
+      ct <- agg(tmp, "CatchKG")
+      d.ct <- agg(tmp, "DiscardedKG")
+
+      yrs <- ct$year
+      ## Bind the two amounts by year into table
+      tot.catch <- cbind(yrs,
+                         f(ct$catch, digits),
+                         f(d.ct$catch, digits))
+      colnames(tot.catch) <- c("Year",
+                               "Landings",
+                               "Discards")
+      if(!nrow(tab)){
+        tab <- tot.catch
+      }else{
+        tab <- merge(tab, tot.catch, by = "Year", all = TRUE)
+      }
+
+      ## Build the area descriptor
+      ## If 3 and 4 are together, label 3CD, if only one of them label 3C or 3D
+      ## If 5 - 9 are together, label 5ABCDE with 5=A, 6=B, 7=C, 8=D, and 9=E
+      header <- NULL
+      if(3 %in% curr.area.grp |
+         4 %in% curr.area.grp){
+        header <- paste0(header, "3")
+      }
+      if(3 %in% curr.area.grp){
+        header <- paste0(header, "C")
+      }
+      if(4 %in% curr.area.grp){
+        header <- paste0(header, "D")
+      }
+      if(5 %in% curr.area.grp |
+         6 %in% curr.area.grp |
+         7 %in% curr.area.grp |
+         8 %in% curr.area.grp |
+         9 %in% curr.area.grp){
+        header <- paste0(header, "5")
+      }
+      if(5 %in% curr.area.grp){
+        header <- paste0(header, "A")
+      }
+      if(6 %in% curr.area.grp){
+        header <- paste0(header, "B")
+      }
+      if(7 %in% curr.area.grp){
+        header <- paste0(header, "C")
+      }
+      if(8 %in% curr.area.grp){
+        header <- paste0(header, "D")
+      }
+      if(9 %in% curr.area.grp){
+        header <- paste0(header, "E")
+      }
+      header.vec <- c(header.vec, latex.bold(header))
+    }
+    ## Set up the column headers, i.e. Landings & Discards
+    colnames(tab) <- c("",
+                       rep(c(latex.bold("Landings"),
+                             latex.bold("Discards")),
+                           length(header.vec)))
+    ## Add the extra header spanning multiple columns
+    addtorow <- list()
+    addtorow$pos <- list()
+    addtorow$pos[[1]] <- -1
+    addtorow$pos[[2]] <- nrow(tab)
+    addtorow$command <-
+      c(paste0("\\toprule ",
+               latex.mrow(3, "*", latex.bold("Year")),
+               latex.amp(),
+               latex.mcol(length(header.vec) * 2,
+                          "c",
+                          latex.bold("Area")),
+               latex.nline,
+               latex.cmidr(paste0("2-", length(header.vec) * 2 + 1), "lr"),
+               paste(sapply(1:length(header.vec),
+                      function(x){paste0(latex.amp(),
+                                         latex.mcol(2,
+                                                    "c",
+                                                    header.vec[x]))}),
+                     collapse = ""),
+               for(i in seq(2, (length(header.vec) * 2 + 1), by = 2)){
+                 paste0(latex.cmidr(paste0(i, "-", i + 1), "lr"))
+               },
+               latex.nline),
+        "\\bottomrule")
+    size.string <- latex.size.str(font.size, space.size)
+    print(xtable(tab,
+                 caption = xcaption,
+                 label = xlabel,
+                 align = getAlign(ncol(tab))),
+          caption.placement = "top",
+          include.rownames = FALSE,
+          sanitize.text.function = function(x){x},
+          size = size.string,
+          add.to.row = addtorow,
+          table.placement = placement,
+          hline.after = c(0),
+          NA.string = "--",
+          booktabs = TRUE)
+  }else{
+    ct <- agg(catches, "CatchKG")
+    d.ct <- agg(catches, "DiscardedKG")
+
+    ## Bind the two amounts by year into table
+    tab <- cbind(yrs,
+                 f(ct$catch, digits),
+                 f(d.ct$catch, digits))
+    colnames(tab) <- c(latex.bold("Year"),
+                       latex.bold("Landings"),
+                       latex.bold("Discards"))
+
+    size.string <- latex.size.str(font.size, space.size)
+    print(xtable(tab,
+                 caption = xcaption,
+                 label = xlabel,
+                 align = getAlign(ncol(tab))),
+          caption.placement = "top",
+          include.rownames = FALSE,
+          sanitize.text.function = function(x){x},
+          size = size.string,
+          table.placement = placement)
+  }
+}
+
+plot.catch <- function(catches,
+                       leg.loc = "topright"){
+  oldPar <- par(no.readonly=TRUE)
+  on.exit(par(oldPar))
+
+  curr.func.name <- get.curr.func.name()
+
 }
 
 make.catches.plot <- function(catches,
                               leg.y.loc = 430,
-                              leg.cex = 1
-                              ){
+                              leg.cex = 1){
   ## Plot the catches in a stacked-barplot with legend
+  ##
+  ## leg.y.loc - y-based location to place the legend
+  ## leg.cex - text size for legend
+
+  old.par <- par()
+  on.exit(par(old.par))
+
   years <- catches$Year
   catches <- catches[,c("CAN_forgn",
                         "CAN_JV",
@@ -87,7 +219,6 @@ make.catches.plot <- function(catches,
             rgb(0, 0, 0.4),
             rgb(0, 0, 1))
   legOrder <- c(6, 5, 2, 1, 4, 3, NA, NA, 9, 8, 7)
-  oldpar <- par()
   par(las = 1,
       mar = c(4, 4, 6, 2) + 0.1,
       cex.axis = 0.9)
@@ -142,67 +273,4 @@ make.catches.plot <- function(catches,
          fill = cols[legOrder],
          border = cols[legOrder],
          bty = "n")
-  par <- oldpar
-}
-
-make.landings.tac.table <- function(landings.vs.tac,
-                                    start.yr,
-                                    end.yr,
-                                    xcaption = "default",
-                                    xlabel   = "default",
-                                    font.size = 9,
-                                    space.size = 10,
-                                    placement = "H",
-                                    tabular.env = "tabular"
-                                    ){
-  ## Returns an xtable in the proper format for the executive summary landings
-  ##  vs. TAC for management performance section
-  ##
-  ## start.yr - the first year to show in the table
-  ## end.yr - the last year to show in the table
-  ## xcaption - Caption to use
-  ## xlabel - Latex label to use
-  ## font.size - Size of the font for the table
-  ## space.size - Size of the spaces for the table
-  ## placement - Latex code for placement of table
-  ## tabular.env - Type of table, e.g. "tabular" or "tabularx"
-
-  tab <- landings.vs.tac
-
-  ## Filter for correct years to show and make thousand-seperated numbers (year assumed to be column 1)
-  tab <- tab[tab$Year >= start.yr & tab$Year <= end.yr,]
-  tab[,-c(1, 8, 9, 10)] <- f(tab[,-c(1, 8, 9, 10)])
-
-  ## Round the proportions to one decimal place
-  tab[,8] <- paste0(f(tab[,8], 1),"\\%")
-  tab[,9] <- paste0(f(tab[,9], 1),"\\%")
-  tab[,10] <- paste0(f(tab[,10], 1),"\\%")
-  ## Switch TACCAN and TACUSA columns for consistency
-  tmp <- tab[,6]
-  tab[,6] <- tab[,7]
-  tab[,7] <- tmp
-  colnames(tab) <- c("\\textbf{Year}",
-                     "\\mlc{\\textbf{US}\\\\\\textbf{landings (t)}}",
-                     "\\mlc{\\textbf{Canadian}\\\\\\textbf{landings (t)}}",
-                     "\\mlc{\\textbf{Total}\\\\\\textbf{landings (t)}}",
-                     "\\mlc{\\textbf{Coast-wide}\\\\\\textbf{(US+Canada)}\\\\\\textbf{catch}\\\\\\textbf{target (t)}}",
-                     "\\mlc{\\textbf{US}\\\\\\textbf{catch}\\\\\\textbf{target (t)}}",
-                     "\\mlc{\\textbf{Canada}\\\\\\textbf{catch}\\\\\\textbf{target (t)}}",
-                     "\\mlc{\\textbf{US}\\\\\\textbf{proportion}\\\\\\textbf{of catch}\\\\\\textbf{target}\\\\\\textbf{removed}}",
-                     "\\mlc{\\textbf{Canada}\\\\\\textbf{proportion}\\\\\\textbf{of catch}\\\\\\textbf{target}\\\\\\textbf{removed}}",
-                     "\\mlc{\\textbf{Total}\\\\\\textbf{proportion}\\\\\\textbf{of catch}\\\\\\textbf{target}\\\\\\textbf{removed}}")
-  ## Make the size string for font and space size
-  size.string <- paste0("\\fontsize{", font.size, "}{", space.size, "}\\selectfont")
-  return(print(xtable(tab,
-                      caption = xcaption,
-                      label = xlabel,
-                      align = get.align(ncol(tab),
-                                        first.left = FALSE, just = "c"),
-                      digits = c(0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1)),
-               caption.placement = "top",
-               include.rownames = FALSE,
-               table.placement = placement,
-               tabular.environment = tabular.env,
-               sanitize.text.function = function(x){x},
-               size = size.string))
 }

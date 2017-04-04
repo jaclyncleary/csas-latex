@@ -53,7 +53,7 @@
 %%  of the document. Use \Sexpr{objname} to put values in text.
 %% Note that libraries need to be loaded as they are not saved in
 %%  the RData file.
-<<echo=FALSE,  message=FALSE, results='hide', warning=FALSE>>=
+<<load-everything, echo=FALSE,  message=FALSE, results='hide', warning=FALSE>>=
 opts_chunk$set(dev = 'cairo_ps',
                fig.path = 'knitr-cache/',
                fig.dpi = 96,

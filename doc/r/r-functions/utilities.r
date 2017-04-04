@@ -1,7 +1,6 @@
-build.doc <- function(knit.only = FALSE, ## Only knit the document, don't LaTeX it
-                      make.pdf  = TRUE, ## Make the PDF from the Postscript
-                      doc.name  = "hake-assessment"
-                      ){
+build.doc <- function(knit.only = FALSE,
+                      make.pdf  = TRUE,
+                      doc.name  = "hake-assessment"){
   ## Use this function to build to doc entirely from within R
   ## Make sure you have created the .RData files by sourcing all.r
   ##  with the create.rdata.file variables set to TRUE.
@@ -9,15 +8,30 @@ build.doc <- function(knit.only = FALSE, ## Only knit the document, don't LaTeX 
   ##  you can go into the first knitr code chunk in hake-assessment.rnw and
   ##  set the call to load.models.into.parent.env() to FALSE,
   ##  which will save time for doing the build.
+  ##
+  ## knit.only - Only run knitr, not latex
+  ## make.pdf - TRUE to make the pdf, if FALSE it will only go as far as
+  ##  postscript.
+
   knit(paste0(doc.name,".rnw"))
   if(!knit.only){
-    system(paste0("latex -synctex=1 ", doc.name, ".tex"), invisible = FALSE, show.output.on.console = FALSE) ## Press Enter if the command window pauses
-    system(paste0("bibtex ", doc.name), invisible = FALSE, show.output.on.console = TRUE)
-    system(paste0("latex ", doc.name, ".tex"), invisible = FALSE, show.output.on.console = FALSE) ## Press Enter if the command window pauses
-    system(paste0("latex ", doc.name, ".tex"), invisible = FALSE, show.output.on.console = FALSE) ## Press Enter if the command window pauses
-    system(paste0("dvips ", doc.name,".dvi"), invisible = FALSE, show.output.on.console = TRUE)
+    system(paste0("latex -synctex=1 ", doc.name, ".tex"),
+           invisible = FALSE,
+           show.output.on.console = FALSE)
+    system(paste0("bibtex ", doc.name),
+           invisible = FALSE,
+           show.output.on.console = TRUE)
+    system(paste0("latex ", doc.name, ".tex"),
+           invisible = FALSE,
+           show.output.on.console = FALSE)
+    system(paste0("latex ", doc.name, ".tex"),
+           invisible = FALSE,
+           show.output.on.console = FALSE)
+    system(paste0("dvips ", doc.name,".dvi"),
+           invisible = FALSE,
+           show.output.on.console = TRUE)
     if(make.pdf){
-      shell(paste0("ps2pdf ", doc.name, ".ps")) ## Not sure why I have to use shell instead of system
+      shell(paste0("ps2pdf ", doc.name, ".ps"))
     }
   }
 }
@@ -26,26 +40,108 @@ f <- function(x, dec.points = 0){
   ## Format x to have supplied number of decimal points
   ## Make thousands seperated by commas and the number of decimal points given by
   ##  dec.points
-  return(format(round(x,dec.points), big.mark = ",", nsmall = dec.points))
+  format(round(x,dec.points),
+         big.mark = ",",
+         nsmall = dec.points)
 }
 
-## Functions to make table code simpler:
-## multi-line-cell constants
-bold <- function(txt){
+## -----------------------------------------------------------------------------
+## Functions to make table generation easier
+## Latex newline
+latex.nline <- " \\\\ "
+## Horizontal line
+latex.hline <- " \\hline "
+latex.amp <- function(n = 1){
+  ## Returns a string with n ampersands seperated by spaces. The string will
+  ##  have one leading and one trailing space.
+  paste0(rep(" &", n), " ", collapse = "")
+}
+
+latex.paste <- function(vec){
+  ## Returns a string comprised of each element in the vector vec with an
+  ##  ampersand in between. The string will have one leading and one
+  ##  trailing space.
+  paste(" ", vec, " ", collapse = " & ")
+}
+
+latex.bold <- function(txt){
   ## Returns the given text with the latex \\textbf{} macro around it
   paste0("\\textbf{", txt, "}")
 }
 
-mlc <- function(latex.vec, make.bold = TRUE){
+latex.italics <- function(txt){
+  ## Returns the given text with the latex \\emph{} macro around it
+  paste0("\\emph{", txt, "}")
+}
+
+latex.under <- function(txt){
+  ## Returns the given text with the latex \\underline{} macro around it
+  paste0("\\underline{", txt, "}")
+}
+
+latex.mlc <- function(latex.vec, make.bold = TRUE){
   ## Returns a string which has been glued together using multi-line-cell
   ##  macro for latex. If make.bold is TRUE, the \textbf macro will be
   ##  inserted.
   if(make.bold){
-    latex.vec <- sapply(latex.vec, bold)
+    latex.vec <- sapply(latex.vec, latex.bold)
   }
-  latex.str <- paste(latex.vec, collapse = "\\\\")
+  latex.str <- paste(latex.vec, collapse = latex.nline)
   paste0("\\mlc{", latex.str, "}")
 }
+
+latex.mcol <- function(ncol, just, txt){
+  ## Returns the given text with the latex \\multicolumn{} macro around it
+  ## ncol - the number of columns
+  ## just - justification, e.g. "l", "c", or "r" for left, center, right
+  paste0("\\multicolumn{", ncol, "}{", just, "}{", txt, "}")
+}
+
+latex.mrow <- function(nrow, just, txt, option = NULL){
+  ## Returns the given text with the latex \\multicolumn{} macro around it
+  ## nrow - the number of rows
+  ## just - justification, e.g. "l", "c", or "r" for left, center, right
+  ## option - optional argument for multirow
+  if(is.null(option)){
+    paste0("\\multirow{", nrow, "}{", just, "}{", txt, "}")
+  }else{
+    paste0("\\multirow{", nrow, "}{", just, "}[", option, "]{", txt, "}")
+  }
+}
+
+latex.size.str <- function(fnt.size, spc.size){
+  ## Returns a string which has the given font size and space size applied
+  paste0("\\fontsize{", fnt.size, "}{", spc.size, "}\\selectfont")
+}
+
+latex.cline <- function(cols){
+  ## Draw a horizontal line across the columns specified
+  ## cols - a string in this format: "1-3" which means
+  ##  the line should go across columns 1 to 3.
+  paste0("\\cline{", cols, "}")
+}
+
+latex.cmidr <- function(cols, trim = "r"){
+  ## Draw a horizontal line across the columns specified
+  ## cols - a string in this format: "1-3" which means
+  ##  the line should go across columns 1 to 3.
+  ## trim - can be l, r, or lr and tells it to trim the
+  ##  line a bit so that if there are two lines they don't
+  ##  touch in the middle. (See booktabs package)
+  paste0("\\cmidrule(", trim, "){", cols, "}")
+}
+
+latex.subscr <- function(main.txt, subscr.txt){
+  ## Returns a latex string with main.txt subscripted by subscr.txt
+  paste0(main.txt, "\\subscr{", subscr.txt, "}")
+}
+
+latex.supscr <- function(main.txt, supscr.txt){
+  ## Returns a latex string with main.txt superscripted by supscr.txt
+  paste0(main.txt, "\\supscr{", supscr.txt, "}")
+}
+
+## -----------------------------------------------------------------------------
 
 install.packages.if.needed <- function(package.name, package.install.name, github=FALSE){
   if(github){

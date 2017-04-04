@@ -57,8 +57,8 @@ composition of the catch data indicated that commercial catches have been
 80-90\% female; see Appendix \ref{chap:propfemale}, Table \ref{tab:propfemale}.
 
 Reference points based on Maximum Sustainable Yield (MSY), including the female
-spawning biomass (\emph{B}\subscr{MSY}) and the annual harvest rate producing MSY
-(\emph{U}\subscr{MSY}), were estimated, along with reference points based on
+spawning biomass (\emph{B}\subscr{MSY}) and the annual harvest rate producing
+MSY (\emph{U}\subscr{MSY}), were estimated, along with reference points based on
 estimated equilibrium unfished spawning biomass (\emph{B}\subscr{0})
 (Section \ref{sec:FisheryRefPoints}).
 
@@ -231,46 +231,44 @@ Appendix \ref{chap:propfemale}.\\
 
 \section{TABLES}
 <<ex.total.catches.table, results='asis', echo=FALSE>>=
-cap <- paste0("Recent commercial fishery catch (t).",
-              "Tribal catches are included in the sector ",
-              "totals. Research catch includes landed ",
-              "catch associated with certain ",
-              "research-related activities. Catch ",
-              "associated with surveys and discarded ",
-              "bycatch in fisheries not targeting hake are ",
-              "not currently included in the model.")
+cap <- paste0("Recent coastwide commercial fishery catch (t) for \\fishname.")
 make.catches.table(catches,
-                   start.yr = 2006,
-                   end.yr = assess.yr - 1,
+                   start.yr = 1996,
+                   end.yr = 2014,
                    weight.factor = 1000,
-                   xcaption <- cap,
-                   xlabel <- "tab:main-catches",
+                   digits = 1,
+                   xcaption = cap,
+                   xlabel = "tab:main-catches",
                    font.size = 9,
                    space.size = 10,
                    placement = "H")
-@
+ @
 
-%% <<results='asis', echo=FALSE>>=
-%% cap <- "Coastwide landings and discards in tonnes for \\fishname. See also Figure \\ref{fig:totalcatch}."
-%% makeTable(1,
-%%           10,
-%%           digits = 3,
-%%           retxtable = TRUE,
-%%           xcaption = cap,
-%%           xlabel = "tab:totalcatch")
-%% @
+<<ex.total.catches.by.area.table, results='asis', echo=FALSE>>=
+cap <- paste0("Recent commercial fishery catch (t) for \\fishname\\ by area.")
+make.catches.table(catches,
+                   start.yr = 1996,
+                   end.yr = 2014,
+                   weight.factor = 1000,
+                   digits = 1,
+                   areas = list(c(3, 4), c(5, 6, 7, 8, 9)),
+                   xcaption = cap,
+                   xlabel = "tab:main-catches-by-area",
+                   font.size = 9,
+                   space.size = 10,
+                   placement = "H")
+ @
 
-%% <<results='asis', echo=FALSE>>=
-%% cap <- "Annual female-only indices of abundance and CVs for the four indices used in this assessment."
-%% makeTable(1,
-%%           8,
-%%           ci = ci,
-%%           burnthin = burnthin,
-%%           digits = 3,
-%%           retxtable = TRUE,
-%%           xcaption = cap,
-%%           xlabel = "tab:Indices")
-%% @
+<<results='asis', echo=FALSE>>=
+cap <- "Annual female-only indices of abundance and CVs for the four indices used in this assessment."
+make.survey.indices.table(base.model,
+                          digits = 3,
+                          xcaption = cap,
+                          xlabel = "tab:Indices",
+                          font.size = 9,
+                          space.size = 10,
+                          placement = "H")
+ @
 
 \clearpage
 
@@ -279,18 +277,18 @@ make.catches.table(catches,
 % CATCH PLOTS
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
-\begin{figure}[H]
-\begin{center}
-<<total.catches, fig.height=4, fig.width=8>>=
-make.catches.plot(catches,
-                  leg.y.loc = 520)
-@
-\end{center}
-%\vspace{0mm}
-\caption{Total \fishname\ catch used in the assessment by sector,
-  \Sexpr{start.yr}--\Sexpr{last.data.yr}.}
-\label{fig:main-catches}
-\end{figure}
+%% \begin{figure}[H]
+%% \begin{center}
+%% <<total.catches, fig.height=4, fig.width=8>>=
+%% make.catches.plot(catches,
+%%                   leg.y.loc = 520)
+%% @
+%% \end{center}
+%% %\vspace{0mm}
+%% \caption{Total \fishname\ catch used in the assessment by sector,
+%%   \Sexpr{start.yr}--\Sexpr{last.data.yr}.}
+%% \label{fig:main-catches}
+%% \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
 \clearpage
 
