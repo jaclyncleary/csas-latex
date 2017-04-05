@@ -55,6 +55,8 @@ source(file.path(func.dir, "load-models.r"))
 source(file.path(func.dir, "survey.r"))
 ## Code to load data tables from the data directory
 source(file.path(func.dir, "load-data.r"))
+## Code to access mcmc parameters
+source(file.path(func.dir, "mcmc-diagnostics.r"))
 ## Code to read a user file into an R list (for model setup)
 ## source(file.path(func.dir, "read-list.r"))
 

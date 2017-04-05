@@ -143,6 +143,21 @@ latex.supscr <- function(main.txt, supscr.txt){
 
 ## -----------------------------------------------------------------------------
 
+get.quants <- function(data,
+                       probs){
+  ## Return the column quantiles for data matrix.
+  ## The median along with the confidence interval 'ci'
+  ## will be calculated and the quantiles returned.
+  if(is.null(dim(data))){
+    ## It is a single posterior, e.g. sbo
+    quants <- quantile(data, probs)
+  }else{
+    ## It is a timeseries posterior, e.g. sbt
+    quants <- apply(data, 2, quantile, probs)
+  }
+  quants
+}
+
 install.packages.if.needed <- function(package.name, package.install.name, github=FALSE){
   if(github){
     if(!(package.name %in% rownames(installed.packages()))){
