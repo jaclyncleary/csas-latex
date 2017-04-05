@@ -230,7 +230,7 @@ Appendix \ref{chap:propfemale}.\\
 \clearpage
 
 \section{TABLES}
-<<ex.total.catches.table, results='asis', echo=FALSE>>=
+<<total.catches.table, results='asis', echo=FALSE>>=
 cap <- paste0("Recent coastwide commercial fishery catch (t) for \\fishname.")
 make.catches.table(catches,
                    start.yr = 1996,
@@ -244,7 +244,7 @@ make.catches.table(catches,
                    placement = "H")
  @
 
-<<ex.total.catches.by.area.table, results='asis', echo=FALSE>>=
+<<total.catches.by.area.table, results='asis', echo=FALSE>>=
 cap <- paste0("Recent commercial fishery catch (t) for \\fishname\\ by area.")
 make.catches.table(catches,
                    start.yr = 1996,
@@ -257,18 +257,28 @@ make.catches.table(catches,
                    font.size = 9,
                    space.size = 10,
                    placement = "H")
- @
+@
 
-<<results='asis', echo=FALSE>>=
+<<survey.indices.table, results='asis', echo=FALSE>>=
 cap <- "Annual female-only indices of abundance and CVs for the four indices used in this assessment."
 make.survey.indices.table(base.model,
                           digits = 3,
                           xcaption = cap,
-                          xlabel = "tab:Indices",
+                          xlabel = "tab:indices",
                           font.size = 9,
                           space.size = 10,
                           placement = "H")
- @
+@
+
+<<parameters.table, results='asis', echo=FALSE>>=
+cap <- "Estimated and fixed parameters and prior probablilty distributions used in the Reference Case."
+make.parameters.table(base.model,
+                      xcaption = cap,
+                      xlabel = "tab:parameters",
+                      font.size = 9,
+                      space.size = 10,
+                      placement = "H")
+@
 
 \clearpage
 

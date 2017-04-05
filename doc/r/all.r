@@ -58,6 +58,7 @@ source(file.path(func.dir, "load-data.r"))
 ## Code to read a user file into an R list (for model setup)
 ## source(file.path(func.dir, "read-list.r"))
 
+source(file.path(func.dir, "tables-parameters.r"))
 source(file.path(iscam.gui.dir, "iscam-gui-figures-biology.r"))
 source(file.path(iscam.gui.dir, "iscam-gui-figures-catch.r"))
 source(file.path(iscam.gui.dir, "iscam-gui-figures-mcmc-diagnostics.r"))
