@@ -1,8 +1,14 @@
 load.iscam.files <- function(model.dir,
+                             burnin = 1000,
+                             thin = 1,
                              verbose = FALSE){
-  ## Load all the iscam files for output and input, and return the model object.
+  ## Load all the iscam files for output and input, and return the model object
   ## If MCMC directory is present, load that and perform calculations for mcmc
   ##  parameters.
+  ##
+  ## model.dir - which directory the model is in
+  ## burnin - the number of posteriors to remove from the data
+  ## thin - the thinning to apply to the posterior samples
 
   curr.func.name <- get.curr.func.name()
   model <- list()
@@ -32,7 +38,11 @@ load.iscam.files <- function(model.dir,
   if(dir.exists(model$mcmcpath)){
     model$mcmc <- read.mcmc(model$mcmcpath)
     ## Do the mcmc quantile calculations
-    model$mcmccalcs <- calc.mcmc(model$mcmc)
+    model$mcmccalcs <- calc.mcmc(model,
+                                 burnin,
+                                 thin,
+                                 lower = 0.025,
+                                 upper = 0.975)
   }
   model
 }
@@ -995,13 +1005,36 @@ extract.area.sex.matrices <- function(data = NULL,
   tmp
 }
 
-calc.mcmc <- function(mcmc = NULL,     ## mcmc is the output of the read.mcmc
-                                       ##  function
-                      lower = 0.025,   ## Lower quantile for confidence interval calcs
-                      upper = 0.975    ## Upper quantile for confidence interval calcs
-                      ){
+calc.mcmc <- function(model,
+                      burnin = 1000,
+                      thin = 1,
+                      lower = 0.025,
+                      upper = 0.975){
   ## Do the mcmc calculations, e.g. quantiles for sbt, recr, recdevs, F, U, vbt
   ## Returns a list of them all
+  ##
+  ## mcmc - output of the read.mcmc function
+  ## burnin - the number of posteriors to remove from the data
+  ## thin - the thinning to apply to the posterior samples
+  ## lower - lower quantile for confidence interval calcs
+  ## upper - upper quantile for confidence interval calcs
+
+  mcmc.thin <- function(mcmc.dat){
+    ## apply burnin and thinning to the data
+
+    nm <- names(mcmc.dat)
+    mcmc.obj <- apply(mcmc.dat, 2, mcmc)
+    mcmc.window <- NULL
+    for(col in 1:ncol(mcmc.obj)){
+      tmp <- window(mcmc.obj[,col],
+                    start = burnin + 1,
+                    thin = thin)
+      mcmc.window <- cbind(mcmc.window, tmp)
+    }
+    mcmc.window <- as.data.frame(mcmc.window)
+    names(mcmc.window) <- nm
+    mcmc.window
+  }
 
   curr.func.name <- get.curr.func.name()
   if(is.null(mcmc)){
@@ -1010,108 +1043,171 @@ calc.mcmc <- function(mcmc = NULL,     ## mcmc is the output of the read.mcmc
     return(NULL)
   }
 
-  ## Quantiles for the parameters will be in a data frame of 3 rows
-  param.quants <- apply(mcmc$params, 2, quantile, prob = c(lower, 0.5, upper))
+  probs <- c(lower, 0.5, upper)
+
+  ## Parameters
+  mc <- model$mcmc
+  params.dat <- mc$params
+  params.dat <- strip.areas.groups(params.dat)
+  params.dat <- strip.static.params(model, params.dat)
+  nm <- names(params.dat)
+
+  p.dat <- params.dat[ , -which(nm %in% c("msy",
+                                          "fmsy",
+                                          "bmsy",
+                                          "umsy",
+                                          "ssb",
+                                          "bo"))]
+  p.dat <- mcmc.thin(p.dat)
+  p.quants <- apply(p.dat, 2, quantile, prob = probs)
+
+  ## Reference points
+  r.dat <- params.dat[ , which(nm %in% c("bo",
+                                         "bmsy",
+                                         "msy",
+                                         "fmsy",
+                                         "umsy"))]
+  r.dat <- mcmc.thin(r.dat)
 
   ## Spawning biomass
-  sbt.lower <- apply(mcmc$sbt[[1]], 2, quantile, prob = lower)
-  sbt.med   <- apply(mcmc$sbt[[1]], 2, quantile, prob = 0.5)
-  sbt.upper <- apply(mcmc$sbt[[1]], 2, quantile, prob = upper)
-
+  sbt.dat <- mcmc.thin(mc$sbt[[1]])
+  sbt.quants <- apply(sbt.dat,
+                      2,
+                      quantile,
+                      prob = probs)
   ## Depletion
-  depl   <- apply(mcmc$sbt[[1]], 2, function(x){x/mcmc$params$bo})
-  depl.lower <- apply(depl, 2, quantile, prob = lower)
-  depl.med   <- apply(depl, 2, quantile, prob = 0.5)
-  depl.upper <- apply(depl, 2, quantile, prob = upper)
+  depl.dat <- apply(sbt.dat,
+                    2,
+                    function(x){x / r.dat$bo})
+  depl.quants <- apply(sbt.dat / r.dat$bo,
+                       2,
+                       quantile,
+                       prob = probs)
 
   ## Recruitment
-  recr.mean <- apply(mcmc$rt[[1]], 2, mean)
-  recr.lower <- apply(mcmc$rt[[1]], 2, quantile, prob = lower)
-  recr.med <- apply(mcmc$rt[[1]], 2, quantile, prob = 0.5)
-  recr.upper <- apply(mcmc$rt[[1]], 2, quantile, prob = upper)
-
+  recr.dat <- mcmc.thin(mc$rt[[1]])
+  recr.mean <- apply(recr.dat,
+                     2,
+                     mean)
+  recr.quants <- apply(recr.dat,
+                       2,
+                       quantile,
+                       prob = probs)
   ## Recruitment deviations
-  recr.devs.lower <- apply(mcmc$rdev[[1]], 2, quantile, prob = lower)
-  recr.devs.med <- apply(mcmc$rdev[[1]], 2, quantile, prob = 0.5)
-  recr.devs.upper <- apply(mcmc$rdev[[1]], 2, quantile, prob = upper)
-
+  recr.devs.dat <- mcmc.thin(mc$rdev[[1]])
+  recr.devs.quants <- apply(recr.devs.dat,
+                            2,
+                            quantile,
+                            prob = probs)
   ## Vulnerable biomass by gear (list of data frames)
-  vuln.biomass.lower <- lapply(mcmc$vbt[[1]],
-                               function(x){apply(x,
-                                                 2,
-                                                 quantile,
-                                                 prob = lower,
-                                                 na.rm = TRUE)})
-  vuln.biomass.med <- lapply(mcmc$vbt[[1]],
-                             function(x){apply(x,
-                                               2,
-                                               quantile,
-                                               prob = 0.5,
-                                               na.rm = TRUE)})
-  vuln.biomass.upper <- lapply(mcmc$vbt[[1]],
-                               function(x){apply(x,
-                                                 2,
-                                                 quantile,
-                                                 prob = upper,
-                                                 na.rm = TRUE)})
-
+  vuln.dat <- lapply(mc$vbt[[1]], mcmc.thin)
+  vuln.quants <- lapply(vuln.dat,
+                        function(x){
+                          apply(x,
+                                2,
+                                quantile,
+                                prob = lower,
+                                na.rm = TRUE)})
   ## Fishing mortalities by gear (list of data frames)
-  f.lower <- lapply(mcmc$ft[[1]],
-                    function(x){apply(x,
-                                      2,
-                                      quantile,
-                                      prob = lower,
-                                      na.rm = TRUE)})
-  f.med <- lapply(mcmc$ft[[1]],
-                    function(x){apply(x,
-                                      2,
-                                      quantile,
-                                      prob = 0.5,
-                                      na.rm = TRUE)})
-  f.upper <- lapply(mcmc$ft[[1]],
-                    function(x){apply(x,
-                                      2,
-                                      quantile,
-                                      prob = upper,
-                                      na.rm = TRUE)})
-  u.lower <- lapply(mcmc$ut[[1]],
-                    function(x){apply(x,
-                                      2,
-                                      quantile,
-                                      prob = lower,
-                                      na.rm = TRUE)})
-  u.med <- lapply(mcmc$ut[[1]],
-                    function(x){apply(x,
-                                      2,
-                                      quantile,
-                                      prob = 0.5,
-                                      na.rm = TRUE)})
-  u.upper <- lapply(mcmc$ut[[1]],
-                    function(x){apply(x,
-                                      2,
-                                      quantile,
-                                      prob = upper,
-                                      na.rm = TRUE)})
-  list(sbt.lower = sbt.lower,
-       sbt.med = sbt.med,
-       sbt.upper = sbt.upper,
-       depl.lower = depl.lower,
-       depl.med = depl.med,
-       depl.upper = depl.upper,
-       recr.mean = recr.mean,
-       recr.lower = recr.lower,
-       recr.med = recr.med,
-       recr.upper = recr.upper,
-       recr.devs.lower = recr.devs.lower,
-       recr.devs.med = recr.devs.med,
-       recr.devs.upper = recr.devs.upper,
-       vuln.biomass.lower = vuln.biomass.lower,
-       vuln.biomass.med = vuln.biomass.med,
-       vuln.biomass.upper = vuln.biomass.upper,
-       f.lower = f.lower,
-       f.med = f.med,
-       f.upper = f.upper,
-       u.lower = u.lower,
-       u.med = u.med,
-       u.upper = u.upper)
+  f.mort.dat <- lapply(mc$ft[[1]], mcmc.thin)
+  f.mort.quants <- lapply(f.mort.dat,
+                          function(x){
+                            apply(x,
+                                  2,
+                                  quantile,
+                                  prob = lower,
+                                  na.rm = TRUE)})
+  u.mort.dat <- lapply(mc$ut[[1]], mcmc.thin)
+  u.mort.quants <- lapply(u.mort.dat,
+                          function(x){
+                            apply(x,
+                                  2,
+                                  quantile,
+                                  prob = lower,
+                                  na.rm = TRUE)})
+
+  ## Add calculated reference points - these have already been thinned
+  ##  and burned in
+  sbt.yrs <- names(sbt.dat)
+  sbt.init <- sbt.dat[,1]
+  sbt.end <- sbt.dat[,ncol(sbt.dat)]
+  yr.sbt.init <- sbt.yrs[1]
+  yr.sbt.end <- sbt.yrs[length(sbt.yrs)]
+  f.yrs <- names(f.mort.dat[[1]])
+  f.yrs <- gsub(".*_([[:digit:]]+)",
+                 "\\1",
+                 f.yrs)
+  f.end <- f.mort.dat[[1]][,ncol(f.mort.dat[[1]])]
+  yr.f.end <- f.yrs[length(f.yrs)]
+  r.dat <- cbind(r.dat,
+                 sbt.init,
+                 sbt.end,
+                 sbt.end / sbt.init,
+                 f.end,
+                 0.2 * r.dat$bo,
+                 0.4 * r.dat$bo,
+                 0.4 * r.dat$bmsy,
+                 0.8 * r.dat$bmsy)
+  names(r.dat) <- c("bo",
+                    "bmsy",
+                    "msy",
+                    "fmsy",
+                    "umsy",
+                    paste0("b", yr.sbt.init),
+                    paste0("b", yr.sbt.end),
+                    paste0("b", yr.sbt.end, "/", yr.sbt.init),
+                    paste0("f", yr.f.end),
+                    paste0("0.2bo"),
+                    paste0("0.4bo"),
+                    paste0("0.4bmsy"),
+                    paste0("0.8bmsy"))
+
+  r.quants <- apply(r.dat, 2, quantile, prob = probs)
+
+  desc.col <- c(latex.subscr.ital("B", "0"),
+                latex.subscr.ital("B", "MSY"),
+                "MSY",
+                latex.subscr.ital("F", "MSY"),
+                latex.subscr.ital("U", "MSY"),
+                latex.subscr.ital("B", yr.sbt.init),
+                latex.subscr.ital("B", yr.sbt.end),
+                paste0(latex.subscr.ital("B", yr.sbt.end),
+                       "/",
+                       latex.subscr.ital("B", yr.sbt.init)),
+                latex.subscr.ital("F", yr.f.end),
+                paste0("0.2",
+                       latex.subscr.ital("B", "0")),
+                paste0("0.4",
+                       latex.subscr.ital("B", "0")),
+                paste0("0.4",
+                       latex.subscr.ital("B", "MSY")),
+                paste0("0.8",
+                       latex.subscr.ital("B", "MSY")))
+
+  r.quants <- t(r.quants)
+  r.quants <- cbind.data.frame(desc.col, r.quants)
+  col.names <- colnames(r.quants)
+  col.names <- latex.bold(gsub("%", "\\\\%", col.names))
+  col.names[1] <- latex.bold("Reference Point")
+  colnames(r.quants) <- col.names
+
+  sapply(c("p.dat",
+           "p.quants",
+           "r.dat",
+           "r.quants",
+           "sbt.dat",
+           "sbt.quants",
+           "depl.dat",
+           "depl.quants",
+           "recr.dat",
+           "recr.quants",
+           "recr.devs.dat",
+           "recr.devs.quants",
+           "vuln.dat",
+           "vuln.quants",
+           "f.mort.dat",
+           "f.mort.quants",
+           "u.mort.dat",
+           "u.mort.quants"),
+           function(x){get(x)})
 }

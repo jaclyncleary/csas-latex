@@ -213,9 +213,6 @@ make.parameters.table <- function(model,
 }
 
 make.parameters.est.table <- function(model,
-                                      probs = c(0.025, 0.5, 0.975),
-                                      burnin = 1000,
-                                      thin = 1,
                                       digits = 3,
                                       xcaption = "default",
                                       xlabel   = "default",
@@ -224,9 +221,6 @@ make.parameters.est.table <- function(model,
                                       placement = "H"){
   ## Returns an xtable in the proper format for parameter estimates and priors
   ##
-  ## probs - a vector of probabilities for the quantiles
-  ## burnin - the number of posteriors to remove from the data
-  ## thin - the thinning to apply to the posterior samples
   ## digits - number of decimal places for the values
   ## xcaption - caption to appear in the calling document
   ## xlabel - the label used to reference the table in latex
@@ -237,33 +231,8 @@ make.parameters.est.table <- function(model,
 
 
   mc <- model$mcmccalcs
-  out.mcmc <- model$mcmc$params
-  mcmc.dat <- strip.areas.groups(out.mcmc)
-  mcmc.dat <- strip.static.params(model, mcmc.dat)
-
-  mcmc.names <- names(mcmc.dat)
-  mcmc.dat <- mcmc.dat[ , -which(mcmc.names %in% c("msy",
-                                                   "fmsy",
-                                                   "bmsy",
-                                                   "umsy",
-                                                   "ssb",
-                                                   "bo"))]
-  mcmc.names <- names(mcmc.dat)
-
-  mcmc.obj <- apply(mcmc.dat, 2, mcmc)
-  mcmc.window <- NULL
-  for(col in 1:ncol(mcmc.obj)){
-    tmp <- window(mcmc.obj[,col],
-                  start = burnin,
-                  thin = thin)
-    mcmc.window <- cbind(mcmc.window, tmp)
-  }
-
-  quants <- as.data.frame(apply(mcmc.window,
-                                2,
-                                get.quants,
-                                probs))
-  names(quants) <- names(mcmc.dat)
+  p.quants <- mc$p.quants
+  mcmc.names <- colnames(p.quants)
 
   ## Append MPD values
   mpd <- model$mpd
@@ -316,17 +285,16 @@ make.parameters.est.table <- function(model,
       ##  cases, they must be extracted from vectors and matrices respectively
       this.par <- mpd[match(pname, mpd.names)]
     }
-    mpd.param.vals <- c(mpd.param.vals, this.par)
+    j <- mpd.param.vals <- c(mpd.param.vals, this.par)
   }
-
   names(mpd.param.vals) <- mcmc.names
-  all.table <- rbind(quants, mpd.param.vals)
-  row.n <- rownames(all.table)
+  tab <- rbind(p.quants, as.numeric(mpd.param.vals))
+  row.n <- rownames(tab)
   row.n[length(row.n)] <- "MPD"
-  rownames(all.table) <- row.n
-  all.table <- f(t(all.table), digits)
+  rownames(tab) <- row.n
+  tab <- f(t(tab), digits)
 
-  ## HACK! The next set of names only pertains to the ARF assessment, the q's
+  ## The next set of names only pertains to the ARF assessment, the q's
   ##  and sel's are modified to line up with each other.
   new.col <- c("$R_0$",
                "$Steepness (h)$",
@@ -345,28 +313,26 @@ make.parameters.est.table <- function(model,
                "$\\hat{\\gamma}_4$",
                "$\\hat{a}_5$",
                "$\\hat{\\gamma}_5$")
-  col.names <- colnames(all.table)
+  col.names <- colnames(tab)
   col.names <- latex.bold(gsub("%", "\\\\%", col.names))
   col.names <- c(latex.bold("Parameter"), col.names)
-  all.table <- cbind(new.col, all.table)
-  colnames(all.table) <- col.names
+  tab <- cbind(new.col, tab)
+  colnames(tab) <- col.names
 
   size.string <- latex.size.str(font.size, space.size)
-  print(xtable(all.table,
+  print(xtable(tab,
                caption = xcaption,
                label = xlabel,
-               align = getAlign(ncol(all.table))),
+               align = getAlign(ncol(tab))),
         caption.placement = "top",
         include.rownames = FALSE,
         sanitize.text.function = function(x){x},
         size = size.string,
-        table.placement = placement)
+        table.placement = placement,
+        booktabs = TRUE)
 }
 
 make.ref.points.table <- function(model,
-                                  probs = c(0.025, 0.5, 0.975),
-                                  burnin = 1000,
-                                  thin = 1,
                                   digits = 3,
                                   xcaption = "default",
                                   xlabel   = "default",
@@ -374,6 +340,41 @@ make.ref.points.table <- function(model,
                                   space.size = 10,
                                   placement = "H"){
   ## Returns an xtable in the proper format for reference points
+  ##
+  ## digits - number of decimal places for the values
+  ## xcaption - caption to appear in the calling document
+  ## xlabel - the label used to reference the table in latex
+  ## font.size - size of the font for the table
+  ## space.size - size of the vertical spaces for the table
+  ## digits - number of decimal points on % columns
+  ## placement - latex code for placement of the table in document
+  tab <- model$mcmccalcs$r.quants
+  tab[,-1] <- f(tab[,-1], digits)
+
+  size.string <- latex.size.str(font.size, space.size)
+  print(xtable(tab,
+               caption = xcaption,
+               label = xlabel,
+               align = getAlign(ncol(tab))),
+        caption.placement = "top",
+        include.rownames = FALSE,
+        sanitize.text.function = function(x){x},
+        size = size.string,
+        table.placement = placement,
+        booktabs = TRUE)
+}
+
+make.value.table <- function(model,
+                             probs = c(0.025, 0.5, 0.975),
+                             burnin = 1000,
+                             thin = 1,
+                             digits = 3,
+                             xcaption = "default",
+                             xlabel   = "default",
+                             font.size = 9,
+                             space.size = 10,
+                             placement = "H"){
+  ## Returns an xtable in the proper format for values (biomasas, recr, etc)
   ##
   ## probs - a vector of probabilities for the quantiles
   ## burnin - the number of posteriors to remove from the data
@@ -386,67 +387,8 @@ make.ref.points.table <- function(model,
   ## digits - number of decimal points on % columns
   ## placement - latex code for placement of the table in document
 
-
-  out.mcmc <- model$mcmc$params
-  ##quants <- vector("list", length(out.mcmc))
-  sbt <- model$mcmc$sbt[[1]]
-  ssb <- sbt[,ncol(sbt)]
-  mcmc.dat <- strip.areas.groups(out.mcmc)
-  mcmc.dat <- strip.static.params(model, mcmc.dat)
-  mcmc.names <- names(mcmc.dat)
-  mcmc.dat <- mcmc.dat[ , which(mcmc.names %in% c("msy",
-                                                  "fmsy",
-                                                  "bmsy",
-                                                  "umsy",
-                                                  "bo"))]
-  mcmc.dat <- cbind(mcmc.dat, ssb)
-  mcmc.names <- names(mcmc.dat)
-  yrs <- names(sbt)
-  start.yr.bio <- yrs[1]
-  end.yr.bio <- yrs[length(yrs)]
-  end.yr.F <- yrs[length(yrs) - 1]
-  mcmc.names[mcmc.names == "ssb"] = paste0("B", end.yr.bio)
-
-  ## Add 0.2B0, 0.4B0, 0.4BMSY, and 0.8BMSY
-  mcmc.dat <- cbind(mcmc.dat,
-                    0.2 * mcmc.dat$bo,
-                    0.4 * mcmc.dat$bo,
-                    0.4 * mcmc.dat$bmsy,
-                    0.8 * mcmc.dat$bmsy)
-  mcmc.names <- c(mcmc.names,
-                  "0.2B\\subscr{0}",
-                  "0.4B\\subscr{0}",
-                  "0.4B\\subscr{MSY}",
-                  "0.8B\\subscr{MSY}")
-
-  ## Add the initial year biomass (first column of sbt)
-  sbt.init <- sbt[,1]
-  yr.init <- yrs[1]
-  mcmc.dat <- cbind(mcmc.dat, sbt.init)
-  mcmc.names <- c(mcmc.names, paste0("B", yr.init))
-
-  ## Add Relative spawning biomass
-  depl <- sbt[,ncol(sbt)] / mcmc.dat$bo
-  mcmc.dat <- cbind(mcmc.dat, depl)
-  mcmc.names <- c(mcmc.names, paste0("B", end.yr.bio, "/B\\subscr{0}"))
-
-  ## Add end year Fishing mortalities
-  ft <- model$mcmc$ft[[1]][[1]]
-  ft.end <- ft[,ncol(ft)]
-  ## Get name by stripping year from last column name
-  f.names <- names(ft)
-  f.end.name <- f.names[length(f.names)]
-  yr.end <- gsub(".*_([[:digit:]]+)",
-                 "\\1",
-                 f.end.name)
-  mcmc.dat <- cbind(mcmc.dat, ft.end)
-  mcmc.names <- c(mcmc.names, paste0("F", yr.end))
-
-  ## Add the newly formed names to the data frame
-  names(mcmc.dat) <- mcmc.names
-
-  ## Apply the mcmc windowing and getQuants function to each parameter (column)
-  ##  in mcmcData. Cannot use 'apply' function because mcmc object cannot have
+  ## Apply the mcmc windowing and get.quants function to each parameter (column)
+  ##  in mcmc.data. Cannot use 'apply' function because mcmc object cannot have
   ##  a function applied to it
   mcmc.obj <- apply(mcmc.dat, 2, mcmc)
   mcmc.window <- NULL
@@ -456,38 +398,6 @@ make.ref.points.table <- function(model,
                   thin = thin)
     mcmc.window <- cbind(mcmc.window, tmp)
   }
-  quants <- as.data.frame(apply(mcmc.window,
-                                2,
-                                get.quants,
-                                probs))
-  names(quants) <- names(mcmc.dat)
-  quants <- f(t(quants), digits)
-
-  new.col <- c("B\\subscr{0}",
-               "B\\subscr{MSY}",
-               "MSY",
-               "F\\subscr{MSY}",
-               "U\\subscr{MSY}",
-               paste0("B\\subscr{",
-                      as.numeric(end.yr.bio) - 1,"}"),
-               "0.2B\\subscr{0}",
-               "0.4B\\subscr{0}",
-               "0.4B\\subscr{MSY}",
-               "0.8B\\subscr{MSY}",
-               paste0("B\\subscr{",
-                      start.yr.bio,"}"),
-               paste0("B\\subscr{",
-                      end.yr.bio,
-                      "}/B\\subscr{0}"),
-               paste0("F\\subscr{",
-                      end.yr.F,"}"))
-
-
-  col.names <- colnames(quants)
-  col.names <- latex.bold(gsub("%", "\\\\%", col.names))
-  col.names <- c(latex.bold("Reference Point"), col.names)
-  all.table <- cbind(new.col, quants)
-  colnames(all.table) <- col.names
 
   size.string <- latex.size.str(font.size, space.size)
   print(xtable(all.table,

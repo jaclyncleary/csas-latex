@@ -136,6 +136,12 @@ latex.subscr <- function(main.txt, subscr.txt){
   paste0(main.txt, "\\subscr{", subscr.txt, "}")
 }
 
+latex.subscr.ital <- function(main.txt, subscr.txt){
+  ## Returns a latex string with main.txt subscripted by subscr.txt
+  ##  where only main.txt is italicised
+  paste0("\\emph{", main.txt, "}\\subscr{", subscr.txt, "}")
+}
+
 latex.supscr <- function(main.txt, supscr.txt){
   ## Returns a latex string with main.txt superscripted by supscr.txt
   paste0(main.txt, "\\supscr{", supscr.txt, "}")

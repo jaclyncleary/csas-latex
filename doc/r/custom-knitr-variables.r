@@ -22,10 +22,10 @@
 ################################################################################
 ## Number of mcmc samples, min and max median biomass
 num.mcmc.samples <- nrow(base.model$mcmc$params)
-median.bio.min  <- f(min(base.model$mcmccalcs$sbt.med), 3)  ## min median biomass
-median.bio.min.year <- names(which.min(base.model$mcmccalcs$sbt.med)) ## year of min
-median.bio.max  <- f(max(base.model$mcmccalcs$sbt.med), 3)  ## max median biomass
-median.bio.max.year <- names(which.max(base.model$mcmccalcs$sbt.med)) ## year of max
+median.bio.min  <- f(min(base.model$mcmccalcs$sbt.quants[2,]), 3)
+median.bio.min.year <- names(which.min(min(base.model$mcmccalcs$sbt.quants[2,])))
+median.bio.max  <- f(max(base.model$mcmccalcs$sbt.quants[2,]), 3)
+median.bio.max.year <- names(which.max(base.model$mcmccalcs$sbt.quants[2,]))
 
 ################################################################################
 ## Prob biomass declines next year to year after with zero catch:
