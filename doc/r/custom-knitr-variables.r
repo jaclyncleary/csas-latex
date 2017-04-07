@@ -17,6 +17,19 @@
 ## Survey values
 
 ################################################################################
+## Parameter values
+r.quants <- base.model$mcmccalcs$r.quants
+bo.lo <- r.quants["bo", 2]
+bo.med <- r.quants["bo", 3]
+bo.hi <- r.quants["bo", 4]
+bmsy.lo <- r.quants["bmsy", 2]
+bmsy.med <- r.quants["bmsy", 3]
+bmsy.hi <- r.quants["bmsy", 4]
+fmsy.lo <- r.quants["fmsy", 2]
+fmsy.med <- r.quants["fmsy", 3]
+fmsy.hi <- r.quants["fmsy", 4]
+
+################################################################################
 ## First forecast year depletion and spawning biomass estimates
 
 ################################################################################

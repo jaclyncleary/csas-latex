@@ -300,6 +300,56 @@ make.ref.points.table(base.model,
                       placement = "H")
 @
 
+<<spawning.biomass.table, results='asis', echo=FALSE>>=
+cap <- "Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} percentile) and MPD estimates of female spawning biomass (1000 t) for the Reference Case."
+make.value.table(base.model$mcmccalcs$sbt.quants,
+                 xcaption = cap,
+                 xlabel = "tab:spawn-biomass",
+                 font.size = 9,
+                 space.size = 10,
+                 placement = "H")
+@
+
+<<recruitment.table, results='asis', echo=FALSE>>=
+cap <- "Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} percentile) and MPD estimates of recruitment (millions) for the Reference Case."
+make.value.table(base.model$mcmccalcs$recr.quants,
+                 xcaption = cap,
+                 xlabel = "tab:recruitment",
+                 font.size = 9,
+                 space.size = 10,
+                 placement = "H")
+@
+
+<<fishing.mortality.table, results='asis', echo=FALSE>>=
+cap <- "Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} percentile) and MPD estimates of fishing mortality, F, for the Reference Case."
+make.value.table(base.model$mcmccalcs$f.mort.quants[[1]],
+                 xcaption = cap,
+                 xlabel = "tab:f-mort",
+                 font.size = 9,
+                 space.size = 10,
+                 placement = "H")
+@
+
+<<harvest.rate.table, results='asis', echo=FALSE>>=
+cap <- "Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} percentile) and MPD estimates of annual harvest rate, U, for the Reference Case."
+make.value.table(base.model$mcmccalcs$u.mort.quants[[1]],
+                 xcaption = cap,
+                 xlabel = "tab:u-mort",
+                 font.size = 9,
+                 space.size = 10,
+                 placement = "H")
+@
+
+<<depletion.table, results='asis', echo=FALSE>>=
+cap <- "Derived posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} percentile) and MPD values of relative female spawning biomass for the Reference Case."
+make.value.table(base.model$mcmccalcs$depl.quants,
+                 xcaption = cap,
+                 xlabel = "tab:depletion",
+                 font.size = 9,
+                 space.size = 10,
+                 placement = "H")
+@
+
 \clearpage
 
 \section{FIGURES}

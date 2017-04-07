@@ -364,10 +364,7 @@ make.ref.points.table <- function(model,
         booktabs = TRUE)
 }
 
-make.value.table <- function(model,
-                             probs = c(0.025, 0.5, 0.975),
-                             burnin = 1000,
-                             thin = 1,
+make.value.table <- function(out.dat,
                              digits = 3,
                              xcaption = "default",
                              xlabel   = "default",
@@ -376,9 +373,7 @@ make.value.table <- function(model,
                              placement = "H"){
   ## Returns an xtable in the proper format for values (biomasas, recr, etc)
   ##
-  ## probs - a vector of probabilities for the quantiles
-  ## burnin - the number of posteriors to remove from the data
-  ## thin - the thinning to apply to the posterior samples
+  ## out.dat - one of the quants objects as output by the calc.mcmc function
   ## digits - number of decimal places for the values
   ## xcaption - caption to appear in the calling document
   ## xlabel - the label used to reference the table in latex
@@ -387,26 +382,22 @@ make.value.table <- function(model,
   ## digits - number of decimal points on % columns
   ## placement - latex code for placement of the table in document
 
-  ## Apply the mcmc windowing and get.quants function to each parameter (column)
-  ##  in mcmc.data. Cannot use 'apply' function because mcmc object cannot have
-  ##  a function applied to it
-  mcmc.obj <- apply(mcmc.dat, 2, mcmc)
-  mcmc.window <- NULL
-  for(col in 1:ncol(mcmc.obj)){
-    tmp <- window(mcmc.obj[,col],
-                  start = burnin,
-                  thin = thin)
-    mcmc.window <- cbind(mcmc.window, tmp)
-  }
+  tab <- f(t(out.dat), digits)
+  tab <- cbind(rownames(tab), tab)
+  col.names <- colnames(tab)
+  col.names[1] <- "Year"
+  col.names <- latex.bold(gsub("%", "\\\\%", col.names))
+  colnames(tab) <- col.names
 
   size.string <- latex.size.str(font.size, space.size)
-  print(xtable(all.table,
+  print(xtable(tab,
                caption = xcaption,
                label = xlabel,
-               align = getAlign(ncol(all.table))),
+               align = getAlign(ncol(tab))),
         caption.placement = "top",
         include.rownames = FALSE,
         sanitize.text.function = function(x){x},
         size = size.string,
-        table.placement = placement)
+        table.placement = placement,
+        booktabs = TRUE)
 }

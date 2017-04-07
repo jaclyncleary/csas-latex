@@ -1047,6 +1047,7 @@ calc.mcmc <- function(model,
 
   ## Parameters
   mc <- model$mcmc
+  mpd <- model$mpd
   params.dat <- mc$params
   params.dat <- strip.areas.groups(params.dat)
   params.dat <- strip.static.params(model, params.dat)
@@ -1075,6 +1076,9 @@ calc.mcmc <- function(model,
                       2,
                       quantile,
                       prob = probs)
+  sbt.quants <- rbind(sbt.quants, mpd$sbt)
+  rownames(sbt.quants)[4] <- "MPD"
+
   ## Depletion
   depl.dat <- apply(sbt.dat,
                     2,
@@ -1083,6 +1087,8 @@ calc.mcmc <- function(model,
                        2,
                        quantile,
                        prob = probs)
+  depl.quants <- rbind(depl.quants, mpd$bt / mpd$bo)
+  rownames(depl.quants)[4] <- "MPD"
 
   ## Recruitment
   recr.dat <- mcmc.thin(mc$rt[[1]])
@@ -1093,38 +1099,54 @@ calc.mcmc <- function(model,
                        2,
                        quantile,
                        prob = probs)
+  recr.quants <- rbind(recr.quants, mpd$rt)
+  rownames(recr.quants)[4] <- "MPD"
+
   ## Recruitment deviations
   recr.devs.dat <- mcmc.thin(mc$rdev[[1]])
   recr.devs.quants <- apply(recr.devs.dat,
                             2,
                             quantile,
                             prob = probs)
+
+  build.quant.list <- function(mc.dat, mpd.dat){
+    ## Run quantiles on each dataframe in a list of dataframes and append
+    ##  the MPD values as well. Returns a list of dataframes
+    quants <- lapply(mc.dat,
+                     function(x){
+                       apply(x,
+                             2,
+                             quantile,
+                             prob = probs,
+                             na.rm = TRUE)})
+    lapply(1:length(quants),
+           function(x){
+             quants[[x]] <-
+               rbind(quants[[x]], mpd.dat[x,])
+             rownames(quants[[x]])[4] <- "MPD"
+             c.names <- colnames(quants[[x]])
+             colnames(quants[[x]]) <-
+               gsub("^.*_([[:digit:]]+$)", "\\1", c.names)
+             quants[[x]]
+           })
+  }
   ## Vulnerable biomass by gear (list of data frames)
   vuln.dat <- lapply(mc$vbt[[1]], mcmc.thin)
-  vuln.quants <- lapply(vuln.dat,
-                        function(x){
-                          apply(x,
-                                2,
-                                quantile,
-                                prob = lower,
-                                na.rm = TRUE)})
+  ## Reshape the vulnerable biomass output from the MPD
+  vbt <- as.data.frame(mpd$vbt)
+  vbt <- split(vbt, vbt[,1])
+  vbt <- lapply(1:length(vbt),
+              function(x){
+                vbt[[x]][,4]})
+  vbt <- do.call(rbind, vbt)
+  vuln.quants <- build.quant.list(vuln.dat, vbt)
+
   ## Fishing mortalities by gear (list of data frames)
   f.mort.dat <- lapply(mc$ft[[1]], mcmc.thin)
-  f.mort.quants <- lapply(f.mort.dat,
-                          function(x){
-                            apply(x,
-                                  2,
-                                  quantile,
-                                  prob = lower,
-                                  na.rm = TRUE)})
+  f.mort.quants <- build.quant.list(f.mort.dat, mpd$ft)
+
   u.mort.dat <- lapply(mc$ut[[1]], mcmc.thin)
-  u.mort.quants <- lapply(u.mort.dat,
-                          function(x){
-                            apply(x,
-                                  2,
-                                  quantile,
-                                  prob = lower,
-                                  na.rm = TRUE)})
+  u.mort.quants <- build.quant.list(u.mort.dat, mpd$ut)
 
   ## Add calculated reference points - these have already been thinned
   ##  and burned in
