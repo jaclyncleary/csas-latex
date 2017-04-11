@@ -401,3 +401,33 @@ make.value.table <- function(out.dat,
         table.placement = placement,
         booktabs = TRUE)
 }
+
+make.sens.parameter.table <- function(tab,
+                                      xcaption = "default",
+                                      xlabel   = "default",
+                                      font.size = 9,
+                                      space.size = 10,
+                                      placement = "H"){
+  ## Returns an xtable of the sensitivity parameter information as found in
+  ##  the CSV file in the data directory
+  ## tab - the contents of the CSV file as read in by read.csv
+
+  ## Replace any | with a comma
+  tab <- sub("\\|", ",", as.matrix(tab))
+  colnames(tab) <- c(latex.bold("Scenario"),
+                     latex.bold("Description"),
+                     latex.bold("Parameters"))
+
+  size.string <- latex.size.str(font.size, space.size)
+  print(xtable(tab,
+               caption = xcaption,
+               label = xlabel,
+               align = getAlign(ncol(tab))),
+        caption.placement = "top",
+        include.rownames = FALSE,
+        sanitize.text.function = function(x){x},
+        size = size.string,
+        table.placement = placement,
+        booktabs = TRUE)
+
+}

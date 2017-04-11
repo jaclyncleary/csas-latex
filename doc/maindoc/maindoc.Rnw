@@ -284,7 +284,7 @@ make.parameters.table(base.model,
 cap <- "Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} percentile) and MPD estimates of key parameters from the Reference Case. Subscripts on $q$ (catchability), $\\hat{a}$ (selectivity age-at-50\\%), and $\\hat{\\gamma}$ (selectivity standard deviation-at-50\\%) parameters indicate: 1 = Trawl fishery, 2 = QCSSS, 3 = HSMAS, 4 = HSSS, 5 = WCVISS."
 make.parameters.est.table(base.model,
                           xcaption = cap,
-                          xlabel = "tab:parameters",
+                          xlabel = "tab:parameters-posts",
                           font.size = 9,
                           space.size = 10,
                           placement = "H")
@@ -294,7 +294,7 @@ make.parameters.est.table(base.model,
 cap <- "Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} percentile) of proposed reference points for the Reference Case. Biomass numbers are in thousands of tonnes."
 make.ref.points.table(base.model,
                       xcaption = cap,
-                      xlabel = "tab:parameters",
+                      xlabel = "tab:ref-points",
                       font.size = 9,
                       space.size = 10,
                       placement = "H")
@@ -348,6 +348,16 @@ make.value.table(base.model$mcmccalcs$depl.quants,
                  font.size = 9,
                  space.size = 10,
                  placement = "H")
+@
+
+<<sens.description.table, results='asis', echo=FALSE>>=
+cap <- "Sensitivity cases and their parameters."
+make.sens.parameter.table(sens.desc,
+                          xcaption = cap,
+                          xlabel = "tab:sens-params-desc",
+                          font.size = 9,
+                          space.size = 10,
+                          placement = "H")
 @
 
 \clearpage
