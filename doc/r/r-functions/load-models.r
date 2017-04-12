@@ -1,6 +1,9 @@
 load.iscam.files <- function(model.dir,
                              burnin = 1000,
                              thin = 1,
+                             low = 0.025,
+                             high = 0.975,
+                             load.proj = TRUE,
                              verbose = FALSE){
   ## Load all the iscam files for output and input, and return the model object
   ## If MCMC directory is present, load that and perform calculations for mcmc
@@ -9,6 +12,10 @@ load.iscam.files <- function(model.dir,
   ## model.dir - which directory the model is in
   ## burnin - the number of posteriors to remove from the data
   ## thin - the thinning to apply to the posterior samples
+  ## low - lower quantile value to apply to mcmc samples
+  ## high - higher quantile value to apply to mcmc samples
+  ## load.proj - load the projections from the mcmc and do the calculations
+  ##  to construct the decision tables
 
   curr.func.name <- get.curr.func.name()
   model <- list()
@@ -41,17 +48,19 @@ load.iscam.files <- function(model.dir,
     model$mcmccalcs <- calc.mcmc(model,
                                  burnin,
                                  thin,
-                                 lower = 0.025,
-                                 upper = 0.975)
+                                 lower = low,
+                                 upper = high,
+                                 load.proj = load.proj)
   }
   model
 }
 
-delete.rdata.files <- function(
-           models.dir = model.dir ## Directory name for all models location
-           ){
+delete.rdata.files <- function(models.dir = model.dir){
   ## Delete all rdata files found in the subdirectories of the models.dir
   ## directory.
+  ##
+  ## models.dir - directory name for all models location
+
   dirs <- dir(models.dir)
   rdata.files <- file.path(models.dir, dirs, paste0(dirs, ".rdata"))
   ans <- readline("This operation cannot be undone, are you sure (y/n)? ")
@@ -64,9 +73,13 @@ delete.rdata.files <- function(
   }
 }
 
-delete.dirs <- function(models.dir = model.dir, ## Directory name for all models location
-                        sub.dir = NULL){        ## The subdirectory to delete recursively
+delete.dirs <- function(models.dir = model.dir,
+                        sub.dir = NULL){
   ## Delete all directories and files of sub.dir
+  ##
+  ## models.dir - directory name for all models location
+  ## sub.dir - The subdirectory to delete recursively
+
   dirs <- dir(models.dir)
   files <- file.path(models.dir, dirs, sub.dir)
   unlink(files, recursive = TRUE, force = TRUE)
@@ -74,48 +87,37 @@ delete.dirs <- function(models.dir = model.dir, ## Directory name for all models
       sub.dir, "directory in each model directory.\n")
 }
 
-create.rdata.file <- function(
-           models.dir = model.dir,          ## Directory name for all models location
-           model.name,                      ## Directory name of model to be loaded
-           ovwrt.rdata = FALSE,             ## Overwrite the RData file if it exists?
-           run.forecasts = FALSE,           ## Run forecasting metrics for this model? *This will overwrite any already run*
-           fore.yrs = forecast.yrs,         ## Vector of years to run forecasting for if run.metrics = TRUE
-           forecast.probs = forecast.probs, ## Vector of quantile values if run.metrics = TRUE
-           forecast.catch.levels = catch.levels, ## List of catch levels to run forecasting for if run.forecasts = TRUE
-           run.retros = FALSE,              ## Run retrospectives for this model? *This will overwrite any already run*
-           my.retro.yrs = retro.yrs,        ## Vector of integers (positives) to run retrospectives for if run.retros = TRUE
-           verbose = FALSE){
+create.rdata.file <- function(models.dir = model.dir,
+                              model.name,
+                              ovwrt.rdata = FALSE,
+                              load.proj = TRUE,
+                              low = 0.025,
+                              high = 0.975,
+                              verbose = FALSE){
   ## Create an rdata file to hold the model's data and outputs.
   ## If an RData file exists, and overwrite is FALSE, return immediately.
-  ## If no RData file exists, the model will be loaded from outputs into an R list
-  ##  and saved as an RData file in the correct directory.
+  ## If no RData file exists, the model will be loaded from outputs into
+  ##  an R list and saved as an RData file in the correct directory.
   ## When this function exits, an RData file will be located in the
   ##  directory given by model.name.
-  ## Assumes the files model-setup.r, retrospective-setup.r, and forecast-catch-levels.r
-  ##  have been sourced (for default values of args).
-  ## Assumes utilities.r has been sourced.
+  ## Assumes the files model-setup.r and utilities.r has been sourced.
+  ##
+  ## models.dir - directory name for all models location
+  ## model.name - directory name of model to be loaded
+  ## ovwrt.rdata - overwrite the RData file if it exists?
+  ## load.proj - load the projections from the mcmc and do the calculations
+  ##  to construct the decision tables
+  ## low - lower quantile value to apply to mcmc samples
+  ## high - higher quantile value to apply to mcmc samples
+
   curr.func.name <- get.curr.func.name()
   model.dir <- file.path(models.dir, model.name)
   if(!dir.exists(model.dir)){
-    stop(curr.func.name,"Error - the directory ", model.dir, " does not exist. ",
-         "Fix the problem and try again.\n")
+    stop(curr.func.name,"Error - the directory ", model.dir,
+         " does not exist. Fix the problem and try again.\n")
   }
   ## The RData file will have the same name as the directory it is in
   rdata.file <- file.path(model.dir, paste0(model.name, ".RData"))
-  if(!ovwrt.rdata){
-    if(run.forecasts){
-      stop(curr.func.name,
-           "Error - You have asked to run forecasting, ",
-           "but set ovwrt.rdata to FALSE.\n",
-           "Set ovwrt.rdata to TRUE and try again.")
-    }
-    if(run.retros){
-      stop(curr.func.name,
-           "Error - You have asked to run retrospectives, ",
-           "but set ovwrt.rdata to FALSE.\n",
-           "Set ovwrt.rdata to TRUE and try again.")
-    }
-  }
   if(file.exists(rdata.file)){
     if(ovwrt.rdata){
       ## Delete the RData file
@@ -133,53 +135,14 @@ create.rdata.file <- function(
 
   ## If this point is reached, no RData file exists so it
   ##  has to be built from scratch
-  model <- load.iscam.files(model.dir)
-
-  ##----------------------------------------------------------------------------
-  ## Run forecasts
-  ## if(run.forecasts){
-  ##   run.forecasts(model,
-  ##                 fore.yrs,
-  ##                 forecast.probs,
-  ##                 forecast.catch.levels)
-  ## }
-  ##----------------------------------------------------------------------------
-
-  ##----------------------------------------------------------------------------
-  ## Run retrospectives
-  ## model$retropath <- file.path(model$path, "retrospectives")
-  ## if(is.null(model$retropath)){
-  ##   model$retropath <- NA
-  ## }
-  ## if(run.retros){
-  ##   run.retrospectives(model,
-  ##                      yrs = my.retro.yrs,
-  ##                      verbose = verbose)
-  ## }
-  ##----------------------------------------------------------------------------
-
-  ##----------------------------------------------------------------------------
-  ## Load forecasts.  If none are found or there is a problem, model$forecasts
-  ##  will be NA
-  ## model$forecasts <- fetch.forecasts(model$mcmcpath,
-  ##                                    fore.yrs,
-  ##                                    forecast.catch.levels,
-  ##                                    fore.probs = forecast.probs)
-  ## model$risks <- calc.risk(model$forecasts,
-  ##                          fore.yrs)
-  ##----------------------------------------------------------------------------
-
-  ##----------------------------------------------------------------------------
-  ## Load retrospectives. If none are found or there is a problem, model$retros
-  ##  will be NA
-  ## model$retros <- fetch.retros(model$retropath,
-  ##                             my.retro.yrs,
-  ##                             verbose = verbose)
-  ##----------------------------------------------------------------------------
+  model <- load.iscam.files(model.dir,
+                            low = low,
+                            high = high,
+                            load.proj = load.proj)
 
   ## Save the model as an RData file
   save(model, file = rdata.file)
-  return(invisible())
+  invisible()
 }
 
 load.models <- function(model.dir,
@@ -810,7 +773,7 @@ read.par.file <- function(file = NULL,
   conv.check <- gsub("[[:blank:]]+$", "", conv.check)
   ## Remove the non-numeric parts
   conv.check <- strsplit(conv.check, " +")[[1]]
-  conv.check <- conv.check[grep("^[[:digit:]]", conv.check)]
+  conv.check <- conv.check[grep("^-?[[:digit:]]", conv.check)]
   ## The following values are saved for appending to the tmp list later
 
   num.params   <- conv.check[1]
@@ -1009,7 +972,8 @@ calc.mcmc <- function(model,
                       burnin = 1000,
                       thin = 1,
                       lower = 0.025,
-                      upper = 0.975){
+                      upper = 0.975,
+                      load.proj = TRUE){
   ## Do the mcmc calculations, e.g. quantiles for sbt, recr, recdevs, F, U, vbt
   ## Returns a list of them all
   ##
@@ -1018,6 +982,8 @@ calc.mcmc <- function(model,
   ## thin - the thinning to apply to the posterior samples
   ## lower - lower quantile for confidence interval calcs
   ## upper - upper quantile for confidence interval calcs
+  ## load.proj - load the projections from the mcmc and do the calculations
+  ##  to construct the decision tables
 
   mcmc.thin <- function(mcmc.dat){
     ## apply burnin and thinning to the data
@@ -1108,6 +1074,17 @@ calc.mcmc <- function(model,
                             2,
                             quantile,
                             prob = probs)
+
+  ## Q for the survey indices
+  q.dat <- p.dat[, grep("^q[[:digit:]]+$", colnames(p.dat))]
+  num.indices <- ncol(q.dat)
+  g.nms <- model$dat$gear.names
+  colnames(q.dat) <- g.nms[(length(g.nms) - num.indices + 1):
+                           length(g.nms)]
+  q.quants <- apply(q.dat,
+                    2,
+                    quantile,
+                    prob = probs)
 
   build.quant.list <- function(mc.dat, mpd.dat){
     ## Run quantiles on each dataframe in a list of dataframes and append
@@ -1209,9 +1186,126 @@ calc.mcmc <- function(model,
   r.quants <- t(r.quants)
   r.quants <- cbind.data.frame(desc.col, r.quants)
   col.names <- colnames(r.quants)
-  col.names <- latex.bold(gsub("%", "\\\\%", col.names))
+  col.names <- latex.bold(latex.perc(col.names))
   col.names[1] <- latex.bold("Reference Point")
   colnames(r.quants) <- col.names
+
+  proj.dat <- NULL
+  if(load.proj){
+    ## For decision tables
+    proj <- mc$proj
+    tac <- sort(unique(proj$TAC))
+    p <- model$proj$ctl.options
+    s.yr <- p[rownames(p) == "syrmeanm", 1]
+    e.yr <- p[rownames(p) == "nyrmeanm", 1] + 2
+    e.yr.1 <- e.yr - 1
+    e.yr.2 <- e.yr - 2
+    nm <- c(paste0("B", e.yr, "B", e.yr.1),    ## Bt/Bt-1
+            paste0("B", e.yr, "04B0"),         ## Bt/0.4B0
+            paste0("B", e.yr, "02B0"),         ## Bt/0.2B0
+            paste0("B", e.yr, "B", s.yr),      ## Bt/Binit
+            ## paste0("B", e.yr, "BMSY"),         ## Bt/Bmsy
+            paste0("B", e.yr, "08BMSY"),       ## Bt/0.8Bmsy
+            paste0("B", e.yr, "04BMSY"),       ## Bt/0.4Bmsy
+            ## paste0("F", e.yr.1, "F", e.yr.2),  ## Ft-1/Ft-2
+            ## paste0("F", e.yr.1, "FMSY"),       ## Ft-1/Fmsy
+            paste0("U", e.yr.1, "U", e.yr.2),  ## Ut-1/Ut-2
+            paste0("U", e.yr.1, "UMSY"))       ## Ut-1/Umsy
+    ## This vector matches the nm vector, and signifies if the value
+    ##  is to be less than or greater than one. Set to FALSE for F and U values
+    less.than <- c(TRUE,
+                   TRUE,
+                   TRUE,
+                   TRUE,
+                   ## TRUE,
+                   TRUE,
+                   TRUE,
+                   ## FALSE,
+                   ## FALSE,
+                   FALSE,
+                   FALSE)
+
+    proj.dat <- data.frame()
+    for(t in 1:length(tac)){
+      d <- proj[proj$TAC == tac[t],]
+      d <- mcmc.thin(d)
+      n.row <- nrow(d)
+      proj.dat <- rbind(proj.dat,
+                        c(tac[t],
+                          ## Average female prop for last 4 years
+                          tac[t] / 0.786,
+                          ## Average female prop for whole time series
+                          tac[t] / 0.8206,
+                          sapply(1:length(nm), function(x){
+                            ifelse(less.than[x],
+                                   length(which(d[, nm[x]] < 1)) / n.row,
+                                   length(which(d[, nm[x]] > 1)) / n.row)})))
+    }
+    ## Column names for decision tables. Make sure the length of this is the same
+    ##  as the number of columns set up above (nm and less.than)
+    colnames(proj.dat) <- c(latex.mlc(c(e.yr.1,
+                                        "Female",
+                                        "Catch",
+                                        "(1000 t)")),
+                            latex.mlc(c(e.yr.1,
+                                        "Total",
+                                        "Catch",
+                                        "Last 4",
+                                        "yrs avg",
+                                        "(1000 t)")),
+                            latex.mlc(c(e.yr.1,
+                                        "Total",
+                                        "Catch",
+                                        "all",
+                                        "yrs avg",
+                                        "(1000 t)")),
+                            latex.mlc(c(paste0("P(B_{",
+                                               e.yr,
+                                               "}<"),
+                                        paste0("B_{",
+                                               e.yr.1,
+                                               "})")),
+                                      math.bold = TRUE),
+                            latex.mlc(c(paste0("P(B_{",
+                                               e.yr,
+                                               "}<"),
+                                        "0.4B_0)"),
+                                      math.bold = TRUE),
+                            latex.mlc(c(paste0("P(B_{",
+                                               e.yr,
+                                               "}<"),
+                                        "0.2B_0)"),
+                                      math.bold = TRUE),
+                            latex.mlc(c(paste0("P(B_{",
+                                               e.yr,
+                                               "}<"),
+                                        paste0("B_{",
+                                             s.yr,
+                                             "})")),
+                                      math.bold = TRUE),
+                            latex.mlc(c(paste0("P(B_{",
+                                               e.yr,
+                                               "}<"),
+                                        "0.8B_{MSY})"),
+                                      math.bold = TRUE),
+                            latex.mlc(c(paste0("P(B_{",
+                                               e.yr,
+                                               "}<"),
+                                        "0.4B_{MSY})"),
+                                      math.bold = TRUE),
+                            latex.mlc(c(paste0("P(U_{",
+                                               e.yr.1,
+                                               "}>"),
+                                        paste0("U_{",
+                                               e.yr.2,
+                                               "})")),
+                                      math.bold = TRUE),
+                            latex.mlc(c(paste0("P(U_{",
+                                               e.yr.1,
+                                               "}>"),
+                                        "U_{MSY}"),
+                                      math.bold = TRUE))
+  }
 
   sapply(c("p.dat",
            "p.quants",
@@ -1225,11 +1319,14 @@ calc.mcmc <- function(model,
            "recr.quants",
            "recr.devs.dat",
            "recr.devs.quants",
+           "q.dat",
+           "q.quants",
            "vuln.dat",
            "vuln.quants",
            "f.mort.dat",
            "f.mort.quants",
            "u.mort.dat",
-           "u.mort.quants"),
+           "u.mort.quants",
+           "proj.dat"),
            function(x){get(x)})
 }

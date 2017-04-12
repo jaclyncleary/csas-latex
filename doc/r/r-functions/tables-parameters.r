@@ -7,11 +7,10 @@ make.parameters.table <- function(model,
   ## Returns an xtable in the proper format for parameter estimates and priors
   ##
   ## xcaption - caption to appear in the calling document
-  ## digits - number of digits after decimal point to show in the catch
+  ## digits - number of digits after decimal point
   ## xlabel - the label used to reference the table in latex
   ## font.size - size of the font for the table
   ## space.size - size of the vertical spaces for the table
-  ## digits - number of decimal points on % columns
   ## placement - latex code for placement of the table in document
 
   get.bounds <- function(ind){
@@ -200,6 +199,7 @@ make.parameters.table <- function(model,
                                  "[low, high")),
                      latex.mlc(c("Prior (mean, SD)",
                                  "(single value = fixed)")))
+
   size.string <- latex.size.str(font.size, space.size)
   print(xtable(tab,
                caption = xcaption,
@@ -221,12 +221,11 @@ make.parameters.est.table <- function(model,
                                       placement = "H"){
   ## Returns an xtable in the proper format for parameter estimates and priors
   ##
-  ## digits - number of decimal places for the values
+  ## digits - number of decimal points on % columns
   ## xcaption - caption to appear in the calling document
   ## xlabel - the label used to reference the table in latex
   ## font.size - size of the font for the table
   ## space.size - size of the vertical spaces for the table
-  ## digits - number of decimal points on % columns
   ## placement - latex code for placement of the table in document
 
 
@@ -314,7 +313,7 @@ make.parameters.est.table <- function(model,
                "$\\hat{a}_5$",
                "$\\hat{\\gamma}_5$")
   col.names <- colnames(tab)
-  col.names <- latex.bold(gsub("%", "\\\\%", col.names))
+  col.names <- latex.bold(latex.perc(col.names))
   col.names <- c(latex.bold("Parameter"), col.names)
   tab <- cbind(new.col, tab)
   colnames(tab) <- col.names
@@ -346,7 +345,6 @@ make.ref.points.table <- function(model,
   ## xlabel - the label used to reference the table in latex
   ## font.size - size of the font for the table
   ## space.size - size of the vertical spaces for the table
-  ## digits - number of decimal points on % columns
   ## placement - latex code for placement of the table in document
   tab <- model$mcmccalcs$r.quants
   tab[,-1] <- f(tab[,-1], digits)
@@ -379,14 +377,13 @@ make.value.table <- function(out.dat,
   ## xlabel - the label used to reference the table in latex
   ## font.size - size of the font for the table
   ## space.size - size of the vertical spaces for the table
-  ## digits - number of decimal points on % columns
   ## placement - latex code for placement of the table in document
 
   tab <- f(t(out.dat), digits)
   tab <- cbind(rownames(tab), tab)
   col.names <- colnames(tab)
   col.names[1] <- "Year"
-  col.names <- latex.bold(gsub("%", "\\\\%", col.names))
+  col.names <- latex.bold(latex.perc(col.names))
   colnames(tab) <- col.names
 
   size.string <- latex.size.str(font.size, space.size)
@@ -411,6 +408,12 @@ make.sens.parameter.table <- function(tab,
   ## Returns an xtable of the sensitivity parameter information as found in
   ##  the CSV file in the data directory
   ## tab - the contents of the CSV file as read in by read.csv
+  ## xcaption - caption to appear in the calling document
+  ## xlabel - the label used to reference the table in latex
+  ## font.size - size of the font for the table
+  ## space.size - size of the vertical spaces for the table
+  ## digits - number of decimal points on % columns
+  ## placement - latex code for placement of the table in document
 
   ## Replace any | with a comma
   tab <- sub("\\|", ",", as.matrix(tab))
@@ -429,5 +432,62 @@ make.sens.parameter.table <- function(tab,
         size = size.string,
         table.placement = placement,
         booktabs = TRUE)
+}
 
+make.sens.q.table <- function(models,
+                              model.names,
+                              digits = 3,
+                              xcaption = "default",
+                              xlabel   = "default",
+                              font.size = 9,
+                              space.size = 10,
+                              placement = "H"){
+  ## Returns an xtable for the values of q, including quantiles
+  ##
+  ## models - list of model objects to give values for
+  ## digits - number of decimal places for the values
+  ## xcaption - caption to appear in the calling document
+  ## xlabel - the label used to reference the table in latex
+  ## font.size - size of the font for the table
+  ## space.size - size of the vertical spaces for the table
+  ## placement - latex code for placement of the table in document
+
+  quants <- lapply(models, function(x){
+    t(f(x$mcmccalcs$q.quants, digits))})
+  tab <- do.call(cbind, quants)
+  tab <- cbind(rownames(tab), tab)
+  col.names <- colnames(tab)
+  col.names[1] <- "$q_k$"
+  col.names <- latex.bold(latex.perc(col.names))
+  colnames(tab) <- col.names
+
+  ## Add the extra header spanning multiple columns
+  addtorow <- list()
+  addtorow$pos <- list()
+  addtorow$pos[[1]] <- -1
+  com <- paste0("\\toprule",
+                latex.bold("Index"),
+                latex.amp())
+  for(i in 1:length(quants)){
+    com <- paste0(com,
+                  latex.mcol(ncol(quants[[i]]),
+                             "c",
+                             latex.bold(model.names[i])),
+                  ifelse(i != length(quants), latex.amp(), ""))
+  }
+  com <- paste(com, latex.nline)
+  addtorow$command <- com
+
+  size.string <- latex.size.str(font.size, space.size)
+  print(xtable(tab,
+               caption = xcaption,
+               label = xlabel,
+               align = getAlign(ncol(tab))),
+        caption.placement = "top",
+        include.rownames = FALSE,
+        sanitize.text.function = function(x){x},
+        size = size.string,
+        add.to.row = addtorow,
+        table.placement = placement,
+        booktabs = TRUE)
 }

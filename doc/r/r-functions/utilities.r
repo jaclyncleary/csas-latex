@@ -47,10 +47,19 @@ f <- function(x, dec.points = 0){
 
 ## -----------------------------------------------------------------------------
 ## Functions to make table generation easier
+
 ## Latex newline
 latex.nline <- " \\\\ "
+
 ## Horizontal line
 latex.hline <- " \\hline "
+
+latex.perc <- function(vec){
+  ## Return the input vector with all instances of % escaped properly for
+  ##  xtable code - \\\\
+  gsub("%", "\\\\%", vec)
+}
+
 latex.amp <- function(n = 1){
   ## Returns a string with n ampersands seperated by spaces. The string will
   ##  have one leading and one trailing space.
@@ -69,6 +78,12 @@ latex.bold <- function(txt){
   paste0("\\textbf{", txt, "}")
 }
 
+latex.math.bold <- function(txt){
+  ## Returns the given text with the latex \\mathbf{} macro and the
+  ##  dollar signs around it
+  paste0("$\\mathbf{", txt, "}$")
+}
+
 latex.italics <- function(txt){
   ## Returns the given text with the latex \\emph{} macro around it
   paste0("\\emph{", txt, "}")
@@ -79,12 +94,16 @@ latex.under <- function(txt){
   paste0("\\underline{", txt, "}")
 }
 
-latex.mlc <- function(latex.vec, make.bold = TRUE){
+latex.mlc <- function(latex.vec, make.bold = TRUE, math.bold = FALSE){
   ## Returns a string which has been glued together using multi-line-cell
   ##  macro for latex. If make.bold is TRUE, the \textbf macro will be
-  ##  inserted.
+  ##  inserted unless math.bold is TRUE, then \\mathbf macro will be used
   if(make.bold){
-    latex.vec <- sapply(latex.vec, latex.bold)
+    if(math.bold){
+      latex.vec <- sapply(latex.vec, latex.math.bold)
+    }else{
+      latex.vec <- sapply(latex.vec, latex.bold)
+    }
   }
   latex.str <- paste(latex.vec, collapse = latex.nline)
   paste0("\\mlc{", latex.str, "}")

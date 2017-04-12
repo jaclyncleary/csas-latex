@@ -61,6 +61,7 @@ source(file.path(func.dir, "mcmc-diagnostics.r"))
 ## source(file.path(func.dir, "read-list.r"))
 
 source(file.path(func.dir, "tables-parameters.r"))
+source(file.path(func.dir, "tables-decisions.r"))
 source(file.path(iscam.gui.dir, "iscam-gui-figures-biology.r"))
 source(file.path(iscam.gui.dir, "iscam-gui-figures-catch.r"))
 source(file.path(iscam.gui.dir, "iscam-gui-figures-mcmc-diagnostics.r"))

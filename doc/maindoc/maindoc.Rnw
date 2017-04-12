@@ -231,7 +231,7 @@ Appendix \ref{chap:propfemale}.\\
 
 \section{TABLES}
 <<total.catches.table, results='asis', echo=FALSE>>=
-cap <- paste0("Recent coastwide commercial fishery catch (t) for \\fishname.")
+cap <- "Recent coastwide commercial fishery catch (t) for \\fishname."
 make.catches.table(catches,
                    start.yr = 1996,
                    end.yr = 2014,
@@ -245,7 +245,7 @@ make.catches.table(catches,
  @
 
 <<total.catches.by.area.table, results='asis', echo=FALSE>>=
-cap <- paste0("Recent commercial fishery catch (t) for \\fishname\\ by area.")
+cap <- "Recent commercial fishery catch (t) for \\fishname\\ by area."
 make.catches.table(catches,
                    start.yr = 1996,
                    end.yr = 2014,
@@ -260,7 +260,8 @@ make.catches.table(catches,
 @
 
 <<survey.indices.table, results='asis', echo=FALSE>>=
-cap <- "Annual female-only indices of abundance and CVs for the four indices used in this assessment."
+cap <- paste0("Annual female-only indices of abundance and CVs for the",
+              "four indices used in this assessment.")
 make.survey.indices.table(base.model,
                           digits = 3,
                           xcaption = cap,
@@ -271,7 +272,8 @@ make.survey.indices.table(base.model,
 @
 
 <<parameters.table, results='asis', echo=FALSE>>=
-cap <- "Estimated and fixed parameters and prior probablilty distributions used in the Reference Case."
+cap <- paste0("Estimated and fixed parameters and prior probablilty",
+              "distributions used in the Reference Case.")
 make.parameters.table(base.model,
                       xcaption = cap,
                       xlabel = "tab:parameters",
@@ -281,7 +283,13 @@ make.parameters.table(base.model,
 @
 
 <<parameter.est.table, results='asis', echo=FALSE>>=
-cap <- "Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} percentile) and MPD estimates of key parameters from the Reference Case. Subscripts on $q$ (catchability), $\\hat{a}$ (selectivity age-at-50\\%), and $\\hat{\\gamma}$ (selectivity standard deviation-at-50\\%) parameters indicate: 1 = Trawl fishery, 2 = QCSSS, 3 = HSMAS, 4 = HSSS, 5 = WCVISS."
+cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+              "97.5\\textsuperscript{th} percentile) and MPD estimates of key ",
+              "parameters from the Reference Case. Subscripts on $q$ ",
+              "(catchability), $\\hat{a}$ (selectivity age-at-50\\%), and ",
+              "$\\hat{\\gamma}$ (selectivity standard deviation-at-50\\%) ",
+              "parameters indicate: 1 = Trawl fishery, 2 = QCSSS, 3 = HSMAS, ",
+              "4 = HSSS, 5 = WCVISS.")
 make.parameters.est.table(base.model,
                           xcaption = cap,
                           xlabel = "tab:parameters-posts",
@@ -291,7 +299,9 @@ make.parameters.est.table(base.model,
 @
 
 <<ref.points.table, results='asis', echo=FALSE>>=
-cap <- "Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} percentile) of proposed reference points for the Reference Case. Biomass numbers are in thousands of tonnes."
+cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+              "97.5\\textsuperscript{th} percentile) of proposed reference points ",
+              "for the Reference Case. Biomass numbers are in thousands of tonnes.")
 make.ref.points.table(base.model,
                       xcaption = cap,
                       xlabel = "tab:ref-points",
@@ -301,7 +311,9 @@ make.ref.points.table(base.model,
 @
 
 <<spawning.biomass.table, results='asis', echo=FALSE>>=
-cap <- "Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} percentile) and MPD estimates of female spawning biomass (1000 t) for the Reference Case."
+cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+              "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
+              "female spawning biomass (1000 t) for the Reference Case.")
 make.value.table(base.model$mcmccalcs$sbt.quants,
                  xcaption = cap,
                  xlabel = "tab:spawn-biomass",
@@ -311,7 +323,9 @@ make.value.table(base.model$mcmccalcs$sbt.quants,
 @
 
 <<recruitment.table, results='asis', echo=FALSE>>=
-cap <- "Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} percentile) and MPD estimates of recruitment (millions) for the Reference Case."
+cap <- c("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+         "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
+         "recruitment (millions) for the Reference Case.")
 make.value.table(base.model$mcmccalcs$recr.quants,
                  xcaption = cap,
                  xlabel = "tab:recruitment",
@@ -321,7 +335,9 @@ make.value.table(base.model$mcmccalcs$recr.quants,
 @
 
 <<fishing.mortality.table, results='asis', echo=FALSE>>=
-cap <- "Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} percentile) and MPD estimates of fishing mortality, F, for the Reference Case."
+cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+              "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
+              "fishing mortality, F, for the Reference Case.")
 make.value.table(base.model$mcmccalcs$f.mort.quants[[1]],
                  xcaption = cap,
                  xlabel = "tab:f-mort",
@@ -331,7 +347,9 @@ make.value.table(base.model$mcmccalcs$f.mort.quants[[1]],
 @
 
 <<harvest.rate.table, results='asis', echo=FALSE>>=
-cap <- "Posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} percentile) and MPD estimates of annual harvest rate, U, for the Reference Case."
+cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+              "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
+              "annual harvest rate, U, for the Reference Case.")
 make.value.table(base.model$mcmccalcs$u.mort.quants[[1]],
                  xcaption = cap,
                  xlabel = "tab:u-mort",
@@ -341,7 +359,10 @@ make.value.table(base.model$mcmccalcs$u.mort.quants[[1]],
 @
 
 <<depletion.table, results='asis', echo=FALSE>>=
-cap <- "Derived posterior (2.5\\textsuperscript{th} percentile, Median, and 97.5\\textsuperscript{th} percentile) and MPD values of relative female spawning biomass for the Reference Case."
+cap <- paste0("Derived posterior (2.5\\textsuperscript{th} percentile, ",
+              "Median, and 97.5\\textsuperscript{th} percentile) and MPD ",
+              "values of relative female spawning biomass for the Reference ",
+              "Case.")
 make.value.table(base.model$mcmccalcs$depl.quants,
                  xcaption = cap,
                  xlabel = "tab:depletion",
@@ -359,6 +380,66 @@ make.sens.parameter.table(sens.desc,
                           space.size = 10,
                           placement = "H")
 @
+
+<<q.comparison.table, results='asis', echo=FALSE>>=
+cap <- paste0("Sensitivity cases for $q_k$; posterior quantiles. For ",
+              "sensitivity case descriptions, see ",
+              "Table~\\ref{tab:sens-params-desc}.")
+make.sens.q.table(sens.models.3,
+                  sens.model.names.3,
+                  xcaption = cap,
+                  xlabel = "tab:sens-q",
+                  font.size = 9,
+                  space.size = 10,
+                  placement = "H")
+@
+
+\begin{landscapepage}
+<<decision.base.table, results='asis', echo=FALSE>>=
+cap <- paste0("Decision Table for the Reference Case showing posterior ",
+              "probabilities that 2016 projected biomass B\\subscr{t} is ",
+              "below a set of candidate reference points and benchmarks ",
+              "(Table~\\ref{tab:refpoints}), and probabilities that the ",
+              "2015 projected harvest rate U\\subscr{t} is above ",
+              "U\\subscr{2014} or U\\subscr{MSY} for a given level of ",
+              "female-only catch. Total catch is shown in columns 2 and 3 ",
+              "and is calculated by adding the male proportion based on the ",
+              "average of the last 4 years' proportions (column 2) and the ",
+              "average of the entire time series proportions (column 3). See ",
+              "table \\ref{tab:propfemale} for proportion values.")
+make.decision.table(base.model,
+                    digits = 3,
+                    xcaption = cap,
+                    xlabel = "tab:decisions-base",
+                    font.size = 9,
+                    space.size = 10,
+                    placement = "H")
+@
+\end{landscapepage}
+
+\begin{landscapepage}
+<<decision.sens.table, results='asis', echo=FALSE>>=
+cap <- paste0("Decision Table for a sensitivity model (Selectivity = ",
+              "Maturity, Table~\\ref{tab:sensitivities}) showing posterior ",
+              "probabilities that 2016 projected biomass B\\subscr{t} is ",
+              "below a set of candidate reference points and benchmarks ",
+              "(Table~\\ref{tab:refpoints}), and probabilities that the ",
+              "2015 projected harvest rate U\\subscr{t} is above ",
+              "U\\subscr{2014} or U\\subscr{MSY} for a given level of ",
+              "female-only catch. Total catch is shown in columns 2 and 3 ",
+              "and is calculated by adding the male proportion based on the ",
+              "average of the last 4 years' proportions (column 2) and the ",
+              "average of the entire time series proportions (column 3). See ",
+              "table \\ref{tab:propfemale} for proportion values.")
+make.decision.table(sens.models.4[[1]],
+                    digits = 3,
+                    xcaption = cap,
+                    xlabel = "tab:decisions-sens",
+                    font.size = 9,
+                    space.size = 10,
+                    placement = "H")
+@
+\end{landscapepage}
 
 \clearpage
 
