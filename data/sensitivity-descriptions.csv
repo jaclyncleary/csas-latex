@@ -1,0 +1,17 @@
+## If you want commas in the text, use | and the code will replace them
+##  with commas. Don't include a header, it will be added by code
+## The table reference on line 1 must match what is in the function call in
+##  maindoc.rnw
+1, Reference Case, See Table~\ref{tab:parameters}
+2, Decrease $\sigma$ to 0.1, $\vartheta^2=1.538; \rho=0.015$
+3, Estimate Total Variance, $\vartheta^2$ estimated; $\rho=0.059$
+4, Increase $\tau$ to 1.0, $\vartheta^2=0.962; \rho=0.038$
+5, Decrease $\tau$ to 0.6, $\vartheta^2=2.500; \rho=0.100$
+6, Decrease mean of $h$ prior to 0.72, $h=$Beta($\alpha=12.7| \beta=5.0$)
+7, Decrease SD of ln($M$) prior to 0.05, ln($M$)=Normal(ln($0.2$)| $0.05$)
+8, Increase SD of ln($M$) prior to 0.25, ln($M$)=Normal(ln($0.2$)| $0.25$)
+9, Increase mean of ln($M$) prior to ln($1.0$), ln($M$)=Normal(ln($0.3$)| $0.20$)
+10, Increase mean of ln($q_k$) prior to ln($1.0$), ln($q_k$)=Normal(ln($1.0$)| $1.0$)
+11, Increase SD of ln($q_k$) prior to $1.5$, ln($q_k$)=Normal(ln($0.5$)| $1.5$)
+12, Selectivity Ogive = Maturity Ogive, $\hat{a}=4.99$ yrs; $\hat{\gamma}=1.27$ yrs
+13, Age-at-50\%-harvest set to 6 yrs, $\hat{a}=6$ yrs; $\hat{\gamma}=1$ yrs
