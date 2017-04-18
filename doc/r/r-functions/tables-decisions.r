@@ -17,6 +17,8 @@ make.decision.table <- function(model,
   tab <- model$mcmccalcs$proj.dat
   ## Don't format the first column as it should be the TAC
   tab[, -1] <- f(tab[, -1], digits)
+  ## Required to stop xtable from adding decimal points to TACs
+  tab[, 1] <- f(tab[,1], 0)
 
   size.string <- latex.size.str(font.size, space.size)
   print(xtable(tab,

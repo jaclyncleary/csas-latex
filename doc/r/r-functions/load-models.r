@@ -968,6 +968,25 @@ extract.area.sex.matrices <- function(data = NULL,
   tmp
 }
 
+mcmc.thin <- function(mcmc.dat,
+                      burnin,
+                      thin){
+  ## Apply burnin and thinning to the data
+
+  nm <- names(mcmc.dat)
+  mcmc.obj <- apply(mcmc.dat, 2, mcmc)
+  mcmc.window <- NULL
+  for(col in 1:ncol(mcmc.obj)){
+    tmp <- window(mcmc.obj[,col],
+                  start = burnin + 1,
+                  thin = thin)
+    mcmc.window <- cbind(mcmc.window, tmp)
+  }
+  mcmc.window <- as.data.frame(mcmc.window)
+  names(mcmc.window) <- nm
+  mcmc.window
+}
+
 calc.mcmc <- function(model,
                       burnin = 1000,
                       thin = 1,
@@ -984,23 +1003,6 @@ calc.mcmc <- function(model,
   ## upper - upper quantile for confidence interval calcs
   ## load.proj - load the projections from the mcmc and do the calculations
   ##  to construct the decision tables
-
-  mcmc.thin <- function(mcmc.dat){
-    ## apply burnin and thinning to the data
-
-    nm <- names(mcmc.dat)
-    mcmc.obj <- apply(mcmc.dat, 2, mcmc)
-    mcmc.window <- NULL
-    for(col in 1:ncol(mcmc.obj)){
-      tmp <- window(mcmc.obj[,col],
-                    start = burnin + 1,
-                    thin = thin)
-      mcmc.window <- cbind(mcmc.window, tmp)
-    }
-    mcmc.window <- as.data.frame(mcmc.window)
-    names(mcmc.window) <- nm
-    mcmc.window
-  }
 
   curr.func.name <- get.curr.func.name()
   if(is.null(mcmc)){
@@ -1025,7 +1027,7 @@ calc.mcmc <- function(model,
                                           "umsy",
                                           "ssb",
                                           "bo"))]
-  p.dat <- mcmc.thin(p.dat)
+  p.dat <- mcmc.thin(p.dat, burnin, thin)
   p.quants <- apply(p.dat, 2, quantile, prob = probs)
 
   ## Reference points
@@ -1034,10 +1036,10 @@ calc.mcmc <- function(model,
                                          "msy",
                                          "fmsy",
                                          "umsy"))]
-  r.dat <- mcmc.thin(r.dat)
+  r.dat <- mcmc.thin(r.dat, burnin, thin)
 
   ## Spawning biomass
-  sbt.dat <- mcmc.thin(mc$sbt[[1]])
+  sbt.dat <- mcmc.thin(mc$sbt[[1]], burnin, thin)
   sbt.quants <- apply(sbt.dat,
                       2,
                       quantile,
@@ -1057,7 +1059,7 @@ calc.mcmc <- function(model,
   rownames(depl.quants)[4] <- "MPD"
 
   ## Recruitment
-  recr.dat <- mcmc.thin(mc$rt[[1]])
+  recr.dat <- mcmc.thin(mc$rt[[1]], burnin, thin)
   recr.mean <- apply(recr.dat,
                      2,
                      mean)
@@ -1069,7 +1071,7 @@ calc.mcmc <- function(model,
   rownames(recr.quants)[4] <- "MPD"
 
   ## Recruitment deviations
-  recr.devs.dat <- mcmc.thin(mc$rdev[[1]])
+  recr.devs.dat <- mcmc.thin(mc$rdev[[1]], burnin, thin)
   recr.devs.quants <- apply(recr.devs.dat,
                             2,
                             quantile,
@@ -1098,8 +1100,7 @@ calc.mcmc <- function(model,
                              na.rm = TRUE)})
     lapply(1:length(quants),
            function(x){
-             quants[[x]] <-
-               rbind(quants[[x]], mpd.dat[x,])
+             quants[[x]] <- rbind(quants[[x]], mpd.dat[x,])
              rownames(quants[[x]])[4] <- "MPD"
              c.names <- colnames(quants[[x]])
              colnames(quants[[x]]) <-
@@ -1108,7 +1109,7 @@ calc.mcmc <- function(model,
            })
   }
   ## Vulnerable biomass by gear (list of data frames)
-  vuln.dat <- lapply(mc$vbt[[1]], mcmc.thin)
+  vuln.dat <- lapply(mc$vbt[[1]], mcmc.thin, burnin, thin)
   ## Reshape the vulnerable biomass output from the MPD
   vbt <- as.data.frame(mpd$vbt)
   vbt <- split(vbt, vbt[,1])
@@ -1119,10 +1120,10 @@ calc.mcmc <- function(model,
   vuln.quants <- build.quant.list(vuln.dat, vbt)
 
   ## Fishing mortalities by gear (list of data frames)
-  f.mort.dat <- lapply(mc$ft[[1]], mcmc.thin)
+  f.mort.dat <- lapply(mc$ft[[1]], mcmc.thin, burnin, thin)
   f.mort.quants <- build.quant.list(f.mort.dat, mpd$ft)
 
-  u.mort.dat <- lapply(mc$ut[[1]], mcmc.thin)
+  u.mort.dat <- lapply(mc$ut[[1]], mcmc.thin, burnin, thin)
   u.mort.quants <- build.quant.list(u.mort.dat, mpd$ut)
 
   ## Add calculated reference points - these have already been thinned
@@ -1192,119 +1193,7 @@ calc.mcmc <- function(model,
 
   proj.dat <- NULL
   if(load.proj){
-    ## For decision tables
-    proj <- mc$proj
-    tac <- sort(unique(proj$TAC))
-    p <- model$proj$ctl.options
-    s.yr <- p[rownames(p) == "syrmeanm", 1]
-    e.yr <- p[rownames(p) == "nyrmeanm", 1] + 2
-    e.yr.1 <- e.yr - 1
-    e.yr.2 <- e.yr - 2
-    nm <- c(paste0("B", e.yr, "B", e.yr.1),    ## Bt/Bt-1
-            paste0("B", e.yr, "04B0"),         ## Bt/0.4B0
-            paste0("B", e.yr, "02B0"),         ## Bt/0.2B0
-            paste0("B", e.yr, "B", s.yr),      ## Bt/Binit
-            ## paste0("B", e.yr, "BMSY"),         ## Bt/Bmsy
-            paste0("B", e.yr, "08BMSY"),       ## Bt/0.8Bmsy
-            paste0("B", e.yr, "04BMSY"),       ## Bt/0.4Bmsy
-            ## paste0("F", e.yr.1, "F", e.yr.2),  ## Ft-1/Ft-2
-            ## paste0("F", e.yr.1, "FMSY"),       ## Ft-1/Fmsy
-            paste0("U", e.yr.1, "U", e.yr.2),  ## Ut-1/Ut-2
-            paste0("U", e.yr.1, "UMSY"))       ## Ut-1/Umsy
-    ## This vector matches the nm vector, and signifies if the value
-    ##  is to be less than or greater than one. Set to FALSE for F and U values
-    less.than <- c(TRUE,
-                   TRUE,
-                   TRUE,
-                   TRUE,
-                   ## TRUE,
-                   TRUE,
-                   TRUE,
-                   ## FALSE,
-                   ## FALSE,
-                   FALSE,
-                   FALSE)
-
-    proj.dat <- data.frame()
-    for(t in 1:length(tac)){
-      d <- proj[proj$TAC == tac[t],]
-      d <- mcmc.thin(d)
-      n.row <- nrow(d)
-      proj.dat <- rbind(proj.dat,
-                        c(tac[t],
-                          ## Average female prop for last 4 years
-                          tac[t] / 0.786,
-                          ## Average female prop for whole time series
-                          tac[t] / 0.8206,
-                          sapply(1:length(nm), function(x){
-                            ifelse(less.than[x],
-                                   length(which(d[, nm[x]] < 1)) / n.row,
-                                   length(which(d[, nm[x]] > 1)) / n.row)})))
-    }
-    ## Column names for decision tables. Make sure the length of this is the same
-    ##  as the number of columns set up above (nm and less.than)
-    colnames(proj.dat) <- c(latex.mlc(c(e.yr.1,
-                                        "Female",
-                                        "Catch",
-                                        "(1000 t)")),
-                            latex.mlc(c(e.yr.1,
-                                        "Total",
-                                        "Catch",
-                                        "Last 4",
-                                        "yrs avg",
-                                        "(1000 t)")),
-                            latex.mlc(c(e.yr.1,
-                                        "Total",
-                                        "Catch",
-                                        "all",
-                                        "yrs avg",
-                                        "(1000 t)")),
-                            latex.mlc(c(paste0("P(B_{",
-                                               e.yr,
-                                               "}<"),
-                                        paste0("B_{",
-                                               e.yr.1,
-                                               "})")),
-                                      math.bold = TRUE),
-                            latex.mlc(c(paste0("P(B_{",
-                                               e.yr,
-                                               "}<"),
-                                        "0.4B_0)"),
-                                      math.bold = TRUE),
-                            latex.mlc(c(paste0("P(B_{",
-                                               e.yr,
-                                               "}<"),
-                                        "0.2B_0)"),
-                                      math.bold = TRUE),
-                            latex.mlc(c(paste0("P(B_{",
-                                               e.yr,
-                                               "}<"),
-                                        paste0("B_{",
-                                             s.yr,
-                                             "})")),
-                                      math.bold = TRUE),
-                            latex.mlc(c(paste0("P(B_{",
-                                               e.yr,
-                                               "}<"),
-                                        "0.8B_{MSY})"),
-                                      math.bold = TRUE),
-                            latex.mlc(c(paste0("P(B_{",
-                                               e.yr,
-                                               "}<"),
-                                        "0.4B_{MSY})"),
-                                      math.bold = TRUE),
-                            latex.mlc(c(paste0("P(U_{",
-                                               e.yr.1,
-                                               "}>"),
-                                        paste0("U_{",
-                                               e.yr.2,
-                                               "})")),
-                                      math.bold = TRUE),
-                            latex.mlc(c(paste0("P(U_{",
-                                               e.yr.1,
-                                               "}>"),
-                                        "U_{MSY}"),
-                                      math.bold = TRUE))
+    proj.dat <- calc.probabilities(model, burnin, thin)
   }
 
   sapply(c("p.dat",
@@ -1329,4 +1218,130 @@ calc.mcmc <- function(model,
            "u.mort.quants",
            "proj.dat"),
            function(x){get(x)})
+}
+
+calc.probabilities <- function(model,
+                               burnin,
+                               thin){
+  ## Extract and calculate probabilities from the projection model
+  ## Used for decision tables in the document (see make.decision.table())
+  ##  in tables-decisions.r
+  ## Returns a data frame which has its names formatted for latex
+  ## There are possibly hard-coded values in the function and it should be
+  ##  re-written for each assessment.
+
+  mc <- model$mcmc
+  proj <- mc$proj
+  tac <- sort(unique(proj$TAC))
+  p <- model$proj$ctl.options
+  s.yr <- p[rownames(p) == "syrmeanm", 1]
+  e.yr <- p[rownames(p) == "nyrmeanm", 1] + 2
+  e.yr.1 <- e.yr - 1
+  e.yr.2 <- e.yr - 2
+  nm <- c(paste0("B", e.yr, "B", e.yr.1),    ## Bt/Bt-1
+          paste0("B", e.yr, "04B0"),         ## Bt/0.4B0
+          paste0("B", e.yr, "02B0"),         ## Bt/0.2B0
+          paste0("B", e.yr, "B", s.yr),      ## Bt/Binit
+          ## paste0("B", e.yr, "BMSY"),         ## Bt/Bmsy
+          paste0("B", e.yr, "08BMSY"),       ## Bt/0.8Bmsy
+          paste0("B", e.yr, "04BMSY"),       ## Bt/0.4Bmsy
+          ## paste0("F", e.yr.1, "F", e.yr.2),  ## Ft-1/Ft-2
+          ## paste0("F", e.yr.1, "FMSY"),       ## Ft-1/Fmsy
+          paste0("U", e.yr.1, "U", e.yr.2),  ## Ut-1/Ut-2
+          paste0("U", e.yr.1, "UMSY"))       ## Ut-1/Umsy
+  ## This vector matches the nm vector, and signifies if the value
+  ##  is to be less than or greater than one. Set to FALSE for F and U values
+  less.than <- c(TRUE,
+                 TRUE,
+                 TRUE,
+                 TRUE,
+                 ## TRUE,
+                 TRUE,
+                 TRUE,
+                 ## FALSE,
+                 ## FALSE,
+                 FALSE,
+                 FALSE)
+
+  proj.dat <- data.frame()
+  for(t in 1:length(tac)){
+    d <- proj[proj$TAC == tac[t],]
+    d <- mcmc.thin(d, burnin, thin)
+    n.row <- nrow(d)
+    proj.dat <- rbind(proj.dat,
+                      c(tac[t],
+                        ## Average female prop for last 4 years
+                        tac[t] / 0.786,
+                        ## Average female prop for whole time series
+                        tac[t] / 0.8206,
+                        sapply(1:length(nm), function(x){
+                          ifelse(less.than[x],
+                                 length(which(d[, nm[x]] < 1)) / n.row,
+                                 length(which(d[, nm[x]] > 1)) / n.row)})))
+  }
+  ## Column names for decision tables. Make sure the length of this is the same
+  ##  as the number of columns set up above (nm and less.than)
+  colnames(proj.dat) <- c(latex.mlc(c(e.yr.1,
+                                      "Female",
+                                      "Catch",
+                                      "(1000 t)")),
+                          latex.mlc(c(e.yr.1,
+                                      "Total",
+                                      "Catch",
+                                      "Last 4",
+                                      "yrs avg",
+                                      "(1000 t)")),
+                          latex.mlc(c(e.yr.1,
+                                      "Total",
+                                      "Catch",
+                                      "all",
+                                      "yrs avg",
+                                      "(1000 t)")),
+                          latex.mlc(c(paste0("P(B_{",
+                                             e.yr,
+                                             "}<"),
+                                      paste0("B_{",
+                                             e.yr.1,
+                                             "})")),
+                                    math.bold = TRUE),
+                          latex.mlc(c(paste0("P(B_{",
+                                             e.yr,
+                                             "}<"),
+                                      "0.4B_0)"),
+                                    math.bold = TRUE),
+                          latex.mlc(c(paste0("P(B_{",
+                                             e.yr,
+                                             "}<"),
+                                      "0.2B_0)"),
+                                    math.bold = TRUE),
+                          latex.mlc(c(paste0("P(B_{",
+                                             e.yr,
+                                             "}<"),
+                                      paste0("B_{",
+                                             s.yr,
+                                             "})")),
+                                    math.bold = TRUE),
+                          latex.mlc(c(paste0("P(B_{",
+                                             e.yr,
+                                             "}<"),
+                                      "0.8B_{MSY})"),
+                                    math.bold = TRUE),
+                          latex.mlc(c(paste0("P(B_{",
+                                             e.yr,
+                                             "}<"),
+                                      "0.4B_{MSY})"),
+                                    math.bold = TRUE),
+                          latex.mlc(c(paste0("P(U_{",
+                                             e.yr.1,
+                                             "}>"),
+                                      paste0("U_{",
+                                             e.yr.2,
+                                             "})")),
+                                    math.bold = TRUE),
+                          latex.mlc(c(paste0("P(U_{",
+                                             e.yr.1,
+                                             "}>"),
+                                      "U_{MSY}"),
+                                    math.bold = TRUE))
+  proj.dat
 }

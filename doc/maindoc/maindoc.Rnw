@@ -300,8 +300,9 @@ make.parameters.est.table(base.model,
 
 <<ref.points.table, results='asis', echo=FALSE>>=
 cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-              "97.5\\textsuperscript{th} percentile) of proposed reference points ",
-              "for the Reference Case. Biomass numbers are in thousands of tonnes.")
+              "97.5\\textsuperscript{th} percentile) of proposed reference ",
+              "points for the Reference Case. Biomass numbers are in ",
+              "thousands of tonnes.")
 make.ref.points.table(base.model,
                       xcaption = cap,
                       xlabel = "tab:ref-points",
@@ -445,22 +446,30 @@ make.decision.table(sens.models.4[[1]],
 
 \section{FIGURES}
 
-% CATCH PLOTS
-%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%
-%% \begin{figure}[H]
-%% \begin{center}
-%% <<total.catches, fig.height=4, fig.width=8>>=
-%% make.catches.plot(catches,
-%%                   leg.y.loc = 520)
-%% @
-%% \end{center}
-%% %\vspace{0mm}
-%% \caption{Total \fishname\ catch used in the assessment by sector,
-%%   \Sexpr{start.yr}--\Sexpr{last.data.yr}.}
-%% \label{fig:main-catches}
-%% \end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%
+%% CATCH PLOTS
+%%------------------------------------------------------------------------------
+\begin{figure}[htp]
+\begin{center}
+<<totalcatch, fig.height=9, fig.width=8>>=
+layout(matrix(c(1,1,2,3), 2, 2, byrow = TRUE))
+make.catch.discard.plot(catches,
+                        s.yr = 1996,
+                        e.yr = 2014,
+                        weight.factor = 1e6,
+                        add = TRUE)
+
+##plotCatch(1, 2, opacity=opacity, add=TRUE,indletter=1)
+##plotCatch(1, 4, areas=c("3C","3D"), opacity=opacity, add=TRUE, leg=NULL, indletter=2, ylim=c(0,10000))
+##plotCatch(1, 4, areas=c("5A","5B","5C","5D","5E"), opacity=opacity, add=TRUE, leg=NULL, indletter=3, ylim=c(0,10000))
+@
+\end{center}
+%\vspace{0mm}
+\caption{Total coastwide catch of \fishname, including both landings and discards
+  (a). Panels (b) and (c) represent areas 3CD and 5ABCDE respectively. See Table~\ref{tab:totalcatch} for values.}
+\label{fig:totalcatch}
+\end{figure}
+%%------------------------------------------------------------------------------
+
 \clearpage
 
 % AGE COMPOSITION PLOTS (DATA ONLY)
