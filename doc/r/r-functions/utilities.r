@@ -659,3 +659,21 @@ catw <- function(..., file = "", sep = " ", fill = FALSE, labels = NULL,
     cat(prefix, ..., format(Sys.time(), "(%Y-%m-%d %H:%M:%S)"), "\n",
         file = file, sep = sep, fill = fill, labels = labels, append = append)
 }
+
+panel.letter <- function(letter){
+  ## Adds letters to plot panels
+  ## letter - the letter to place on the panel
+  usr <- par("usr")
+  inset.x <- 0.05 * (usr[2] - usr[1])
+  inset.y <- 0.05 * (usr[4] - usr[3])
+  if(is.character(letter)){
+    let <- letter
+  }else{
+    let <- letters[letter]
+  }
+  text(usr[1] + inset.x,
+       usr[4] - inset.y,
+       paste0("(", let, ")"),
+       cex = 1.,
+       font = 1)
+}

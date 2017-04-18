@@ -448,24 +448,41 @@ make.decision.table(sens.models.4[[1]],
 
 %% CATCH PLOTS
 %%------------------------------------------------------------------------------
-\begin{figure}[htp]
+\begin{figure}[H]
 \begin{center}
 <<totalcatch, fig.height=9, fig.width=8>>=
-layout(matrix(c(1,1,2,3), 2, 2, byrow = TRUE))
+layout(matrix(c(1, 1, 2, 3), 2, 2, byrow = TRUE))
 make.catch.discard.plot(catches,
                         s.yr = 1996,
                         e.yr = 2014,
                         weight.factor = 1e6,
-                        add = TRUE)
-
-##plotCatch(1, 2, opacity=opacity, add=TRUE,indletter=1)
-##plotCatch(1, 4, areas=c("3C","3D"), opacity=opacity, add=TRUE, leg=NULL, indletter=2, ylim=c(0,10000))
-##plotCatch(1, 4, areas=c("5A","5B","5C","5D","5E"), opacity=opacity, add=TRUE, leg=NULL, indletter=3, ylim=c(0,10000))
+                        add = TRUE,
+                        ind.letter = "a")
+make.catch.discard.plot(catches,
+                        s.yr = 1996,
+                        e.yr = 2014,
+                        areas = c("3D",
+                                  "3C"),
+                        weight.factor = 1e6,
+                        leg = NULL,
+                        add = TRUE,
+                        ind.letter = "b")
+make.catch.discard.plot(catches,
+                        s.yr = 1996,
+                        e.yr = 2014,
+                        areas = c("5A",
+                                  "5B",
+                                  "5C",
+                                  "5D",
+                                  "5E"),
+                        weight.factor = 1e6,
+                        leg = NULL,
+                        add = TRUE,
+                        ind.letter = "c")
 @
 \end{center}
-%\vspace{0mm}
 \caption{Total coastwide catch of \fishname, including both landings and discards
-  (a). Panels (b) and (c) represent areas 3CD and 5ABCDE respectively. See Table~\ref{tab:totalcatch} for values.}
+  (a). Panels (b) and (c) represent areas 3CD and 5ABCDE respectively. See Table~\ref{tab:main-catches} for values.}
 \label{fig:totalcatch}
 \end{figure}
 %%------------------------------------------------------------------------------
