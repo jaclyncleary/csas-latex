@@ -324,9 +324,9 @@ make.value.table(base.model$mcmccalcs$sbt.quants,
 @
 
 <<recruitment.table, results='asis', echo=FALSE>>=
-cap <- c("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-         "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
-         "recruitment (millions) for the Reference Case.")
+cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+              "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
+              "recruitment (millions) for the Reference Case.")
 make.value.table(base.model$mcmccalcs$recr.quants,
                  xcaption = cap,
                  xlabel = "tab:recruitment",
@@ -400,7 +400,7 @@ make.sens.q.table(sens.models.3,
 cap <- paste0("Decision Table for the Reference Case showing posterior ",
               "probabilities that 2016 projected biomass B\\subscr{t} is ",
               "below a set of candidate reference points and benchmarks ",
-              "(Table~\\ref{tab:refpoints}), and probabilities that the ",
+              "(Table~\\ref{tab:ref-points}), and probabilities that the ",
               "2015 projected harvest rate U\\subscr{t} is above ",
               "U\\subscr{2014} or U\\subscr{MSY} for a given level of ",
               "female-only catch. Total catch is shown in columns 2 and 3 ",
@@ -421,10 +421,10 @@ make.decision.table(base.model,
 \begin{landscapepage}
 <<decision.sens.table, results='asis', echo=FALSE>>=
 cap <- paste0("Decision Table for a sensitivity model (Selectivity = ",
-              "Maturity, Table~\\ref{tab:sensitivities}) showing posterior ",
+              "Maturity, Table~\\ref{tab:sens-params-desc}) showing posterior ",
               "probabilities that 2016 projected biomass B\\subscr{t} is ",
               "below a set of candidate reference points and benchmarks ",
-              "(Table~\\ref{tab:refpoints}), and probabilities that the ",
+              "(Table~\\ref{tab:ref-points}), and probabilities that the ",
               "2015 projected harvest rate U\\subscr{t} is above ",
               "U\\subscr{2014} or U\\subscr{MSY} for a given level of ",
               "female-only catch. Total catch is shown in columns 2 and 3 ",
@@ -481,15 +481,14 @@ make.catch.discard.plot(catches,
                         ind.letter = "c")
 @
 \end{center}
-\caption{Total coastwide catch of \fishname, including both landings and discards
-  (a). Panels (b) and (c) represent areas 3CD and 5ABCDE respectively. See Table~\ref{tab:main-catches} for values.}
+\caption{Total coastwide catch of \fishname, including both landings and
+  discards (a). Panels (b) and (c) represent areas 3CD and 5ABCDE
+  respectively. See Table~\ref{tab:main-catches} for values.}
 \label{fig:totalcatch}
 \end{figure}
 %%------------------------------------------------------------------------------
 
-\clearpage
-
-% AGE COMPOSITION PLOTS (DATA ONLY)
+%% AGE COMPOSITION PLOTS (DATA ONLY)
 %%%%%%%%%%%%%%%%%%%%%%%
 %% \begin{figure}[htp]
 %% \begin{center}

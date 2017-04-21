@@ -54,11 +54,11 @@
 %% Note that libraries need to be loaded as they are not saved in
 %%  the RData file.
 <<load-everything, echo=FALSE,  message=FALSE, results='hide', warning=FALSE>>=
-opts_chunk$set(dev = 'cairo_ps',
+opts_chunk$set(dev = 'png',
                fig.path = 'knitr-cache/',
                fig.dpi = 96,
                fig.width = 7.5,
-               fig.height=4,
+               fig.height = 4,
                echo = FALSE,
                results = FALSE,
                message = FALSE,
