@@ -487,63 +487,53 @@ make.catch.discard.plot(catches,
 \label{fig:totalcatch}
 \end{figure}
 %%------------------------------------------------------------------------------
-
 %% AGE COMPOSITION PLOTS (DATA ONLY)
-%%%%%%%%%%%%%%%%%%%%%%%
-%% \begin{figure}[htp]
-%% \begin{center}
-%% <<agecomps-trawl, fig.height=5, fig.width=8>>=
-%% plotBiology(plotNum=11, compFitSex=0, index=1, showtitle=FALSE, scenario=1)
-%% @
-%% \end{center}
-%% %\vspace{0mm}
-%% \caption{Age composition data for the Reference Case for the commercial trawl
-%%   fishery. Blue points represent zero samples. N values represent the number of
-%%   specimens aged in each year.}
-%% \label{fig:agecomps-trawl}
-%% \end{figure}
-%% %%%%%%%%%%%%%%%%%%%%%%%
-%% %%%%%%%%%%%%%%%%%%%%%%%
-%% \begin{figure}[htp]
-%% \begin{center}
-%% <<agecomps-surveys, fig.height=9, fig.width=8>>=
-%% oldPar <- par(no.readonly=TRUE)
-%% layout(matrix(c(1, 2, 3, 0),
-%%               2,
-%%               2,
-%%               byrow = TRUE))
-%% plotBiology(plotNum = 11,
-%%             compFitSex = 0,
-%%             index = 2,
-%%             showtitle = FALSE,
-%%             scenario = 1,
-%%             add = TRUE,
-%%             indletter = 1)
-%% plotBiology(plotNum = 11,
-%%             compFitSex = 0,
-%%             index = 4,
-%%             showtitle = FALSE,
-%%             scenario = 1,
-%%             add = TRUE,
-%%             indletter = 2)
-%% plotBiology(plotNum = 11,
-%%             compFitSex = 0,
-%%             index = 5,
-%%             showtitle = FALSE,
-%%             scenario = 1,
-%%             add = TRUE,
-%%             indletter = 3)
-%% par(oldPar)
-%% @
-%% \end{center}
-%% %\vspace{0mm}
-%% \caption{Age composition data for the Reference Case for the surveys (a) QCSSS,
-%%   (b) HSSS, and (c) WCVISS. Blue points represent zero samples. N values
-%%   represent the number of specimens aged in each year.}
-%% \label{fig:agecomps-surveys}
-%% \end{figure}
-%% %%%%%%%%%%%%%%%%%%%%%%%
-%% \clearpage
+
+\begin{figure}[htp]
+\begin{center}
+<<agecomps-trawl, fig.height=5, fig.width=8>>=
+make.age.comp.plot(base.model,
+                   ind = 1,
+                   type = 1)
+@
+\end{center}
+%\vspace{0mm}
+\caption{Age composition data for the Reference Case for the commercial trawl
+  fishery. Blue points represent zero samples.}
+\label{fig:agecomps-trawl}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[htp]
+\begin{center}
+<<agecomps-surveys, fig.height=9, fig.width=8>>=
+old.par <- par(no.readonly = TRUE)
+layout(matrix(c(1, 2, 3, 0),
+              2,
+              2,
+              byrow = TRUE))
+make.age.comp.plot(base.model,
+                   ind = 2,
+                   type = 1,
+                   ind.letter = "a")
+make.age.comp.plot(base.model,
+                   ind = 4,
+                   type = 1,
+                   ind.letter = "b")
+make.age.comp.plot(base.model,
+                   ind = 5,
+                   type = 1,
+                   ind.letter = "c")
+par(old.par)
+@
+\end{center}
+\caption{Age composition data for the Reference Case for the surveys (a) QCSSS,
+  (b) HSSS, and (c) WCVISS. Blue points represent zero samples.}
+\label{fig:agecomps-surveys}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\clearpage
 
 %% % LENGTH COMPARISON PLOT
 %% %%%%%%%%%%%%%%%%%%%%%%%
@@ -686,23 +676,29 @@ make.catch.discard.plot(catches,
 %% %%%%%%%%%%%%%%%%%%%%%%%
 %% \clearpage
 
-%% % AGE COMP FITS PLOTS
-%% %%%%%%%%%%%%%%%%%%%%%%%
-%% \begin{figure}[htp]
-%% \begin{center}
-%% <<agecomps-fits-trawl, fig.height=5, fig.width=8, fig.show='hold'>>=
-%% #oldPar <- par(no.readonly=TRUE)
-%% #layout(matrix(c(1,2),2,1,byrow=FALSE))
-%% plotBiology(plotNum=12, compFitSex=0, index=1, showtitle=FALSE, scenario=1)
-%% plotBiology(plotNum=13, compFitSex=0, index=1, showtitle=FALSE, scenario=1)
-%% #par(oldPar)
-%% @
-%% \end{center}
-%% %\vspace{0mm}
-%% \caption{Age composition fits and residuals for the Reference Case for the commercial trawl fishery. Blue points represent zero samples, red are positive residuals, and black are negative residuals. N values represent the number of specimens aged in each year.}
-%% \label{fig:agecomps-fits-trawl}
-%% \end{figure}
-%% %%%%%%%%%%%%%%%%%%%%%%%
+%%------------------------------------------------------------------------------
+%% AGE COMP FITS PLOTS
+\begin{figure}[H]
+\begin{center}
+<<agecomps-fits-trawl, fig.height=5, fig.width=8, fig.show='hold'>>=
+old.par <- par(no.readonly = TRUE)
+layout(matrix(c(1, 2), 2, 1, byrow = FALSE))
+make.age.comp.plot(base.model,
+                   ind = 1,
+                   type = 2)
+make.age.comp.plot(base.model,
+                   ind = 1,
+                   type = 3)
+par(old.par)
+@
+\end{center}
+\caption{Age composition fits (top) and residuals (bottom) for the Reference
+  Case for the commercial trawl fishery. Blue points represent zero samples,
+  red are positive residuals, and black are negative residuals.}
+\label{fig:agecomps-fits-trawl}
+\end{figure}
+
+%%%%%%%%%%%%%%%%%%%%%%%
 %% \clearpage
 %% %%%%%%%%%%%%%%%%%%%%%%%
 %% \begin{figure}[htp]
