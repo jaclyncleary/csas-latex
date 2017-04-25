@@ -51,6 +51,7 @@ load.iscam.files <- function(model.dir,
                                  lower = low,
                                  upper = high,
                                  load.proj = load.proj)
+    model$mcmc$params <- strip.areas.groups(model$mcmc$params)
   }
   model
 }
@@ -993,7 +994,7 @@ calc.mcmc <- function(model,
                       lower = 0.025,
                       upper = 0.975,
                       load.proj = TRUE){
-  ## Do the mcmc calculations, e.g. quantiles for sbt, recr, recdevs, F, U, vbt
+  ## Do the mcmc calculations, i.e. quantiles for parameters
   ## Returns a list of them all
   ##
   ## mcmc - output of the read.mcmc function
@@ -1027,6 +1028,11 @@ calc.mcmc <- function(model,
                                           "umsy",
                                           "ssb",
                                           "bo"))]
+  ## If there is only one m, rename the column "m" instead of "m1"
+  m.ind <- grep("^m", names(p.dat))
+  if(length(m.ind) == 1){
+    names(p.dat)[m.ind] <- "m"
+  }
   p.dat <- mcmc.thin(p.dat, burnin, thin)
   p.quants <- apply(p.dat, 2, quantile, prob = probs)
 
