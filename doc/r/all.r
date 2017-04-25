@@ -65,6 +65,7 @@ source(file.path(func.dir, "tables-decisions.r"))
 source(file.path(func.dir, "figures-catch.r"))
 source(file.path(func.dir, "figures-age-length.r"))
 source(file.path(func.dir, "figures-mcmc-diagnostics.r"))
+source(file.path(func.dir, "figures-hcr.r"))
 
 ## Code to verify the model setup
 source(file.path(func.dir, "verify.r"))

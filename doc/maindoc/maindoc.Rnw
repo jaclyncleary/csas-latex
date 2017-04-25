@@ -586,36 +586,25 @@ par(old.par)
 
 \clearpage
 
+%%------------------------------------------------------------------------------
+%% HARVEST CONTROL RULE ILLUSTRATION PLOT
+\begin{figure}[H]
+\begin{center}
+<<hcrillustration, fig.height=5, fig.width=8>>=
+make.hcr.plot()
+@
+\end{center}
+\caption{Illustration of a harvest control rule consistent with the
+  Precautionary Approach for a hypothetical stock. The biomass-based
+  reference points are shown as vertical dotted lines. The limit removal
+  rate is shown as a horizontal blue line. In this illustration, biomass
+  (unspecified units) is shown on the bottom axis. LRP = Limit Reference Point;
+  USR = Upper Stock Reference; LRR = Limit Removal Rate. See \citet{dfo09}
+  for more detail.}
+\label{fig:hcrillustration}
+\end{figure}
 
-%% % HARVEST CONTROL RULE ILLUSTRATION PLOT
-%% %%%%%%%%%%%%%%%%%%%%%%%
-%% \begin{figure}[htp]
-%% \begin{center}
-%% <<hcrillustration, fig.height=5,fig.width=8>>=
-%% # Plot harvest control rule illustation. This uses no data so it is embedded her
-%% plot(c(0,30), c(0,0.4), type="n", axes=FALSE, xaxs="i", yaxs="i", xlab="Stock Status", ylab="Removal Rate")
-%% # Plot the vertical bars (LRP and USR)
-%% segments(4, 0, 4, 0.4, col="black", lty=3, lwd=1)
-%% segments(9, 0, 9, 0.4, col="black", lty=3, lwd=1)
-%% # Plot removal rate lines
-%% segments(0, 0, 4, 0,   col="blue", lty=1, lwd=4)
-%% segments(4, 0, 9, 0.3, col="blue", lty=1, lwd=4)
-%% segments(9, 0.3, 30, 0.3, col="blue", lty=1, lwd=4)
-%% # Add axes and labels
-%% #axis(side=1)
-%% #axis(side=2)
-%% box()
-%% text(4, 0.35, "LRP", col="red")
-%% text(9, 0.35, "USR", col="red")
-%% text(20,0.33, "LRR", col="red")
-%% @
-%% \end{center}
-%% %\vspace{0mm}
-%% \caption{Illustration of a harvest control rule consistent with the Precautionary Approach for a hypothetical stock. The biomass-based reference points are shown as vertical dotted lines. The limit removal rate is shown as a horizontal blue line. In this illustration, biomass (unspecified units) is shown on the bottom axis. LRP = Limit Reference Point; USR = Upper Stock Reference; LRR = Limit Removal Rate. See \citet{dfo09} for more detail.}
-%% \label{fig:hcrillustration}
-%% \end{figure}
-%% %%%%%%%%%%%%%%%%%%%%%%%
-%% \clearpage
+\clearpage
 
 %%------------------------------------------------------------------------------
 %% AGE COMP FITS PLOTS
