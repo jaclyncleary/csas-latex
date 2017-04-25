@@ -535,53 +535,56 @@ par(old.par)
 
 \clearpage
 
-%% % LENGTH COMPARISON PLOT
-%% %%%%%%%%%%%%%%%%%%%%%%%
-%% \begin{figure}[htp]
-%% \begin{center}
-%% <<lengthsubfleet, fig.height=9, fig.width=8>>=
-%% oldPar <- par(no.readonly=TRUE)
-%% layout(matrix(c(1, 2, 3, 4),
-%%               2,
-%%               2,
-%%               byrow = TRUE))
-%% plotBiology(plotNum = 17,
-%%             scenario = 1,
-%%             plotsubfleet = TRUE,
-%%             lengthcompsex = 2,
-%%             add = TRUE,
-%%             indletter = 1)
-%% plotBiology(plotNum = 17,
-%%             scenario = 1,
-%%             plotsubfleet = FALSE,
-%%             lengthcompsex = 2,
-%%             add = TRUE,
-%%             indletter = 2)
-%% plotBiology(plotNum = 17,
-%%             scenario = 1,
-%%             plotsubfleet = TRUE,
-%%             lengthcompsex = 1,
-%%             add = TRUE,
-%%             indletter = 3)
-%% plotBiology(plotNum = 17,
-%%             scenario = 1,
-%%             plotsubfleet = FALSE,
-%%             lengthcompsex = 1,
-%%             add = TRUE,
-%%             indletter = 4)
-%% par(oldPar)
-%% @
-%% \end{center}
-%% %\vspace{0mm}
-%% \caption{Length quantiles (2.5\textsuperscript{th}, 50\textsuperscript{th}, and
-%%   97.5\textsuperscript{th} percentiles) from samples taken on freezer trawler
-%%   vessels (a and c) and shoreside vessels (b and d) for females (a and b) and
-%%   males (c and d). N is the number of specimens sampled for length for the
-%%   given year.}
-%% \label{fig:lengthsubfleet}
-%% \end{figure}
-%% %%%%%%%%%%%%%%%%%%%%%%%
-%% \clearpage
+%% LENGTH BOXPLOTS
+\begin{figure}[htp]
+\begin{center}
+<<lengthsubfleet, fig.height=9, fig.width=8>>=
+old.par <- par(no.readonly = TRUE)
+ylim <- c(20, 90)
+layout(matrix(c(1, 2, 3, 4),
+              2,
+              2,
+              byrow = TRUE))
+make.length.plot(trawl.bio,
+                 start.yr = 2005,
+                 sex = 2,
+                 plot.subfleet = TRUE,
+                 y.lim = ylim,
+                 add = TRUE,
+                 ind.letter = "a")
+make.length.plot(trawl.bio,
+                 start.yr = 2005,
+                 sex = 2,
+                 plot.subfleet = FALSE,
+                 y.lim = ylim,
+                 add = TRUE,
+                 ind.letter = "b")
+make.length.plot(trawl.bio,
+                 start.yr = 2005,
+                 sex = 1,
+                 plot.subfleet = TRUE,
+                 y.lim = ylim,
+                 add = TRUE,
+                 ind.letter = "c")
+make.length.plot(trawl.bio,
+                 start.yr = 2005,
+                 sex = 1,
+                 plot.subfleet = FALSE,
+                 y.lim = ylim,
+                 add = TRUE,
+                 ind.letter = "d")
+par(old.par)
+@
+\end{center}
+\caption{Length quantiles (2.5\textsuperscript{th}, 50\textsuperscript{th}, and
+  97.5\textsuperscript{th} percentiles) from samples taken on freezer trawler
+  vessels (a and c) and shoreside vessels (b and d) for females (a and b) and
+  males (c and d).}
+\label{fig:lengthsubfleet}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\clearpage
 
 %% % MCMC DIAGNOSTICS PLOTS
 %% %%%%%%%%%%%%%%%%%%%%%%%

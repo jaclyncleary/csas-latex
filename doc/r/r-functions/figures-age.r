@@ -119,6 +119,87 @@ make.age.comp.plot <- function(model,
   }
 }
 
+make.length.plot <-
+  function(dat,
+           start.yr,
+           sex = 1,
+           plot.subfleet = TRUE,
+           y.lim = c(20, 90),
+           subfleet.vrn = c(103548, ## Viking Enterprise FOS
+                            109710, ## Northern Alliance FOS
+                            103808, ## Osprey #1         FOS
+                            120250, ## Raw Spirit        FOS
+                            568,  ## Viking Enterprise GFBIO
+                            592,  ## Northern Alliance GFBIO
+                            569,  ## Osprey #1         GFBIO
+                            595), ## Raw Spirit        GFBIO
+           add = TRUE,
+           ind.letter = NULL){
+  ## Plot the length data for certain vessels, either the ones listed in
+  ##  subfleet.vrn or the ones not in subfleet.vrn, depending on
+  ##  plot.subfleet.
+  ##
+  ## start.yr - year to start the plot
+  ## sex - 1 = female, 2 = male
+  ## plot.subfleet - if TRUE, plot length distributions for the vessels listed
+  ##  in subfleet.vrn. If FALSE, plot all other vessels not in subfleet.vrn
+  ## subfleet.vrn - a vector of vessel IDs for vessels to segregate
+
+  if(!add){
+    old.par <- par(no.readonly = TRUE)
+    on.exit(par(old.par))
+  }
+
+  d <- dat[dat$Year >= start.yr,]
+  d <- d[d$SPECIMEN_SEX_CODE == sex,]
+  d <- d[!(is.na(d$VESSEL_ID)),]
+  d <- d[!(is.na(d$Length_cm)),]
+  if(plot.subfleet){
+    d <- d[d$VESSEL_ID %in% subfleet.vrn,]
+  }else{
+    d <- d[!(d$VESSEL_ID %in% subfleet.vrn),]
+  }
+
+  yrs <- sort(unique(d$Year))
+  len.dat <- lapply(1:length(yrs),
+                    function(x){
+                      d.yr <- d[d$Year == yrs[x],]
+                      d.yr$Length_cm})
+  ## Make all vectors the same length so they will cbind without replication
+  max.len <- max(sapply(len.dat, length))
+  len.dat <- lapply(len.dat,
+                    function(x){
+                      length(x) <- max.len
+                      x})
+  len.df <- do.call(cbind, len.dat)
+
+  b <- boxplot(len.df, axes = FALSE, ylim = y.lim)
+  axis(1,
+       at = seq(1, length(yrs)),
+       labels = yrs)
+  axis(2,
+       at = seq(y.lim[1], y.lim[2], by = 10),
+       labels = seq(y.lim[1], y.lim[2], by = 10),
+       las = 1)
+  box()
+  if(plot.subfleet){
+    title.txt <- "Freezer trawlers - "
+  }else{
+    title.txt <- "Shoreside trawlers - "
+  }
+  if(sex == 1){
+    title.txt <- paste0(title.txt, "Male")
+  }else{
+    title.txt <- paste0(title.txt, "Female")
+  }
+  title(title.txt)
+  mtext("Year", 1, line = 3)
+  mtext("Length (cm)", 2, line = 3)
+  if(!is.null(ind.letter)){
+    panel.letter(ind.letter)
+  }
+}
+
 get.rows.cols <- function(num){
   ## Returns a vector of length 2 representing the number of rows and columns
   ##  to use to pack a plot in a grid.
