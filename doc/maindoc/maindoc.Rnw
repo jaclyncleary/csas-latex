@@ -601,27 +601,6 @@ make.hcr.plot()
 \end{figure}
 
 %%------------------------------------------------------------------------------
-%% AGE COMP FITS PLOTS
-\begin{figure}[H]
-\begin{center}
-<<agecomps-fits-trawl, fig.height=5, fig.width=8, fig.show='hold'>>=
-old.par <- par(no.readonly = TRUE)
-layout(matrix(c(1, 2), 2, 1, byrow = FALSE))
-make.age.comp.plot(base.model,
-                   ind = 1,
-                   type = 2)
-make.age.comp.plot(base.model,
-                   ind = 1,
-                   type = 3)
-par(old.par)
-@
-\end{center}
-\caption{Age composition fits (top) and residuals (bottom) for the Reference
-  Case for the commercial trawl fishery. Blue points represent zero samples,
-  red are positive residuals, and black are negative residuals.}
-\label{fig:agecomps-fits-trawl}
-\end{figure}
-%%------------------------------------------------------------------------------
 %% MCMC DIAGNOSTICS PLOTS
 
 \begin{figure}[H]
@@ -727,4 +706,89 @@ par(old.par)
 \caption{Reference Case MPD Index fits for (a) QSSS, (b) HSMAS,
   (c) HSSS, (d) WCVISS.}
 \label{fig:indexfits}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% AGE COMP FITS PLOTS
+\begin{figure}[H]
+\begin{center}
+<<agecomps-fits-trawl, fig.height=5, fig.width=8, fig.show='hold'>>=
+old.par <- par(no.readonly = TRUE)
+layout(matrix(c(1, 2), 2, 1, byrow = FALSE))
+make.age.comp.plot(base.model,
+                   ind = 1,
+                   type = 2)
+make.age.comp.plot(base.model,
+                   ind = 1,
+                   type = 3)
+par(old.par)
+@
+\end{center}
+\caption{Age composition fits (top) and residuals (bottom) for the Reference
+  Case for the commercial trawl fishery. Blue points represent zero samples,
+  red are positive residuals, and black are negative residuals.}
+\label{fig:agecomps-fits-trawl}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<agecomps-fits-qcsss, fig.height=5, fig.width=8>>=
+old.par <- par(no.readonly = TRUE)
+layout(matrix(c(1, 2), 2, 1, byrow = FALSE))
+make.age.comp.plot(base.model,
+                   ind = 2,
+                   type = 2)
+make.age.comp.plot(base.model,
+                   ind = 2,
+                   type = 3)
+par(old.par)
+@
+\end{center}
+\caption{Age composition fits and residuals for the Reference Case for the
+  QCSSS. Blue points represent zero samples, red are positive residuals,
+  and black are negative residuals.}
+\label{fig:agecomps-fits-qcsss}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<agecomps-fits-hsss, fig.height=5, fig.width=8>>=
+old.par <- par(no.readonly = TRUE)
+layout(matrix(c(1, 2), 2, 1, byrow = FALSE))
+make.age.comp.plot(base.model,
+                   ind = 4,
+                   type = 2)
+make.age.comp.plot(base.model,
+                   ind = 4,
+                   type = 3)
+par(old.par)
+@
+\end{center}
+\caption{Age composition fits and residuals for the Reference Case for the
+  HSSS. Blue points represent zero samples, red are positive residuals,
+  and black are negative residuals.}
+\label{fig:agecomps-fits-hsss}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<agecomps-fits-wcviss, fig.height=5, fig.width=8>>=
+old.par <- par(no.readonly = TRUE)
+layout(matrix(c(1, 2), 2, 1, byrow = FALSE))
+make.age.comp.plot(base.model,
+                   ind = 5,
+                   type = 2)
+make.age.comp.plot(base.model,
+                   ind = 5,
+                   type = 3)
+par(old.par)
+@
+\end{center}
+\caption{Age composition fits and residuals for the Reference Case for the
+  WCVISS. Blue points represent zero samples, red are positive residuals,
+  and black are negative residuals.}
+\label{fig:agecomps-fits-wcviss}
 \end{figure}

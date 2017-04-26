@@ -99,6 +99,8 @@ make.age.comp.plot <- function(model,
            ylim = c(0, max.y))
       lines(ages, est, lty = 1, lwd = 2, col = 2)
     }
+    mtext("Age", side = 1, line = 0, outer = TRUE)
+    mtext("Proportion", side = 2, line = 1, outer = TRUE)
     par(old.par)
   }else if(type == 3){
     plotBubbles(t(resid.dat),
