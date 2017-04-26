@@ -686,10 +686,10 @@ get.latex.name <- function(name, addToQ = 0){
   ##  gear number. i.e. if gear 1 is a trawl fishery and gear 2 is a survey,
   ##  iscam will call q1 the survey gear. We must add 1 to it to get q2 to
   ##  accurately portray the survey gear number
-  if(name == "ro") return(expression("ln(R"[0]*")"))
-  if(name == "rbar") return(expression("ln("*bar("R")*")"))
-  if(name == "rinit") return(expression("ln("*bar("R")[init]*")"))
-  if(name == "m") return(expression("ln(M)"))
+  if(name == "ro") return(expression("R"[0]))
+  if(name == "rbar") return(expression(bar("R")))
+  if(name == "rinit") return(expression(bar("R")[init]))
+  if(name == "m") return(expression("M"))
   if(name == "bo") return(expression("B"[0]))
   if(name == "vartheta") return(expression(vartheta))
   if(name == "rho") return(expression(rho))
@@ -717,37 +717,15 @@ get.latex.name <- function(name, addToQ = 0){
   if(name == "log_rbar") return(expression("ln("*bar("R")*")"))
   if(name == "log_rinit") return(expression("ln("*bar("R")[init]*")"))
 
-  if(name == "q1"){
-    digit <- 1 + addToQ
-    return(substitute("ln(q"[digit]*")", list(digit=digit)))
+  if(length(grep("^q[1-9]+$", name))){
+    digit <- as.numeric(sub("^q([1-9]+)$", "\\1", name))
+    return(substitute("q"[digit], list(digit = digit)))
   }
-  if(name == "q2"){
-    digit <- 2 + addToQ
-    return(substitute("ln(q"[digit]*")", list(digit=digit)))
+
+  if(length(grep("^log_q[1-9]+$", name))){
+    digit <- as.numeric(sub("^log_q([1-9]+)$", "\\1", name))
+    return(substitute("ln(q"[digit]*")", list(digit = digit)))
   }
-  if(name == "q3"){
-    digit <- 3 + addToQ
-    return(substitute("ln(q"[digit]*")", list(digit=digit)))
-  }
-  if(name == "q4"){
-    digit <- 4 + addToQ
-    return(substitute("ln(q"[digit]*")", list(digit=digit)))
-  }
-  if(name == "q5"){
-    digit <- 5 + addToQ
-    return(substitute("ln(q"[digit]*")", list(digit=digit)))
-  }
-  if(name == "q6"){
-    digit <- 6 + addToQ
-    return(substitute("ln(q"[digit]*")", list(digit=digit)))
-  }
-  if(name == "q7"){
-    digit <- 7 + addToQ
-    return(substitute("ln(q"[digit]*")", list(digit=digit)))
-  }
-  if(name == "q8"){
-    digit <- 8 + addToQ
-    return(substitute("ln(q"[digit]*")", list(digit=digit)))
-  }
+
   NULL
 }

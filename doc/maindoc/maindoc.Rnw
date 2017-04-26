@@ -609,7 +609,8 @@ make.hcr.plot()
 \begin{figure}[H]
 \begin{center}
 <<traces, fig.height=8, fig.width=8>>=
-
+make.traces.plot(base.model,
+                 axis.lab.freq = 200)
 @
 \end{center}
 %\vspace{0mm}
@@ -623,6 +624,17 @@ make.hcr.plot()
   WCVISS. The HSMAS did not have estimates selectivity, so there are no
   $\hat{a}_3$ or $\hat{\gamma}_3$ parameters.}
 \label{fig:traces}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<autocor, fig.height=8, fig.width=8>>=
+make.autocor.plot(base.model)
+@
+\end{center}
+\caption{Autocorrelation plots for MCMC output of estimated parameters in the
+Reference Case. See Figure~\ref{fig:traces} for parameter descriptions.}
+\label{fig:autocor}
 \end{figure}
 
 %%------------------------------------------------------------------------------

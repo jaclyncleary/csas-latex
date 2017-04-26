@@ -22,12 +22,10 @@ make.priors.posts.plot <- function(model,
 
   f.names <- c(dunif, dnorm, dlnorm, dbeta, dgamma)
 
-  mc <- model$mcmccalcs$p.dat
+  mc <- model$mcmccalcs$p.dat.log
   ## Remove selectivity paramaters from the posts
   mc <- mc[, -grep("^sel.*", names(mc))]
   post.names <- names(mc)
-  ## Log the values, except for steepness
-  mc[, -grep("^h$", names(mc))] <- log(mc[, -grep("^h$", names(mc))])
 
   prior.specs <- as.data.frame(model$ctl$param)
   ## Remove fixed parameters
@@ -54,14 +52,14 @@ make.priors.posts.plot <- function(model,
 
   ## Get MPD estimates for the parameters in the posteriors
   mpd <- model$mpd
-  q.pattern <- "^q([1-9]+)$"
+  q.pattern <- "^log_q([1-9]+)$"
   mpd.lst <- lapply(1:length(post.names),
                     function(x){
                       mle <- NULL
                       p.name <- post.names[x]
-                      if(p.name == "m1"){
+                      if(p.name == "log_m1" | p.name == "log_m"){
                         mle <- mpd$m[1]
-                      }else if(p.name == "m2"){
+                      }else if(p.name == "log_m2"){
                         mle <- mpd$m[2]
                       }else if(p.name == "h"){
                         mle <- mpd$steepness
@@ -174,8 +172,7 @@ make.traces.plot <- function(model,
   ## Make trace plots for all paramaters from the mcmc output
   ## axis.lab.freq - the frequency of x-axis labelling
 
-  mc <- model$mcmccalcs$p.dat
-  mc <- model$mcmc$params
+  mc <- model$mcmc$params.est
   n.side <- get.rows.cols(ncol(mc))
   par(mfrow = n.side,
       oma = c(2, 3, 1, 1),
@@ -200,4 +197,86 @@ make.traces.plot <- function(model,
          labels = labels)
     axis(2)
   }
+}
+
+make.autocor.plot <- function(model){
+  ## Plot the autocorrelation of estimated parameters
+
+  mc <- model$mcmc$params.est
+  n.side <- get.rows.cols(ncol(mc))
+  par(mfrow = n.side,
+      oma = c(2, 3, 1, 1),
+      mai = c(0.2, 0.4, 0.3, 0.2))
+
+  for(param in 1:ncol(mc)){
+    mcmc.autocor <- as.matrix(mc[,param])
+    name <- colnames(mc)[param]
+    name <- get.latex.name(name)
+    autocorr.plot(mcmc.autocor,
+                  lag.max = 100,
+                  main = name,
+                  auto.layout = FALSE)
+  }
+}
+
+autocorr.plot <- function(x,
+                          lag.max,
+                          auto.layout = TRUE,
+                          ask,
+                          ...){
+  ## autocorr.plot from coda package, but the package source had the
+  ##  ylab = "Autocorrelation" for all plots and no way to override it.
+  ## That caused latex to place the plot in landscape mode which was ugly.
+  if (missing(ask)){
+    ask <- if(is.R()) {
+      dev.interactive()
+    }else{
+      interactive()
+    }
+  }
+  oldpar <- NULL
+  on.exit(par(oldpar))
+  if(auto.layout)
+    oldpar <- par(mfrow = set.mfrow(Nchains = nchain(x),
+                                    Nparms = nvar(x)))
+  if(!is.mcmc.list(x))
+    x <- mcmc.list(as.mcmc(x))
+  for(i in 1:nchain(x)) {
+    xacf <- if(missing(lag.max))
+              acf(as.ts.mcmc(x[[i]]),
+                  plot = FALSE)
+            else
+              acf(as.ts.mcmc(x[[i]]),
+                  lag.max = lag.max,
+                  plot = FALSE)
+    for(j in 1:nvar(x)){
+      plot(xacf$lag[, j, j],
+           xacf$acf[, j, j],
+           type = "h",
+           ylab = "",
+           xlab = "Lag",
+           ylim = c(-1, 1), ...)
+      title(paste0(varnames(x)[j],
+                  ifelse(is.null(chanames(x)),
+                         "",
+                         ":"),
+                  chanames(x)[i]))
+      if(i == 1 & j == 1)
+        oldpar <- c(oldpar, par(ask = ask))
+    }
+  }
+  invisible(x)
+}
+
+as.ts.mcmc <- function(x, ...){
+  ## as.ts.mcmc was copied from coda package source, to fulfill
+  ##  autocorr.plot requirement
+
+  x <- as.mcmc(x)
+  y <- ts(x,
+          start = start(x),
+          end = end(x),
+          deltat = thin(x))
+  attr(y, "mcpar") <- NULL
+  y
 }

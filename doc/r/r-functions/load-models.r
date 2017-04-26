@@ -35,6 +35,8 @@ load.iscam.files <- function(model.dir,
   model$par <- read.par.file(file.path(model.dir, par.file))
   ## Load MPD results
   model$mpd <- read.report.file(file.path(model.dir, rep.file))
+  ## Some of the parameters need to be logged
+  model$mpd <- calc.mpd.logs(model$mpd)
   model.dir.listing <- dir(model.dir)
   ## Set default mcmc members to NA. Later code depends on this.
   model$mcmc <- NA
@@ -1031,13 +1033,11 @@ calc.mcmc <- function(model,
                                           "umsy",
                                           "ssb",
                                           "bo"))]
-  ## If there is only one m, rename the column "m" instead of "m1"
-  m.ind <- grep("^m", names(p.dat))
-  if(length(m.ind) == 1){
-    names(p.dat)[m.ind] <- "m"
-  }
+  p.dat <- fix.m(p.dat)
   p.dat <- mcmc.thin(p.dat, burnin, thin)
+  p.dat.log <- calc.logs(p.dat)
   p.quants <- apply(p.dat, 2, quantile, prob = probs)
+  p.quants.log <- apply(p.dat.log, 2, quantile, prob = probs)
 
   ## Reference points
   r.dat <- params.dat[ , which(nm %in% c("bo",
@@ -1207,6 +1207,8 @@ calc.mcmc <- function(model,
 
   sapply(c("p.dat",
            "p.quants",
+           "p.dat.log",
+           "p.quants.log",
            "r.dat",
            "r.quants",
            "sbt.dat",
@@ -1409,4 +1411,31 @@ fix.m <- function(mc){
     colnames(mc)[grp] <- "m"
   }
   mc
+}
+
+calc.mpd.logs <- function(mpd,
+                          log.params = c("^ro$",
+                                         "^m$",
+                                         "^m1$",
+                                         "^m2$",
+                                         "^rbar$",
+                                         "^rinit$",
+                                         "^q$")){
+  ## Returns a the mpd data list with some parameters logged
+  ##  and added to the list
+  ##
+  ## log.params - the names of the parameters to log. The new values
+  ##  will have the same names but prepended with log_
+
+  grp <- lapply(log.params,
+                function(x){
+                  grep(x, names(mpd))})
+  inds.lst <- grp[sapply(grp,
+                         function(x){
+                           length(x) > 0})]
+  inds <- unique(do.call(c, inds.lst))
+  log.names <- paste0("log_", names(mpd)[inds])
+  vals <- lapply(mpd[inds], log)
+  names(vals) <- log.names
+  c(mpd, vals)
 }
