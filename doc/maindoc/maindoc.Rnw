@@ -260,7 +260,7 @@ make.catches.table(catches,
 @
 
 <<survey.indices.table, results='asis', echo=FALSE>>=
-cap <- paste0("Annual female-only indices of abundance and CVs for the",
+cap <- paste0("Annual female-only indices of abundance and CVs for the ",
               "four indices used in this assessment.")
 make.survey.indices.table(base.model,
                           digits = 3,
@@ -272,7 +272,7 @@ make.survey.indices.table(base.model,
 @
 
 <<parameters.table, results='asis', echo=FALSE>>=
-cap <- paste0("Estimated and fixed parameters and prior probablilty",
+cap <- paste0("Estimated and fixed parameters and prior probablilty ",
               "distributions used in the Reference Case.")
 make.parameters.table(base.model,
                       xcaption = cap,
@@ -531,10 +531,8 @@ par(old.par)
   (b) HSSS, and (c) WCVISS. Blue points represent zero samples.}
 \label{fig:agecomps-surveys}
 \end{figure}
+
 %%------------------------------------------------------------------------------
-
-\clearpage
-
 %% LENGTH BOXPLOTS
 \begin{figure}[htp]
 \begin{center}
@@ -584,8 +582,6 @@ par(old.par)
 \end{figure}
 %%------------------------------------------------------------------------------
 
-\clearpage
-
 %%------------------------------------------------------------------------------
 %% HARVEST CONTROL RULE ILLUSTRATION PLOT
 \begin{figure}[H]
@@ -602,39 +598,6 @@ make.hcr.plot()
   USR = Upper Stock Reference; LRR = Limit Removal Rate. See \citet{dfo09}
   for more detail.}
 \label{fig:hcrillustration}
-\end{figure}
-
-\clearpage
-
-\begin{figure}[H]
-\begin{center}
-<<traces, fig.height=8, fig.width=8>>=
-make.traces.plot(base.model,
-                 axis.lab.freq = 200)
-@
-\end{center}
-%\vspace{0mm}
-\caption{Trace plots for MCMC output of estimated parameters in the Reference
-  Case. The MCMC run had chain length \mcmclength, with a sample taken at
-  every \mcmcsampfreq th iteration. Of the \mcmcnsamp samples saved, the
-  first \mcmcburnin\ were removed as a burn-in period. Parameters $q_k$
-  (catchability), $\hat{a}_k$ (selectivity-at-age-50\%), and $\hat{\gamma}_k$
-  (selectivity standard deviation-at-50\%) represent gears as follows:
-  $k=1$: commercial trawl; $k=2$: QCSSS: $k=3$; HSMSAS: $k=4$; HSSS, and $k=5$;
-  WCVISS. The HSMAS did not have estimates selectivity, so there are no
-  $\hat{a}_3$ or $\hat{\gamma}_3$ parameters.}
-\label{fig:traces}
-\end{figure}
-
-\begin{figure}[H]
-\begin{center}
-<<autocor, fig.height=8, fig.width=8>>=
-make.autocor.plot(base.model)
-@
-\end{center}
-\caption{Autocorrelation plots for MCMC output of estimated parameters in the
-Reference Case. See Figure~\ref{fig:traces} for parameter descriptions.}
-\label{fig:autocor}
 \end{figure}
 
 %%------------------------------------------------------------------------------
@@ -689,4 +652,79 @@ make.priors.posts.plot(base.model,
   Reference Case.}
 \label{fig:priorsvsposts}
 \end{figure}
+
 %%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<traces, fig.height=8, fig.width=8>>=
+make.traces.plot(base.model,
+                 axis.lab.freq = 200)
+@
+\end{center}
+\caption{Trace plots for MCMC output of estimated parameters in the Reference
+  Case. The MCMC run had chain length \mcmclength, with a sample taken at
+  every \mcmcsampfreq th iteration. Of the \mcmcnsamp samples saved, the
+  first \mcmcburnin\ were removed as a burn-in period. Parameters $q_k$
+  (catchability), $\hat{a}_k$ (selectivity-at-age-50\%), and $\hat{\gamma}_k$
+  (selectivity standard deviation-at-50\%) represent gears as follows:
+  $k=1$: commercial trawl; $k=2$: QCSSS: $k=3$; HSMSAS: $k=4$; HSSS, and $k=5$;
+  WCVISS. The HSMAS did not have estimates selectivity, so there are no
+  $\hat{a}_3$ or $\hat{\gamma}_3$ parameters.}
+\label{fig:traces}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<autocor, fig.height=8, fig.width=8>>=
+make.autocor.plot(base.model)
+@
+\end{center}
+\caption{Autocorrelation plots for MCMC output of estimated parameters in the
+Reference Case. See Figure~\ref{fig:traces} for parameter descriptions.}
+\label{fig:autocor}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% INDEX FIT PLOT
+\begin{figure}[H]
+\begin{center}
+<<indexfits, fig.height=9, fig.width=8>>=
+s.yr <- 1996
+e.yr <- 2014
+old.par <- par(no.readonly = TRUE)
+layout(matrix(c(1, 2, 3, 4),
+              2,
+              2,
+              byrow = TRUE))
+make.index.fit.plot(base.model,
+                    start.yr = s.yr,
+                    end.yr = e.yr,
+                    ind = 1,
+                    ylim = c(0, 20),
+                    ind.letter = "a")
+make.index.fit.plot(base.model,
+                    start.yr = s.yr,
+                    end.yr = e.yr,
+                    ind = 2,
+                    ylim = c(0, 20),
+                    ind.letter = "b")
+make.index.fit.plot(base.model,
+                    start.yr = s.yr,
+                    end.yr = e.yr,
+                    ind = 3,
+                    ylim = c(0, 20),
+                    ind.letter = "c")
+make.index.fit.plot(base.model,
+                    start.yr = s.yr,
+                    end.yr = e.yr,
+                    ind = 4,
+                    ylim = c(0, 20),
+                    ind.letter = "d")
+par(old.par)
+@
+\end{center}
+\caption{Reference Case MPD Index fits for (a) QSSS, (b) HSMAS,
+  (c) HSSS, (d) WCVISS.}
+\label{fig:indexfits}
+\end{figure}
