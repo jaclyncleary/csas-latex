@@ -606,6 +606,25 @@ make.hcr.plot()
 
 \clearpage
 
+\begin{figure}[H]
+\begin{center}
+<<traces, fig.height=8, fig.width=8>>=
+
+@
+\end{center}
+%\vspace{0mm}
+\caption{Trace plots for MCMC output of estimated parameters in the Reference
+  Case. The MCMC run had chain length \mcmclength, with a sample taken at
+  every \mcmcsampfreq th iteration. Of the \mcmcnsamp samples saved, the
+  first \mcmcburnin\ were removed as a burn-in period. Parameters $q_k$
+  (catchability), $\hat{a}_k$ (selectivity-at-age-50\%), and $\hat{\gamma}_k$
+  (selectivity standard deviation-at-50\%) represent gears as follows:
+  $k=1$: commercial trawl; $k=2$: QCSSS: $k=3$; HSMSAS: $k=4$; HSSS, and $k=5$;
+  WCVISS. The HSMAS did not have estimates selectivity, so there are no
+  $\hat{a}_3$ or $\hat{\gamma}_3$ parameters.}
+\label{fig:traces}
+\end{figure}
+
 %%------------------------------------------------------------------------------
 %% AGE COMP FITS PLOTS
 \begin{figure}[H]

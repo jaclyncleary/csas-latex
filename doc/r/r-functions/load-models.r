@@ -52,6 +52,9 @@ load.iscam.files <- function(model.dir,
                                  upper = high,
                                  load.proj = load.proj)
     model$mcmc$params <- strip.areas.groups(model$mcmc$params)
+    model$mcmc$params <- fix.m(model$mcmc$params)
+    model$mcmc$params.est <- get.estimated.params(model$mcmc$params)
+    model$mcmc$params.est.log <- calc.logs(model$mcmc$params.est)
   }
   model
 }
@@ -1350,4 +1353,60 @@ calc.probabilities <- function(model,
                                       "U_{MSY}"),
                                     math.bold = TRUE))
   proj.dat
+}
+
+get.estimated.params <- function(mc){
+  ## Return a data frame of estimated parameters, based on the values of
+  ##  the posteriors. If all are different, a parameter has been estimated.
+
+  posts <- apply(mc,
+                 2,
+                 function(x){
+                   if(length(unique(x)) > 1)
+                     return(x)
+                 })
+  ## Remove NULL list elements (fixed parameters)
+  posts.lst <- posts[!sapply(posts, is.null)]
+  do.call(cbind, posts.lst)
+}
+
+calc.logs <- function(mc,
+                      log.params = c("^ro$",
+                                     "^m$",
+                                     "^m1$",
+                                     "^m2$",
+                                     "^rbar$",
+                                     "^rinit$",
+                                     "^q[1-9]+$")){
+  ## Returns a data frame with the logs calculated for various parameters.
+  ## The column names will be prepended with log_ for those parameters.
+  ##
+  ## log.params - the names of the parameters to perform log function.
+  ##  Use regular expressions for things like q to represent q1, q2, ... q10
+
+  nm <- colnames(mc)
+  grp <- lapply(log.params,
+                function(x){
+                  grep(x, nm)})
+  inds.lst <- grp[sapply(grp,
+                         function(x){
+                           length(x) > 0})]
+  inds <- unique(do.call(c, inds.lst))
+  colnames(mc)[inds] <- paste0("log_", colnames(mc)[inds])
+  mc[,inds] <- apply(mc[,inds],
+                     2,
+                     log)
+  mc
+}
+
+fix.m <- function(mc){
+  ## Returns a data frame the same as mc with the following modifications:
+  ## If m1 and m2 both exist, no change
+  ## If only m1 exists, change the name to m
+
+  grp <- grep("m[12]", colnames(mc))
+  if(length(grp) == 1){
+    colnames(mc)[grp] <- "m"
+  }
+  mc
 }

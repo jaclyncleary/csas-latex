@@ -168,3 +168,36 @@ plot.marg <- function(xx,
          lty = 2,
          col = 2)
 }
+
+make.traces.plot <- function(model,
+                             axis.lab.freq = 200){
+  ## Make trace plots for all paramaters from the mcmc output
+  ## axis.lab.freq - the frequency of x-axis labelling
+
+  mc <- model$mcmccalcs$p.dat
+  mc <- model$mcmc$params
+  n.side <- get.rows.cols(ncol(mc))
+  par(mfrow = n.side,
+      oma = c(2, 3, 1, 1),
+      mai = c(0.2, 0.4, 0.3, 0.2))
+
+  for(param in 1:ncol(mc)){
+    mcmc.trace <- as.matrix(mc[,param])
+    name <- colnames(mc)[param]
+    name <- get.latex.name(name)
+    plot(mcmc.trace,
+         main = name,
+         type = "l",
+         ylab = "",
+         xlab = "",
+         axes = FALSE)
+    box()
+    at <- labels <- seq(0,
+                        nrow(mc),
+                        axis.lab.freq)
+    axis(1,
+         at = at,
+         labels = labels)
+    axis(2)
+  }
+}
