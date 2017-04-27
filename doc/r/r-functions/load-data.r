@@ -1,14 +1,9 @@
-load.catches <- function(fn){
-  ## Reads in the catch csv file and returns it as a data frame
-  ##
-  ## fn is the filename with relative path
-
-  read.csv(fn, stringsAsFactors = FALSE)
-}
-
-load.survey.history <- function(fn){
-  ## Reads in the survey history csv file and returns it as a data frame
-  ##
-  ## fn is the filename with relative path
-  read.csv(fn)
+load.csv <- function(data.path,
+                      fn,
+                      header = TRUE){
+  ## Load csv data and return the data frame
+  read.csv(file.path(data.path, fn),
+           comment.char = "#",
+           header = header,
+           stringsAsFactors = FALSE)
 }
