@@ -15,7 +15,7 @@ make.fishing.mort.mcmc.plot <- function(model,
 
   f.mort <- model$mcmccalcs$f.mort.quants[[1]]
   yrs <- as.numeric(colnames(f.mort))
-browser()
+
   draw.envelope(yrs,
                 f.mort,
                 ylab = "F",

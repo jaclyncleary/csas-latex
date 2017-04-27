@@ -866,7 +866,7 @@ par(old.par)
 
 %%------------------------------------------------------------------------------
 %% VULNERABLE BIOMASS PLOT
-\begin{figure}[htp]
+\begin{figure}[H]
 \begin{center}
 <<vuln-spawn-biomass, fig.height=5, fig.width=8>>=
 make.vuln.biomass.mcmc.plot(base.model,
@@ -886,7 +886,7 @@ make.vuln.biomass.mcmc.plot(base.model,
 
 %%------------------------------------------------------------------------------
 %% RECRUITMENT PLOT
-\begin{figure}[htp]
+\begin{figure}[H]
 \begin{center}
 <<recruitment, fig.height=9, fig.width=8>>=
 old.par <- par(no.readonly = TRUE)
@@ -911,7 +911,7 @@ par(old.par)
 
 %%------------------------------------------------------------------------------
 %% FISHING MORTALITY PLOT
-\begin{figure}[htp]
+\begin{figure}[H]
 \begin{center}
 <<F, fig.height=5, fig.width=8>>=
 make.fishing.mort.mcmc.plot(base.model,
@@ -923,4 +923,19 @@ make.fishing.mort.mcmc.plot(base.model,
 \caption{Fishing mortality for the Reference Case. The shaded area represents
   the \mcmcci\ credible interval.}
 \label{fig:F}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% RELATIVE SPAWNING BIOMASS PLOT
+\begin{figure}[H]
+\begin{center}
+<<depletion, fig.height=5, fig.width=8>>=
+make.rel.biomass.mcmc.plot(base.model,
+                           opacity = 20,
+                           col = "black")
+@
+\end{center}
+\caption{Relative median posterior spawning biomass for the Reference Case.
+  The shaded area represents the \mcmcci\ credible interval.}
+\label{fig:depletion}
 \end{figure}

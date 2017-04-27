@@ -148,3 +148,34 @@ make.biomass.mcmc.plot <- function(model,
   }
 }
 
+make.rel.biomass.mcmc.plot <- function(model,
+                                       opacity = 75,
+                                       col = "black",
+                                       ind.letter = NULL,
+                                       ...
+                                       ){
+  ## Plot the relative biomass with credibility intervals for the mcmc
+  ##  case of the model
+  ##
+  ## opacity - how opaque the envelope is
+
+  par(mar = c(5.1, 5.1, 4.1, 3.1))
+
+  depl <- model$mcmccalcs$depl.quants
+  yrs <- as.numeric(colnames(depl))
+
+  draw.envelope(yrs,
+                depl,
+                ylab = "Relative spawning biomass",
+                xlab = "Year",
+                col = col,
+                las = 1,
+                y.max = 1,
+                opacity = opacity,
+                first = TRUE,
+                ...)
+
+  if(!is.null(ind.letter)){
+    panel.letter(ind.letter)
+  }
+}
