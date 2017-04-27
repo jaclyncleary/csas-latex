@@ -54,6 +54,7 @@ make.recr.devs.mcmc.plot <- function(model,
   ## Plot the recruitment deviations with credibility intervals for the mcmc
   ##  case of the model.
   ##
+  ## y.min - lower limit for the y axis
   ## y.max - upper limit for the y axis
 
   rdev <- model$mcmccalcs$recr.devs.quants

@@ -908,3 +908,19 @@ par(old.par)
   line is the long-term mean; the green line is the long-term median.}
 \label{fig:recruitment}
 \end{figure}
+
+%%------------------------------------------------------------------------------
+%% FISHING MORTALITY PLOT
+\begin{figure}[htp]
+\begin{center}
+<<F, fig.height=5, fig.width=8>>=
+make.fishing.mort.mcmc.plot(base.model,
+                            y.max = 0.5,
+                            opacity = 20,
+                            col = "black")
+@
+\end{center}
+\caption{Fishing mortality for the Reference Case. The shaded area represents
+  the \mcmcci\ credible interval.}
+\label{fig:F}
+\end{figure}
