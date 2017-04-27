@@ -863,3 +863,23 @@ par(old.par)
   and 0.8B\subscr{MSY}.}
 \label{fig:spawnbiomass}
 \end{figure}
+
+%%------------------------------------------------------------------------------
+%% VULNERABLE BIOMASS PLOT
+\begin{figure}[htp]
+\begin{center}
+<<vuln-spawn-biomass, fig.height=5, fig.width=8>>=
+make.vuln.biomass.mcmc.plot(base.model,
+                            y.max = 700,
+                            opacity = 20,
+                            col = "black",
+                            show.spawn.bio = TRUE,
+                            spawn.bio.col = "red",
+                            leg = "topleft")
+@
+\end{center}
+\caption{Median posterior vulnerable and spawning biomass for the
+  Reference Case. The shaded area and dotted lines represent the \mcmcci\ 
+  credible interval.}
+\label{fig:vuln-spawn-biomass}
+\end{figure}

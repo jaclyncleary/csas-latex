@@ -1,3 +1,57 @@
+make.vuln.biomass.mcmc.plot <- function(model,
+                                        y.max,
+                                        opacity = 75,
+                                        col = "black",
+                                        show.spawn.bio = FALSE,
+                                        spawn.bio.col = "red",
+                                        leg = "topleft",
+                                        ind.letter = NULL,
+                                        ...
+                                        ){
+  ## Plot the vulnerable biomass with credibility intervals for the mcmc
+  ##  case of the model.
+  ##
+  ## y.max - upper limit for the y axis
+  ## opacity - how opaque the envelope is
+  ## show.spawn.bio - add the spawning biomass to the plot
+  ## leg - legend location (only used if show.spawn.bio is TRUE
+
+  par(mar = c(5.1, 5.1, 4.1, 3.1))
+
+  vbt <- model$mcmccalcs$vuln.quants[[1]]
+  yrs <- as.numeric(colnames(vbt))
+  if(show.spawn.bio){
+    sbt <- model$mcmccalcs$sbt.quants
+    draw.envelope(yrs,
+                  sbt,
+                  ylab = "Biomass (1000 mt)",
+                  xlab = "Year",
+                  col = spawn.bio.col,
+                  las = 1,
+                  y.max = y.max,
+                  opacity = opacity,
+                  first = TRUE,
+                  ...)
+    legend(leg,
+           legend = c("Vulnerable Biomass",
+                      "Spawning Biomass"),
+           col = c(col,
+                   spawn.bio.col),
+           lty = 1,
+           lwd = 2)
+  }
+  draw.envelope(yrs,
+                vbt,
+                ylab = "Biomass (1000 mt)",
+                xlab = "Year",
+                col = col,
+                las = 1,
+                y.max = y.max,
+                opacity = opacity,
+                first = !show.spawn.bio,
+                ...)
+}
+
 make.biomass.mcmc.plot <- function(model,
                                    y.max,
                                    opacity = 75,
@@ -139,12 +193,12 @@ draw.envelope <- function(yrs,
     ## Upper and lower part of CI
     lines(yrs,
           lower,
-          col = color,
+          col = col,
           lty = 5,
           lwd = 1)
     lines(yrs,
           upper,
-          col = color,
+          col = col,
           lty = 5,
           lwd = 1)
   }
