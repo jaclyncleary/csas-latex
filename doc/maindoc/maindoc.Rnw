@@ -833,3 +833,33 @@ make.reference.points.plot(base.model,
   values are in thousands of tonnes.}
 \label{fig:refpoints}
 \end{figure}
+
+%%------------------------------------------------------------------------------
+%% SPAWNING BIOMASS PLOT
+\begin{figure}[H]
+\begin{center}
+<<spawnbiomass, fig.height=9, fig.width=7.5>>=
+old.par <- par(no.readonly = TRUE)
+layout(matrix(c(1, 2), 2, 1, byrow = FALSE))
+make.biomass.mcmc.plot(base.model,
+                       y.max = 1300,
+                       opacity = 20,
+                       ind.letter = "a",
+                       show.bo.line = TRUE)
+make.biomass.mcmc.plot(base.model,
+                       y.max = 1300,
+                       opacity = 20,
+                       ind.letter = "b",
+                       show.bmsy.line = TRUE)
+par(old.par)
+@
+\end{center}
+\caption{Median posterior spawning biomass for the Reference Case. The shaded
+  area represents the \mcmcci\ credible interval. The point and bars represent
+  the median estimate of B\subscr{0} and with a credible interval of \mcmcci. Panel
+  (a) shows posterior median estimates of reference points
+  0.2B\subscr{0} and 0.4B\subscr{0}, Panel (b) shows
+  posterior median estimates of reference points 0.4B\subscr{MSY}
+  and 0.8B\subscr{MSY}.}
+\label{fig:spawnbiomass}
+\end{figure}
