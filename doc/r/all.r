@@ -70,6 +70,7 @@ source(file.path(func.dir, "figures-indices.r"))
 source(file.path(func.dir, "figures-selectivity.r"))
 source(file.path(func.dir, "figures-reference-points.r"))
 source(file.path(func.dir, "figures-biomass.r"))
+source(file.path(func.dir, "figures-recruitment.r"))
 
 ## Code to verify the model setup
 source(file.path(func.dir, "verify.r"))
