@@ -64,9 +64,7 @@ make.index.fit.plot <- function(models,
                             lwd = 2,
                             xlim = xlim,
                             ylim = ylim,
-                            col = x)
-                            ##axes = FALSE)
-                    })
+                            col = x)})
   ## Then the points and arrows for the index inputs
   p.pts <- lapply(1:length(yrs),
                   function(x){

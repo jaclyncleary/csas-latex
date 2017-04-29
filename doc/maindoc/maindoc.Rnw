@@ -950,7 +950,7 @@ make.rel.biomass.mcmc.plot(base.model,
 %% SENSITIVITY PLOTS
 %% Survey indices
 
-\begin{figure}[htp]
+\begin{figure}[H]
 \begin{center}
 <<sens-sig-indices, fig.height=9, fig.width=8>>=
 s.yr <- 1996
@@ -989,4 +989,23 @@ par(old.par)
 \caption{MPD Index fits for (a) QSSS, (b) HSMAS, (c) HSSS, (d) WCVISS for models
   examining sensitivity to the $\sigma$ parameter.}
 \label{fig:sens-sig-indices}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% Spawning biomass
+
+\begin{figure}[H]
+\begin{center}
+<<sens-sig-biomass, fig.height=5, fig.width=8>>=
+make.biomass.mcmc.plot(c(base.model,sens.models.1),
+                       model.names = c(base.model.name, sens.model.names.1),
+                       y.max = 1300,
+                       opacity = 20,
+                       leg = "topright")
+@
+\end{center}
+\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for
+  models examining sensitivity to the $\sigma$ parameter. Points and bars
+  represent the estimates of $B_0$ with \mcmcci\ credible interval.}
+\label{fig:sens-sig-biomass}
 \end{figure}
