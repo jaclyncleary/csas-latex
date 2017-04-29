@@ -16,6 +16,13 @@ make.selex.comparison.plot <- function(model,
   ## show.mat - plot the maturity as well
   ## leg - legend location, e.g. "bottomright"
 
+  if(class(model) == model.lst.class){
+    model <- model[[1]]
+    if(class(model) != model.class){
+      stop("The structure of the model list is incorrect.")
+    }
+  }
+
   selex <- model$mpd$sel
   est.phz <- model$ctl$sel[6,]
   gear.names <- gear.names[,2]

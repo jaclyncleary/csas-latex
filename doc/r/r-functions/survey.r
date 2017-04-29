@@ -17,7 +17,12 @@ make.survey.indices.table <- function(model,
   ## digits - number of decimal points on % columns
   ## placement - latex code for placement of the table in document
 
-  curr.func.name <- get.curr.func.name()
+  if(class(model) == model.lst.class){
+    model <- model[[1]]
+    if(class(model) != model.class){
+      stop("The structure of the model list is incorrect.")
+    }
+  }
 
   dat <- model$dat
   indices <- dat$indices
@@ -38,7 +43,7 @@ make.survey.indices.table <- function(model,
                   function(x){p <- strsplit(as.character(x), " +")[[1]]})
     gear.names <- sapply(lst, function(x){latex.mlc(x)})
   }else{
-    cat0(curr.func.name, "Warning - no gear names were set in the data file.")
+    warning("Warning - no gear names were set in the data file.\n")
     gear.names <- sapply(gear.nums, function(x)paste0("Gear ", x))
   }
   tab <- data.frame()

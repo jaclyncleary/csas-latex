@@ -58,6 +58,7 @@ load.iscam.files <- function(model.dir,
     model$mcmc$params.est <- get.estimated.params(model$mcmc$params)
     model$mcmc$params.est.log <- calc.logs(model$mcmc$params.est)
   }
+  class(model) <- model.class
   model
 }
 
@@ -152,26 +153,22 @@ create.rdata.file <- function(models.dir = model.dir,
 }
 
 load.models <- function(model.dir,
-                        model.dir.names,
-                        ret.single.list = FALSE){
-  ## Load model(s) and return as a list if more than one. If only one,
-  ## return that object or if ret.single.list is TRUE, return a 1-element list.
-  ret.list = NULL
-  model.rdata.files <- file.path(model.dir, model.dir.names, paste0(model.dir.names, ".Rdata"))
-  for(i in 1:length(model.rdata.files)){
-    load(model.rdata.files[i])
-    ret.list[[i]] <- model
-    rm(model)
-  }
-  if(length(model.dir.names) == 1){
-    if(ret.single.list){
-      ret.list
-    }else{
-      ret.list[[1]]
-    }
-  }else{
-    ret.list
-  }
+                        model.dir.names){
+  ## Load model(s) and return as a list.
+  model.rdata.files <- file.path(model.dir,
+                                 model.dir.names,
+                                 paste0(model.dir.names,
+                                        ".Rdata"))
+  out <- lapply(1:length(model.rdata.files),
+                function(x){
+                  load(model.rdata.files[x])
+                  if(class(model) != model.class){
+                    model <- list(model)
+                  }
+                  model
+                })
+  class(out) <- model.lst.class
+  out
 }
 
 fetch.file.names <- function(path, ## Full path to the file

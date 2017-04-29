@@ -3,6 +3,10 @@
 ## -----------------------------------------------------------------------------
 verbose <- TRUE
 
+## Custom class types
+model.class <- "model"
+model.lst.class <- "model.list"
+
 ## Values to use in the mcmc calculations along with the median
 confidence.vals <- c(0.025, 0.975)
 
@@ -157,14 +161,11 @@ model.dir.names <- c(base.model.dir.name,
 ## as the other model setup and should be changed if bridge models
 ## and sensitivity models change in the model.dir.names above..
 load.models.into.parent.env <- function(){
-  base.model         <<- load.models(model.dir, base.model.dir.name)
-
-  sens.models.1      <<- load.models(model.dir, sens.model.dir.names.1)
-  ## Sensitivity groups 2 & 4 has only one sensitivity model in it,
-  ##  so set second argument to TRUE for those
-  sens.models.2      <<- load.models(model.dir, sens.model.dir.names.2, TRUE)
-  sens.models.3      <<- load.models(model.dir, sens.model.dir.names.3)
-  sens.models.4      <<- load.models(model.dir, sens.model.dir.names.4, TRUE)
+  base.model <<- load.models(model.dir, base.model.dir.name)
+  sens.models.1 <<- load.models(model.dir, sens.model.dir.names.1)
+  sens.models.2 <<- load.models(model.dir, sens.model.dir.names.2)
+  sens.models.3 <<- load.models(model.dir, sens.model.dir.names.3)
+  sens.models.4 <<- load.models(model.dir, sens.model.dir.names.4)
 }
 
 build <- function(ovwrt.base = FALSE,

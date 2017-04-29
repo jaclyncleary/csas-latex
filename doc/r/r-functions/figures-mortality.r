@@ -11,6 +11,13 @@ make.fishing.mort.mcmc.plot <- function(model,
   ## y.max - upper limit for the y axis
   ## opacity - how opaque the envelope is
 
+  if(class(model) == model.lst.class){
+    model <- model[[1]]
+    if(class(model) != model.class){
+      stop("The structure of the model list is incorrect.")
+    }
+  }
+
   par(mar = c(5.1, 5.1, 4.1, 3.1))
 
   f.mort <- model$mcmccalcs$f.mort.quants[[1]]

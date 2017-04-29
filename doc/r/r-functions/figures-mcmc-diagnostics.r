@@ -20,6 +20,13 @@ make.priors.posts.plot <- function(model,
   ## 6. p1 (defined by 5 above)
   ## 7. p2 (defined by 5 above)
 
+  if(class(model) == model.lst.class){
+    model <- model[[1]]
+    if(class(model) != model.class){
+      stop("The structure of the model list is incorrect.")
+    }
+  }
+
   f.names <- c(dunif, dnorm, dlnorm, dbeta, dgamma)
 
   mc <- model$mcmccalcs$p.dat.log
@@ -172,6 +179,13 @@ make.traces.plot <- function(model,
   ## Make trace plots for all paramaters from the mcmc output
   ## axis.lab.freq - the frequency of x-axis labelling
 
+  if(class(model) == model.lst.class){
+    model <- model[[1]]
+    if(class(model) != model.class){
+      stop("The structure of the model list is incorrect.")
+    }
+  }
+
   mc <- model$mcmc$params.est
   n.side <- get.rows.cols(ncol(mc))
   par(mfrow = n.side,
@@ -201,6 +215,13 @@ make.traces.plot <- function(model,
 
 make.autocor.plot <- function(model){
   ## Plot the autocorrelation of estimated parameters
+
+  if(class(model) == model.lst.class){
+    model <- model[[1]]
+    if(class(model) != model.class){
+      stop("The structure of the model list is incorrect.")
+    }
+  }
 
   mc <- model$mcmc$params.est
   n.side <- get.rows.cols(ncol(mc))

@@ -315,7 +315,8 @@ make.ref.points.table(base.model,
 cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
               "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
               "female spawning biomass (1000 t) for the Reference Case.")
-make.value.table(base.model$mcmccalcs$sbt.quants,
+make.value.table(base.model,
+                 type = 1,
                  xcaption = cap,
                  xlabel = "tab:spawn-biomass",
                  font.size = 9,
@@ -327,7 +328,8 @@ make.value.table(base.model$mcmccalcs$sbt.quants,
 cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
               "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
               "recruitment (millions) for the Reference Case.")
-make.value.table(base.model$mcmccalcs$recr.quants,
+make.value.table(base.model,
+                 type = 2,
                  xcaption = cap,
                  xlabel = "tab:recruitment",
                  font.size = 9,
@@ -339,7 +341,8 @@ make.value.table(base.model$mcmccalcs$recr.quants,
 cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
               "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
               "fishing mortality, F, for the Reference Case.")
-make.value.table(base.model$mcmccalcs$f.mort.quants[[1]],
+make.value.table(base.model,
+                 type = 3,
                  xcaption = cap,
                  xlabel = "tab:f-mort",
                  font.size = 9,
@@ -351,7 +354,8 @@ make.value.table(base.model$mcmccalcs$f.mort.quants[[1]],
 cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
               "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
               "annual harvest rate, U, for the Reference Case.")
-make.value.table(base.model$mcmccalcs$u.mort.quants[[1]],
+make.value.table(base.model,
+                 type = 4,
                  xcaption = cap,
                  xlabel = "tab:u-mort",
                  font.size = 9,
@@ -364,7 +368,8 @@ cap <- paste0("Derived posterior (2.5\\textsuperscript{th} percentile, ",
               "Median, and 97.5\\textsuperscript{th} percentile) and MPD ",
               "values of relative female spawning biomass for the Reference ",
               "Case.")
-make.value.table(base.model$mcmccalcs$depl.quants,
+make.value.table(base.model,
+                 type = 5,
                  xcaption = cap,
                  xlabel = "tab:depletion",
                  font.size = 9,
@@ -938,4 +943,50 @@ make.rel.biomass.mcmc.plot(base.model,
 \caption{Relative median posterior spawning biomass for the Reference Case.
   The shaded area represents the \mcmcci\ credible interval.}
 \label{fig:depletion}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%
+%% SENSITIVITY PLOTS
+%% Survey indices
+
+\begin{figure}[htp]
+\begin{center}
+<<sens-sig-indices, fig.height=9, fig.width=8>>=
+s.yr <- 1996
+e.yr <- 2014
+old.par <- par(no.readonly = TRUE)
+layout(matrix(c(1,2,3,4), 2, 2, byrow = TRUE))
+make.index.fit.plot(c(base.model, sens.models.1),
+                    model.names = c(base.model.name, sens.model.names.1),
+                    leg = "bottomright",
+                    start.yr = s.yr,
+                    end.yr = e.yr,
+                    ind = 1,
+                    ylim = c(0,20),
+                    ind.letter = "a")
+make.index.fit.plot(c(base.model, sens.models.1),
+                    start.yr = s.yr,
+                    end.yr = e.yr,
+                    ind = 2,
+                    ylim = c(0,20),
+                    ind.letter = "b")
+make.index.fit.plot(c(base.model, sens.models.1),
+                    start.yr = s.yr,
+                    end.yr = e.yr,
+                    ind = 3,
+                    ylim = c(0,20),
+                    ind.letter = "c")
+make.index.fit.plot(c(base.model, sens.models.1),
+                    start.yr = s.yr,
+                    end.yr = e.yr,
+                    ind = 4,
+                    ylim = c(0,20),
+                    ind.letter = "d")
+par(old.par)
+@
+\end{center}
+\caption{MPD Index fits for (a) QSSS, (b) HSMAS, (c) HSSS, (d) WCVISS for models
+  examining sensitivity to the $\sigma$ parameter.}
+\label{fig:sens-sig-indices}
 \end{figure}

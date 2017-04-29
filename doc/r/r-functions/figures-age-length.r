@@ -9,6 +9,13 @@ make.age.comp.plot <- function(model,
   ## type - 1 = data, 2 = fit, 3 = residuals
   ## add - if TRUE, par will not be restored on exit
 
+  if(class(model) == model.lst.class){
+    model <- model[[1]]
+    if(class(model) != model.class){
+      stop("The structure of the model list is incorrect.")
+    }
+  }
+
   if(!add){
     old.par <- par(no.readonly = TRUE)
     on.exit(par(old.par))
@@ -156,6 +163,7 @@ make.length.plot <-
   d <- d[d$SPECIMEN_SEX_CODE == sex,]
   d <- d[!(is.na(d$VESSEL_ID)),]
   d <- d[!(is.na(d$Length_cm)),]
+
   if(plot.subfleet){
     d <- d[d$VESSEL_ID %in% subfleet.vrn,]
   }else{
@@ -167,6 +175,7 @@ make.length.plot <-
                     function(x){
                       d.yr <- d[d$Year == yrs[x],]
                       d.yr$Length_cm})
+
   ## Make all vectors the same length so they will cbind without replication
   max.len <- max(sapply(len.dat, length))
   len.dat <- lapply(len.dat,

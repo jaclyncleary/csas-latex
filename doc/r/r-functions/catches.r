@@ -30,8 +30,6 @@ make.catches.table <- function(catches,
   ## digits - number of decimal points on % columns
   ## placement - latex code for placement of the table in document
 
-  curr.func.name <- get.curr.func.name()
-
   yrs <- start.yr:end.yr
   catches <- catches[catches$Year %in% yrs,]
 
@@ -177,15 +175,6 @@ make.catches.table <- function(catches,
           size = size.string,
           table.placement = placement)
   }
-}
-
-plot.catch <- function(catches,
-                       leg.loc = "topright"){
-  oldPar <- par(no.readonly=TRUE)
-  on.exit(par(oldPar))
-
-  curr.func.name <- get.curr.func.name()
-
 }
 
 make.catches.plot <- function(catches,

@@ -74,6 +74,13 @@ make.parameters.table <- function(model,
     invisible()
   }
 
+  if(class(model) == model.lst.class){
+    model <- model[[1]]
+    if(class(model) != model.class){
+      stop("The structure of the model list is incorrect.")
+    }
+  }
+
   ctl <- model$ctl
   params <- as.data.frame(ctl$params)
 
@@ -229,6 +236,13 @@ make.parameters.est.table <- function(model,
   ## placement - latex code for placement of the table in document
 
 
+  if(class(model) == model.lst.class){
+    model <- model[[1]]
+    if(class(model) != model.class){
+      stop("The structure of the model list is incorrect.")
+    }
+  }
+
   mc <- model$mcmccalcs
   p.quants <- mc$p.quants
   mcmc.names <- colnames(p.quants)
@@ -346,6 +360,14 @@ make.ref.points.table <- function(model,
   ## font.size - size of the font for the table
   ## space.size - size of the vertical spaces for the table
   ## placement - latex code for placement of the table in document
+
+  if(class(model) == model.lst.class){
+    model <- model[[1]]
+    if(class(model) != model.class){
+      stop("The structure of the model list is incorrect.")
+    }
+  }
+
   tab <- model$mcmccalcs$r.quants
   tab[,-1] <- f(tab[,-1], digits)
 
@@ -362,7 +384,8 @@ make.ref.points.table <- function(model,
         booktabs = TRUE)
 }
 
-make.value.table <- function(out.dat,
+make.value.table <- function(model,
+                             type,
                              digits = 3,
                              xcaption = "default",
                              xlabel   = "default",
@@ -372,12 +395,34 @@ make.value.table <- function(out.dat,
   ## Returns an xtable in the proper format for values (biomasas, recr, etc)
   ##
   ## out.dat - one of the quants objects as output by the calc.mcmc function
+  ## type - 1=biomass, 2=recruitment, 3=F, 4=U, 5=depletion
   ## digits - number of decimal places for the values
   ## xcaption - caption to appear in the calling document
   ## xlabel - the label used to reference the table in latex
   ## font.size - size of the font for the table
   ## space.size - size of the vertical spaces for the table
   ## placement - latex code for placement of the table in document
+
+  if(class(model) == model.lst.class){
+    model <- model[[1]]
+    if(class(model) != model.class){
+      stop("The structure of the model list is incorrect.")
+    }
+  }
+
+  if(type == 1){
+    out.dat <- model$mcmccalcs$sbt.quants
+  }else if(type == 2){
+    out.dat <- model$mcmccalcs$recr.quants
+  }else if(type == 3){
+    out.dat <- model$mcmccalcs$f.mort.quants[[1]]
+  }else if(type == 4){
+    out.dat <- model$mcmccalcs$u.mort.quants[[1]]
+  }else if(type == 5){
+    out.dat <- model$mcmccalcs$depl.quants
+  }else{
+    stop("Type ", type, " not implemented.")
+  }
 
   tab <- f(t(out.dat), digits)
   tab <- cbind(rownames(tab), tab)

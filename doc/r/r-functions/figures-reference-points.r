@@ -8,6 +8,13 @@ make.reference.points.plot <- function(model,
   ## ref.pts - the reference points to plot. These are the column names of
   ##  the r.dat data frame generated in calc.mcmc()
 
+  if(class(model) == model.lst.class){
+    model <- model[[1]]
+    if(class(model) != model.class){
+      stop("The structure of the model list is incorrect.")
+    }
+  }
+
   r.dat <- model$mcmccalcs$r.dat
   r.inc <- r.dat[, colnames(r.dat) %in% ref.pts]
 

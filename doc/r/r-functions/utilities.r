@@ -785,3 +785,29 @@ draw.envelope <- function(yrs,
           lwd = 1)
   }
 }
+
+c.model.list <- function(..., recursive = FALSE){
+  ## Extract the model class objects from the list of model lists,
+  ##  and merge them into a single model list containing all the model
+  ##  class objects.
+  ## To use: c(model.list.1, model.list.2)
+
+  lst <- list(...)
+  ret.lst <- NULL
+  ind <- 1
+  for(i in 1:length(lst)){
+    if(class(lst[[i]]) != model.lst.class){
+      stop("List element ", i, " is not of the class '", model.lst.class, "'.")
+    }
+    for(j in 1:length(lst[[i]])){
+      if(class(lst[[i]][[j]]) != model.class){
+        stop("Sublist element ", j, " of list element ", i,
+             " is not of the class '", model.class, "'.")
+      }
+      ret.lst[[ind]] <- lst[[i]][[j]]
+      ind <- ind + 1
+    }
+  }
+  class(ret.lst) <- model.lst.class
+  ret.lst
+}

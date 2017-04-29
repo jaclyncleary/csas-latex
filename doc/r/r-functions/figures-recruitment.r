@@ -9,6 +9,13 @@ make.recr.mcmc.plot <- function(model,
   ##
   ## y.max - upper limit for the y axis
 
+  if(class(model) == model.lst.class){
+    model <- model[[1]]
+    if(class(model) != model.class){
+      stop("The structure of the model list is incorrect.")
+    }
+  }
+
   rt <- model$mcmccalcs$recr.quants
   yrs <- as.numeric(colnames(rt))
 
@@ -56,6 +63,13 @@ make.recr.devs.mcmc.plot <- function(model,
   ##
   ## y.min - lower limit for the y axis
   ## y.max - upper limit for the y axis
+
+  if(class(model) == model.lst.class){
+    model <- model[[1]]
+    if(class(model) != model.class){
+      stop("The structure of the model list is incorrect.")
+    }
+  }
 
   rdev <- model$mcmccalcs$recr.devs.quants
   yrs <- as.numeric(colnames(rdev))

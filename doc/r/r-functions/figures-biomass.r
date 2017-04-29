@@ -16,6 +16,13 @@ make.vuln.biomass.mcmc.plot <- function(model,
   ## show.spawn.bio - add the spawning biomass to the plot
   ## leg - legend location (only used if show.spawn.bio is TRUE
 
+  if(class(model) == model.lst.class){
+    model <- model[[1]]
+    if(class(model) != model.class){
+      stop("The structure of the model list is incorrect.")
+    }
+  }
+
   par(mar = c(5.1, 5.1, 4.1, 3.1))
 
   vbt <- model$mcmccalcs$vuln.quants[[1]]
@@ -70,6 +77,13 @@ make.biomass.mcmc.plot <- function(model,
   ## bo.offset - offset to the left for the bo point an bars
   ## show.bmsy.line - show the reference lines 0.4 and 0.8bmsy
   ## show.bo.line - show the reference lines 0.2 and 0.4bo
+
+  if(class(model) == model.lst.class){
+    model <- model[[1]]
+    if(class(model) != model.class){
+      stop("The structure of the model list is incorrect.")
+    }
+  }
 
   par(mar = c(5.1, 5.1, 4.1, 3.1))
 
@@ -158,6 +172,13 @@ make.rel.biomass.mcmc.plot <- function(model,
   ##  case of the model
   ##
   ## opacity - how opaque the envelope is
+
+  if(class(model) == model.lst.class){
+    model <- model[[1]]
+    if(class(model) != model.class){
+      stop("The structure of the model list is incorrect.")
+    }
+  }
 
   par(mar = c(5.1, 5.1, 4.1, 3.1))
 

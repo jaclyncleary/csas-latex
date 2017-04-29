@@ -14,6 +14,13 @@ make.decision.table <- function(model,
   ## space.size - size of the vertical spaces for the table
   ## placement - latex code for placement of the table in document
 
+  if(class(model) == model.lst.class){
+    model <- model[[1]]
+    if(class(model) != model.class){
+      stop("The structure of the model list is incorrect.")
+    }
+  }
+
   tab <- model$mcmccalcs$proj.dat
   ## Don't format the first column as it should be the TAC
   tab[, -1] <- f(tab[, -1], digits)
