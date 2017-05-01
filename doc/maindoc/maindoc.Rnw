@@ -494,7 +494,7 @@ make.catch.discard.plot(catches,
 %%------------------------------------------------------------------------------
 %% AGE COMPOSITION PLOTS (DATA ONLY)
 
-\begin{figure}[htp]
+\begin{figure}[H]
 \begin{center}
 <<agecomps-trawl, fig.height=5, fig.width=8>>=
 make.age.comp.plot(base.model,
@@ -509,7 +509,7 @@ make.age.comp.plot(base.model,
 \end{figure}
 %%------------------------------------------------------------------------------
 
-\begin{figure}[htp]
+\begin{figure}[H]
 \begin{center}
 <<agecomps-surveys, fig.height=9, fig.width=8>>=
 old.par <- par(no.readonly = TRUE)
@@ -539,7 +539,7 @@ par(old.par)
 
 %%------------------------------------------------------------------------------
 %% LENGTH BOXPLOTS
-\begin{figure}[htp]
+\begin{figure}[H]
 \begin{center}
 <<lengthsubfleet, fig.height=9, fig.width=8>>=
 old.par <- par(no.readonly = TRUE)
@@ -847,12 +847,12 @@ make.reference.points.plot(base.model,
 old.par <- par(no.readonly = TRUE)
 layout(matrix(c(1, 2), 2, 1, byrow = FALSE))
 make.biomass.mcmc.plot(base.model,
-                       y.max = 1300,
+                       ylim = c(0, 1300),
                        opacity = 20,
                        ind.letter = "a",
                        show.bo.line = TRUE)
 make.biomass.mcmc.plot(base.model,
-                       y.max = 1300,
+                       ylim = c(0, 1300),
                        opacity = 20,
                        ind.letter = "b",
                        show.bmsy.line = TRUE)
@@ -875,7 +875,7 @@ par(old.par)
 \begin{center}
 <<vuln-spawn-biomass, fig.height=5, fig.width=8>>=
 make.vuln.biomass.mcmc.plot(base.model,
-                            y.max = 700,
+                            ylim = c(0, 700),
                             opacity = 20,
                             col = "black",
                             show.spawn.bio = TRUE,
@@ -921,7 +921,7 @@ par(old.par)
 \begin{center}
 <<F, fig.height=5, fig.width=8>>=
 make.fishing.mort.mcmc.plot(base.model,
-                            y.max = 0.5,
+                            ylim = c(0, 0.5),
                             opacity = 20,
                             col = "black")
 @
@@ -929,16 +929,13 @@ make.fishing.mort.mcmc.plot(base.model,
 \caption{Fishing mortality for the Reference Case. The shaded area represents
   the \mcmcci\ credible interval.}
 \label{fig:F}
-\end{figure}
 
 %%------------------------------------------------------------------------------
 %% RELATIVE SPAWNING BIOMASS PLOT
-\begin{figure}[H]
 \begin{center}
 <<depletion, fig.height=5, fig.width=8>>=
 make.rel.biomass.mcmc.plot(base.model,
-                           opacity = 20,
-                           col = "black")
+                           opacity = 20)
 @
 \end{center}
 \caption{Relative median posterior spawning biomass for the Reference Case.
@@ -993,14 +990,14 @@ par(old.par)
 \end{figure}
 
 %%------------------------------------------------------------------------------
-%% Spawning biomass
+%% Sigma sensitivity - Spawning biomass
 
 \begin{figure}[H]
 \begin{center}
 <<sens-sig-biomass, fig.height=5, fig.width=8>>=
-make.biomass.mcmc.plot(c(base.model,sens.models.1),
+make.biomass.mcmc.plot(c(base.model, sens.models.1),
                        model.names = c(base.model.name, sens.model.names.1),
-                       y.max = 1300,
+                       ylim = c(0, 1300),
                        opacity = 20,
                        leg = "topright")
 @
@@ -1012,6 +1009,7 @@ make.biomass.mcmc.plot(c(base.model,sens.models.1),
 \end{figure}
 
 %%------------------------------------------------------------------------------
+%% Sigma sensitivity - Recruitment
 \begin{figure}[H]
 \begin{center}
 <<sens-sig-recruitment, fig.height=9, fig.width=8>>=
@@ -1039,4 +1037,205 @@ par(old.par)
   \mcmcci\ credible intervals, for models examining sensitivity to the $\sigma$
   parameter.}
 \label{fig:sens-sig-recruitment}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% Tau sensitivity - Recruitment
+\begin{figure}[H]
+\begin{center}
+<<sens-tau-recruitment, fig.height=9, fig.width=8>>=
+old.par <- par(no.readonly = TRUE)
+layout(matrix(c(1, 2), 2, 1, byrow = FALSE))
+make.recr.mcmc.plot(c(base.model, sens.models.2),
+                    c(base.model.name, sens.model.names.2),
+                    type = 1,
+                    ylim = c(0, 27),
+                    offset = 0.1,
+                    append.base.txt = ", Tau = 0.8",
+                    show.median = TRUE,
+                    show.mean = TRUE,
+                    leg = "topright",
+                    ind.letter = "a")
+make.recr.mcmc.plot(c(base.model, sens.models.2),
+                    c(base.model.name, sens.model.names.2),
+                    type = 2,
+                    ylim = c(-1, 4),
+                    offset = 0.1,
+                    ind.letter = "b")
+par(old.par)
+@
+\end{center}
+\caption{Estimated recruitment (a) and recruitment deviations (b) with
+  \mcmcci\ credible intervals, for models examining sensitivity to the $\tau$
+  parameter.}
+\label{fig:sens-tau-recruitment}
+\end{figure}
+
+
+%%------------------------------------------------------------------------------
+%% Tau sensitivity - Spawning Biomass
+\begin{figure}[H]
+\begin{center}
+<<sens-tau-biomass, fig.height=5, fig.width=8>>=
+make.biomass.mcmc.plot(c(base.model, sens.models.2),
+                       model.names = c(base.model.name, sens.model.names.2),
+                       ylim = c(0, 1300),
+                       opacity = 20,
+                       append.base.txt = ", Tau = 0.8",
+                       leg = "topright")
+@
+\end{center}
+\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for
+  models examining sensitivity to the $\tau$ parameter. Points and bars
+  represent the estimates of $B_0$ with \mcmcci\ credible interval.}
+\label{fig:sens-tau-biomass}
+
+%%------------------------------------------------------------------------------
+%% Tau sensitivity - Relative Spawning Biomass
+\begin{center}
+<<sens-tau-depletion, fig.height=5,fig.width=8>>=
+make.rel.biomass.mcmc.plot(c(base.model, sens.models.2),
+                           c(base.model.name, sens.model.names.2),
+                           append.base.txt = ", Tau = 0.8",
+                           opacity = 20,
+                           leg = "topright")
+@
+\end{center}
+\caption{Estimated relative median spawning biomass with \mcmcci\ credible
+  intervals, for models examining sensitivity to the $\tau$ parameter.}
+\label{fig:sens-tau-depletion}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% Steepness sensitivity - Relative Spawning Biomass
+\begin{figure}[H]
+\begin{center}
+<<sens-h-biomass, fig.height=5,fig.width=8>>=
+make.biomass.mcmc.plot(c(base.model, sens.models.3),
+                       model.names = c(base.model.name, sens.model.names.3),
+                       ylim = c(0, 1300),
+                       opacity = 20,
+                       leg = "topright")
+@
+\end{center}
+\caption{Estimated median spawning biomass with \mcmcci\ credible intervals,
+  for models examining sensitivity to the steepness parameter. Points and bars
+  represent the estimates of $B_0$ with \mcmcci\ credible interval.}
+\label{fig:sens-h-biomass}
+
+\begin{center}
+<<sens-h-recruitment, fig.height=5,fig.width=8>>=
+make.recr.mcmc.plot(c(base.model, sens.models.3),
+                    c(base.model.name, sens.model.names.3),
+                    type = 1,
+                    ylim = c(0, 27),
+                    offset = 0.1,
+                    leg = "topleft")
+@
+\end{center}
+\vspace{-3mm}
+\caption{Estimated median recruitment with \mcmcci\ credible intervals, for
+  models examining sensitivity to the steepness parameter.}
+\label{fig:sens-h-recruitment}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% M sensitivity - Relative Spawning Biomass
+\begin{figure}[H]
+\begin{center}
+<<sens-msd-biomass, fig.height=5,fig.width=8>>=
+make.biomass.mcmc.plot(c(base.model, sens.models.4),
+                       model.names = c(base.model.name, sens.model.names.4),
+                       ylim = c(0, 1300),
+                       opacity = 20,
+                       leg = "topright")
+@
+\end{center}
+\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for
+  models examining sensitivity to the standard deviation of the natural mortality
+  parameter. Points and bars represent the estimates of $B_0$ with
+  \mcmcci\ credible interval.}
+\label{fig:sens-msd-biomass}
+
+\begin{center}
+<<sens-msd-recruitment, fig.height=5,fig.width=8>>=
+make.recr.mcmc.plot(c(base.model, sens.models.4),
+                    c(base.model.name, sens.model.names.4),
+                    type = 1,
+                    ylim = c(0, 27),
+                    offset = 0.1,
+                    leg = "topleft")
+@
+\end{center}
+\vspace{-3mm}
+\caption{Estimated median recruitment with \mcmcci\ credible intervals, for
+  models examining sensitivity to the standard deviation of the natural
+  mortality parameter.}
+\label{fig:sens-msd-recruitment}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% M sensitivity 2 - Relative Spawning Biomass
+\begin{figure}[H]
+\begin{center}
+<<sens-m-biomass, fig.height=5,fig.width=8>>=
+make.biomass.mcmc.plot(c(base.model, sens.models.5),
+                       model.names = c(base.model.name, sens.model.names.5),
+                       ylim = c(0, 1300),
+                       opacity = 20,
+                       leg = "topright")
+@
+\end{center}
+\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for
+  models examining sensitivity to the natural mortality parameter. Points and
+  bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
+\label{fig:sens-m-biomass}
+
+\begin{center}
+<<sens-m-recruitment, fig.height=5,fig.width=8>>=
+make.recr.mcmc.plot(c(base.model, sens.models.5),
+                    c(base.model.name, sens.model.names.5),
+                    type = 1,
+                    ylim = c(0, 27),
+                    offset = 0.1,
+                    leg = "topleft")
+@
+\end{center}
+\vspace{-3mm}
+\caption{Estimated median recruitment with \mcmcci\ credible intervals, for
+  models examining sensitivity to the the natural mortality parameter.}
+\label{fig:sens-m-recruitment}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% Q sensitivity - Relative Spawning Biomass
+\begin{figure}[H]
+\begin{center}
+<<sens-q-biomass, fig.height=5,fig.width=8>>=
+make.biomass.mcmc.plot(c(base.model, sens.models.7),
+                       model.names = c(base.model.name, sens.model.names.7),
+                       ylim = c(0, 1600),
+                       opacity = 20,
+                       leg = "topright")
+@
+\end{center}
+\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for
+  models examining sensitivity to the catchability parameter. Points and
+  bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
+\label{fig:sens-q-biomass}
+
+\begin{center}
+<<sens-q-recruitment, fig.height=5,fig.width=8>>=
+make.recr.mcmc.plot(c(base.model, sens.models.7),
+                    c(base.model.name, sens.model.names.7),
+                    type = 1,
+                    ylim = c(0, 27),
+                    offset = 0.1,
+                    leg = "topleft")
+@
+\end{center}
+\vspace{-3mm}
+\caption{Estimated median recruitment with \mcmcci\ credible intervals, for
+  models examining sensitivity to the the catchability parameter.}
+\label{fig:sens-q-recruitment}
 \end{figure}

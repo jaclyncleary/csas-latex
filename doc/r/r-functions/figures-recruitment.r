@@ -3,6 +3,7 @@ make.recr.mcmc.plot <- function(models,
                                 type = 1,
                                 ylim,
                                 offset = 0.1,
+                                append.base.txt = NULL,
                                 show.median = FALSE,
                                 show.mean = FALSE,
                                 ind.letter = NULL,
@@ -15,6 +16,7 @@ make.recr.mcmc.plot <- function(models,
   ##  estimates
   ## offset - the amount on the x-axis to offset each point and line for
   ##  multiple models
+  ## append.base.txt - text to append to the name of the first model
   ## show.median - for recruitment plot only
   ## show.mean - for recruitment plot only
 
@@ -46,7 +48,7 @@ make.recr.mcmc.plot <- function(models,
               ylab = "")
   lapply(1:length(yrs),
          function(x){
-           points(yrs[[x]] + (x - 1) * offset,
+           points(yrs[[x]] - (x - 1) * offset,
                   rt[[x]][2,],
                   type = "p",
                   pch = 20,
@@ -58,9 +60,9 @@ make.recr.mcmc.plot <- function(models,
                   ylim = ylim)})
   lapply(1:length(yrs),
          function(x){
-           arrows(yrs[[x]] + (x - 1) * offset,
+           arrows(yrs[[x]] - (x - 1) * offset,
                   rt[[x]][1,],
-                  yrs[[x]] + (x - 1) * offset,
+                  yrs[[x]] - (x - 1) * offset,
                   rt[[x]][3,],
                   col = x,
                   code = 3,
@@ -88,8 +90,13 @@ make.recr.mcmc.plot <- function(models,
   }
 
   if(!is.null(model.names) & !is.null(leg)){
+    if(!is.null(append.base.txt)){
+      model.names[[1]] <- paste0(model.names[[1]],
+                                 append.base.txt)
+    }
     legend(leg,
            model.names,
+           bg = "transparent",
            col = 1:length(models),
            lty = 1,
            lwd = 2)

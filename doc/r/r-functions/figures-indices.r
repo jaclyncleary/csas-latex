@@ -95,6 +95,7 @@ make.index.fit.plot <- function(models,
   if(!is.null(model.names) & !is.null(leg)){
     legend(leg,
            model.names,
+           bg = "transparent",
            col = 1:length(models),
            lty = 1,
            lwd = 2)

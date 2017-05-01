@@ -733,8 +733,6 @@ get.latex.name <- function(name, addToQ = 0){
 draw.envelope <- function(yrs,
                           quants,
                           col = "black",
-                          y.min = 0,
-                          y.max,
                           first,
                           opacity = 75,
                           ...){
@@ -743,8 +741,6 @@ draw.envelope <- function(yrs,
   ## Assumptions: quants is a 3-row matrix, where the middle row is the
   ##  median and the other two are the lower and upper values for some
   ##  confidence interval.
-  ## y.min - lower limit for the y-axis
-  ## y.max - upper limit for the y-axis
   ## first - boolean, if TRUE, plot will be called. If FALSE, lines will be
   ##  called.
   lower  <- quants[1,]
@@ -758,7 +754,7 @@ draw.envelope <- function(yrs,
          col = col,
          lty = 1,
          lwd = 2,
-         ylim = c(y.min, y.max), ...)
+         ...)
     shade <- get.shade(col, opacity)
     poly.yrs <- c(yrs, rev(yrs))
     poly.ci    <- c(lower, rev(upper))
@@ -770,7 +766,6 @@ draw.envelope <- function(yrs,
           col = col,
           lty = 1,
           lwd = 2,
-          ylim = c(y.min, y.max),
           ...)
     ## Upper and lower part of CI
     lines(yrs,

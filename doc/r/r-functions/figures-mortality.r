@@ -1,5 +1,5 @@
 make.fishing.mort.mcmc.plot <- function(model,
-                                        y.max,
+                                        ylim,
                                         opacity = 75,
                                         col = "black",
                                         ind.letter = NULL,
@@ -22,6 +22,7 @@ make.fishing.mort.mcmc.plot <- function(model,
 
   f.mort <- model$mcmccalcs$f.mort.quants[[1]]
   yrs <- as.numeric(colnames(f.mort))
+  xlim <- c(min(yrs), max(yrs))
 
   draw.envelope(yrs,
                 f.mort,
@@ -29,7 +30,8 @@ make.fishing.mort.mcmc.plot <- function(model,
                 xlab = "Year",
                 col = col,
                 las = 1,
-                y.max = y.max,
+                xlim = xlim,
+                ylim = ylim,
                 opacity = opacity,
                 first = TRUE,
                 ...)
