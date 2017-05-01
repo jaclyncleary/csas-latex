@@ -162,7 +162,7 @@ if(verbose){
 ## Sensitivity models group 6
 ## -----------------------------------------------------------------------------
 sens.model.dir.names.6 <- "10-qm0-qsd1"
-sens.model.names.6 <- "Q priors, mean = ln(1.5)"
+sens.model.names.6 <- "Q priors, mean = ln(1.0), SD = 1.0"
 verify.models(model.dir, sens.model.dir.names.6, sens.model.names.6)
 if(verbose){
   print.model.message(sens.model.dir.names.6,

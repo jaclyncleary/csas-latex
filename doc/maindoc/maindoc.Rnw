@@ -1212,9 +1212,9 @@ make.recr.mcmc.plot(c(base.model, sens.models.5),
 \begin{figure}[H]
 \begin{center}
 <<sens-q-biomass, fig.height=5,fig.width=8>>=
-make.biomass.mcmc.plot(c(base.model, sens.models.7),
-                       model.names = c(base.model.name, sens.model.names.7),
-                       ylim = c(0, 1600),
+make.biomass.mcmc.plot(c(base.model, sens.models.6),
+                       model.names = c(base.model.name, sens.model.names.6),
+                       ylim = c(0, 1300),
                        opacity = 20,
                        leg = "topright")
 @
@@ -1238,4 +1238,39 @@ make.recr.mcmc.plot(c(base.model, sens.models.7),
 \caption{Estimated median recruitment with \mcmcci\ credible intervals, for
   models examining sensitivity to the the catchability parameter.}
 \label{fig:sens-q-recruitment}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% Q sensitivity 2 - Relative Spawning Biomass
+\begin{figure}[H]
+\begin{center}
+<<sens-qsd-biomass, fig.height=5,fig.width=8>>=
+make.biomass.mcmc.plot(c(base.model, sens.models.7),
+                       model.names = c(base.model.name, sens.model.names.7),
+                       ylim = c(0, 1600),
+                       opacity = 20,
+                       leg = "topright")
+@
+\end{center}
+\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for
+  models examining sensitivity to the catchability standard deviation parameter.
+  Points and bars represent the estimates of $B_0$ with \mcmcci\ credible
+  interval.}
+\label{fig:sens-qsd-biomass}
+
+\begin{center}
+<<sens-qsd-recruitment, fig.height=5,fig.width=8>>=
+make.recr.mcmc.plot(c(base.model, sens.models.7),
+                    c(base.model.name, sens.model.names.7),
+                    type = 1,
+                    ylim = c(0, 27),
+                    offset = 0.1,
+                    leg = "topleft")
+@
+\end{center}
+\vspace{-3mm}
+\caption{Estimated median recruitment with \mcmcci\ credible intervals, for
+  models examining sensitivity to the the catchability standard deviation
+  parameter.}
+\label{fig:sens-qsd-recruitment}
 \end{figure}
