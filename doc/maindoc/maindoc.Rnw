@@ -897,14 +897,15 @@ make.vuln.biomass.mcmc.plot(base.model,
 old.par <- par(no.readonly = TRUE)
 layout(matrix(c(1, 2), 2, 1, byrow = FALSE))
 make.recr.mcmc.plot(base.model,
-                    y.max = 12,
-                    col = "black",
+                    type = 1,
+                    ylim = c(0, 12),
+                    show.median = TRUE,
+                    show.mean = TRUE,
                     ind.letter = "a")
-make.recr.devs.mcmc.plot(base.model,
-                         y.min = -1,
-                         y.max = 3,
-                         col = "black",
-                         ind.letter = "b")
+make.recr.mcmc.plot(base.model,
+                    type = 2,
+                    ylim = c(-1, 4),
+                    ind.letter = "b")
 par(old.par)
 @
 \end{center}
@@ -1008,4 +1009,34 @@ make.biomass.mcmc.plot(c(base.model,sens.models.1),
   models examining sensitivity to the $\sigma$ parameter. Points and bars
   represent the estimates of $B_0$ with \mcmcci\ credible interval.}
 \label{fig:sens-sig-biomass}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<sens-sig-recruitment, fig.height=9, fig.width=8>>=
+old.par <- par(no.readonly = TRUE)
+layout(matrix(c(1, 2), 2, 1, byrow = FALSE))
+make.recr.mcmc.plot(c(base.model, sens.models.1),
+                    c(base.model.name, sens.model.names.1),
+                    type = 1,
+                    ylim = c(0, 27),
+                    offset = 0.1,
+                    show.median = TRUE,
+                    show.mean = TRUE,
+                    leg = "topright",
+                    ind.letter = "a")
+make.recr.mcmc.plot(c(base.model, sens.models.1),
+                    c(base.model.name, sens.model.names.1),
+                    type = 2,
+                    ylim = c(-1, 4),
+                    offset = 0.1,
+                    ind.letter = "b")
+par(old.par)
+@
+\end{center}
+\caption{Estimated recruitment (a) and recruitment deviations (b) with
+  \mcmcci\ credible intervals, for models examining sensitivity to the $\sigma$
+  parameter.}
+\label{fig:sens-sig-recruitment}
 \end{figure}

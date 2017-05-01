@@ -1,98 +1,99 @@
-make.recr.mcmc.plot <- function(model,
-                                y.max,
-                                col = "black",
+make.recr.mcmc.plot <- function(models,
+                                model.names = NULL,
+                                type = 1,
+                                ylim,
+                                offset = 0.1,
+                                show.median = FALSE,
+                                show.mean = FALSE,
                                 ind.letter = NULL,
-                                ...
-                                ){
-  ## Plot the recruitment with credibility intervals for the mcmc
-  ##  case of the model.
+                                leg = NULL,
+                                ... ){
+  ## Plot the recruitment or deviations with credibility intervals for
+  ##  the mcmc case of the models.
   ##
-  ## y.max - upper limit for the y axis
+  ## type - 1 = recruitment estimates, any other = recruitment deviation
+  ##  estimates
+  ## offset - the amount on the x-axis to offset each point and line for
+  ##  multiple models
+  ## show.median - for recruitment plot only
+  ## show.mean - for recruitment plot only
 
-  if(class(model) == model.lst.class){
-    model <- model[[1]]
-    if(class(model) != model.class){
-      stop("The structure of the model list is incorrect.")
-    }
+  if(class(models) != model.lst.class){
+    stop("The models argument is not of class '",
+         models.lst.class, "'.")
   }
 
-  rt <- model$mcmccalcs$recr.quants
-  yrs <- as.numeric(colnames(rt))
+  rt <- lapply(models,
+               function(x){
+                 if(type == 1){
+                   x$mcmccalcs$recr.quants
+                 }else{
+                   x$mcmccalcs$recr.devs.quants
+                 }})
+  yrs <- lapply(rt,
+                function(x){
+                  as.numeric(colnames(x))})
+  xlim <- lapply(1:length(yrs),
+                 function(x){
+                   c(min(yrs[[x]]), max(yrs[[x]]))})
+  xlim <- do.call(rbind, xlim)
+  xlim <- c(min(xlim), max(xlim))
 
-  plot(yrs,
-       rt[2,],
-       type = "p",
-       pch = 20,
-       col = col,
-       ylim = c(0, y.max),
-       xlim = c(min(yrs), max(yrs)),
-       xlab = "Year",
-       ylab = "Recruitment (millions)",
-       las = 1)
+  plot.new()
+  plot.window(xlim = xlim,
+              ylim = ylim,
+              xlab = "",
+              ylab = "")
+  lapply(1:length(yrs),
+         function(x){
+           points(yrs[[x]] + (x - 1) * offset,
+                  rt[[x]][2,],
+                  type = "p",
+                  pch = 20,
+                  col = x,
+                  xlab = "",
+                  ylab = "",
+                  las = 1,
+                  xlim = xlim,
+                  ylim = ylim)})
+  lapply(1:length(yrs),
+         function(x){
+           arrows(yrs[[x]] + (x - 1) * offset,
+                  rt[[x]][1,],
+                  yrs[[x]] + (x - 1) * offset,
+                  rt[[x]][3,],
+                  col = x,
+                  code = 3,
+                  angle = 90,
+                  length = 0.02)})
 
-  arrows(yrs,
-         rt[1,],
-         yrs,
-         rt[3,],
-         col = col,
-         code = 3,
-         angle = 90,
-         length = 0.05)
-
-  abline(h = median(as.matrix(rt)),
-         col = "green",
-         lty = 1)
-  abline(h = mean(as.matrix(rt)),
-         col = "red",
-         lty = 1)
-
-  if(!is.null(ind.letter)){
-    panel.letter(ind.letter)
+  if(type == 1 & show.median){
+    abline(h = median(as.matrix(rt[[1]])),
+           col = "green",
+           lty = 1)
   }
-}
-
-make.recr.devs.mcmc.plot <- function(model,
-                                     y.min = 0,
-                                     y.max,
-                                     col = "black",
-                                     ind.letter = NULL,
-                                     ...
-                                     ){
-  ## Plot the recruitment deviations with credibility intervals for the mcmc
-  ##  case of the model.
-  ##
-  ## y.min - lower limit for the y axis
-  ## y.max - upper limit for the y axis
-
-  if(class(model) == model.lst.class){
-    model <- model[[1]]
-    if(class(model) != model.class){
-      stop("The structure of the model list is incorrect.")
-    }
+  if(type == 1 & show.mean){
+    abline(h = mean(as.matrix(rt[[1]])),
+           col = "red",
+           lty = 1)
+  }
+  axis(1, at = yrs[[1]], labels = yrs[[1]])
+  axis(2)
+  box()
+  mtext("Year", 1, line = 3)
+  if(type == 1){
+    mtext("Recruitment (millions)", 2, line = 3)
+  }else{
+    mtext("Log recruitment deviations", 2, line = 3)
   }
 
-  rdev <- model$mcmccalcs$recr.devs.quants
-  yrs <- as.numeric(colnames(rdev))
-
-  plot(yrs,
-       rdev[2,],
-       type = "p",
-       pch = 20,
-       col = col,
-       ylim = c(y.min, y.max),
-       xlim = c(min(yrs), max(yrs)),
-       xlab = "Year",
-       ylab = "Log recruitment deviations",
-       las = 1)
-
-  arrows(yrs,
-         rdev[1,],
-         yrs,
-         rdev[3,],
-         col = col,
-         code = 3,
-         angle = 90,
-         length = 0.05)
+  if(!is.null(model.names) & !is.null(leg)){
+    legend(leg,
+           model.names,
+           col = 1:length(models),
+           lty = 1,
+           lwd = 2)
+  }
 
   if(!is.null(ind.letter)){
     panel.letter(ind.letter)
