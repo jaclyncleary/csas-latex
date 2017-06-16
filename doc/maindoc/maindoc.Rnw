@@ -805,6 +805,7 @@ par(old.par)
 <<selex, fig.height=5,fig.width=8>>=
 make.selex.comparison.plot(base.model,
                            gear.names,
+                           ind = c(1, 2, 3, 4, 5),
                            areas = c("3C",
                                      "3D",
                                      "5A",

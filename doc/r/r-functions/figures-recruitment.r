@@ -22,7 +22,7 @@ make.recr.mcmc.plot <- function(models,
 
   if(class(models) != model.lst.class){
     stop("The models argument is not of class '",
-         models.lst.class, "'.")
+         model.lst.class, "'.")
   }
 
   rt <- lapply(models,

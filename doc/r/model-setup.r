@@ -187,8 +187,11 @@ if(verbose){
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 8
 ## -----------------------------------------------------------------------------
-sens.model.dir.names.8 <- "12-fix-trawl-sel-amat"
-sens.model.names.8 <- "Fix trawl sel to maturity ogive"
+sens.model.dir.names.8 <- c("12-fix-trawl-sel-amat",
+                            "13-fix-trawl-sel-6years")
+sens.model.names.8 <- c("Trawl selex fixed at maturity",
+                        "Trawl selex fixed at 6 years")
+
 verify.models(model.dir, sens.model.dir.names.8, sens.model.names.8)
 if(verbose){
   print.model.message(sens.model.dir.names.8,

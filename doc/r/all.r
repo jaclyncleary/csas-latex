@@ -7,9 +7,6 @@
 ## Clean your workspace before loading
 rm(list = ls(all = TRUE))
 
-## The directory where the iscam-gui project resides
-iscam.gui.dir <- "../../../iscam-gui"
-
 ## The purpose of the r-functions directory is to separate the
 ##  r code which is not commonly changed so that the files which are
 ##  can be clearly seen.

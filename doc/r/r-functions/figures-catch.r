@@ -77,14 +77,14 @@ make.catch.discard.plot <- function(catch.df,
     on.exit(par(oldPar))
   }
 
-  yrs <- start.yr:end.yr
-  catches <- catches[catches$Year %in% yrs,]
+  yrs <- s.yr:e.yr
+  catch.df <- catch.df[catch.df$Year %in% yrs,]
 
   area.codes <- get.area.codes(areas)
-  catches <- catches[catches$AreaCode %in% area.codes,]
+  catch.df <- catch.df[catch.df$AreaCode %in% area.codes,]
 
-  ct <- agg(catches, "CatchKG", weight.factor)
-  d.ct <- agg(catches, "DiscardedKG", weight.factor)
+  ct <- agg(catch.df, "CatchKG", weight.factor)
+  d.ct <- agg(catch.df, "DiscardedKG", weight.factor)
 
   tab <- as.matrix(cbind(ct$catch, d.ct$catch))
 

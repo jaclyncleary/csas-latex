@@ -90,7 +90,7 @@ make.biomass.mcmc.plot <- function(models,
 
   if(class(models) != model.lst.class){
     stop("The models argument is not of class '",
-         models.lst.class, "'.")
+         model.lst.class, "'.")
   }
 
   par(mar = c(5.1, 5.1, 4.1, 3.1))
@@ -235,7 +235,7 @@ make.rel.biomass.mcmc.plot <- function(models,
 
   if(class(models) != model.lst.class){
     stop("The models argument is not of class '",
-         models.lst.class, "'.")
+         model.lst.class, "'.")
   }
 
   par(mar = c(5.1, 5.1, 4.1, 3.1))
