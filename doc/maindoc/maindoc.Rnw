@@ -1322,7 +1322,8 @@ make.reference.points.plot(c(base.model,
 \caption{Posterior reference points for models examining sensitivity to trawl
   selectivity. Bars represent \mcmcci\ credible intervals. 1 =
   \Sexpr{base.model.name}, 2 = \Sexpr{sens.model.names.8[1]}, 3 =
-  \Sexpr{sens.model.names.8[2]}.}
+  \Sexpr{sens.model.names.8[2]}. MSY-based reference points are in thousands
+  of tonnes.}
 \label{fig:sens-trawl-selex-refpoints}
 \end{figure}
 
