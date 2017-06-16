@@ -451,8 +451,21 @@ make.decision.table(sens.models.4[[1]],
 
 \section{FIGURES}
 
-%% CATCH PLOTS
+%% CPUE/CATCH PLOTS
 %%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+\includegraphics[width=6in,keepaspectratio=true]{maindoc/figures/ARF-1996-2014-CPUE.eps}
+\end{center}
+\caption{Mean catch-per-unit-effort (CPUE, kg/h) of \fishname\ in grid cells
+  0.1$^\circ$ longitude by 0.075$^\circ$ latitude (roughly 57.8~km$^2$). The
+  shaded cells give an approximation of the area where \fishname\ was
+  encountered by fishing events from the groundfish trawl fishery from
+  January 1, 1996 to October 7, 2014. Contours are 200 m and 1000 m isobaths.
+  Red lines are PFMA area boundaries.}
+\label{fig:cpue}
+\end{figure}
+
 \begin{figure}[H]
 \begin{center}
 <<totalcatch, fig.height=9, fig.width=8>>=
