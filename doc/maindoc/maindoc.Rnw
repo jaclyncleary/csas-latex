@@ -1275,3 +1275,38 @@ make.recr.mcmc.plot(c(base.model, sens.models.7),
   parameter.}
 \label{fig:sens-qsd-recruitment}
 \end{figure}
+
+%%------------------------------------------------------------------------------
+%% Trawl selectivity sensitivity - selectivity
+\begin{figure}[H]
+\begin{center}
+<<sens-trawlsel-selex, fig.height=5,fig.width=8>>=
+make.selex.comparison.plot(c(base.model,
+                             sens.models.8),
+                           c(base.model.name,
+                             sens.model.names.8),
+                           ind = 1,
+                           leg = "bottomright")
+@
+\end{center}
+\caption{Trawl selectivity for models examining sensitivity to trawl
+  selectivity.}
+\label{fig:sens-trawlsel-selex}
+
+\begin{center}
+<<sens-trawl-selex-biomass, fig.height=5,fig.width=8>>=
+make.biomass.mcmc.plot(c(base.model,
+                         sens.models.8),
+                       model.names = c(base.model.name,
+                                       sens.model.names.8),
+                       ylim = c(0, 1300),
+                       opacity = 20,
+                       leg = "topright")
+@
+\end{center}
+\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for
+  models examining sensitivity to trawl selectivity. Points and bars represent
+  the estimates of $B_0$ with \mcmcci\ credible interval.}
+\label{fig:sens-trawl-selex-biomass}
+\end{figure}
+
