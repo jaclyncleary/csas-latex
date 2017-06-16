@@ -5,6 +5,7 @@
 *~
 *.dvi
 *.ps
+.RData
 .RHistory
 *.7z
 *.toc
@@ -15,4 +16,7 @@ resDoc.lot
 doc/figure/*
 doc/resDoc.tex
 doc/knitr-cache/
-models/*
+models/
+models-backup/
+models-mwe/
+Grandin-Arrowtooth-CSAS-ResDoc-March07-2017-WebAccessible.pdf
