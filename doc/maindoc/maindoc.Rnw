@@ -164,6 +164,23 @@ $\Sexpr{max(bio$vonb[[1]][[1]][,2])}$ y for males There were few observations of
 fish over 20 y in the dataset, and this assessment assumes a plus group of 20 y
 (Figure~\ref{fig:agecomps-trawl}).
 
+\fishname\ are batch spawners with peak spawning occurring at depths deeper than
+350 m in the fall and winter months, although the timing of spawning may vary
+interannually (\citet{arf1995}). The species produces pelagic eggs, followed by
+a pelagic larval stage that may last several months (\citet{arf1995}). Fecundity
+of this species is poorly understood (\citet{dicosimo1998}). One and two year
+old fish occupy shallower depths than adults, but by the age of three or four
+years old, they are generally found in deeper water with adults
+(\citet{arf2001}). \fishname\ appear to occupy separate spawning (winter) and
+feeding (summer) areas, and undergo seasonal bathymetric movement from shallower
+to deeper water in the fall and winter (\citet{arf2001}).
+
+Juvenile \fishname\ feed primarily on mobile prey such as cumaceans, carideans
+and amphipods. Adults are piscivorous and cannibalistic, feeding on Pacific
+Herring (\emph{Clupea pallasii}), juvenile Walleye Pollock
+(\emph{Theragra chalcogramma}) and Pacific Sandlance
+(\emph{Ammodytes hexapterus}), among other species (\citet{fargo1981}).
+
 \subsection{FISHERY AND MANAGEMENT HISTORY} \label{sec:managementhistory}
 \fishname\ has been managed on a status-quo basis in recent years.
 
