@@ -216,8 +216,15 @@ used in this assessment.
 
 \subsection{ASSESSMENT HISTORY}
 The coastwide \fishname\ stock was last assessed by \citet{arf2001}, who
-presented summaries of catch, commercial and survey
-catch-pre-unit-of-effort (CPUE) analyses, and biological data.
+presented summaries of catch, commercial and survey catch-pre-unit-of-effort
+(CPUE) analyses, and biological data. They reported commercial and survey CPUE
+indices that showed cycles but no trends. They also reported lack of trend in
+size and age composition data, and no evidence that natural mortality had
+changed over time. Based on this evidence, \citet{arf2001} concluded that harvest
+rates of \fishname\ off the west coast of Canada were at or below sustainable
+levels. Prior to 2001, the stock was assessed by \citet{fargo1998}. A formal,
+statistical catch-at-age model-based assessment has never previously been done
+in \bc\ for this species.
 
 \section{STOCK ASSESSMENT MODELLING}
 We applied a statistical catch-at-age model in a Bayesian estimation
