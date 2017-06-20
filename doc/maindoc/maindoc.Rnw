@@ -1,12 +1,102 @@
 \abstract{}
 
-Insert abstract text here
+\fishname\ (\emph{\sciencename}, \commonname) are an important component
+of the bottom trawl fishery in \bc. They are managed as a coastwide stock,
+with a TAC of 15,000 t and catch of 10,679 t in 2014. Prior to the introduction
+of freezer trawlers in the mid-2000s, most of the historical catch of
+\fishname\ is understood to have been discarded at sea. This was largely due
+to proteolysis, which occurs in the muscle tissue of this species a short time
+after it is caught, making the flesh unpalatable. In the past five years,
+markets have been established for fillets that have been frozen at sea, and
+the freezer trawl fleet has taken an increasing proportion of the coastwide catch.
+
+This assessment fits a female only Bayesian age-structured model to catch,
+survey and age-composition data from the years 1996-2014, for management areas
+3CD (West Coast Vancouver Island), 5AB (Queen Charlotte Sound), 5CD
+(Hecate Strait), and 5E (West Coast Haida Gwaii). Catch data prior to the
+introduction of at-sea observers in 1996 were considered too unreliable for
+inclusion in the assessment due to unknown quantities of discarding at sea.
+
+The Reference Case model presented in this assessment estimates the female
+spawning biomass to have been on a flat to increasing trajectory since 1996,
+consistent with the catch and survey data. A set of sensitivity analyses was
+done to test the effects of fixed parameters and assumed prior probability
+distributions on model outcomes. In all scenarios, there was strong
+confounding among parameters representing productivity and scale of the population,
+indicating that there was limited information in the short time series of available
+data to resolve the population scale.
+
+Management advice is provided in the form of decision tables which forecast the
+impacts of a range of 2015 catch levels on \fishname\ stock status relative to
+these reference points. The Reference Case decision table suggests that a 2015
+catch equal to any of the catch levels tested, ranging from 0 t to 30,000 t
+(twice the 2014 TAC), would result in a 2016 biomass above all of the candidate
+biomass-based reference points tested, and 2015 harvest rate below the estimated
+\emph{U}\subscr{MSY}. Large uncertainty in the assessment is however, emphasised.
+The magnitude of catch and discards prior to 1996 is a major source of uncertainty
+in this assessment that could provide critical information about the scale and
+productivity of this stock. Ageing of archived otoliths from the freezer trawl
+fleet is a high priority recommendation.
 
 \frenchabstract{
-  Insert French abstract title here
+  Évaluation du stock de plie à grande bouche
+  (\emph{Atheresthes stomias}) de la côte ouest de la
+    Colombie-Britannique
 }
 
-Insert French abstract text here
+La plie à grande bouche (\emph{Atheresthes stomias} ou flétan noir) est une importante
+composante de la pêche au chalut de fond en Colombie-Britannique. Ce stock est
+géré pour l’ensemble de la côte et s’est vu attribuer un total autorisé des
+captures (TAC) de 15 000 tonnes en 2014; les prises réelles se sont élevées
+à 10 679 tonnes. On s’entend pour dire qu’avant l’introduction des chalutiers
+congélateurs au milieu des années 2000, la plupart des prises de plie à grande
+bouche étaient rejetées à la mer. On procédait ainsi principalement en raison
+de la protéolyse qui survient dans les tissus musculaires de cette espèce peu
+de temps après sa capture, ce qui rend la chair impropre à la consommation.
+Au cours des cinq dernières années, le marché de filets ayant été congelés
+en mer s’est développé, et la flotte de chalutiers congélateurs s’approprie
+maintenant une proportion croissante des prises côtières.
+
+La présente évaluation utilise un modèle de population Bayésien structuré
+par âge et tenant compte des individus femelles seulement pour capturer, étudier
+et recueillir des données de composition selon l’âge, entre 1996 et 2014, dans
+les zones de gestion 3CD (côte ouest de l’île de Vancouver), 5AB (détroit de la
+Reine-Charlotte), 5CD (détroit d’Hécate) et 5E (côte ouest d’Haida Gwaii).
+Étant donné que l’on ne connaissait pas les quantités des rejets en mer, on a
+jugé que les données sur les prises recueillies avant l’introduction
+d’observateurs en mer en 1996 n’étaient pas assez fiables pour être incluses
+dans l’évaluation.
+
+Selon le modèle de référence présenté dans le cadre de cette évaluation, la
+biomasse du stock reproducteur femelle se trouve sur une trajectoire neutre
+ou à la hausse depuis 1996, ce qui reflète bien les données d’enquête et
+de prise recueillies. Une série d’analyses de sensibilité a été effectuée
+pour tester les effets des paramètres fixes et de la distribution de
+probabilité présumée sur les résultats du modèle. Dans chacun des
+scénarios, on a relevé d’importants facteurs de confusion parmi les
+paramètres représentant la productivité et la taille de la population,
+indiquant que l’information tirée de la courte période de collecte de
+données n’était pas suffisante pour résoudre la question de la taille de
+la population.
+
+Des conseils de gestion sont fournis sous forme de tables de décision qui
+prévoient les effets de différents niveaux de captures (en 2015) sur
+l’état du stock de plie à grande bouche, en fonction de ces points de
+référence. La table de décision du cas de référence estime qu’un niveau
+de captures (en 2015) égal à l’un ou l’autre des niveaux de captures
+testés, soit entre 0 et 30 000 tonnes (le double du TAC de 2014),
+engendrait une biomasse (en 2016) supérieure à tous les points de
+références possibles basés sur la biomasse, ainsi qu’un taux de récolte
+(en 2015) inférieur au rendement maximal soutenu \emph{U}\subscr{RMS}. On souligne
+cependant qu’il existe une grande incertitude à l’égard de l’évaluation.
+L’ampleur des prises et des rejets avant 1996 est l’une des principales
+sources d’incertitude dans la présente évaluation; s’ils existaient, ces
+renseignements sur les prises et les rejets pourraient en dire long sur
+la taille et la productivité de ce stock. La détermination de l’âge des
+otolithes archivés de la flotte de chalutiers congélateurs fait partie
+des recommandations prioritaires.
+
+\clearpage
 
 %% The next two lines are required to start off numbering
 \pagenumbering{arabic}

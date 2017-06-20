@@ -18,9 +18,10 @@
 %%  syntax is \mlc{first line\\second line}
 %% Don't change the name of this, as it is embedded in R xtable code.
 \newcommand{\mlc}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
-\newcommand{\fishname}{Fishname}
-\newcommand{\sciencename}{\emph{Latin name}}
-\newcommand{\familyname}{\emph{Family name}}
+\newcommand{\fishname}{Arrowtooth Flounder}
+\newcommand{\sciencename}{Atheresthes stomias}
+\newcommand{\familyname}{Pleuronectidae}
+\newcommand{\commonname}{Turbot}
 \newcommand{\Avuln}{Age-at-50\%-vulnerability}
 \newcommand{\Amat}{Age-at-50\%-maturity}
 \newcommand{\amat}{age-at-50\%-maturity}
