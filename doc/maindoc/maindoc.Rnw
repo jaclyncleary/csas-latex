@@ -493,7 +493,67 @@ suggests that this may not be representative of the population.
 A female-only, Bayesian statistical catch-at-age model was applied to assess the
 coastwide stock status of \fishname. The model is based on the Integrated
 Statistical Catch Age Model (iSCAM) framework, \citet{martell2011}. Full model
-details are provided in Appendix \ref{chap:equations}.\\
+details are provided in Appendix \ref{chap:equations}.
+
+We define a Reference Case with fixed and estimated parameters described in
+Table~\ref{tab:parameters}. A total of 74 model parameters were conditionally
+estimated by the Reference Case (Table~\ref{tab:parameters}). The model
+estimated time series of log recruitment anomalies and log fishing mortality
+rates; and time-invariant values of unfished recruitment, steepness of the
+Beverton-Holt stock-recruit relationship, natural mortality, average recruitment
+and logistic selectivity parameters for the commercial fishery and the four
+surveys. Prior probability distributions for the Reference Case are shown in
+Table~\ref{tab:parameters} and Figure~\ref{fig:priors} and described in
+Section \ref{sec:priors}. Model sensitivity to fixed parameters and to assumed
+prior probability distributions are presented in a later section.
+
+In brief, the model was conditioned on observed catch data (1996--2014), which
+were assumed to be known without error. The model was fit to the four survey
+indices of abundance described above, and to age composition data from the
+commercial fishery and three of the fishery-independent surveys (HSSS, QCSSS,
+WCVISS). Biological parameters determining weight-at-age and maturity-at-age
+schedules, were estimated independently (Appendix \ref{chap:biological}) and
+input to the assessment model as fixed parameters that remained constant over
+time.
+
+Survey biomass indices were treated as relative abundance indices that are
+directly proportional to the survey vulnerable biomass at the beginning of each
+year. Observation errors in relative abundance indices were assumed to be
+log-normally distributed. The survey catchability parameter $q_k$ was estimated
+for each survey $k$, with the maximum likelihood estimate of $q_k$ used in the
+calculation of the objective function (\citet{walters1994}). Prior probability
+distributions for $\ln(q_k)$ are described in Section \ref{sec:priors}.
+
+Age-composition observations were assumed to come from a multivariate logistic
+distribution, where predicted proportions-at-age are a function of the predicted
+population age-structure and the age specific vulnerability to the fishing gear
+(\citet{rs98}). The likelihood for the age-composition data was evaluated at the
+conditional maximum likelihood estimate of the variance (i.e., no subjective
+weighting scheme was used to scale likelihood for the age-composition
+information). No age-reading errors were assumed.
+
+Selectivity-at-age for the trawl fishery and four surveys was modelled using a
+two-parameter logistic function with asymptote at 1. \Avuln\ ($\hat{a}_k$) and
+the standard deviation of the logistic selectivity curve ($\hat{\gamma}_k$) for
+each gear $k$ were estimated for the trawl fishery and the three synoptic surveys.
+No age composition data were available for the HSMAS and selectivity was fixed
+with $\hat{a}_k$ = $\Sexpr{base.model[[1]]$ctl$sel[,3][2]}$ and
+$\hat{\gamma}_k$ = $\Sexpr{base.model[[1]]$ctl$sel[,3][3]}$, similar to
+estimated values for the other gears. Trial runs indicated that there was little
+model sensitivity to this assumption.
+
+Variance components of the model were partitioned using an errors in variables
+approach. The key variance parameter is the inverse of the total variance
+(i.e., $\vartheta^2$, total precision). The total variance is partitioned into
+observation and process error components by the model parameter $\rho$, which
+represents the proportion of the total variance that is due to observation error
+(\citet{punt1999}, \citet{deriso2007}). The total variance is partitioned into
+observation errors ($\sigma$) and process errors ($\tau$) using
+Eq.~\ref{eq:df17}. The parameters $\vartheta^2$ and $\rho$ were fixed in the
+current assessment (Table~\ref{tab:parameters}) at values that gave
+$\sigma$ = $0.2$ and $\tau$ = $0.8$. See Section \ref{sec:variance} for
+sensitivity analyses to this assumption. See Appendix \ref{chap:equations} for
+further details on the treatment of variance in this assessment.
 
 \subsubsection{Prior Probability Distributions} \label{sec:priors}
 Prior probability distributions for the Reference Case are shown in
