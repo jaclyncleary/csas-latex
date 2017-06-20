@@ -182,11 +182,37 @@ Herring (\emph{Clupea pallasii}), juvenile Walleye Pollock
 (\emph{Ammodytes hexapterus}), among other species (\citet{fargo1981}).
 
 \subsection{FISHERY AND MANAGEMENT HISTORY} \label{sec:managementhistory}
-\fishname\ has been managed on a status-quo basis in recent years.
+\fishname\ has been managed on a status-quo basis in recent years, with an
+annual allocation of 15,000 t for the groundfish trawl fleet since 2006.
+Before that time, there were no limits on catches or discards of \fishname.
+The areas of high CPUE in Dixon Entrance seen in Figure~\ref{fig:cpue} are
+mainly from this test fishery. The increased catch can be seen in
+Figure~\ref{fig:main-catches}, especially in the northern areas (5ABCDE)
+(Panel (c) of Figure~\ref{fig:main-catches}). Unfortunately, due to rapid
+proteolysis of the flesh, the fishery was not profitable and a large drop
+in catch is evident after 2005 (Figure~\ref{fig:main-catches}) when the test
+fishery ended abruptly. There has also been a recent increase in catch from
+2010--2014, which is due to four freezer trawlers joining the fleet. With their
+ability to freeze the catch a short time after capture, the freezer trawlers
+have accessed wider markets than the smaller shoreside boats. The freezer
+trawlers' priority catch is Pacific Hake (\citet{hake2015}), but when hake
+become scarce on the fishing grounds the freezer trawlers have the ability to
+easily switch gears to bottom trawl to fish for \fishname. Since their
+introduction, freezer trawlers have taken an increasing proportion of the total
+\fishname\ catch, increasing from 7.0\% in 2005 to 65.8\% and 79.8\% in 2013
+and 2014, respectively.
 
-\subsubsection{Catches} \label{sec:catches}
-A summary of catches can been found in Figure~\ref{fig:main-catches} and
-Table~\ref{tab:main-catches}
+Prior to the introduction of freezer trawlers, most of the historical catch of
+\fishname\ is understood to have been discarded at sea in large quantities due
+to proteolysis of the flesh if catches were not landed and frozen quickly
+after capture. Prior to the introduction of 100\% at-sea observer coverage in the
+\bc\ groundfish fleet in 1996, reporting of \fishname\ discards in fishery
+logbooks was voluntary. Since \fishname\ were not managed with quotas before
+1996, there was little incentive for skippers to record discards. Therefore the
+quantity of discards in the pre-1996 period is highly uncertain.
+
+Any foreign or U.S. catches were taken outside Canadian management zones and not
+used in this assessment.
 
 \subsection{ASSESSMENT HISTORY}
 The coastwide \fishname\ stock was last assessed by \citet{arf2001}, who
