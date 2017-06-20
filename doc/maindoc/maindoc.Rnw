@@ -227,16 +227,30 @@ statistical catch-at-age model-based assessment has never previously been done
 in \bc\ for this species.
 
 \section{STOCK ASSESSMENT MODELLING}
-We applied a statistical catch-at-age model in a Bayesian estimation
+We applied a female-only statistical catch-at-age model in a Bayesian estimation
 framework to assess the coastwide stock of \fishname. Analysis of the sex
-composition of the catch data indicated that commercial catches have been
-80-90\% female; see Appendix \ref{chap:propfemale}, Table \ref{tab:propfemale}.
+composition of the catch data indicated that commercial catches have been 80-90\%
+female; see Appendix \ref{chap:propfemale}, Table~\ref{tab:propfemale}.
+
+The model was fit to catch data, four indices of abundance with associated
+coefficients of variation, and to age composition data from the commercial trawl
+fishery and three of the four research surveys. Biological parameters used in the
+model, including growth, weight-at-age and maturity schedules, were estimated
+independently (Appendix \ref{chap:biological}) and input to the assessment model
+as fixed parameters that were assumed to remain constant over time.
 
 Reference points based on Maximum Sustainable Yield (MSY), including the female
 spawning biomass (\emph{B}\subscr{MSY}) and the annual harvest rate producing
 MSY (\emph{U}\subscr{MSY}), were estimated, along with reference points based on
 estimated equilibrium unfished spawning biomass (\emph{B}\subscr{0})
-(Section \ref{sec:FisheryRefPoints}).
+(Section \ref{sec:FisheryRefPoints}). Harvest decision tables
+(Tables~\ref{tab:decisions-base} and \ref{tab:decisions-sens}) were created by
+projecting the assessment model one year into the future under a range of
+constant catch levels. For each level of catch, decision tables show the
+probability that projected spawning biomass in 2016 will be less than spawning
+biomass-based reference points, and the probablity that 2015 harvest rate will
+be greater than harvest rate-based reference points
+(Section \ref{sec:DecisionTables}).
 
 \subsection{DATA INPUTS}
 \subsubsection{Data Sources}
