@@ -557,7 +557,37 @@ further details on the treatment of variance in this assessment.
 
 \subsubsection{Prior Probability Distributions} \label{sec:priors}
 Prior probability distributions for the Reference Case are shown in
-Figure \ref{fig:priors}.\\
+Figure~\ref{fig:priors} and Table~\ref{tab:parameters}. Model sensitivities
+to assumed prior distributions are presented in
+Sections \ref{sec:priorsteepness}, \ref{sec:priorm}, and \ref{sec:priorsurveyq}.
+
+Uniform prior probability distributions were assumed for $\ln(R_0)$,
+$\ln(\overline{R})$, $\ln(\overline{R}_{init})$ and selectivity parameters
+(Table~\ref{tab:parameters}). A Beta distribution was assumed for the steepness
+($h$) of the stock-recruit relationship, with shape parameters that resulted in a
+distribution with mean = $0.85$ and CV = $0.1$ (Beta($\alpha=13.4$,
+$\beta=2.40$)). This prior was based on a literature review on steepness
+parameters for Pacific flatfish species done by \citet{rocksole2014}. A review of
+steepness estimates for flatfish species by \citet{maunder2012} suggested that
+flatfish steepness using a Beverton-Holt stock-recruit relationship may be around
+$0.94$ (where $h$ approaching 1.0 implies recruitment is independent of spawning
+biomass).
+
+A normal distribution was assumed for $\ln(M)$ with mean = $\ln(0.2)$ and
+SD = $0.2$ in log space. \citet{rocksole2014} reviewed the literature and stock
+assessments and assumed a prior probability distribution for $M$ with mean = $0.2$
+in their assessment of \bc\ Rock Sole (\emph{Lepidopsetta spp.}). \citet{arf2013}
+assumed a value of $M=0.2$ for females in the assessment of Gulf of Alaska
+\fishname\, as did \citet{spies2013} for the Bering Sea Aleutian Islands stock.
+
+Normal prior probability distributions were assumed for the survey catchability
+parameters $q_k$ for each survey $k$, where $2<=k<=5$. Normal distributions with
+mean = $\ln(0.5)$ and SD = $1.0$ in log space were selected because the survey
+estimates of biomass were derived from swept area analysis
+(Eqs. \ref{eq:sweptareaindex}, \ref{eq:cpuecalc}, and \ref{eq:indexvariance}) and
+could therefore reasonably be expected to be within 1--2 orders of magnitude of
+unity. A large standard deviation was used to reflect ignorance of the scale of
+the swept area analysis compared with the true biomass.
 
 \subsubsection{Fishery reference points} \label{sec:FisheryRefPoints}
 The DFO Fishery Decision-making Framework Incorporating the Precautionary
