@@ -254,6 +254,8 @@ be greater than harvest rate-based reference points
 
 \subsection{DATA INPUTS}
 \subsubsection{Data Sources}
+%% To keep the list and its description on the same page
+\begin{minipage}{\linewidth}
 Data were extracted from three different databases:
 %% Use resdoclist for all lists to ensure you meet CSAS formatting style.
 %% resdoclist is defined in ResDocSty.sty
@@ -272,6 +274,7 @@ Data were extracted from three different databases:
     Groundfish Section, Marine Ecosystems and Aquaculture Division, Science
     Branch, Fisheries and Oceans Canada, Pacific Biological Station.
 \end{resdoclist}
+\end{minipage}
 
 \subsubsection{Catch Data} \label{sec:catchdata}
 Commercial fishing data are presented in this document for the period January
