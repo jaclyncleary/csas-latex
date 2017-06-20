@@ -683,6 +683,41 @@ for the HSSS and WCVISS were reasonable, with no strong patterns in the residual
 (Figures~\ref{fig:agecomps-fits-hsss} and \ref{fig:agecomps-fits-wcviss}). There
 were no reliable age composition data available for the HSMSAS.
 
+\subsubsection{Parameter estimates}
+Prior and posterior probability distributions of estimated parameters are shown
+in Figure~\ref{fig:priorsvsposts}. The median, 2.5\textsuperscript{th} percentile
+and 97.5\textsuperscript{th} percentile posterior parameter estimates, and
+maximum posterior density (MPD) estimates, are given in
+Table~\ref{tab:parameters-posts}. With the exception of steepness, the posterior
+estimates did not appear to be strongly influenced by the prior probability
+distributions. The posterior probability distribution for steepness, $h$, was
+very similar to the prior distribution, suggesting that there was little
+information about this parameter in the available data. Sensitivity to the
+assumed prior for steepness is tested in section \ref{sec:priorsteepness}.
+
+Posterior probability estimates of $\ln(M)$ tended to be higher than the prior
+values, with all of the posterior density located in the right-hand tail of the
+prior distribution (Figure~\ref{fig:priorsvsposts}). Normal prior probability
+distributions were used for the log catchability parameters $\ln(q_k)$ for the
+Hecate Strait Assemblage Survey and the three Synoptic Surveys
+(Figure~\ref{fig:priors}). Posterior estimates tended to overlap with the
+left-hand tail of the prior distributions for each survey
+(Figures~\ref{fig:priors} and  \ref{fig:priorsvsposts}). Sensitivity analyses
+(discussed in Section \ref{sec:priorsurveyq}) indicated that posterior estimates
+of catchability were sensitive to the mean and standard deviation of the prior
+distribution.
+
+Pairs plots of posterior samples (Figure~\ref{fig:pairs}) indicated that
+posterior estimates of $R_0$, $\overline{R}$, and $M$ were strongly negatively
+correlated with survey catchability parameters $q_2$ -- $q_5$ . This and the
+influence of the prior distributions on posterior estimates of catchability
+indicated that there was limited information in the available data to estimate
+these important scaling parameters. Posterior estimates of $R_0$ and
+$\overline{R}$ were also positively correlated with $\ln(M)$
+(Figure~\ref{fig:pairs}), again indicating that there was insufficient
+information in the data to unconfound the productivity and scale of the
+population.
+
 \subsubsection{Relative spawning biomass}
 Median posterior estimates (and 95\% credibility interval) of relative female
 spawning biomass $\frac{B_t}{B_0}$ are shown.\\
@@ -1194,6 +1229,18 @@ make.autocor.plot(base.model)
 \caption{Autocorrelation plots for MCMC output of estimated parameters in the
 Reference Case. See Figure~\ref{fig:traces} for parameter descriptions.}
 \label{fig:autocor}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<pairs, fig.height=8, fig.width=8>>=
+make.pairs.plot(base.model)
+@
+\end{center}
+\caption{Pairs plots for MCMC output of estimated parameters in the Reference Case.
+  See Figure~\ref{fig:traces} for parameter descriptions.}
+\label{fig:pairs}
 \end{figure}
 
 %%------------------------------------------------------------------------------

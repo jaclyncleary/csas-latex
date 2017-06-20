@@ -301,3 +301,65 @@ as.ts.mcmc <- function(x, ...){
   attr(y, "mcpar") <- NULL
   y
 }
+
+make.pairs.plot <- function(model,
+                            params = c("ro",
+                                       "h",
+                                       "m",
+                                       "rbar",
+                                       "rinit",
+                                       "q1",
+                                       "q2",
+                                       "q3",
+                                       "q4",
+                                       "sel1",
+                                       "selsd1",
+                                       "sel2",
+                                       "selsd2",
+                                       "sel4",
+                                       "selsd4",
+                                       "sel5",
+                                       "selsd5")){
+
+  ## Plot the pairs scatterplots for the estimated parameters
+
+  if(class(model) == model.lst.class){
+    model <- model[[1]]
+    if(class(model) != model.class){
+      stop("The structure of the model list is incorrect.")
+    }
+  }
+
+  panel.hist <- function(x, ...){
+    usr    <- par("usr");
+    on.exit(par(usr))
+    par(usr = c(usr[1:2], 0, 1.5) )
+    h      <- hist(x, plot = FALSE)
+    breaks <- h$breaks; nB <- length(breaks)
+    y      <- h$counts; y <- y/max(y)
+    rect(breaks[-nB],
+         0,
+         breaks[-1],
+         y,
+         col="wheat",
+         cex=0.75,
+         ...)
+  }
+
+  mc <- as.data.frame(model$mcmc$params.est)
+  mc <- mc[,params]
+  c.names <- colnames(mc)
+  latex.names <- NULL
+  for(param in 1:ncol(mc)){
+    name <- c.names[param]
+    latex.names <- c(latex.names, get.latex.name(name))
+  }
+  pairs(mc,
+        labels = latex.names,
+        cex.labels = 1.0,
+        pch = ".",
+        upper.panel = panel.smooth,
+        diag.panel = panel.hist,
+        lower.panel = panel.smooth,
+        gap = 0.0)
+}
