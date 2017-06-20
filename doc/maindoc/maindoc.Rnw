@@ -279,10 +279,28 @@ Data were extracted from three different databases:
 \subsubsection{Catch Data} \label{sec:catchdata}
 Commercial fishing data are presented in this document for the period January
 1, 1996 to December 31, 2014. Landings and discards are shown in
-Table \ref{tab:totalcatch}.
+Table~\ref{tab:main-catches} and by area (3CD/5ABCDE) in
+Table~\ref{tab:main-catches-by-area}. The current assessment fits a female-only
+Bayesian age-structured model to catch, survey and age-composition data from
+the years 1996-2014, for management areas 3CD (West Coast Vancouver Island),
+5AB (Queen Charlotte Sound), 5CD (Hecate Strait), and 5E (West Coast Haida
+Gwaii).
 
-See Section \ref{sec:future-research} for further discussion and research
-recommendations on catch.
+Prior to the introduction of freezer trawlers into the \bc\ groundfish trawl
+fleet in 2005, most of the historical catch of \fishname\ is understood to
+have been discarded at sea in large quantities due to flesh proteolysis, as
+discussed above. In many cases entire tows were discarded, precluding the use of
+ratio estimators or other statistical methods of estimating unobserved discards.
+All catch data prior to the introduction of 100\% at-sea observer coverage in
+1996 were therefore omitted from this assessment, on the recommendation of our
+industry advisors and technical working group. See
+Section \ref{sec:future-research} for further discussion and research
+recommendations.
+
+The 1996-2014 catch time series was multiplied by the proportion female for each
+year (calculated in Appendix \ref{chap:propfemale}), to give a female-only catch
+time series. This catch time series was used in the Reference Case and all
+sensitivity models presented in this document.
 
 \subsubsection{Abundance Indices}
 Four sets of fishery independent survey indices of abundance were used in this
