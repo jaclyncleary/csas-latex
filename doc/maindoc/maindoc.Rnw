@@ -591,8 +591,8 @@ the swept area analysis compared with the true biomass.
 
 \subsubsection{Fishery reference points} \label{sec:FisheryRefPoints}
 The DFO Fishery Decision-making Framework Incorporating the Precautionary
-Approach (PA) policy (\citet{dfo09}) requires stock status to be
-characterized using three reference points:
+Approach (PA) policy (\citet{dfo09}) requires stock status to be characterized
+using three reference points:
 
 \begin{resdoclist}
   \item a Reference Removal Rate
@@ -600,7 +600,36 @@ characterized using three reference points:
   \item a Limit Reference Point (LRP)
 \end{resdoclist}
 
-Harvest control rule: Figure \ref{fig:hcrillustration}.\\
+Provisional values of USR = 0.8\emph{B}\subscr{MSY} and
+LRP = 0.4\emph{B}\subscr{MSY} are suggested in the absence of stock-specific
+reference points. The framework suggests a limit reference removal rate of
+F\subscr{MSY}. Therefore, we refer to the reference removal rate as the limit
+removal rate (LRR) throughout this document.
+
+A harvest control rule based on these reference points that is coincident with
+the choice of LRP, USR, and LRR would apply a linear reduction in fishing
+mortality as the stock falls below the USR, and would cease fishing when the
+stock reaches the LRP (but see \citet{cox2013}). This is illustrated for a
+hypothetical stock in Figure~\ref{fig:hcrillustration}, where the USR and LRP
+are shown as vertical lines and the removal rate is shown as a blue line. We
+make the observation that the rate at which the fishing mortality should be
+reduced is unspecified in the PA policy, but is usually depicted as a linear ramp
+between the USR and LRP (Figure~\ref{fig:hcrillustration}).
+
+There is some uncertainty in \emph{F}\subscr{MSY} (and annual harvest rate
+\emph{U}\subscr{MSY}), driven by uncertainty in the trawl fishery selectivity
+resulting from possible under-representation of freezer trawl ages discussed above
+(but see Section \ref{sec:commercial-length-data}). We therefore also present
+alternative candidate reference points for \fishname\ that are less reliant on
+estimated selectivity. We suggest an USR = $0.4$\emph{B}\subscr{0} and a LRP =
+$0.2$\emph{B}\subscr{0}. These thresholds are consistent with biomass targets and
+limits in place in other jusrisdictions including Australia (\citet{smith2007})
+and the U.S.A. (\citet{restrepo1998}). Given the large uncertainty in estimated
+\emph{B}\subscr{0} in this assessment (see Results, section \ref{sec:results}),
+we also suggest B\subscr{1996}, the estimated spawning biomass at the beginning
+of the time series, as a candidate benchmark to measure relative fishing impacts
+for this stock. See Appendix \ref{chap:equations} for description of reference
+points calculations.
 
 \subsection{RESULTS} \label{sec:results}
 \subsubsection{Model diagnostics}
