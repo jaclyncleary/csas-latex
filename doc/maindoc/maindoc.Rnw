@@ -635,11 +635,53 @@ points calculations.
 \subsubsection{Model diagnostics}
 The joint posterior distribution was numerically approximated using the Markov
 Chain Monte Carlo (MCMC) routines built into AD Model Builder
-(\citet{fournier2012}).\\
+(\citet{fournier2012}). For the Reference Case and all sensitivity cases,
+posterior samples were drawn systematically every \mcmcsampfreq\ iterations from
+a chain of length \mcmclength, resulting in \mcmcnsamp\ posterior samples (the
+first \mcmcburnin\ samples were dropped to allow for sufficient burn-in).
+Convergence was diagnosed using visual inspection of the trace plots
+(Figure~\ref{fig:traces}) and visual examination of autocorrelation in posterior
+chains (Figure~\ref{fig:autocor}). Autocorrelation was minor for all parameters
+and there was no strong evidence for lack of convergence.
 
 \subsubsection{Fits to data}
 Maximum posterior density (MPD) model fits to the four indices of abundance are
-shown.\\
+shown in Figure~\ref{fig:indexfits}. Fits to the indices of abundance appeared
+reasonable. The model followed the increasing trend for all three synoptic
+surveys, although it underestimated or overestimated some observations. The
+closest fit was obtained for the Hecate Strait Synoptic Survey, although the
+smallest observation in 2007 was not fit. The West Coast Vancouver Island
+Synoptic Survey observed its highest mean biomasses in 2010 and 2014, and its
+lowest in 2012 (Figure~\ref{fig:indexfits}). The model could not reproduce these
+large shifts in abundance and estimated biomass to be approximately the average
+of the 2010--2014 survey observations for this period. The other two surveys
+covering this period (HSSS and QCSSS) were done in odd-numbered years so there
+was no 2012 observation. However, neither survey observed a drop in biomass
+during this period, suggesting that the low observation in the WCVISS may have
+been a sampling artifact, or due to some other anomaly. For the Hecate Strait
+Multispecies Assemblage Survey, the model overestimated the three observations
+in the earliest part of the time series. The median posterior estimate of
+catchability for this survey (0.13) was close to the median estimates of
+catchability for the three synoptic surveys (0.14, 0.12, 0.10) for the QCSSS,
+HSSS and WCVISS respectively) (Table~\ref{tab:parameters-posts}), indicating
+that the model estimated all four surveys to be similarly scaled to the
+population biomass. The model therefore treated the HSMAS and the synoptic
+surveys to essentially be continuous time series. This is not surprising given
+the absence of age composition data from the HSMAS to inform the respective
+scales of the surveys. However, we acknowledge that catchability in the HSMAS
+may have been different from the other surveys due to differences in survey
+design, and that the fit obtained for the HSMAS is partly a function of fits
+to the other surveys and to the assumed fixed selectivity for the HSMSAS.
+
+MPD fits to the fishery age composition data are shown in
+Figure~\ref{fig:agecomps-fits-trawl}. Fits were reasonable and there were no
+strong patterns in the residuals. Fits to the age composition data from the QCSSS
+were generally poor (Figure~\ref{fig:agecomps-fits-qcsss}). Age composition data
+from this survey were variable, likely reflecting the small sample sizes
+indicated in Figure~\ref{fig:agecomps-fits-qcsss}. Fits to age composition data
+for the HSSS and WCVISS were reasonable, with no strong patterns in the residuals
+(Figures~\ref{fig:agecomps-fits-hsss} and \ref{fig:agecomps-fits-wcviss}). There
+were no reliable age composition data available for the HSMSAS.
 
 \subsubsection{Relative spawning biomass}
 Median posterior estimates (and 95\% credibility interval) of relative female
