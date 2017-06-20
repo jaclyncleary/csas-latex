@@ -123,11 +123,24 @@ and 5ABCDE off the west coast of \bc.
 
 %% Subsection names must be in all caps
 \subsection{PURPOSE OF DOCUMENT}
-\fishname\ is managed as a coastwide stock in \bc, with the majority of the
-catch coming from Pacific Marine Fisheries Commission (PMFC) major areas 3CD
-(West Coast Vancouver Island), 5AB (Queen Charlotte Sound) and 5CD
-(Hecate Strait) (Figures \ref{fig:cpue} and \ref{fig:totalcatch},
-Table \ref{tab:totalcatch}).
+\fishname\ is managed as a coastwide stock in \bc, with the majority of the catch
+coming from Pacific Marine Fisheries Commission (PMFC) major areas 3CD (West
+Coast Vancouver Island), 5AB (Queen Charlotte Sound) and 5CD (Hecate Strait)
+(Figures~\ref{fig:cpue} and \ref{fig:main-catches}, Table~\ref{tab:main-catches}).
+The Strait of Georgia (management area 4B) is not included in this stock
+assessment. The 2014 Total Allowable Catch (TAC) was 15,000 metric tonnes, the
+second largest groundfish TAC in \bc, after Pacific Hake
+(\emph{Merluccius productus}).
+
+The purpose of this stock assessment is to update management advice for
+\fishname\ stocks in \bc, as requested by the Pacific Groundfish Management Unit
+(GMU). This assessment identifies reference points for \fishname\ that are
+consistent with the DFO Decision-making Framework Incorporating the Precautionary
+Approach (\citet{dfo09}) and characterizes stock status relative to these
+reference points, using a Bayesian, age-structured stock assessment model.
+Management advice is provided in the form of decision tables which forecast the
+impacts of a range of harvest levels on \fishname\ stock status relative to these
+reference points.
 
 \subsection{BIOLOGICAL BACKGROUND}
 \fishname\ are distinguished by everyone's preference for eating them, for which
@@ -603,7 +616,7 @@ make.catch.discard.plot(catches,
 \caption{Total coastwide catch of \fishname, including both landings and
   discards (a). Panels (b) and (c) represent areas 3CD and 5ABCDE
   respectively. See Table~\ref{tab:main-catches} for values.}
-\label{fig:totalcatch}
+\label{fig:main-catches}
 \end{figure}
 %%------------------------------------------------------------------------------
 %% AGE COMPOSITION PLOTS (DATA ONLY)
