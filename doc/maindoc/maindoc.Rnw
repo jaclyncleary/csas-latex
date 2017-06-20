@@ -427,15 +427,45 @@ the fishery. \fishname\ are targeted on known grounds, and the location
 information is shared among fishermen, so there is a bias towards a high CPUE.
 
 \subsubsection{Age Data} \label{sec:agedata}
-Extensive ageing was done for this assessment.
+Extensive ageing was done for this assessment including 4,787 otoliths aged for
+years spanning 1996--2014, from commercial bottom trawl samples as well as the
+four research surveys' samples. The samples were aged by the break-and-bake
+method which involves placing a large number of otoliths in a tray, baking them
+in a specially-designed oven, then breaking them to perform age reads. During
+this process, if the person ageing the otoliths finds one which is not baked
+enough, they will burn the otolith manually to give it the right contrast for
+age reading. This extra burning step makes this method equivalent to the
+traditional break-and-burn method in which the age-reader burns each otolith
+individually (S. Wischniowski, Sclerochronology Laboratory, Pacific
+Biological Station, Pers. Comm.).
 
 Age composition data represented the whole coast, for the following years:
 \begin{resdoclist}
-  \item Commercial trawl
-  \item QCSSS
-  \item HSSS
-  \item WCVISS
+  \item Commercial trawl (Figure~\ref{fig:agecomps-trawl}): 1996--2013, all
+    years (unsorted/discard samples only).
+  \item QCSSS (Figure~\ref{fig:agecomps-surveys}): 2003, 2005, 2011, and 2013.
+  \item HSSS (Figure~\ref{fig:agecomps-surveys}): 2005, 2007, 2009, 2011, and
+    2013.
+  \item WCVISS (Figure~\ref{fig:agecomps-surveys}): 2004, 2006, 2008, 2010,
+    2012, and 2014.
 \end{resdoclist}
+
+Age composition data were input to the assessment models as weighted
+proportions-at-age. Weighting was based on a stratified weighting scheme that
+adjusted for unequal sampling effort across spatial or temporal strata. For
+commercial data, these strata comprised quarterly periods within a year, while,
+for survey samples, the strata were defined by the survey design. A description
+of the methods used to calculate weighted age frequencies is given in
+Appendix \ref{chap:agecompweight}. This is the same method that was used in the
+2014 \bc\ Rock Sole (\emph{Lepidopsetta spp.}) assessment (\citet{rocksole2014}).
+
+Ageing requests included randomly chosen samples from many vessels, including the
+freezer trawlers. Some of these were not aged, due to time limitations of the
+sclerochronology laboratory. After ageing was complete it was discovered that the
+freezer trawlers were under-represented in the age data. Length data for the
+freezer trawler and shoreside fleets were compared
+(Section \ref{sec:commercial-length-data}, Figure~\ref{fig:lengthsubfleet}) to
+check for evidence that the age data was or was not representative of both fleets.
 
 \subsubsection{Commercial length data} \label{sec:commercial-length-data}
 Length data from the freezer trawler and shoreside fleets.\\
