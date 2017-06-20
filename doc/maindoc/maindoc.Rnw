@@ -468,7 +468,23 @@ freezer trawler and shoreside fleets were compared
 check for evidence that the age data was or was not representative of both fleets.
 
 \subsubsection{Commercial length data} \label{sec:commercial-length-data}
-Length data from the freezer trawler and shoreside fleets.\\
+Length data from the freezer trawler and shoreside fleets are shown in
+Figure~\ref{fig:lengthsubfleet}. These data are presented to check whether or not
+there is evidence for differences in the age composition of the catch in the
+freezer trawl fleet compared to the rest of the fleet. Since 2006, when freezer
+trawlers began fishing for \fishname, they have taken an increasingly large
+proportion of the catch. However, as discussed in the previous section, it was
+discovered after the commercial otoliths had been processed that age data from
+this fleet were under-represented in the age composition data.
+
+Females have been sampled more often than males in both fleets
+(Figure~\ref{fig:lengthsubfleet}, N values). This difference in sampling is due
+to the proportion of females in the population being higher than males
+(Appendix \ref{chap:propfemale}). Females did not vary in length significantly
+between the two fleets, with both having a median around 55 cm. Males had a
+median of around 45 cm for both fleets, except for in 2006--2007, when freezer
+trawler samples showed slightly larger males. The low sample size (N=97) in 2006
+suggests that this may not be representative of the population.
 
 \subsection{STATISTICAL CATCH-AT-AGE MODEL}
 
