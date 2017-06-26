@@ -720,9 +720,166 @@ $\overline{R}$ were also positively correlated with $\ln(M)$
 information in the data to unconfound the productivity and scale of the
 population.
 
+\subsubsection{Selectivity} \label{sec:selectivity}
+Gear selectivity-at-age was estimated for the trawl fishery and the three
+synoptic surveys (Figure~\ref{fig:selex}). Posterior estimates of
+age-at-50\%-harvest ($\hat{a}_1$) and the standard deviation in the logistic
+selectivity ogive ($\hat{\gamma}_1$) are provided in
+Table~\ref{tab:parameters-posts}.
+The median posterior estimate of age-at-50\%-harvest in the trawl fishery was
+$9.40$ y. This estimate was further to the right than expected, but was
+consistent with the available age composition data
+(Figure~\ref{fig:agecomps-trawl}), which indicate very few observations of
+younger fish, especially in the latter part of the time series. Numerous tests of
+alternative model configurations did not result in a lower estimate of
+age-at-50\%-harvest in the trawl fishery. Female \fishname\ are thought to mature
+at around $5.6$ years of age (Figure~\ref{fig:matage}). Therefore, it appears
+that individuals have several opportunities to spawn before they become
+vulnerable to the fishery. This in turn resulted in estimates of maximum
+sustainable harvest rate \emph{U}\subscr{MSY} approaching 1 (discussed in section
+\ref{sec:resultsFishRefPoints}), implying that under theoretical equilibrium
+conditions, all of the vulnerable (i.e., fully-selected) biomass could be
+harvested because the population could be sustained by younger spawners that are
+invulnerable to the fishery. We emphasise that this is a theoretical condition
+subject to the assumptions in the stock assessment model and the data limitations
+therein. We strongly advise against this as a harvest strategy and suggest that
+the age-at-50\%-harvest in the trawl fishery is a primary axis of uncertainty in
+this stock assessment. As discussed above, catches since 2008 have increasingly
+been represented by the freezer trawler fleet and age composition data from this
+fleet were under-represented. Model sensitivity to selectivity in the trawl
+fishery, in terms of spawning biomass and stock status, is presented in a later
+section. We recommend as a high priority that future aging requests should
+include a representative proportion of ages from the freezer trawl fleet for all
+years since 2005.
+
+Selectivities in the three synoptic surveys were also estimated to be quite far
+to the right (Figure~\ref{fig:selex}) with median posterior estimates of
+age-at-50\%-harvest ($\hat{a}_k$) of $11.43$ y, $8.94$ y and $9.20$ y for the
+QCSSS, HSSS and WCVIS surveys respectively (Table~\ref{tab:parameters-posts}).
+Standard deviations ($\hat{\gamma}_k$) in the selectivity curves were quite large
+(Table~\ref{tab:parameters-posts}), indicating that selectivity in the surveys
+was far from knife-edged (Figure~\ref{fig:selex}). This was especially true for
+the QCSSS, where ages showed a less clearly defined pattern than for the other
+gears, with larger proportions of younger fish
+(Figure~\ref{fig:agecomps-surveys}). This was likely due to the relatively small
+sample sizes for this dataset (Figure~\ref{fig:agecomps-surveys}). We recommend
+that future ageing requests should include ageing of archival otoliths from the
+QCSSS in order to increase the number of samples and quality of information from
+this survey.
+
+\subsubsection{Fishery reference points} \label{sec:resultsFishRefPoints}
+Posterior estimates of fishery reference points from the Reference Case are
+provided in Table~\ref{tab:ref-points} and Figure~\ref{fig:ref-points}. The
+posterior unfished female spawning biomass (\emph{B}\subscr{0}) was highly
+uncertain, with median $492,339$ t and credibility interval ranging from
+$249,745$ t to $1,244,550$ t (Table~\ref{tab:ref-points}). Posterior credibility
+intervals for the candidate LRP 0.2\emph{B}\subscr{0} and USR
+0.4\emph{B}\subscr{0} are also provided in Table~\ref{tab:ref-points}.
+
+Reference points based on maximum sustainable yield (MSY) were strongly impacted
+by estimates of selectivity in the trawl fishery described in the previous
+section. Because the selectivity ogive (Figure~\ref{fig:selex}) was estimated to
+be far to the right of the maturity ogive (Figure~\ref{fig:matage}), the median
+estimate of \emph{F}\subscr{MSY} was $18.5$ (Table~\ref{tab:ref-points}).
+This instantaneous fishing mortality converts to an annual harvest rate
+approaching 1, through the equation \emph{U}\subscr{MSY} = $1-e^{-F_{MSY}}$,
+implying that all of the vulnerable biomass (i.e., the biomass that is selected
+by the fishing gear) could be harvested because the population can be sustained
+by the spawning biomass that is invulnerable to the fishery (i.e., fish that are
+between 5 and 9 years old). The relationship between age at maturity and age at
+first harvest and its effect on fishery reference points was discussed by
+\citet{myers1998}, who described a fishing strategy where overfishing could be
+avoided by allowing all fish to spawn before they were available to be caught.
+\citet{froese2004} also discusses reduction in risks of overfishing by allowing
+fish to spawn before they are caught.
+
+It is important to understand the distinction between vulnerable biomass and
+spawning biomass. The fishery reference points \emph{F}\subscr{MSY} and
+\emph{U}\subscr{MSY} refer to catch of the vulnerable biomass $VB_t$, which is
+determined by the selectivity function:
+
+\begin{align} \label{eq:vulnBiomassSel}
+VB_t = \sum_{a}N_{a,t}w_{a,t}v_{a,t}
+\end{align}
+where $a$ is age, $t$ is year, $N$ is the population number, $w$ is the average
+weight-at-age, and $v$ is the vulnerability-at-age in the trawl fishery (i.e.
+selectivity) (Figure~\ref{fig:selex}).
+
+When the selectivity ogive is located to the right of the maturity ogive, this
+means that a larger proportion of the total population is mature than vulnerable
+to the fishery. A comparison between vulnerable biomass and spawning biomass is
+provided in Section \ref{sec:biomass}.
+
+The median posterior estimate of \emph{B}\subscr{MSY} (and 95\% credibility
+interval), conditional on estimated trawl selectivity and resulting
+\emph{F}\subscr{MSY}, was $119,195$ t ($58,964$--$312,324$ t)
+(Table~\ref{tab:ref-points}). Posterior credibility intervals for the default LRP
+$0.4$\emph{B}\subscr{MSY} and USR $0.8$\emph{B}\subscr{MSY} are also provided in
+Table~\ref{tab:ref-points}. The candidate \emph{B}\subscr{0}-based LRP and USR
+were approximately twice as large as the candidate \emph{B}\subscr{MSY}-based
+reference points, i.e., \emph{B}\subscr{0}-based reference points were more
+precautionary than the \emph{B}\subscr{MSY}-based reference points
+(Table~\ref{tab:ref-points}).
+
+Median posterior estimates (and 95\% credibility interval) of other potential
+benchmarks of interest to managers (B\subscr{1996}, B\subscr{2015} and
+F\subscr{2014}) are also provided in Table~\ref{tab:ref-points}.\\
+
+\subsubsection{Biomass} \label{sec:biomass}
+The Reference Case estimates the female spawning biomass to have been on a
+flat to increasing trajectory since 1996 (Figure~\ref{fig:spawn-biomass};
+Table~\ref{tab:spawn-biomass}). The posterior median (and 95\% credibility
+interval) female spawning biomass in 2015 is projected to be $294,560$ t
+($156,235$--$713,259$ t) (Table~\ref{tab:ref-points}). The median projected
+beginning-of-year 2015 spawning biomass, which incorporates fishing mortality
+arising from the observed 2014 catch, is considerably higher than median
+estimates of both the default USR of $0.8$\emph{B}\subscr{MSY} and the default
+LRP of $0.4$\emph{B}\subscr{MSY} (Figure~\ref{fig:spawn-biomass},
+Table~\ref{tab:ref-points}). The 2015 spawning biomass was also projected to be
+above the candidate USR $0.4$\emph{B}\subscr{0} and LRP $0.2$\emph{B}\subscr{0}
+(Figure~\ref{fig:spawn-biomass}, Table~\ref{tab:ref-points}).
+
+For comparison, posterior estimates of vulnerable biomass and spawning biomass
+are shown together in Figure~\ref{fig:vuln-spawn-biomass}. The estimated
+vulnerable biomass is considerably smaller than the spawning biomass, due to
+the relatively early age at maturity compared to the estimated
+age-at-50\% -harvest, discussed in Section \ref{sec:resultsFishRefPoints}.\\
+
+\subsubsection{Recruitment} \label{sec:recruitment}
+Median posterior estimates (and 95\% credibility interval) of age-1 recruits are
+shown in Figure~\ref{fig:recruitment} and Table~\ref{tab:recruitment}. The 95\%
+posterior credibility intervals since 2011 are reasonably broad, with extremely
+large uncertainty around the estimate of 2014 recruitment. This is expected since
+there is no information in the data about the strength of this year class. While
+the 2014 recruitment estimates are shown here, they played no role in projections
+or the decision tables. Projected recruitment anomalies for 2014 and 2015 were
+drawn randomly from a normal distribution, $\sim N(0,\tau)$. For most of the time
+series, recruitment was estimated to fluctuate around the long-term average, with
+relatively little variation. This is also evident in the posterior estimated
+recruitment anomalies (Figure~\ref{fig:recruitment}). Lack of variation in
+recruitment is consistent with the data sources. The age composition data
+(Figures~\ref{fig:agecomps-trawl} and \ref{fig:agecomps-surveys}) did not show
+any clear recruitment patterns. Until 2005, fishery catches also remained
+relatively constant (Figure~\ref{fig:main-catches}) and there were no strong
+trends in the survey data (Figure~\ref{fig:indexfits}).\\
+
+\subsubsection{Fishing mortality}
+Median posterior estimates of fishing mortality (and 95\% credibility interval)
+are shown in Figure~\ref{fig:f-mort} and Table~\ref{tab:f-mort}. The median
+posterior estimate of fishing mortality is estimated to have peaked in 2005 at
+$0.310$ ($0.162$--$0.494$) as a result of a test fishery
+described in Section \ref{sec:managementhistory}. Fishing mortality in 2014 was
+estimated to be $0.136$ ($0.069$--$0.248$). Fishing mortality
+rates converted to annual harvest rates can be found in Table~\ref{tab:u-mort}.\\
+
 \subsubsection{Relative spawning biomass}
 Median posterior estimates (and 95\% credibility interval) of relative female
-spawning biomass $\frac{B_t}{B_0}$ are shown.\\
+spawning biomass $\frac{B_t}{B_0}$ are shown in Figure~\ref{fig:depletion}. The
+credibility interval is broad, reflecting the uncertainty in posterior
+estimates of $B_0$ (Figure~\ref{fig:depletion}, Table~\ref{tab:ref-points}). The
+median posterior projected estimate of 2015 relative biomass is $0.596$
+($0.367$--$0.936$) (Figure~\ref{fig:depletion}, Table~\ref{tab:depletion}).
+
 
 \subsection{SENSITIVITY ANALYSES} \label{sec:sensitivities}
 The full list of sensitivity scenarios is provided.\\
@@ -1402,7 +1559,7 @@ make.selex.comparison.plot(base.model,
 %% REFERENCE POINT PLOT
 \begin{figure}[H]
 \begin{center}
-<<refpoints, fig.height=5,fig.width=8>>=
+<<ref.points, fig.height=5,fig.width=8>>=
 make.reference.points.plot(base.model,
                            ref.pts = c("bo",
                                        "bmsy",
@@ -1413,14 +1570,14 @@ make.reference.points.plot(base.model,
 \caption{Posterior reference points for the Reference Case. Bars represent
   \mcmcci\ credible intervals. MSY, B\subscr{0}, and B\subscr{MSY}
   values are in thousands of tonnes.}
-\label{fig:refpoints}
+\label{fig:ref-points}
 \end{figure}
 
 %%------------------------------------------------------------------------------
 %% SPAWNING BIOMASS PLOT
 \begin{figure}[H]
 \begin{center}
-<<spawnbiomass, fig.height=9, fig.width=7.5>>=
+<<spawn.biomass, fig.height=9, fig.width=7.5>>=
 old.par <- par(no.readonly = TRUE)
 layout(matrix(c(1, 2), 2, 1, byrow = FALSE))
 make.biomass.mcmc.plot(base.model,
@@ -1443,7 +1600,7 @@ par(old.par)
   0.2B\subscr{0} and 0.4B\subscr{0}, Panel (b) shows
   posterior median estimates of reference points 0.4B\subscr{MSY}
   and 0.8B\subscr{MSY}.}
-\label{fig:spawnbiomass}
+\label{fig:spawn-biomass}
 \end{figure}
 
 %%------------------------------------------------------------------------------
@@ -1505,7 +1662,7 @@ make.fishing.mort.mcmc.plot(base.model,
 \end{center}
 \caption{Fishing mortality for the Reference Case. The shaded area represents
   the \mcmcci\ credible interval.}
-\label{fig:F}
+\label{fig:f-mort}
 
 %%------------------------------------------------------------------------------
 %% RELATIVE SPAWNING BIOMASS PLOT
