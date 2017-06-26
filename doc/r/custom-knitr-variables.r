@@ -68,3 +68,10 @@ sens.9.m.quants <- f(as.data.frame(sens.models.5[[1]]$mcmccalcs$p.quants)$m, 3)
 ## Catch data values
 catch.yrs <- sort(unique(base.model[[1]]$dat$catch[,1]))
 catch.yrs <- paste0(min(catch.yrs), "--", max(catch.yrs))
+
+################################################################################
+## Calculation of sigma and tau from rho and vartheta
+rho <- base.model[[1]]$ctl$params[6, 1]
+vartheta <- base.model[[1]]$ctl$params[7, 1]
+tau <- f(sqrt((1 - rho) / vartheta), 1)
+sigma <- f(sqrt(rho / vartheta), 1)

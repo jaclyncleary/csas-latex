@@ -551,9 +551,10 @@ represents the proportion of the total variance that is due to observation error
 observation errors ($\sigma$) and process errors ($\tau$) using
 Eq.~\ref{eq:df17}. The parameters $\vartheta^2$ and $\rho$ were fixed in the
 current assessment (Table~\ref{tab:parameters}) at values that gave
-$\sigma$ = $0.2$ and $\tau$ = $0.8$. See Section \ref{sec:variance} for
-sensitivity analyses to this assumption. See Appendix \ref{chap:equations} for
-further details on the treatment of variance in this assessment.
+$\sigma=\Sexpr{sigma}$ and $\tau=\Sexpr{tau}$. See Section
+\ref{sec:variance} for sensitivity analyses to this assumption. See Appendix
+\ref{chap:equations} for further details on the treatment of variance in
+this assessment.
 
 \subsubsection{Prior Probability Distributions} \label{sec:priors}
 Prior probability distributions for the Reference Case are shown in

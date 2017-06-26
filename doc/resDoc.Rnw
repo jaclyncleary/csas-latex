@@ -104,8 +104,8 @@ source("custom-knitr-variables.r")
 %% <<prop-female, child='app-propfemale/app-propfemale.Rnw'>>=
 %% @
 
-%% \refstepcounter{chapter}
-%% <<model-equations, child='app-equations/app-equations.Rnw'>>=
-%% @
+\refstepcounter{chapter}
+<<model-equations, child='app-equations/app-equations.Rnw'>>=
+@
 
 \end{document}

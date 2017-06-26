@@ -180,10 +180,10 @@ $a$ & & Index for age\\
 $t$ & & Index for year\\
 $k$ & & Index for gear\\
 \multicolumn{3}{l}{\textbf{Model dimensions}}\\
-$S$ & $\Sexpr{op[[1]]$inputs$data$nsex}$ & Number of sexes\\
-$\acute{a}, A$ & $\Sexpr{op[[1]]$inputs$data$sage}$, $\Sexpr{op[[1]]$inputs$data$nage}$ & Youngest and oldest age class ($A$ is a plus group)\\
-$\acute{t}, T$ & $\Sexpr{op[[1]]$inputs$data$syr}$, $\Sexpr{op[[1]]$inputs$data$nyr}$ & First and last year of catch data\\
-$K$ & $\Sexpr{op[[1]]$inputs$data$ngear}$ & Number of gears including survey gears\\
+$S$ & $\Sexpr{base.model[[1]]$dat$nsex}$ & Number of sexes\\
+$\acute{a}, A$ & $\Sexpr{base.model[[1]]$dat$sage}$, $\Sexpr{base.model[[1]]$dat$nage}$ & Youngest and oldest age class ($A$ is a plus group)\\
+$\acute{t}, T$ & $\Sexpr{base.model[[1]]$dat$syr}$, $\Sexpr{base.model[[1]]$dat$nyr}$ & First and last year of catch data\\
+$K$ & $\Sexpr{base.model[[1]]$dat$ngear}$ & Number of gears including survey gears\\
 \multicolumn{3}{l}{\textbf{Observations (data)}}\\
 $C_{k,t}$ & & catch in weight by gear $k$ in year $t$\\
 $I_{k,t}$ & & relative abundance index for gear $k$ in year $t$\\
@@ -297,7 +297,7 @@ $\dot{\gamma}_s$ & & Standard deviation at 50\% maturity for sex $s$\\
 \vbox{\begin{center}\bf{Estimated parameters}\end{center}\vspace{-1ex}} \\
 \vbox{\beq \Theta= (R_0,h,M,\overline{R},\overline{R}_{init},\vartheta^2,\rho,\Gamma_{k,t},\{\omega_t\}_{\acute{t}=1-A}^{\acute{t}=T},\{\omega_{init,t}\}_{t=\acute{t}-A}^{t=\acute{t}-1})  \label{eq:df16} \eeq} \\
 \\
-\vbox{\beq \sigma=\frac{\sqrt{\rho}}{\vartheta}, \;  \;  \; \; \tau=\frac{(1-\rho)^{1/2}}{\vartheta} \label{eq:df17} \eeq} \\
+\vbox{\beq \sigma=\sqrt{\frac{\rho}{\vartheta}}, \;  \;  \; \; \tau=\frac{(1-\rho)^{1/2}}{\vartheta} \label{eq:df17} \eeq} \\
 \vspace{2ex}
 \\
 \vbox{\begin{center}\bf{Unobserved states}\end{center}\vspace{-4ex}} \\
