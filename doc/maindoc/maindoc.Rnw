@@ -443,13 +443,11 @@ Biological Station, Pers. Comm.).
 
 Age composition data represented the whole coast, for the following years:
 \begin{resdoclist}
-  \item Commercial trawl (Figure~\ref{fig:agecomps-trawl}): 1996--2013, all
-    years (unsorted/discard samples only).
-  \item QCSSS (Figure~\ref{fig:agecomps-surveys}): 2003, 2005, 2011, and 2013.
-  \item HSSS (Figure~\ref{fig:agecomps-surveys}): 2005, 2007, 2009, 2011, and
-    2013.
-  \item WCVISS (Figure~\ref{fig:agecomps-surveys}): 2004, 2006, 2008, 2010,
-    2012, and 2014.
+  \item Commercial trawl (Figure~\ref{fig:agecomps-trawl}):
+    \Sexpr{trawl.yrs}, all years (unsorted/discard samples only).
+  \item QCSSS (Figure~\ref{fig:agecomps-surveys}): \Sexpr{qcsss.yrs}.
+  \item HSSS (Figure~\ref{fig:agecomps-surveys}): \Sexpr{hsss.yrs}.
+  \item WCVISS (Figure~\ref{fig:agecomps-surveys}): \Sexpr{wcviss.yrs}.
 \end{resdoclist}
 
 Age composition data were input to the assessment models as weighted

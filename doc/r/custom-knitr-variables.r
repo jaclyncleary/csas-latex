@@ -150,6 +150,22 @@ sens.8.m.prior.sd <- f(sens.models.4[[2]]$ctl$params[3, 7], 2)
 sens.9.m.prior.mean <- f(exp(sens.models.5[[1]]$ctl$params[3, 6]), 1)
 sens.9.m.prior.sd <- f(sens.models.5[[1]]$ctl$params[3, 7], 2)
 
+## Age comp data values
+## Gear indices, note they are not the indices in the model,
+##  but the indices of the list elements in the model$dat$age.comps list
+trawl.gear <- 1
+qcsss.gear <- 2
+hsss.gear <- 3
+wcviss.gear <- 4
+trawl.yrs <- sort(unique(base.model[[1]]$dat$age.comps[[trawl.gear]][,1]))
+trawl.yrs <- paste0(min(trawl.yrs), "--", max(trawl.yrs))
+qcsss.yrs <- sort(unique(base.model[[1]]$dat$age.comps[[qcsss.gear]][,1]))
+qcsss.yrs <- paste(qcsss.yrs, collapse=", ")
+hsss.yrs <- sort(unique(base.model[[1]]$dat$age.comps[[hsss.gear]][,1]))
+hsss.yrs <- paste(hsss.yrs, collapse=", ")
+wcviss.yrs <- sort(unique(base.model[[1]]$dat$age.comps[[wcviss.gear]][,1]))
+wcviss.yrs <- paste(wcviss.yrs, collapse=", ")
+
 ## Values for posteriors
 base.quants <- as.data.frame(base.model[[1]]$mcmccalcs$p.quants)
 base.m.quants <- f(base.quants$m, 3)
