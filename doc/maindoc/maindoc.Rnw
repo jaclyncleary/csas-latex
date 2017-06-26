@@ -507,10 +507,10 @@ Table~\ref{tab:parameters} and Figure~\ref{fig:priors} and described in
 Section \ref{sec:priors}. Model sensitivity to fixed parameters and to assumed
 prior probability distributions are presented in a later section.
 
-In brief, the model was conditioned on observed catch data (1996--2014), which
-were assumed to be known without error. The model was fit to the four survey
-indices of abundance described above, and to age composition data from the
-commercial fishery and three of the fishery-independent surveys (HSSS, QCSSS,
+In brief, the model was conditioned on observed catch data (\Sexpr{catch.yrs}),
+which were assumed to be known without error. The model was fit to the four
+survey indices of abundance described above, and to age composition data from
+the commercial fishery and three of the fishery-independent surveys (HSSS, QCSSS,
 WCVISS). Biological parameters determining weight-at-age and maturity-at-age
 schedules, were estimated independently (Appendix \ref{chap:biological}) and
 input to the assessment model as fixed parameters that remained constant over
