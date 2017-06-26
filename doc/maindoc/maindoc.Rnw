@@ -974,7 +974,7 @@ Reference Case posterior credibility interval of $249,745$--$1,244,550$ t
 the prior distribution for steepness. Median posterior estimates of other
 parameters were very similar to the Reference Case.
 
-\subsubsection{Prior probabliity distribution for $\ln(M)$} \label{sec:priorm}
+\subsubsection{Prior probability distribution for $\ln(M)$} \label{sec:priorm}
 The Reference Case assumed a normal prior probability distribution for $\ln(M)$,
 with mean = $\ln(\Sexpr{base.m.prior.mean})$ and standard
 deviation = \Sexpr{base.m.prior.sd} in log space. Three scenarios
@@ -982,41 +982,45 @@ were run to test sensitivity of model outcomes to the mean and standard deviatio
 assumed for this prior distribution:
 \begin{resdoclist}
   \item mean = $\ln(\Sexpr{sens.7.m.prior.mean})$, standard deviation =
-    \Sexpr{sens.7.m.prior.sd} (Scenario 7)
+    $\Sexpr{sens.7.m.prior.sd}$ (Scenario 7)
   \item mean = $\ln(\Sexpr{sens.8.m.prior.mean})$, standard deviation =
-    \Sexpr{sens.8.m.prior.sd} (Scenario 8)
+    $\Sexpr{sens.8.m.prior.sd}$ (Scenario 8)
   \item mean = $\ln(\Sexpr{sens.9.m.prior.mean})$, standard deviation =
-    \Sexpr{sens.9.m.prior.sd} (Scenario 9)
+    $\Sexpr{sens.9.m.prior.sd}$ (Scenario 9)
 \end{resdoclist}
 
 Biomass and recruitment estimates for Scenarios 7 and 8 are shown in
 Figures~\ref{fig:sens-msd-biomass} and \ref{fig:sens-msd-recruitment}. Decreasing
 the standard deviation in Scenario 7 resulted in a lower median posterior
-estimates of $M=0.274$ ($0.255$ - $0.292$) compared to the
-Reference Case median posterior estimate of $M=0.314$
-($0.255$--$0.380$). Female spawning biomass was estimated to be on a
-slightly more increasing trajectory compared with the reference case model, with
-much less uncertainty in the first years of the time series
-(Figure~\ref{fig:sens-msd-biomass}). The median posterior estimates of recent
-biomass were larger than in the reference case model, and the credibility
-interval was broader. Posterior estimates of $B_0$ were much more uncertain than
-for the Reference Case, with the credibility interval ranging from
-$391,085$--$2,221,190$ t, compared to the Reference Case posterior credibility
-interval of $249,745$--$1,244,550$ t (Table~\ref{tab:refpoints}). Convergence
-diagnostics for Scenario 7 were poorer than for the Reference Case, with
-stronger autocorrelation in the MCMC chains, notably for estimates of
-$\overline{R}_{init}$.
+estimates of $M=\Sexpr{sens.7.m.quants[2]}$
+($\Sexpr{sens.7.m.quants[1]}$--$\Sexpr{sens.7.m.quants[3]}$) compared to the
+Reference Case median posterior estimate of $M=\Sexpr{base.m.quants[2]}$
+($\Sexpr{base.m.quants[1]}$--$\Sexpr{base.m.quants[3]}$). Female spawning
+biomass was estimated to be on a slightly more increasing trajectory compared
+with the reference case model, with much less uncertainty in the first years of the
+time series (Figure~\ref{fig:sens-msd-biomass}). The median posterior estimates
+of recent biomass were less than in the reference case model, and the
+credibility interval was narrower. Posterior estimates of $B_0$ were much less
+uncertain than for the Reference Case, with the credibility interval ranging from
+$\Sexpr{sens.7.bo.quants[1]}$--$\Sexpr{sens.7.bo.quants[3]}$ t, compared to the
+Reference Case posterior credibility interval of
+$\Sexpr{base.bo.quants[1]}$--$\Sexpr{base.bo.quants[3]}$ t
+(Table~\ref{tab:ref-points}). Convergence diagnostics for Scenario 7 were
+poorer than for the Reference Case, with stronger autocorrelation in the
+MCMC chains, notably for estimates of $\overline{R}_{init}$.
 
 Increasing the standard deviation in Scenario 8 resulted in very similar
 estimates of $M$, spawning biomass and recruitment as the Reference Case
 (Figures~\ref{fig:sens-msd-biomass} and \ref{fig:sens-msd-recruitment}). The
-median posterior estimate was $M=0.338$ ($0.303$--$0.396$).
+median posterior estimate was $M=\Sexpr{sens.8.m.quants[2]}$
+($\Sexpr{sens.8.m.quants[1]}$--$\Sexpr{sens.8.m.quants[3]}$).
 This can be compared to estimates from the Reference Case (see above and
-Table~\ref{tab:paramest}). Increasing the mean in Scenario 9 resulted in a
-re-scaling of the estimated population size, with slightly larger estimates of
-biomass and recruitment (Figures~\ref{fig:sens-m-biomass} and
+Table~\ref{tab:parameters-posts}). Increasing the mean in Scenario 9 resulted
+in a re-scaling of the estimated population size, with slightly larger
+estimates of biomass and recruitment (Figures~\ref{fig:sens-m-biomass} and
 \ref{fig:sens-m-recruitment}). The median posterior estimate was
-$M=0.348$ ($0.308$--$0.406$).
+$M=\Sexpr{sens.9.m.quants[2]}$
+($\Sexpr{sens.9.m.quants[1]}$--$\Sexpr{sens.9.m.quants[3]}$).
 
 Model outcomes were therefore influenced by the assumed prior probability
 distribution for $\ln(M)$. Alternative assumptions for the mean and standard

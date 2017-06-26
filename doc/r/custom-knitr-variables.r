@@ -141,7 +141,6 @@ median.bio.max.year <- names(which.max(b$mcmccalcs$sbt.quants[2,]))
 
 ## ################################################################################
 ## ## Get priors settings from the control file
-## M
 base.m.prior.mean <- f(exp(base.model[[1]]$ctl$params[3, 6]), 1)
 base.m.prior.sd <- f(base.model[[1]]$ctl$params[3, 7], 2)
 sens.7.m.prior.mean <- f(exp(sens.models.4[[1]]$ctl$params[3, 6]), 1)
@@ -150,6 +149,18 @@ sens.8.m.prior.mean <- f(exp(sens.models.4[[2]]$ctl$params[3, 6]), 1)
 sens.8.m.prior.sd <- f(sens.models.4[[2]]$ctl$params[3, 7], 2)
 sens.9.m.prior.mean <- f(exp(sens.models.5[[1]]$ctl$params[3, 6]), 1)
 sens.9.m.prior.sd <- f(sens.models.5[[1]]$ctl$params[3, 7], 2)
+
+## Values for posteriors
+base.quants <- as.data.frame(base.model[[1]]$mcmccalcs$p.quants)
+base.m.quants <- f(base.quants$m, 3)
+base.bo.quants <- f(1000 * base.model[[1]]$mcmccalcs$r.quants[1, 2:4])
+
+sens.7.m.quants <- f(as.data.frame(sens.models.4[[1]]$mcmccalcs$p.quants)$m, 3)
+sens.7.bo.quants <- f(1000 * sens.models.4[[1]]$mcmccalcs$r.quants[1, 2:4])
+
+sens.8.m.quants <- f(as.data.frame(sens.models.4[[2]]$mcmccalcs$p.quants)$m, 3)
+sens.9.m.quants <- f(as.data.frame(sens.models.5[[1]]$mcmccalcs$p.quants)$m, 3)
+
 
 ## ################################################################################
 ## cohort.catch.1999 <- sum(cohortCatch(1999, base.model$catage))
