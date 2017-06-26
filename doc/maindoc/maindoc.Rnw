@@ -880,27 +880,218 @@ estimates of $B_0$ (Figure~\ref{fig:depletion}, Table~\ref{tab:ref-points}). The
 median posterior projected estimate of 2015 relative biomass is $0.596$
 ($0.367$--$0.936$) (Figure~\ref{fig:depletion}, Table~\ref{tab:depletion}).
 
-
 \subsection{SENSITIVITY ANALYSES} \label{sec:sensitivities}
-The full list of sensitivity scenarios is provided.\\
+We tested sensitivity of the model outputs to the following assumptions:
+\begin{resdoclist}
+  \item The assumed fixed value of variance parameters $\vartheta^2$ and $\rho$
+  \item The prior probability distribution for steepness ($h$)
+  \item The prior probability distribution for $\ln(M)$
+  \item The prior probability distribution for survey catchability ($q_k$,
+    $2<=k<=5$)
+  \item The estimated fishery selectivity parameters
+\end{resdoclist}
 
-\subsubsection{Alternative values of variance parameters $\vartheta^2$
-  and $\rho$} \label{sec:variance}
-The Reference Case used fixed values for variance parameters $\vartheta^2$
-and $\rho$.\\
+Results are presented below. The full list of sensitivity scenarios is provided
+in Table~\ref{tab:sens-params-desc}. Reference Case parameter settings are provided
+in Table~\ref{tab:parameters}. In all sensitivity runs, posterior samples
+were drawn systematically every \mcmcsampfreq\ iterations from a chain of length
+\mcmclength, resulting in \mcmcnsamp\ posterior samples. The first
+\mcmcburnin\ samples were dropped to allow for sufficient burn-in.\\
+
+\subsubsection{Alternative values of variance parameters $\vartheta^2$ and
+  $\rho$} \label{sec:variance}
+The Reference Case used fixed values for variance parameters $\vartheta^2$ and
+$\rho$ (Table~\ref{tab:paramest}), which resulted in an observation error term
+($\sigma= 0.2$) and a process error term ($\tau= 0.8$) (see
+Appendix \ref{chap:equations}, Eq.~\ref{eq:df17}). We tested model sensitivity
+to these fixed parameters by varying $\vartheta^2$ and $\rho$ to give:
+\begin{resdoclist}
+  \item $\sigma=\Sexpr{sens.models.1[[1]]$mpd$sig}$ and
+    $\tau=\Sexpr{sens.models.1[[1]]$mpd$tau}$ (Scenario 2)
+  \item Estimate total variance (Scenario 3)
+  \item $\sigma=\Sexpr{sens.models.2[[1]]$mpd$sig}$ and
+    $\tau=\Sexpr{sens.models.2[[1]]$mpd$tau}$ (Scenario 4)
+  \item $\sigma=\Sexpr{sens.models.2[[2]]$mpd$sig}$ and
+    $\tau=\Sexpr{sens.models.2[[2]]$mpd$tau}$ (Scenario 5)
+\end{resdoclist}
+
+These scenarios were designed to test model sensitivity to:
+\begin{resdoclist}
+  \item assumed lower observation error in the surveys
+  \item the effect of freely-estimating total variance
+  \item assumed higher recruitment variability
+  \item assumed lower recruitment variability
+\end{resdoclist}
+
+The effect of reducing observation error in Scenario 2 was to slightly improve
+the fits to the survey indices (Figure~\ref{fig:sens-sig-indices}), most
+notably the Hecate Strait Multispecies Assemblage Survey. The predicted
+final-year index points were estimated to be slightly higher in this scenario
+(Figure~\ref{fig:sens-sig-indices}), resulting in slightly larger median
+posterior estimates of spawning biomass (Figure~\ref{fig:sens-sig-biomass}).
+Estimating total variance in Scenario 3 gave MPD estimates of
+$\sigma=\Sexpr{sens.models.1[[1]]$mpd$sig}$ and
+$\tau=\Sexpr{sens.models.1[[1]]$mpd$tau}$, both larger than the assumed
+fixed values in the Reference Case. Fits to the indices of abundance were,
+however, almost the same as for the Reference Case
+(Figure~\ref{fig:sens-sig-indices}). Posterior estimates of recruitment and
+log recruitment deviations were only marginally different from the Reference
+Case (Figure~\ref{fig:sens-sig-recruitment}).
+
+Increasing the process error variance in Scenario 4 mainly affected the 2014
+estimates of recruitment and log recruitment deviations
+(Figure~\ref{fig:sens-tau-recruitment}). The estimated final year biomass
+also increased slightly (Figure~\ref{fig:sens-tau-biomass}). As expected,
+reducing the process error variance in Scenario 5 had the opposite effect,
+with slightly decreased estimates of final year recruitment, log recruitment
+deviations and spawning biomass (Figure~\ref{fig:sens-tau-recruitment}).
+Estimates of \emph{B}\subscr{0} were sensitive to the assumed fixed values of
+$\tau$ (Figure~\ref{fig:sens-tau-biomass}). The resulting impacts on relative
+spawning biomass are shown in Figure~\ref{fig:sens-tau-depletion}. The rescaling
+of \emph{B}\subscr{0} in Scenario 4 (Figure~\ref{fig:sens-tau-biomass}) resulted
+in a considerable portion of the posterior credibility interval of relative
+biomass to be below the candidate USR of 0.4\emph{B}\subscr{0}.
 
 \subsubsection{Prior probablility distribution for
   steepness ($h$)} \label{sec:priorsteepness}
-Sensitivity to the assumed prior probability distribution for steepness.\\
+Sensitivity to the assumed prior probability distribution for steepness was
+tested in Scenario 6 by decreasing the mean of the prior distribution and
+increasing the CV. This was achieved by changing the parameters of the Beta
+prior to give mean = 0.72 and CV = 0.15 (Table~\ref{tab:sens-params-desc}). This
+was a similar sensitivity test to that done by \citet{rocksole2014} for \bc\ Rock
+Sole. This sensitivity test resulted in lower posterior estimates of steepness,
+with median = $0.762$ ($0.565$--$0.914$), compared to the Reference Case median
+posterior = $0.874$ ($0.688$--$0.975$).
+
+Spawning biomass and recruitment estimates are shown in
+Figures~\ref{fig:sens-h-biomass} and \ref{fig:sens-h-recruitment}, where it can
+be seen that there was relatively little effect of the prior distribution on
+posterior estimates of biomass and recruitment. The median posterior estimate of
+$B_0$ was, however, much more uncertain than for the Reference Case, with the
+credibility interval ranging from $320,313$--$2,030,590$ t, compared to the
+Reference Case posterior credibility interval of $249,745$--$1,244,550$ t
+(Table~\ref{tab:refpoints}). This was due in large part to the increased CV in
+the prior distribution for steepness. Median posterior estimates of other
+parameters were very similar to the Reference Case.
 
 \subsubsection{Prior probabliity distribution for $\ln(M)$} \label{sec:priorm}
 The Reference Case assumed a normal prior probability distribution for $\ln(M)$,
-with mean = $\ln(0.2)$.\\
+with mean = $\ln(\Sexpr{base.m.prior.mean})$ and standard
+deviation = \Sexpr{base.m.prior.sd} in log space. Three scenarios
+were run to test sensitivity of model outcomes to the mean and standard deviation
+assumed for this prior distribution:
+\begin{resdoclist}
+  \item mean = $\ln(\Sexpr{sens.7.m.prior.mean})$, standard deviation =
+    \Sexpr{sens.7.m.prior.sd} (Scenario 7)
+  \item mean = $\ln(\Sexpr{sens.8.m.prior.mean})$, standard deviation =
+    \Sexpr{sens.8.m.prior.sd} (Scenario 8)
+  \item mean = $\ln(\Sexpr{sens.9.m.prior.mean})$, standard deviation =
+    \Sexpr{sens.9.m.prior.sd} (Scenario 9)
+\end{resdoclist}
+
+Biomass and recruitment estimates for Scenarios 7 and 8 are shown in
+Figures~\ref{fig:sens-msd-biomass} and \ref{fig:sens-msd-recruitment}. Decreasing
+the standard deviation in Scenario 7 resulted in a lower median posterior
+estimates of $M=0.274$ ($0.255$ - $0.292$) compared to the
+Reference Case median posterior estimate of $M=0.314$
+($0.255$--$0.380$). Female spawning biomass was estimated to be on a
+slightly more increasing trajectory compared with the reference case model, with
+much less uncertainty in the first years of the time series
+(Figure~\ref{fig:sens-msd-biomass}). The median posterior estimates of recent
+biomass were larger than in the reference case model, and the credibility
+interval was broader. Posterior estimates of $B_0$ were much more uncertain than
+for the Reference Case, with the credibility interval ranging from
+$391,085$--$2,221,190$ t, compared to the Reference Case posterior credibility
+interval of $249,745$--$1,244,550$ t (Table~\ref{tab:refpoints}). Convergence
+diagnostics for Scenario 7 were poorer than for the Reference Case, with
+stronger autocorrelation in the MCMC chains, notably for estimates of
+$\overline{R}_{init}$.
+
+Increasing the standard deviation in Scenario 8 resulted in very similar
+estimates of $M$, spawning biomass and recruitment as the Reference Case
+(Figures~\ref{fig:sens-msd-biomass} and \ref{fig:sens-msd-recruitment}). The
+median posterior estimate was $M=0.338$ ($0.303$--$0.396$).
+This can be compared to estimates from the Reference Case (see above and
+Table~\ref{tab:paramest}). Increasing the mean in Scenario 9 resulted in a
+re-scaling of the estimated population size, with slightly larger estimates of
+biomass and recruitment (Figures~\ref{fig:sens-m-biomass} and
+\ref{fig:sens-m-recruitment}). The median posterior estimate was
+$M=0.348$ ($0.308$--$0.406$).
+
+Model outcomes were therefore influenced by the assumed prior probability
+distribution for $\ln(M)$. Alternative assumptions for the mean and standard
+deviation of the prior tended to increase the median and credibility interval
+of posterior estimates of $B_0$ and recent spawning biomass.
 
 \subsubsection{Prior probablity distribution for survey
   catchability ($q_k$)} \label{sec:priorsurveyq}
-Given that the swept area methodology described in Eq. \ref{eq:sweptareaindex}
-did not attempt to inflate estimated biomass.\\
+The Reference Case assumed a normal prior probability distribution for
+$\ln(q_k)$, with mean = $\ln(0.5)$ and standard deviation = 1.0 in log space,
+for all surveys $k$, $2<=k<=5$. Two scenarios were run to test sensitivity
+of model outcomes to the mean and standard deviation assumed for this prior
+distribution:
+\begin{resdoclist}
+  \item mean = $\ln(1.0)$, standard deviation = 1.0 (Scenario 10)
+  \item mean = $\ln(0.5)$, standard deviation = 1.5 (Scenario 11)
+\end{resdoclist}
+
+Increasing the mean of the prior distribution in Scenario 10 resulted in higher
+posterior estimates of $q_k$ for all surveys compared to the reference case model
+(Table~\ref{tab:sens-params-desc-q}). Correspondingly, posterior estimates of
+spawning biomass and recruitment were lower than in the Reference Case
+(Figures~\ref{fig:sens-q-biomass} and \ref{fig:sens-q-recruitment}). Conversely,
+increasing the standard deviation of the prior distribution in Scenario 11
+resulted in lower posterior estimates of $q_k$ for all surveys. Correspondingly,
+estimates of spawning biomass and recruitment were higher than in the Reference
+Case, with a much broader credible interval (Figures~\ref{fig:sens-qsd-biomass}
+and \ref{fig:sens-qsd-recruitment}).
+
+While Scenario 10 illustrates that the assumed prior probability distribution did
+affect posterior estimates of $q_k$ for all surveys, we do not consider a prior
+centred on 1 to be reasonable, given that the swept area methodology described in
+Eqs. \ref{eq:sweptareaindex} -- \ref{eq:indexcv} did not attempt to inflate
+estimated biomass for the whole coast. The lower posterior estimates for $q_k$
+obtained for all surveys in Scenario 11, may or may not be plausible, given the
+lack of information in the data for informing population scale in this
+assessment.
+
+\subsubsection{Effect of fixing fishery selectivity parameters}
+In an earlier section, we noted that the estimated selectivity ogive for the
+trawl fishery was quite far to the right of the maturity ogive
+(Figure~\ref{fig:selex}), resulting in estimates of \emph{U}\subscr{MSY}
+approaching 1. We concluded that the estimated age-at-50\%-harvest in the trawl
+fishery (median = 9.45 y) was consistent with the fishery age composition data
+(Figure~\ref{fig:agecomps-trawl}) but that these data may not be representative
+of ages in the freezer trawl fleet due to lack of age samples from this fleet.
+While we recommend ageing of archival otoliths from the freezer trawl fleet as
+a future research priority, we ran two simple scenarios in the current
+assessment to evaluate the effect of alternative fishery selectivity ogives on
+model outcomes. Trial runs suggested that fixing age-at-50\%-harvest at lower
+values resulted in poor fits to the age composition data and poor model
+convergence. Therefore, for the two sensitvity runs presented here, the fishery
+age composition data were removed from the assessment and two alternative fixed
+ages-at-50\%-harvest were assumed:
+
+\begin{resdoclist}
+  \item selectivity ogive = maturity ogive (Scenario 12)
+  \item age-at-50\%-harvest = 6 yrs (Scenario 13)
+\end{resdoclist}
+
+Trawl selectivity ogives estimated in the Reference Case (MPD) and fixed in
+Scenarios 12 and 13 are shown in Figure~\ref{fig:sens-trawl-selex}. As expected,
+the effect of reducing the age-at-50\%-harvest in the trawl fishery was a large
+reduction in estimated female spawning biomass
+(Figure~\ref{fig:sens-trawl-selex-biomass}), a reduction in estimated
+\emph{U}\subscr{MSY} and a corresponding increase in \emph{B}\subscr{MSY}
+(Figure~\ref{fig:sens-trawl-selex-refpoints}). Assuming a lower
+age-at-50\%-harvest in the trawl fishery could therefore result in more
+precautionary advice due to lower spawning biomass, and because the vulnerable
+biomass would contain a greater proportion of younger fish.
+
+Scenarios 12 and 13 are speculative as there is currently no evidence to support
+an assumption of a lower age-at-50\%-harvest in the trawl fishery. These two
+scenarios are presented as "what-if" scenarios to illustrate the potential
+impacts of over-estimating age-at-50\%-harvest in the trawl fishery.
 
 \section{RECOMMENDATIONS AND YIELD OPTIONS}
 
@@ -1095,14 +1286,14 @@ make.sens.parameter.table(sens.desc,
                           placement = "H")
 @
 
-<<q.comparison.table, results='asis', echo=FALSE>>=
+<<sens.description.table.q, results='asis', echo=FALSE>>=
 cap <- paste0("Sensitivity cases for $q_k$; posterior quantiles. For ",
               "sensitivity case descriptions, see ",
               "Table~\\ref{tab:sens-params-desc}.")
 make.sens.q.table(sens.models.3,
                   sens.model.names.3,
                   xcaption = cap,
-                  xlabel = "tab:sens-q",
+                  xlabel = "tab:sens-params-desc-q",
                   font.size = 9,
                   space.size = 10,
                   placement = "H")

@@ -141,14 +141,15 @@ median.bio.max.year <- names(which.max(b$mcmccalcs$sbt.quants[2,]))
 
 ## ################################################################################
 ## ## Get priors settings from the control file
-## param.details <- make.parameters.estimated.summary.table(base.model,
-##                                                          start.rec.dev.yr = recruit.dev.start.yr,
-##                                                          end.rec.dev.yr = end.yr - 1,
-##                                                          return.xtable = FALSE)
-## m.prior <- split.prior.info(param.details[rownames(param.details) == "m.vals",][4],
-##                             dec.points = 2,
-##                             first.to.lower = TRUE)
-## ## Now, in document, use m.prior[1] for name of prior, m.prior[1] for mean, and m.prior[3] for SD.
+## M
+base.m.prior.mean <- f(exp(base.model[[1]]$ctl$params[3, 6]), 1)
+base.m.prior.sd <- f(base.model[[1]]$ctl$params[3, 7], 2)
+sens.7.m.prior.mean <- f(exp(sens.models.4[[1]]$ctl$params[3, 6]), 1)
+sens.7.m.prior.sd <- f(sens.models.4[[1]]$ctl$params[3, 7], 2)
+sens.8.m.prior.mean <- f(exp(sens.models.4[[2]]$ctl$params[3, 6]), 1)
+sens.8.m.prior.sd <- f(sens.models.4[[2]]$ctl$params[3, 7], 2)
+sens.9.m.prior.mean <- f(exp(sens.models.5[[1]]$ctl$params[3, 6]), 1)
+sens.9.m.prior.sd <- f(sens.models.5[[1]]$ctl$params[3, 7], 2)
 
 ## ################################################################################
 ## cohort.catch.1999 <- sum(cohortCatch(1999, base.model$catage))
