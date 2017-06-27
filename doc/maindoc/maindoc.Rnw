@@ -666,17 +666,18 @@ during this period, suggesting that the low observation in the WCVISS may have
 been a sampling artifact, or due to some other anomaly. For the Hecate Strait
 Multispecies Assemblage Survey, the model overestimated the three observations
 in the earliest part of the time series. The median posterior estimate of
-catchability for this survey (0.13) was close to the median estimates of
-catchability for the three synoptic surveys (0.14, 0.12, 0.10) for the QCSSS,
-HSSS and WCVISS respectively) (Table~\ref{tab:parameters-posts}), indicating
-that the model estimated all four surveys to be similarly scaled to the
-population biomass. The model therefore treated the HSMAS and the synoptic
-surveys to essentially be continuous time series. This is not surprising given
-the absence of age composition data from the HSMAS to inform the respective
-scales of the surveys. However, we acknowledge that catchability in the HSMAS
-may have been different from the other surveys due to differences in survey
-design, and that the fit obtained for the HSMAS is partly a function of fits
-to the other surveys and to the assumed fixed selectivity for the HSMSAS.
+catchability for this survey (\Sexpr{hsmas.q[2]}) was close to the median
+estimates of catchability for the three synoptic surveys (\Sexpr{hsss.q[2]},
+\Sexpr{qcsss.q[2]}, \Sexpr{wcviss.q[2]} for the HSSS, QCSSS, and WCVISS
+respectively) (Table~\ref{tab:parameters-posts}), indicating that the model
+estimated all four surveys to be similarly scaled to the population biomass.
+The model therefore treated the HSMAS and the synoptic surveys to essentially
+be continuous time series. This is not surprising given the absence of age
+composition data from the HSMAS to inform the respective scales of the surveys.
+However, we acknowledge that catchability in the HSMAS may have been different
+from the other surveys due to differences in survey design, and that the fit
+obtained for the HSMAS is partly a function of fits to the other surveys and
+to the assumed fixed selectivity for the HSMAS.
 
 MPD fits to the fishery age composition data are shown in
 Figure~\ref{fig:agecomps-fits-trawl}. Fits were reasonable and there were no

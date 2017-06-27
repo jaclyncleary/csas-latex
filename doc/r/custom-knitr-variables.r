@@ -28,6 +28,11 @@ fmsy.lo <- r.quants["fmsy", 2]
 fmsy.med <- r.quants["fmsy", 3]
 fmsy.hi <- r.quants["fmsy", 4]
 
+hsmas.q <- f(as.data.frame(b$mcmccalcs$p.quants)$q1, 2)
+hsss.q <- f(as.data.frame(b$mcmccalcs$p.quants)$q2, 2)
+qcsss.q <- f(as.data.frame(b$mcmccalcs$p.quants)$q3, 2)
+wcviss.q <- f(as.data.frame(b$mcmccalcs$p.quants)$q4, 2)
+
 ################################################################################
 ## Number of mcmc samples, min and max median biomass
 mcmc.num.samples <- nrow(b$mcmc$params)
