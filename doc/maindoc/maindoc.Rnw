@@ -731,7 +731,7 @@ age-at-50\%-harvest ($\hat{a}_1$) and the standard deviation in the logistic
 selectivity ogive ($\hat{\gamma}_1$) are provided in
 Table~\ref{tab:parameters-posts}.
 The median posterior estimate of age-at-50\%-harvest in the trawl fishery was
-$\Sexpr{trawl.a50}$ y. This estimate was further to the right than expected,
+$\Sexpr{trawl.a50[2]}$ y. This estimate was further to the right than expected,
 but was consistent with the available age composition data
 (Figure~\ref{fig:agecomps-trawl}), which indicate very few observations of
 younger fish, especially in the latter part of the time series. Numerous tests of
