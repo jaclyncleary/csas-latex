@@ -5,7 +5,12 @@
 ## The variables defined here depend on the tructure of the
 ##  model-setup.r source code.
 
+## Base model and some of its outputs simplified
 b <- base.model[[1]]
+b.params <- as.data.frame(b$mcmc$params)
+b.mcc <- b$mcmccalcs
+b.p.quants <- as.data.frame(b.mcc$p.quants)
+b.r.quants <- as.data.frame(b.mcc$r.quants)
 
 ################################################################################
 ## Names used in assessment
@@ -17,41 +22,39 @@ bc <- "British Columbia"
 
 ################################################################################
 ## Parameter values
-r.quants <- base.model$mcmccalcs$r.quants
-bo.lo <- r.quants["bo", 2]
-bo.med <- r.quants["bo", 3]
-bo.hi <- r.quants["bo", 4]
-bmsy.lo <- r.quants["bmsy", 2]
-bmsy.med <- r.quants["bmsy", 3]
-bmsy.hi <- r.quants["bmsy", 4]
-fmsy.lo <- r.quants["fmsy", 2]
-fmsy.med <- r.quants["fmsy", 3]
-fmsy.hi <- r.quants["fmsy", 4]
+bo.lo <- b.r.quants["bo", 2]
+bo.med <- b.r.quants["bo", 3]
+bo.hi <- b.r.quants["bo", 4]
+bmsy.lo <- b.r.quants["bmsy", 2]
+bmsy.med <- b.r.quants["bmsy", 3]
+bmsy.hi <- b.r.quants["bmsy", 4]
+fmsy.lo <- b.r.quants["fmsy", 2]
+fmsy.med <- b.r.quants["fmsy", 3]
+fmsy.hi <- b.r.quants["fmsy", 4]
 
-mc.quants <- as.data.frame(b$mcmccalcs$p.quants)
-qcsss.q <- f(mc.quants$q1, 2)
-hsmas.q <- f(mc.quants$q2, 2)
-hsss.q <- f(mc.quants$q3, 2)
-wcviss.q <- f(mc.quants$q4, 2)
+qcsss.q <- f(b.p.quants$q1, 2)
+hsmas.q <- f(b.p.quants$q2, 2)
+hsss.q <- f(b.p.quants$q3, 2)
+wcviss.q <- f(b.p.quants$q4, 2)
 
-trawl.a50 <- f(mc.quants$sel1, 2)
-qcsss.a50 <- f(mc.quants$sel2, 2)
-hsss.a50 <- f(mc.quants$sel4, 2)
-wcviss.a50 <- f(mc.quants$sel5, 2)
+trawl.a50 <- f(b.p.quants$sel1, 2)
+qcsss.a50 <- f(b.p.quants$sel2, 2)
+hsss.a50 <- f(b.p.quants$sel4, 2)
+wcviss.a50 <- f(b.p.quants$sel5, 2)
 
 ################################################################################
 ## Number of mcmc samples, min and max median biomass
-mcmc.num.samples <- nrow(b$mcmc$params)
-mcmc.burnin <- f(mcmc.num.samples - nrow(b$mcmccalcs$p.dat))
+mcmc.num.samples <- nrow(b.params)
+mcmc.burnin <- f(mcmc.num.samples - nrow(b.mcc$p.dat))
 mcmc.num.samples <- f(mcmc.num.samples)
 mcmc.length <- "15 million"
 mcmc.samp.freq <- f(7500)
 mcmc.ci <- "95\\%"
 
-median.bio.min  <- f(min(b$mcmccalcs$sbt.quants[2,]), 3)
-median.bio.min.year <- names(which.min(min(b$mcmccalcs$sbt.quants[2,])))
-median.bio.max  <- f(max(b$mcmccalcs$sbt.quants[2,]), 3)
-median.bio.max.year <- names(which.max(b$mcmccalcs$sbt.quants[2,]))
+median.bio.min  <- f(min(b.mcc$sbt.quants[2,]), 3)
+median.bio.min.year <- names(which.min(min(b.mcc$sbt.quants[2,])))
+median.bio.max  <- f(max(b.mcc$sbt.quants[2,]), 3)
+median.bio.max.year <- names(which.max(b.mcc$sbt.quants[2,]))
 
 ################################################################################
 ## Priors settings from the control file
@@ -109,9 +112,8 @@ wcviss.yrs <- paste(wcviss.yrs, collapse=", ")
 
 ################################################################################
 ## Values for posteriors
-base.quants <- as.data.frame(b$mcmccalcs$p.quants)
-base.m.quants <- f(base.quants$m, 3)
-base.bo.quants <- f(1000 * b$mcmccalcs$r.quants[1, 2:4])
+base.m.quants <- f(b.p.quants$m, 3)
+base.bo.quants <- f(1000 * b.r.quants[1, 2:4])
 
 sens.7.m.quants <- f(as.data.frame(sens.models.4[[1]]$mcmccalcs$p.quants)$m, 3)
 sens.7.bo.quants <- f(1000 * sens.models.4[[1]]$mcmccalcs$r.quants[1, 2:4])
