@@ -3,29 +3,15 @@
 \usepackage{resDocSty}
 
 %% ------------------------------------------------------------------------------
-%% Custom commands for this assessment
-\newcommand{\sQuote}[1]{`#1'}
-\newcommand{\dQuote}[1]{``#1''}
-\newcommand{\eqn}[1]{\begin{equation}#1\end{equation}}
-\newcommand{\gfrac}[2]{\genfrac{}{}{}{0}{#1}{#2}}
+%% Custom commands
 %% For subscripts in text mode
 \newcommand{\subscr}[1]{$_{\text{#1}}$}
-%% eor - Show two things with a vertical bar between them. e.g. A|B
-\newcommand{\eor}[2]{{#1$\Vert$#2}}
-%% bM - makes equations larger
-\newcommand{\bM}[1]{\mathlarger{\mathlarger{#1}}}
 %% Allow newline breaks in a table cell = Multi-Line-Cell = mlc
 %%  syntax is \mlc{first line\\second line}
 %% Don't change the name of this, as it is embedded in R xtable code.
 \newcommand{\mlc}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
-\newcommand{\fishname}{Arrowtooth Flounder}
-\newcommand{\sciencename}{Atheresthes stomias}
-\newcommand{\familyname}{Pleuronectidae}
-\newcommand{\commonname}{Turbot}
 \newcommand{\Avuln}{Age-at-50\%-vulnerability}
 \newcommand{\Amat}{Age-at-50\%-maturity}
-\newcommand{\amat}{age-at-50\%-maturity}
-\newcommand{\bc}{British Columbia}
 \newcommand{\Bmsy}{B_\mathrm{MSY}}
 \newcommand{\umsy}{u_\mathrm{MSY}}
 %% ------------------------------------------------------------------------------
@@ -35,7 +21,6 @@
 %% \lhead{DRAFT -- Non-citable working paper}
 \lhead{}
 \rhead{}
-% \lfoot{\fishname}
 %% \rfoot{DRAFT - DO NOT CITE}
 %% ------------------------------------------------------------------------------
 
@@ -44,8 +29,6 @@
 %% This is the initial code chunk where you load your R workspace.
 %% This gives access to all objects in the RData file for the entirety
 %%  of the document. Use \Sexpr{objname} to put values in text.
-%% Note that libraries need to be loaded as they are not saved in
-%%  the RData file.
 <<load-everything, echo=FALSE,  message=FALSE, results='hide', warning=FALSE>>=
 opts_chunk$set(dev = 'png',
                fig.path = 'knitr-cache/',
@@ -79,7 +62,7 @@ source("custom-knitr-variables.r")
 %% \Citation{
 %% %% Non-citable Working Paper.
 %% Author, B.
-%% \fishname\ (\emph{\sciencename}) Stock Assessment for the West Coast of British Columbia
+%% \Sexpr{fish.name} (\emph{\Sexpr{science.name}) Stock Assessment for the West Coast of British Columbia
 %% DFO Can. Sci. Advis. Sec. Res. Doc. 2016/xxx. xii + XX p.
 %% }
 

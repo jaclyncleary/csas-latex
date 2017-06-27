@@ -1,10 +1,10 @@
 \abstract{}
 
-\fishname\ (\emph{\sciencename}, \commonname) are an important component
-of the bottom trawl fishery in \bc. They are managed as a coastwide stock,
+\Sexpr{fish.name} (\emph{\Sexpr{science.name}}, \Sexpr{common.name}) are an
+important component of the bottom trawl fishery in \Sexpr{bc}. They are managed as a coastwide stock,
 with a TAC of 15,000 t and catch of 10,679 t in 2014. Prior to the introduction
 of freezer trawlers in the mid-2000s, most of the historical catch of
-\fishname\ is understood to have been discarded at sea. This was largely due
+\Sexpr{fish.name} is understood to have been discarded at sea. This was largely due
 to proteolysis, which occurs in the muscle tissue of this species a short time
 after it is caught, making the flesh unpalatable. In the past five years,
 markets have been established for fillets that have been frozen at sea, and
@@ -28,7 +28,7 @@ population, indicating that there was limited information in the short time
 series of available data to resolve the population scale.
 
 Management advice is provided in the form of decision tables which forecast the
-impacts of a range of 2015 catch levels on \fishname\ stock status relative to
+impacts of a range of 2015 catch levels on \Sexpr{fish.name} stock status relative to
 these reference points. The Reference Case decision table suggests that a 2015
 catch equal to any of the catch levels tested, ranging from 0 t to 30,000 t
 (twice the 2014 TAC), would result in a 2016 biomass above all of the candidate
@@ -106,55 +106,56 @@ des recommandations prioritaires.
 
 %% Section names must be in all caps
 \section{INTRODUCTION}
-\fishname\ (\emph{\sciencename}, Family \familyname), also commonly
-called \commonname, is a species of flatfish that occurs in the offshore
-waters of \bc. \fishname\ are primarily taken by the groundfish bottom
-trawl fishery, although they are also encountered by hook and line fisheries,
-particularly those targeting Pacific Halibut (\emph{Hippoglossus stenolepis}).
-Prior to the introduction of freezer trawlers in the \bc\ groundfish fleet in
-the mid 2000s, most of the historical catch of \fishname\ is understood to have
-been discarded at sea. Proteolysis occurs in the muscle tissue of this species a
-short time after it is caught, making the flesh mushy and unpalatable. In the
-past five years, Asian markets have been established for fillets that have been
-frozen at sea as soon as possible after capture to reduce proteolysis. There is
-also an Asian market for the frills. The stock was last assessed by
-\citet{arf2001}, who presented empirical summaries of catch, commercial and
-survey catch-per-unit-effort (CPUE) and biological data. This stock assessment
-covers the combined Pacific Marine Fisheries Commission (PMFC) major areas 3CD
-and 5ABCDE off the west coast of \bc.
+\Sexpr{fish.name} (\emph{\Sexpr{science.name}}, Family \Sexpr{family.name}),
+also commonly called \Sexpr{common.name}, is a species of flatfish that occurs
+in the offshore waters of \Sexpr{bc}. \Sexpr{fish.name} are primarily taken by
+the groundfish bottom trawl fishery, although they are also encountered by hook
+and line fisheries, particularly those targeting Pacific Halibut
+(\emph{Hippoglossus stenolepis}). Prior to the introduction of freezer trawlers
+in the \Sexpr{bc} groundfish fleet in the mid 2000s, most of the historical
+catch of \Sexpr{fish.name} is understood to have been discarded at sea.
+Proteolysis occurs in the muscle tissue of this species a short time after it is
+caught, making the flesh mushy and unpalatable. In the past five years, Asian
+markets have been established for fillets that have been frozen at sea as soon
+as possible after capture to reduce proteolysis. There is also an Asian market
+for the frills. The stock was last assessed by \citet{arf2001}, who presented
+empirical summaries of catch, commercial and survey catch-per-unit-effort
+(CPUE) and biological data. This stock assessment covers the combined Pacific
+Marine Fisheries Commission (PMFC) major areas 3CD and 5ABCDE off the west coast
+of \Sexpr{bc}.
 
 %% Subsection names must be in all caps
 \subsection{PURPOSE OF DOCUMENT}
-\fishname\ is managed as a coastwide stock in \bc, with the majority of the catch
-coming from Pacific Marine Fisheries Commission (PMFC) major areas 3CD (West
-Coast Vancouver Island), 5AB (Queen Charlotte Sound) and 5CD (Hecate Strait)
-(Figures~\ref{fig:cpue} and \ref{fig:main-catches}, Table~\ref{tab:main-catches}).
-The Strait of Georgia (management area 4B) is not included in this stock
-assessment. The 2014 Total Allowable Catch (TAC) was 15,000 metric tonnes, the
-second largest groundfish TAC in \bc, after Pacific Hake
+\Sexpr{fish.name} is managed as a coastwide stock in \Sexpr{bc}, with the majority of
+the catch coming from Pacific Marine Fisheries Commission (PMFC) major areas 3CD
+(West Coast Vancouver Island), 5AB (Queen Charlotte Sound) and 5CD
+(Hecate Strait) (Figures~\ref{fig:cpue} and \ref{fig:main-catches},
+Table~\ref{tab:main-catches}). The Strait of Georgia (management area 4B) is not
+included in this stock assessment. The 2014 Total Allowable Catch (TAC) was
+15,000 metric tonnes, the second largest groundfish TAC in \Sexpr{bc}, after Pacific Hake
 (\emph{Merluccius productus}).
 
 The purpose of this stock assessment is to update management advice for
-\fishname\ stocks in \bc, as requested by the Pacific Groundfish Management Unit
-(GMU). This assessment identifies reference points for \fishname\ that are
+\Sexpr{fish.name} stocks in \Sexpr{bc}, as requested by the Pacific Groundfish Management Unit
+(GMU). This assessment identifies reference points for \Sexpr{fish.name} that are
 consistent with the DFO Decision-making Framework Incorporating the Precautionary
 Approach (\citet{dfo09}) and characterizes stock status relative to these
 reference points, using a Bayesian, age-structured stock assessment model.
 Management advice is provided in the form of decision tables which forecast the
-impacts of a range of harvest levels on \fishname\ stock status relative to these
+impacts of a range of harvest levels on \Sexpr{fish.name} stock status relative to these
 reference points.
 
 \subsection{BIOLOGICAL BACKGROUND}
-\fishname\ are distinguished by their large mouth and arrow-shaped teeth, for
+\Sexpr{fish.name} are distinguished by their large mouth and arrow-shaped teeth, for
 which the species is named (\citet{hart1973}). Their distribution ranges from Baja
-California to the eastern Bering Sea (\citet{hart1973}). In \bc, the species
+California to the eastern Bering Sea (\citet{hart1973}). In \Sexpr{bc}, the species
 inhabits depths from 50--900 m (\citet{arf2001}).
 
-\fishname\ exhibit sexual dimorphism. After sexual maturity, females grow faster
+\Sexpr{fish.name} exhibit sexual dimorphism. After sexual maturity, females grow faster
 than males and reach a larger maximum size (Appendix \ref{chap:biological},
 Figure~\ref{fig:vonb}). Theoretical maximum length, $L_\infty$, is estimated to be
 $\Sexpr{round(bio$vonb[[2]][[2]][1,],1)}$ cm for females and
-$\Sexpr{round(bio$vonb[[1]][[2]][1,],1)}$ cm for males in \bc, although the
+$\Sexpr{round(bio$vonb[[1]][[2]][1,],1)}$ cm for males in \Sexpr{bc}, although the
 maximum sizes which have been observed are
 $\Sexpr{max(bio$vonb[[2]][[1]][,1])/10.0}$ cm for females and
 $\Sexpr{max(bio$vonb[[1]][[1]][,1])/10.0}$ cm for males (Figure~\ref{fig:vonb}).
@@ -166,27 +167,27 @@ $\Sexpr{max(bio$vonb[[1]][[1]][,2])}$ y for males There were few observations of
 fish over 20 y in the dataset, and this assessment assumes a plus group of 20 y
 (Figure~\ref{fig:agecomps-trawl}).
 
-\fishname\ are batch spawners with peak spawning occurring at depths deeper than
+\Sexpr{fish.name} are batch spawners with peak spawning occurring at depths deeper than
 350 m in the fall and winter months, although the timing of spawning may vary
 interannually (\citet{arf1995}). The species produces pelagic eggs, followed by
 a pelagic larval stage that may last several months (\citet{arf1995}). Fecundity
 of this species is poorly understood (\citet{dicosimo1998}). One and two year
 old fish occupy shallower depths than adults, but by the age of three or four
 years old, they are generally found in deeper water with adults
-(\citet{arf2001}). \fishname\ appear to occupy separate spawning (winter) and
+(\citet{arf2001}). \Sexpr{fish.name} appear to occupy separate spawning (winter) and
 feeding (summer) areas, and undergo seasonal bathymetric movement from shallower
 to deeper water in the fall and winter (\citet{arf2001}).
 
-Juvenile \fishname\ feed primarily on mobile prey such as cumaceans, carideans
+Juvenile \Sexpr{fish.name} feed primarily on mobile prey such as cumaceans, carideans
 and amphipods. Adults are piscivorous and cannibalistic, feeding on Pacific
 Herring (\emph{Clupea pallasii}), juvenile Walleye Pollock
 (\emph{Theragra chalcogramma}) and Pacific Sandlance
 (\emph{Ammodytes hexapterus}), among other species (\citet{fargo1981}).
 
 \subsection{FISHERY AND MANAGEMENT HISTORY} \label{sec:managementhistory}
-\fishname\ has been managed on a status-quo basis in recent years, with an
+\Sexpr{fish.name} has been managed on a status-quo basis in recent years, with an
 annual allocation of 15,000 t for the groundfish trawl fleet since 2006.
-Before that time, there were no limits on catches or discards of \fishname.
+Before that time, there were no limits on catches or discards of \Sexpr{fish.name}.
 The areas of high CPUE in Dixon Entrance seen in Figure~\ref{fig:cpue} are
 mainly from this test fishery. The increased catch can be seen in
 Figure~\ref{fig:main-catches}, especially in the northern areas (5ABCDE)
@@ -199,17 +200,17 @@ ability to freeze the catch a short time after capture, the freezer trawlers
 have accessed wider markets than the smaller shoreside boats. The freezer
 trawlers' priority catch is Pacific Hake (\citet{hake2015}), but when hake
 become scarce on the fishing grounds the freezer trawlers have the ability to
-easily switch gears to bottom trawl to fish for \fishname. Since their
+easily switch gears to bottom trawl to fish for \Sexpr{fish.name}. Since their
 introduction, freezer trawlers have taken an increasing proportion of the total
-\fishname\ catch, increasing from 7.0\% in 2005 to 65.8\% and 79.8\% in 2013
+\Sexpr{fish.name} catch, increasing from 7.0\% in 2005 to 65.8\% and 79.8\% in 2013
 and 2014, respectively.
 
 Prior to the introduction of freezer trawlers, most of the historical catch of
-\fishname\ is understood to have been discarded at sea in large quantities due
+\Sexpr{fish.name} is understood to have been discarded at sea in large quantities due
 to proteolysis of the flesh if catches were not landed and frozen quickly
 after capture. Prior to the introduction of 100\% at-sea observer coverage in the
-\bc\ groundfish fleet in 1996, reporting of \fishname\ discards in fishery
-logbooks was voluntary. Since \fishname\ were not managed with quotas before
+\Sexpr{bc} groundfish fleet in 1996, reporting of \Sexpr{fish.name} discards in fishery
+logbooks was voluntary. Since \Sexpr{fish.name} were not managed with quotas before
 1996, there was little incentive for skippers to record discards. Therefore the
 quantity of discards in the pre-1996 period is highly uncertain.
 
@@ -217,20 +218,20 @@ Any foreign or U.S. catches were taken outside Canadian management zones and not
 used in this assessment.
 
 \subsection{ASSESSMENT HISTORY}
-The coastwide \fishname\ stock was last assessed by \citet{arf2001}, who
+The coastwide \Sexpr{fish.name} stock was last assessed by \citet{arf2001}, who
 presented summaries of catch, commercial and survey catch-pre-unit-of-effort
 (CPUE) analyses, and biological data. They reported commercial and survey CPUE
 indices that showed cycles but no trends. They also reported lack of trend in
 size and age composition data, and no evidence that natural mortality had
 changed over time. Based on this evidence, \citet{arf2001} concluded that harvest
-rates of \fishname\ off the west coast of Canada were at or below sustainable
+rates of \Sexpr{fish.name} off the west coast of Canada were at or below sustainable
 levels. Prior to 2001, the stock was assessed by \citet{fargo1998}. A formal,
 statistical catch-at-age model-based assessment has never previously been done
-in \bc\ for this species.
+in \Sexpr{bc} for this species.
 
 \section{STOCK ASSESSMENT MODELLING}
 We applied a female-only statistical catch-at-age model in a Bayesian estimation
-framework to assess the coastwide stock of \fishname. Analysis of the sex
+framework to assess the coastwide stock of \Sexpr{fish.name}. Analysis of the sex
 composition of the catch data indicated that commercial catches have been 80-90\%
 female; see Appendix \ref{chap:propfemale}, Table~\ref{tab:propfemale}.
 
@@ -288,8 +289,8 @@ the years 1996-2014, for management areas 3CD (West Coast Vancouver Island),
 5AB (Queen Charlotte Sound), 5CD (Hecate Strait), and 5E (West Coast Haida
 Gwaii).
 
-Prior to the introduction of freezer trawlers into the \bc\ groundfish trawl
-fleet in 2005, most of the historical catch of \fishname\ is understood to
+Prior to the introduction of freezer trawlers into the \Sexpr{bc} groundfish trawl
+fleet in 2005, most of the historical catch of \Sexpr{fish.name} is understood to
 have been discarded at sea in large quantities due to flesh proteolysis, as
 discussed above. In many cases entire tows were discarded, precluding the use of
 ratio estimators or other statistical methods of estimating unobserved discards.
@@ -342,7 +343,7 @@ below).
 \textbf{Hecate Strait Synoptic Survey} \\
 The Hecate Strait synoptic groundfish bottom trawl survey is part of a
 coordinated set of long-term surveys that together cover the continental shelf
-and upper slope of most of the \bc\ coast. The Queen Charlotte Sound and West
+and upper slope of most of the \Sexpr{bc} coast. The Queen Charlotte Sound and West
 Coast Vancouver Island synoptic surveys described below are part of the same set
 of surveys. All the synoptic surveys follow a random depth stratified design.
 The relative allocation of blocks amongst depth strata was determined by
@@ -389,30 +390,30 @@ strata $i$:
 B_y = \sum_{i=1}^kC_{y_i}A_i=\sum_{i=1}^kB_{y_i}
 \end{align}
 where $C_{y_i}$ is the mean CPUE density ($kg/km^2$) for species $s$ in stratum
-$i$, $A_i$ is the area of stratum $i$, $B_{y_i}$ is the biomass of \fishname\ in
+$i$, $A_i$ is the area of stratum $i$, $B_{y_i}$ is the biomass of \Sexpr{fish.name} in
 stratum $i$ for year $y$, and $k$ is the number of strata.
 
-CPUE ($C_{y_i}$) for \fishname\ in stratum $i$ for year $y$ was calculated as a
+CPUE ($C_{y_i}$) for \Sexpr{fish.name} in stratum $i$ for year $y$ was calculated as a
 density in $kg/km^2$ by:
 
 \begin{align} \label{eq:cpuecalc}
 C_{y_i}=\frac{1}{n_{y_i}} \sum\limits_{j=1}^{n_{y_i}} \frac{W_{y_i,j}}{D_{y_i,j}w_{y_i,j}}
 \end{align}
-where $W_{y_i,j}$ is the catch weight in $kg$ for \fishname\ in stratum $i$, year
+where $W_{y_i,j}$ is the catch weight in $kg$ for \Sexpr{fish.name} in stratum $i$, year
 $y$, and tow $j$, $D_{y_i,j}$ is the distance travelled in $km$ for tow $j$ in
 stratum $i$ and year $y$, $w_{y_i,j}$ is the net opening in $km$ by tow $j$,
 stratum $i$, and year $y$, and $n_{y_i}$ is the number of tows in stratum $i$.
 
-The variance of the survey biomass estimate $V_y$ for \fishname\ in year $y$ is
+The variance of the survey biomass estimate $V_y$ for \Sexpr{fish.name} in year $y$ is
 calculated in $kg^2$ as follows:
 \begin{align} \label{eq:indexvariance}
 V_y=\sum_{i=1}^k\frac{\sigma_{y_i}^2A_i^2}{n_{y_i}}=\sum_{i=1}^kV_{y_i}
 \end{align}
 where $\sigma_{y_i}^2$ is the variance of the CPUE in $kg^2/km^4$ for year $y$ in
-stratum $i$, $V_{y_i}$ is the variance of \fishname\ in stratum $i$ for year $y$,
+stratum $i$, $V_{y_i}$ is the variance of \Sexpr{fish.name} in stratum $i$ for year $y$,
 where $\sigma_{y_i}^2$ was obtained from bootstrapped samples (see below).
 
-The CV for \fishname\ for each year $y$ was calculated as follows:
+The CV for \Sexpr{fish.name} for each year $y$ was calculated as follows:
 \begin{align} \label{eq:indexcv}
 (CV)_y=\frac{{V_y}^{1/2}}{B_y}
 \end{align}
@@ -425,7 +426,7 @@ Eq. \ref{eq:sweptareaindex} with CVs (Eq. \ref{eq:indexcv}) are presented
 for the four fishery-independent surveys in Table~\ref{tab:Indices}.
 
 Fishery CPUE was not used as an index of abundance due to the behaviour of
-the fishery. \fishname\ are targeted on known grounds, and the location
+the fishery. \Sexpr{fish.name} are targeted on known grounds, and the location
 information is shared among fishermen, so there is a bias towards a high CPUE.
 
 \subsubsection{Age Data} \label{sec:agedata}
@@ -457,7 +458,7 @@ commercial data, these strata comprised quarterly periods within a year, while,
 for survey samples, the strata were defined by the survey design. A description
 of the methods used to calculate weighted age frequencies is given in
 Appendix \ref{chap:agecompweight}. This is the same method that was used in the
-2014 \bc\ Rock Sole (\emph{Lepidopsetta spp.}) assessment (\citet{rocksole2014}).
+2014 \Sexpr{bc} Rock Sole (\emph{Lepidopsetta spp.}) assessment (\citet{rocksole2014}).
 
 Ageing requests included randomly chosen samples from many vessels, including the
 freezer trawlers. Some of these were not aged, due to time limitations of the
@@ -472,7 +473,7 @@ Length data from the freezer trawler and shoreside fleets are shown in
 Figure~\ref{fig:lengthsubfleet}. These data are presented to check whether or not
 there is evidence for differences in the age composition of the catch in the
 freezer trawl fleet compared to the rest of the fleet. Since 2006, when freezer
-trawlers began fishing for \fishname, they have taken an increasingly large
+trawlers began fishing for \Sexpr{fish.name}, they have taken an increasingly large
 proportion of the catch. However, as discussed in the previous section, it was
 discovered after the commercial otoliths had been processed that age data from
 this fleet were under-represented in the age composition data.
@@ -491,7 +492,7 @@ suggests that this may not be representative of the population.
 %% Subsubsections are not all caps
 \subsubsection{Model Description}
 A female-only, Bayesian statistical catch-at-age model was applied to assess the
-coastwide stock status of \fishname. The model is based on the Integrated
+coastwide stock status of \Sexpr{fish.name}. The model is based on the Integrated
 Statistical Catch Age Model (iSCAM) framework, \citet{martell2011}. Full model
 details are provided in Appendix \ref{chap:equations}.
 
@@ -578,9 +579,9 @@ A normal distribution was assumed for $\ln(M)$ with
 mean = $\ln(\Sexpr{base.m.prior.mean})$ and SD = $\Sexpr{base.m.prior.sd}$ in
 log space. \citet{rocksole2014} reviewed the literature and stock
 assessments and assumed a prior probability distribution for $M$ with
-mean = $0.2$ in their assessment of \bc\ Rock Sole (\emph{Lepidopsetta spp.}).
+mean = $0.2$ in their assessment of \Sexpr{bc} Rock Sole (\emph{Lepidopsetta spp.}).
 \citet{arf2013} assumed a value of $M=0.2$ for females in the assessment of
-Gulf of Alaska \fishname\, as did \citet{spies2013} for the Bering Sea
+Gulf of Alaska \Sexpr{fish.name}, as did \citet{spies2013} for the Bering Sea
 Aleutian Islands stock.
 
 Normal prior probability distributions were assumed for the survey catchability
@@ -623,7 +624,7 @@ There is some uncertainty in \emph{F}\subscr{MSY} (and annual harvest rate
 \emph{U}\subscr{MSY}), driven by uncertainty in the trawl fishery selectivity
 resulting from possible under-representation of freezer trawl ages discussed above
 (but see Section \ref{sec:commercial-length-data}). We therefore also present
-alternative candidate reference points for \fishname\ that are less reliant on
+alternative candidate reference points for \Sexpr{fish.name} that are less reliant on
 estimated selectivity. We suggest an USR = $0.4$\emph{B}\subscr{0} and a LRP =
 $0.2$\emph{B}\subscr{0}. These thresholds are consistent with biomass targets and
 limits in place in other jusrisdictions including Australia (\citet{smith2007})
@@ -734,7 +735,7 @@ consistent with the available age composition data
 (Figure~\ref{fig:agecomps-trawl}), which indicate very few observations of
 younger fish, especially in the latter part of the time series. Numerous tests of
 alternative model configurations did not result in a lower estimate of
-age-at-50\%-harvest in the trawl fishery. Female \fishname\ are thought to mature
+age-at-50\%-harvest in the trawl fishery. Female \Sexpr{fish.name} are thought to mature
 at around $5.6$ years of age (Figure~\ref{fig:matage}). Therefore, it appears
 that individuals have several opportunities to spawn before they become
 vulnerable to the fishery. This in turn resulted in estimates of maximum
@@ -961,7 +962,7 @@ Sensitivity to the assumed prior probability distribution for steepness was
 tested in Scenario 6 by decreasing the mean of the prior distribution and
 increasing the CV. This was achieved by changing the parameters of the Beta
 prior to give mean = 0.72 and CV = 0.15 (Table~\ref{tab:sens-params-desc}). This
-was a similar sensitivity test to that done by \citet{rocksole2014} for \bc\ Rock
+was a similar sensitivity test to that done by \citet{rocksole2014} for \Sexpr{bc} Rock
 Sole. This sensitivity test resulted in lower posterior estimates of steepness,
 with median = $0.762$ ($0.565$--$0.914$), compared to the Reference Case median
 posterior = $0.874$ ($0.688$--$0.975$).
@@ -1126,7 +1127,7 @@ uncertainty in the advice presented in this document:
 
 \section{ACKNOWLEDGEMENTS}
 
-We thank the members of the \fishname\ Technical Working Group for their
+We thank the members of the \Sexpr{fish.name} Technical Working Group for their
 valuable advice as this project progressed. They contributed material for
 Appendix \ref{chap:propfemale}.\\
 
@@ -1137,7 +1138,8 @@ Appendix \ref{chap:propfemale}.\\
 
 \section{TABLES}
 <<total.catches.table, results='asis', echo=FALSE>>=
-cap <- "Recent coastwide commercial fishery catch (t) for \\fishname."
+cap <- paste0("Recent coastwide commercial fishery catch (t) for ",
+              fish.name, ".")
 make.catches.table(catches,
                    start.yr = 1996,
                    end.yr = 2014,
@@ -1151,7 +1153,9 @@ make.catches.table(catches,
  @
 
 <<total.catches.by.area.table, results='asis', echo=FALSE>>=
-cap <- "Recent commercial fishery catch (t) for \\fishname\\ by area."
+cap <- paste0("Recent commercial fishery catch (t) for ",
+              fish.name,
+              " by area.")
 make.catches.table(catches,
                    start.yr = 1996,
                    end.yr = 2014,
@@ -1363,9 +1367,9 @@ make.decision.table(sens.models.4[[1]],
 \begin{center}
 \includegraphics[width=6in,keepaspectratio=true]{maindoc/figures/ARF-1996-2014-CPUE.eps}
 \end{center}
-\caption{Mean catch-per-unit-effort (CPUE, kg/h) of \fishname\ in grid cells
+\caption{Mean catch-per-unit-effort (CPUE, kg/h) of \Sexpr{fish.name} in grid cells
   0.1$^\circ$ longitude by 0.075$^\circ$ latitude (roughly 57.8~km$^2$). The
-  shaded cells give an approximation of the area where \fishname\ was
+  shaded cells give an approximation of the area where \Sexpr{fish.name} was
   encountered by fishing events from the groundfish trawl fishery from
   January 1, 1996 to October 7, 2014. Contours are 200 m and 1000 m isobaths.
   Red lines are PFMA area boundaries.}
@@ -1405,7 +1409,7 @@ make.catch.discard.plot(catches,
                         ind.letter = "c")
 @
 \end{center}
-\caption{Total coastwide catch of \fishname, including both landings and
+\caption{Total coastwide catch of \Sexpr{fish.name}, including both landings and
   discards (a). Panels (b) and (c) represent areas 3CD and 5ABCDE
   respectively. See Table~\ref{tab:main-catches} for values.}
 \label{fig:main-catches}

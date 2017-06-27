@@ -8,6 +8,14 @@
 b <- base.model[[1]]
 
 ################################################################################
+## Names used in assessment
+fish.name <- "Arrowtooth Flounder"
+science.name <- "Atheresthes stomias"
+family.name <- "Pleuronectidae"
+common.name <- "Turbot"
+bc <- "British Columbia"
+
+################################################################################
 ## Parameter values
 r.quants <- base.model$mcmccalcs$r.quants
 bo.lo <- r.quants["bo", 2]
