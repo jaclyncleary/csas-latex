@@ -991,7 +991,7 @@ $B_0$ was, however, much more uncertain than for the Reference Case, with the
 credibility interval ranging from
 $\Sexpr{sens.6.bo[1]}$--$\Sexpr{sens.6.bo[3]}$ t, compared to the
 Reference Case posterior credibility interval of
-$\Sexpr{bo[1]}$--$\Sexpr{bo[3]}$ t (Table~\ref{tab:refpoints}). This was due
+$\Sexpr{bo[1]}$--$\Sexpr{bo[3]}$ t (Table~\ref{tab:ref-points}). This was due
 in large part to the increased CV in the prior distribution for steepness.
 Median posterior estimates of other parameters were very similar to the
 Reference Case.
