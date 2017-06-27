@@ -66,6 +66,10 @@ source("custom-knitr-variables.r")
 %% @
 
 \refstepcounter{chapter}
+<<biological-data, child='app-biology/app-biology.Rnw'>>=
+@
+
+\refstepcounter{chapter}
 <<model-equations, child='app-equations/app-equations.Rnw'>>=
 @
 

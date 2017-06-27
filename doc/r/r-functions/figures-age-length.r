@@ -255,3 +255,382 @@ get.rows.cols <- function(num){
   }
   return(nside)
 }
+
+plot.growth <- function(leg, showtitle = TRUE, add=FALSE){
+  ## Plot the length/age data and fit from the bio global object
+  ## If split sex, plot both with individual fits.
+  ## First column of 'data' assumed to be length in mm, second is age.
+
+  if(!add){
+    oldPar <- par(no.readonly = TRUE)
+    on.exit(par(oldPar))
+  }
+
+  if(!exists("bio", envir = .GlobalEnv)){
+    cat0("Error - object 'bio' does not exist. Run the length/weight model ",
+         "from the Biotool tab.")
+    return(NULL)
+  }
+  legNames <- NULL
+  legCols <- NULL
+  data <- bio$vonb
+  if(is.null(data)){
+    cat0("Error - element 'vonb' of object 'bio' does not exist. Run the ",
+         "VonB model from the Biotool tab.")
+    return(NULL)
+  }
+  if(length(data) == 2){
+    # Split sexes
+    for(sex in 1:2){
+      la <- data[[sex]][[1]]
+      ## divide by ten to go from mm->cm
+      l  <- la[,1]/10.0
+      a  <- la[,2]
+      if(sex == 1){
+        col <- "blue"
+        shade <- get.shade(col, 20)
+        plot(a,
+             l,
+             col = shade,
+             pch = 1,
+             xlab = "Age",
+             ylab = "Length (cm)")
+      }else{
+        col <- "red"
+        shade <- get.shade(col, 20)
+        points(a,
+               l,
+               col = shade,
+               pch = 1,
+               xlab = "Age",
+               ylab = "Length (cm)")
+      }
+      linf <- data[[sex]][[2]][1,]
+      k    <- data[[sex]][[2]][2,]
+      tt0  <- data[[sex]][[2]][3,]
+      curve(linf*(1-exp(-k*x)),
+            col = col,
+            lwd = 3,
+            add = TRUE)
+      legCols <- c(legCols, col)
+      if(sex == 1){
+        legNames <- c(legNames,
+                      as.expression(substitute(paste("Male  L"[infinity],
+                                                     " = ",
+                                                     linf,
+                                                     " ",
+                                                     kappa,
+                                                     " = ",
+                                                     k,
+                                                     " tt"[0],
+                                                     " = ",
+                                                     tt0,
+                                                     "\n"))))
+      }else{
+        legNames <- c(legNames,
+                      as.expression(substitute(paste("Female  L"[infinity],
+                                                     " = ",
+                                                     linf,
+                                                     " ",
+                                                     kappa,
+                                                     " = ",
+                                                     k,
+                                                     " tt"[0],
+                                                     " = ",
+                                                     tt0,
+                                                     "\n"))))
+      }
+    }
+  }else{
+    # Combined sexes
+    la  <- data[[1]][[1]]
+    ## divide by ten to go from mm->cm
+    l   <- la[,1]/10.0
+    a   <- la[,2]
+    col <- "blue"
+    plot(a,
+         l,
+         col = col,
+         xlab = "Age",
+         ylab = "Length (cm)")
+    linf <- data[[1]][[2]][1,]
+    k    <- data[[1]][[2]][2,]
+    tt0  <- data[[1]][[2]][3,]
+    curve(linf*(1-exp(-k*x)),
+          col = col,
+          lwd = 3,
+          add = TRUE)
+    legCols <- c(legCols, col)
+    legNames <- c(legNames,
+                  as.expression(substitute(paste("Combined sexes  L"[infinity],
+                                                 " = ",
+                                                 linf,
+                                                 " ",
+                                                 kappa,
+                                                 " = ",
+                                                 k,
+                                                 " tt"[0],
+                                                 " = ",
+                                                 tt0,
+                                                 "\n"))))
+   }
+  if(!is.null(leg)){
+    legend(leg,
+           legend = legNames,
+           col = legCols,
+           lty = 1,
+           lwd = 2)
+  }
+}
+
+plot.lw <- function(leg,
+                    showtitle = TRUE,
+                    add = FALSE){
+  ## Plot the length/weight data and fit from the bio global object
+  ## If split sex, plot both with individual fits.
+  ## First column of 'data' assumed to be length in mm, second is round
+  ##  weight in grams.
+
+  if(!add){
+    oldPar <- par(no.readonly=TRUE)
+    on.exit(par(oldPar))
+  }
+
+  if(!exists("bio", envir = .GlobalEnv)){
+    cat0("Error - object 'bio' does not exist. Run the length/weight model ",
+         "from the Biotool tab.")
+    return(NULL)
+  }
+  legNames <- NULL
+  legCols <- NULL
+  data <- bio$lw
+  if(is.null(data)){
+    cat0("Error - element 'lw' of object 'bio' does not exist. Run the ",
+         "length/weight model from the Biotool tab.")
+    return(NULL)
+  }
+  ## For alpha and beta as greek letters in plots
+  greek <- c("alpha", "beta")
+  cnames <- paste(LETTERS[1:2], letters[1:2])
+  leg.exp <- sapply(1:2,
+                      function(i){
+                        as.expression(substitute(A (B),
+                                                 list(A = as.name(cnames[i]),
+                                                      B = as.name(greek[i]))))
+                      })
+
+  if(length(data) == 2){
+    ## Split sexes
+    for(sex in 1:2){
+      lw <- data[[sex]][[1]]
+      ## divide by ten to go from mm->cm
+      l <- lw[,1] / 10.0
+      w <- lw[,2]
+      if(sex == 1){
+        col <- "blue"
+        shade <- get.shade(col, 20)
+        plot(l,
+             w,
+             col = shade,
+             pch = 1,
+             xlab = "Length (cm)",
+             ylab = "Weight (g)")
+      }else{
+        col <- "red"
+        shade <- get.shade(col, 20)
+        points(l,
+               w,
+               col = shade,
+               pch = 1,
+               xlab = "Length (cm)",
+               ylab = "Weight (g)")
+      }
+      a <- data[[sex]][[2]][1,]
+      b <- data[[sex]][[2]][2,]
+      curve(a * x ^ b,
+            col = col,
+            lwd = 3,
+            add = TRUE)
+      legCols <- c(legCols, col)
+      if(sex == 1){
+        legNames <- c(legNames,
+                      as.expression(substitute(paste("Male  ",
+                                                     alpha,
+                                                     "=",
+                                                     a,
+                                                     " ",
+                                                     beta,
+                                                     "=",
+                                                     b,
+                                                     "\n"))))
+      }else{
+        legNames <- c(legNames,
+                      as.expression(substitute(paste("Female  ",
+                                                     alpha,
+                                                     "=",
+                                                     a,
+                                                     " ",
+                                                     beta,
+                                                     "=",
+                                                     b,
+                                                     "\n"))))
+      }
+    }
+  }else{
+    ## Combined sexes
+    lw <- data[[1]][[1]]
+    ## divide by ten to go from mm->cm
+    l <- lw[,1] / 10.0
+    w <- lw[,2]
+    col <- "blue"
+    plot(l,
+         w,
+         col = col,
+         xlab = "Length (cm)",
+         ylab = "Weight (g)")
+    a <- data[[1]][[2]][1,]
+    b <- data[[1]][[2]][2,]
+    curve(a * x ^ b,
+          col = col,
+          lwd = 3,
+          add = TRUE)
+    legCols <- c(legCols, col)
+    legNames <- c(legNames,
+                  as.expression(substitute(paste("Combined sexes  ",
+                                                 alpha,
+                                                 "=",
+                                                 a,
+                                                 " ",
+                                                 beta,
+                                                 "=",
+                                                 b,
+                                                 "\n"))))
+  }
+  if(!is.null(leg)){
+    legend(leg,
+           legend = legNames,
+           col = legCols,
+           lty = 1,
+           lwd = 2)
+  }
+}
+
+plot.ma <- function(leg = NULL,
+                    showtitle = TRUE,
+                    add = FALSE){
+  ## Plot the maturity/age data and fit from the bio global object
+  ## If split sex, plot both with individual fits.
+  ## First column of 'data' assumed to be length in mm, second is
+  ##  maturity level.
+
+  if(!add){
+    oldPar <- par(no.readonly=TRUE)
+    on.exit(par(oldPar))
+  }
+
+  if(!exists("bio", envir = .GlobalEnv)){
+    cat0("Error - object 'bio' does not exist. Run the maturity/age model from",
+         "the Biotool tab.")
+    return(NULL)
+  }
+  legNames <- NULL
+  legCols <- NULL
+  data <- bio$ma
+  if(is.null(data)){
+    cat0("Error - element 'ma' of object 'bio' does not exist. Run the ",
+         "maturity/age model from the Biotool tab.")
+    return(NULL)
+  }
+  if(length(data) == 2){
+    ## Split sexes
+    for(sex in 1:2){
+      ma <- data[[sex]][[1]]
+      a <- ma[,1]
+      m <- ma[,2]
+      #xlim <- c(0,max(a))
+      xlim <- c(0, 25)
+      if(sex == 1){
+        col <- "blue"
+        shade <- get.shade(col, 80)
+        plot(a,
+             m,
+             col = shade,
+             pch = 1,
+             xlim = xlim,
+             xlab = "Age",
+             ylab = "Proportion mature")
+      }else{
+        col <- "red"
+        shade <- get.shade(col, 80)
+        points(a,
+               m,
+               col = shade,
+               pch = 1,
+               xlab = "Age",
+               ylab = "Proportion mature")
+      }
+      a50 <- data[[sex]][[2]][1,]
+      sigma_a50 <- data[[sex]][[2]][2,]
+      curve(1 / (1 + exp(-(x - a50) / sigma_a50)),
+            col = col,
+            lwd = 3,
+            add = TRUE)
+      legCols <- c(legCols, col)
+      if(sex == 1){
+        legNames <- c(legNames,
+                      as.expression(substitute(paste("Male  a"["50%"],
+                                                     " = ",
+                                                     a50,
+                                                     " std"["50%"],
+                                                     "  = ",
+                                                     sigma_a50,
+                                                     "\n"))))
+      }else{
+        legNames <- c(legNames,
+                      as.expression(substitute(paste("Female  a"["50%"],
+                                                     " = ",
+                                                     a50,
+                                                     " std"["50%"],
+                                                     "  = ",
+                                                     sigma_a50, "\n"))))
+      }
+    }
+  }else{
+    ## Combined sexes
+    ma <- data[[1]][[1]]
+    a <- ma[,1]
+    m <- ma[,2]
+    xlim <- c(0, max(a))
+    col <- "blue"
+    shade <- get.shade(col, 80)
+    plot(a,
+         m,
+         col = shade,
+         xlim = xlim,
+         xlab = "Age",
+         ylab = "Proportion mature")
+    a50 <- data[[1]][[2]][1,]
+    sigma_a50 <- data[[1]][[2]][2,]
+    curve(1 / (1 + exp(-(x - a50) / sigma_a50)),
+          col = col,
+          lwd = 3,
+          add = TRUE)
+    legCols <- c(legCols, col)
+    legNames <- c(legNames,
+                  as.expression(substitute(paste("Combined sexes a"["50%"],
+                                                 " = ",
+                                                 a50,
+                                                 " std"["50%"],
+                                                 "  = ",
+                                                 sigma_a50,
+                                                 "\n"))))
+  }
+  if(!is.null(leg)){
+    legend(leg,
+           legend = legNames,
+           col = legCols,
+           lty = 1,
+           lwd = 2)
+  }
+}
+
