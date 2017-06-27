@@ -256,7 +256,10 @@ get.rows.cols <- function(num){
   return(nside)
 }
 
-plot.growth <- function(leg, showtitle = TRUE, add=FALSE){
+plot.growth <- function(bio,
+                        leg,
+                        showtitle = TRUE,
+                        add = FALSE){
   ## Plot the length/age data and fit from the bio global object
   ## If split sex, plot both with individual fits.
   ## First column of 'data' assumed to be length in mm, second is age.
@@ -266,11 +269,6 @@ plot.growth <- function(leg, showtitle = TRUE, add=FALSE){
     on.exit(par(oldPar))
   }
 
-  if(!exists("bio", envir = .GlobalEnv)){
-    cat0("Error - object 'bio' does not exist. Run the length/weight model ",
-         "from the Biotool tab.")
-    return(NULL)
-  }
   legNames <- NULL
   legCols <- NULL
   data <- bio$vonb
@@ -383,7 +381,8 @@ plot.growth <- function(leg, showtitle = TRUE, add=FALSE){
   }
 }
 
-plot.lw <- function(leg,
+plot.lw <- function(bio,
+                    leg,
                     showtitle = TRUE,
                     add = FALSE){
   ## Plot the length/weight data and fit from the bio global object
@@ -396,11 +395,6 @@ plot.lw <- function(leg,
     on.exit(par(oldPar))
   }
 
-  if(!exists("bio", envir = .GlobalEnv)){
-    cat0("Error - object 'bio' does not exist. Run the length/weight model ",
-         "from the Biotool tab.")
-    return(NULL)
-  }
   legNames <- NULL
   legCols <- NULL
   data <- bio$lw
@@ -515,7 +509,8 @@ plot.lw <- function(leg,
   }
 }
 
-plot.ma <- function(leg = NULL,
+plot.ma <- function(bio,
+                    leg = NULL,
                     showtitle = TRUE,
                     add = FALSE){
   ## Plot the maturity/age data and fit from the bio global object
@@ -528,11 +523,6 @@ plot.ma <- function(leg = NULL,
     on.exit(par(oldPar))
   }
 
-  if(!exists("bio", envir = .GlobalEnv)){
-    cat0("Error - object 'bio' does not exist. Run the maturity/age model from",
-         "the Biotool tab.")
-    return(NULL)
-  }
   legNames <- NULL
   legCols <- NULL
   data <- bio$ma
