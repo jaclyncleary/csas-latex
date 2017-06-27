@@ -758,8 +758,9 @@ freezer trawl fleet for all years since 2005.
 
 Selectivities in the three synoptic surveys were also estimated to be quite far
 to the right (Figure~\ref{fig:selex}) with median posterior estimates of
-age-at-50\%-harvest ($\hat{a}_k$) of $11.43$ y, $8.94$ y and $9.20$ y for the
-QCSSS, HSSS and WCVIS surveys respectively (Table~\ref{tab:parameters-posts}).
+age-at-50\%-harvest ($\hat{a}_k$) of $\Sexpr{qcsss.a50[2]}$ y,
+$\Sexpr{hsss.a50[2]}$ y and $\Sexpr{wcviss.a50[2]}$ y for the QCSSS, HSSS and
+WCVIS surveys respectively (Table~\ref{tab:parameters-posts}).
 Standard deviations ($\hat{\gamma}_k$) in the selectivity curves were quite large
 (Table~\ref{tab:parameters-posts}), indicating that selectivity in the surveys
 was far from knife-edged (Figure~\ref{fig:selex}). This was especially true for
@@ -1749,12 +1750,13 @@ make.selex.comparison.plot(base.model,
                                      "5C",
                                      "5D",
                                      "5E"),
-                           show.mat = FALSE,
+                           show.mat = TRUE,
+                           bio = bio,
                            leg = "bottomright")
 @
 \end{center}
 \caption{Estimated and Fixed selectivities for the Reference Case, compared
-  with female maturity ???.}
+  with female maturity.}
 \label{fig:selex}
 \end{figure}
 

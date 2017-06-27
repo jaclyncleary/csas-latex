@@ -9,6 +9,7 @@ make.selex.comparison.plot <- function(models,
                                                  "5D",
                                                  "5E"),
                                        show.mat = FALSE,
+                                       bio = NULL,
                                        leg = NULL){
   ## Plot the selectivity for selected gear(s) in the model(s)
   ##
@@ -20,6 +21,7 @@ make.selex.comparison.plot <- function(models,
   ##  in the model will be plotted against each other.
   ## areas - the areas to include
   ## show.mat - plot the maturity as well
+  ## bio - used for maturity data is show.mat is TRUE
   ## leg - legend location, e.g. "bottomright"
 
   if(class(models) != model.lst.class){
@@ -123,7 +125,31 @@ make.selex.comparison.plot <- function(models,
           xlab = "Age")
 
   if(show.mat){
-    warning("Not yet implemented.")
+    if(is.null(bio)){
+      warning("bio is NULL when you specified show.mat = TRUE.")
+      return(NULL)
+    }
+    ## Add maturity ogive to selectivity plot
+    ## Plots female only - number 2 in next line signifies female
+    data <- bio$ma
+    sex <- 2
+    a50 <- data[[sex]][[2]][1,]
+    sigma_a50 <- data[[sex]][[2]][2,]
+    if(is.null(a50) | is.null(sigma_a50)){
+      cat0("Error - element 'ma' of object 'bio' does not exist. Run the ",
+           "maturity/age model from the Biotool tab.")
+      return(NULL)
+    }
+    gear.names <- c(gear.names, "Female maturity")
+    col <- c(col, ncol(sel.mat) + 1)
+    lty <- c(lty, 2)
+    lwd <- c(lwd, 3)
+    curve(1 / (1 + exp(-(x - a50) / sigma_a50)),
+          col = ncol(sel.mat) + 1,
+          lty = 2,
+          lwd = 3,
+          add = TRUE)
+
   }
   if(!is.null(leg)){
     legend(leg,

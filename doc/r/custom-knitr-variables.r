@@ -35,6 +35,9 @@ hsss.q <- f(mc.quants$q3, 2)
 wcviss.q <- f(mc.quants$q4, 2)
 
 trawl.a50 <- f(mc.quants$sel1, 2)
+qcsss.a50 <- f(mc.quants$sel2, 2)
+hsss.a50 <- f(mc.quants$sel4, 2)
+wcviss.a50 <- f(mc.quants$sel5, 2)
 
 ################################################################################
 ## Number of mcmc samples, min and max median biomass
