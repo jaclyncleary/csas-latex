@@ -855,8 +855,8 @@ the relatively early age at maturity compared to the estimated
 age-at-50\% -harvest, discussed in Section \ref{sec:resultsFishRefPoints}.\\
 
 \subsubsection{Recruitment} \label{sec:recruitment}
-Median posterior estimates (and 95\% credibility interval) of age-1 recruits are
-shown in Figure~\ref{fig:recruitment} and Table~\ref{tab:recruitment}. The 95\%
+Median posterior estimates (and \Sexpr{mcmc.ci} credibility interval) of age-1 recruits are
+shown in Figure~\ref{fig:recruitment} and Table~\ref{tab:recruitment}. The \Sexpr{mcmc.ci}
 posterior credibility intervals since 2011 are reasonably broad, with extremely
 large uncertainty around the estimate of 2014 recruitment. This is expected since
 there is no information in the data about the strength of this year class. While
@@ -873,16 +873,16 @@ relatively constant (Figure~\ref{fig:main-catches}) and there were no strong
 trends in the survey data (Figure~\ref{fig:indexfits}).\\
 
 \subsubsection{Fishing mortality}
-Median posterior estimates of fishing mortality (and 95\% credibility interval)
+Median posterior estimates of fishing mortality (and \Sexpr{mcmc.ci} credibility interval)
 are shown in Figure~\ref{fig:f-mort} and Table~\ref{tab:f-mort}. The median
-posterior estimate of fishing mortality is estimated to have peaked in 2005 at
-$0.310$ ($0.162$--$0.494$) as a result of a test fishery
-described in Section \ref{sec:managementhistory}. Fishing mortality in 2014 was
-estimated to be $0.136$ ($0.069$--$0.248$). Fishing mortality
+posterior estimate of fishing mortality is estimated to have peaked in \Sexpr{max.f.mort.yr} at
+$\Sexpr{max.f.mort[2]}$ ($\Sexpr{max.f.mort[1]}$--$\Sexpr{max.f.mort[3]}$) as a result of a test fishery
+described in Section \ref{sec:managementhistory}. Fishing mortality in \Sexpr{last.f.mort.yr} was
+estimated to be $\Sexpr{last.f.mort[2]}$ ($\Sexpr{last.f.mort[1]}$--$\Sexpr{last.f.mort[3]}$). Fishing mortality
 rates converted to annual harvest rates can be found in Table~\ref{tab:u-mort}.\\
 
 \subsubsection{Relative spawning biomass}
-Median posterior estimates (and 95\% credibility interval) of relative female
+Median posterior estimates (and \Sexpr{mcmc.ci} credibility interval) of relative female
 spawning biomass $\frac{B_t}{B_0}$ are shown in Figure~\ref{fig:depletion}. The
 credibility interval is broad, reflecting the uncertainty in posterior
 estimates of $B_0$ (Figure~\ref{fig:depletion}, Table~\ref{tab:ref-points}). The

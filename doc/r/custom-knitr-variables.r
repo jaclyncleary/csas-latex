@@ -29,6 +29,14 @@ fmsy <- f(b.r.quants["fmsy", -1], 2)
 sbt <- b.mcc$sbt.quants
 sbt.final <- f(1000 * sbt[, ncol(sbt)])
 
+f.mort <- b.mcc$f.mort.quants[[1]]
+max.f.mort <- max(f.mort[2,])
+max.f.mort.ind <- which(f.mort[2,] == max.f.mort)
+max.f.mort.yr <- colnames(f.mort)[max.f.mort.ind]
+max.f.mort <- f(f.mort[, max.f.mort.ind], 3)
+last.f.mort.yr <- colnames(f.mort)[ncol(f.mort)]
+last.f.mort <- f(f.mort[, ncol(f.mort)], 3)
+
 qcsss.q <- f(b.p.quants$q1, 2)
 hsmas.q <- f(b.p.quants$q2, 2)
 hsss.q <- f(b.p.quants$q3, 2)
