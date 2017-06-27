@@ -28,14 +28,6 @@
 \newcommand{\bc}{British Columbia}
 \newcommand{\Bmsy}{B_\mathrm{MSY}}
 \newcommand{\umsy}{u_\mathrm{MSY}}
-%% MCMC globals to use in all MCMC related text and discussions
-\newcommand{\mcmclength}{15 million}
-\newcommand{\mcmcsampfreq}{7,500}
-\newcommand{\mcmcnsamp}{2,000}
-\newcommand{\mcmcburnin}{1,000}
-%% The confidence interval used in MCMC. Must be the same as what's in
-%%  the knitr code block.
-\newcommand{\mcmcci}{95\%}
 %% ------------------------------------------------------------------------------
 
 %% ------------------------------------------------------------------------------

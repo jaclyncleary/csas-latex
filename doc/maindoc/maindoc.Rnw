@@ -639,13 +639,14 @@ points calculations.
 The joint posterior distribution was numerically approximated using the Markov
 Chain Monte Carlo (MCMC) routines built into AD Model Builder
 (\citet{fournier2012}). For the Reference Case and all sensitivity cases,
-posterior samples were drawn systematically every \mcmcsampfreq\ iterations from
-a chain of length \mcmclength, resulting in \mcmcnsamp\ posterior samples (the
-first \mcmcburnin\ samples were dropped to allow for sufficient burn-in).
-Convergence was diagnosed using visual inspection of the trace plots
-(Figure~\ref{fig:traces}) and visual examination of autocorrelation in posterior
-chains (Figure~\ref{fig:autocor}). Autocorrelation was minor for all parameters
-and there was no strong evidence for lack of convergence.
+posterior samples were drawn systematically every \Sexpr{mcmc.samp.freq}
+iterations from a chain of length \Sexpr{mcmc.length}, resulting in
+\Sexpr{mcmc.num.samples} posterior samples (the first \Sexpr{mcmc.burnin}
+samples were dropped to allow for sufficient burn-in). Convergence was diagnosed
+using visual inspection of the trace plots (Figure~\ref{fig:traces}) and visual
+examination of autocorrelation in posterior chains (Figure~\ref{fig:autocor}).
+Autocorrelation was minor for all parameters and there was no strong evidence
+for lack of convergence.
 
 \subsubsection{Fits to data}
 Maximum posterior density (MPD) model fits to the four indices of abundance are
@@ -893,11 +894,12 @@ We tested sensitivity of the model outputs to the following assumptions:
 \end{resdoclist}
 
 Results are presented below. The full list of sensitivity scenarios is provided
-in Table~\ref{tab:sens-params-desc}. Reference Case parameter settings are provided
-in Table~\ref{tab:parameters}. In all sensitivity runs, posterior samples
-were drawn systematically every \mcmcsampfreq\ iterations from a chain of length
-\mcmclength, resulting in \mcmcnsamp\ posterior samples. The first
-\mcmcburnin\ samples were dropped to allow for sufficient burn-in.\\
+in Table~\ref{tab:sens-params-desc}. Reference Case parameter settings are
+provided in Table~\ref{tab:parameters}. In all sensitivity runs, posterior
+samples were drawn systematically every \Sexpr{mcmc.samp.freq} iterations from
+a chain of length \Sexpr{mcmc.length}, resulting in \Sexpr{mcmc.num.samples}
+posterior samples. The first \Sexpr{mcmc.burnin} samples were dropped to allow
+for sufficient burn-in.\\
 
 \subsubsection{Alternative values of variance parameters $\vartheta^2$ and
   $\rho$} \label{sec:variance}
@@ -1563,14 +1565,14 @@ make.traces.plot(base.model,
 @
 \end{center}
 \caption{Trace plots for MCMC output of estimated parameters in the Reference
-  Case. The MCMC run had chain length \mcmclength, with a sample taken at
-  every \mcmcsampfreq th iteration. Of the \mcmcnsamp samples saved, the
-  first \mcmcburnin\ were removed as a burn-in period. Parameters $q_k$
-  (catchability), $\hat{a}_k$ (selectivity-at-age-50\%), and $\hat{\gamma}_k$
-  (selectivity standard deviation-at-50\%) represent gears as follows:
-  $k=1$: commercial trawl; $k=2$: QCSSS: $k=3$; HSMSAS: $k=4$; HSSS, and $k=5$;
-  WCVISS. The HSMAS did not have estimates selectivity, so there are no
-  $\hat{a}_3$ or $\hat{\gamma}_3$ parameters.}
+  Case. The MCMC run had chain length \Sexpr{mcmc.length}, with a sample taken
+  at every \Sexpr{mcmc.samp.freq}th iteration. Of the \Sexpr{mcmc.num.samples}
+  samples saved, the first \Sexpr{mcmc.burnin} were removed as a burn-in period.
+  Parameters $q_k$ (catchability), $\hat{a}_k$ (selectivity-at-age-50\%), and
+  $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
+  follows: $k=1$: commercial trawl; $k=2$: QCSSS: $k=3$; HSMSAS: $k=4$; HSSS,
+  and $k=5$; WCVISS. The HSMAS did not have estimates selectivity, so there are
+  no $\hat{a}_3$ or $\hat{\gamma}_3$ parameters.}
 \label{fig:traces}
 \end{figure}
 
@@ -1764,7 +1766,7 @@ make.reference.points.plot(base.model,
 @
 \end{center}
 \caption{Posterior reference points for the Reference Case. Bars represent
-  \mcmcci\ credible intervals. MSY, B\subscr{0}, and B\subscr{MSY}
+  \Sexpr{mcmc.ci} credible intervals. MSY, B\subscr{0}, and B\subscr{MSY}
   values are in thousands of tonnes.}
 \label{fig:ref-points}
 \end{figure}
@@ -1790,8 +1792,8 @@ par(old.par)
 @
 \end{center}
 \caption{Median posterior spawning biomass for the Reference Case. The shaded
-  area represents the \mcmcci\ credible interval. The point and bars represent
-  the median estimate of B\subscr{0} and with a credible interval of \mcmcci. Panel
+  area represents the \Sexpr{mcmc.ci} credible interval. The point and bars represent
+  the median estimate of B\subscr{0} and with a credible interval of \Sexpr{mcmc.ci}. Panel
   (a) shows posterior median estimates of reference points
   0.2B\subscr{0} and 0.4B\subscr{0}, Panel (b) shows
   posterior median estimates of reference points 0.4B\subscr{MSY}
@@ -1814,7 +1816,7 @@ make.vuln.biomass.mcmc.plot(base.model,
 @
 \end{center}
 \caption{Median posterior vulnerable and spawning biomass for the
-  Reference Case. The shaded area and dotted lines represent the \mcmcci\ 
+  Reference Case. The shaded area and dotted lines represent the \Sexpr{mcmc.ci} 
   credible interval.}
 \label{fig:vuln-spawn-biomass}
 \end{figure}
@@ -1840,7 +1842,7 @@ par(old.par)
 @
 \end{center}
 \caption{Median posterior recruitment (a) and recruitment deviations (b) for the
-  Reference Case. The bars represent the \mcmcci\ credible interval. The red
+  Reference Case. The bars represent the \Sexpr{mcmc.ci} credible interval. The red
   line is the long-term mean; the green line is the long-term median.}
 \label{fig:recruitment}
 \end{figure}
@@ -1857,7 +1859,7 @@ make.fishing.mort.mcmc.plot(base.model,
 @
 \end{center}
 \caption{Fishing mortality for the Reference Case. The shaded area represents
-  the \mcmcci\ credible interval.}
+  the \Sexpr{mcmc.ci} credible interval.}
 \label{fig:f-mort}
 
 %%------------------------------------------------------------------------------
@@ -1869,7 +1871,7 @@ make.rel.biomass.mcmc.plot(base.model,
 @
 \end{center}
 \caption{Relative median posterior spawning biomass for the Reference Case.
-  The shaded area represents the \mcmcci\ credible interval.}
+  The shaded area represents the \Sexpr{mcmc.ci} credible interval.}
 \label{fig:depletion}
 \end{figure}
 
@@ -1932,9 +1934,9 @@ make.biomass.mcmc.plot(c(base.model, sens.models.1),
                        leg = "topright")
 @
 \end{center}
-\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for
+\caption{Estimated median spawning biomass with \Sexpr{mcmc.ci} credible intervals, for
   models examining sensitivity to the $\sigma$ parameter. Points and bars
-  represent the estimates of $B_0$ with \mcmcci\ credible interval.}
+  represent the estimates of $B_0$ with \Sexpr{mcmc.ci} credible interval.}
 \label{fig:sens-sig-biomass}
 \end{figure}
 
@@ -1964,7 +1966,7 @@ par(old.par)
 @
 \end{center}
 \caption{Estimated recruitment (a) and recruitment deviations (b) with
-  \mcmcci\ credible intervals, for models examining sensitivity to the $\sigma$
+  \Sexpr{mcmc.ci} credible intervals, for models examining sensitivity to the $\sigma$
   parameter.}
 \label{fig:sens-sig-recruitment}
 \end{figure}
@@ -1996,7 +1998,7 @@ par(old.par)
 @
 \end{center}
 \caption{Estimated recruitment (a) and recruitment deviations (b) with
-  \mcmcci\ credible intervals, for models examining sensitivity to the $\tau$
+  \Sexpr{mcmc.ci} credible intervals, for models examining sensitivity to the $\tau$
   parameter.}
 \label{fig:sens-tau-recruitment}
 \end{figure}
@@ -2015,9 +2017,9 @@ make.biomass.mcmc.plot(c(base.model, sens.models.2),
                        leg = "topright")
 @
 \end{center}
-\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for
+\caption{Estimated median spawning biomass with \Sexpr{mcmc.ci} credible intervals, for
   models examining sensitivity to the $\tau$ parameter. Points and bars
-  represent the estimates of $B_0$ with \mcmcci\ credible interval.}
+  represent the estimates of $B_0$ with \Sexpr{mcmc.ci} credible interval.}
 \label{fig:sens-tau-biomass}
 
 %%------------------------------------------------------------------------------
@@ -2031,7 +2033,7 @@ make.rel.biomass.mcmc.plot(c(base.model, sens.models.2),
                            leg = "topright")
 @
 \end{center}
-\caption{Estimated relative median spawning biomass with \mcmcci\ credible
+\caption{Estimated relative median spawning biomass with \Sexpr{mcmc.ci} credible
   intervals, for models examining sensitivity to the $\tau$ parameter.}
 \label{fig:sens-tau-depletion}
 \end{figure}
@@ -2048,9 +2050,9 @@ make.biomass.mcmc.plot(c(base.model, sens.models.3),
                        leg = "topright")
 @
 \end{center}
-\caption{Estimated median spawning biomass with \mcmcci\ credible intervals,
+\caption{Estimated median spawning biomass with \Sexpr{mcmc.ci} credible intervals,
   for models examining sensitivity to the steepness parameter. Points and bars
-  represent the estimates of $B_0$ with \mcmcci\ credible interval.}
+  represent the estimates of $B_0$ with \Sexpr{mcmc.ci} credible interval.}
 \label{fig:sens-h-biomass}
 
 \begin{center}
@@ -2064,7 +2066,7 @@ make.recr.mcmc.plot(c(base.model, sens.models.3),
 @
 \end{center}
 \vspace{-3mm}
-\caption{Estimated median recruitment with \mcmcci\ credible intervals, for
+\caption{Estimated median recruitment with \Sexpr{mcmc.ci} credible intervals, for
   models examining sensitivity to the steepness parameter.}
 \label{fig:sens-h-recruitment}
 \end{figure}
@@ -2081,10 +2083,10 @@ make.biomass.mcmc.plot(c(base.model, sens.models.4),
                        leg = "topright")
 @
 \end{center}
-\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for
+\caption{Estimated median spawning biomass with \Sexpr{mcmc.ci} credible intervals, for
   models examining sensitivity to the standard deviation of the natural mortality
   parameter. Points and bars represent the estimates of $B_0$ with
-  \mcmcci\ credible interval.}
+  \Sexpr{mcmc.ci} credible interval.}
 \label{fig:sens-msd-biomass}
 
 \begin{center}
@@ -2098,7 +2100,7 @@ make.recr.mcmc.plot(c(base.model, sens.models.4),
 @
 \end{center}
 \vspace{-3mm}
-\caption{Estimated median recruitment with \mcmcci\ credible intervals, for
+\caption{Estimated median recruitment with \Sexpr{mcmc.ci} credible intervals, for
   models examining sensitivity to the standard deviation of the natural
   mortality parameter.}
 \label{fig:sens-msd-recruitment}
@@ -2116,9 +2118,9 @@ make.biomass.mcmc.plot(c(base.model, sens.models.5),
                        leg = "topright")
 @
 \end{center}
-\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for
+\caption{Estimated median spawning biomass with \Sexpr{mcmc.ci} credible intervals, for
   models examining sensitivity to the natural mortality parameter. Points and
-  bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
+  bars represent the estimates of $B_0$ with \Sexpr{mcmc.ci} credible interval.}
 \label{fig:sens-m-biomass}
 
 \begin{center}
@@ -2132,7 +2134,7 @@ make.recr.mcmc.plot(c(base.model, sens.models.5),
 @
 \end{center}
 \vspace{-3mm}
-\caption{Estimated median recruitment with \mcmcci\ credible intervals, for
+\caption{Estimated median recruitment with \Sexpr{mcmc.ci} credible intervals, for
   models examining sensitivity to the the natural mortality parameter.}
 \label{fig:sens-m-recruitment}
 \end{figure}
@@ -2149,9 +2151,9 @@ make.biomass.mcmc.plot(c(base.model, sens.models.6),
                        leg = "topright")
 @
 \end{center}
-\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for
+\caption{Estimated median spawning biomass with \Sexpr{mcmc.ci} credible intervals, for
   models examining sensitivity to the catchability parameter. Points and
-  bars represent the estimates of $B_0$ with \mcmcci\ credible interval.}
+  bars represent the estimates of $B_0$ with \Sexpr{mcmc.ci} credible interval.}
 \label{fig:sens-q-biomass}
 
 \begin{center}
@@ -2165,7 +2167,7 @@ make.recr.mcmc.plot(c(base.model, sens.models.7),
 @
 \end{center}
 \vspace{-3mm}
-\caption{Estimated median recruitment with \mcmcci\ credible intervals, for
+\caption{Estimated median recruitment with \Sexpr{mcmc.ci} credible intervals, for
   models examining sensitivity to the the catchability parameter.}
 \label{fig:sens-q-recruitment}
 \end{figure}
@@ -2182,9 +2184,9 @@ make.biomass.mcmc.plot(c(base.model, sens.models.7),
                        leg = "topright")
 @
 \end{center}
-\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for
+\caption{Estimated median spawning biomass with \Sexpr{mcmc.ci} credible intervals, for
   models examining sensitivity to the catchability standard deviation parameter.
-  Points and bars represent the estimates of $B_0$ with \mcmcci\ credible
+  Points and bars represent the estimates of $B_0$ with \Sexpr{mcmc.ci} credible
   interval.}
 \label{fig:sens-qsd-biomass}
 
@@ -2199,7 +2201,7 @@ make.recr.mcmc.plot(c(base.model, sens.models.7),
 @
 \end{center}
 \vspace{-3mm}
-\caption{Estimated median recruitment with \mcmcci\ credible intervals, for
+\caption{Estimated median recruitment with \Sexpr{mcmc.ci} credible intervals, for
   models examining sensitivity to the the catchability standard deviation
   parameter.}
 \label{fig:sens-qsd-recruitment}
@@ -2233,9 +2235,9 @@ make.biomass.mcmc.plot(c(base.model,
                        leg = "topright")
 @
 \end{center}
-\caption{Estimated median spawning biomass with \mcmcci\ credible intervals, for
+\caption{Estimated median spawning biomass with \Sexpr{mcmc.ci} credible intervals, for
   models examining sensitivity to trawl selectivity. Points and bars represent
-  the estimates of $B_0$ with \mcmcci\ credible interval.}
+  the estimates of $B_0$ with \Sexpr{mcmc.ci} credible interval.}
 \label{fig:sens-trawl-selex-biomass}
 \end{figure}
 
@@ -2249,7 +2251,7 @@ make.reference.points.plot(c(base.model,
 @
 \end{center}
 \caption{Posterior reference points for models examining sensitivity to trawl
-  selectivity. Bars represent \mcmcci\ credible intervals. 1 =
+  selectivity. Bars represent \Sexpr{mcmc.ci} credible intervals. 1 =
   \Sexpr{base.model.name}, 2 = \Sexpr{sens.model.names.8[1]}, 3 =
   \Sexpr{sens.model.names.8[2]}. MSY-based reference points are in thousands
   of tonnes.}

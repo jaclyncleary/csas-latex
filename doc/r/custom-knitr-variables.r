@@ -22,7 +22,13 @@ fmsy.hi <- r.quants["fmsy", 4]
 
 ################################################################################
 ## Number of mcmc samples, min and max median biomass
-num.mcmc.samples <- nrow(b$mcmc$params)
+mcmc.num.samples <- nrow(b$mcmc$params)
+mcmc.burnin <- f(mcmc.num.samples - nrow(b$mcmccalcs$p.dat))
+mcmc.num.samples <- f(mcmc.num.samples)
+mcmc.length <- "15 million"
+mcmc.samp.freq <- f(7500)
+mcmc.ci <- "95\\%"
+
 median.bio.min  <- f(min(b$mcmccalcs$sbt.quants[2,]), 3)
 median.bio.min.year <- names(which.min(min(b$mcmccalcs$sbt.quants[2,])))
 median.bio.max  <- f(max(b$mcmccalcs$sbt.quants[2,]), 3)
