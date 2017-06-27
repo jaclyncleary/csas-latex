@@ -667,8 +667,8 @@ been a sampling artifact, or due to some other anomaly. For the Hecate Strait
 Multispecies Assemblage Survey, the model overestimated the three observations
 in the earliest part of the time series. The median posterior estimate of
 catchability for this survey (\Sexpr{hsmas.q[2]}) was close to the median
-estimates of catchability for the three synoptic surveys (\Sexpr{hsss.q[2]},
-\Sexpr{qcsss.q[2]}, \Sexpr{wcviss.q[2]} for the HSSS, QCSSS, and WCVISS
+estimates of catchability for the three synoptic surveys (\Sexpr{qcsss.q[2]},
+\Sexpr{hsss.q[2]}, \Sexpr{wcviss.q[2]} for the QCSSS, HSSS, and WCVISS
 respectively) (Table~\ref{tab:parameters-posts}), indicating that the model
 estimated all four surveys to be similarly scaled to the population biomass.
 The model therefore treated the HSMAS and the synoptic surveys to essentially
@@ -731,30 +731,30 @@ age-at-50\%-harvest ($\hat{a}_1$) and the standard deviation in the logistic
 selectivity ogive ($\hat{\gamma}_1$) are provided in
 Table~\ref{tab:parameters-posts}.
 The median posterior estimate of age-at-50\%-harvest in the trawl fishery was
-$9.40$ y. This estimate was further to the right than expected, but was
-consistent with the available age composition data
+$\Sexpr{trawl.a50}$ y. This estimate was further to the right than expected,
+but was consistent with the available age composition data
 (Figure~\ref{fig:agecomps-trawl}), which indicate very few observations of
 younger fish, especially in the latter part of the time series. Numerous tests of
 alternative model configurations did not result in a lower estimate of
-age-at-50\%-harvest in the trawl fishery. Female \Sexpr{fish.name} are thought to mature
-at around $5.6$ years of age (Figure~\ref{fig:matage}). Therefore, it appears
-that individuals have several opportunities to spawn before they become
-vulnerable to the fishery. This in turn resulted in estimates of maximum
-sustainable harvest rate \emph{U}\subscr{MSY} approaching 1 (discussed in section
-\ref{sec:resultsFishRefPoints}), implying that under theoretical equilibrium
-conditions, all of the vulnerable (i.e., fully-selected) biomass could be
-harvested because the population could be sustained by younger spawners that are
-invulnerable to the fishery. We emphasise that this is a theoretical condition
-subject to the assumptions in the stock assessment model and the data limitations
-therein. We strongly advise against this as a harvest strategy and suggest that
-the age-at-50\%-harvest in the trawl fishery is a primary axis of uncertainty in
-this stock assessment. As discussed above, catches since 2008 have increasingly
-been represented by the freezer trawler fleet and age composition data from this
-fleet were under-represented. Model sensitivity to selectivity in the trawl
-fishery, in terms of spawning biomass and stock status, is presented in a later
-section. We recommend as a high priority that future aging requests should
-include a representative proportion of ages from the freezer trawl fleet for all
-years since 2005.
+age-at-50\%-harvest in the trawl fishery. Female \Sexpr{fish.name} are thought
+to mature at around $5.6$ years of age (Figure~\ref{fig:matage}). Therefore,
+it appears that individuals have several opportunities to spawn before they
+become vulnerable to the fishery. This in turn resulted in estimates of maximum
+sustainable harvest rate \emph{U}\subscr{MSY} approaching 1 (discussed in
+section \ref{sec:resultsFishRefPoints}), implying that under theoretical
+equilibrium conditions, all of the vulnerable (i.e., fully-selected) biomass
+could be harvested because the population could be sustained by younger spawners
+that are invulnerable to the fishery. We emphasise that this is a theoretical
+condition subject to the assumptions in the stock assessment model and the data
+limitations therein. We strongly advise against this as a harvest strategy and
+suggest that the age-at-50\%-harvest in the trawl fishery is a primary axis of
+uncertainty in this stock assessment. As discussed above, catches since 2008
+have increasingly been represented by the freezer trawler fleet and age
+composition data from this fleet were under-represented. Model sensitivity to
+selectivity in the trawl fishery, in terms of spawning biomass and stock status,
+is presented in a later section. We recommend as a high priority that future
+aging requests should include a representative proportion of ages from the
+freezer trawl fleet for all years since 2005.
 
 Selectivities in the three synoptic surveys were also estimated to be quite far
 to the right (Figure~\ref{fig:selex}) with median posterior estimates of
