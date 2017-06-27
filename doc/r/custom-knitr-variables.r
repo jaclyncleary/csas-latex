@@ -122,6 +122,18 @@ sens.6.h.prior.alpha <- f(sens.6.h.prior.alpha, 1)
 sens.6.h.prior.beta <- f(sens.6.h.prior.beta, 1)
 sens.6.h.prior.mean <- f(sens.6.h.prior.mean, 2)
 
+## Survey Q
+q <- as.data.frame(b$ctl$surv.q)[,1]
+q.mean <- f(exp(q[2]), 1)
+q.sd <- f(q[3], 1)
+
+sens.10.q <- as.data.frame(sens.models.6[[1]]$ctl$surv.q)[,1]
+sens.10.q.mean <- f(exp(sens.10.q[2]), 1)
+sens.10.q.sd <- f(sens.10.q[3], 1)
+
+sens.11.q <- as.data.frame(sens.models.7[[1]]$ctl$surv.q)[,1]
+sens.11.q.mean <- f(exp(sens.11.q[2]), 1)
+sens.11.q.sd <- f(sens.11.q[3], 1)
 
 ################################################################################
 ## Age comp data values

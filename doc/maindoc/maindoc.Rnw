@@ -1052,13 +1052,15 @@ of posterior estimates of $B_0$ and recent spawning biomass.
 \subsubsection{Prior probablity distribution for survey
   catchability ($q_k$)} \label{sec:priorsurveyq}
 The Reference Case assumed a normal prior probability distribution for
-$\ln(q_k)$, with mean = $\ln(0.5)$ and standard deviation = 1.0 in log space,
-for all surveys $k$, $2<=k<=5$. Two scenarios were run to test sensitivity
-of model outcomes to the mean and standard deviation assumed for this prior
-distribution:
+$\ln(q_k)$, with mean = $\ln(\Sexpr{q.mean})$ and
+standard deviation = \Sexpr{q.sd} in log space, for all surveys
+$k$, $2<=k<=5$. Two scenarios were run to test sensitivity of model outcomes
+to the mean and standard deviation assumed for this prior distribution:
 \begin{resdoclist}
-  \item mean = $\ln(1.0)$, standard deviation = 1.0 (Scenario 10)
-  \item mean = $\ln(0.5)$, standard deviation = 1.5 (Scenario 11)
+  \item mean = $\ln(\Sexpr{sens.10.q.mean})$,
+    standard deviation = \Sexpr{sens.10.q.sd} (Scenario 10)
+  \item mean = $\ln(\Sexpr{sens.11.q.mean})$,
+    standard deviation = \Sexpr{sens.11.q.sd} (Scenario 11)
 \end{resdoclist}
 
 Increasing the mean of the prior distribution in Scenario 10 resulted in higher
