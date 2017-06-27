@@ -22,15 +22,9 @@ bc <- "British Columbia"
 
 ################################################################################
 ## Parameter values
-bo.lo <- b.r.quants["bo", 2]
-bo.med <- b.r.quants["bo", 3]
-bo.hi <- b.r.quants["bo", 4]
-bmsy.lo <- b.r.quants["bmsy", 2]
-bmsy.med <- b.r.quants["bmsy", 3]
-bmsy.hi <- b.r.quants["bmsy", 4]
-fmsy.lo <- b.r.quants["fmsy", 2]
-fmsy.med <- b.r.quants["fmsy", 3]
-fmsy.hi <- b.r.quants["fmsy", 4]
+bo <- f(1000 * b.r.quants["bo", -1])
+bmsy <- f(1000 * b.r.quants["bmsy", -1])
+fmsy <- f(b.r.quants["fmsy", -1], 2)
 
 qcsss.q <- f(b.p.quants$q1, 2)
 hsmas.q <- f(b.p.quants$q2, 2)

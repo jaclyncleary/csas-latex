@@ -776,16 +776,17 @@ this survey.
 Posterior estimates of fishery reference points from the Reference Case are
 provided in Table~\ref{tab:ref-points} and Figure~\ref{fig:ref-points}. The
 posterior unfished female spawning biomass (\emph{B}\subscr{0}) was highly
-uncertain, with median $492,339$ t and credibility interval ranging from
-$249,745$ t to $1,244,550$ t (Table~\ref{tab:ref-points}). Posterior credibility
-intervals for the candidate LRP 0.2\emph{B}\subscr{0} and USR
+uncertain, with median $\Sexpr{bo[2]}$ t and credibility interval ranging from
+$\Sexpr{bo[1]}$ t to $\Sexpr{bo[3]}$ t (Table~\ref{tab:ref-points}). Posterior
+credibility intervals for the candidate LRP 0.2\emph{B}\subscr{0} and USR
 0.4\emph{B}\subscr{0} are also provided in Table~\ref{tab:ref-points}.
 
 Reference points based on maximum sustainable yield (MSY) were strongly impacted
 by estimates of selectivity in the trawl fishery described in the previous
 section. Because the selectivity ogive (Figure~\ref{fig:selex}) was estimated to
 be far to the right of the maturity ogive (Figure~\ref{fig:matage}), the median
-estimate of \emph{F}\subscr{MSY} was $18.5$ (Table~\ref{tab:ref-points}).
+estimate of \emph{F}\subscr{MSY} was $\Sexpr{fmsy[2]}$
+(Table~\ref{tab:ref-points}).
 This instantaneous fishing mortality converts to an annual harvest rate
 approaching 1, through the equation \emph{U}\subscr{MSY} = $1-e^{-F_{MSY}}$,
 implying that all of the vulnerable biomass (i.e., the biomass that is selected
@@ -817,18 +818,20 @@ provided in Section \ref{sec:biomass}.
 
 The median posterior estimate of \emph{B}\subscr{MSY} (and 95\% credibility
 interval), conditional on estimated trawl selectivity and resulting
-\emph{F}\subscr{MSY}, was $119,195$ t ($58,964$--$312,324$ t)
-(Table~\ref{tab:ref-points}). Posterior credibility intervals for the default LRP
-$0.4$\emph{B}\subscr{MSY} and USR $0.8$\emph{B}\subscr{MSY} are also provided in
+\emph{F}\subscr{MSY}, was $\Sexpr{bmsy[2]}$ t
+($\Sexpr{bmsy[1]}$--$\Sexpr{bmsy[3]}$ t) (Table~\ref{tab:ref-points}).
+Posterior credibility intervals for the default LRP $0.4$\emph{B}\subscr{MSY}
+and USR $0.8$\emph{B}\subscr{MSY} are also provided in
 Table~\ref{tab:ref-points}. The candidate \emph{B}\subscr{0}-based LRP and USR
 were approximately twice as large as the candidate \emph{B}\subscr{MSY}-based
 reference points, i.e., \emph{B}\subscr{0}-based reference points were more
 precautionary than the \emph{B}\subscr{MSY}-based reference points
 (Table~\ref{tab:ref-points}).
 
-Median posterior estimates (and 95\% credibility interval) of other potential
-benchmarks of interest to managers (B\subscr{1996}, B\subscr{2015} and
-F\subscr{2014}) are also provided in Table~\ref{tab:ref-points}.\\
+Median posterior estimates (and \Sexpr{mcmc.ci} credibility interval) of
+other potential benchmarks of interest to managers (B\subscr{1996},
+B\subscr{2015} and F\subscr{2014}) are also provided in
+Table~\ref{tab:ref-points}.\\
 
 \subsubsection{Biomass} \label{sec:biomass}
 The Reference Case estimates the female spawning biomass to have been on a
