@@ -886,8 +886,8 @@ Median posterior estimates (and \Sexpr{mcmc.ci} credibility interval) of relativ
 spawning biomass $\frac{B_t}{B_0}$ are shown in Figure~\ref{fig:depletion}. The
 credibility interval is broad, reflecting the uncertainty in posterior
 estimates of $B_0$ (Figure~\ref{fig:depletion}, Table~\ref{tab:ref-points}). The
-median posterior projected estimate of 2015 relative biomass is $0.596$
-($0.367$--$0.936$) (Figure~\ref{fig:depletion}, Table~\ref{tab:depletion}).
+median posterior projected estimate of 2015 relative biomass is $\Sexpr{last.depl[2]}$
+($\Sexpr{last.depl[1]}$--$\Sexpr{last.depl[3]}$) (Figure~\ref{fig:depletion}, Table~\ref{tab:depletion}).
 
 \subsection{SENSITIVITY ANALYSES} \label{sec:sensitivities}
 We tested sensitivity of the model outputs to the following assumptions:

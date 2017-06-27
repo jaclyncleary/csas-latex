@@ -37,6 +37,10 @@ max.f.mort <- f(f.mort[, max.f.mort.ind], 3)
 last.f.mort.yr <- colnames(f.mort)[ncol(f.mort)]
 last.f.mort <- f(f.mort[, ncol(f.mort)], 3)
 
+depl <- b.mcc$depl.quants
+last.depl.yr <- colnames(depl)[ncol(depl)]
+last.depl <- f(depl[, ncol(depl)], 3)
+
 qcsss.q <- f(b.p.quants$q1, 2)
 hsmas.q <- f(b.p.quants$q2, 2)
 hsss.q <- f(b.p.quants$q3, 2)
