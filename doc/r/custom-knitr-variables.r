@@ -26,6 +26,9 @@ bo <- f(1000 * b.r.quants["bo", -1])
 bmsy <- f(1000 * b.r.quants["bmsy", -1])
 fmsy <- f(b.r.quants["fmsy", -1], 2)
 
+s6.r.quants <- as.data.frame(sens.models.3[[1]]$mcmccalcs$r.quants)
+sens.6.bo <- f(1000 * s6.r.quants["bo", -1])
+
 sbt <- b.mcc$sbt.quants
 sbt.final <- f(1000 * sbt[, ncol(sbt)])
 
@@ -51,6 +54,9 @@ qcsss.a50 <- f(b.p.quants$sel2, 2)
 hsss.a50 <- f(b.p.quants$sel4, 2)
 wcviss.a50 <- f(b.p.quants$sel5, 2)
 
+h.post <- f(b.p.quants$h, 3)
+sens.6.h.post <- f(as.data.frame(sens.models.3[[1]]$mcmccalcs$p.quants)$h, 3)
+
 ################################################################################
 ## Number of mcmc samples, min and max median biomass
 mcmc.num.samples <- nrow(b.params)
@@ -68,6 +74,7 @@ median.bio.max.year <- names(which.max(b.mcc$sbt.quants[2,]))
 ################################################################################
 ## Priors settings from the control file
 priors <- as.data.frame(b$ctl$params)
+s6.priors <- as.data.frame(sens.models.3[[1]]$ctl$params)
 s7.priors <- as.data.frame(sens.models.4[[1]]$ctl$params)
 s8.priors <- as.data.frame(sens.models.4[[2]]$ctl$params)
 s9.priors <- as.data.frame(sens.models.5[[1]]$ctl$params)
@@ -89,7 +96,7 @@ s9.prior <- s9.priors[rownames(s9.priors) == "log_m",]
 sens.9.m.prior.mean <- f(exp(s9.prior$p1), 1)
 sens.9.m.prior.sd <- f(s9.prior$p2, 2)
 
-## Steepness prior
+## Steepness prior for base
 h.prior <- priors[rownames(priors) == "h",]
 h.prior.alpha <- h.prior$p1
 h.prior.beta <- h.prior$p2
@@ -101,6 +108,20 @@ h.prior.cv <- f(sqrt((h.prior.alpha * h.prior.beta) /
 h.prior.alpha <- f(h.prior.alpha, 1)
 h.prior.beta <- f(h.prior.beta, 1)
 h.prior.mean <- f(h.prior.mean, 2)
+
+## Low steepness scenario
+sens.6.h.prior <- s6.priors[rownames(s6.priors) == "h",]
+sens.6.h.prior.alpha <- sens.6.h.prior$p1
+sens.6.h.prior.beta <- sens.6.h.prior$p2
+sens.6.h.prior.mean <- sens.6.h.prior.alpha / (sens.6.h.prior.alpha + sens.6.h.prior.beta)
+sens.6.h.prior.cv <- f(sqrt((sens.6.h.prior.alpha * sens.6.h.prior.beta) /
+                   ((sens.6.h.prior.alpha + sens.6.h.prior.beta)^2 *
+                    (sens.6.h.prior.alpha + sens.6.h.prior.beta + 1))) /
+                sens.6.h.prior.mean, 2)
+sens.6.h.prior.alpha <- f(sens.6.h.prior.alpha, 1)
+sens.6.h.prior.beta <- f(sens.6.h.prior.beta, 1)
+sens.6.h.prior.mean <- f(sens.6.h.prior.mean, 2)
+
 
 ################################################################################
 ## Age comp data values

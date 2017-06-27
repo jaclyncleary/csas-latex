@@ -974,22 +974,27 @@ biomass to be below the candidate USR of 0.4\emph{B}\subscr{0}.
 Sensitivity to the assumed prior probability distribution for steepness was
 tested in Scenario 6 by decreasing the mean of the prior distribution and
 increasing the CV. This was achieved by changing the parameters of the Beta
-prior to give mean = 0.72 and CV = 0.15 (Table~\ref{tab:sens-params-desc}). This
-was a similar sensitivity test to that done by \citet{rocksole2014} for \Sexpr{bc} Rock
-Sole. This sensitivity test resulted in lower posterior estimates of steepness,
-with median = $0.762$ ($0.565$--$0.914$), compared to the Reference Case median
-posterior = $0.874$ ($0.688$--$0.975$).
+prior to give mean = \Sexpr{sens.6.h.prior.mean} and
+CV = \Sexpr{sens.6.h.prior.cv} (Table~\ref{tab:sens-params-desc}).
+This was a similar sensitivity test to that done by \citet{rocksole2014}
+for \Sexpr{bc} Rock Sole. This sensitivity test resulted in lower posterior
+estimates of steepness, with median = $\Sexpr{sens.6.h.post[2]}$
+($\Sexpr{sens.6.h.post[1]}$--$\Sexpr{sens.6.h.post[3]}$), compared to the
+Reference Case median posterior = $\Sexpr{h.post[2]}$
+($\Sexpr{h.post[1]}$--$\Sexpr{h.post[3]}$).
 
 Spawning biomass and recruitment estimates are shown in
 Figures~\ref{fig:sens-h-biomass} and \ref{fig:sens-h-recruitment}, where it can
 be seen that there was relatively little effect of the prior distribution on
 posterior estimates of biomass and recruitment. The median posterior estimate of
 $B_0$ was, however, much more uncertain than for the Reference Case, with the
-credibility interval ranging from $320,313$--$2,030,590$ t, compared to the
-Reference Case posterior credibility interval of $249,745$--$1,244,550$ t
-(Table~\ref{tab:refpoints}). This was due in large part to the increased CV in
-the prior distribution for steepness. Median posterior estimates of other
-parameters were very similar to the Reference Case.
+credibility interval ranging from
+$\Sexpr{sens.6.bo[1]}$--$\Sexpr{sens.6.bo[3]}$ t, compared to the
+Reference Case posterior credibility interval of
+$\Sexpr{bo[1]}$--$\Sexpr{bo[3]}$ t (Table~\ref{tab:refpoints}). This was due
+in large part to the increased CV in the prior distribution for steepness.
+Median posterior estimates of other parameters were very similar to the
+Reference Case.
 
 \subsubsection{Prior probability distribution for $\ln(M)$} \label{sec:priorm}
 The Reference Case assumed a normal prior probability distribution for $\ln(M)$,
