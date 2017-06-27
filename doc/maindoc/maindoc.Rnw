@@ -836,13 +836,14 @@ Table~\ref{tab:ref-points}.\\
 \subsubsection{Biomass} \label{sec:biomass}
 The Reference Case estimates the female spawning biomass to have been on a
 flat to increasing trajectory since 1996 (Figure~\ref{fig:spawn-biomass};
-Table~\ref{tab:spawn-biomass}). The posterior median (and 95\% credibility
-interval) female spawning biomass in 2015 is projected to be $294,560$ t
-($156,235$--$713,259$ t) (Table~\ref{tab:ref-points}). The median projected
-beginning-of-year 2015 spawning biomass, which incorporates fishing mortality
-arising from the observed 2014 catch, is considerably higher than median
-estimates of both the default USR of $0.8$\emph{B}\subscr{MSY} and the default
-LRP of $0.4$\emph{B}\subscr{MSY} (Figure~\ref{fig:spawn-biomass},
+Table~\ref{tab:spawn-biomass}). The posterior median (and \Sexpr{mcmc.ci}
+credibility interval) female spawning biomass in 2015 is projected to be
+$\Sexpr{sbt.final[2]}$ t ($\Sexpr{sbt.final[1]}$--$\Sexpr{sbt.final[3]}$ t)
+(Table~\ref{tab:ref-points}). The median projected beginning-of-year 2015
+spawning biomass, which incorporates fishing mortality arising from the
+observed 2014 catch, is considerably higher than median estimates of both the
+default USR of $0.8$\emph{B}\subscr{MSY} and the default LRP of
+$0.4$\emph{B}\subscr{MSY} (Figure~\ref{fig:spawn-biomass},
 Table~\ref{tab:ref-points}). The 2015 spawning biomass was also projected to be
 above the candidate USR $0.4$\emph{B}\subscr{0} and LRP $0.2$\emph{B}\subscr{0}
 (Figure~\ref{fig:spawn-biomass}, Table~\ref{tab:ref-points}).

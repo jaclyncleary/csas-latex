@@ -21,10 +21,13 @@ common.name <- "Turbot"
 bc <- "British Columbia"
 
 ################################################################################
-## Parameter values
+## Values for assessment
 bo <- f(1000 * b.r.quants["bo", -1])
 bmsy <- f(1000 * b.r.quants["bmsy", -1])
 fmsy <- f(b.r.quants["fmsy", -1], 2)
+
+sbt <- b.mcc$sbt.quants
+sbt.final <- f(1000 * sbt[, ncol(sbt)])
 
 qcsss.q <- f(b.p.quants$q1, 2)
 hsmas.q <- f(b.p.quants$q2, 2)
