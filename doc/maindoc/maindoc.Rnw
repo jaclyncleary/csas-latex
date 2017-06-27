@@ -917,10 +917,11 @@ for sufficient burn-in.\\
 \subsubsection{Alternative values of variance parameters $\vartheta^2$ and
   $\rho$} \label{sec:variance}
 The Reference Case used fixed values for variance parameters $\vartheta^2$ and
-$\rho$ (Table~\ref{tab:paramest}), which resulted in an observation error term
-($\sigma= 0.2$) and a process error term ($\tau= 0.8$) (see
-Appendix \ref{chap:equations}, Eq.~\ref{eq:df17}). We tested model sensitivity
-to these fixed parameters by varying $\vartheta^2$ and $\rho$ to give:
+$\rho$ (Table~\ref{tab:parameters}), which resulted in an observation error
+term ($\sigma=\Sexpr{b$mpd$sig}$) and a process error term
+($\tau=\Sexpr{b$mpd$tau}$) (see Appendix \ref{chap:equations},
+Eq.~\ref{eq:df17}). We tested model sensitivity to these fixed parameters by
+varying $\vartheta^2$ and $\rho$ to give:
 \begin{resdoclist}
   \item $\sigma=\Sexpr{sens.models.1[[1]]$mpd$sig}$ and
     $\tau=\Sexpr{sens.models.1[[1]]$mpd$tau}$ (Scenario 2)
