@@ -1236,8 +1236,8 @@ assessment and harvest advice may have been very different to those presented
 here.
 
 \section{FUTURE RESEARCH AND DATA REQUIREMENTS} \label{sec:future-research}
-As with all fishery stock assessments, there are two major types of
-uncertainty in the advice presented in this document:
+As with all fishery stock assessments, there are two major types of uncertainty
+in the advice presented in this document:
 
 \begin{resdoclist}
   \item Uncertainty in the estimates of model parameters within the assessment
@@ -1245,6 +1245,64 @@ uncertainty in the advice presented in this document:
     included in the assessment
 \end{resdoclist}
 
+The first type, uncertainty within the assessment, is presented in terms of
+posterior credibility intervals for parameters and state variables such as
+biomass, recruitment and fishing mortality. This uncertainty was captured in the
+decision tables and was further explored using sensitivity analyses.
+
+The second type of uncertainty, structural uncertainty, is not captured in this
+assessment and is not captured in the decision tables. The magnitude of catch
+and discards prior to \Sexpr{sbt.first.yr} is a major source of uncertainty
+in this assessment. As discussed in Section \ref{sec:catchdata}, all catch
+data prior to \Sexpr{sbt.first.yr} were omitted from this assessment on the
+recommendation of our industry advisors and technical working group.
+\Sexpr{fish.name} is known to have been discarded at sea in very large
+quantities due to proteolysis of the flesh if catches were not landed and
+frozen very quickly after capture. Applications of ratio estimators or
+generalized linear models to estimate historic discard rates were rejected
+as analytical tools due to:
+
+\begin{resdoclist}
+  \item lack of data with which to calibrate models
+  \item the fact that often whole tows would have been discarded, making ratio
+    estimators or other predictive factors useless
+  \item discarding behaviour was not expected to have remained consistent
+    through time, and would have varied according to fine-scale spatial,
+    seasonal and market considerations
+\end{resdoclist}
+
+While the flat to increasing estimated spawning biomass trajectory in the
+Reference Case and sensitivity scenarios was consistent with available catch,
+survey and age composition data, a longer catch time series would have provided
+more information about the productivity of the population and its scale relative
+to historic levels. We suggest that it may be possible to work with members of
+the fishing industry with many years of experience of this fishery to
+reconstruct an agreed upon historical catch series with appropriate uncertainty.
+Examples of catch reconstructions for data-limited fisheries can be found in
+\citet{pitcher2002} and \citet{ainsworth2005}, although there are likely many
+other appropriate approaches. Key inputs to this kind of analysis would be
+detailed spatial and temporal knowledge of the fishery, regulations and markets
+for several decades.
+
+We strongly recommend increasing the number of age samples from the freezer
+trawl fleet. Archived otoliths are available that have not yet been aged. With
+large enough sample sizes, it will be possible to model the freezer trawlers and
+the shoreside fishery as separate fleets. In its current configuration, the stock
+assessment model treats both components of the fleet as being part of the same
+fleet with the same selectivity. In the absence of information to the contrary,
+the model interpreted the increased catches in the latter part of the time series
+as evidence of a stable or increasing biomass. While this was supported by
+similar trajectories in the survey data, treating the fleets separately may allow
+for a more subtle interpretation of increased catches in recent years, which may
+also have been driven by changes in markets, technology or, importantly,
+different selectivity.
+
+Stock structure of \Sexpr{fish.name} is poorly understood in \Sexpr{bc}. A number
+of approaches are available to improve understanding of stock structure including
+genetic analysis, analysis of otolith microchemistry and analysis of life history
+traits such as growth and maturity. \Sexpr{fish.name} is managed as a coast-wide
+stock. If there are distinct stocks within \Sexpr{bc} waters, there may be risks
+associated with taking a large proportion of the TAC from one area.\\
 
 \section{ACKNOWLEDGEMENTS}
 
