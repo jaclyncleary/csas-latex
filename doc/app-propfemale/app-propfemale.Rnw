@@ -1,23 +1,31 @@
 \starredchapter{APPENDIX~\thechapter. PROPORTION FEMALE ANALYSIS}
 \label{chap:propfemale}
-\lfoot{\fishname}
+\lfoot{\Sexpr{fish.name}}
 \rfoot{Appendix~\thechapter~-- Proportion Female Analysis}
 
 \appsection{INTRODUCTION}
-We elected to use a female-only stock assessment model because catch and survey data suggested the majority of the catch is female. Proportion of females in the fishery and surveys is quantified in this appendix. The weighting algorithm and proportion generation algorithm is similar to algorithm 2 in the 2014 Rock Sole assessment (\citet{rocksole2014}). The analysis presented here assumes a coastwide stock.
+We elected to use a female-only stock assessment model because catch and survey
+data suggested the majority of the catch is female. Proportion of females in
+the fishery and surveys is quantified in this appendix. The weighting algorithm
+and proportion generation algorithm is similar to algorithm 2 in the 2014 Rock
+Sole assessment (\citet{rocksole2014}). The analysis presented here assumes a
+coastwide stock.
 
 \appsection{DATA SELECTION}
 Age data were selected based on the following attributes:\\
 \bigskip
 
 \textbf{Trawl Fishery}: \\
-TRIP\_SUB\_TYPE\_DESC equal to 1 or 4 (observed domestic or non-observed domestic) \\
-MORPHOMETRICS\_ATTRIBUTE\_CODE equal to 1 or 2 or 4 or 10 (Fork length, Standard length, Total length, Whole round weight) \\
+TRIP\_SUB\_TYPE\_DESC equal to 1 or 4 (observed domestic or non-observed
+domestic) \\
+MORPHOMETRICS\_ATTRIBUTE\_CODE equal to 1 or 2 or 4 or 10 (Fork length,
+Standard length, Total length, Whole round weight) \\
 \bigskip
 
 \textbf{Surveys}: \\
 TRIP\_SUB\_TYPE\_DESC equal to 2 or 3 (research or charter) \\
-MORPHOMETRICS\_ATTRIBUTE\_CODE  equal to 1 or 2 or 4 or 10 (Fork length, Standard length, Total length, Whole round weight) \\
+MORPHOMETRICS\_ATTRIBUTE\_CODE  equal to 1 or 2 or 4 or 10 (Fork length,
+Standard length, Total length, Whole round weight) \\
 \bigskip
 
 \textbf{Years}: \\
@@ -39,59 +47,79 @@ Greater than or equal to 1996 \\
 Male or female only, no unknowns or null fields \\
 
 \appsection{ALGORITHM}
-Pseudocode has been provided in Section \ref{sec:propfemale-pseudocode} to describe the weighting algorithm.
+Pseudocode has been provided in Section \ref{sec:propfemale-pseudocode} to
+describe the weighting algorithm.
 
 \subsection{Trawl Fishery}
-Observations within a sample are likely to be correlated due to the small area which is trawled in a single fishing event. Also, trip samples
-are likely to be correlated due to the fact that it is the same vessel and captain. This algorithm calculates a sex-specific mean weight by
-trip, calculated from individual sex-specific length observations converted to weight using Eq. \ref{eq:lw}, then uses Eqs. \ref{eq:samplewt}--\ref{eq:propfemale} to estimate proportion of females. The pseudocode for the algorithm is provided in Section \ref{sec:propfemale-pseudocode}.
+Observations within a sample are likely to be correlated due to the small area
+which is trawled in a single fishing event. Also, trip samples are likely to
+be correlated due to the fact that it is the same vessel and captain. This
+algorithm calculates a sex-specific mean weight by trip, calculated from
+individual sex-specific length observations converted to weight using
+Eq.~\ref{eq:lw}, then uses Eqs.~\ref{eq:samplewt}--\ref{eq:propfemale} to
+estimate proportion of females. The pseudocode for the algorithm is provided
+in Section \ref{sec:propfemale-pseudocode}.
 
 \subsection{Surveys}
-For surveys, the same algorithm is followed except that the quarter of the year is not included in the calculation. This is because the surveys are
-single events which occur linearly through a reletively short period of 1-2 months.
+For surveys, the same algorithm is followed except that the quarter of the
+year is not included in the calculation. This is because the surveys are
+single events which occur linearly through a reletively short period of 1-2
+months.
 
 \subsection{Equations}
 
 \begin{align} \label{eq:lw}
 \hat{w}_{ijs}=\alpha_sl_{ijs}^{\beta_s}
 \end{align}
-where $\alpha_s$ and $\beta_s$ are parameters for sex $s$ and $w_{ijs}$ and $l_{ijs}$ are paired length-weight observations for specimen $i$ in sample $j$.
+where $\alpha_s$ and $\beta_s$ are parameters for sex $s$ and $w_{ijs}$ and
+$l_{ijs}$ are paired length-weight observations for specimen $i$ in sample $j$.
 
 \begin{align} \label{eq:samplewt}
 W_{jst}=\sum_{i=1}^{N_{jst}}\hat{w}_{ijst}
 \end{align}
-where $W_{jst}$ is the total weight for sample $j$, sex $s$, trip $t$, and $N_{jst}$ is the number of specimens in sample $j$ for sex $s$
+where $W_{jst}$ is the total weight for sample $j$, sex $s$, trip $t$, and
+$N_{jst}$ is the number of specimens in sample $j$ for sex $s$
 
 \begin{align} \label{eq:totaltripwt}
 W_{st}=\frac{\sum\limits_{j=1}^{K_t}W_{jst}S_{jt}}{\sum\limits_{j=1}^{K_t}S_{jt}}
 \end{align}
-where $W_{st}$ is the mean weight for sex $s$ and trip $t$, weighted by sample weight, where $K_t$ is the number of samples in trip $t$, and $S_{jt}$ is the sample weight for sample $j$ from trip $t$.
+where $W_{st}$ is the mean weight for sex $s$ and trip $t$, weighted by sample
+weight, where $K_t$ is the number of samples in trip $t$, and $S_{jt}$ is the
+sample weight for sample $j$ from trip $t$.
 
 \begin{align} \label{eq:totaltripcatchwt}
 C_t=\sum\limits_{j=1}^{K_t}C_{jt}
 \end{align}
-where $C_t$ is the total catch weight for sampled hauls for trip $t$, $K_t$ is the number of samples in trip $t$, and $C_{jt}$ is the catch weight associted with sample $j$ and trip $t$.
+where $C_t$ is the total catch weight for sampled hauls for trip $t$, $K_t$
+is the number of samples in trip $t$, and $C_{jt}$ is the catch weight
+associated with sample $j$ and trip $t$.
 
 \begin{align} \label{eq:totalquarterwt}
 W_{qs}=\frac{\sum\limits_{t=1}^{T_q}W_{qst}R_{qt}}{\sum\limits_{t=1}^{T_q}R_{qt}}
 \end{align}
-where $W_{qs}$ is the total weight for sex $s$ and quarter of year $q$, $R_{qt}$ is the trip weight for all sampled trips in quarter $q$,
+where $W_{qs}$ is the total weight for sex $s$ and quarter of year $q$,
+$R_{qt}$ is the trip weight for all sampled trips in quarter $q$,
 and $T_q$ is the number of sampled trips in quarter $q$.
 
 \begin{align} \label{eq:totalquartercatchwt}
 C_q=\sum\limits_{t=1}^{K_q}C_{t}
 \end{align}
-where $C_q$ is the total catch weight for sampled hauls for quarter $q$, $K_q$ is the number of trips in quarter $q$, and $C_t$ is the catch weight associted with trip $t$.
+where $C_q$ is the total catch weight for sampled hauls for quarter $q$,
+$K_q$ is the number of trips in quarter $q$, and $C_t$ is the catch weight
+associted with trip $t$.
 
 \begin{align} \label{eq:totalyearwt}
 W_{ys}=\frac{\sum\limits_{q=1}^{4}W_{qys}C_{qy}}{\sum\limits_{q=1}^{4}C_{qy}}
 \end{align}
-where $W_{sy}$ is the total weight for year $y$, sex $s$, $W_{qys}$ is the weight in quarter $q$ of year $y$, and $C_{qy}$ is the catch in quarter $q$ of year $y$.
+where $W_{sy}$ is the total weight for year $y$, sex $s$, $W_{qys}$ is the
+weight in quarter $q$ of year $y$, and $C_{qy}$ is the catch in quarter
+$q$ of year $y$.
 
 \begin{align} \label{eq:totalyearcatchwt}
 C_y=\sum\limits_{q=1}^{4}C_{qy}
 \end{align}
-where $C_y$ is the total catch weight for sampled hauls for year $y$, and $C_{qy}$ is the catch weight associted with quarter $q$ in year $y$.
+where $C_y$ is the total catch weight for sampled hauls for year $y$, and
+$C_{qy}$ is the catch weight associted with quarter $q$ in year $y$.
 
 \begin{align} \label{eq:propfemale}
 P_y=\frac{W_{s=Female,y}}{W_{s=Female,y}+W_{s=Male,y}}
@@ -101,7 +129,8 @@ where $P_y$ is the proportion female by weight for year $y$.
 \clearpage
 
 \subsection{Pseudocode} \label{sec:propfemale-pseudocode}
-The following outlines the method used for calculating the proportion of female fish for each year.
+The following outlines the method used for calculating the proportion of
+female fish for each year.
 \begin{algorithm}[h]
 \caption{Algortihm for calculating the proportion female}
 \begin{algorithmic}[1]
@@ -116,63 +145,55 @@ The following outlines the method used for calculating the proportion of female 
     \Let{$w_{ijs}$}{Specimen weight measurement}
     \Let{$\hat{w}_{ijs}$}{Specimen weight estimate}
     \For{each specimen $i$ where $w_{ijs}=NULL$ and $l_{ijs}<>NULL$}
-      \LongState{apply the sex-specific length-weight relationship (Eq. \ref{eq:lw}) to fill in the missing specimen weights $w_{ijs}$ with estimates $\hat{w}_{ijs}$}
+      \LongState{apply the sex-specific length-weight relationship
+        (Eq.~\ref{eq:lw}) to fill in the missing specimen weights
+        $w_{ijs}$ with estimates $\hat{w}_{ijs}$}
     \EndFor
     \For{each year $y$}
       \For{each quarter $q$ in year $y$}
         \For{each trip $t$ in quarter $q$}
           \For{each sample ID $j$ in trip $t$}
-            \LongState{Calculate the sex-specific sample weight $W_{js}$ for sample $j$ (Eq. \ref{eq:samplewt})}
-            \LongState{Extract the catch weight $C_j$ associated with sample $j$}
+            \LongState{Calculate the sex-specific sample weight
+              $W_{js}$ for sample $j$ (Eq. \ref{eq:samplewt})}
+            \LongState{Extract the catch weight $C_j$ associated with sample
+              $j$}
           \EndFor
-          \LongState{Calculate the sex-specific total sample weight $W_{st}$ for trip $t$ (Eq. \ref{eq:totaltripwt})}
-          \LongState{Calculate the sex-specific total catch weight $C_t$ for trip $t$ (Eq. \ref{eq:totaltripcatchwt})}
+          \LongState{Calculate the sex-specific total sample weight $W_{st}$
+            for trip $t$ (Eq. \ref{eq:totaltripwt})}
+          \LongState{Calculate the sex-specific total catch weight $C_t$ for
+            trip $t$ (Eq. \ref{eq:totaltripcatchwt})}
         \EndFor
-        \LongState{Calculate the sex-specific total sample weight $W_{qs}$ for quarter $q$ (Eq. \ref{eq:totalquarterwt})}
-        \LongState{Calculate the sex-specific total catch weight $C_q$ for quarter $q$ (Eq. \ref{eq:totalquartercatchwt})}
+        \LongState{Calculate the sex-specific total sample weight $W_{qs}$ for
+          quarter $q$ (Eq. \ref{eq:totalquarterwt})}
+        \LongState{Calculate the sex-specific total catch weight $C_q$ for
+          quarter $q$ (Eq. \ref{eq:totalquartercatchwt})}
       \EndFor
-      \LongState{Calculate the sex-specific total sample weight $W_{sy}$ for year $y$ weighted by catch $C_y$ (Eq. \ref{eq:totalyearwt})}
-      \LongState{Calculate the proportion female for year $y$ (Eq. \ref{eq:propfemale})}
+      \LongState{Calculate the sex-specific total sample weight $W_{sy}$ for
+        year $y$ weighted by catch $C_y$ (Eq. \ref{eq:totalyearwt})}
+      \LongState{Calculate the proportion female for year $y$
+        (Eq.~\ref{eq:propfemale})}
     \EndFor
   \EndFunction
 \end{algorithmic}
 \end{algorithm}
 
 \subsection{Results}
-The proportion of females resulting from this analysis are high, ranging from 0.635 for the 1998 WCVI trawl fishery to 0.909 for the 2008 QCS+HS trawl fishery (Table \ref{tab:propfemale}).
+The proportion of females resulting from this analysis are high, ranging from
+0.635 for the 1998 WCVI trawl fishery to 0.909 for the 2008 QCS+HS trawl fishery
+(Table \ref{tab:propfemale}).
+
 \clearpage
-\begin{table}[h]
-\centering
-\caption{\label{tab:propfemale} Proportion of females for the trawl fishery and 4 surveys Coastwide.}
-\begin{tabular}{lccccccc}
-\hline \\
-Year & \specialcell{Fishery\\Coastwide} & \specialcell{Fishery\\WCVI} & \specialcell{Fishery\\QCS+HS} & \specialcell{Survey\\QCSSS} & \specialcell{Survey\\HSMSAS} & \specialcell{Survey\\HSSS} & \specialcell{Survey\\WCVISS} \\
-\hline \\
-1996 & 0.854 & 0.860 &       &       &       &       & \\
-1997 & 0.901 & 0.787 & 0.905 &       &       &       & \\
-1998 & 0.778 & 0.635 & 0.789 &       & 0.714 &       & \\
-1999 & 0.835 & 0.814 & 0.794 &       &       &       & \\
-2000 & 0.834 & 0.787 & 0.950 &       & 0.908 &       & \\
-2001 & 0.879 & 0.707 & 0.940 &       &       &       & \\
-2002 & 0.857 & 0.869 & 0.855 &       & 0.830 &       & \\
-2003 & 0.754 & 0.786 & 0.803 & 0.825 &       & 0.838 & \\
-2004 & 0.868 & 0.850 & 0.866 & 0.812 &       &       & 0.838 \\
-2005 & 0.867 & 0.915 & 0.847 & 0.844 &       & 0.771 & \\
-2006 & 0.849 & 0.853 & 0.865 &       &       &       & 0.897 \\
-2007 & 0.839 & 0.785 & 0.835 & 0.764 &       & 0.781 & \\
-2008 & 0.909 & 0.920 & 0.924 &       &       &       & 0.822 \\
-2009 & 0.701 & 0.778 & 0.698 & 0.794 &       & 0.763 & \\
-2010 & 0.724 & 0.606 & 0.730 &       &       &       & 0.813 \\
-2011 & 0.739 & 0.812 & 0.709 & 0.748 &       & 0.798 & \\
-2012 & 0.827 & 0.828 & 0.851 &       &       &       & 0.786 \\
-2013 & 0.792 & 0.844 & 0.834 & 0.716 &       & 0.753 & \\
-2014 & 0.786 & 0.623 & 0.821 &       &       &       & 0.777 \\
-\hline \\
-\end{tabular}
-\end{table}
 
-%<<figBaseSpawnBioMCMC, fig.cap='Spawning biomass for the base model MCMC run.'>>=
-%plotTS(scenario=2,plotNum=1,index=2,savefig=FALSE,plotMCMC=TRUE,ci=ci,burnthin=burnthin,ps=ps,leg=NULL,showtitle=FALSE)
-%@
+<<proportion.female, results='asis', echo=FALSE>>=
+cap <- paste0("Proportion of females for the trawl fishery and 4 surveys ",
+              "Coastwide.")
+make.prop.female.table(prop.female,
+                       digits = 3,
+                       xcaption = cap,
+                       xlabel = "tab:propfemale",
+                       font.size = 9,
+                       space.size = 10,
+                       placement = "H")
+@
 
-\newpage
+\clearpage

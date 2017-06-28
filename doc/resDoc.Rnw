@@ -61,9 +61,10 @@ source("custom-knitr-variables.r")
 
 %% %% Need \refstepcounter{chapter} before every new appendix
 %% %%  to increment the appendix letter.
-%% \refstepcounter{chapter}
-%% <<prop-female, child='app-propfemale/app-propfemale.Rnw'>>=
-%% @
+
+\refstepcounter{chapter}
+<<prop-female, child='app-propfemale/app-propfemale.Rnw'>>=
+@
 
 \refstepcounter{chapter}
 <<biological-data, child='app-biology/app-biology.Rnw'>>=
