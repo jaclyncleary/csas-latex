@@ -1088,25 +1088,25 @@ In an earlier section, we noted that the estimated selectivity ogive for the
 trawl fishery was quite far to the right of the maturity ogive
 (Figure~\ref{fig:selex}), resulting in estimates of \emph{U}\subscr{MSY}
 approaching 1. We concluded that the estimated age-at-50\%-harvest in the trawl
-fishery (median = 9.45 y) was consistent with the fishery age composition data
-(Figure~\ref{fig:agecomps-trawl}) but that these data may not be representative
-of ages in the freezer trawl fleet due to lack of age samples from this fleet.
-While we recommend ageing of archival otoliths from the freezer trawl fleet as
-a future research priority, we ran two simple scenarios in the current
-assessment to evaluate the effect of alternative fishery selectivity ogives on
-model outcomes. Trial runs suggested that fixing age-at-50\%-harvest at lower
-values resulted in poor fits to the age composition data and poor model
-convergence. Therefore, for the two sensitvity runs presented here, the fishery
-age composition data were removed from the assessment and two alternative fixed
-ages-at-50\%-harvest were assumed:
+fishery (median = \Sexpr{trawl.a50[2]} y) was consistent with the fishery age
+composition data (Figure~\ref{fig:agecomps-trawl}) but that these data may not
+be representative of ages in the freezer trawl fleet due to lack of age samples
+from this fleet. While we recommend ageing of archival otoliths from the
+freezer trawl fleet as a future research priority, we ran two simple scenarios
+in the current assessment to evaluate the effect of alternative fishery
+selectivity ogives on model outcomes. Trial runs suggested that fixing
+age-at-50\%-harvest at lower values resulted in poor fits to the age composition
+data and poor model convergence. Therefore, for the two sensitvity runs
+presented here, the fishery age composition data were removed from the
+assessment and two alternative fixed ages-at-50\%-harvest were assumed:
 
 \begin{resdoclist}
   \item selectivity ogive = maturity ogive (Scenario 12)
-  \item age-at-50\%-harvest = 6 yrs (Scenario 13)
+  \item age-at-50\%-harvest = \Sexpr{s13.trawl.a50} y (Scenario 13)
 \end{resdoclist}
 
 Trawl selectivity ogives estimated in the Reference Case (MPD) and fixed in
-Scenarios 12 and 13 are shown in Figure~\ref{fig:sens-trawl-selex}. As expected,
+Scenarios 12 and 13 are shown in Figure~\ref{fig:sens-trawlsel-selex}. As expected,
 the effect of reducing the age-at-50\%-harvest in the trawl fishery was a large
 reduction in estimated female spawning biomass
 (Figure~\ref{fig:sens-trawl-selex-biomass}), a reduction in estimated

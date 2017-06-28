@@ -54,6 +54,9 @@ qcsss.a50 <- f(b.p.quants$sel2, 2)
 hsss.a50 <- f(b.p.quants$sel4, 2)
 wcviss.a50 <- f(b.p.quants$sel5, 2)
 
+s13.sel <- as.data.frame(sens.models.8[[2]]$ctl$sel)
+s13.trawl.a50 <- s13.sel[rownames(s13.sel) == "agelen50log", 1]
+
 h.post <- f(b.p.quants$h, 3)
 sens.6.h.post <- f(as.data.frame(sens.models.3[[1]]$mcmccalcs$p.quants)$h, 3)
 
