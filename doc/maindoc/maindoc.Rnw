@@ -309,7 +309,7 @@ sensitivity models presented in this document.
 Four sets of fishery independent survey indices of abundance were used in this
 assessment. Each series was multiplied by its respective proportion female
 (calculated in Appendix \ref{chap:propfemale}), to give female-only indices of
-abundance (Table \ref{tab:Indices}). The surveys used in this assessment were:
+abundance (Table \ref{tab:indices}). The surveys used in this assessment were:
 
 \begin{resdoclist}
   \item The Hecate Strait Multispecies Assemblage Survey (HSMAS)
@@ -423,7 +423,7 @@ One thousand bootstrap replicates with replacement were constructed from the
 survey data to estimate bias-corrected 95\% confidence regions for each
 survey year (\citet{efro82}). Mean survey biomass estimates obtained from
 Eq. \ref{eq:sweptareaindex} with CVs (Eq. \ref{eq:indexcv}) are presented
-for the four fishery-independent surveys in Table~\ref{tab:Indices}.
+for the four fishery-independent surveys in Table~\ref{tab:indices}.
 
 Fishery CPUE was not used as an index of abundance due to the behaviour of
 the fishery. \Sexpr{fish.name} are targeted on known grounds, and the location
