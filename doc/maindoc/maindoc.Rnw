@@ -561,7 +561,8 @@ this assessment.
 Prior probability distributions for the Reference Case are shown in
 Figure~\ref{fig:priors} and Table~\ref{tab:parameters}. Model sensitivities
 to assumed prior distributions are presented in
-Sections \ref{sec:priorsteepness}, \ref{sec:priorm}, and \ref{sec:priorsurveyq}.
+Sections \ref{sec:priorsteepness}, \ref{sec:priorm}, and
+\ref{sec:prior-survey-q}.
 
 Uniform prior probability distributions were assumed for $\ln(R_0)$,
 $\ln(\overline{R})$, $\ln(\overline{R}_{init})$ and selectivity parameters
@@ -709,9 +710,9 @@ Hecate Strait Assemblage Survey and the three Synoptic Surveys
 (Figure~\ref{fig:priors}). Posterior estimates tended to overlap with the
 left-hand tail of the prior distributions for each survey
 (Figures~\ref{fig:priors} and  \ref{fig:priorsvsposts}). Sensitivity analyses
-(discussed in Section \ref{sec:priorsurveyq}) indicated that posterior estimates
-of catchability were sensitive to the mean and standard deviation of the prior
-distribution.
+(discussed in Section \ref{sec:prior-survey-q}) indicated that posterior
+estimates of catchability were sensitive to the mean and standard deviation
+of the prior distribution.
 
 Pairs plots of posterior samples (Figure~\ref{fig:pairs}) indicated that
 posterior estimates of $R_0$, $\overline{R}$, and $M$ were strongly negatively
@@ -1050,7 +1051,7 @@ deviation of the prior tended to increase the median and credibility interval
 of posterior estimates of $B_0$ and recent spawning biomass.
 
 \subsubsection{Prior probablity distribution for survey
-  catchability ($q_k$)} \label{sec:priorsurveyq}
+  catchability ($q_k$)} \label{sec:prior-survey-q}
 The Reference Case assumed a normal prior probability distribution for
 $\ln(q_k)$, with mean = $\ln(\Sexpr{q.mean})$ and
 standard deviation = \Sexpr{q.sd} in log space, for all surveys
@@ -1111,7 +1112,7 @@ the effect of reducing the age-at-50\%-harvest in the trawl fishery was a large
 reduction in estimated female spawning biomass
 (Figure~\ref{fig:sens-trawl-selex-biomass}), a reduction in estimated
 \emph{U}\subscr{MSY} and a corresponding increase in \emph{B}\subscr{MSY}
-(Figure~\ref{fig:sens-trawl-selex-refpoints}). Assuming a lower
+(Figure~\ref{fig:sens-trawl-selex-ref-points}). Assuming a lower
 age-at-50\%-harvest in the trawl fishery could therefore result in more
 precautionary advice due to lower spawning biomass, and because the vulnerable
 biomass would contain a greater proportion of younger fish.
@@ -1188,6 +1189,51 @@ discussed, the reason for posterior \emph{U}\subscr{MSY} estimates approaching
 selectivity-at-age ogive, far to the right of the maturity-at-age ogive.
 Sensitivity of catch advice to the estimated trawl selectivity is presented
 in the next section.
+
+\subsubsection{Alternative decision table}
+For comparison, we also present a decision table using the Scenario 12 model
+(Table~\ref{tab:decisions-sens}), where selectivity-at-age in the trawl fishery
+was fixed to be the same as maturity-at-age
+(see Table~\ref{tab:sens-params-desc}). Scenario 12 had the lowest estimates
+of biomass of all the sensitivity scenarios and represents a worse-case
+``what-if'' scenario.
+
+The decision table generated using the Scenario 12 model had lower probabilities
+of the \Sexpr{sbt.final.yr + 1} spawning biomass being below any of the
+biomass-based reference points and benchmarks presented
+(Table~\ref{tab:decisions-sens}). This was because fixing the trawl selectivity
+with a younger age-at-50\%-harvest had the effect of reducing the scale of the
+whole model, including estimates of \emph{B}\subscr{0}
+(Figure~\ref{fig:sens-trawl-selex-biomass}) and \emph{B}\subscr{MSY}
+(Figure~\ref{fig:sens-trawl-selex-ref-points}). Therefore, although projected
+spawning biomass was smaller than in the Reference Case, the \emph{B}\subscr{0}
+and \emph{B}\subscr{MSY}-based reference points were also lower, resulting in
+similar probabilities as in the Reference Case model.
+
+Similarly, despite posterior \emph{U}\subscr{MSY} estimates being lower in
+Scenario 12 (Figure~\ref{fig:sens-trawl-selex-ref-points}), the probabilities
+of the \Sexpr{sbt.final.yr} harvest rate exceeding the
+\Sexpr{sbt.final.yr - 1} harvest rate were lower than for the Reference Case
+model. This is because the posterior estimated vulnerable biomass was actually
+larger than in the Reference Case model because a much larger proportion of
+the total biomass was vulnerable to the fishing gear due to the assumed shift
+in selectivity to include younger fish. As for the Reference Case, the
+probability that the 2015 harvest rate would exceed \emph{U}\subscr{MSY}
+was 0\% under all catch levels considered.
+
+As with all fishery stock assessments, the uncertainty presented in this
+assessment is under-representative of the true uncertainty regarding the status
+of the \Sexpr{fish.name} population. We therefore urge caution with the advice presented
+in Tables~\ref{tab:decisions-base} and \ref{tab:decisions-sens}. The magnitude of
+catch and discards prior to \Sexpr{sbt.first.yr} is a major source of uncertainty
+in this assessment. The short time series of catch and surveys that were
+available in this assessment were relatively uninformative about the scale of
+the population, evidence for which can be seen in the high parameter correlations
+(Figure~\ref{fig:pairs}) and the influence of the prior probability distributions
+for the survey catchability parameters (Section \ref{sec:prior-survey-q}). If
+reliable pre-\Sexpr{sbt.first.yr} catch data had been available, the stock
+assessment and harvest advice may have been very different to those presented
+here.
 
 \section{FUTURE RESEARCH AND DATA REQUIREMENTS} \label{sec:future-research}
 As with all fishery stock assessments, there are two major types of
@@ -2335,7 +2381,7 @@ make.reference.points.plot(c(base.model,
   \Sexpr{base.model.name}, 2 = \Sexpr{sens.model.names.8[1]}, 3 =
   \Sexpr{sens.model.names.8[2]}. MSY-based reference points are in thousands
   of tonnes.}
-\label{fig:sens-trawl-selex-refpoints}
+\label{fig:sens-trawl-selex-ref-points}
 \end{figure}
 
 \clearpage
