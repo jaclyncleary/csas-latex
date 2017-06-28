@@ -31,13 +31,15 @@ sens.6.bo <- f(1000 * s6.r.quants["bo", -1])
 
 sbt <- b.mcc$sbt.quants
 sbt.final <- f(1000 * sbt[, ncol(sbt)])
+sbt.final.yr <- as.numeric(colnames(sbt)[ncol(sbt)])
+sbt.first.yr <- as.numeric(colnames(sbt)[1])
 
 f.mort <- b.mcc$f.mort.quants[[1]]
 max.f.mort <- max(f.mort[2,])
 max.f.mort.ind <- which(f.mort[2,] == max.f.mort)
 max.f.mort.yr <- colnames(f.mort)[max.f.mort.ind]
 max.f.mort <- f(f.mort[, max.f.mort.ind], 3)
-last.f.mort.yr <- colnames(f.mort)[ncol(f.mort)]
+last.f.mort.yr <- as.numeric(colnames(f.mort)[ncol(f.mort)])
 last.f.mort <- f(f.mort[, ncol(f.mort)], 3)
 
 depl <- b.mcc$depl.quants
@@ -59,6 +61,24 @@ s13.trawl.a50 <- s13.sel[rownames(s13.sel) == "agelen50log", 1]
 
 h.post <- f(b.p.quants$h, 3)
 sens.6.h.post <- f(as.data.frame(sens.models.3[[1]]$mcmccalcs$p.quants)$h, 3)
+
+## Projection values and probabilities
+tacs <- b$proj$tac.vec
+min.tac <- f(1000 * min(tacs))
+max.tac <- f(1000 * max(tacs))
+
+tac.probs <- b.mcc$proj.dat
+tac.0.prob <- f(100 * tac.probs[1, 4])
+tac.30.prob <- f(100 * tac.probs[which(tac.probs[, 1] == 30), 4], 1)
+tac.50.prob <- f(100 * tac.probs[which(tac.probs[, 1] == 50), 4], 1)
+
+tac.4bo <- tac.probs[, 5]
+min.tac.4b0 <- f(100 * min(tac.4bo), 1)
+max.tac.4b0 <- f(100 * max(tac.4bo), 1)
+
+tac.depl <- tac.probs[, 7]
+min.tac.depl <- f(100 * min(tac.depl), 1)
+max.tac.depl <- f(100 * max(tac.depl), 1)
 
 ################################################################################
 ## Number of mcmc samples, min and max median biomass

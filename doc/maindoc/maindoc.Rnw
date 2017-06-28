@@ -1126,13 +1126,68 @@ impacts of over-estimating age-at-50\%-harvest in the trawl fishery.
 \subsection{DECISION TABLES} \label{sec:DecisionTables}
 
 \subsubsection{Reference Case}
-Performance measures were calculated over a sequence of alternative projected
-catch levels.
+Performance measures were calculated over a sequence of alternative
+\Sexpr{sbt.final.yr} projected catch levels and are based on
+one-year projections to \Sexpr{sbt.final.yr + 1}. Projected,
+bias-corrected log recruitment anomalies in \Sexpr{sbt.final.yr - 1}
+and \Sexpr{sbt.final.yr} were drawn randomly from a normal distribution,
+$\sim N(0,\tau)$.
 
-Ratio $\frac{B_{2016}}{B_{ReferencePoint}} < 1$. An undesirable fishing
-mortality-based performance measure is defined to occur when projected 2015
-fishing mortality is above the reference point,
-i.e., $\frac{F_{2015}}{F_{ReferencePoint}} > 1$.
+Median (and \Sexpr{mcmc.ci} credibility interval) posterior estimates of
+reference points (MSY and $B_0$-based reference points) and benchmarks
+($B_{\Sexpr{sbt.first.yr}}$, $B_{\Sexpr{sbt.final.yr}}$,
+$F_{\Sexpr{last.f.mort.yr}}$) were provided in Table~\ref{tab:ref-points}.
+Decision tables are presented showing predicted probabilities of
+undesirable states under alternative \Sexpr{sbt.final.yr} projected catch
+levels. An undesirable biomass-based performance measure is defined to occur
+when the \Sexpr{sbt.final.yr + 1} projected female spawning biomass is below
+the candidate reference point or benchmark, i.e., the ratio
+$B_{\Sexpr{sbt.final.yr + 1}}/B_{ReferencePoint} < 1$. An
+undesirable fishing mortality-based performance measure is defined to occur
+when projected \Sexpr{sbt.final.yr} fishing mortality is above the reference
+point, i.e., $F_{\Sexpr{last.f.mort.yr + 1}}/F_{ReferencePoint} > 1$.
+
+Probabilities in the decision tables are measured as the proportion of
+burned-in posterior samples that meet criteria above (i.e., proportion of
+posterior samples \textless 1 for biomass-based performance measures; and
+proportion of posterior samples \textgreater 1 for fishing mortality-based
+performance measures).
+
+The Reference Case decision table is presented in
+Table~\ref{tab:decisions-base}. Alternative \Sexpr{sbt.final.yr}
+female-only catch levels are presented from \Sexpr{min.tac} t to
+\Sexpr{max.tac} t. Catches are shown in 2,000~t increments from zero to
+10,000~t; then in 1,000~t increments between 10,000~t and 20,000~t; and then
+in 2,000~t increments from 22,000~t to 30,000~t. A catch level of 50,000~t is
+also given as requested by the review committee.
+
+The model-predicted probability of the \Sexpr{sbt.final.yr + 1} female spawning
+biomass being below the \Sexpr{sbt.final.yr} female spawning biomass ranged
+from \Sexpr{tac.0.prob}\% under no \Sexpr{sbt.final.yr} catch to
+\Sexpr{tac.30.prob}\% under 30,000 t, which is double the current total TAC.
+At 50,000 t, the probability is \Sexpr{tac.50.prob}\%. The probability of being
+below the candidate USR of 0.4\emph{B}\subscr{0} ranged between
+\Sexpr{min.tac.4b0}\% and \Sexpr{max.tac.4b0}\% over the range of catch levels
+considered. The probability of being below the candidate USR of
+0.8\emph{B}\subscr{MSY} was 0\% over the range of catch levels considered. The
+probability of being below the both candidate LRPs of 0.2\emph{B}\subscr{0} or
+0.4\emph{B}\subscr{MSY} was 0\% over the range of catch levels considered. The
+probability that the \Sexpr{sbt.final.yr + 1} female spawning biomass would be
+less than the \Sexpr{sbt.first.yr} female spawning biomass ranged from
+\Sexpr{min.tac.depl}\% to \Sexpr{max.tac.depl}\% over the range of catch levels
+considered.
+
+The model-predicted probability of the \Sexpr{sbt.final.yr} harvest rate
+being greater than the \Sexpr{sbt.final.yr - 1} harvest rate was 0\% under a
+\Sexpr{sbt.final.yr} catch between 0 and 8,000~t, building up to a
+probability of 100\% at 13,000~t. However, the probability that the
+\Sexpr{sbt.final.yr} harvest rate would exceed \emph{U}\subscr{MSY} was
+0\% under all catch levels considered (Table~\ref{tab:decisions-base}). As
+discussed, the reason for posterior \emph{U}\subscr{MSY} estimates approaching
+1 (Figure~\ref{fig:ref-points}) was due to the location of the estimated trawl
+selectivity-at-age ogive, far to the right of the maturity-at-age ogive.
+Sensitivity of catch advice to the estimated trawl selectivity is presented
+in the next section.
 
 \section{FUTURE RESEARCH AND DATA REQUIREMENTS} \label{sec:future-research}
 As with all fishery stock assessments, there are two major types of
