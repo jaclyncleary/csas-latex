@@ -135,43 +135,43 @@ _____________________________________________________________
 The following depicts the object structure of each model's .RData file:
 
 ```R
-model           - A list created by the build() function
-model$path      - The relative (to doc/r) path where this model is located
-model$dat.file  - The relative (to doc/r) path with data file name for this model
-model$ctl.file  - The relative (to doc/r) path with control file name for this model
-model$proj.file - The relative (to doc/r) path with projection file name for this model
-model$dat       - data file contents (see r-functions/load-models.r)
-model$ctl       - control file contents (see r-functions/load-models.r)
-model$proj      - projection file contents (see r-functions/load-models.r)
-model$par       - par file contents (see r-functions/load-models.r)
-model$mpd       - MPD output (see r-functions/load-models.r)
-model$mcmc      - MCMC output from the model (see r-functions/load-models.r)
-model$mcmcpath  - The relative (to doc/r) path where the MCMC model is located
-model$mcmccalcs - MCMC output (burned in) and credibility intervals for all parameters
+model                 # A list created by the build() function
+model$path            # The relative (to doc/r) path where this model is located
+model$dat.file        # The relative (to doc/r) path with data file name for this model
+model$ctl.file        # The relative (to doc/r) path with control file name for this model
+model$proj.file       # The relative (to doc/r) path with projection file name for this model
+model$dat             # data file contents (see r-functions/load-models.r)
+model$ctl             # control file contents (see r-functions/load-models.r)
+model$proj            # projection file contents (see r-functions/load-models.r)
+model$par             # par file contents (see r-functions/load-models.r)
+model$mpd             # MPD output (see r-functions/load-models.r)
+model$mcmc            # MCMC output from the model (see r-functions/load-models.r)
+model$mcmcpath        # The relative (to doc/r) path where the MCMC model is located
+model$mcmccalcs       # MCMC output (burned in) and credibility intervals for all parameters
 model$mcmccalcs$
-  p.dat               - leading parameter estimates (burned in and thinned)
-  p.quants            - leading parameter estimates (median and CI's)
-  p.dat.log           - log of leading parameter estimates (burned in and thinned)
-  p.quants            - log of leading parameter estimates (median and CI's)
-  r.dat               - calculated parameters (burned in and thinned)
-  r.quants            - selected calculated parameters (median and CI's, as latex table)
-  sbt.dat             - spawning biomass (burned in and thinned)
-  sbt.quants          - spawning biomass (median and CI's, incl. MPD)
-  depl.dat            - relative spawning biomass (burned in and thinned)
-  depl.quants         - relative spawning biomass (median and CI's, incl. MPD)
-  recr.dat            - recruitment (burned in and thinned)
-  recr.quants         - recruitment (median and CI's)
-  recr.devs.dat       - recruitment deviations (burned in and thinned)
-  recr.devs.quants    - recruitment deviations (median and CI's)
-  q.dat               - catchability (burned in and thinned)
-  q.quants            - catchability (median and CI's)
-  vuln.dat            - vulnerable biomass (burned in and thinned, list of gears)
-  vuln.quants         - vulnerable biomass (median and CI's, list of gears, incl. MPD)
-  f.mort.dat          - fishing mortality (burned in and thinned, list of gears, incl. MPD)
-  f.mort.quants       - fishing mortality (median and CI's, list of gears, incl. MPD)
-  u.mort.dat          - annual fishing mortality (burned in and thinned, list of gears, incl. MPD)
-  u.mort.quants       - annual fishing mortality (median and CI's, list of gears, incl. MPD)
-  proj.dat            - reference points projection table (latex style)
+  p.dat               # leading parameter estimates (burned in and thinned)
+  p.quants            # leading parameter estimates (median and CI's)
+  p.dat.log           # log of leading parameter estimates (burned in and thinned)
+  p.quants            # log of leading parameter estimates (median and CI's)
+  r.dat               # calculated parameters (burned in and thinned)
+  r.quants            # selected calculated parameters (median and CI's, as latex table)
+  sbt.dat             # spawning biomass (burned in and thinned)
+  sbt.quants          # spawning biomass (median and CI's, incl. MPD)
+  depl.dat            # relative spawning biomass (burned in and thinned)
+  depl.quants         # relative spawning biomass (median and CI's, incl. MPD)
+  recr.dat            # recruitment (burned in and thinned)
+  recr.quants         # recruitment (median and CI's)
+  recr.devs.dat       # recruitment deviations (burned in and thinned)
+  recr.devs.quants    # recruitment deviations (median and CI's)
+  q.dat               # catchability (burned in and thinned)
+  q.quants            # catchability (median and CI's)
+  vuln.dat            # vulnerable biomass (burned in and thinned, list of gears)
+  vuln.quants         # vulnerable biomass (median and CI's, list of gears, incl. MPD)
+  f.mort.dat          # fishing mortality (burned in and thinned, list of gears, incl. MPD)
+  f.mort.quants       # fishing mortality (median and CI's, list of gears, incl. MPD)
+  u.mort.dat          # annual fishing mortality (burned in and thinned, list of gears, incl. MPD)
+  u.mort.quants       # annual fishing mortality (median and CI's, list of gears, incl. MPD)
+  proj.dat            # reference points projection table (latex style)
 ```
 
 These are some of the other variables in the global workspace. These can be
@@ -180,38 +180,38 @@ chunk. This list is just a sample, there are many more in the
 **custom-knitr-variables.r** file, which is where any new ones should be placed.
 
 ```R
-b                       - The base model object.
-b.mcc                   - An alias for b$mcmccalcs
-b.p.quants              - An alias for b$mcmccalcs$p.quants
-b.r.quants              - An alias for b$mcmccalcs$r.quants
-fish.name               - Name of the species in the assessment
-science.name            - Scientific name of the species
-family.name             - Scientific family name
-common.name             - Colloquial name for the species
-bo                      - Inital biomass (vector of 3 - median and ci's)
-bmsy                    - Bmsy (vector of 3 - median and ci's)
-fmsy                    - Fmsy (vector of 3 - median and ci's)
-sbt                     - Spawning biomass - alias for b$mcmccalcs$sbt.quants
-sbt.final               - Spawning biomass for the final year (vector of 4 - median, ci's, MPD)
-sbt.final.yr            - Last year of estimated biomass
-sbt.first.yr            - First year of estimated biomass
+b                       # The base model object.
+b.mcc                   # An alias for b$mcmccalcs
+b.p.quants              # An alias for b$mcmccalcs$p.quants
+b.r.quants              # An alias for b$mcmccalcs$r.quants
+fish.name               # Name of the species in the assessment
+science.name            # Scientific name of the species
+family.name             # Scientific family name
+common.name             # Colloquial name for the species
+bo                      # Inital biomass (vector of 3 - median and ci's)
+bmsy                    # Bmsy (vector of 3 - median and ci's)
+fmsy                    # Fmsy (vector of 3 - median and ci's)
+sbt                     # Spawning biomass - alias for b$mcmccalcs$sbt.quants
+sbt.final               # Spawning biomass for the final year (vector of 4 - median, ci's, MPD)
+sbt.final.yr            # Last year of estimated biomass
+sbt.first.yr            # First year of estimated biomass
 
-h.prior                 - Setup as seen in the control file for steepness
-h.prior.alpha           - Alpha parameter for steepness
-h.prior.beta            - Beta parameter for steepness
-h.prior.mean            - Calculated mean for steepness prior
-h.prior.cv              - Calculated CV for steepness prior
+h.prior                 # Setup as seen in the control file for steepness
+h.prior.alpha           # Alpha parameter for steepness
+h.prior.beta            # Beta parameter for steepness
+h.prior.mean            # Calculated mean for steepness prior
+h.prior.cv              # Calculated CV for steepness prior
 
-q                       - Initial value of survey q
+q                       # Initial value of survey q
 
-trawl.yrs               - Range of years for which there are age comp data for trawl fishery
+trawl.yrs               # Range of years for which there are age comp data for trawl fishery
 
-catch.yrs               - Range of years of catch
+catch.yrs               # Range of years of catch
 
-rho                     - Initial value of the rho parameter
-vartheta                - Initial value of the vartheta parameter
-tau                     - Calculated value for tau
-sigma                   - Calculated value for sigma
+rho                     # Initial value of the rho parameter
+vartheta                # Initial value of the vartheta parameter
+tau                     # Calculated value for tau
+sigma                   # Calculated value for sigma
 
-f                       - The function used to format numbers - this is used around all numbers in the doc
+f                       # The function used to format numbers - this is used around all numbers in the doc
 ```
