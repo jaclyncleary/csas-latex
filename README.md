@@ -10,8 +10,9 @@ _____________________________________________________________
 * Windows only - **MikTex**. The first time you try to run, many packages will
   be installed automatically. After that, the document will be built more
   quickly.
+* MAC - **LaTeX**
 * R
-* R Packages
+* R Packages:
     * coda
     * knitr
     * lubridate
