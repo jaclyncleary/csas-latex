@@ -16,39 +16,25 @@ func.dir <- "r-functions"
 ##  install.packages.if.needed and remove.all.except
 source(file.path(func.dir, "utilities.r"))
 
-install.packages.if.needed("devtools", "devtools", github = FALSE)
-install.packages.if.needed("caTools", "caTools", github = FALSE)
-install.packages.if.needed("stringi", "stringi", github = FALSE)
-install.packages.if.needed("date", "date", github = FALSE)
-install.packages.if.needed("xtable", "xtable", github = FALSE)
-install.packages.if.needed("PBSmapping", "PBSmapping", github = FALSE)
-install.packages.if.needed("PBSmodelling", "PBSmodelling", github = FALSE)
-install.packages.if.needed("maps", "maps", github = FALSE)
-install.packages.if.needed("coda", "coda", github = FALSE)
-install.packages.if.needed("dplyr", "dplyr", github = FALSE)
-install.packages.if.needed("maptools", "maptools", github = FALSE)
-install.packages.if.needed("gtools", "gtools", github = FALSE)
-install.packages.if.needed("knitr", "knitr", github = FALSE)
+install.packages.if.needed("coda")
+install.packages.if.needed("knitr")
+install.packages.if.needed("lubridate")
+install.packages.if.needed("PBSmodelling")
+install.packages.if.needed("xtable")
 
-require(date)
-require(r4ss)
-require(xtable)
-require(PBSmapping)
-require(PBSmodelling)
-require(maps)
-require(dplyr)
 require(coda)
-require(gtools)
-require(maptools)
-require(lubridate)
 require(knitr)
+require(lubridate)
+require(PBSmodelling)
+require(xtable)
 
 ## Code to load the catch/TAC data, making catch figures, and making tables
 ##  for catch/TAC.
 source(file.path(func.dir, "catches.r"))
 ## Code to load the models from the model directories
 source(file.path(func.dir, "load-models.r"))
-## Code to load the survey data, making survey figures, and making tables for survey.
+## Code to load the survey data, making survey figures, and making tables
+##  for survey.
 source(file.path(func.dir, "survey.r"))
 ## Code to load data tables from the data directory
 source(file.path(func.dir, "load-data.r"))
