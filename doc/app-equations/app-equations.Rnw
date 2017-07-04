@@ -13,7 +13,7 @@
 \appsection{INTRODUCTION}
 
 Stock Assessment modelling was done using the Integrated Statistical Catch
-Age Model (iSCAM), developed by S. Martell (\citet{martell2011}). iSCAM is
+Age Model (iSCAM), developed by S. Martell \citep{martell2011}. iSCAM is
 written in AD Model Builder and the source code and documentation for both
 are available online. iSCAM uses a statistical catch-at-age model
 implemented in a Bayesian estimation framework.
@@ -49,10 +49,10 @@ For the steady-state conditions represented in
 Table~\ref{tab:steady-state-model}, we assume the parameter vector $\Theta$
 in Eq.~\ref{eq:df1} is unknown and would be estimated by fitting iSCAM to
 data. For a given set of sex-specific growth parameters and maturity-at-age
-parameters defined by Eq. \ref{eq:df2}, growth is assumed to follow von
-Bertalanffy (Eq. \ref{eq:df3}), mean weight-at-age is given by the
-allometric relationship in Eq. \ref{eq:df4}, and the age and sex-specific
-vulnerability is given by an age-based logistic function (Eq. \ref{eq:df5}).
+parameters defined by Eq.~\ref{eq:df2}, growth is assumed to follow von
+Bertalanffy (Eq.~\ref{eq:df3}), mean weight-at-age is given by the
+allometric relationship in Eq.~\ref{eq:df4}, and the age and sex-specific
+vulnerability is given by an age-based logistic function (Eq.~\ref{eq:df5}).
 The terms vulnerability and selectivity are used interchangeably throughout
 this document, although, technically, selectivity refers to the fishing
 gear, while vulnerability refers to all processes affecting the availability
@@ -66,8 +66,8 @@ per-recruit quantities such as spawning biomass per recruit ($\phi_E$,
 Eq.~\ref{eq:df9}) or vulnerable biomass per recruit ($\phi_B$,
 Eq.~\ref{eq:df10}). Note that upper and lower case subscripts denote
 unfished and fished conditions, respectively. Unfished spawning biomass
-is given by Eq. \ref{eq:df12} and the recruitment compensation ratio
-(\citet{myers1999}) is given by Eq. \ref{eq:df13}. The steady-state
+is given by Eq.~\ref{eq:df12} and the recruitment compensation ratio
+\citep{myers1999} is given by Eq.~\ref{eq:df13}. The steady-state
 equilibrium recruitment for a given fishing mortality rate $F_e$ is given
 by Eq.~\ref{eq:df14}. Note that we assume that recruitment follows a
 Beverton-Holt stock recruitment model of the form shown in
@@ -107,8 +107,7 @@ variance $\vartheta^2$ (i.e., total precision). This parameter can be fixed
 or estimated, and was fixed for this model. The total variance is partitioned
 into observation and process error components by the model parameter
 $\rho$, which represents the proportion of the total variance that is due
-to observation error (Eq. \ref{eq:df17}) (\citet{punt1999} and
-\citet{deriso2007}).
+to observation error (Eq.~\ref{eq:df17}, \citep{punt1999, deriso2007}).
 
 The unobserved state variables in Eq.~\ref{eq:df18} include the
 numbers-at-age in year $t$ of sex $s$ ($N_{t,a,s}$), the spawning stock biomass
@@ -121,7 +120,7 @@ used to initialize the numbers-at-age array.
 Vulnerability-at-age is here assumed time-invariant and is modelled using a
 two-parameter logistic function (Eq.~\ref{eq:df21}). The annual fishing
 mortality for each gear $k$ in year $t$ is the exponent of the estimated
-vector $\Gamma_{k,t}$ (Eq. \ref{eq:df22}). The vector of log fishing mortality
+vector $\Gamma_{k,t}$ (Eq.~\ref{eq:df22}). The vector of log fishing mortality
 rate parameters $\Gamma_{k,t}$ is a bounded vector with a minimum value of
 $-30.0$ and an upper bound of $3.0$. In arithmetic space this corresponds to
 a minimum value of $9.36e^{-14}$ and a maximum value of $20.01$ for annual
@@ -139,14 +138,14 @@ throughout the year. The sex-specific numbers-at-age are propagated over
 time using Eq. \ref{eq:df26}, where members of the plus group (age $A$) are
 all assumed to have the same total mortality rate.
 Recruitment to age $k$ is assumed to follow a Beverton-Holt model for
-\Sexpr{fish.name} (Eq. \ref{eq:df27}) where the maximum juvenile survival
+\Sexpr{fish.name} (Eq.~\ref{eq:df27}) where the maximum juvenile survival
 rate ($s_o$) is defined by $s_o=\frac{\kappa}{\phi_E}$. For the Beverton-Holt
 model, $\beta$ is derived by solving Eq.~\ref{eq:df27} for $\beta$
 conditional on estimates of $h$ and $R_o$.
 
 \appsection{RESIDUALS, LIKELIHOODS, AND OBJECTIVE FUNCTION VALUE COMPONENTS}
 The objective function contains five major components:
-\begin{enumerate}[noitemsep,nolistsep]
+\begin{resdoclist}
   \item The negative log-likelihood for the catch data
   \item The negative log-likelihood for the relative abundance data
   \item The negative log-likelihood for the age composition data
@@ -154,7 +153,7 @@ The objective function contains five major components:
   \item Three penalty functions that are invoked to regularize the solution
     during intermediate phases of the non-linear parameter estimation.
     The penalty functions:
-  \begin{enumerate}[noitemsep,nolistsep]
+  \begin{resdoclist}
     \item constrain the estimates of annual recruitment to conform to a
       Beverton-Holt stock-recruit function
     \item weakly constrain the log recruitment deviations to a normal
@@ -162,8 +161,8 @@ The objective function contains five major components:
     \item weakly constrain estimates of log fishing mortality to a normal
       distribution ($\sim N(\ln(0.2), 4.0)$) to prevent estimates of
       catch from exceeding estimated biomass.
-    \end{enumerate}
-\end{enumerate}
+    \end{resdoclist}
+\end{resdoclist}
 
 Tests showed the model was insensitive to changes in the penalty function
 parameters, indicating that the other likelihood components and prior
@@ -238,14 +237,14 @@ set to inverse of the annual CVs from the survey (Table~\ref{tab:indices})
 
 \subsection{Age composition data}
 Sampling theory suggest that age composition data are derived from a multinomial
-distribution \citet{fournier1982}. However, iSCAM assumes that age-proportions
+distribution \citep{fournier1982}. However, iSCAM assumes that age-proportions
 are obtained from a multivariate logistic distribution
-(\citet{sr95schnute,richards1997visualizing}). iSCAM departs from the
+\citep{sr95schnute, richards1997visualizing}. iSCAM departs from the
 traditional multinomial model due to choices regarding weighting of the
 age-composition data in the objective function. First, the multinomial
 distribution requires the specification of an effective sample size. This
 weighting may be done arbitrarily or through iterative re-weighting
-\citet{mcallister1997,gavaris2002}, and in the case of multiple and potentially
+\citep{mcallister1997, gavaris2002}, and in the case of multiple and potentially
 conflicting age-proportions this procedure may fail to converge properly. The
 assumed effective sample size can have a large impact on the overall model
 results.
@@ -288,8 +287,8 @@ given by:
 \begin{equation}\label{eq:df35}
 \delta_t = \ln(\bar{R}e^{w_t}) - R_t)
 \end{equation}
-where $R_t$ is given by \ref{eq:df27}, and $k$ is the age at recruitment. Note
-that a bias correction term for the lognormal process errors is included in
+where $R_t$ is given by Eq.~\ref{eq:df27}, and $k$ is the age at recruitment.
+Note that a bias correction term for the lognormal process errors is included in
 Eq.~\ref{eq:df27}.
 
 The negative log likelihood for the recruitment deviations is given by the
@@ -297,7 +296,7 @@ normal density (ignoring the scaling constant):
 \begin{equation}\label{eq:df36}
 \ell_\delta = n\ln(\tau) + \frac{\sum_{t=1+k}^T \delta^2_t}{2\tau^2}
 \end{equation}
-Equations \ref{eq:df35} and \ref{eq:df36} are key for estimating unfished
+Eqs.~\ref{eq:df35} and \ref{eq:df36} are key for estimating unfished
 spawning stock biomass and recruitment compensation via the recruitment
 models. The relationship between ($s_o,\beta$) and ($B_o,\kappa$) is defined
 as:
@@ -384,7 +383,7 @@ $\dot{\gamma}_s$ & & Standard deviation at 50\% maturity for sex $s$\\
 \vbox{\beq \Theta = (R_o,h,M)\,; \ \ \ R_o>0; \ \ \ 0.2 \leq h < 1.0; \ \ \ M > 0 \label{eq:df1} \eeq} \\
 \vbox{\beq \Phi = (l_{\infty,s},\acute{k}_s, t_{o,s},\acute{a}_s,\acute{b}_s,\dot{a}_s,\dot{\gamma}_s,\hat{a}_k,\hat{\gamma}_k) \label{eq:df2} \eeq} \\
 \\
-\vbox{\begin{center}\bf{Age-schedule information}\end{center}\vspace{-4ex}} \\
+\vbox{\begin{center}\bf{Age-schedule information}\end{center}\vspace{-3ex}} \\
 \vbox{\beq l_{a,s}=l_{}\left(1-e^{\left(-k_s\left(a-t_{o,s}\right)\right)}\right) \label{eq:df3} \eeq} \\
 \vbox{\beq w_{a,s}=\acute{a}_s(l_{a,s})^{\acute{b}_s} \label{eq:df4} \eeq} \\
 \\
@@ -410,6 +409,7 @@ $\dot{\gamma}_s$ & & Standard deviation at 50\% maturity for sex $s$\\
 \eeq} \\
 \\
 \vbox{\begin{center}\bf{Incidence functions}\end{center}} \\
+\\
 \vbox{\beq \phi_E=\sum_{s=1}^S\sum_{a=1}^\infty \iota_a f_{a,s},\ \ \ \ \ \ \ \ \
 \phi_e=\sum_{s=1}^S\sum_{a=1}^\infty \hat{\iota}_{a,s} f_{a,s}
 \label{eq:df9}

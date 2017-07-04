@@ -1,15 +1,15 @@
 \abstract{}
 
 \Sexpr{fish.name} (\emph{\Sexpr{science.name}}, \Sexpr{common.name}) are an
-important component of the bottom trawl fishery in \Sexpr{bc}. They are managed as a coastwide stock,
-with a TAC of 15,000 t and catch of 10,679 t in 2014. Prior to the introduction
-of freezer trawlers in the mid-2000s, most of the historical catch of
-\Sexpr{fish.name} is understood to have been discarded at sea. This was largely due
-to proteolysis, which occurs in the muscle tissue of this species a short time
-after it is caught, making the flesh unpalatable. In the past five years,
-markets have been established for fillets that have been frozen at sea, and
-the freezer trawl fleet has taken an increasing proportion of the coastwide
-catch.
+important component of the bottom trawl fishery in \Sexpr{bc}. They are managed
+as a coastwide stock, with a TAC of 15,000 t and catch of 10,679 t in 2014.
+Prior to the introduction of freezer trawlers in the mid-2000s, most of the
+historical catch of \Sexpr{fish.name} is understood to have been discarded at
+sea. This was largely due to proteolysis, which occurs in the muscle tissue of
+this species a short time after it is caught, making the flesh unpalatable.
+In the past five years, markets have been established for fillets that have
+been frozen at sea, and the freezer trawl fleet has taken an increasing
+proportion of the coastwide catch.
 
 This assessment fits a female only Bayesian age-structured model to catch,
 survey and age-composition data from the years 1996-2014, for management areas
@@ -28,16 +28,16 @@ population, indicating that there was limited information in the short time
 series of available data to resolve the population scale.
 
 Management advice is provided in the form of decision tables which forecast the
-impacts of a range of 2015 catch levels on \Sexpr{fish.name} stock status relative to
-these reference points. The Reference Case decision table suggests that a 2015
-catch equal to any of the catch levels tested, ranging from 0 t to 30,000 t
-(twice the 2014 TAC), would result in a 2016 biomass above all of the candidate
-biomass-based reference points tested, and 2015 harvest rate below the estimated
-\emph{U}\subscr{MSY}. Large uncertainty in the assessment is however, emphasised.
-The magnitude of catch and discards prior to 1996 is a major source of
-uncertainty in this assessment that could provide critical information about the
-scale and productivity of this stock. Ageing of archived otoliths from the
-freezer trawl fleet is a high priority recommendation.
+impacts of a range of 2015 catch levels on \Sexpr{fish.name} stock status
+relative to these reference points. The Reference Case decision table suggests
+that a 2015 catch equal to any of the catch levels tested, ranging from 0~t to
+30,000~t (twice the 2014 TAC), would result in a 2016 biomass above all of the
+candidate biomass-based reference points tested, and 2015 harvest rate below
+the estimated \emph{U}\subscr{MSY}. Large uncertainty in the assessment is
+however, emphasised. The magnitude of catch and discards prior to 1996 is a
+major source of uncertainty in this assessment that could provide critical
+information about the scale and productivity of this stock. Ageing of archived
+otoliths from the freezer trawl fleet is a high priority recommendation.
 
 \frenchabstract{
   Évaluation du stock de plie à grande bouche
@@ -127,19 +127,18 @@ of \Sexpr{bc}.
 %% Subsection names must be in all caps
 \subsection{PURPOSE OF DOCUMENT}
 \Sexpr{fish.name} is managed as a coastwide stock in \Sexpr{bc}, with the majority of
-the catch coming from Pacific Marine Fisheries Commission (PMFC) major areas 3CD
-(West Coast Vancouver Island), 5AB (Queen Charlotte Sound) and 5CD
-(Hecate Strait) (Figures~\ref{fig:cpue} and \ref{fig:main-catches},
-Table~\ref{tab:main-catches}). The Strait of Georgia (management area 4B) is not
-included in this stock assessment. The 2014 Total Allowable Catch (TAC) was
-15,000 metric tonnes, the second largest groundfish TAC in \Sexpr{bc}, after Pacific Hake
-(\emph{Merluccius productus}).
+the catch coming from Pacific Marine Fisheries Commission (PMFC) major areas 3CD;
+West Coast Vancouver Island, 5AB; Queen Charlotte Sound and 5CD; Hecate Strait
+(Figures~\ref{fig:cpue} and \ref{fig:main-catches}, Table~\ref{tab:main-catches}).
+The Strait of Georgia (management area 4B) is not included in this stock assessment.
+The 2014 Total Allowable Catch (TAC) was 15,000 metric tonnes, the second largest
+groundfish TAC in \Sexpr{bc}, after Pacific Hake (\emph{Merluccius productus}).
 
 The purpose of this stock assessment is to update management advice for
 \Sexpr{fish.name} stocks in \Sexpr{bc}, as requested by the Pacific Groundfish Management Unit
 (GMU). This assessment identifies reference points for \Sexpr{fish.name} that are
 consistent with the DFO Decision-making Framework Incorporating the Precautionary
-Approach (\citet{dfo09}) and characterizes stock status relative to these
+Approach \citep{dfo09} and characterizes stock status relative to these
 reference points, using a Bayesian, age-structured stock assessment model.
 Management advice is provided in the form of decision tables which forecast the
 impacts of a range of harvest levels on \Sexpr{fish.name} stock status relative to these
@@ -147,9 +146,9 @@ reference points.
 
 \subsection{BIOLOGICAL BACKGROUND}
 \Sexpr{fish.name} are distinguished by their large mouth and arrow-shaped teeth, for
-which the species is named (\citet{hart1973}). Their distribution ranges from Baja
-California to the eastern Bering Sea (\citet{hart1973}). In \Sexpr{bc}, the species
-inhabits depths from 50--900 m (\citet{arf2001}).
+which the species is named \citep{hart1973}. Their distribution ranges from Baja
+California to the eastern Bering Sea \citep{hart1973}. In \Sexpr{bc}, the species
+inhabits depths from 50--900 m \citep{arf2001}.
 
 \Sexpr{fish.name} exhibit sexual dimorphism. After sexual maturity, females grow faster
 than males and reach a larger maximum size (Appendix \ref{chap:biological},
@@ -169,20 +168,20 @@ fish over 20 y in the dataset, and this assessment assumes a plus group of 20 y
 
 \Sexpr{fish.name} are batch spawners with peak spawning occurring at depths deeper than
 350 m in the fall and winter months, although the timing of spawning may vary
-interannually (\citet{arf1995}). The species produces pelagic eggs, followed by
-a pelagic larval stage that may last several months (\citet{arf1995}). Fecundity
-of this species is poorly understood (\citet{dicosimo1998}). One and two year
+interannually \citep{arf1995}. The species produces pelagic eggs, followed by
+a pelagic larval stage that may last several months \citep{arf1995}. Fecundity
+of this species is poorly understood \citep{dicosimo1998}. One and two year
 old fish occupy shallower depths than adults, but by the age of three or four
 years old, they are generally found in deeper water with adults
-(\citet{arf2001}). \Sexpr{fish.name} appear to occupy separate spawning (winter) and
+\citep{arf2001}. \Sexpr{fish.name} appear to occupy separate spawning (winter) and
 feeding (summer) areas, and undergo seasonal bathymetric movement from shallower
-to deeper water in the fall and winter (\citet{arf2001}).
+to deeper water in the fall and winter \citep{arf2001}.
 
 Juvenile \Sexpr{fish.name} feed primarily on mobile prey such as cumaceans, carideans
 and amphipods. Adults are piscivorous and cannibalistic, feeding on Pacific
 Herring (\emph{Clupea pallasii}), juvenile Walleye Pollock
 (\emph{Theragra chalcogramma}) and Pacific Sandlance
-(\emph{Ammodytes hexapterus}), among other species (\citet{fargo1981}).
+(\emph{Ammodytes hexapterus}), among other species \citep{fargo1981}.
 
 \subsection{FISHERY AND MANAGEMENT HISTORY} \label{sec:managementhistory}
 \Sexpr{fish.name} has been managed on a status-quo basis in recent years, with an
@@ -190,7 +189,7 @@ annual allocation of 15,000 t for the groundfish trawl fleet since 2006.
 Before that time, there were no limits on catches or discards of \Sexpr{fish.name}.
 The areas of high CPUE in Dixon Entrance seen in Figure~\ref{fig:cpue} are
 mainly from this test fishery. The increased catch can be seen in
-Figure~\ref{fig:main-catches}, especially in the northern areas (5ABCDE)
+Figure~\ref{fig:main-catches}, especially in the northern areas; 5ABCDE
 (Panel (c) of Figure~\ref{fig:main-catches}). Unfortunately, due to rapid
 proteolysis of the flesh, the fishery was not profitable and a large drop
 in catch is evident after 2005 (Figure~\ref{fig:main-catches}) when the test
@@ -198,7 +197,7 @@ fishery ended abruptly. There has also been a recent increase in catch from
 2010--2014, which is due to four freezer trawlers joining the fleet. With their
 ability to freeze the catch a short time after capture, the freezer trawlers
 have accessed wider markets than the smaller shoreside boats. The freezer
-trawlers' priority catch is Pacific Hake (\citet{hake2015}), but when hake
+trawlers' priority catch is Pacific Hake \citep{hake2015}, but when hake
 become scarce on the fishing grounds the freezer trawlers have the ability to
 easily switch gears to bottom trawl to fish for \Sexpr{fish.name}. Since their
 introduction, freezer trawlers have taken an increasing proportion of the total
@@ -245,7 +244,7 @@ as fixed parameters that were assumed to remain constant over time.
 Reference points based on Maximum Sustainable Yield (MSY), including the female
 spawning biomass (\emph{B}\subscr{MSY}) and the annual harvest rate producing
 MSY (\emph{U}\subscr{MSY}), were estimated, along with reference points based on
-estimated equilibrium unfished spawning biomass (\emph{B}\subscr{0})
+estimated equilibrium unfished spawning biomass, \emph{B}\subscr{0}
 (Section \ref{sec:FisheryRefPoints}). Harvest decision tables
 (Tables~\ref{tab:decisions-base} and \ref{tab:decisions-sens}) were created by
 projecting the assessment model one year into the future under a range of
@@ -322,11 +321,11 @@ abundance (Table \ref{tab:indices}). The surveys used in this assessment were:
 \textbf{Hecate Strait Multispecies Assemblage Survey} \\
 A series of multi-species groundfish bottom trawl surveys were conducted in
 Hecate Strait in May-June of 1984, 1987, 1989, 1991, 1993, 1995, 1996, 1998,
-2000, 2002, and 2003 (\citet{westrheim1984}, \citet{fargo1984},
-\citet{fargo1988}, \citet{wilson1991}, \citet{hand1994},
-\citet{workman1996}, \citet{workman1997}, \citet{choromanski2002},
-\citet{choromanski2005}). The present assessment only utilizes observations
-from 1996 until the survey ended in 2003.
+2000, 2002, and 2003
+\citep{westrheim1984, fargo1984, fargo1988, wilson1991, hand1994,
+       workman1996, workman1997, choromanski2002, choromanski2005}.
+The present assessment only utilizes observations from 1996 until the survey
+ended in 2003.
 
 The original design of this survey assigned fishing locations by 10 fathom
 depth intervals within a 10 nautical mile grid of Hecate Strait. The survey
@@ -334,7 +333,7 @@ was post-stratified using 10 fathom depth intervals for the entire survey area,
 thereby treating each depth interval as a single stratum. The Hecate Strait
 Assemblage survey was designed as a systematic fixed-station survey. Despite
 attempts to apply post-sampling stratification, this approach had high survey
-variance (\citet{sinclair2007}). In 2004 the Hecate Strait Assemblage survey
+variance \citep{sinclair2007}. In 2004 the Hecate Strait Assemblage survey
 was discontinued in favour of the Hecate Strait Synoptic survey (described
 below).
 \end{minipage}
@@ -421,7 +420,7 @@ where $(CV)_y$ is the CV for year $y$.
 
 One thousand bootstrap replicates with replacement were constructed from the
 survey data to estimate bias-corrected 95\% confidence regions for each
-survey year (\citet{efro82}). Mean survey biomass estimates obtained from
+survey year \citep{efro82}. Mean survey biomass estimates obtained from
 Eq. \ref{eq:sweptareaindex} with CVs (Eq. \ref{eq:indexcv}) are presented
 for the four fishery-independent surveys in Table~\ref{tab:indices}.
 
@@ -458,7 +457,8 @@ commercial data, these strata comprised quarterly periods within a year, while,
 for survey samples, the strata were defined by the survey design. A description
 of the methods used to calculate weighted age frequencies is given in
 Appendix \ref{chap:agecompweight}. This is the same method that was used in the
-2014 \Sexpr{bc} Rock Sole (\emph{Lepidopsetta spp.}) assessment (\citet{rocksole2014}).
+2014 \Sexpr{bc} Rock Sole (\emph{Lepidopsetta spp.}) assessment
+\citep{rocksole2014}.
 
 Ageing requests included randomly chosen samples from many vessels, including the
 freezer trawlers. Some of these were not aged, due to time limitations of the
@@ -478,14 +478,13 @@ proportion of the catch. However, as discussed in the previous section, it was
 discovered after the commercial otoliths had been processed that age data from
 this fleet were under-represented in the age composition data.
 
-Females have been sampled more often than males in both fleets
-(Figure~\ref{fig:lengthsubfleet}, N values). This difference in sampling is due
-to the proportion of females in the population being higher than males
-(Appendix \ref{chap:propfemale}). Females did not vary in length significantly
-between the two fleets, with both having a median around 55 cm. Males had a
-median of around 45 cm for both fleets, except for in 2006--2007, when freezer
-trawler samples showed slightly larger males. The low sample size (N=97) in 2006
-suggests that this may not be representative of the population.
+Females have been sampled more often than males in both fleets. This difference
+in sampling is due to the proportion of females in the population being higher
+than males (Appendix \ref{chap:propfemale}). Females did not vary in length
+significantly between the two fleets, with both having a median around 55 cm.
+Males had a median of around 45 cm for both fleets, except for in 2006--2007,
+when freezer trawler samples showed slightly larger males. The low sample size
+(N=97) in 2006 suggests that this may not be representative of the population.
 
 \subsection{STATISTICAL CATCH-AT-AGE MODEL}
 
@@ -522,13 +521,13 @@ directly proportional to the survey vulnerable biomass at the beginning of each
 year. Observation errors in relative abundance indices were assumed to be
 log-normally distributed. The survey catchability parameter $q_k$ was estimated
 for each survey $k$, with the maximum likelihood estimate of $q_k$ used in the
-calculation of the objective function (\citet{walters1994}). Prior probability
+calculation of the objective function \citep{walters1994}. Prior probability
 distributions for $\ln(q_k)$ are described in Section \ref{sec:priors}.
 
 Age-composition observations were assumed to come from a multivariate logistic
 distribution, where predicted proportions-at-age are a function of the predicted
 population age-structure and the age specific vulnerability to the fishing gear
-(\citet{rs98}). The likelihood for the age-composition data was evaluated at the
+\citep{rs98}. The likelihood for the age-composition data was evaluated at the
 conditional maximum likelihood estimate of the variance (i.e., no subjective
 weighting scheme was used to scale likelihood for the age-composition
 information). No age-reading errors were assumed.
@@ -548,7 +547,7 @@ approach. The key variance parameter is the inverse of the total variance
 (i.e., $\vartheta^2$, total precision). The total variance is partitioned into
 observation and process error components by the model parameter $\rho$, which
 represents the proportion of the total variance that is due to observation error
-(\citet{punt1999}, \citet{deriso2007}). The total variance is partitioned into
+\citep{punt1999, deriso2007}. The total variance is partitioned into
 observation errors ($\sigma$) and process errors ($\tau$) using
 Eq.~\ref{eq:df17}. The parameters $\vartheta^2$ and $\rho$ were fixed in the
 current assessment (Table~\ref{tab:parameters}) at values that gave
@@ -596,7 +595,7 @@ the swept area analysis compared with the true biomass.
 
 \subsubsection{Fishery reference points} \label{sec:FisheryRefPoints}
 The DFO Fishery Decision-making Framework Incorporating the Precautionary
-Approach (PA) policy (\citet{dfo09}) requires stock status to be characterized
+Approach (PA) policy \citep{dfo09} requires stock status to be characterized
 using three reference points:
 
 \begin{resdoclist}
@@ -614,7 +613,7 @@ removal rate (LRR) throughout this document.
 A harvest control rule based on these reference points that is coincident with
 the choice of LRP, USR, and LRR would apply a linear reduction in fishing
 mortality as the stock falls below the USR, and would cease fishing when the
-stock reaches the LRP (but see \citet{cox2013}). This is illustrated for a
+stock reaches the LRP, but see \citet{cox2013}. This is illustrated for a
 hypothetical stock in Figure~\ref{fig:hcrillustration}, where the USR and LRP
 are shown as vertical lines and the removal rate is shown as a blue line. We
 make the observation that the rate at which the fishing mortality should be
@@ -628,19 +627,19 @@ resulting from possible under-representation of freezer trawl ages discussed abo
 alternative candidate reference points for \Sexpr{fish.name} that are less reliant on
 estimated selectivity. We suggest an USR = $0.4$\emph{B}\subscr{0} and a LRP =
 $0.2$\emph{B}\subscr{0}. These thresholds are consistent with biomass targets and
-limits in place in other jusrisdictions including Australia (\citet{smith2007})
-and the U.S.A. (\citet{restrepo1998}). Given the large uncertainty in estimated
+limits in place in other jusrisdictions including Australia \citep{smith2007}
+and the U.S.A. \citep{restrepo1998}. Given the large uncertainty in estimated
 \emph{B}\subscr{0} in this assessment (see Results, section \ref{sec:results}),
 we also suggest B\subscr{1996}, the estimated spawning biomass at the beginning
 of the time series, as a candidate benchmark to measure relative fishing impacts
-for this stock. See Appendix \ref{chap:equations} for description of reference
+for this stock. See Appendix~\ref{chap:equations} for description of reference
 points calculations.
 
 \subsection{RESULTS} \label{sec:results}
 \subsubsection{Model diagnostics}
 The joint posterior distribution was numerically approximated using the Markov
 Chain Monte Carlo (MCMC) routines built into AD Model Builder
-(\citet{fournier2012}). For the Reference Case and all sensitivity cases,
+\citep{fournier2012}. For the Reference Case and all sensitivity cases,
 posterior samples were drawn systematically every \Sexpr{mcmc.samp.freq}
 iterations from a chain of length \Sexpr{mcmc.length}, resulting in
 \Sexpr{mcmc.num.samples} posterior samples (the first \Sexpr{mcmc.burnin}
@@ -888,7 +887,7 @@ Table~\ref{tab:u-mort}.\\
 
 \subsubsection{Relative spawning biomass}
 Median posterior estimates (and \Sexpr{mcmc.ci} credibility interval) of
-relative female spawning biomass $\frac{B_t}{B_0}$ are shown in
+relative female spawning biomass $B_t/B_0$ are shown in
 Figure~\ref{fig:depletion}. The credibility interval is broad, reflecting
 the uncertainty in posterior estimates of $B_0$ (Figure~\ref{fig:depletion},
 Table~\ref{tab:ref-points}). The median posterior projected estimate of 2015
@@ -920,7 +919,7 @@ for sufficient burn-in.\\
 The Reference Case used fixed values for variance parameters $\vartheta^2$ and
 $\rho$ (Table~\ref{tab:parameters}), which resulted in an observation error
 term ($\sigma=\Sexpr{b$mpd$sig}$) and a process error term
-($\tau=\Sexpr{b$mpd$tau}$) (see Appendix \ref{chap:equations},
+($\tau=\Sexpr{b$mpd$tau}$) (Appendix~\ref{chap:equations},
 Eq.~\ref{eq:df17}). We tested model sensitivity to these fixed parameters by
 varying $\vartheta^2$ and $\rho$ to give:
 \begin{resdoclist}
@@ -1078,7 +1077,7 @@ and \ref{fig:sens-qsd-recruitment}).
 While Scenario 10 illustrates that the assumed prior probability distribution did
 affect posterior estimates of $q_k$ for all surveys, we do not consider a prior
 centred on 1 to be reasonable, given that the swept area methodology described in
-Eqs. \ref{eq:sweptareaindex} -- \ref{eq:indexcv} did not attempt to inflate
+Eqs.~\ref{eq:sweptareaindex}--\ref{eq:indexcv} did not attempt to inflate
 estimated biomass for the whole coast. The lower posterior estimates for $q_k$
 obtained for all surveys in Scenario 11, may or may not be plausible, given the
 lack of information in the data for informing population scale in this
@@ -1089,7 +1088,7 @@ In an earlier section, we noted that the estimated selectivity ogive for the
 trawl fishery was quite far to the right of the maturity ogive
 (Figure~\ref{fig:selex}), resulting in estimates of \emph{U}\subscr{MSY}
 approaching 1. We concluded that the estimated age-at-50\%-harvest in the trawl
-fishery (median = \Sexpr{trawl.a50[2]} y) was consistent with the fishery age
+fishery (median = \Sexpr{trawl.a50[2]}~y) was consistent with the fishery age
 composition data (Figure~\ref{fig:agecomps-trawl}) but that these data may not
 be representative of ages in the freezer trawl fleet due to lack of age samples
 from this fleet. While we recommend ageing of archival otoliths from the
@@ -1103,7 +1102,7 @@ assessment and two alternative fixed ages-at-50\%-harvest were assumed:
 
 \begin{resdoclist}
   \item selectivity ogive = maturity ogive (Scenario 12)
-  \item age-at-50\%-harvest = \Sexpr{s13.trawl.a50} y (Scenario 13)
+  \item age-at-50\%-harvest = \Sexpr{s13.trawl.a50}~y (Scenario 13)
 \end{resdoclist}
 
 Trawl selectivity ogives estimated in the Reference Case (MPD) and fixed in
@@ -1119,7 +1118,7 @@ biomass would contain a greater proportion of younger fish.
 
 Scenarios 12 and 13 are speculative as there is currently no evidence to support
 an assumption of a lower age-at-50\%-harvest in the trawl fishery. These two
-scenarios are presented as "what-if" scenarios to illustrate the potential
+scenarios are presented as ``what-if'' scenarios to illustrate the potential
 impacts of over-estimating age-at-50\%-harvest in the trawl fishery.
 
 \section{RECOMMENDATIONS AND YIELD OPTIONS}
@@ -1223,17 +1222,17 @@ was 0\% under all catch levels considered.
 
 As with all fishery stock assessments, the uncertainty presented in this
 assessment is under-representative of the true uncertainty regarding the status
-of the \Sexpr{fish.name} population. We therefore urge caution with the advice presented
-in Tables~\ref{tab:decisions-base} and \ref{tab:decisions-sens}. The magnitude of
-catch and discards prior to \Sexpr{sbt.first.yr} is a major source of uncertainty
-in this assessment. The short time series of catch and surveys that were
-available in this assessment were relatively uninformative about the scale of
-the population, evidence for which can be seen in the high parameter correlations
-(Figure~\ref{fig:pairs}) and the influence of the prior probability distributions
-for the survey catchability parameters (Section \ref{sec:prior-survey-q}). If
-reliable pre-\Sexpr{sbt.first.yr} catch data had been available, the stock
-assessment and harvest advice may have been very different to those presented
-here.
+of the \Sexpr{fish.name} population. We therefore urge caution with the advice
+presented in Tables~\ref{tab:decisions-base} and \ref{tab:decisions-sens}.
+The magnitude of catch and discards prior to \Sexpr{sbt.first.yr} is a major
+source of uncertainty in this assessment. The short time series of catch and
+surveys that were available in this assessment were relatively uninformative
+about the scale of the population, evidence for which can be seen in the high
+parameter correlations (Figure~\ref{fig:pairs}) and the influence of the prior
+probability distributions for the survey catchability parameters
+(Section~\ref{sec:prior-survey-q}). If reliable pre-\Sexpr{sbt.first.yr} catch
+data had been available, the stock assessment and harvest advice may have been
+very different to those presented here.
 
 \section{FUTURE RESEARCH AND DATA REQUIREMENTS} \label{sec:future-research}
 As with all fishery stock assessments, there are two major types of uncertainty
