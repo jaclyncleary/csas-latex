@@ -77,13 +77,12 @@ source("custom-knitr-variables.r")
 @
 
 \refstepcounter{chapter}
-<<agecomp-weighting, child='app-agecompweighting/app-agecompweighting.Rnw'>>=
-@
-
-\refstepcounter{chapter}
 <<prop-female, child='app-propfemale/app-propfemale.Rnw'>>=
 @
 
+\refstepcounter{chapter}
+<<agecomp-weighting, child='app-agecompweighting/app-agecompweighting.Rnw'>>=
+@
 
 \refstepcounter{chapter}
 <<model-equations, child='app-equations/app-equations.Rnw'>>=
