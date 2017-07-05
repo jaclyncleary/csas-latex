@@ -10,11 +10,11 @@
 *.7z
 *.toc
 *.out
-resDoc.pdf
-resDoc.lof
-resDoc.lot
+res-doc.pdf
+res-doc.lof
+res-doc.lot
 doc/figure/*
-doc/resDoc.tex
+doc/res-doc.tex
 doc/knitr-cache/
 models/
 models-backup/

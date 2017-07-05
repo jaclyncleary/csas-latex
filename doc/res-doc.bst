@@ -1,4 +1,4 @@
-%% resDoc.bst. Bibliography style file for CSAS Research Documents, should
+%% res-doc.bst. Bibliography style file for CSAS Research Documents, should
 %%  work for Canadian Journal of Fisheries and Aquatic Sciences also. Might
 %%  not do everything (and see below for rules for ordering of papers, which
 %%  is hard to fully automate).

@@ -11,7 +11,7 @@ del *.toc
 del *.txt
 del *.out
 del *.synctex.gz*
-del resDoc.tex
-del resDoc.pdf
+del res-doc.tex
+del res-doc.pdf
 rmdir out-csv /S /Q
 rmdir /S /Q knitr-cache

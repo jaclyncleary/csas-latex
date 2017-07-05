@@ -1,3 +1,3 @@
-Rscript -e "library(knitr);knit('./resDoc.Rnw')" 1> knitrOutput.log 2>&1
+Rscript -e "library(knitr);knit('./res-doc.rnw')" 1> knitr-output.log 2>&1
 
-(@latex -synctex=1 "resDoc.tex" && bibtex "resDoc" && latex "resDoc.tex" && latex "resDoc.tex" && dvips "resDoc.dvi" && ps2pdf "resDoc.ps") 1> latexOutput.log 2>&1
+(@latex -synctex=1 "res-doc.tex" && bibtex "res-doc" && latex "res-doc.tex" && latex "res-doc.tex" && dvips "res-doc.dvi" && ps2pdf "res-doc.ps") 1> latex-output.log 2>&1

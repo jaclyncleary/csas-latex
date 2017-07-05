@@ -1321,7 +1321,7 @@ Laboratory at the Pacific Biological Station for their processing of 4,787
 
 \clearpage
 
-\bibliographystyle{resDoc}
+\bibliographystyle{res-doc}
 \bibliography{../../all}
 
 \clearpage
