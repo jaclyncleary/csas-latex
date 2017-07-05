@@ -139,7 +139,7 @@ time using Eq. \ref{eq:df26}, where members of the plus group (age $A$) are
 all assumed to have the same total mortality rate.
 Recruitment to age $k$ is assumed to follow a Beverton-Holt model for
 \Sexpr{fish.name} (Eq.~\ref{eq:df27}) where the maximum juvenile survival
-rate ($s_o$) is defined by $s_o=\frac{\kappa}{\phi_E}$. For the Beverton-Holt
+rate ($s_o$) is defined by $s_o=\kappa/\phi_E$. For the Beverton-Holt
 model, $\beta$ is derived by solving Eq.~\ref{eq:df27} for $\beta$
 conditional on estimates of $h$ and $R_o$.
 
@@ -330,10 +330,10 @@ $a$ & & Index for age\\
 $t$ & & Index for year\\
 $k$ & & Index for gear\\
 \multicolumn{3}{l}{\textbf{Model dimensions}}\\
-$S$ & $\Sexpr{b$dat$nsex}$ & Number of sexes\\
-$\acute{a}, A$ & $\Sexpr{b$dat$sage}$, $\Sexpr{b$dat$nage}$ & Youngest and oldest age class ($A$ is a plus group)\\
-$\acute{t}, T$ & $\Sexpr{b$dat$syr}$, $\Sexpr{b$dat$nyr}$ & First and last year of catch data\\
-$K$ & $\Sexpr{b$dat$ngear}$ & Number of gears including survey gears\\
+$S$ & $\Sexpr{b$dat$num.sex}$ & Number of sexes\\
+$\acute{a}, A$ & $\Sexpr{b$dat$start.age}$, $\Sexpr{b$dat$end.age}$ & Youngest and oldest age class ($A$ is a plus group)\\
+$\acute{t}, T$ & $\Sexpr{b$dat$start.yr}$, $\Sexpr{b$dat$end.yr}$ & First and last year of catch data\\
+$K$ & $\Sexpr{b$dat$num.gears}$ & Number of gears including survey gears\\
 \multicolumn{3}{l}{\textbf{Observations (data)}}\\
 $C_{k,t}$ & & catch in weight by gear $k$ in year $t$\\
 $I_{k,t}$ & & relative abundance index for gear $k$ in year $t$\\

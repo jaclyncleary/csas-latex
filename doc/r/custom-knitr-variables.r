@@ -201,3 +201,7 @@ sigma <- f(sqrt(rho / vartheta), 1)
 ## MPD calculation for sigma and tau for sensitivity 3
 tau.3 <- f(sens.models.1[[2]]$mpd$tau, 2)
 sigma.3 <- f(sens.models.1[[2]]$mpd$sig, 2)
+
+## Min and max proportions female for app-propfemale
+min.prop.female <- f(min(prop.female[,-1], na.rm = TRUE), 3)
+max.prop.female <- f(max(prop.female[,-1], na.rm = TRUE), 3)

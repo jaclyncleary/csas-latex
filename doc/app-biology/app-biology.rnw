@@ -54,10 +54,8 @@ used in this assessment, QCSSS, HSMAS, HSSS, and WCVISS
 (Survey series ID = 1,2,3,4) from PMFC areas 3CD and 5ABCDE combined
 (Table \ref{tab:biocrit}).
 
-\clearpage
-
 \appsection{TABLES}
-\begin{table}[!htp]
+\begin{table}[H]
 \centering
 \caption{\label{tab:biocrit} Criteria for biological data extraction.}
 \begin{tabular}{lrr}
