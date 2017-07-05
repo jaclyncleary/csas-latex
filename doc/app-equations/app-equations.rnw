@@ -383,7 +383,9 @@ $\dot{\gamma}_s$ & & Standard deviation at 50\% maturity for sex $s$\\
 \vbox{\beq \Theta = (R_o,h,M)\,; \ \ \ R_o>0; \ \ \ 0.2 \leq h < 1.0; \ \ \ M > 0 \label{eq:df1} \eeq} \\
 \vbox{\beq \Phi = (l_{\infty,s},\acute{k}_s, t_{o,s},\acute{a}_s,\acute{b}_s,\dot{a}_s,\dot{\gamma}_s,\hat{a}_k,\hat{\gamma}_k) \label{eq:df2} \eeq} \\
 \\
-\vbox{\begin{center}\bf{Age-schedule information}\end{center}\vspace{-3ex}} \\
+\vbox{\begin{center}\bf{Age-schedule information}\end{center}\vspace{-3ex}}
+\\
+\\
 \vbox{\beq l_{a,s}=l_{}\left(1-e^{\left(-k_s\left(a-t_{o,s}\right)\right)}\right) \label{eq:df3} \eeq} \\
 \vbox{\beq w_{a,s}=\acute{a}_s(l_{a,s})^{\acute{b}_s} \label{eq:df4} \eeq} \\
 \\
@@ -391,7 +393,10 @@ $\dot{\gamma}_s$ & & Standard deviation at 50\% maturity for sex $s$\\
 \\
 \vbox{\beq f_{a,s}=w_{a,s}\left(1+e^{\left(\frac{-\left(\dot{a}_s-a_s\right)}{\dot{\gamma}_s}\right)}\right)^{-1} \label{eq:df6} \eeq} \\
 \\
-\vbox{\begin{center}\bf{Survivorship}\end{center}} \\
+\\
+\vbox{\begin{center}\bf{Survivorship}\end{center}}
+\\
+\\
 \vbox{\beq \iota_a = \begin{cases}
 \frac{1}{S}, & a = 1 \\
 \iota_{a-1}e^{-M}, & a > 1 \\
@@ -408,7 +413,9 @@ $\dot{\gamma}_s$ & & Standard deviation at 50\% maturity for sex $s$\\
 \label{eq:df8}
 \eeq} \\
 \\
+\\
 \vbox{\begin{center}\bf{Incidence functions}\end{center}} \\
+\\
 \\
 \vbox{\beq \phi_E=\sum_{s=1}^S\sum_{a=1}^\infty \iota_a f_{a,s},\ \ \ \ \ \ \ \ \
 \phi_e=\sum_{s=1}^S\sum_{a=1}^\infty \hat{\iota}_{a,s} f_{a,s}
@@ -448,7 +455,9 @@ $\dot{\gamma}_s$ & & Standard deviation at 50\% maturity for sex $s$\\
   catch.}
 \begin{tabular}{l}
 \hline \\
-\vbox{\begin{center}\bf{Estimated parameters}\end{center}\vspace{-1ex}} \\
+\vbox{\begin{center}\bf{Estimated parameters}\end{center}\vspace{-1ex}}
+\\
+\\
 \vbox{\beq \Theta= (R_0,h,M,\overline{R},\overline{R}_{init},\vartheta^2,\rho,\Gamma_{k,t},\{\omega_t\}_{\acute{t}=1-A}^{\acute{t}=T},\{\omega_{init,t}\}_{t=\acute{t}-A}^{t=\acute{t}-1})  \label{eq:df16} \eeq} \\
 \\
 \vbox{\beq \sigma=\sqrt{\frac{\rho}{\vartheta}}, \;  \;  \; \; \tau=\frac{(1-\rho)^{1/2}}{\vartheta} \label{eq:df17} \eeq} \\
@@ -458,7 +467,9 @@ $\dot{\gamma}_s$ & & Standard deviation at 50\% maturity for sex $s$\\
 \\
 \vbox{\beq N_{t,a,s},\; B_t,s,\; Z_{t,a,s}  \label{eq:df18} \eeq} \\
 \vspace{2ex} \\
-\vbox{\begin{center}\bf{Initial states}\end{center}\vspace{-4ex}} \\
+\vbox{\begin{center}\bf{Initial states}\end{center}\vspace{-4ex}}
+\\
+\\
 \\
 \vbox{\beq N_{t,a,s}=\frac{1}{S}\overline{R}_{init}e^{\omega_{init,t}}e^{-M(a-1)};\ \ \ (\acute{t}-A)<t<1;\ \ \ 2\leq a \leq A  \label{eq:df19} \eeq} \\
 \\
@@ -470,6 +481,7 @@ $\dot{\gamma}_s$ & & Standard deviation at 50\% maturity for sex $s$\\
 \vbox{\beq  F_{k,t}=e^{\Gamma_{k,t}} \label{eq:df22} \eeq} \\
 \\
 \vbox{\begin{center}\bf{State dynamics ($t>1$)}\end{center}\vspace{-4ex}} \\
+\\
 \\
 \vbox{\beq  B_{t,s}=\sum_a N_{t,a,s}f_{a,s} \label{eq:df23} \eeq} \\
 \\
