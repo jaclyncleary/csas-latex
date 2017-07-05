@@ -197,3 +197,7 @@ rho <- b$ctl$params[6, 1]
 vartheta <- b$ctl$params[7, 1]
 tau <- f(sqrt((1 - rho) / vartheta), 1)
 sigma <- f(sqrt(rho / vartheta), 1)
+
+## MPD calculation for sigma and tau for sensitivity 3
+tau.3 <- f(sens.models.1[[2]]$mpd$tau, 2)
+sigma.3 <- f(sens.models.1[[2]]$mpd$sig, 2)

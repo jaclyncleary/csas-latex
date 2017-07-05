@@ -948,8 +948,8 @@ final-year index points were estimated to be slightly higher in this scenario
 (Figure~\ref{fig:sens-sig-indices}), resulting in slightly larger median
 posterior estimates of spawning biomass (Figure~\ref{fig:sens-sig-biomass}).
 Estimating total variance in Scenario 3 gave MPD estimates of
-$\sigma=\Sexpr{sens.models.1[[1]]$mpd$sig}$ and
-$\tau=\Sexpr{sens.models.1[[1]]$mpd$tau}$, both larger than the assumed
+$\sigma=\Sexpr{sigma.3}$ and
+$\tau=\Sexpr{tau.3}$, both larger than the assumed
 fixed values in the Reference Case. Fits to the indices of abundance were,
 however, almost the same as for the Reference Case
 (Figure~\ref{fig:sens-sig-indices}). Posterior estimates of recruitment and
