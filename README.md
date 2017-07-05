@@ -1,9 +1,26 @@
 ____
 # csas-latex
 
-**Updated June 29, 2017**
+**Updated July 7, 2017**
 
-Latex style file and template for CSAS Research Documents
+Latex/knitr document building for CSAS Research Documents. The Arrowtooth
+Flounder assessment is used as an example. To get the model output
+directories needed to make it work (they are too large to add to the
+repository), please contact me.
+
+You will also need to fork and clone the repository at:
+
+https://github.com/cgrandin/csas-style
+
+It contains the style file which is used for these assessments. Make sure
+that csas-style and csas-latex directories are in the same subdirectory
+and the code will work as-is. If you want to put it somewhere else,
+you'll need to change the following line in the **res-doc.rnw** file to
+reflect the location:
+
+```latex
+\usepackage{../../csas-style/res-doc}
+```
 _____________________________________________________________
 
 ## Prerequisites
