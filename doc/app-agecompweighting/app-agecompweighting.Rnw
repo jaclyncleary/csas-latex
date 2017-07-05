@@ -1,5 +1,5 @@
-\starredchapter{APPENDIX~\thechapter. WEIGHTING OF AGE PROPORTIONS}
 \label{chap:agecompweight}
+\starredchapter{APPENDIX~\thechapter. WEIGHTING OF AGE PROPORTIONS}
 \lfoot{\Sexpr{fish.name}}
 \rfoot{Appendix~\thechapter~-- Weighting of Age Proportions}
 

@@ -1,6 +1,8 @@
 \documentclass[11pt]{book}
 
-\usepackage{resDocSty}
+%% Use the style file in the csas-style repository:
+%% https://github.com/cgrandin/csas-style
+\usepackage{../../csas-style/res-doc}
 
 %% Custom commands used in the agecompweighting appendix
 \newcommand{\sQuote}[1]{`#1'}

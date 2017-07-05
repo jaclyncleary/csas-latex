@@ -5,8 +5,8 @@
 % new page macro
 \def\newp{\vfill \break}
 
-\starredchapter{APPENDIX~\thechapter. MODEL DESCRIPTION}
 \label{chap:equations}
+\starredchapter{APPENDIX~\thechapter. MODEL DESCRIPTION}
 \lfoot{\Sexpr{fish.name}}
 \rfoot{Appendix~\thechapter~-- Model Description}
 

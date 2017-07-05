@@ -1,5 +1,5 @@
-\starredchapter{APPENDIX~\thechapter. BIOLOGICAL DATA}
 \label{chap:biological}
+\starredchapter{APPENDIX~\thechapter. BIOLOGICAL DATA}
 \lfoot{\Sexpr{fish.name}}
 \rfoot{Appendix~\thechapter~-- Biological Data}
 

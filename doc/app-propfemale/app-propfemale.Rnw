@@ -1,5 +1,5 @@
-\starredchapter{APPENDIX~\thechapter. PROPORTION FEMALE ANALYSIS}
 \label{chap:propfemale}
+\starredchapter{APPENDIX~\thechapter. PROPORTION FEMALE ANALYSIS}
 \lfoot{\Sexpr{fish.name}}
 \rfoot{Appendix~\thechapter~-- Proportion Female Analysis}
 
