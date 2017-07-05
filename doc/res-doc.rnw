@@ -68,7 +68,7 @@ source("custom-knitr-variables.r")
 
 \Main
 
-<<main-doc, child='maindoc/maindoc.Rnw'>>=
+<<main-doc, child='maindoc/maindoc.rnw'>>=
 @
 
 \Appendices
@@ -77,19 +77,19 @@ source("custom-knitr-variables.r")
 %% %%  to increment the appendix letter.
 
 \refstepcounter{chapter}
-<<biological-data, child='app-biology/app-biology.Rnw'>>=
+<<biological-data, child='app-biology/app-biology.rnw'>>=
 @
 
 \refstepcounter{chapter}
-<<prop-female, child='app-propfemale/app-propfemale.Rnw'>>=
+<<prop-female, child='app-propfemale/app-propfemale.rnw'>>=
 @
 
 \refstepcounter{chapter}
-<<agecomp-weighting, child='app-agecompweighting/app-agecompweighting.Rnw'>>=
+<<agecomp-weighting, child='app-agecompweighting/app-agecompweighting.rnw'>>=
 @
 
 \refstepcounter{chapter}
-<<model-equations, child='app-equations/app-equations.Rnw'>>=
+<<model-equations, child='app-equations/app-equations.rnw'>>=
 @
 
 \end{document}
