@@ -10,7 +10,7 @@ sens.params.file <- "sensitivity-descriptions.csv"
 trawl.bio.file <- "trawl-obs-len-wt-age.csv"
 gear.names.file <- "gear-names.csv"
 prop.female.file <- "proportion-female.csv"
-bio.file <- "bio.dat"
+bio.file <- "bio.rdata"
 
 
 cat("Loading all data tables (csv files) from ", data.path, "\n")
