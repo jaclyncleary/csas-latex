@@ -55,23 +55,23 @@ if(verbose) cat0("iscam starter file: \n  ", starter.file.name)
 ## Data start and endpoint variables
 ## -----------------------------------------------------------------------------
 ## Start year for the models
-start.yr <- 1996
+start.yr <- 1951
 if(verbose){
   cat0("Start year for catch data: \n  ", start.yr)
 }
 ## Start year for the fishery age comps
-start.yr.age.comps <- 1996
+start.yr.age.comps <- 1951
 if(verbose){
   cat0("Start year for fishery age comps data: \n  ", start.yr.age.comps)
 }
 ## The last non-forecast year in the model. This is the year for which the
 ## mcmc outputs will be used in reference point calculations.
-end.yr <- 2014
+end.yr <- 2016
 if(verbose){
   cat0("End year for model: \n  ", end.yr)
 }
 ## Final year of data (This is what is the end year is in the model data files)
-last.data.yr <- 2014
+last.data.yr <- 2016
 if(verbose){
   cat0("Last year of model data: \n  ", last.data.yr)
 }

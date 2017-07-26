@@ -14,10 +14,10 @@ b.r.quants <- as.data.frame(b.mcc$r.quants)
 
 ################################################################################
 ## Names used in assessment
-fish.name <- "Arrowtooth Flounder"
-science.name <- "Atheresthes stomias"
-family.name <- "Pleuronectidae"
-common.name <- "Turbot"
+fish.name <- "Pacific Herring"
+science.name <- "Clupea pallasii"
+family.name <- ""
+common.name <- ""
 bc <- "British Columbia"
 
 ################################################################################
