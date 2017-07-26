@@ -90,115 +90,115 @@ if(verbose){
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 1
 ## -----------------------------------------------------------------------------
-sens.model.dir.names.1 <- c("02-sigma-0.1",
-                            "03-estimated-total-variance")
-sens.model.names.1 <- c("Sigma = 0.1",
-                        "Estimated total variance")
-verify.models(model.dir, sens.model.dir.names.1, sens.model.names.1)
-if(verbose){
-  print.model.message(sens.model.dir.names.1,
-                      sens.model.names.1,
-                      1,
-                      model.type = "Sensitivity")
-}
+## sens.model.dir.names.1 <- c("02-sigma-0.1",
+##                             "03-estimated-total-variance")
+## sens.model.names.1 <- c("Sigma = 0.1",
+##                         "Estimated total variance")
+## verify.models(model.dir, sens.model.dir.names.1, sens.model.names.1)
+## if(verbose){
+##   print.model.message(sens.model.dir.names.1,
+##                       sens.model.names.1,
+##                       1,
+##                       model.type = "Sensitivity")
+## }
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 2
 ## -----------------------------------------------------------------------------
-sens.model.dir.names.2 <- c("04-tau-1.0",
-                            "05-tau-0.6")
-sens.model.names.2 <- c("Tau = 1.0",
-                        "Tau = 0.6")
-verify.models(model.dir, sens.model.dir.names.2, sens.model.names.2)
-if(verbose){
-  print.model.message(sens.model.dir.names.2,
-                      sens.model.names.2,
-                      2,
-                      model.type = "Sensitivity")
-}
+## sens.model.dir.names.2 <- c("04-tau-1.0",
+##                             "05-tau-0.6")
+## sens.model.names.2 <- c("Tau = 1.0",
+##                         "Tau = 0.6")
+## verify.models(model.dir, sens.model.dir.names.2, sens.model.names.2)
+## if(verbose){
+##   print.model.message(sens.model.dir.names.2,
+##                       sens.model.names.2,
+##                       2,
+##                       model.type = "Sensitivity")
+## }
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 3
 ## -----------------------------------------------------------------------------
-sens.model.dir.names.3 <- "06-low-steepness"
-sens.model.names.3 <- "Low steepness"
-verify.models(model.dir, sens.model.dir.names.3, sens.model.names.3)
-if(verbose){
-  print.model.message(sens.model.dir.names.3,
-                      sens.model.names.3,
-                      3,
-                      model.type = "Sensitivity")
-}
+## sens.model.dir.names.3 <- "06-low-steepness"
+## sens.model.names.3 <- "Low steepness"
+## verify.models(model.dir, sens.model.dir.names.3, sens.model.names.3)
+## if(verbose){
+##   print.model.message(sens.model.dir.names.3,
+##                       sens.model.names.3,
+##                       3,
+##                       model.type = "Sensitivity")
+## }
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 4
 ## -----------------------------------------------------------------------------
-sens.model.dir.names.4 <- c("07-m-0.2-sd-0.05",
-                            "08-m-0.2-sd-0.25")
-sens.model.names.4 <- c("M = 0.2, SD = 0.05",
-                        "M = 0.2, SD = 0.25")
-verify.models(model.dir, sens.model.dir.names.4, sens.model.names.4)
-if(verbose){
-  print.model.message(sens.model.dir.names.4,
-                      sens.model.names.4,
-                      4,
-                      model.type = "Sensitivity")
-}
+## sens.model.dir.names.4 <- c("07-m-0.2-sd-0.05",
+##                             "08-m-0.2-sd-0.25")
+## sens.model.names.4 <- c("M = 0.2, SD = 0.05",
+##                         "M = 0.2, SD = 0.25")
+## verify.models(model.dir, sens.model.dir.names.4, sens.model.names.4)
+## if(verbose){
+##   print.model.message(sens.model.dir.names.4,
+##                       sens.model.names.4,
+##                       4,
+##                       model.type = "Sensitivity")
+## }
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 5
 ## -----------------------------------------------------------------------------
-sens.model.dir.names.5 <- "09-m-0.3-sd-0.2"
-sens.model.names.5 <- "M = 0.3, SD = 0.2"
-verify.models(model.dir, sens.model.dir.names.5, sens.model.names.5)
-if(verbose){
-  print.model.message(sens.model.dir.names.5,
-                      sens.model.names.5,
-                      5,
-                      model.type = "Sensitivity")
-}
+## sens.model.dir.names.5 <- "09-m-0.3-sd-0.2"
+## sens.model.names.5 <- "M = 0.3, SD = 0.2"
+## verify.models(model.dir, sens.model.dir.names.5, sens.model.names.5)
+## if(verbose){
+##   print.model.message(sens.model.dir.names.5,
+##                       sens.model.names.5,
+##                       5,
+##                       model.type = "Sensitivity")
+## }
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 6
 ## -----------------------------------------------------------------------------
-sens.model.dir.names.6 <- "10-qm0-qsd1"
-sens.model.names.6 <- "Q priors, mean = ln(1.0), SD = 1.0"
-verify.models(model.dir, sens.model.dir.names.6, sens.model.names.6)
-if(verbose){
-  print.model.message(sens.model.dir.names.6,
-                      sens.model.names.6,
-                      6,
-                      model.type = "Sensitivity")
-}
+## sens.model.dir.names.6 <- "10-qm0-qsd1"
+## sens.model.names.6 <- "Q priors, mean = ln(1.0), SD = 1.0"
+## verify.models(model.dir, sens.model.dir.names.6, sens.model.names.6)
+## if(verbose){
+##   print.model.message(sens.model.dir.names.6,
+##                       sens.model.names.6,
+##                       6,
+##                       model.type = "Sensitivity")
+## }
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 7
 ## -----------------------------------------------------------------------------
-sens.model.dir.names.7 <- "11-qm05-qsd15"
-sens.model.names.7 <- "Q priors, mean = ln(0.5), SD = 1.5"
-verify.models(model.dir, sens.model.dir.names.7, sens.model.names.7)
-if(verbose){
-  print.model.message(sens.model.dir.names.7,
-                      sens.model.names.7,
-                      7,
-                      model.type = "Sensitivity")
-}
+## sens.model.dir.names.7 <- "11-qm05-qsd15"
+## sens.model.names.7 <- "Q priors, mean = ln(0.5), SD = 1.5"
+## verify.models(model.dir, sens.model.dir.names.7, sens.model.names.7)
+## if(verbose){
+##   print.model.message(sens.model.dir.names.7,
+##                       sens.model.names.7,
+##                       7,
+##                       model.type = "Sensitivity")
+## }
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 8
 ## -----------------------------------------------------------------------------
-sens.model.dir.names.8 <- c("12-fix-trawl-sel-amat",
-                            "13-fix-trawl-sel-6years")
-sens.model.names.8 <- c("Trawl selex fixed at maturity",
-                        "Trawl selex fixed at 6 years")
+## sens.model.dir.names.8 <- c("12-fix-trawl-sel-amat",
+##                             "13-fix-trawl-sel-6years")
+## sens.model.names.8 <- c("Trawl selex fixed at maturity",
+##                         "Trawl selex fixed at 6 years")
 
-verify.models(model.dir, sens.model.dir.names.8, sens.model.names.8)
-if(verbose){
-  print.model.message(sens.model.dir.names.8,
-                      sens.model.names.8,
-                      8,
-                      model.type = "Sensitivity")
-}
+## verify.models(model.dir, sens.model.dir.names.8, sens.model.names.8)
+## if(verbose){
+##   print.model.message(sens.model.dir.names.8,
+##                       sens.model.names.8,
+##                       8,
+##                       model.type = "Sensitivity")
+## }
 
 ## -----------------------------------------------------------------------------
 ## Vector of directory names for all models referenced above
@@ -207,15 +207,15 @@ if(verbose){
 ## Each model directory listed here will have an RData file in it,
 ##  or one will be created depending on what is found in the directory.
 ##  i.e. mcmc, retrospective, or forecast directories.
-model.dir.names <- c(base.model.dir.name,
-                     sens.model.dir.names.1,
-                     sens.model.dir.names.2,
-                     sens.model.dir.names.3,
-                     sens.model.dir.names.4,
-                     sens.model.dir.names.5,
-                     sens.model.dir.names.6,
-                     sens.model.dir.names.7,
-                     sens.model.dir.names.8)
+model.dir.names <- c(base.model.dir.name)
+                     ## sens.model.dir.names.1,
+                     ## sens.model.dir.names.2,
+                     ## sens.model.dir.names.3,
+                     ## sens.model.dir.names.4,
+                     ## sens.model.dir.names.5,
+                     ## sens.model.dir.names.6,
+                     ## sens.model.dir.names.7,
+                     ## sens.model.dir.names.8)
 
 ## This function must be called from within the first knitr code chunk
 ## in the document. It is defined here so that it is in the same place
@@ -223,14 +223,14 @@ model.dir.names <- c(base.model.dir.name,
 ## and sensitivity models change in the model.dir.names above..
 load.models.into.parent.env <- function(){
   base.model <<- load.models(model.dir, base.model.dir.name)
-  sens.models.1 <<- load.models(model.dir, sens.model.dir.names.1)
-  sens.models.2 <<- load.models(model.dir, sens.model.dir.names.2)
-  sens.models.3 <<- load.models(model.dir, sens.model.dir.names.3)
-  sens.models.4 <<- load.models(model.dir, sens.model.dir.names.4)
-  sens.models.5 <<- load.models(model.dir, sens.model.dir.names.5)
-  sens.models.6 <<- load.models(model.dir, sens.model.dir.names.6)
-  sens.models.7 <<- load.models(model.dir, sens.model.dir.names.7)
-  sens.models.8 <<- load.models(model.dir, sens.model.dir.names.8)
+  ## sens.models.1 <<- load.models(model.dir, sens.model.dir.names.1)
+  ## sens.models.2 <<- load.models(model.dir, sens.model.dir.names.2)
+  ## sens.models.3 <<- load.models(model.dir, sens.model.dir.names.3)
+  ## sens.models.4 <<- load.models(model.dir, sens.model.dir.names.4)
+  ## sens.models.5 <<- load.models(model.dir, sens.model.dir.names.5)
+  ## sens.models.6 <<- load.models(model.dir, sens.model.dir.names.6)
+  ## sens.models.7 <<- load.models(model.dir, sens.model.dir.names.7)
+  ## sens.models.8 <<- load.models(model.dir, sens.model.dir.names.8)
 }
 
 build <- function(ovwrt.base = FALSE,
@@ -249,33 +249,34 @@ build <- function(ovwrt.base = FALSE,
                     load.proj = TRUE,
                     low = confidence.vals[1],
                     high = confidence.vals[2],
+                    inc.msy.ref.pts = FALSE,
                     verbose = ss.verbose)
 
   ## Sensitivity models need to be unlisted from their groups
   ##  and placed into a single list for the FOR loop below to work right
-  mnv <- c(unlist(sens.model.dir.names.1),
-           unlist(sens.model.dir.names.2),
-           unlist(sens.model.dir.names.3),
-           unlist(sens.model.dir.names.4),
-           unlist(sens.model.dir.names.5),
-           unlist(sens.model.dir.names.6),
-           unlist(sens.model.dir.names.7),
-           unlist(sens.model.dir.names.8))
+  ## mnv <- c(unlist(sens.model.dir.names.1),
+  ##          unlist(sens.model.dir.names.2),
+  ##          unlist(sens.model.dir.names.3),
+  ##          unlist(sens.model.dir.names.4),
+  ##          unlist(sens.model.dir.names.5),
+  ##          unlist(sens.model.dir.names.6),
+  ##          unlist(sens.model.dir.names.7),
+  ##          unlist(sens.model.dir.names.8))
 
   ## Remove base model from the bridge/sensitivity list
-  if(length(grep(base.model.dir.name, mnv)) > 0){
-    mnv <- mnv[-(grep(base.model.dir.name, mnv))]
-  }
-  model.names.list <- as.list(unique(mnv))
+  ## if(length(grep(base.model.dir.name, mnv)) > 0){
+  ##   mnv <- mnv[-(grep(base.model.dir.name, mnv))]
+  ## }
+  ## model.names.list <- as.list(unique(mnv))
 
   ## Sensitivity models
-  for(model.nm in model.names.list){
-    create.rdata.file(
-      model.name = model.nm,
-      ovwrt.rdata = ovwrt.sens,
-      load.proj = TRUE,
-      low = confidence.vals[1],
-      high = confidence.vals[2],
-      verbose = ss.verbose)
-  }
+  ## for(model.nm in model.names.list){
+  ##   create.rdata.file(
+  ##     model.name = model.nm,
+  ##     ovwrt.rdata = ovwrt.sens,
+  ##     load.proj = TRUE,
+  ##     low = confidence.vals[1],
+  ##     high = confidence.vals[2],
+  ##     verbose = ss.verbose)
+  ## }
 }
