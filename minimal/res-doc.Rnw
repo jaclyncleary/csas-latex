@@ -138,6 +138,7 @@ opts_chunk$set(dev = 'png',
                results = 'hide',
                cache = TRUE,
                autodep = TRUE)
+x <- 42 # example
 @
 
 \TableOfContents
@@ -169,13 +170,9 @@ opts_chunk$set(dev = 'png',
 %% Section names must be in all caps
 \section{INTRODUCTION}
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-\citep{ricker1954}.
+Lorem \Sexpr{x} ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua (Figure~\ref{fig:examplefig}).
+Culpa qui officia deserunt mollit anim id est laborum \citep{ricker1954}.
 
 %% Subsection names must be in all caps
 \subsection{PURPOSE OF DOCUMENT}
@@ -202,6 +199,13 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum
 \clearpage
 
 \section{FIGURES}
+
+<<examplefig, fig.cap="This is a figure caption.", fig.pos="H">>=
+set.seed(1)
+x <- runif(100)
+plot(x)
+@
+
 
 % \begin{figure}[H]
 % \begin{center}
