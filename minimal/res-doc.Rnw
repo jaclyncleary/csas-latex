@@ -1,11 +1,11 @@
 \documentclass[11pt]{book}
 
-%% Use the style file in the csas-style repository:
-%% https://github.com/cgrandin/csas-style
+% Use the style file in the csas-style repository:
+% https://github.com/cgrandin/csas-style
 \usepackage{../../csas-style/res-doc} % may need to adjust this path
 \usepackage{textcomp}
 
-%https://tex.stackexchange.com/questions/311132/how-to-style-hrefs-underlined-and-coloured-throughout-the-document
+% https://tex.stackexchange.com/questions/311132/how-to-style-hrefs-underlined-and-coloured-throughout-the-document
 \usepackage{xcolor,soul}
 \usepackage{hyperref}
 \hypersetup{colorlinks,urlcolor=blue}
@@ -59,8 +59,7 @@ First M. Last\textsuperscript{1}, First Last\textsuperscript{1} and First M. Las
 
 \vspace{.75cm}
 
-\textsuperscript{1}
-Pacific Biological Station, Science Branch,\\
+\textsuperscript{1}Pacific Biological Station, Science Branch,\\
 Fisheries and Oceans Canada, 3190 Hammond Bay Road,\\
 Nanaimo, British Columbia, V9T 6N7, Canada. 
 
@@ -109,7 +108,6 @@ Ottawa ON K1A 0E6\\
 \textcopyright\ Her Majesty the Queen in Right of Canada, 2017\\
 ISSN 1919-5044
 \end{center}
-
 
 \textbf{Correct citation for this publication:}\\
 \vspace{0.2cm}
@@ -167,14 +165,14 @@ x <- 42 # example
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
-%% Section names must be in all caps
+% Section names must be in all caps
 \section{INTRODUCTION}
 
 Lorem \Sexpr{x} ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
 tempor incididunt ut labore et dolore magna aliqua (Figure~\ref{fig:examplefig}).
 Culpa qui officia deserunt mollit anim id est laborum \citep{ricker1954}.
 
-%% Subsection names must be in all caps
+% Subsection names must be in all caps
 \subsection{PURPOSE OF DOCUMENT}
 
 \subsection{BIOLOGICAL BACKGROUND}
@@ -205,15 +203,6 @@ set.seed(1)
 x <- runif(100)
 plot(x)
 @
-
-
-% \begin{figure}[H]
-% \begin{center}
-% \includegraphics[width=6in]{filename}
-% \end{center}
-% \caption{}
-% \label{fig:labelhere}
-% \end{figure}
 
 \clearpage
 
