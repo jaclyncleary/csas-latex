@@ -3,6 +3,20 @@
 %% Use the style file in the csas-style repository:
 %% https://github.com/cgrandin/csas-style
 \usepackage{../../csas-style/res-doc} % may need to adjust this path
+\usepackage{textcomp}
+
+%https://tex.stackexchange.com/questions/311132/how-to-style-hrefs-underlined-and-coloured-throughout-the-document
+\usepackage{xcolor,soul}
+\usepackage{hyperref}
+\hypersetup{colorlinks,urlcolor=blue}
+\urlstyle{sf}
+
+\makeatletter
+\patchcmd{\hyper@link@}
+  {{\Hy@tempb}{#4}}
+  {{\Hy@tempb}{\ul{#4}}}
+  {}{}
+\makeatother
 
 %% ------------------------------------------------------------------------------
 %% Headers and footers
@@ -12,14 +26,107 @@
 \rfoot{DRAFT - DO NOT CITE}
 %% ------------------------------------------------------------------------------
 
+\fancypagestyle{nofooter}{%
+  \fancyfoot{}%
+}
+
 \begin{document}
+
+\thispagestyle{empty}
+
+\includegraphics[scale=1.0]{title-header.png}
+
+\textbf{(Canadian Science Advisory Secretariat (CSAS)}
+\vspace{0.5mm}
+
+\hrule
+
+\textbf{Research Document 2017/nnn}\\
+
+\vspace{0.2cm}
+
+\textbf{Pacific Region}
+
+\vspace*{\fill}
+\begin{center}
+
+\textbf{Title here, scientific names of species should be in parenthesis or 
+separated by commas and in italics where appropriate}
+
+\vspace{.75cm}
+
+First M. Last\textsuperscript{1}, First Last\textsuperscript{1} and First M. Last\textsuperscript{1}
+
+\vspace{.75cm}
+
+\textsuperscript{1}
+Pacific Biological Station, Science Branch,\\
+Fisheries and Oceans Canada, 3190 Hammond Bay Road,\\
+Nanaimo, British Columbia, V9T 6N7, Canada. 
+
+\end{center}
+\vspace*{\fill}
+
+\hrule
+
+\vspace{-3.5mm}
+\parbox{5cm}{Release date (Month Year)}%
+\hfill
+\includegraphics[scale=0.85]{title-footer.png}
+
+\clearpage
+
+\vspace*{\fill}
+
+\begin{center}
+\textbf{Foreword}
+\end{center}
+\vspace{-1.5mm}
+
+This series documents the scientific basis for the evaluation of aquatic resources and
+ecosystems in Canada. As such, it addresses the issues of the day in the time frames required
+and the documents it contains are not intended as definitive statements on the subjects
+addressed but rather as progress reports on ongoing investigations.
+
+Research documents are produced in the official language in which they are provided to the Secretariat.
+
+\begin{center}
+\textbf{Published by:\\}
+\vspace{0.2cm}
+Fisheries and Oceans Canada\\
+Canadian Science Advisory Secretariat\\
+200 Kent Street\\
+Ottawa ON K1A 0E6\\
+\vspace{0.2cm}
+
+\href{http://www.dfo-mpo.gc.ca/csas-sccs/}{http://www.dfo-mpo.gc.ca/csas-sccs/}\\
+\href{mailto://csas-sccs@dfo-mpo.gc.ca}{csas-sccs@dfo-mpo.gc.ca}
+
+\vspace{-3mm}
+\includegraphics[scale=0.96]{recycle.png}
+
+\vspace{-3mm}
+\textcopyright\ Her Majesty the Queen in Right of Canada, 2017\\
+ISSN 1919-5044
+\end{center}
+
+
+\textbf{Correct citation for this publication:}\\
+\vspace{0.2cm}
+\hangindent=0.6cm Jones, S., Burns, E. and Smith, K. 2017. 
+Title --- must be exactly as it appears on the cover page. 
+DFO Can.\ Sci.\ Advis.\ Sec.\ Res.\ Doc. 2016/nnn. vi + xx p.
+\vspace*{\fill}
+
+\thispagestyle{nofooter}
+
+\clearpage
 
 %% This is the initial code chunk where you load your R workspace.
 %% This gives access to all objects in the RData file for the entirety
 %%  of the document. Use \Sexpr{objname} to put values in text.
-<<load-everything, echo=FALSE,  message=FALSE, results='hide', warning=FALSE, eval=TRUE>>=
+<<echo=FALSE,  message=FALSE, results='hide', warning=FALSE>>=
 opts_chunk$set(dev = 'png',
-               fig.path = 'knitr-cache/',
                fig.dpi = 96,
                fig.width = 7.5,
                fig.height = 4,
@@ -30,7 +137,7 @@ opts_chunk$set(dev = 'png',
                warning = FALSE,
                results = 'hide',
                cache = TRUE,
-               cache.path = 'knitr-cache/')
+               autodep = TRUE)
 @
 
 \TableOfContents
@@ -40,7 +147,7 @@ opts_chunk$set(dev = 'png',
 %% Author, B.
 %% \Sexpr{fish.name} (\emph{\Sexpr{science.name})
 %%  Stock Assessment for the West Coast of British Columbia
-%% DFO Can. Sci. Advis. Sec. Res. Doc. 2016/xxx. xii + XX p.
+%% DFO Can.\ Sci.\ Advis.\ Sec.\ Res.\ Doc. 2016/xxx. xii + XX p.
 %% }
 
 \Main
@@ -48,132 +155,19 @@ opts_chunk$set(dev = 'png',
 \abstract{}
 
 \frenchabstract{
-% title here
+% Title here
 }
 
-% add text here
+% French text here
 
 \clearpage
 
-%% The next two lines are required to start off numbering
+% The next two lines are required to start off numbering
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
-%% Section names must be in all caps
-\section{INTRODUCTION}
-
-Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum 
-\citep{ricker1954}.
-
-%% Subsection names must be in all caps
-\subsection{PURPOSE OF DOCUMENT}
-
-\subsection{BIOLOGICAL BACKGROUND}
-
-\subsection{FISHERY AND MANAGEMENT HISTORY} \label{sec:managementhistory}
-
-\subsection{ASSESSMENT HISTORY}
-
-\section{STOCK ASSESSMENT MODELLING}
-
-\subsection{DATA INPUTS}
-\subsubsection{Data Sources}
-
-% %% To keep the list and its description on the same page
-% \begin{minipage}{\linewidth}
-% Data were extracted from three different databases:
-% %% Use resdoclist for all lists to ensure you meet CSAS formatting style.
-% %% resdoclist is defined in ResDocSty.sty
-% \begin{resdoclist}
-%   \item GFBio - Biological samples and research cruise database. This data
-%     archive includes most of the groundfish specimen data collected since the
-%     1950s.  It includes data from a variety of sources (port and at-sea
-%     commercial sampling, research survey sampling), collected using a variety of
-%     sampling methods.
-%   \item PacHarvTrawl - Canadian trawl landings, 1996 to March 31, 2007. SQL
-%     Server database, Groundfish Section, Marine Ecosystems and Aquaculture
-%     Division, Science Branch, Fisheries and Oceans Canada, Pacific Biological
-%     Station.
-%   \item GFFOS - Canadian trawl landings, April 1, 2007 to 2014. View of the
-%     Fisheries and Oceans Canada (DFO) Fishery Operations (FOS) database.
-%     Groundfish Section, Marine Ecosystems and Aquaculture Division, Science
-%     Branch, Fisheries and Oceans Canada, Pacific Biological Station.
-% \end{resdoclist}
-% \end{minipage}
-
-\subsubsection{Catch Data} \label{sec:catchdata}
-
-\subsubsection{Abundance Indices}
-
-% \begin{resdoclist}
-%   \item The Hecate Strait Multispecies Assemblage Survey (HSMAS)
-%   \item The Hecate Strait Synoptic Survey (HSSS)
-%   \item The Queen Charlotte Sound Synoptic Survey (QCSSS)
-%   \item The West Coast Vancouver Island Synoptic Survey (WCVISS)
-% \end{resdoclist}
-
-\subsubsection{Age Data} \label{sec:agedata}
-
-\subsubsection{Commercial length data} \label{sec:commercial-length-data}
-
-\subsection{STATISTICAL CATCH-AT-AGE MODEL}
-
-%% Subsubsections are not all caps
-\subsubsection{Model Description}
-
-\subsubsection{Prior Probability Distributions} \label{sec:priors}
-
-\subsubsection{Fishery reference points} \label{sec:FisheryRefPoints}
-
-\clearpage
-
-\subsection{RESULTS} \label{sec:results}
-
-\subsubsection{Model diagnostics}
-
-\subsubsection{Fits to data}
-
-\subsubsection{Parameter estimates}
-
-\subsubsection{Selectivity} \label{sec:selectivity}
-
-\subsubsection{Fishery reference points} \label{sec:resultsFishRefPoints}
-
-\subsubsection{Biomass} \label{sec:biomass}
-
-\subsubsection{Recruitment} \label{sec:recruitment}
-
-\subsubsection{Fishing mortality}
-
-\subsubsection{Relative spawning biomass}
-
-\subsection{SENSITIVITY ANALYSES} \label{sec:sensitivities}
-% We tested sensitivity of the model outputs to the following assumptions:
-% \begin{resdoclist}
-%   \item The assumed fixed value of variance parameters $\vartheta^2$ and $\rho$
-%   \item The prior probability distribution for steepness ($h$)
-%   \item The prior probability distribution for $\ln(M)$
-%   \item The prior probability distribution for survey catchability ($q_k$,
-%     $2<=k<=5$)
-%   \item The estimated fishery selectivity parameters
-% \end{resdoclist}
-
-\section{RECOMMENDATIONS AND YIELD OPTIONS}
-
-\subsection{DECISION TABLES} \label{sec:DecisionTables}
-
-\subsubsection{Reference Case}
-
-\subsubsection{Alternative decision table}
-
-\section{FUTURE RESEARCH AND DATA REQUIREMENTS} \label{sec:future-research}
-
-\section{ACKNOWLEDGEMENTS}
+<<main, child='main.Rnw'>>=
+@
 
 \clearpage
 
@@ -184,36 +178,16 @@ proident, sunt in culpa qui officia deserunt mollit anim id est laborum
 
 \section{TABLES}
 
-% <<total.catches.table, results='asis', echo=FALSE>>=
-% cap <- paste0("Recent coastwide commercial fishery catch (t) for ",
-%               fish.name, ".")
-% make.catches.table(catches,
-%                    start.yr = 1996,
-%                    end.yr = 2014,
-%                    weight.factor = 1000,
-%                    digits = 1,
-%                    xcaption = cap,
-%                    xlabel = "tab:main-catches",
-%                    font.size = 9,
-%                    space.size = 10,
-%                    placement = "H")
-%  @
-
 \clearpage
 
 \section{FIGURES}
 
 % \begin{figure}[H]
 % \begin{center}
-% \includegraphics[width=6in,keepaspectratio=true]{maindoc/figures/ARF-1996-2014-CPUE}
+% \includegraphics[width=6in]{filename}
 % \end{center}
-% \caption{Mean catch-per-unit-effort (CPUE, kg/h) of \Sexpr{fish.name} in grid cells
-%   0.1$^\circ$ longitude by 0.075$^\circ$ latitude (roughly 57.8~km$^2$). The
-%   shaded cells give an approximation of the area where \Sexpr{fish.name} was
-%   encountered by fishing events from the groundfish trawl fishery from
-%   January 1, 1996 to December 31, 2014. Contours are 200 m and 1000 m isobaths.
-%   Red lines are PFMA area boundaries.}
-% \label{fig:cpue}
+% \caption{}
+% \label{fig:labelhere}
 % \end{figure}
 
 \clearpage
