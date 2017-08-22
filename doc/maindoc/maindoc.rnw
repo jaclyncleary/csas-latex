@@ -33,8 +33,8 @@ relative to these reference points. The Reference Case decision table suggests
 that a 2015 catch equal to any of the catch levels tested, ranging from 0~t to
 30,000~t (twice the 2014 TAC), would result in a 2016 biomass above all of the
 candidate biomass-based reference points tested, and 2015 harvest rate below
-the estimated \emph{U}\subscr{MSY}. Large uncertainty in the assessment is
-however, emphasised. The magnitude of catch and discards prior to 1996 is a
+the estimated \emph{U}\subscr{MSY}. Large uncertainty in the assessment is,
+however emphasised. The magnitude of catch and discards prior to 1996 is a
 major source of uncertainty in this assessment that could provide critical
 information about the scale and productivity of this stock. Ageing of archived
 otoliths from the freezer trawl fleet is a high priority recommendation.
