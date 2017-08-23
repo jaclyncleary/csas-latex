@@ -13,10 +13,12 @@
 
 \makeatletter
 \patchcmd{\hyper@link@}
-  {{\Hy@tempb}{#4}}
-  {{\Hy@tempb}{\ul{#4}}}
-  {}{}
+{{\Hy@tempb}{#4}}
+{{\Hy@tempb}{\ul{#4}}}
+{}{}
 \makeatother
+
+\usepackage{pdfcomment}
 
 %% ------------------------------------------------------------------------------
 %% Headers and footers
@@ -27,19 +29,21 @@
 %% ------------------------------------------------------------------------------
 
 \fancypagestyle{nofooter}{%
-  \fancyfoot{}%
+\fancyfoot{}%
 }
 
 \begin{document}
 
 \thispagestyle{empty}
 
-\includegraphics[scale=1.0]{title-header.png}
+\includegraphics[width=9.14cm]{title-header.png}
 
-\textbf{(Canadian Science Advisory Secretariat (CSAS)}
+\textbf{Canadian Science Advisory Secretariat (CSAS)}
 \vspace{0.5mm}
 
 \hrule
+
+\vspace{-1.5mm}
 
 \textbf{Research Document 2017/nnn}\\
 
@@ -51,13 +55,13 @@
 \begin{center}
 
 \textbf{Title here, scientific names of species should be in parenthesis or 
-separated by commas and in italics where appropriate}
+separated by commas and in italics where appropriate.}
 
-\vspace{.75cm}
+\vspace{.35cm}
 
 First M. Last\textsuperscript{1}, First Last\textsuperscript{1} and First M. Last\textsuperscript{1}
 
-\vspace{.75cm}
+\vspace{.35cm}
 
 \textsuperscript{1}Pacific Biological Station, Science Branch,\\
 Fisheries and Oceans Canada, 3190 Hammond Bay Road,\\
@@ -68,10 +72,13 @@ Nanaimo, British Columbia, V9T 6N7, Canada.
 
 \hrule
 
-\vspace{-3.5mm}
-\parbox{5cm}{Release date (Month Year)}%
-\hfill
-\includegraphics[scale=0.85]{title-footer.png}
+\vspace{-4.0mm}
+\parbox{9cm}{Release date (Month Year)}%
+\begin{minipage}[t]{7.48cm}
+\flushright
+\includegraphics[width=3.54cm]{title-footer.png}%
+\end{minipage}
+
 
 \clearpage
 
@@ -89,6 +96,8 @@ addressed but rather as progress reports on ongoing investigations.
 
 Research documents are produced in the official language in which they are provided to the Secretariat.
 
+\vspace{1.5mm}
+
 \begin{center}
 \textbf{Published by:\\}
 \vspace{0.2cm}
@@ -96,7 +105,7 @@ Fisheries and Oceans Canada\\
 Canadian Science Advisory Secretariat\\
 200 Kent Street\\
 Ottawa ON K1A 0E6\\
-\vspace{0.2cm}
+\vspace{0.17cm}
 
 \href{http://www.dfo-mpo.gc.ca/csas-sccs/}{http://www.dfo-mpo.gc.ca/csas-sccs/}\\
 \href{mailto://csas-sccs@dfo-mpo.gc.ca}{csas-sccs@dfo-mpo.gc.ca}
@@ -108,6 +117,8 @@ Ottawa ON K1A 0E6\\
 \textcopyright\ Her Majesty the Queen in Right of Canada, 2017\\
 ISSN 1919-5044
 \end{center}
+
+\vspace{-3mm}
 
 \textbf{Correct citation for this publication:}\\
 \vspace{0.2cm}
@@ -125,17 +136,17 @@ DFO Can.\ Sci.\ Advis.\ Sec.\ Res.\ Doc. 2016/nnn. vi + xx p.
 %%  of the document. Use \Sexpr{objname} to put values in text.
 <<echo=FALSE,  message=FALSE, results='hide', warning=FALSE>>=
 opts_chunk$set(dev = 'png',
-               fig.dpi = 96,
-               fig.width = 7.5,
-               fig.height = 4,
-               dpi = 100,
-               echo = FALSE,
-               results = FALSE,
-               message = FALSE,
-               warning = FALSE,
-               results = 'hide',
-               cache = TRUE,
-               autodep = TRUE)
+  fig.dpi = 96,
+  fig.width = 7.5,
+  fig.height = 4,
+  dpi = 100,
+  echo = FALSE,
+  results = FALSE,
+  message = FALSE,
+  warning = FALSE,
+  results = 'hide',
+  cache = TRUE,
+  autodep = TRUE)
 x <- 42 # example
 @
 
@@ -198,11 +209,22 @@ Culpa qui officia deserunt mollit anim id est laborum \citep{ricker1954}.
 
 \section{FIGURES}
 
+
+
 <<examplefig, fig.cap="This is a figure caption.", fig.pos="H">>=
-set.seed(1)
-x <- runif(100)
-plot(x)
+x <- 1
+library(ggplot2)
+g <- ggplot(data.frame(x), aes(x, x)) + geom_point()
+ggsave("examplefig.png", width = 8, height = 5)
 @
+
+\begin{figure}[htb]
+\begin{center}
+\pdftooltip{\includegraphics[width=0.8\textwidth]{examplefig.png}}{This is the ALT text}
+\caption{Caption.} 
+\label{fig:examplefig}
+\end{center}
+\end{figure}
 
 \clearpage
 
