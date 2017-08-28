@@ -52,7 +52,7 @@ genetics and a variety of tagging methods. Beacham et al. (2008) examined
 genetic population structure of \Sexpr{fish.name} in B.C. and adjacent regions
 using microsatellite variation.
 
-\subsection{EXOSYSTEM CONSIDERATIONS}
+\subsection{ECOSYSTEM CONSIDERATIONS}
 As a forage species, herring play a key role in the marine ecosystem and are a
 food source for a variety of species (Schweigert et al. 2010). Herring are an
 important prey species to many piscivores including Pacific Salmon (Coho and
