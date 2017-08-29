@@ -178,6 +178,7 @@ make.catches.table <- function(catches,
 }
 
 make.catches.plot <- function(catches,
+                              gear.names,
                               leg.y.loc = 430,
                               leg.cex = 1){
   ## Plot the catches in a stacked-barplot with legend
@@ -187,79 +188,17 @@ make.catches.plot <- function(catches,
 
   old.par <- par()
   on.exit(par(old.par))
+  j <- as.data.frame(catches$dat$catch)
+  ## Make the gear catches into a list by gear
+  k <- lapply(gear.names[,1],
+              function(x){
+                j[j$gear == x,]
+              })
+  ## Remove zero-row gears (e.g. survey gears)
+  k <- k[sapply(k, nrow) > 0]
+  browser()
+  require(ggplot2)
+  ggplot(j, aes(year, gear, value)) + geom_bar(aes(colour=gear))
+         
 
-  years <- catches$Year
-  catches <- catches[,c("CAN_forgn",
-                        "CAN_JV",
-                        "CAN_Shoreside",
-                        "CAN_FreezeTrawl",
-                        "US_foreign",
-                        "US_JV",
-                        "atSea_US_MS",
-                        "atSea_US_CP",
-                        "US_shore")]
-  cols <- c(rgb(0, 0.8, 0),
-            rgb(0, 0.6, 0),
-            rgb(0.8, 0, 0),
-            rgb(0.4, 0, 0),
-            rgb(0, 0.2, 0),
-            rgb(0, 0.4, 0),
-            rgb(0, 0, 0.7),
-            rgb(0, 0, 0.4),
-            rgb(0, 0, 1))
-  legOrder <- c(6, 5, 2, 1, 4, 3, NA, NA, 9, 8, 7)
-  par(las = 1,
-      mar = c(4, 4, 6, 2) + 0.1,
-      cex.axis = 0.9)
-  tmp <- barplot(t(as.matrix(catches)) / 1000,
-                 beside = FALSE,
-                 names = catches[,1],
-                 col = cols,
-                 xlab = "Year",
-                 ylab = "",
-                 cex.lab = 1,
-                 xaxt = "n",
-                 mgp = c(2.2, 1, 0))
-  axis(1,
-       at = tmp,
-       labels = years,
-       line = -0.12)
-  grid(NA,
-       NULL,
-       lty = 1,
-       lwd = 1)
-  mtext("Catch (thousand t)",
-        side = 2,
-        line = 2.8,
-        las = 0,
-        cex = 1.3)
-  barplot(t(as.matrix(catches)) / 1000,
-          beside = FALSE,
-          names = catches[,1],
-          col = cols,
-          xlab = "Year",
-          ylab = "",
-          cex.lab = 1,
-          xaxt = "n",
-          add = TRUE,
-          mgp = c(2.2, 1, 0))
-  legend(x = 0,
-         y = leg.y.loc,
-         c("Canadian Foreign",
-           "Canadian Joint-Venture",
-           "Canadian Shoreside",
-           "Canadian Freezer Trawl",
-           "U.S. Foreign",
-           "U.S. Joint-Venture",
-           "U.S. MS",
-           "U.S. CP",
-           "U.S. Shore-based")[legOrder],
-         bg = "white",
-         horiz = FALSE,
-         xpd = NA,
-         cex = leg.cex,
-         ncol = 3,
-         fill = cols[legOrder],
-         border = cols[legOrder],
-         bty = "n")
 }
