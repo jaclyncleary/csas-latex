@@ -165,18 +165,22 @@ create.rdata.file <- function(models.dir = model.dir,
 load.models <- function(model.dir,
                         model.dir.names){
   ## Load model(s) and return as a list.
-  model.rdata.files <- file.path(model.dir,
-                                 model.dir.names,
-                                 paste0(model.dir.names,
-                                        ".Rdata"))
+
+  model.rdata.files <- lapply(model.dir.names,
+                              function(x){
+                                i <- file.path(model.dir, x)
+                                j <- sub(".*/", "", x)
+                                file.path(i, paste0(j, ".Rdata"))})
+
   out <- lapply(1:length(model.rdata.files),
                 function(x){
-                  load(model.rdata.files[x])
+                  load(model.rdata.files[[x]])
                   if(class(model) != model.class){
                     model <- list(model)
                   }
                   model
                 })
+
   class(out) <- model.lst.class
   out
 }

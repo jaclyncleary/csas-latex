@@ -162,7 +162,9 @@ model.dir.names <- c(base.model.dir.name,
 ## as the other model setup and should be changed if bridge models
 ## and sensitivity models change in the model.dir.names above..
 load.models.into.parent.env <- function(){
-  base.model <<- load.models(model.dir, base.model.dir.name)
+  base.models <<- lapply(base.model.dir.name,
+                         function(x){
+                           load.models(model.dir, x)})
   sens.models.1 <<- lapply(sens.model.dir.name.1,
                            function(x){
                              load.models(model.dir, x)})

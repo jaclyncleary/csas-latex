@@ -2,15 +2,125 @@
 ## The function f() is for formatting and is defined in
 ##  r-functions/utilities.r
 ##
-## The variables defined here depend on the tructure of the
+## The variables defined here depend on the structure of the
 ##  model-setup.r source code.
 
-## Base model and some of its outputs simplified
-b <- base.model[[1]]
-b.params <- as.data.frame(b$mcmc$params)
-b.mcc <- b$mcmccalcs
-b.p.quants <- as.data.frame(b.mcc$p.quants)
-b.r.quants <- as.data.frame(b.mcc$r.quants)
+################################################################################
+## Base models and some of their outputs simplified
+## Base model Haida Gwaii
+hg.b <- base.models[[1]][[1]]
+hg.b.params <- as.data.frame(hg.b$mcmc$params)
+hg.b.mcc <- hg.b$mcmccalcs
+hg.b.p.quants <- as.data.frame(hg.b.mcc$p.quants)
+hg.b.r.quants <- as.data.frame(hg.b.mcc$r.quants)
+hg.sbt <- hg.b.mcc$sbt.quants
+hg.sbt.final <- f(1000 * hg.sbt[, ncol(hg.sbt)])
+hg.sbt.final.yr <- as.numeric(colnames(hg.sbt)[ncol(hg.sbt)])
+hg.sbt.first.yr <- as.numeric(colnames(hg.sbt)[1])
+hg.f.mort <- hg.b.mcc$f.mort.quants[[1]]
+hg.max.f.mort <- max(hg.f.mort[2,])
+hg.max.f.mort.ind <- which(hg.f.mort[2,] == hg.max.f.mort)
+hg.max.f.mort.yr <- colnames(hg.f.mort)[hg.max.f.mort.ind]
+hg.max.f.mort <- f(hg.f.mort[, hg.max.f.mort.ind], 3)
+hg.last.f.mort.yr <- as.numeric(colnames(hg.f.mort)[ncol(hg.f.mort)])
+hg.last.f.mort <- f(hg.f.mort[, ncol(hg.f.mort)], 3)
+hg.median.bio.min  <- f(min(hg.b.mcc$sbt.quants[2,]), 3)
+hg.median.bio.min.year <- names(which.min(min(hg.b.mcc$sbt.quants[2,])))
+hg.median.bio.max  <- f(max(hg.b.mcc$sbt.quants[2,]), 3)
+hg.median.bio.max.year <- names(which.max(hg.b.mcc$sbt.quants[2,]))
+hg.priors <- as.data.frame(hg.b$ctl$params)
+## Steepness prior for base
+hg.h.prior <- hg.priors[rownames(hg.priors) == "h",]
+hg.h.prior.alpha <- hg.h.prior$p1
+hg.h.prior.beta <- hg.h.prior$p2
+hg.h.prior.mean <- hg.h.prior.alpha / (hg.h.prior.alpha + hg.h.prior.beta)
+hg.h.prior.cv <- f(sqrt((hg.h.prior.alpha * hg.h.prior.beta) /
+                        ((hg.h.prior.alpha + hg.h.prior.beta)^2 *
+                         (hg.h.prior.alpha + hg.h.prior.beta + 1))) /
+                   hg.h.prior.mean, 2)
+hg.h.prior.alpha <- f(hg.h.prior.alpha, 1)
+hg.h.prior.beta <- f(hg.h.prior.beta, 1)
+hg.h.prior.mean <- f(hg.h.prior.mean, 2)
+## Survey Q
+hg.q <- as.data.frame(hg.b$ctl$surv.q)[,1]
+hg.q.mean <- f(exp(hg.q[2]), 1)
+hg.q.sd <- f(hg.q[3], 1)
+## Age comp data values
+## Gear indices, note they are not the indices in the model,
+##  but the indices of the list elements in the model$dat$age.comps list
+hg.fishery.gear.1 <- 1
+hg.fishery.gear.2 <- 2
+hg.fishery.gear.3 <- 3
+hg.survey.gear.1 <- 4
+hg.survey.gear.2 <- 5
+hg.fishery.gear.1.yrs <- sort(unique(hg.b$dat$age.comps[[hg.fishery.gear.1]][,1]))
+hg.fishery.gear.1.yrs <- paste0(min(hg.fishery.gear.1.yrs), "--", max(hg.fishery.gear.1.yrs))
+hg.fishery.gear.2.yrs <- sort(unique(hg.b$dat$age.comps[[hg.fishery.gear.2]][,1]))
+hg.fishery.gear.2.yrs <- paste0(min(hg.fishery.gear.2.yrs), "--", max(hg.fishery.gear.2.yrs))
+hg.fishery.gear.3.yrs <- sort(unique(hg.b$dat$age.comps[[hg.fishery.gear.1]][,1]))
+hg.fishery.gear.3.yrs <- paste0(min(hg.fishery.gear.3.yrs), "--", max(hg.fishery.gear.3.yrs))
+## Catch data values
+hg.catch.yrs <- sort(unique(hg.b$dat$catch[,1]))
+hg.catch.yrs <- paste0(min(hg.catch.yrs), "--", max(hg.catch.yrs))
+hg.sig.tau <- calc.sig.tau(hg.b$ctl$params[6, 1], hg.b$ctl$params[7, 1])
+
+################################################################################
+## Base model Strait of Georgia
+sog.b <- base.models[[2]][[1]]
+sog.b.params <- as.data.frame(sog.b$mcmc$params)
+sog.b.mcc <- sog.b$mcmccalcs
+sog.b.p.quants <- as.data.frame(sog.b.mcc$p.quants)
+sog.b.r.quants <- as.data.frame(sog.b.mcc$r.quants)
+sog.sbt <- sog.b.mcc$sbt.quants
+sog.sbt.final <- f(1000 * sog.sbt[, ncol(sog.sbt)])
+sog.sbt.final.yr <- as.numeric(colnames(sog.sbt)[ncol(sog.sbt)])
+sog.sbt.first.yr <- as.numeric(colnames(sog.sbt)[1])
+sog.f.mort <- sog.b.mcc$f.mort.quants[[1]]
+sog.max.f.mort <- max(sog.f.mort[2,])
+sog.max.f.mort.ind <- which(sog.f.mort[2,] == sog.max.f.mort)
+sog.max.f.mort.yr <- colnames(sog.f.mort)[sog.max.f.mort.ind]
+sog.max.f.mort <- f(sog.f.mort[, sog.max.f.mort.ind], 3)
+sog.last.f.mort.yr <- as.numeric(colnames(sog.f.mort)[ncol(sog.f.mort)])
+sog.last.f.mort <- f(sog.f.mort[, ncol(sog.f.mort)], 3)
+sog.median.bio.min  <- f(min(sog.b.mcc$sbt.quants[2,]), 3)
+sog.median.bio.min.year <- names(which.min(min(sog.b.mcc$sbt.quants[2,])))
+sog.median.bio.max  <- f(max(sog.b.mcc$sbt.quants[2,]), 3)
+sog.median.bio.max.year <- names(which.max(sog.b.mcc$sbt.quants[2,]))
+sog.priors <- as.data.frame(sog.b$ctl$params)
+## Steepness prior for base
+sog.h.prior <- sog.priors[rownames(sog.priors) == "h",]
+sog.h.prior.alpha <- sog.h.prior$p1
+sog.h.prior.beta <- sog.h.prior$p2
+sog.h.prior.mean <- sog.h.prior.alpha / (sog.h.prior.alpha + sog.h.prior.beta)
+sog.h.prior.cv <- f(sqrt((sog.h.prior.alpha * sog.h.prior.beta) /
+                         ((sog.h.prior.alpha + sog.h.prior.beta)^2 *
+                          (sog.h.prior.alpha + sog.h.prior.beta + 1))) /
+                    sog.h.prior.mean, 2)
+sog.h.prior.alpha <- f(sog.h.prior.alpha, 1)
+sog.h.prior.beta <- f(sog.h.prior.beta, 1)
+sog.h.prior.mean <- f(sog.h.prior.mean, 2)
+## Survey Q
+sog.q <- as.data.frame(sog.b$ctl$surv.q)[,1]
+sog.q.mean <- f(exp(sog.q[2]), 1)
+sog.q.sd <- f(sog.q[3], 1)
+## Age comp data values
+## Gear indices, note they are not the indices in the model,
+##  but the indices of the list elements in the model$dat$age.comps list
+sog.fishery.gear.1 <- 1
+sog.fishery.gear.2 <- 2
+sog.fishery.gear.3 <- 3
+sog.survey.gear.1 <- 4
+sog.survey.gear.2 <- 5
+sog.fishery.gear.1.yrs <- sort(unique(sog.b$dat$age.comps[[sog.fishery.gear.1]][,1]))
+sog.fishery.gear.1.yrs <- paste0(min(sog.fishery.gear.1.yrs), "--", max(sog.fishery.gear.1.yrs))
+sog.fishery.gear.2.yrs <- sort(unique(sog.b$dat$age.comps[[sog.fishery.gear.2]][,1]))
+sog.fishery.gear.2.yrs <- paste0(min(sog.fishery.gear.2.yrs), "--", max(sog.fishery.gear.2.yrs))
+sog.fishery.gear.3.yrs <- sort(unique(sog.b$dat$age.comps[[sog.fishery.gear.1]][,1]))
+sog.fishery.gear.3.yrs <- paste0(min(sog.fishery.gear.3.yrs), "--", max(sog.fishery.gear.3.yrs))
+## Catch data values
+sog.catch.yrs <- sort(unique(sog.b$dat$catch[,1]))
+sog.catch.yrs <- paste0(min(sog.catch.yrs), "--", max(sog.catch.yrs))
+sog.sig.tau <- calc.sig.tau(sog.b$ctl$params[6, 1], sog.b$ctl$params[7, 1])
 
 ################################################################################
 ## Names used in assessment
@@ -21,6 +131,15 @@ common.name <- ""
 bc <- "British Columbia"
 
 ################################################################################
+## Number of mcmc samples, min and max median biomass
+mcmc.num.samples <- nrow(hg.b.params)
+mcmc.burnin <- f(mcmc.num.samples - nrow(hg.b.mcc$p.dat))
+mcmc.num.samples <- f(mcmc.num.samples)
+mcmc.length <- "15 million"
+mcmc.samp.freq <- f(7500)
+mcmc.ci <- "95\\%"
+
+################################################################################
 ## Values for assessment
 ##bo <- f(1000 * b.r.quants["bo", -1])
 ##bmsy <- f(1000 * b.r.quants["bmsy", -1])
@@ -29,44 +148,31 @@ bc <- "British Columbia"
 ##s6.r.quants <- as.data.frame(sens.models.3[[1]]$mcmccalcs$r.quants)
 ##sens.6.bo <- f(1000 * s6.r.quants["bo", -1])
 
-sbt <- b.mcc$sbt.quants
-sbt.final <- f(1000 * sbt[, ncol(sbt)])
-sbt.final.yr <- as.numeric(colnames(sbt)[ncol(sbt)])
-sbt.first.yr <- as.numeric(colnames(sbt)[1])
-
-f.mort <- b.mcc$f.mort.quants[[1]]
-max.f.mort <- max(f.mort[2,])
-max.f.mort.ind <- which(f.mort[2,] == max.f.mort)
-max.f.mort.yr <- colnames(f.mort)[max.f.mort.ind]
-max.f.mort <- f(f.mort[, max.f.mort.ind], 3)
-last.f.mort.yr <- as.numeric(colnames(f.mort)[ncol(f.mort)])
-last.f.mort <- f(f.mort[, ncol(f.mort)], 3)
-
 ##depl <- b.mcc$depl.quants
 ##last.depl.yr <- colnames(depl)[ncol(depl)]
 ##last.depl <- f(depl[, ncol(depl)], 3)
 
-survey.1.q <- f(b.p.quants$q1, 2)
-survey.1.q <- f(b.p.quants$q2, 2)
+## survey.1.q <- f(b.p.quants$q1, 2)
+## survey.1.q <- f(b.p.quants$q2, 2)
 
-trawl.a50 <- f(b.p.quants$sel1, 2)
-qcsss.a50 <- f(b.p.quants$sel2, 2)
+## trawl.a50 <- f(b.p.quants$sel1, 2)
+## qcsss.a50 <- f(b.p.quants$sel2, 2)
 
 ##s13.sel <- as.data.frame(sens.models.8[[2]]$ctl$sel)
 ##s13.trawl.a50 <- s13.sel[rownames(s13.sel) == "agelen50log", 1]
 
-h.post <- f(b.p.quants$h, 3)
+##h.post <- f(b.p.quants$h, 3)
 ##sens.6.h.post <- f(as.data.frame(sens.models.3[[1]]$mcmccalcs$p.quants)$h, 3)
 
 ## Projection values and probabilities
-tacs <- b$proj$tac.vec
-min.tac <- f(1000 * min(tacs))
-max.tac <- f(1000 * max(tacs))
+## tacs <- b$proj$tac.vec
+## min.tac <- f(1000 * min(tacs))
+## max.tac <- f(1000 * max(tacs))
 
-tac.probs <- b.mcc$proj.dat
-tac.0.prob <- f(100 * tac.probs[1, 4])
-tac.30.prob <- f(100 * tac.probs[which(tac.probs[, 1] == 30), 4], 1)
-tac.50.prob <- f(100 * tac.probs[which(tac.probs[, 1] == 50), 4], 1)
+## tac.probs <- b.mcc$proj.dat
+## tac.0.prob <- f(100 * tac.probs[1, 4])
+## tac.30.prob <- f(100 * tac.probs[which(tac.probs[, 1] == 30), 4], 1)
+## tac.50.prob <- f(100 * tac.probs[which(tac.probs[, 1] == 50), 4], 1)
 
 ##tac.4bo <- tac.probs[, 5]
 ##min.tac.4b0 <- f(100 * min(tac.4bo), 1)
@@ -77,31 +183,17 @@ tac.50.prob <- f(100 * tac.probs[which(tac.probs[, 1] == 50), 4], 1)
 ##max.tac.depl <- f(100 * max(tac.depl), 1)
 
 ################################################################################
-## Number of mcmc samples, min and max median biomass
-mcmc.num.samples <- nrow(b.params)
-mcmc.burnin <- f(mcmc.num.samples - nrow(b.mcc$p.dat))
-mcmc.num.samples <- f(mcmc.num.samples)
-mcmc.length <- "15 million"
-mcmc.samp.freq <- f(7500)
-mcmc.ci <- "95\\%"
-
-median.bio.min  <- f(min(b.mcc$sbt.quants[2,]), 3)
-median.bio.min.year <- names(which.min(min(b.mcc$sbt.quants[2,])))
-median.bio.max  <- f(max(b.mcc$sbt.quants[2,]), 3)
-median.bio.max.year <- names(which.max(b.mcc$sbt.quants[2,]))
-
-################################################################################
 ## Priors settings from the control file
-priors <- as.data.frame(b$ctl$params)
+## priors <- as.data.frame(b$ctl$params)
 ##s6.priors <- as.data.frame(sens.models.3[[1]]$ctl$params)
 ##s7.priors <- as.data.frame(sens.models.4[[1]]$ctl$params)
 ##s8.priors <- as.data.frame(sens.models.4[[2]]$ctl$params)
 ##s9.priors <- as.data.frame(sens.models.5[[1]]$ctl$params)
 
 ## M priors
-base.m.prior <- priors[rownames(priors) == "log_m",]
-base.m.prior.mean <- f(exp(base.m.prior$p1), 1)
-base.m.prior.sd <- f(base.m.prior$p2, 2)
+##base.m.prior <- priors[rownames(priors) == "log_m",]
+##base.m.prior.mean <- f(exp(base.m.prior$p1), 1)
+##base.m.prior.sd <- f(base.m.prior$p2, 2)
 
 ##s7.prior <- s7.priors[rownames(s7.priors) == "log_m",]
 ##sens.7.m.prior.mean <- f(exp(s7.prior$p1), 1)
@@ -114,19 +206,6 @@ base.m.prior.sd <- f(base.m.prior$p2, 2)
 ##s9.prior <- s9.priors[rownames(s9.priors) == "log_m",]
 ##sens.9.m.prior.mean <- f(exp(s9.prior$p1), 1)
 ##sens.9.m.prior.sd <- f(s9.prior$p2, 2)
-
-## Steepness prior for base
-h.prior <- priors[rownames(priors) == "h",]
-h.prior.alpha <- h.prior$p1
-h.prior.beta <- h.prior$p2
-h.prior.mean <- h.prior.alpha / (h.prior.alpha + h.prior.beta)
-h.prior.cv <- f(sqrt((h.prior.alpha * h.prior.beta) /
-                   ((h.prior.alpha + h.prior.beta)^2 *
-                    (h.prior.alpha + h.prior.beta + 1))) /
-                h.prior.mean, 2)
-h.prior.alpha <- f(h.prior.alpha, 1)
-h.prior.beta <- f(h.prior.beta, 1)
-h.prior.mean <- f(h.prior.mean, 2)
 
 ## Low steepness scenario
 ## sens.6.h.prior <- s6.priors[rownames(s6.priors) == "h",]
@@ -142,9 +221,9 @@ h.prior.mean <- f(h.prior.mean, 2)
 ## sens.6.h.prior.mean <- f(sens.6.h.prior.mean, 2)
 
 ## Survey Q
-q <- as.data.frame(b$ctl$surv.q)[,1]
-q.mean <- f(exp(q[2]), 1)
-q.sd <- f(q[3], 1)
+##q <- as.data.frame(b$ctl$surv.q)[,1]
+##q.mean <- f(exp(q[2]), 1)
+##q.sd <- f(q[3], 1)
 
 ## sens.10.q <- as.data.frame(sens.models.6[[1]]$ctl$surv.q)[,1]
 ## sens.10.q.mean <- f(exp(sens.10.q[2]), 1)
@@ -155,24 +234,10 @@ q.sd <- f(q[3], 1)
 ## sens.11.q.sd <- f(sens.11.q[3], 1)
 
 ################################################################################
-## Age comp data values
-## Gear indices, note they are not the indices in the model,
-##  but the indices of the list elements in the model$dat$age.comps list
-fishery.gear.1 <- 1
-fishery.gear.2 <- 2
-fishery.gear.3 <- 3
-survey.gear.1 <- 4
-survey.gear.2 <- 4
-fishery.gear.1.yrs <- sort(unique(b$dat$age.comps[[fishery.gear.1]][,1]))
-fishery.gear.1.yrs <- paste0(min(fishery.gear.1.yrs), "--", max(fishery.gear.1.yrs))
-fishery.gear.2.yrs <- sort(unique(b$dat$age.comps[[fishery.gear.2]][,1]))
-fishery.gear.2.yrs <- paste0(min(fishery.gear.2.yrs), "--", max(fishery.gear.2.yrs))
-fishery.gear.3.yrs <- sort(unique(b$dat$age.comps[[fishery.gear.1]][,1]))
-fishery.gear.3.yrs <- paste0(min(fishery.gear.3.yrs), "--", max(fishery.gear.3.yrs))
 
 ################################################################################
 ## Values for posteriors
-base.m.quants <- f(b.p.quants$m, 3)
+##base.m.quants <- f(b.p.quants$m, 3)
 ##base.bo.quants <- f(1000 * b.r.quants[1, 2:4])
 
 ##sens.7.m.quants <- f(as.data.frame(sens.models.4[[1]]$mcmccalcs$p.quants)$m, 3)
@@ -182,16 +247,8 @@ base.m.quants <- f(b.p.quants$m, 3)
 ##sens.9.m.quants <- f(as.data.frame(sens.models.5[[1]]$mcmccalcs$p.quants)$m, 3)
 
 ################################################################################
-## Catch data values
-catch.yrs <- sort(unique(b$dat$catch[,1]))
-catch.yrs <- paste0(min(catch.yrs), "--", max(catch.yrs))
 
 ################################################################################
-## Calculation of sigma and tau from rho and vartheta
-rho <- b$ctl$params[6, 1]
-vartheta <- b$ctl$params[7, 1]
-tau <- f(sqrt((1 - rho) / vartheta), 1)
-sigma <- f(sqrt(rho / vartheta), 1)
 
 ## MPD calculation for sigma and tau for sensitivity 3
 ##tau.3 <- f(sens.models.1[[2]]$mpd$tau, 2)
