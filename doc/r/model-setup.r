@@ -163,7 +163,7 @@ model.dir.names <- c(base.model.dir.name,
 ## and sensitivity models change in the model.dir.names above..
 load.models.into.parent.env <- function(){
   base.model <<- load.models(model.dir, base.model.dir.name)
-  sens.models.1 <<- lapply(sens.model.dir.names.1,
+  sens.models.1 <<- lapply(sens.model.dir.name.1,
                            function(x){
                              load.models(model.dir, x)})
 }
@@ -179,38 +179,32 @@ build <- function(ovwrt.base = FALSE,
   ## ovwrt.sens - overwrite the RData files for the sensitivity models?
 
   ## Base models
-  lapply(1:length(base.model.dir.name),
-         function(x){
-           create.rdata.file(model.name = base.model.dir.name[[x]],
-                             ovwrt.rdata = ovwrt.base,
-                             load.proj = TRUE,
-                             low = confidence.vals[1],
-                             high = confidence.vals[2],
-                             inc.msy.ref.pts = FALSE,
-                             verbose = ss.verbose)})
+  invisible(lapply(1:length(base.model.dir.name),
+                   function(x){
+                     create.rdata.file(model.name = base.model.dir.name[[x]],
+                                       ovwrt.rdata = ovwrt.base,
+                                       load.proj = TRUE,
+                                       low = confidence.vals[1],
+                                       high = confidence.vals[2],
+                                       burnin = 0,
+                                       inc.msy.ref.pts = FALSE,
+                                       verbose = ss.verbose)}))
 
-  ## Need to modify below to make this work with the new herring stock lists
-  ##  but need to re-run the mcmcs with new iscam first to get the correct
-  ##  outputs (.csv files)
-  
   ## Sensitivity models need to be unlisted from their groups
   ##  and placed into a single list for the FOR loop below to work right
-  mnv <- c(unlist(sens.model.dir.names.1))
-
-  ## Remove base model from the bridge/sensitivity list
-  if(length(grep(base.model.dir.name, mnv)) > 0){
-    mnv <- mnv[-(grep(base.model.dir.name, mnv))]
-  }
-  model.names.list <- as.list(unique(mnv))
+  sens.model.names.list <- c(unlist(sens.model.dir.name.1))
 
   ## Sensitivity models
-  ## for(model.nm in model.names.list){
-  ##   create.rdata.file(
-  ##     model.name = model.nm,
-  ##     ovwrt.rdata = ovwrt.sens,
-  ##     load.proj = TRUE,
-  ##     low = confidence.vals[1],
-  ##     high = confidence.vals[2],
-  ##     verbose = ss.verbose)
-  ## }
+  invisible(lapply(1:length(sens.model.names.list),
+                   function(x){
+                     create.rdata.file(
+                       model.name = sens.model.names.list[[x]],
+                       ovwrt.rdata = ovwrt.sens,
+                       load.proj = TRUE,
+                       low = confidence.vals[1],
+                       high = confidence.vals[2],
+                       burnin = 0,
+                       inc.msy.ref.pts = FALSE,
+                       verbose = ss.verbose)}))
+
 }

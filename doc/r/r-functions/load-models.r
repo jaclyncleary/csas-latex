@@ -102,6 +102,7 @@ create.rdata.file <- function(models.dir = model.dir,
                               load.proj = TRUE,
                               low = 0.025,
                               high = 0.975,
+                              burnin = 1000,
                               inc.msy.ref.pts = TRUE,
                               verbose = FALSE){
   ## Create an rdata file to hold the model's data and outputs.
@@ -127,7 +128,11 @@ create.rdata.file <- function(models.dir = model.dir,
          " does not exist. Fix the problem and try again.\n")
   }
   ## The RData file will have the same name as the directory it is in
-  rdata.file <- file.path(model.dir, paste0(model.name, ".RData"))
+  ## If the model.name has a slash in it, remove the slash and
+  ##  everything before it. This allows a model to have a name which
+  ##  is a path.
+  rdata.file <- sub(".*/", "", model.name)
+  rdata.file <- file.path(model.dir, paste0(rdata.file, ".RData"))
   if(file.exists(rdata.file)){
     if(ovwrt.rdata){
       ## Delete the RData file
@@ -149,6 +154,7 @@ create.rdata.file <- function(models.dir = model.dir,
                             low = low,
                             high = high,
                             load.proj = load.proj,
+                            burnin = burnin,
                             inc.msy.ref.pts = inc.msy.ref.pts)
 
   ## Save the model as an RData file
