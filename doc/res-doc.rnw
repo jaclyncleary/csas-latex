@@ -54,6 +54,10 @@ if(TRUE){
 ## This has to be sourced after loading the models in because it depends
 ##  on the model output.
 source("custom-knitr-variables.r")
+
+# Reset the working directory
+setwd( dir=".." )
+
 @
 
 \TableOfContents
