@@ -87,16 +87,27 @@ Laboratory at the Pacific Biological Station for their processing of 4,787
 
 \section{TABLES}
 <<harvest.activity.table, results='asis', echo=FALSE>>=
-## cap <- paste0("Recent trends in management decisions and landings ",
-##               "for major stocks of Pacific Herring for commercial ",
-##               "food and bait, special use and roe fisheries (excludes ",
-##               "spawn on kelp) Values in metric tonnes.")
 cap <- paste0("Overview of harvesting activities for B.C. Pacific Herring ",
               "stocks over the past 10 years.")
 make.activities.table(harvest.activity,
                       xcaption = cap,
                       xlabel = "tab:harvest-activity")
 @
+
+\begin{landscapepage}
+<<management.activity.table, results='asis', echo=FALSE>>=
+cap <- paste0("Recent trends in management decisions and landings ",
+               "for major stocks of Pacific Herring for commercial ",
+               "food and bait, special use and roe fisheries (excludes ",
+               "spawn on kelp) Values in metric tonnes. CSAS = recommended ",
+               "maximum available yield, * = Total landings include Test ",
+               "Fishery program for Use-Fish, ** = Total SOG Landings ",
+               "(2012/13) does not include 32 t (35 tons) GN catch lost at sea.")
+make.management.table(management.activity,
+                      xcaption = cap,
+                      xlabel = "tab:management-activity")
+@
+\end{landscapepage}
 
 %% <<total.catches.table, results='asis', echo=FALSE>>=
 %% cap <- paste0("Recent coastwide commercial fishery catch (t) for ",
