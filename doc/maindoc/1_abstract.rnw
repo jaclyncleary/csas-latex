@@ -40,7 +40,8 @@ Systematic under-estimation of spawning biomass was observed when biomass was in
 
 
 \frenchabstract{
- [French title]
+French title  % Unicode error with the 
+%État du hareng du Pacifique (\emph{\Sexpr{science.name}}) de la Colombie-Britannique en \Sexpr{end.yr} et prévisions pour \Sexpr{end.yr + 1}
 }
 
 [French abstract]

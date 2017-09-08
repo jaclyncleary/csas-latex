@@ -5,5 +5,5 @@ Thanks...
 % References
 \clearpage
 \bibliographystyle{res-doc}
-\bibliography{../../herring}
+\bibliography{../../all}
 \clearpage

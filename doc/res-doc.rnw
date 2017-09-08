@@ -1,27 +1,37 @@
+% Document setup
 \documentclass[11pt]{book}
 
-%% Use the style file in the csas-style repository:
-%% https://github.com/cgrandin/csas-style
+% Use the style file in the csas-style repository:
 \usepackage{../../csas-style/res-doc}
 
-%% Custom commands used in the agecompweighting appendix
+% Multi-letter identifier (i.e., multi-character variable
+\newcommand{\mli}[1]{\mathit{#1}}
+% Better treatment of input (no extra trailing space)
+\newcommand{\inputsp}[1]{\input{#1}\unskip}
+% To do 'for' loops in latex
+\usepackage{pgffor}
+% For float barriers
+\usepackage{placeins}
+
+% Custom commands used in the agecompweighting appendix
 \newcommand{\sQuote}[1]{`#1'}
 \newcommand{\dQuote}[1]{``#1''}
 \newcommand{\eqn}[1]{\begin{equation}#1\end{equation}}
 \newcommand{\gfrac}[2]{\genfrac{}{}{}{0}{#1}{#2}}
-%% eor - Show two things with a vertical bar between them. e.g. A|B
+
+% eor - Show two things with a vertical bar between them. e.g. A|B
 \newcommand{\eor}[2]{{#1$\Vert$#2}}
-%% bM - makes equations larger
+
+% bM - makes equations larger
 \newcommand{\bM}[1]{\mathlarger{\mathlarger{#1}}}
 
-%% ------------------------------------------------------------------------------
-%% Headers and footers
-%% \lhead{DRAFT -- Non-citable working paper}
+% Headers and footers
+% \lhead{DRAFT -- Non-citable working paper}
 \lhead{}
 \rhead{}
-%% \rfoot{DRAFT - DO NOT CITE}
-%% ------------------------------------------------------------------------------
+% \rfoot{DRAFT - DO NOT CITE}
 
+% Let it begin
 \begin{document}
 
 %% This is the initial code chunk where you load your R workspace.
@@ -41,43 +51,94 @@ opts_chunk$set(dev = 'png',
                results = 'hide',
                cache = TRUE,
                cache.path = 'knitr-cache/')
+
+# Get original working directory
+origWD <- getwd( )
+
+# Set the working directory (temporary)
 setwd("r")
-## Load all R code and the package libraries.
+
+# Load all R code and the package libraries.
 source("all.r")
 
-## If you want to reload all model outputs, set to TRUE
-## The load.models.into.parent.env function is located at bottom of
-##  model-setup.r.
+# If you want to reload all model outputs, set to TRUE
+# The load.models.into.parent.env function is located at bottom of model-setup.r.
 if(TRUE){
   load.models.into.parent.env()
 }
-## This has to be sourced after loading the models in because it depends
-##  on the model output.
+# This has to be sourced after loading the models in because it depends on the model output
 source("custom-knitr-variables.r")
+
+# Locations of herring-specific R output (trailing separator for latex)
+locOutput <- file.path( "..", "models", .Platform$file.sep )
+
+# Load the herring data
+load( file=file.path("..", locOutput, "Image.RData") )
+
+# Source the herring data
+# setwd( dir=file.path("..", locOutput) )
+# source( file="ResearchDocumentV2.R" )
+
+# Reset the working directory
+setwd( dir=".." )
+
 @
 
+% More custom variables
+<<variables, child='maindoc/variables.rnw'>>=
+@
+
+% TOC
 \TableOfContents
 
-%% \Citation{
-%% %% Non-citable Working Paper.
-%% Author, B.
-%% \Sexpr{fish.name} (\emph{\Sexpr{science.name})
-%%  Stock Assessment for the West Coast of British Columbia
-%% DFO Can. Sci. Advis. Sec. Res. Doc. 2016/xxx. xii + XX p.
-%% }
+\Citation{
+Cleary, J.S., Hawkshaw, S., Grinnell, M.H., and Grandin, C.
+Stock Assessment for \Sexpr{fish.name} (\emph{\Sexpr{science.name}}) in British Columbia in \Sexpr{assess.yr} and forecast for \Sexpr{assess.yr+1}.
+CSAP Working Paper 2017PEL01.
+%DFO Can. Sci. Advis. Sec. Res. Doc. 2017/xxx. xii + XX p.
+}
 
+% Main body
 \Main
 
-<<main-doc, child='maindoc/maindoc.rnw'>>=
+<<abstract, child='maindoc/1_abstract.rnw'>>=
 @
 
+<<main, child='maindoc/2_introduction.rnw'>>=
+@
+
+<<main, child='maindoc/3_modelling.rnw'>>=
+@
+
+<<main, child='maindoc/4_recommendations.rnw'>>=
+@
+
+<<main, child='maindoc/5_future.rnw'>>=
+@
+
+<<main, child='maindoc/6_acknowledgements.rnw'>>=
+@
+
+<<tables, child='maindoc/7_tables.rnw'>>=
+@
+
+<<figures, child='maindoc/8_figures.rnw'>>=
+@
+
+% Start the appendices
 \Appendices
 
-%% %% Need \refstepcounter{chapter} before every new appendix
-%% %%  to increment the appendix letter.
+% \refstepcounter{chapter}
+% <<biology, child='app/A_biology.rnw'>>=
+% @
 
-%% \refstepcounter{chapter}
-%% <<biological-data, child='app-biology/app-biology.rnw'>>=
-%% @
+% \refstepcounter{chapter}
+% <<equations, child='app/B_equations.rnw'>>=
+% @
 
+\refstepcounter{chapter}
+<<input, child='app/C_input.rnw'>>=
+@
+
+% Fin
 \end{document}

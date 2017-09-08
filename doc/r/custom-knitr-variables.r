@@ -123,11 +123,11 @@ sog.catch.yrs <- paste0(min(sog.catch.yrs), "--", max(sog.catch.yrs))
 sog.sig.tau <- calc.sig.tau(sog.b$ctl$params[6, 1], sog.b$ctl$params[7, 1])
 
 ################################################################################
-## Names used in assessment
-fish.name <- "Pacific Herring"
-science.name <- "Clupea pallasii"
-family.name <- ""
-common.name <- ""
+fish.name <- "Pacific herring"
+science.name <- "Clupea pallasi"
+family.name <- "Clupeidae"
+common.name <- "herring"
+Common.name <- "Herring"
 bc <- "British Columbia"
 
 ################################################################################
