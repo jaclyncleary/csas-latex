@@ -35,7 +35,7 @@ source(file.path(func.dir, "catches.r"))
 source(file.path(func.dir, "load-models.r"))
 ## Code to load the survey data, making survey figures, and making tables
 ##  for survey.
-source(file.path(func.dir, "survey.r"))
+##source(file.path(func.dir, "survey.r"))
 ## Code to load data tables from the data directory
 source(file.path(func.dir, "load-data.r"))
 ## Code to access mcmc parameters
@@ -43,19 +43,21 @@ source(file.path(func.dir, "mcmc-diagnostics.r"))
 ## Code to read a user file into an R list (for model setup)
 ## source(file.path(func.dir, "read-list.r"))
 
-source(file.path(func.dir, "tables-parameters.r"))
-source(file.path(func.dir, "tables-decisions.r"))
-source(file.path(func.dir, "tables-data.r"))
-source(file.path(func.dir, "figures-catch.r"))
-source(file.path(func.dir, "figures-age-length.r"))
-source(file.path(func.dir, "figures-mcmc-diagnostics.r"))
-source(file.path(func.dir, "figures-hcr.r"))
-source(file.path(func.dir, "figures-indices.r"))
-source(file.path(func.dir, "figures-selectivity.r"))
-source(file.path(func.dir, "figures-reference-points.r"))
-source(file.path(func.dir, "figures-biomass.r"))
-source(file.path(func.dir, "figures-recruitment.r"))
-source(file.path(func.dir, "figures-mortality.r"))
+source(file.path(func.dir, "tables-activities-management.r"))
+
+## source(file.path(func.dir, "tables-parameters.r"))
+## source(file.path(func.dir, "tables-decisions.r"))
+## source(file.path(func.dir, "tables-data.r"))
+## source(file.path(func.dir, "figures-catch.r"))
+## source(file.path(func.dir, "figures-age-length.r"))
+## source(file.path(func.dir, "figures-mcmc-diagnostics.r"))
+## source(file.path(func.dir, "figures-hcr.r"))
+## source(file.path(func.dir, "figures-indices.r"))
+## source(file.path(func.dir, "figures-selectivity.r"))
+## source(file.path(func.dir, "figures-reference-points.r"))
+## source(file.path(func.dir, "figures-biomass.r"))
+## source(file.path(func.dir, "figures-recruitment.r"))
+## source(file.path(func.dir, "figures-mortality.r"))
 
 ## Code to verify the model setup
 source(file.path(func.dir, "verify.r"))

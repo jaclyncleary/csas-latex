@@ -39,10 +39,34 @@ build.doc <- function(knit.only = FALSE,
 f <- function(x, dec.points = 0){
   ## Format x to have supplied number of decimal points
   ## Make thousands seperated by commas and the number of decimal points given by
-  ##  dec.points
+  ##  dec.points. Strip away any asterisks
   format(round(x,dec.points),
          big.mark = ",",
          nsmall = dec.points)
+}
+
+remove.asterisks <- function(x){
+  ## Remove any asterisks found in the given data frame x
+  ##  and return list of 2, first is data frame without
+  ##  asterisks, second is matrix of TRUE for for position
+  ##  so that the asterisks can be reapplied after formatting.
+
+  list(apply(x,
+             c(1,2),
+             function(y){
+               as.numeric(sub("\\*+", "", y))
+             }),
+       apply(x, c(1,2), function(y)grep("\\*+", y)))
+}
+
+add.asterisks <- function(x, w){
+  ## Add two asterisks to the data frame in the positions
+  ##  given by matrix 'where' (w)
+
+  p <- x[w == 1]
+  p[!is.na(p)] <- paste0("**", p[!is.na(p)])
+  x[!is.na(p)] <- p[!is.na(p)]
+  x
 }
 
 ## -----------------------------------------------------------------------------
