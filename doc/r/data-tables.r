@@ -6,7 +6,7 @@ data.path <- file.path("..", "..", "data")
 
 catch.data.file <- "catch.csv"
 harvest.activity.file <- "harvesting-activities.csv"
-
+management.file <- "management-decisions.csv"
 
 cat("Loading all data tables (csv files) from ", data.path, "\n")
 catches <- load.csv(data.path,
@@ -14,3 +14,6 @@ catches <- load.csv(data.path,
 harvest.activity <- load.csv(data.path,
                              harvest.activity.file,
                              header = FALSE)
+management.activity <- load.csv(data.path,
+                                management.file,
+                                header = FALSE)
