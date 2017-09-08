@@ -1,0 +1,126 @@
+\label{chap:input}
+\starredchapter{APPENDIX~\thechapter. INPUT DATA}
+\lfoot{\Sexpr{fish.name}}
+\rfoot{Appendix~\thechapter~-- Input Data}
+
+We provide stock assessment input data for the \Sexpr{length(allRegionNames$major)} major stock assessment regions (SARs): \Sexpr{PasteNicely(allRegionNames$major)}.
+In addition, we provide the same data for the \Sexpr{length(allRegionNames$minor)} minor SARs which are not assessed: \Sexpr{PasteNicely(allRegionNames$minor)}.
+Tables \ref{tabCatch\Sexpr{regions$Region[1]}} to \ref{tabCatch\Sexpr{regions$Region[length(regions$Region)]}} have time series of catch in thousands of metric tonnes (t$ \times 10^3$) for \Sexpr{PasteNicely(regions$RegionName)}, respectively.
+Tables \ref{tabSpawn\Sexpr{regions$Region[1]}} to \ref{tabSpawn\Sexpr{regions$Region[length(regions$Region)]}} have time series of spawn index in thousands of metric tonnes (t$ \times 10^3$) for the aforementioned SARs, respectively.
+Tables \ref{tabNumAged\Sexpr{regions$Region[1]}} to \ref{tabNumAged\Sexpr{regions$Region[length(regions$Region)]}} have time series of number-at-age for the aforementioned SARs, respectively.
+Tables \ref{tabWeight\Sexpr{regions$Region[1]}} to \ref{tabWeight\Sexpr{regions$Region[length(regions$Region)]}} have time series of weight-at-age for the aforementioned SARs, respectively.
+
+% Start a loop over stocks for catch
+\foreach \x in {\Sexpr{paste(regions$Region, sep=",")}} {
+\FloatBarrier
+\begin{longtable}{rrrr}
+\caption{\Sexpr{fish.name} catch in thousands of metric tonnes ($\text{t} \times 10^{3}$) by Period from \Sexpr{min(yrRange)} to \Sexpr{max(yrRange)} in the \x{} stock assessment region (SAR).
+\legendPeriod{}}\\
+\toprule
+& \multicolumn{3}{c}{Catch ($\text{t} \times 10^{3}$) by Period}\\
+\cmidrule{2-4}
+\Sexpr{noquote(namesCatch)}\\
+\midrule
+\endfirsthead
+\toprule
+\multicolumn{4}{c}{\emph{\tablename\ \thetable{} continued}}\\
+& \multicolumn{3}{c}{Catch ($\text{t} \times 10^{3}$) by Period}\\
+\cmidrule{2-4}
+\Sexpr{noquote(namesCatch)}\\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\bottomrule
+\endlastfoot
+\inputsp{\Sexpr{locOutput}/\x/Catch.tex}
+\label{tabCatch\x}
+\end{longtable}
+\FloatBarrier
+} % End loop over stocks for catch
+
+% Start a loop over stocks for spawn index
+\foreach \x in {\Sexpr{paste(regions$Region, sep=",")}} {
+\FloatBarrier
+\begin{longtable}{rrl}
+\caption{Pacific herring spawn index in thousands of metric tonnes ($\text{t} \times 10^{3}$) from \Sexpr{min(yrRange)} to \Sexpr{max(yrRange)} in the \x{} stock assessment region (SAR).
+\qPeriods{}
+\spawnIndex{}}\\
+\toprule
+\Sexpr{noquote(namesSpawn)}\\ 
+\midrule
+\endfirsthead
+\toprule
+\multicolumn{3}{c}{\emph{\tablename\ \thetable{} continued}}\\
+\Sexpr{noquote(namesSpawn)}\\ 
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\bottomrule
+\endlastfoot
+\inputsp{\Sexpr{locOutput}/\x/Spawn.tex}
+\label{tabSpawn\x}
+\end{longtable}
+\FloatBarrier
+} % End loop over stocks for spawn index
+
+% Start a loop over stocks for number-at-age
+\foreach \x in {\Sexpr{paste(regions$Region, sep=",")}} {
+\FloatBarrier
+\begin{longtable}{rrrrrrrrrrr}
+\caption{Pacific herring number-at-age from \Sexpr{min(yrRange)} to \Sexpr{max(yrRange)} in the \x{} stock assessment region (SAR).
+\legendPeriod{}
+\plusGroup{}}\\
+\toprule
+& & \multicolumn{\Sexpr{length(ageRange)}}{c}{Number-at-age}\\
+\cmidrule{3-\Sexpr{length(ageRange)+2}}
+\Sexpr{noquote(namesNumAged)}\\ 
+\midrule
+\endfirsthead
+\toprule
+\multicolumn{11}{c}{\emph{\tablename\ \thetable{} continued}}\\
+& & \multicolumn{\Sexpr{length(ageRange)}}{c}{Number-at-age}\\
+\cmidrule{3-\Sexpr{length(ageRange)+2}}
+\Sexpr{noquote(namesNumAged)}\\ 
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\bottomrule
+\endlastfoot
+\inputsp{\Sexpr{locOutput}/\x/NumAged.tex}
+\label{tabNumAged\x}
+\end{longtable}
+\FloatBarrier
+} % End loop over stocks for number-at-age
+
+% Start a loop over stocks for weight-at-age
+\foreach \x in {\Sexpr{paste(regions$Region, sep=",")}} {
+\FloatBarrier
+\begin{longtable}{rrrrrrrrrr}
+\caption{Pacific herring weight-at-age in kilograms (kg) from \Sexpr{min(yrRange)} to \Sexpr{max(yrRange)} in the \x{} stock assessment region (SAR).
+\seineSamples{}
+\plusGroup{}}\\
+\toprule
+& \multicolumn{\Sexpr{length(ageRange)}}{c}{Weight-at-age (kg)}\\
+\cmidrule{2-\Sexpr{length(ageRange)+1}}
+\Sexpr{noquote(namesWeight)}\\ 
+\midrule
+\endfirsthead
+\toprule
+\multicolumn{10}{c}{\emph{\tablename\ \thetable{} continued}}\\
+& \multicolumn{\Sexpr{length(ageRange)}}{c}{Weight-at-age (kg)}\\
+\cmidrule{2-\Sexpr{length(ageRange)+1}}
+\Sexpr{noquote(namesWeight)}\\ 
+\midrule
+\endhead
+\bottomrule
+\endfoot
+\bottomrule
+\endlastfoot
+\inputsp{\Sexpr{locOutput}/\x/Weight.tex}
+\label{tabWeight\x}
+\end{longtable}
+\FloatBarrier
+} % End loop over stocks for weight-at-age

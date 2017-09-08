@@ -1,0 +1,7 @@
+\section{FUTURE RESEARCH AND DATA REQUIREMENTS}
+
+\begin{resdoclist}
+  \item Maturity ogive
+  \item SOK/SOB: quantify mortality and removed spawn
+\end{resdoclist}
+

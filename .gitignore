@@ -20,3 +20,5 @@ models
 models-backup
 models-mwe
 models-arrowtooth
+*-concordance.tex
+*.synctex.gz

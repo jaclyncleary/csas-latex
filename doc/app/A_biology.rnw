@@ -1,0 +1,109 @@
+\label{chap:biological}
+\starredchapter{APPENDIX~\thechapter. BIOLOGICAL DATA}
+\lfoot{\Sexpr{fish.name}}
+\rfoot{Appendix~\thechapter~-- Biological Data}
+
+All biological parameters were estimated from survey data only.
+These data were aggregated from the four surveys used as indices of abundance in this assessment, the Queen Charlotte Syound Synoptic, Hecate Strait Multispecies Assemblage, Hecate Strait Synoptic, and the West Coast Vancouver Island survey.
+
+\appsection{LENGTH AND WEIGHT MODEL}
+
+All valid length/weight pairs of data were extracted based on the criteria shown in table~\ref{tab:biocrit}.
+The length-weight equation used was:
+
+\begin{align} \label{eq:lw}
+W_s=\alpha_s L_s^{\beta_s}
+\end{align}
+where $\alpha_s$ and $\beta_s$ are parameters for sex $s$ and $L_s$ and $W_s$
+are paired length-weight observations.
+
+We applied Eq. \ref{eq:lw} to survey observations for the four surveys used in this assessment, QCSSS, HSMAS, HSSS, and WCVISS (Survey series ID = 1,2,3,4) from PMFC areas 3CD and 5ABCDE combined (Table \ref{tab:biocrit}).
+
+\appsection{VON-BERTALANFFY MODEL}
+
+We used the von-Bertalanffy function to estimate growth rates for \Sexpr{fish.name}:
+
+\begin{align} \label{eq:vonb}
+L_s=L_{\infty_s}(1-e^{-k_s(a_s-t_{0_s})})
+\end{align}
+where $L_{\infty_s}$, $k_s$, and $t_{0_s}$ are parameters specific to sex $s$
+and $L_s$ and $a_s$ are paired length-age observations.
+
+We applied Eq. \ref{eq:vonb} to survey observations for the four surveys used in this assessment, QCSSS, HSMAS, HSSS, and WCVISS (Survey series ID = 1,2,3,4) from PMFC areas 3CD and 5ABCDE combined (Table \ref{tab:biocrit}).
+
+\appsection{MATURITY-AT-AGE MODEL}
+
+The maturity-at-age model used for \Sexpr{fish.name} estimates age-at-50\% maturity and standard deviation of age-at-50\% maturity as follows:
+
+\begin{align} \label{eq:matage}
+P_{a_s}=\frac{1}{1+e^{-\frac{a_s-a_{s_{50\%}}}{\sigma_{a_{s_{50\%}}}}}}
+\end{align}
+where $P_{a_s}$ is the observed proportion mature at age $a_s$ for sex $s$.
+
+We applied Eq. \ref{eq:matage} to survey observations for the four surveys used in this assessment, QCSSS, HSMAS, HSSS, and WCVISS (Survey series ID = 1,2,3,4) from PMFC areas 3CD and 5ABCDE combined (Table \ref{tab:biocrit}).
+
+\appsection{TABLES}
+\begin{table}[H]
+\centering
+\caption{\label{tab:biocrit} Criteria for biological data extraction.}
+\begin{tabular}{lrr}
+\hline
+\textbf{Criterion} & \textbf{Notes} \\
+\hline
+Area                      & 3CD and 5ABCDE combined \\
+Survey series ID          & 1,2,3,4 (the four surveys used in this assessment) \\
+Sample type = 1,2,6, or 7 & only random or total samples \\
+Sex                       & valid sex observation (1 or 2 ) \\
+\hline
+\end{tabular}
+\end{table}
+
+\clearpage
+
+\appsection{FIGURES}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htp]
+\begin{center}
+<<vonb, fig.height=7, fig.width=8>>=
+plot.growth(bio,
+            leg = "bottomright")
+@
+\end{center}
+\vspace{0mm}
+\caption{Growth data and model fits for \Sexpr{fish.name}.
+Estimated parameters $L_{\infty}$, $k$, and $t_0$ are shown in the legend. See Eq.~\ref{eq:vonb}.}
+\label{fig:vonb}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htp]
+\begin{center}
+<<lw, fig.height=7, fig.width=8>>=
+plot.lw(bio,
+        leg = "topleft")
+@
+\end{center}
+\vspace{0mm}
+\caption{Length/weight data and model fits for \Sexpr{fish.name}. Estimated
+  parameters $\alpha$ and $\beta$ are shown in the legend. See Eq.~\ref{eq:lw}.}
+\label{fig:lw}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\begin{figure}[htp]
+\begin{center}
+<<matage, fig.height=7, fig.width=8>>=
+plot.ma(bio,
+        leg = "bottomright")
+@
+\end{center}
+\vspace{0mm}
+\caption{Maturity data and model fits for \Sexpr{fish.name}.
+Estimated parameters $a_{50\%}$ and $\sigma_{a_{50\%}}$ are shown in the legend.
+See Eq.~\ref{eq:matage}.}
+\label{fig:matage}
+\end{figure}
+%%%%%%%%%%%%%%%%%%%%%%%
+
+\clearpage
