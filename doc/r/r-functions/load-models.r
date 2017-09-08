@@ -69,13 +69,22 @@ delete.rdata.files <- function(models.dir = model.dir){
   ## directory.
   ##
   ## models.dir - directory name for all models location
-
   dirs <- dir(models.dir)
-  rdata.files <- file.path(models.dir, dirs, paste0(dirs, ".rdata"))
+
+  rdata.files <- lapply(dirs,
+                        function(x){
+                          d <- file.path(models.dir, x)
+                          d.subdirs <- dir(d)
+                          d.subdirs.fullpath <- file.path(d, d.subdirs)
+                          j <- file.path(d.subdirs.fullpath,
+                                         paste0(x, "-", dir(d), ".Rdata"))})
   ans <- readline("This operation cannot be undone, are you sure (y/n)? ")
   if(ans == "Y" | ans == "y"){
-    unlink(rdata.files, force = TRUE)
-    cat(paste0("Deleted ", rdata.files, "\n"))
+    lapply(rdata.files,
+           function(x){
+             unlink(x, force = TRUE)
+             cat(paste0("Deleted ", x, "\n"))
+           })
     cat("All rdata files were deleted.\n")
   }else{
     cat("No files were deleted.\n")
@@ -131,7 +140,7 @@ create.rdata.file <- function(models.dir = model.dir,
   ## If the model.name has a slash in it, remove the slash and
   ##  everything before it. This allows a model to have a name which
   ##  is a path.
-  rdata.file <- sub(".*/", "", model.name)
+  rdata.file <- paste0(strsplit(model.name, "/")[[1]], collapse = "-")
   rdata.file <- file.path(model.dir, paste0(rdata.file, ".RData"))
   if(file.exists(rdata.file)){
     if(ovwrt.rdata){
@@ -671,7 +680,7 @@ read.control.file <- function(file = NULL,
   }
 
   ## Miscellaneous controls
-  n.rows <- 17
+  n.rows <- 20
   tmp$misc <- matrix(NA, nrow = n.rows, ncol = 1)
   for(row in 1:n.rows){
     tmp$misc[row, 1] <- as.numeric(dat[ind <- ind + 1])
@@ -694,7 +703,10 @@ read.control.file <- function(file = NULL,
                           "agecompliketype",
                           "IFDdist",
                           "fitToMeanWeight",
-                          "calculateMSY")
+                          "calculateMSY",
+                          "runSlowMSY",
+                          "slowMSYPrecision",
+                          "slowMSYMaxF")
   tmp$eof <- as.numeric(dat[ind <- ind + 1])
   tmp
 }
