@@ -78,6 +78,7 @@ delete.rdata.files <- function(models.dir = model.dir){
                           d.subdirs.fullpath <- file.path(d, d.subdirs)
                           j <- file.path(d.subdirs.fullpath,
                                          paste0(x, "-", dir(d), ".Rdata"))})
+
   ans <- readline("This operation cannot be undone, are you sure (y/n)? ")
   if(ans == "Y" | ans == "y"){
     lapply(rdata.files,
@@ -171,19 +172,20 @@ create.rdata.file <- function(models.dir = model.dir,
   invisible()
 }
 
-load.models <- function(model.dir,
+load.models <- function(models.dir,
                         model.dir.names){
   ## Load model(s) and return as a list.
 
-  model.rdata.files <- lapply(model.dir.names,
-                              function(x){
-                                i <- file.path(model.dir, x)
-                                j <- sub(".*/", "", x)
-                                file.path(i, paste0(j, ".Rdata"))})
+  rdata.files <- lapply(model.dir.names,
+                        function(x){
+                          i <- file.path(model.dir, x)
+                          j <- sub("/.*", "", x)
+                          k <- sub(".*/", "", x)
+                          file.path(i, paste0(j, "-", k, ".Rdata"))})
 
-  out <- lapply(1:length(model.rdata.files),
+  out <- lapply(1:length(rdata.files),
                 function(x){
-                  load(model.rdata.files[[x]])
+                  load(rdata.files[[x]])
                   if(class(model) != model.class){
                     model <- list(model)
                   }
