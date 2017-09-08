@@ -800,3 +800,13 @@ c.model.list <- function(..., recursive = FALSE){
   class(ret.lst) <- model.lst.class
   ret.lst
 }
+
+## Calculation of sigma and tau from rho and vartheta
+calc.sig.tau <- function(rho, vartheta){
+  ## Calculation of sigma and tau from rho and vartheta
+
+  tau <- f(sqrt((1 - rho) / vartheta), 1)
+  sigma <- f(sqrt(rho / vartheta), 1)
+  list(tau, sigma)
+}
+
