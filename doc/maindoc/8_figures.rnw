@@ -1,0 +1,808 @@
+\section{FIGURES}
+
+% Map of BC
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{maindoc/figures/BC.png}
+\caption{Boundaries for the \Sexpr{fish.name} stock assessment regions (SARs) in \Sexpr{bc}.
+The major SARs are \Sexpr{PasteNicely(allRegionNames$major)}.
+The minor SARs are \Sexpr{PasteNicely(allRegionNames$minor)}.
+Units: kilometres (km).}
+\label{figBC}
+\end{figure}
+
+% Catch
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}Catch.png}
+\caption{Time series of total landed catch in thousands of metric tonnes ($\text{t} \times 10^{3}$) of \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the major stock assessment regions (SARs).}
+\label{figCatch}
+\end{figure}
+
+% Weight-at-age
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}WeightAge.png}
+\caption{Time series of weight-at-age in kilograms (kg) for age-\Sexpr{ageShow} (circles) and \Sexpr{nRoll}-year running mean weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the major stock assessment regions (SARs).
+Lines show \Sexpr{nRoll}-year running means for age-\Sexpr{min(ageRange)} to age-\Sexpr{max(ageRange)} herring (incrementing higher from the lowest line); the thick black line highlights age-\Sexpr{ageShow} herring.
+Missing weight-at-age values (i.e., years where there are no biological samples) are imputed using one of two methods: missing values at the beginning of the time series are imputed by extending the first non-missing value backwards; other missing values are imputed as the mean of the previous \Sexpr{nRoll} years.
+\seineSamples{}
+\plusGroup{}}
+\label{figWeightAge}
+\end{figure}
+
+% Proportion-at-age
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}ProportionAge.png}
+\caption{Time series of proportion-at-age for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the major stock assessment regions (SARs).
+\seineSamples{}
+\plusGroupProp{}}
+\label{figProportionAge}
+\end{figure}
+
+% Number aged
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}NumberAged.png}
+\caption{Number of biological samples by year for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the major stock assessment regions (SARs).
+\seineSamples{}}
+\label{figNumberAged}
+\end{figure}
+
+% Spawn index
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}SpawnIndex.png}
+\caption{Time series of spawn index in thousands of metric tonnes ($\text{t} \times 10^{3}$) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the major stock assessment regions (SARs).
+\qPeriods{}
+\spawnIndex{}}
+\label{figSpawnIndex}
+\end{figure}
+
+% Start a loop over stocks for storyboard
+\foreach \x in {\Sexpr{paste(allRegions$major, sep=",")}} {
+% Start a loop over models for storyboard
+\foreach \y in {\Sexpr{paste(mNames, sep=",")}} {
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}\x/Storyboard\y.png}
+\caption{Model output for Pacific herring in the \x{} major stock assessment region (SAR) for \y.
+Panel (a): model fit to time series of scaled spawn survey data in thousands of metric tonnes ($\text{t} \times 10^{3})$.
+\qPeriods{}
+The spawn survey data (i.e., spawn index) is scaled to abundance via the spawn survey scaling parameter $q$.
+%: surface survey spawn index scaling parameter $q_{1} = \Sexpr{qVals$q1$AM2}$; and dive survey spawn index scaling parameter $q_{2} = \Sexpr{qVals$q2$AM2}$.
+Panel (b): reconstructed number of age-\Sexpr{ageRec} recruits in millions.
+Circles with vertical lines indicate medians and \Sexpr{ciLevel*100}\% credible intervals, respectively.
+Panel (c): posterior estimates of instantaneous natural mortality.
+Line and shaded area indicate the median and \Sexpr{ciLevel*100}\% credible interval, respectively.
+Panel (d): posterior estimate of spawning biomass ($\mli{SB}_{t}$) for each year $t$ in thousands of metric tonnes ($\text{t} \times 10^{3}$).
+Line and shaded area indicate median and \Sexpr{ciLevel*100}\% credible interval, respectively.
+Also shown is unfished biomass ($\mli{SB}_0$) at far left, and projected spawning biomass assuming no fishing ($\mli{SB}_{\Sexpr{max(yrRange)+1}}$) at the far right: circles with vertical lines indicate medians and \Sexpr{ciLevel*100}\% credible intervals, respectively.
+Time series of vertical lines indicates commercial catch, excluding spawn on kelp (SOK).}
+\label{figStoryboard\y\x}
+\end{figure}
+} % End loop over models for storyboard
+} % End loop over stocks for storyboard
+
+%%------------------------------------------------------------------------------
+%% AGE COMPOSITION PLOTS (DATA ONLY)
+
+\begin{figure}[H]
+\begin{center}
+<<agecomps-trawl, fig.height=5, fig.width=8>>=
+make.age.comp.plot(base.model,
+                   ind = 1,
+                   type = 1)
+@
+\end{center}
+%\vspace{0mm}
+\caption{Age composition data for the Reference Case for the commercial trawl
+  fishery. Blue points represent zero samples.}
+\label{fig:agecomps-trawl}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<agecomps-surveys, fig.height=9, fig.width=8>>=
+old.par <- par(no.readonly = TRUE)
+layout(matrix(c(1, 2, 3, 0),
+              2,
+              2,
+              byrow = TRUE))
+make.age.comp.plot(base.model,
+                   ind = 2,
+                   type = 1,
+                   ind.letter = "a")
+make.age.comp.plot(base.model,
+                   ind = 4,
+                   type = 1,
+                   ind.letter = "b")
+make.age.comp.plot(base.model,
+                   ind = 5,
+                   type = 1,
+                   ind.letter = "c")
+par(old.par)
+@
+\end{center}
+\caption{Age composition data for the Reference Case for the surveys (a) QCSSS,
+  (b) HSSS, and (c) WCVISS. Blue points represent zero samples.}
+\label{fig:agecomps-surveys}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% LENGTH BOXPLOTS
+\begin{figure}[H]
+\begin{center}
+<<lengthsubfleet, fig.height=9, fig.width=8>>=
+old.par <- par(no.readonly = TRUE)
+ylim <- c(20, 90)
+layout(matrix(c(1, 2, 3, 4),
+              2,
+              2,
+              byrow = TRUE))
+make.length.plot(trawl.bio,
+                 start.yr = 2005,
+                 sex = 2,
+                 plot.subfleet = TRUE,
+                 y.lim = ylim,
+                 add = TRUE,
+                 ind.letter = "a")
+make.length.plot(trawl.bio,
+                 start.yr = 2005,
+                 sex = 2,
+                 plot.subfleet = FALSE,
+                 y.lim = ylim,
+                 add = TRUE,
+                 ind.letter = "b")
+make.length.plot(trawl.bio,
+                 start.yr = 2005,
+                 sex = 1,
+                 plot.subfleet = TRUE,
+                 y.lim = ylim,
+                 add = TRUE,
+                 ind.letter = "c")
+make.length.plot(trawl.bio,
+                 start.yr = 2005,
+                 sex = 1,
+                 plot.subfleet = FALSE,
+                 y.lim = ylim,
+                 add = TRUE,
+                 ind.letter = "d")
+par(old.par)
+@
+\end{center}
+\caption{Length quantiles (2.5\textsuperscript{th}, 50\textsuperscript{th}, and
+  97.5\textsuperscript{th} percentiles) from samples taken on freezer trawler
+  vessels (a and c) and shoreside vessels (b and d) for females (a and b) and
+  males (c and d).}
+\label{fig:lengthsubfleet}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+%%------------------------------------------------------------------------------
+%% HARVEST CONTROL RULE ILLUSTRATION PLOT
+\begin{figure}[H]
+\begin{center}
+<<hcrillustration, fig.height=5, fig.width=8>>=
+make.hcr.plot()
+@
+\end{center}
+\caption{Illustration of a harvest control rule consistent with the
+  Precautionary Approach for a hypothetical stock. The biomass-based
+  reference points are shown as vertical dotted lines. The limit removal
+  rate is shown as a horizontal blue line. In this illustration, biomass
+  (unspecified units) is shown on the bottom axis. LRP = Limit Reference Point;
+  USR = Upper Stock Reference; LRR = Limit Removal Rate. See \citet{dfo09}
+  for more detail.}
+\label{fig:hcrillustration}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% MCMC DIAGNOSTICS PLOTS
+
+\begin{figure}[H]
+\begin{center}
+<<priors>>=
+make.priors.posts.plot(base.model,
+                       priors.only = TRUE)
+@
+\end{center}
+\caption{Prior probability distributions used in the Reference Case.
+  Parameters $q_k$ represent gears where: $k=2$ is the QCSSS, $k=3$
+  is the HSMAS, $k=4$ is the HSSS, and $k=5$ is the WCVISS.}
+\label{fig:priors}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<priorsvsposts>>=
+make.priors.posts.plot(base.model,
+                       priors.only = FALSE)
+@
+\end{center}
+\caption{Prior probability distributions used in the Reference case with
+  comparative posterior histograms. Parameters $q_k$ represent gears where:
+  $k=2$ is the QCSSS, $k=3$ is the HSMAS, $k=4$ is the HSSS, and $k=5$
+  is the WCVISS. The dotted red lines are the MPD estimates from the
+  Reference Case.}
+\label{fig:priorsvsposts}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<traces, fig.height=8, fig.width=8>>=
+make.traces.plot(base.model,
+                 axis.lab.freq = 200)
+@
+\end{center}
+\caption{Trace plots for MCMC output of estimated parameters in the Reference
+  Case. The MCMC run had chain length \Sexpr{mcmc.length}, with a sample taken
+  at every \Sexpr{mcmc.samp.freq}th iteration. Of the \Sexpr{mcmc.num.samples}
+  samples saved, the first \Sexpr{mcmc.burnin} were removed as a burn-in period.
+  Parameters $q_k$ (catchability), $\hat{a}_k$ (selectivity-at-age-50\%), and
+  $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
+  follows: $k=1$: commercial trawl; $k=2$: QCSSS: $k=3$; HSMAS: $k=4$; HSSS,
+  and $k=5$; WCVISS. The HSMAS did not have estimates selectivity, so there are
+  no $\hat{a}_3$ or $\hat{\gamma}_3$ parameters.}
+\label{fig:traces}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<autocor, fig.height=8, fig.width=8>>=
+make.autocor.plot(base.model)
+@
+\end{center}
+\caption{Autocorrelation plots for MCMC output of estimated parameters in the
+Reference Case. See Figure~\ref{fig:traces} for parameter descriptions.}
+\label{fig:autocor}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<pairs, fig.height=8, fig.width=8>>=
+make.pairs.plot(base.model)
+@
+\end{center}
+\caption{Pairs plots for MCMC output of estimated parameters in the Reference Case.
+  See Figure~\ref{fig:traces} for parameter descriptions.}
+\label{fig:pairs}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% INDEX FIT PLOT
+\begin{figure}[H]
+\begin{center}
+<<indexfits, fig.height=9, fig.width=8>>=
+s.yr <- 1996
+e.yr <- 2014
+old.par <- par(no.readonly = TRUE)
+layout(matrix(c(1, 2, 3, 4),
+              2,
+              2,
+              byrow = TRUE))
+make.index.fit.plot(base.model,
+                    start.yr = s.yr,
+                    end.yr = e.yr,
+                    ind = 1,
+                    ylim = c(0, 20),
+                    ind.letter = "a")
+make.index.fit.plot(base.model,
+                    start.yr = s.yr,
+                    end.yr = e.yr,
+                    ind = 2,
+                    ylim = c(0, 20),
+                    ind.letter = "b")
+make.index.fit.plot(base.model,
+                    start.yr = s.yr,
+                    end.yr = e.yr,
+                    ind = 3,
+                    ylim = c(0, 20),
+                    ind.letter = "c")
+make.index.fit.plot(base.model,
+                    start.yr = s.yr,
+                    end.yr = e.yr,
+                    ind = 4,
+                    ylim = c(0, 20),
+                    ind.letter = "d")
+par(old.par)
+@
+\end{center}
+\caption{Reference Case MPD Index fits for (a) QSSS, (b) HSMAS,
+  (c) HSSS, (d) WCVISS.}
+\label{fig:indexfits}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% AGE COMP FITS PLOTS
+
+
+
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<agecomps-fits-wcviss, fig.height=5, fig.width=8>>=
+old.par <- par(no.readonly = TRUE)
+layout(matrix(c(1, 2), 2, 1, byrow = FALSE))
+make.age.comp.plot(base.model,
+                   ind = 5,
+                   type = 2)
+make.age.comp.plot(base.model,
+                   ind = 5,
+                   type = 3)
+par(old.par)
+@
+\end{center}
+\caption{Age composition fits and residuals for the Reference Case for the
+  WCVISS. Blue points represent zero samples, red are positive residuals,
+  and black are negative residuals.}
+\label{fig:agecomps-fits-wcviss}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% SELECTIVITY PLOT
+\begin{figure}[H]
+\begin{center}
+<<selex, fig.height=5,fig.width=8>>=
+make.selex.comparison.plot(base.model,
+                           gear.names,
+                           ind = c(1, 2, 3, 4, 5),
+                           areas = c("3C",
+                                     "3D",
+                                     "5A",
+                                     "5B",
+                                     "5C",
+                                     "5D",
+                                     "5E"),
+                           show.mat = TRUE,
+                           bio = bio,
+                           leg = "bottomright")
+@
+\end{center}
+\caption{Estimated and Fixed selectivities for the Reference Case, compared
+  with female maturity.}
+\label{fig:selex}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% REFERENCE POINT PLOT
+\begin{figure}[H]
+\begin{center}
+<<ref.points, fig.height=5,fig.width=8>>=
+make.reference.points.plot(base.model,
+                           ref.pts = c("bo",
+                                       "bmsy",
+                                       "msy",
+                                       "umsy"))
+@
+\end{center}
+\caption{Posterior reference points for the Reference Case. Bars represent
+  \Sexpr{mcmc.ci} credible intervals. MSY, B\subscr{0}, and B\subscr{MSY}
+  values are in thousands of tonnes.}
+\label{fig:ref-points}
+\end{figure}
+
+
+
+
+
+
+
+%%------------------------------------------------------------------------------
+%% FISHING MORTALITY PLOT
+\begin{figure}[H]
+\begin{center}
+<<F, fig.height=5, fig.width=8>>=
+make.fishing.mort.mcmc.plot(base.model,
+                            ylim = c(0, 0.5),
+                            opacity = 20,
+                            col = "black")
+@
+\end{center}
+\caption{Fishing mortality for the Reference Case. The shaded area represents
+  the \Sexpr{mcmc.ci} credible interval.}
+\label{fig:f-mort}
+
+%%------------------------------------------------------------------------------
+%% RELATIVE SPAWNING BIOMASS PLOT
+\begin{center}
+<<depletion, fig.height=5, fig.width=8>>=
+make.rel.biomass.mcmc.plot(base.model,
+                           opacity = 20)
+@
+\end{center}
+\caption{Relative median posterior spawning biomass for the Reference Case.
+  The shaded area represents the \Sexpr{mcmc.ci} credible interval.}
+\label{fig:depletion}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%%%%%%%%%%%%%%%%%%%%%%%
+%% SENSITIVITY PLOTS
+%% Survey indices
+
+\begin{figure}[H]
+\begin{center}
+<<sens-sig-indices, fig.height=9, fig.width=8>>=
+s.yr <- 1996
+e.yr <- 2014
+old.par <- par(no.readonly = TRUE)
+layout(matrix(c(1,2,3,4), 2, 2, byrow = TRUE))
+make.index.fit.plot(c(base.model, sens.models.1),
+                    model.names = c(base.model.name, sens.model.names.1),
+                    leg = "bottomright",
+                    start.yr = s.yr,
+                    end.yr = e.yr,
+                    ind = 1,
+                    ylim = c(0,20),
+                    ind.letter = "a")
+make.index.fit.plot(c(base.model, sens.models.1),
+                    start.yr = s.yr,
+                    end.yr = e.yr,
+                    ind = 2,
+                    ylim = c(0,20),
+                    ind.letter = "b")
+make.index.fit.plot(c(base.model, sens.models.1),
+                    start.yr = s.yr,
+                    end.yr = e.yr,
+                    ind = 3,
+                    ylim = c(0,20),
+                    ind.letter = "c")
+make.index.fit.plot(c(base.model, sens.models.1),
+                    start.yr = s.yr,
+                    end.yr = e.yr,
+                    ind = 4,
+                    ylim = c(0,20),
+                    ind.letter = "d")
+par(old.par)
+@
+\end{center}
+\caption{MPD Index fits for (a) QSSS, (b) HSMAS, (c) HSSS, (d) WCVISS for models
+  examining sensitivity to the $\sigma$ parameter.}
+\label{fig:sens-sig-indices}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% Sigma sensitivity - Spawning biomass
+
+\begin{figure}[H]
+\begin{center}
+<<sens-sig-biomass, fig.height=5, fig.width=8>>=
+make.biomass.mcmc.plot(c(base.model, sens.models.1),
+                       model.names = c(base.model.name, sens.model.names.1),
+                       ylim = c(0, 1300),
+                       opacity = 20,
+                       leg = "topright")
+@
+\end{center}
+\caption{Estimated median spawning biomass with \Sexpr{mcmc.ci} credible intervals, for
+  models examining sensitivity to the $\sigma$ parameter. Points and bars
+  represent the estimates of $B_0$ with \Sexpr{mcmc.ci} credible interval.}
+\label{fig:sens-sig-biomass}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% Sigma sensitivity - Recruitment
+\begin{figure}[H]
+\begin{center}
+<<sens-sig-recruitment, fig.height=9, fig.width=8>>=
+old.par <- par(no.readonly = TRUE)
+layout(matrix(c(1, 2), 2, 1, byrow = FALSE))
+make.recr.mcmc.plot(c(base.model, sens.models.1),
+                    c(base.model.name, sens.model.names.1),
+                    type = 1,
+                    ylim = c(0, 27),
+                    offset = 0.1,
+                    show.median = TRUE,
+                    show.mean = TRUE,
+                    leg = "topright",
+                    ind.letter = "a")
+make.recr.mcmc.plot(c(base.model, sens.models.1),
+                    c(base.model.name, sens.model.names.1),
+                    type = 2,
+                    ylim = c(-1, 4),
+                    offset = 0.1,
+                    ind.letter = "b")
+par(old.par)
+@
+\end{center}
+\caption{Estimated recruitment (a) and recruitment deviations (b) with
+  \Sexpr{mcmc.ci} credible intervals, for models examining sensitivity to the $\sigma$
+  parameter.}
+\label{fig:sens-sig-recruitment}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% Tau sensitivity - Recruitment
+\begin{figure}[H]
+\begin{center}
+<<sens-tau-recruitment, fig.height=9, fig.width=8>>=
+old.par <- par(no.readonly = TRUE)
+layout(matrix(c(1, 2), 2, 1, byrow = FALSE))
+make.recr.mcmc.plot(c(base.model, sens.models.2),
+                    c(base.model.name, sens.model.names.2),
+                    type = 1,
+                    ylim = c(0, 27),
+                    offset = 0.1,
+                    append.base.txt = ", Tau = 0.8",
+                    show.median = TRUE,
+                    show.mean = TRUE,
+                    leg = "topright",
+                    ind.letter = "a")
+make.recr.mcmc.plot(c(base.model, sens.models.2),
+                    c(base.model.name, sens.model.names.2),
+                    type = 2,
+                    ylim = c(-1, 4),
+                    offset = 0.1,
+                    ind.letter = "b")
+par(old.par)
+@
+\end{center}
+\caption{Estimated recruitment (a) and recruitment deviations (b) with
+  \Sexpr{mcmc.ci} credible intervals, for models examining sensitivity to the $\tau$
+  parameter.}
+\label{fig:sens-tau-recruitment}
+\end{figure}
+
+
+%%------------------------------------------------------------------------------
+%% Tau sensitivity - Spawning Biomass
+\begin{figure}[H]
+\begin{center}
+<<sens-tau-biomass, fig.height=5, fig.width=8>>=
+make.biomass.mcmc.plot(c(base.model, sens.models.2),
+                       model.names = c(base.model.name, sens.model.names.2),
+                       ylim = c(0, 1300),
+                       opacity = 20,
+                       append.base.txt = ", Tau = 0.8",
+                       leg = "topright")
+@
+\end{center}
+\caption{Estimated median spawning biomass with \Sexpr{mcmc.ci} credible intervals, for
+  models examining sensitivity to the $\tau$ parameter. Points and bars
+  represent the estimates of $B_0$ with \Sexpr{mcmc.ci} credible interval.}
+\label{fig:sens-tau-biomass}
+
+%%------------------------------------------------------------------------------
+%% Tau sensitivity - Relative Spawning Biomass
+\begin{center}
+<<sens-tau-depletion, fig.height=5,fig.width=8>>=
+make.rel.biomass.mcmc.plot(c(base.model, sens.models.2),
+                           c(base.model.name, sens.model.names.2),
+                           append.base.txt = ", Tau = 0.8",
+                           opacity = 20,
+                           leg = "topright")
+@
+\end{center}
+\caption{Estimated relative median spawning biomass with \Sexpr{mcmc.ci} credible
+  intervals, for models examining sensitivity to the $\tau$ parameter.}
+\label{fig:sens-tau-depletion}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% Steepness sensitivity - Relative Spawning Biomass
+\begin{figure}[H]
+\begin{center}
+<<sens-h-biomass, fig.height=5,fig.width=8>>=
+make.biomass.mcmc.plot(c(base.model, sens.models.3),
+                       model.names = c(base.model.name, sens.model.names.3),
+                       ylim = c(0, 1300),
+                       opacity = 20,
+                       leg = "topright")
+@
+\end{center}
+\caption{Estimated median spawning biomass with \Sexpr{mcmc.ci} credible intervals,
+  for models examining sensitivity to the steepness parameter. Points and bars
+  represent the estimates of $B_0$ with \Sexpr{mcmc.ci} credible interval.}
+\label{fig:sens-h-biomass}
+
+\begin{center}
+<<sens-h-recruitment, fig.height=5,fig.width=8>>=
+make.recr.mcmc.plot(c(base.model, sens.models.3),
+                    c(base.model.name, sens.model.names.3),
+                    type = 1,
+                    ylim = c(0, 27),
+                    offset = 0.1,
+                    leg = "topleft")
+@
+\end{center}
+\vspace{-3mm}
+\caption{Estimated median recruitment with \Sexpr{mcmc.ci} credible intervals, for
+  models examining sensitivity to the steepness parameter.}
+\label{fig:sens-h-recruitment}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% M sensitivity - Relative Spawning Biomass
+\begin{figure}[H]
+\begin{center}
+<<sens-msd-biomass, fig.height=5,fig.width=8>>=
+make.biomass.mcmc.plot(c(base.model, sens.models.4),
+                       model.names = c(base.model.name, sens.model.names.4),
+                       ylim = c(0, 1300),
+                       opacity = 20,
+                       leg = "topright")
+@
+\end{center}
+\caption{Estimated median spawning biomass with \Sexpr{mcmc.ci} credible intervals, for
+  models examining sensitivity to the standard deviation of the natural mortality
+  parameter. Points and bars represent the estimates of $B_0$ with
+  \Sexpr{mcmc.ci} credible interval.}
+\label{fig:sens-msd-biomass}
+
+\begin{center}
+<<sens-msd-recruitment, fig.height=5,fig.width=8>>=
+make.recr.mcmc.plot(c(base.model, sens.models.4),
+                    c(base.model.name, sens.model.names.4),
+                    type = 1,
+                    ylim = c(0, 27),
+                    offset = 0.1,
+                    leg = "topleft")
+@
+\end{center}
+\vspace{-3mm}
+\caption{Estimated median recruitment with \Sexpr{mcmc.ci} credible intervals, for
+  models examining sensitivity to the standard deviation of the natural
+  mortality parameter.}
+\label{fig:sens-msd-recruitment}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% M sensitivity 2 - Relative Spawning Biomass
+\begin{figure}[H]
+\begin{center}
+<<sens-m-biomass, fig.height=5,fig.width=8>>=
+make.biomass.mcmc.plot(c(base.model, sens.models.5),
+                       model.names = c(base.model.name, sens.model.names.5),
+                       ylim = c(0, 1300),
+                       opacity = 20,
+                       leg = "topright")
+@
+\end{center}
+\caption{Estimated median spawning biomass with \Sexpr{mcmc.ci} credible intervals, for
+  models examining sensitivity to the natural mortality parameter. Points and
+  bars represent the estimates of $B_0$ with \Sexpr{mcmc.ci} credible interval.}
+\label{fig:sens-m-biomass}
+
+\begin{center}
+<<sens-m-recruitment, fig.height=5,fig.width=8>>=
+make.recr.mcmc.plot(c(base.model, sens.models.5),
+                    c(base.model.name, sens.model.names.5),
+                    type = 1,
+                    ylim = c(0, 27),
+                    offset = 0.1,
+                    leg = "topleft")
+@
+\end{center}
+\vspace{-3mm}
+\caption{Estimated median recruitment with \Sexpr{mcmc.ci} credible intervals, for
+  models examining sensitivity to the the natural mortality parameter.}
+\label{fig:sens-m-recruitment}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% Q sensitivity - Relative Spawning Biomass
+\begin{figure}[H]
+\begin{center}
+<<sens-q-biomass, fig.height=5,fig.width=8>>=
+make.biomass.mcmc.plot(c(base.model, sens.models.6),
+                       model.names = c(base.model.name, sens.model.names.6),
+                       ylim = c(0, 1300),
+                       opacity = 20,
+                       leg = "topright")
+@
+\end{center}
+\caption{Estimated median spawning biomass with \Sexpr{mcmc.ci} credible intervals, for
+  models examining sensitivity to the catchability parameter. Points and
+  bars represent the estimates of $B_0$ with \Sexpr{mcmc.ci} credible interval.}
+\label{fig:sens-q-biomass}
+
+\begin{center}
+<<sens-q-recruitment, fig.height=5,fig.width=8>>=
+make.recr.mcmc.plot(c(base.model, sens.models.7),
+                    c(base.model.name, sens.model.names.7),
+                    type = 1,
+                    ylim = c(0, 27),
+                    offset = 0.1,
+                    leg = "topleft")
+@
+\end{center}
+\vspace{-3mm}
+\caption{Estimated median recruitment with \Sexpr{mcmc.ci} credible intervals, for
+  models examining sensitivity to the the catchability parameter.}
+\label{fig:sens-q-recruitment}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% Q sensitivity 2 - Relative Spawning Biomass
+\begin{figure}[H]
+\begin{center}
+<<sens-qsd-biomass, fig.height=5,fig.width=8>>=
+make.biomass.mcmc.plot(c(base.model, sens.models.7),
+                       model.names = c(base.model.name, sens.model.names.7),
+                       ylim = c(0, 1600),
+                       opacity = 20,
+                       leg = "topright")
+@
+\end{center}
+\caption{Estimated median spawning biomass with \Sexpr{mcmc.ci} credible intervals, for
+  models examining sensitivity to the catchability standard deviation parameter.
+  Points and bars represent the estimates of $B_0$ with \Sexpr{mcmc.ci} credible
+  interval.}
+\label{fig:sens-qsd-biomass}
+
+\begin{center}
+<<sens-qsd-recruitment, fig.height=5,fig.width=8>>=
+make.recr.mcmc.plot(c(base.model, sens.models.7),
+                    c(base.model.name, sens.model.names.7),
+                    type = 1,
+                    ylim = c(0, 27),
+                    offset = 0.1,
+                    leg = "topleft")
+@
+\end{center}
+\vspace{-3mm}
+\caption{Estimated median recruitment with \Sexpr{mcmc.ci} credible intervals, for
+  models examining sensitivity to the the catchability standard deviation
+  parameter.}
+\label{fig:sens-qsd-recruitment}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% Trawl selectivity sensitivity - selectivity
+\begin{figure}[H]
+\begin{center}
+<<sens-trawlsel-selex, fig.height=5,fig.width=8>>=
+make.selex.comparison.plot(c(base.model,
+                             sens.models.8),
+                           c(base.model.name,
+                             sens.model.names.8),
+                           ind = 1,
+                           leg = "bottomright")
+@
+\end{center}
+\caption{Trawl selectivity for models examining sensitivity to trawl
+  selectivity.}
+\label{fig:sens-trawlsel-selex}
+
+\begin{center}
+<<sens-trawl-selex-biomass, fig.height=5,fig.width=8>>=
+make.biomass.mcmc.plot(c(base.model,
+                         sens.models.8),
+                       model.names = c(base.model.name,
+                                       sens.model.names.8),
+                       ylim = c(0, 1300),
+                       opacity = 20,
+                       leg = "topright")
+@
+\end{center}
+\caption{Estimated median spawning biomass with \Sexpr{mcmc.ci} credible intervals, for
+  models examining sensitivity to trawl selectivity. Points and bars represent
+  the estimates of $B_0$ with \Sexpr{mcmc.ci} credible interval.}
+\label{fig:sens-trawl-selex-biomass}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% Trawl selectivity sensitivity - reference points
+\begin{figure}[htp]
+\begin{center}
+<<sens-trawl-selex-refpoints, fig.height=5,fig.width=8>>=
+make.reference.points.plot(c(base.model,
+                             sens.models.8))
+@
+\end{center}
+\caption{Posterior reference points for models examining sensitivity to trawl
+  selectivity. Bars represent \Sexpr{mcmc.ci} credible intervals. 1 =
+  \Sexpr{base.model.name}, 2 = \Sexpr{sens.model.names.8[1]}, 3 =
+  \Sexpr{sens.model.names.8[2]}. MSY-based reference points are in thousands
+  of tonnes.}
+\label{fig:sens-trawl-selex-ref-points}
+\end{figure}
+
+\clearpage

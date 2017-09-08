@@ -1,0 +1,12 @@
+% Some common notes and comments
+\newcommand{\sampleSize}{Each sample is approximately 100 fish.}
+\newcommand{\seineSamples}{Biological summaries only include samples collected using seine nets (commercial and test) due to size-selectivity of other gear types such as gillnet.}
+\newcommand{\repSamples}{Only representative biological samples are included, where `representative' indicates whether the herring sample in the set accurately reflects the larger herring school.}
+\newcommand{\plusGroup}{The age-\Sexpr{max(ageRange)} class is a `plus group' which includes fish ages \Sexpr{max(ageRange)} and older.}
+\newcommand{\spawnIndex}{The `spawn index' represents the raw survey data only, and is not scaled by the spawn survey scaling parameter, $q$.}
+\newcommand{\trendLine}{The thick black line is a \Sexpr{smLine} curve, and the shaded area is the \Sexpr{ciLevel*100}\% confidence interval.}
+\newcommand{\qPeriods}{The spawn index has two distinct periods defined by the dominant survey method: surface surveys (\Sexpr{qYrs$q1}), and dive surveys (\Sexpr{qYrs$q2}).}
+\newcommand{\legendNear}{Legend: `Nearshore' refers to samples collected using cast nets as part of a pilot study with WCVI First Nations.}
+\newcommand{\legendPeriod}{Legend: `Gear1' represents the reduction, the food and bait, as well as the special use fishery; `Gear2' represents the roe seine fishery; and `Gear3' represents the roe gillnet fishery.}
+\newcommand{\darkThisYr}{The year \Sexpr{assess.yr} has a darker bar to facilitate interpretation.}
+\newcommand{\plusGroupProp}{The age-\Sexpr{agePlusProp} class is a `plus group' which includes fish ages \Sexpr{agePlusProp} and older.}

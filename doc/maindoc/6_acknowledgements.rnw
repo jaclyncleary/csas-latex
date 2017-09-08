@@ -1,0 +1,9 @@
+\section{ACKNOWLEDGEMENTS}
+
+Thanks...
+
+% References
+\clearpage
+\bibliographystyle{res-doc}
+\bibliography{../../herring}
+\clearpage

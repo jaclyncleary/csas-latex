@@ -1,0 +1,19 @@
+\section{RECOMMENDATIONS AND YIELD OPTIONS}
+
+[Placeholder]
+
+\subsection{PROJECTED BIOMASS IN \Sexpr{assess.yr+1}}
+
+[Placeholder]
+
+\subsection{DECISION TABLES}
+
+[Placeholder]
+
+\subsubsection{Reference case}
+
+[Placeholder]
+
+\subsubsection{Alternative decision table(s)}
+
+[Placeholder]
