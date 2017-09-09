@@ -53,8 +53,8 @@ UsePackages <- function( pkgs, locn="https://cran.rstudio.com/" ) {
 }  # End UsePackages function
 
 # Make packages available
-UsePackages( pkgs=c("tidyverse", "RODBC", "zoo", "Hmisc", "scales", "sp", 
-        "maptools", "rgdal", "rgeos", "raster", "xtable", "cowplot", "grid", 
+UsePackages( pkgs=c("tidyverse", "zoo", "Hmisc", "scales", "sp", "cowplot",
+        "maptools", "rgdal", "rgeos", "raster", "xtable", "grid", 
         "colorRamps", "RColorBrewer", "stringr", "data.table") ) 
 
 
@@ -169,7 +169,7 @@ wtRange <- c( 35, 130 ) / 1000
 #####################
 
 # Load helper functions
-source( file=file.path("..", "..", "DataSummaries", "Functions.R") )
+source( file=file.path("Functions.R") )
 
 
 ################
