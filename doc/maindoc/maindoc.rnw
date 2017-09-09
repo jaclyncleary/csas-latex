@@ -1,9 +1,47 @@
 \abstract{}
 
+\Sexpr{fish.name} (\emph{\Sexpr{science.name}}, \Sexpr{common.name}) are an
+important component of the bottom trawl fishery in \Sexpr{bc}. They are managed
+as a coastwide stock, with a TAC of 15,000 t and catch of 10,679 t in 2014.
+Prior to the introduction of freezer trawlers in the mid-2000s, most of the
+historical catch of \Sexpr{fish.name} is understood to have been discarded at
+sea. This was largely due to proteolysis, which occurs in the muscle tissue of
+this species a short time after it is caught, making the flesh unpalatable.
+In the past five years, markets have been established for fillets that have
+been frozen at sea, and the freezer trawl fleet has taken an increasing
+proportion of the coastwide catch.
+
+This assessment fits a female only Bayesian age-structured model to catch,
+survey and age-composition data from the years 1996-2014, for management areas
+3CD (West Coast Vancouver Island), 5AB (Queen Charlotte Sound), 5CD
+(Hecate Strait), and 5E (West Coast Haida Gwaii). Catch data prior to the
+introduction of at-sea observers in 1996 were considered too unreliable for
+inclusion in the assessment due to unknown quantities of discarding at sea.
+
+The Reference Case model presented in this assessment estimates the female
+spawning biomass to have been on a flat to increasing trajectory since 1996,
+consistent with the catch and survey data. A set of sensitivity analyses was
+done to test the effects of fixed parameters and assumed prior probability
+distributions on model outcomes. In all scenarios, there was strong
+confounding among parameters representing productivity and scale of the
+population, indicating that there was limited information in the short time
+series of available data to resolve the population scale.
+
+Management advice is provided in the form of decision tables which forecast the
+impacts of a range of 2015 catch levels on \Sexpr{fish.name} stock status
+relative to these reference points. The Reference Case decision table suggests
+that a 2015 catch equal to any of the catch levels tested, ranging from 0~t to
+30,000~t (twice the 2014 TAC), would result in a 2016 biomass above all of the
+candidate biomass-based reference points tested, and 2015 harvest rate below
+the estimated \emph{U}\subscr{MSY}. Large uncertainty in the assessment is,
+however emphasised. The magnitude of catch and discards prior to 1996 is a
+major source of uncertainty in this assessment that could provide critical
+information about the scale and productivity of this stock. Ageing of archived
+otoliths from the freezer trawl fleet is a high priority recommendation.
+
 This document presents stock assessments for \Sexpr{fish.name}
 (\emph{\Sexpr{science.name}}) in \Sexpr{bc} waters using data current to
 \Sexpr{end.yr}.
-
 
 \frenchabstract{
   État du hareng du Pacifique (\emph{\Sexpr{science.name}}) de la
