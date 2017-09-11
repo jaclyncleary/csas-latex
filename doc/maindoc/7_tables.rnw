@@ -53,6 +53,38 @@ make.parameters.table(sog.b,
                       placement = "H")
 @
 
+<<hg.parameter.est.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+              "97.5\\textsuperscript{th} percentile) and MPD estimates of key ",
+              "parameters from the Reference Case for Haida Gwaii. Subscripts on $q$ ",
+              "(catchability), $\\hat{a}$ (selectivity age-at-50\\%), and ",
+              "$\\hat{\\gamma}$ (selectivity standard deviation-at-50\\%) ",
+              "parameters indicate: 1 = Other fisheries, 2 = Roe seine, ",
+              "3 = Roe gillnet.")
+make.parameters.est.table(hg.b,
+                          xcaption = cap,
+                          xlabel = "tab:hg-parameters-posts",
+                          font.size = 9,
+                          space.size = 10,
+                          placement = "H")
+@
+
+<<sog.parameter.est.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+              "97.5\\textsuperscript{th} percentile) and MPD estimates of key ",
+              "parameters from the Reference Case for the Strait of Georgia. Subscripts on $q$ ",
+              "(catchability), $\\hat{a}$ (selectivity age-at-50\\%), and ",
+              "$\\hat{\\gamma}$ (selectivity standard deviation-at-50\\%) ",
+              "parameters indicate: 1 = Other fisheries, 2 = Roe seine, ",
+              "3 = Roe gillnet.")
+make.parameters.est.table(hg.b,
+                          xcaption = cap,
+                          xlabel = "tab:sog-parameters-posts",
+                          font.size = 9,
+                          space.size = 10,
+                          placement = "H")
+@
+
 %% <<parameter.est.table, results='asis', echo=FALSE>>=
 %% cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
 %%               "97.5\\textsuperscript{th} percentile) and MPD estimates of key ",
