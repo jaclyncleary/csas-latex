@@ -391,7 +391,8 @@ make.value.table <- function(model,
                              xlabel   = "default",
                              font.size = 9,
                              space.size = 10,
-                             placement = "H"){
+                             placement = "H",
+                             tabular.environment = "tabular"){
   ## Returns an xtable in the proper format for values (biomasas, recr, etc)
   ##
   ## out.dat - one of the quants objects as output by the calc.mcmc function
@@ -441,7 +442,8 @@ make.value.table <- function(model,
         sanitize.text.function = function(x){x},
         size = size.string,
         table.placement = placement,
-        booktabs = TRUE)
+        booktabs = TRUE,
+        tabular.environment = tabular.environment)
 }
 
 make.sens.parameter.table <- function(tab,
