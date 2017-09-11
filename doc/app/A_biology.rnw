@@ -62,13 +62,15 @@ Sex                       & valid sex observation (1 or 2 ) \\
 
 \appsection{FIGURES}
 
+% TODO: Enable these figures when they're available again
+
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<vonb, fig.height=7, fig.width=8>>=
-plot.growth(bio,
-            leg = "bottomright")
-@
+% <<vonb, fig.height=7, fig.width=8>>=
+% plot.growth(bio,
+%             leg = "bottomright")
+% @
 \end{center}
 \vspace{0mm}
 \caption{Growth data and model fits for \Sexpr{fish.name}.
@@ -79,10 +81,10 @@ Estimated parameters $L_{\infty}$, $k$, and $t_0$ are shown in the legend. See E
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<lw, fig.height=7, fig.width=8>>=
-plot.lw(bio,
-        leg = "topleft")
-@
+% <<lw, fig.height=7, fig.width=8>>=
+% plot.lw(bio,
+%         leg = "topleft")
+% @
 \end{center}
 \vspace{0mm}
 \caption{Length/weight data and model fits for \Sexpr{fish.name}. Estimated
@@ -93,10 +95,10 @@ plot.lw(bio,
 %%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}[htp]
 \begin{center}
-<<matage, fig.height=7, fig.width=8>>=
-plot.ma(bio,
-        leg = "bottomright")
-@
+% <<matage, fig.height=7, fig.width=8>>=
+% plot.ma(bio,
+%         leg = "bottomright")
+% @
 \end{center}
 \vspace{0mm}
 \caption{Maturity data and model fits for \Sexpr{fish.name}.
