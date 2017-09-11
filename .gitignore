@@ -16,7 +16,6 @@ res-doc.lot
 doc/figure
 doc/res-doc.tex
 doc/knitr-cache
-models
 models-backup
 models-mwe
 models-arrowtooth
