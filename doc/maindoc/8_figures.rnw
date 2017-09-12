@@ -245,6 +245,7 @@ make.traces.plot(hg.b, axis.lab.freq = 200)
 \label{fig:hg-traces}
 \end{figure}
 
+%%------------------------------------------------------------------------------
 \begin{figure}[H]
 \begin{center}
 <<sog.traces, fig.height=8, fig.width=8>>=
@@ -261,17 +262,32 @@ make.traces.plot(sog.b, axis.lab.freq = 200)
 \label{fig:sog-traces}
 \end{figure}
 
-% %%------------------------------------------------------------------------------
-% \begin{figure}[H]
-% \begin{center}
-% <<autocor, fig.height=8, fig.width=8>>=
-% make.autocor.plot(base.model)
-% @
-% \end{center}
-% \caption{Autocorrelation plots for MCMC output of estimated parameters in the
-% Reference Case. See Figure~\ref{fig:traces} for parameter descriptions.}
-% \label{fig:autocor}
-% \end{figure}
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg-autocor, fig.height=8, fig.width=8>>=
+make.autocor.plot(hg.b)
+@
+\end{center}
+\caption{Autocorrelation plots for MCMC output of estimated parameters in the
+  Reference Case for Haida Gwaii. See Figure~\ref{fig:hg-traces} for parameter
+  descriptions.}
+\label{fig:hg-autocor}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<sog-autocor, fig.height=8, fig.width=8>>=
+make.autocor.plot(sog.b)
+@
+\end{center}
+\caption{Autocorrelation plots for MCMC output of estimated parameters in the
+  Reference Case for the Strait of Georgia. See Figure~\ref{fig:sog-traces} for parameter
+  descriptions.}
+\label{fig:sog-autocor}
+\end{figure}
+
 % 
 % %%------------------------------------------------------------------------------
 % \begin{figure}[H]
