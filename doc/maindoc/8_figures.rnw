@@ -203,18 +203,30 @@ Time series of vertical lines indicates commercial catch, excluding spawn on kel
 % %%------------------------------------------------------------------------------
 % %% MCMC DIAGNOSTICS PLOTS
 % 
-% \begin{figure}[H]
-% \begin{center}
-% <<priors>>=
-% make.priors.posts.plot(base.model,
-%                        priors.only = TRUE)
-% @
-% \end{center}
-% \caption{Prior probability distributions used in the Reference Case.
-%   Parameters $q_k$ represent gears where: $k=2$ is the QCSSS, $k=3$
-%   is the HSMAS, $k=4$ is the HSSS, and $k=5$ is the WCVISS.}
-% \label{fig:priors}
-% \end{figure}
+\begin{figure}[H]
+\begin{center}
+<<hg.priors>>=
+make.priors.posts.plot(hg.b, priors.only = FALSE)
+@
+\end{center}
+\caption{Prior probability distributions used in the Reference Case for Haida Gwaii.
+  Parameters $q_k$ represent gears where: $k=1$ is the surface survey and
+  $k=2$ is the dive survey.}
+\label{fig:hg-priors}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<sog.priors>>=
+make.priors.posts.plot(sog.b, priors.only = FALSE)
+@
+\end{center}
+\caption{Prior probability distributions used in the Reference Case for the
+  Strait of Georgia. Parameters $q_k$ represent gears where: $k=1$ is the surface
+  survey and $k=2$ is the dive survey.}
+\label{fig:sog-priors}
+\end{figure}
+
 % %%------------------------------------------------------------------------------
 % 
 % \begin{figure}[H]
