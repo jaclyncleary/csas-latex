@@ -85,18 +85,18 @@ make.parameters.est.table(hg.b,
                           placement = "H")
 @
 
-<<hg.spawning.biomass.table, results='asis', echo=FALSE>>=
+<<hg.spawning.biomass.depletion.table, results='asis', echo=FALSE>>=
 cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
               "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
-              "spawning biomass (1000 t) for the Reference Case for Haida Gwaii.")
-make.value.table(hg.b,
-                 type = 1,
-                 xcaption = cap,
-                 xlabel = "tab:hg-spawn-biomass",
-                 font.size = 9,
-                 space.size = 10,
-                 placement = "H",
-                 tabular.environment = "longtable")
+              "spawning biomass (1000 t) and relative spawning ",
+              "biomass for the Reference Case for Haida Gwaii.")
+make.biomass.depletion.table(hg.b,
+                             xcaption = cap,
+                             xlabel = "tab:hg-spawn-biomass",
+                             font.size = 9,
+                             space.size = 10,
+                             placement = "H",
+                             tabular.environment = "longtable")
 @
 
 \clearpage
@@ -104,16 +104,15 @@ make.value.table(hg.b,
 <<sog.spawning.biomass.table, results='asis', echo=FALSE>>=
 cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
               "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
-              "spawning biomass (1000 t) for the Reference Case for ",
-              "the Strait of Georgia.")
-make.value.table(hg.b,
-                 type = 1,
-                 xcaption = cap,
-                 xlabel = "tab:sog-spawn-biomass",
-                 font.size = 9,
-                 space.size = 10,
-                 placement = "H",
-                 tabular.environment = "longtable")
+              "spawning biomass (1000 t) and relative spawning ",
+              "biomass for the Reference Case for the Strait of Georgia.")
+make.biomass.depletion.table(sog.b,
+                             xcaption = cap,
+                             xlabel = "tab:sog-spawn-biomass",
+                             font.size = 9,
+                             space.size = 10,
+                             placement = "H",
+                             tabular.environment = "longtable")
 @
 
 %% <<parameter.est.table, results='asis', echo=FALSE>>=
@@ -145,18 +144,6 @@ make.value.table(hg.b,
 %%                       placement = "H")
 %% @
 
-%% <<spawning.biomass.table, results='asis', echo=FALSE>>=
-%% cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-%%               "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
-%%               "female spawning biomass (1000 t) for the Reference Case.")
-%% make.value.table(base.model,
-%%                  type = 1,
-%%                  xcaption = cap,
-%%                  xlabel = "tab:spawn-biomass",
-%%                  font.size = 9,
-%%                  space.size = 10,
-%%                  placement = "H")
-%% @
 
 %% <<recruitment.table, results='asis', echo=FALSE>>=
 %% cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",

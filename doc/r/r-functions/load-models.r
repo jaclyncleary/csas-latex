@@ -1059,8 +1059,7 @@ calc.mcmc <- function(model,
                                           "fmsy",
                                           "bmsy",
                                           "umsy",
-                                          "ssb",
-                                          "bo"))]
+                                          "ssb"))]
   p.dat <- fix.m(p.dat)
   p.dat <- mcmc.thin(p.dat, burnin, thin)
   p.dat.log <- calc.logs(p.dat)
@@ -1071,8 +1070,7 @@ calc.mcmc <- function(model,
   r.dat <- NULL
   if(inc.msy.ref.pts){
     tryCatch({
-      r.dat <- params.dat[ , which(nm %in% c("bo",
-                                             "bmsy",
+      r.dat <- params.dat[ , which(nm %in% c("bmsy",
                                              "msy",
                                              "fmsy",
                                              "umsy"))]
@@ -1080,6 +1078,15 @@ calc.mcmc <- function(model,
     }, warning = function(war){
     }, error = function(err){
       warning("MCMC calculations for msy-based reference points failed.\n")
+    })
+  }else{
+    tryCatch({
+      r.dat <- as.data.frame(params.dat[ , which(nm %in% c("bo"))])
+      r.dat <- mcmc.thin(r.dat, burnin, thin)
+      colnames(r.dat) <- "bo"
+    }, warning = function(war){
+    }, error = function(err){
+      warning("MCMC calculations for B0 failed.\n")
     })
   }
 
@@ -1095,21 +1102,19 @@ calc.mcmc <- function(model,
   ## Depletion
   depl.dat <- NULL
   depl.quants <- NULL
-  if(inc.msy.ref.pts){
-    tryCatch({
-      depl.dat <- apply(sbt.dat,
-                        2,
-                        function(x){x / r.dat$bo})
-      depl.quants <- apply(sbt.dat / r.dat$bo,
-                           2,
-                           quantile,
-                           prob = probs)
-      depl.quants <- rbind(depl.quants, mpd$bt / mpd$bo)
-      rownames(depl.quants)[4] <- "MPD"
-    }, warning = function(war){
-    }, error = function(err){
-    })
-  }
+  tryCatch({
+    depl.dat <- apply(sbt.dat,
+                      2,
+                      function(x){x / r.dat$bo})
+    depl.quants <- apply(sbt.dat / r.dat$bo,
+                         2,
+                         quantile,
+                         prob = probs)
+    depl.quants <- rbind(depl.quants, mpd$bt / mpd$bo)
+    rownames(depl.quants)[4] <- "MPD"
+  }, warning = function(war){
+  }, error = function(err){
+  })
 
   ## Recruitment
   recr.dat <- mcmc.thin(mc$rt[[1]], burnin, thin)

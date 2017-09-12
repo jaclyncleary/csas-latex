@@ -446,6 +446,71 @@ make.value.table <- function(model,
         tabular.environment = tabular.environment)
 }
 
+make.biomass.depletion.table <- function(model,
+                                         type,
+                                         digits = 3,
+                                         xcaption = "default",
+                                         xlabel   = "default",
+                                         font.size = 9,
+                                         space.size = 10,
+                                         placement = "H",
+                                         tabular.environment = "tabular"){
+  ## Returns an xtable with both spawning biomass and depletion in it.
+  ##  Based on make.value.table, but wider with both and extra headers
+  ##
+  ## digits - number of decimal places for the values
+  ## xcaption - caption to appear in the calling document
+  ## xlabel - the label used to reference the table in latex
+  ## font.size - size of the font for the table
+  ## space.size - size of the vertical spaces for the table
+  ## placement - latex code for placement of the table in document
+
+  if(class(model) == model.lst.class){
+    model <- model[[1]]
+    if(class(model) != model.class){
+      stop("The structure of the model list is incorrect.")
+    }
+  }
+
+  out.dat <- model$mcmccalcs$sbt.quants
+  out.dat <- rbind(out.dat, model$mcmccalcs$depl.quants)
+
+  tab <- f(t(out.dat), digits)
+  tab <- cbind(rownames(tab), tab)
+  col.names <- colnames(tab)
+  col.names[1] <- "Year"
+  col.names <- latex.bold(latex.perc(col.names))
+  colnames(tab) <- col.names
+
+  addtorow <- list()
+  addtorow$pos <- list()
+  addtorow$pos[[1]] <- -1
+  addtorow$command <- paste0("\\toprule",
+                             latex.amp(),
+                             latex.mcol(4,
+                                        "c",
+                                        latex.bold("Spawning Biomass")),
+                             latex.amp(),
+                             latex.mcol(4,
+                                        "c",
+                                        latex.bold("Relative Spawning Biomass")),
+                             latex.nline)
+
+  size.string <- latex.size.str(font.size, space.size)
+  print(xtable(tab,
+               caption = xcaption,
+               label = xlabel,
+               align = get.align(ncol(tab))),
+        caption.placement = "top",
+        include.rownames = FALSE,
+        sanitize.text.function = function(x){x},
+        size = size.string,
+        add.to.row = addtorow,
+        table.placement = placement,
+        booktabs = TRUE,
+        tabular.environment = tabular.environment)
+}
+
 make.sens.parameter.table <- function(tab,
                                       xcaption = "default",
                                       xlabel   = "default",
