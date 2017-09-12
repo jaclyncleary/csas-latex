@@ -64,32 +64,33 @@ load.iscam.files <- function(model.dir,
   model
 }
 
-delete.rdata.files <- function(models.dir = model.dir){
+delete.rdata.files <- function(del.dir = model.dir){
   ## Delete all rdata files found in the subdirectories of the models.dir
-  ## directory.
+  ## directory recursively.
   ##
   ## models.dir - directory name for all models location
-  dirs <- dir(models.dir)
 
-  rdata.files <- lapply(dirs,
+  dirs <- list.dirs(del.dir, recursive = FALSE)
+  subdirs <- list.dirs(dirs, recursive = FALSE)
+
+  ## Extract the last two directory names from the full paths to create
+  ##  the filenames
+  rdata.files <- lapply(subdirs,
                         function(x){
-                          d <- file.path(models.dir, x)
-                          d.subdirs <- dir(d)
-                          d.subdirs.fullpath <- file.path(d, d.subdirs)
-                          j <- file.path(d.subdirs.fullpath,
-                                         paste0(x, "-", dir(d), ".Rdata"))})
+                          d <- strsplit(x, "/")[[1]]
+                          fn <- paste0(d[length(d) - 1],
+                                       "-",
+                                       d[length(d)],
+                                       ".Rdata")
+                          dd <- file.path(x, fn)})
 
-  ans <- readline("This operation cannot be undone, are you sure (y/n)? ")
-  if(ans == "Y" | ans == "y"){
-    lapply(rdata.files,
-           function(x){
-             unlink(x, force = TRUE)
-             cat(paste0("Deleted ", x, "\n"))
-           })
-    cat("All rdata files were deleted.\n")
-  }else{
-    cat("No files were deleted.\n")
-  }
+  nil <- lapply(rdata.files,
+                function(x){
+                  if(file.exists(x)){
+                    unlink(x, force = TRUE)
+                    cat(paste0("Deleted ", x, "\n"))
+                  }
+                })
 }
 
 delete.dirs <- function(models.dir = model.dir,
