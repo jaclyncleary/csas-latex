@@ -313,101 +313,31 @@ make.pairs.plot(sog.b)
 \label{fig:sog-pairs}
 \end{figure}
 
-% %%------------------------------------------------------------------------------
-% %% INDEX FIT PLOT
-% \begin{figure}[H]
-% \begin{center}
-% <<indexfits, fig.height=9, fig.width=8>>=
-% s.yr <- 1996
-% e.yr <- 2014
-% old.par <- par(no.readonly = TRUE)
-% layout(matrix(c(1, 2, 3, 4),
-%               2,
-%               2,
-%               byrow = TRUE))
-% make.index.fit.plot(base.model,
-%                     start.yr = s.yr,
-%                     end.yr = e.yr,
-%                     ind = 1,
-%                     ylim = c(0, 20),
-%                     ind.letter = "a")
-% make.index.fit.plot(base.model,
-%                     start.yr = s.yr,
-%                     end.yr = e.yr,
-%                     ind = 2,
-%                     ylim = c(0, 20),
-%                     ind.letter = "b")
-% make.index.fit.plot(base.model,
-%                     start.yr = s.yr,
-%                     end.yr = e.yr,
-%                     ind = 3,
-%                     ylim = c(0, 20),
-%                     ind.letter = "c")
-% make.index.fit.plot(base.model,
-%                     start.yr = s.yr,
-%                     end.yr = e.yr,
-%                     ind = 4,
-%                     ylim = c(0, 20),
-%                     ind.letter = "d")
-% par(old.par)
-% @
-% \end{center}
-% \caption{Reference Case MPD Index fits for (a) QSSS, (b) HSMAS,
-%   (c) HSSS, (d) WCVISS.}
-% \label{fig:indexfits}
-% \end{figure}
-% 
-% %%------------------------------------------------------------------------------
-% %% AGE COMP FITS PLOTS
-% 
-% 
-% 
-% %%------------------------------------------------------------------------------
-% \begin{figure}[H]
-% \begin{center}
-% <<agecomps-fits-wcviss, fig.height=5, fig.width=8>>=
-% old.par <- par(no.readonly = TRUE)
-% layout(matrix(c(1, 2), 2, 1, byrow = FALSE))
-% make.age.comp.plot(base.model,
-%                    ind = 5,
-%                    type = 2)
-% make.age.comp.plot(base.model,
-%                    ind = 5,
-%                    type = 3)
-% par(old.par)
-% @
-% \end{center}
-% \caption{Age composition fits and residuals for the Reference Case for the
-%   WCVISS. Blue points represent zero samples, red are positive residuals,
-%   and black are negative residuals.}
-% \label{fig:agecomps-fits-wcviss}
-% \end{figure}
-% 
-% %%------------------------------------------------------------------------------
-% %% SELECTIVITY PLOT
-% \begin{figure}[H]
-% \begin{center}
-% <<selex, fig.height=5,fig.width=8>>=
-% make.selex.comparison.plot(base.model,
-%                            gear.names,
-%                            ind = c(1, 2, 3, 4, 5),
-%                            areas = c("3C",
-%                                      "3D",
-%                                      "5A",
-%                                      "5B",
-%                                      "5C",
-%                                      "5D",
-%                                      "5E"),
-%                            show.mat = TRUE,
-%                            bio = bio,
-%                            leg = "bottomright")
-% @
-% \end{center}
-% \caption{Estimated and Fixed selectivities for the Reference Case, compared
-%   with female maturity.}
-% \label{fig:selex}
-% \end{figure}
-% 
+%%------------------------------------------------------------------------------
+%% SELECTIVITY PLOT
+\begin{figure}[H]
+\begin{center}
+<<hg.selex, fig.height=5,fig.width=8>>=
+make.selex.comparison.plot(hg.b, gear.names, leg = "bottomright")
+@
+\end{center}
+\caption{Estimated and Fixed selectivities for the Reference Case for Haida
+  Gwaii.}
+\label{fig:hg-selex}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<sog.selex, fig.height=5,fig.width=8>>=
+make.selex.comparison.plot(sog.b, gear.names, leg = "bottomright")
+@
+\end{center}
+\caption{Estimated and Fixed selectivities for the Reference Case for the
+  Strait of Georgia.}
+\label{fig:sog-selex}
+\end{figure}
+
+%
 % %%------------------------------------------------------------------------------
 % %% REFERENCE POINT PLOT
 % \begin{figure}[H]
