@@ -227,43 +227,40 @@ make.priors.posts.plot(sog.b, priors.only = FALSE)
 \label{fig:sog-priors}
 \end{figure}
 
-% %%------------------------------------------------------------------------------
-% 
-% \begin{figure}[H]
-% \begin{center}
-% <<priorsvsposts>>=
-% make.priors.posts.plot(base.model,
-%                        priors.only = FALSE)
-% @
-% \end{center}
-% \caption{Prior probability distributions used in the Reference case with
-%   comparative posterior histograms. Parameters $q_k$ represent gears where:
-%   $k=2$ is the QCSSS, $k=3$ is the HSMAS, $k=4$ is the HSSS, and $k=5$
-%   is the WCVISS. The dotted red lines are the MPD estimates from the
-%   Reference Case.}
-% \label{fig:priorsvsposts}
-% \end{figure}
-% 
-% %%------------------------------------------------------------------------------
-% \begin{figure}[H]
-% \begin{center}
-% <<traces, fig.height=8, fig.width=8>>=
-% make.traces.plot(base.model,
-%                  axis.lab.freq = 200)
-% @
-% \end{center}
-% \caption{Trace plots for MCMC output of estimated parameters in the Reference
-%   Case. The MCMC run had chain length \Sexpr{mcmc.length}, with a sample taken
-%   at every \Sexpr{mcmc.samp.freq}th iteration. Of the \Sexpr{mcmc.num.samples}
-%   samples saved, the first \Sexpr{mcmc.burnin} were removed as a burn-in period.
-%   Parameters $q_k$ (catchability), $\hat{a}_k$ (selectivity-at-age-50\%), and
-%   $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
-%   follows: $k=1$: commercial trawl; $k=2$: QCSSS: $k=3$; HSMAS: $k=4$; HSSS,
-%   and $k=5$; WCVISS. The HSMAS did not have estimates selectivity, so there are
-%   no $\hat{a}_3$ or $\hat{\gamma}_3$ parameters.}
-% \label{fig:traces}
-% \end{figure}
-% 
+
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg.traces, fig.height=8, fig.width=8>>=
+make.traces.plot(hg.b, axis.lab.freq = 200)
+@
+\end{center}
+\caption{Trace plots for MCMC output of estimated parameters in the Reference
+  Case for Haida Gwaii. The MCMC run had chain length \Sexpr{mcmc.length}, with
+  a sample taken at every \Sexpr{mcmc.samp.freq}th iteration.
+  Parameters $q_k$ (catchability), $\hat{a}_k$ (selectivity-at-age-50\%), and
+  $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
+  follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe,
+  $k=4$: Surface survey, $k=5$: Dive survey.}
+\label{fig:hg-traces}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<sog.traces, fig.height=8, fig.width=8>>=
+make.traces.plot(sog.b, axis.lab.freq = 200)
+@
+\end{center}
+\caption{Trace plots for MCMC output of estimated parameters in the Reference
+  Case for the Strait of Georgia. The MCMC run had chain length \Sexpr{mcmc.length}, with
+  a sample taken at every \Sexpr{mcmc.samp.freq}th iteration.
+  Parameters $q_k$ (catchability), $\hat{a}_k$ (selectivity-at-age-50\%), and
+  $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
+  follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe,
+  $k=4$: Surface survey, $k=5$: Dive survey.}
+\label{fig:sog-traces}
+\end{figure}
+
 % %%------------------------------------------------------------------------------
 % \begin{figure}[H]
 % \begin{center}
