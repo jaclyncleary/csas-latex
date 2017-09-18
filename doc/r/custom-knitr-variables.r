@@ -17,6 +17,7 @@ bc <- "British Columbia"
 ## Base models and some of their outputs simplified
 ## Base model Haida Gwaii
 hg.b <- base.models[[1]][[1]]
+hg.am1 <- sens.models.1[[1]][[1]]
 hg.b.params <- as.data.frame(hg.b$mcmc$params)
 hg.b.mcc <- hg.b$mcmccalcs
 hg.b.p.quants <- as.data.frame(hg.b.mcc$p.quants)
@@ -74,13 +75,16 @@ hg.sig.tau <- calc.sig.tau(hg.b$ctl$params[6, 1], hg.b$ctl$params[7, 1])
 
 ## Base model Prince Rupert
 pr.b <- base.models[[2]][[1]]
+pr.am1 <- sens.models.1[[2]][[1]]
 
 ## Base model Central coast
 cc.b <- base.models[[3]][[1]]
+cc.am1 <- sens.models.1[[3]][[1]]
 
 ################################################################################
 ## Base model Strait of Georgia
 sog.b <- base.models[[4]][[1]]
+sog.am1 <- sens.models.1[[4]][[1]]
 sog.b.params <- as.data.frame(sog.b$mcmc$params)
 sog.b.mcc <- sog.b$mcmccalcs
 sog.b.p.quants <- as.data.frame(sog.b.mcc$p.quants)
@@ -138,6 +142,7 @@ sog.sig.tau <- calc.sig.tau(sog.b$ctl$params[6, 1], sog.b$ctl$params[7, 1])
 
 ## Base model WCVI
 wcvi.b <- base.models[[5]][[1]]
+wcvi.am1 <- sens.models.1[[5]][[1]]
 
 ################################################################################
 ## Number of mcmc samples, min and max median biomass

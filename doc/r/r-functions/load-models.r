@@ -1338,20 +1338,21 @@ calc.probabilities <- function(model,
     n.row <- nrow(d)
 
     k <- c(tac[t] * 1000,
-           length(which(d$B2018 < d$X03B0)) / n.row,
-           median(d$B2018 / d$X03B0))
+           ##length(which(d$B2018 < d$X03B0)) / n.row,
+           length(which(d[,paste0("B", e.yr.1)] < d$X03B0)) / n.row,
+           median(d[,paste0("B", e.yr.1)] / d$X03B0))
     if(t == 1){
       col.names <- c(latex.mlc(c(e.yr.1,
                                  "TAC",
                                  "(metric",
                                  "tonnes)")),
                      latex.mlc(c(paste0("P(SB_{",
-                                        e.yr,
+                                        e.yr.1,
                                         "}<"),
                                  "0.30SB_0"),
                                math.bold = TRUE),
                      latex.mlc(c(paste0("Med(SB_{",
-                                        e.yr,
+                                        e.yr.1,
                                         "}"),
                                  "0.30SB_0)"),
                                math.bold = TRUE))
@@ -1359,85 +1360,85 @@ calc.probabilities <- function(model,
     if(which.model == 2){
       if(which.stock == 1){
         k <- c(k,
-               length(which(d$B2018 < 10700)) / n.row,
-               median(d$B2018 / 10700))
+               length(which(d[,paste0("B", e.yr.1)] < 10700)) / n.row,
+               median(d[,paste0("B", e.yr.1)] / 10700))
         if(t == 1){
           col.names <- c(col.names,
                          latex.mlc(c(paste0("P(U_{",
-                                            e.yr,
+                                            e.yr.1,
                                             "}<"),
                                      "10,700)"),
                                    math.bold = TRUE),
                          latex.mlc(c(paste0("Med(SB_{",
-                                            e.yr,
+                                            e.yr.1,
                                             "}"),
                                      "10,700)"),
                                    math.bold = TRUE))
         }
       }else if(which.stock == 2){
         k <- c(k,
-               length(which(d$B2018 < 21200)) / n.row,
-               median(d$B2018 / 21200))
+               length(which(d[,paste0("B", e.yr.1)] < 21200)) / n.row,
+               median(d[,paste0("B", e.yr.1)] / 21200))
         if(t == 1){
           col.names <- c(col.names,
                          latex.mlc(c(paste0("P(U_{",
-                                            e.yr,
+                                            e.yr.1,
                                             "}<"),
                                      "21,200)"),
                                    math.bold = TRUE),
                          latex.mlc(c(paste0("Med(SB_{",
-                                            e.yr,
+                                            e.yr.1,
                                             "}"),
                                      "21,200)"),
                                    math.bold = TRUE))
         }
       }else if(which.stock == 3){
         k <- c(k,
-               length(which(d$B2018 < 12100)) / n.row,
-               median(d$B2018 / 12100))
+               length(which(d[,paste0("B", e.yr.1)] < 12100)) / n.row,
+               median(d[,paste0("B", e.yr.1)] / 12100))
         if(t == 1){
           col.names <- c(col.names,
                          latex.mlc(c(paste0("P(U_{",
-                                            e.yr,
+                                            e.yr.1,
                                             "}<"),
                                      "12,100)"),
                                    math.bold = TRUE),
                          latex.mlc(c(paste0("Med(SB_{",
-                                            e.yr,
+                                            e.yr.1,
                                             "}"),
                                      "12,100)"),
                                    math.bold = TRUE))
         }
       }else if(which.stock == 4){
         k <- c(k,
-               length(which(d$B2018 < 17600)) / n.row,
-               median(d$B2018 / 17600))
+               length(which(d[,paste0("B", e.yr.1)] < 17600)) / n.row,
+               median(d[,paste0("B", e.yr.1)] / 17600))
         if(t == 1){
           col.names <- c(col.names,
                          latex.mlc(c(paste0("P(U_{",
-                                            e.yr,
+                                            e.yr.1,
                                             "}<"),
                                      "17,600)"),
                                    math.bold = TRUE),
                          latex.mlc(c(paste0("Med(SB_{",
-                                            e.yr,
+                                            e.yr.1,
                                             "}"),
                                      "17,600)"),
                                    math.bold = TRUE))
         }
       }else if(which.stock == 5){
         k <- c(k,
-               length(which(d$B2018 < 18800)) / n.row,
-               median(d$B2018 / 18800))
+               length(which(d[,paste0("B", e.yr.1)] < 18800)) / n.row,
+               median(d[,paste0("B", e.yr.1)] / 18800))
         if(t == 1){
           col.names <- c(col.names,
                          latex.mlc(c(paste0("P(U_{",
-                                            e.yr,
+                                            e.yr.1,
                                             "}<"),
                                      "18,800)"),
                                    math.bold = TRUE),
                          latex.mlc(c(paste0("Med(SB_{",
-                                            e.yr,
+                                            e.yr.1,
                                             "}"),
                                      "18,800)"),
                                    math.bold = TRUE))
@@ -1456,22 +1457,22 @@ calc.probabilities <- function(model,
     if(t == 1){
       col.names <- c(col.names,
                      latex.mlc(c(paste0("P(U_{",
-                                        e.yr,
+                                        e.yr.1,
                                         "}>"),
                                  "20\\%)"),
                                math.bold = TRUE),
                      latex.mlc(c(paste0("P(U_{",
-                                        e.yr,
+                                        e.yr.1,
                                         "}>"),
                                  "10\\%)"),
                                math.bold = TRUE),
                      latex.mlc(c(paste0("P(U_{",
-                                        e.yr,
+                                        e.yr.1,
                                         "}>"),
                                  "5\\%)"),
                                math.bold = TRUE),
                      latex.math.bold(paste0("Med(U_{",
-                                            e.yr,
+                                            e.yr.1,
                                             "})")))
     }
     proj.dat <- rbind(proj.dat, k)
