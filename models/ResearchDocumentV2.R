@@ -102,13 +102,13 @@ mNames <- c( "AM2", "AM1" )
 ##### Parameters #####
 ######################
 
-# # Possible regions by type
-# allRegions <- list( 
-#     major=c("HG", "PRD", "CC", "SoG", "WCVI"), 
-#     minor=c("A27", "A2W") )
 # Possible regions by type
-allRegions <- list( 
-  major=c("HG", "PRD", "CC", "SOG", "WCVI") )
+allRegions <- list(
+    major=c("HG", "PRD", "CC", "SoG", "WCVI"),
+    minor=c("A27", "A2W") )
+# Possible regions by type
+# allRegions <- list( 
+#   major=c("HG", "PRD", "CC", "SOG", "WCVI") )
 
 # Region names
 allRegionNames <- list( 
@@ -117,26 +117,26 @@ allRegionNames <- list(
         "West Coast of Vancouver Island (WCVI)"), 
     minor=c("Area 27 (A27)", "Area 2 West (A2W)") )
 
-# # Cross-walk table for SAR to region and region name
-# regions <- read_csv(file=
-#         "SAR, Region, RegionName, Major
-#         1, HG, Haida Gwaii, TRUE
-#         2, PRD, Prince Rupert District, TRUE
-#         3, CC, Central Coast, TRUE
-#         4, SoG, Strait of Georgia, TRUE
-#         5, WCVI, West Coast of Vancouver Island, TRUE
-#         6, A27, Area 27, FALSE
-#         7, A2W, Area 2 West, FALSE",
-#     col_types=cols("i", "c", "c", "l") )
-
 # Cross-walk table for SAR to region and region name
 regions <- read_csv(file=
         "SAR, Region, RegionName, Major
         1, HG, Haida Gwaii, TRUE
         2, PRD, Prince Rupert District, TRUE
         3, CC, Central Coast, TRUE
-        4, WCVI, West Coast Vancouver Island, TRUE",
+        4, SoG, Strait of Georgia, TRUE
+        5, WCVI, West Coast of Vancouver Island, TRUE
+        6, A27, Area 27, FALSE
+        7, A2W, Area 2 West, FALSE",
     col_types=cols("i", "c", "c", "l") )
+
+# # Cross-walk table for SAR to region and region name
+# regions <- read_csv(file=
+#         "SAR, Region, RegionName, Major
+#         1, HG, Haida Gwaii, TRUE
+#         2, PRD, Prince Rupert District, TRUE
+#         3, CC, Central Coast, TRUE
+#         4, WCVI, West Coast Vancouver Island, TRUE",
+#     col_types=cols("i", "c", "c", "l") )
 
 # Age to highlight in figure
 ageShow <- 3
@@ -452,10 +452,11 @@ GetPars <- function( fn, SARs, models=mNames, varName, probs=ciLevel ) {
       model <- models[i]
       # Grab the data (transposed)
       raw <- fread( input=file.path(SAR, model, "mcmc", fn) ) %>%
-          as_tibble( ) %>%
-        select( 1:length(ifelse(varName=="Recruitment", yrRange - 2, yrRange)) )
+        as_tibble( )
+      # Grab the years from the header names
+      yrNames <- str_sub( string=names(raw), start=-4, end=-1 )
       # Calculate the median of model runs for each year
-      out <- tibble( Region=SAR, Model=model, Year=yrRange, Parameter=varName, 
+      out <- tibble( Region=SAR, Model=model, Year=as.numeric(yrNames), Parameter=varName, 
           Lower=apply(X=raw, MARGIN=2, FUN=function(x)  quantile(x, probs=lo)),
           Median=apply(X=raw, MARGIN=2, FUN=function(x)  quantile(x, probs=0.5)),
           Upper=apply(X=raw, MARGIN=2, FUN=function(x)  quantile(x, probs=up)) )
