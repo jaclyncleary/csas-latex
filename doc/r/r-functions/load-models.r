@@ -4,7 +4,8 @@ load.iscam.files <- function(model.dir,
                              low = 0.025,
                              high = 0.975,
                              load.proj = TRUE,
-                             inc.msy.ref.pts = TRUE,
+                             which.stock = NULL,
+                             which.model = NULL,
                              verbose = FALSE){
   ## Load all the iscam files for output and input, and return the model object
   ## If MCMC directory is present, load that and perform calculations for mcmc
@@ -17,6 +18,7 @@ load.iscam.files <- function(model.dir,
   ## high - higher quantile value to apply to mcmc samples
   ## load.proj - load the projections from the mcmc and do the calculations
   ##  to construct the decision tables
+  ## which.stock and which.model are passed to calc.mcmc
 
   curr.func.name <- get.curr.func.name()
   model <- list()
@@ -53,8 +55,9 @@ load.iscam.files <- function(model.dir,
                                  thin,
                                  lower = low,
                                  upper = high,
-                                 inc.msy.ref.pts = inc.msy.ref.pts,
-                                 load.proj = load.proj)
+                                 load.proj = load.proj,
+                                 which.stock = which.stock,
+                                 which.model = which.model)
     model$mcmc$params <- strip.areas.groups(model$mcmc$params)
     model$mcmc$params <- fix.m(model$mcmc$params)
     model$mcmc$params.est <- get.estimated.params(model$mcmc$params)
@@ -114,7 +117,8 @@ create.rdata.file <- function(models.dir = model.dir,
                               low = 0.025,
                               high = 0.975,
                               burnin = 1000,
-                              inc.msy.ref.pts = TRUE,
+                              which.stock = NULL,
+                              which.model = NULL,
                               verbose = FALSE){
   ## Create an rdata file to hold the model's data and outputs.
   ## If an RData file exists, and overwrite is FALSE, return immediately.
@@ -131,6 +135,7 @@ create.rdata.file <- function(models.dir = model.dir,
   ##  to construct the decision tables
   ## low - lower quantile value to apply to mcmc samples
   ## high - higher quantile value to apply to mcmc samples
+  ## which.stock and which.model are passed to load.iscam.files
 
   curr.func.name <- get.curr.func.name()
   model.dir <- file.path(models.dir, model.name)
@@ -166,7 +171,9 @@ create.rdata.file <- function(models.dir = model.dir,
                             high = high,
                             load.proj = load.proj,
                             burnin = burnin,
-                            inc.msy.ref.pts = inc.msy.ref.pts)
+                            which.stock = which.stock,
+                            which.model = which.model)
+
 
   ## Save the model as an RData file
   save(model, file = rdata.file)
@@ -1025,8 +1032,9 @@ calc.mcmc <- function(model,
                       thin = 1,
                       lower = 0.025,
                       upper = 0.975,
-                      inc.msy.ref.pts = TRUE,
-                      load.proj = TRUE){
+                      load.proj = TRUE,
+                      which.stock = NULL,
+                      which.model = NULL){
   ## Do the mcmc calculations, i.e. quantiles for parameters
   ## Returns a list of them all
   ##
@@ -1037,6 +1045,7 @@ calc.mcmc <- function(model,
   ## upper - upper quantile for confidence interval calcs
   ## load.proj - load the projections from the mcmc and do the calculations
   ##  to construct the decision tables
+  ## which.stock and which.model are passed to calc.probabilities
 
   curr.func.name <- get.curr.func.name()
   if(is.null(mcmc)){
@@ -1068,27 +1077,14 @@ calc.mcmc <- function(model,
 
   ## Reference points
   r.dat <- NULL
-  if(inc.msy.ref.pts){
-    tryCatch({
-      r.dat <- params.dat[ , which(nm %in% c("bmsy",
-                                             "msy",
-                                             "fmsy",
-                                             "umsy"))]
-      r.dat <- mcmc.thin(r.dat, burnin, thin)
-    }, warning = function(war){
-    }, error = function(err){
-      warning("MCMC calculations for msy-based reference points failed.\n")
-    })
-  }else{
-    tryCatch({
-      r.dat <- as.data.frame(params.dat[ , which(nm %in% c("bo"))])
-      r.dat <- mcmc.thin(r.dat, burnin, thin)
-      colnames(r.dat) <- "bo"
-    }, warning = function(war){
-    }, error = function(err){
-      warning("MCMC calculations for B0 failed.\n")
-    })
-  }
+  tryCatch({
+    r.dat <- as.data.frame(params.dat[ , which(nm %in% c("bo"))])
+    r.dat <- mcmc.thin(r.dat, burnin, thin)
+    colnames(r.dat) <- "bo"
+  }, warning = function(war){
+  }, error = function(err){
+    warning("MCMC calculations for B0 failed.\n")
+  })
 
   ## Spawning biomass
   sbt.dat <- mcmc.thin(mc$sbt[[1]], burnin, thin)
@@ -1199,7 +1195,7 @@ calc.mcmc <- function(model,
   yr.f.end <- f.yrs[length(f.yrs)]
 
   r.quants <- NULL
-  if(inc.msy.ref.pts){
+  if(FALSE){
     tryCatch({
       r.dat <- cbind(r.dat,
                      sbt.init,
@@ -1251,7 +1247,7 @@ calc.mcmc <- function(model,
                 paste0("0.8",
                        latex.subscr.ital("B", "MSY")))
 
-  if(inc.msy.ref.pts){
+  if(FALSE){
     r.quants <- t(r.quants)
     r.quants <- cbind.data.frame(desc.col, r.quants)
     col.names <- colnames(r.quants)
@@ -1265,7 +1261,8 @@ calc.mcmc <- function(model,
     proj.dat <- calc.probabilities(model,
                                    burnin,
                                    thin,
-                                   inc.msy.ref.pts = inc.msy.ref.pts)
+                                   which.stock = which.stock,
+                                   which.model = which.model)
   }
 
   sapply(c("p.dat",
@@ -1297,13 +1294,33 @@ calc.mcmc <- function(model,
 calc.probabilities <- function(model,
                                burnin,
                                thin,
-                               inc.msy.ref.pts = TRUE){
+                               which.stock = NULL,
+                               which.model = NULL){
   ## Extract and calculate probabilities from the projection model
   ## Used for decision tables in the document (see make.decision.table())
   ##  in tables-decisions.r
   ## Returns a data frame which has its names formatted for latex
   ## There are possibly hard-coded values in the function and it should be
   ##  re-written for each assessment.
+  ## which.stock is 1-5 for the five herring stocks: 1=HG, 2=SOG, 3=PRD,
+  ##  4=CC, 5=WCVI
+  ## which.model is either 1=AM1 or 2=AM2 for herring.
+
+  if(is.null(which.stock)){
+    warning("which.stock must be between 1 and 5.")
+    return(NULL)
+  }
+  if(which.stock < 1 | which.stock > 5){
+    warning("which.stock must be between 1 and 5.")
+  }
+  if(is.null(which.model)){
+    warning("which.model must be 1 or 2, it is NULL.")
+    return(NULL)
+  }
+  if(which.model != 1 & which.model != 2){
+    warning("which.model must be 1 or 2, not ", which.model, ".")
+    return(NULL)
+  }
 
   mc <- model$mcmc
   proj <- mc$proj
@@ -1313,118 +1330,154 @@ calc.probabilities <- function(model,
   e.yr <- p[rownames(p) == "nyrmeanm", 1] + 2
   e.yr.1 <- e.yr - 1
   e.yr.2 <- e.yr - 2
-  nm <- c(paste0("B", e.yr, "B", e.yr.1),    ## Bt/Bt-1
-          paste0("B", e.yr, "04B0"),         ## Bt/0.4B0
-          paste0("B", e.yr, "02B0"),         ## Bt/0.2B0
-          if(inc.msy.ref.pts) paste0("B", e.yr, "B", s.yr),      ## Bt/Binit
-          ## if(inc.msy.ref.pts) paste0("B", e.yr, "BMSY"),         ## Bt/Bmsy
-          if(inc.msy.ref.pts) paste0("B", e.yr, "08BMSY"),       ## Bt/0.8Bmsy
-          if(inc.msy.ref.pts) paste0("B", e.yr, "04BMSY"),       ## Bt/0.4Bmsy
-          ## paste0("F", e.yr.1, "F", e.yr.2),  ## Ft-1/Ft-2
-          ## if(inc.msy.ref.pts) paste0("F", e.yr.1, "FMSY"),       ## Ft-1/Fmsy
-          if(inc.msy.ref.pts) paste0("U", e.yr.1, "U", e.yr.2),  ## Ut-1/Ut-2
-          if(inc.msy.ref.pts) paste0("U", e.yr.1, "UMSY")       ## Ut-1/Umsy
-          )
-  ## This vector matches the nm vector, and signifies if the value
-  ##  is to be less than or greater than one. Set to FALSE for F and U values
-  less.than <- c(TRUE,
-                 TRUE,
-                 TRUE,
-                 if(inc.msy.ref.pts) TRUE,
-                 ## if(inc.msy.ref.pts) TRUE,
-                 if(inc.msy.ref.pts) TRUE,
-                 if(inc.msy.ref.pts) TRUE,
-                 ## FALSE,
-                 ## if(inc.msy.ref.pts) FALSE,
-                 if(inc.msy.ref.pts) FALSE,
-                 if(inc.msy.ref.pts) FALSE)
 
   proj.dat <- data.frame()
   for(t in 1:length(tac)){
     d <- proj[proj$TAC == tac[t],]
     d <- mcmc.thin(d, burnin, thin)
     n.row <- nrow(d)
-    proj.dat <- rbind(proj.dat,
-                      c(tac[t],
-                        ## Average female prop for last 4 years
-                        ## tac[t] / 0.786,
-                        ## Average female prop for whole time series
-                        ## tac[t] / 0.8206,
-                        sapply(1:length(nm), function(x){
-                          ifelse(less.than[x],
-                                 length(which(d[, nm[x]] < 1)) / n.row,
-                                 length(which(d[, nm[x]] > 1)) / n.row)})))
+
+    k <- c(tac[t] * 1000,
+           length(which(d$B2018 < d$X03B0)) / n.row,
+           median(d$B2018 / d$X03B0))
+    if(t == 1){
+      col.names <- c(latex.mlc(c(e.yr.1,
+                                 "TAC",
+                                 "(metric",
+                                 "tonnes)")),
+                     latex.mlc(c(paste0("P(SB_{",
+                                        e.yr,
+                                        "}<"),
+                                 "0.30SB_0"),
+                               math.bold = TRUE),
+                     latex.mlc(c(paste0("Med(SB_{",
+                                        e.yr,
+                                        "}"),
+                                 "0.30SB_0)"),
+                               math.bold = TRUE))
+    }
+    if(which.model == 2){
+      if(which.stock == 1){
+        k <- c(k,
+               length(which(d$B2018 < 10700)) / n.row,
+               median(d$B2018 / 10700))
+        if(t == 1){
+          col.names <- c(col.names,
+                         latex.mlc(c(paste0("P(U_{",
+                                            e.yr,
+                                            "}<"),
+                                     "10,700)"),
+                                   math.bold = TRUE),
+                         latex.mlc(c(paste0("Med(SB_{",
+                                            e.yr,
+                                            "}"),
+                                     "10,700)"),
+                                   math.bold = TRUE))
+        }
+      }else if(which.stock == 2){
+        k <- c(k,
+               length(which(d$B2018 < 21200)) / n.row,
+               median(d$B2018 / 21200))
+        if(t == 1){
+          col.names <- c(col.names,
+                         latex.mlc(c(paste0("P(U_{",
+                                            e.yr,
+                                            "}<"),
+                                     "21,200)"),
+                                   math.bold = TRUE),
+                         latex.mlc(c(paste0("Med(SB_{",
+                                            e.yr,
+                                            "}"),
+                                     "21,200)"),
+                                   math.bold = TRUE))
+        }
+      }else if(which.stock == 3){
+        k <- c(k,
+               length(which(d$B2018 < 12100)) / n.row,
+               median(d$B2018 / 12100))
+        if(t == 1){
+          col.names <- c(col.names,
+                         latex.mlc(c(paste0("P(U_{",
+                                            e.yr,
+                                            "}<"),
+                                     "12,100)"),
+                                   math.bold = TRUE),
+                         latex.mlc(c(paste0("Med(SB_{",
+                                            e.yr,
+                                            "}"),
+                                     "12,100)"),
+                                   math.bold = TRUE))
+        }
+      }else if(which.stock == 4){
+        k <- c(k,
+               length(which(d$B2018 < 17600)) / n.row,
+               median(d$B2018 / 17600))
+        if(t == 1){
+          col.names <- c(col.names,
+                         latex.mlc(c(paste0("P(U_{",
+                                            e.yr,
+                                            "}<"),
+                                     "17,600)"),
+                                   math.bold = TRUE),
+                         latex.mlc(c(paste0("Med(SB_{",
+                                            e.yr,
+                                            "}"),
+                                     "17,600)"),
+                                   math.bold = TRUE))
+        }
+      }else if(which.stock == 5){
+        k <- c(k,
+               length(which(d$B2018 < 18800)) / n.row,
+               median(d$B2018 / 18800))
+        if(t == 1){
+          col.names <- c(col.names,
+                         latex.mlc(c(paste0("P(U_{",
+                                            e.yr,
+                                            "}<"),
+                                     "18,800)"),
+                                   math.bold = TRUE),
+                         latex.mlc(c(paste0("Med(SB_{",
+                                            e.yr,
+                                            "}"),
+                                     "18,800)"),
+                                   math.bold = TRUE))
+        }
+      }else{
+        warning("In calc.probabilities, which.stock must be 1, 2, 3, 4, or 5, not ",
+                which.stock, ". Returning NULL.")
+        return(NULL)
+      }
+    }
+    k <- c(k,
+           length(which(d$UT > 0.2)) / n.row,
+           length(which(d$UT > 0.1)) / n.row,
+           length(which(d$UT > 0.05)) / n.row,
+           median(d$UT))
+    if(t == 1){
+      col.names <- c(col.names,
+                     latex.mlc(c(paste0("P(U_{",
+                                        e.yr,
+                                        "}>"),
+                                 "20\\%)"),
+                               math.bold = TRUE),
+                     latex.mlc(c(paste0("P(U_{",
+                                        e.yr,
+                                        "}>"),
+                                 "10\\%)"),
+                               math.bold = TRUE),
+                     latex.mlc(c(paste0("P(U_{",
+                                        e.yr,
+                                        "}>"),
+                                 "5\\%)"),
+                               math.bold = TRUE),
+                     latex.math.bold(paste0("Med(U_{",
+                                            e.yr,
+                                            "})")))
+    }
+    proj.dat <- rbind(proj.dat, k)
   }
-  ## Column names for decision tables. Make sure the length of this is the same
-  ##  as the number of columns set up above (nm and less.than)
-  colnames(proj.dat) <- c(latex.mlc(c(e.yr.1,
-                                      "Total",
-                                      "Catch",
-                                      "(1000 t)")),
-                          ## latex.mlc(c(e.yr.1,
-                          ##             "Total",
-                          ##             "Catch",
-                          ##             "Last 4",
-                          ##             "yrs avg",
-                          ##             "(1000 t)")),
-                          ## latex.mlc(c(e.yr.1,
-                          ##             "Total",
-                          ##             "Catch",
-                          ##             "all",
-                          ##             "yrs avg",
-                          ##             "(1000 t)")),
-                          latex.mlc(c(paste0("P(B_{",
-                                             e.yr,
-                                             "}<"),
-                                      paste0("B_{",
-                                             e.yr.1,
-                                             "})")),
-                                    math.bold = TRUE),
-                          latex.mlc(c(paste0("P(B_{",
-                                             e.yr,
-                                             "}<"),
-                                      "0.4B_0)"),
-                                    math.bold = TRUE),
-                          latex.mlc(c(paste0("P(B_{",
-                                             e.yr,
-                                             "}<"),
-                                      "0.2B_0)"),
-                                    math.bold = TRUE),
-                          if(inc.msy.ref.pts)
-                          latex.mlc(c(paste0("P(B_{",
-                                             e.yr,
-                                             "}<"),
-                                      paste0("B_{",
-                                             s.yr,
-                                             "})")),
-                                    math.bold = TRUE),
-                          if(inc.msy.ref.pts)
-                          latex.mlc(c(paste0("P(B_{",
-                                             e.yr,
-                                             "}<"),
-                                      "0.8B_{MSY})"),
-                                    math.bold = TRUE),
-                          if(inc.msy.ref.pts)
-                          latex.mlc(c(paste0("P(B_{",
-                                             e.yr,
-                                             "}<"),
-                                      "0.4B_{MSY})"),
-                                    math.bold = TRUE),
-                          if(inc.msy.ref.pts)
-                          latex.mlc(c(paste0("P(U_{",
-                                             e.yr.1,
-                                             "}>"),
-                                      paste0("U_{",
-                                             e.yr.2,
-                                             "})")),
-                                    math.bold = TRUE),
-                          if(inc.msy.ref.pts)
-                          latex.mlc(c(paste0("P(U_{",
-                                             e.yr.1,
-                                             "}>"),
-                                      "U_{MSY}"),
-                                    math.bold = TRUE)
-                          )
+  colnames(proj.dat) <- col.names
+
   proj.dat
 }
 

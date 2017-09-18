@@ -78,7 +78,7 @@ UsePackages( pkgs=c("tidyverse", "zoo", "Hmisc", "scales", "sp", "cowplot",
 #geoProj <- "Projection: BC Albers (NAD 1983)"
 
 # Model names (correspond to folder names)
-mNames <- c( "01-base", "02-q-prior" )
+mNames <- c( "AM2", "AM1" )
 
 
 ##################
@@ -108,7 +108,7 @@ mNames <- c( "01-base", "02-q-prior" )
 #     minor=c("A27", "A2W") )
 # Possible regions by type
 allRegions <- list( 
-  major=c("01-hg", "02-sog") )
+  major=c("HG", "PRD", "CC", "SOG", "WCVI") )
 
 # Region names
 allRegionNames <- list( 
@@ -132,8 +132,10 @@ allRegionNames <- list(
 # Cross-walk table for SAR to region and region name
 regions <- read_csv(file=
         "SAR, Region, RegionName, Major
-        1, 01-hg, Haida Gwaii, TRUE
-        2, 02-sog, Prince Rupert District, TRUE",
+        1, HG, Haida Gwaii, TRUE
+        2, PRD, Prince Rupert District, TRUE
+        3, CC, Central Coast, TRUE
+        4, WCVI, West Coast Vancouver Island, TRUE",
     col_types=cols("i", "c", "c", "l") )
 
 # Age to highlight in figure
@@ -207,7 +209,7 @@ LoadADMB <- function( SARs ) {
         quiet=TRUE )
     # Get the last year of data
     lastYr <- scan( file=file.path(datLoc, fName), skip=mIndex+4, n=1, 
-        quiet=TRUE )
+                   quiet=TRUE )
     # Get the vector of years
     yrRange <<- firstYr:lastYr
     # Get the youngest age
@@ -330,6 +332,7 @@ LoadADMB <- function( SARs ) {
 }  # End LoadADMB function
 
 # Load ADMB data
+
 inputData <- LoadADMB( SARs=unlist(allRegions, use.names=FALSE) )
 
 # Arrange the ADMB output files
@@ -450,7 +453,7 @@ GetPars <- function( fn, SARs, models=mNames, varName, probs=ciLevel ) {
       # Grab the data (transposed)
       raw <- fread( input=file.path(SAR, model, "mcmc", fn) ) %>%
           as_tibble( ) %>%
-          select( 1:length(yrRange) )
+        select( 1:length(ifelse(varName=="Recruitment", yrRange - 2, yrRange)) )
       # Calculate the median of model runs for each year
       out <- tibble( Region=SAR, Model=model, Year=yrRange, Parameter=varName, 
           Lower=apply(X=raw, MARGIN=2, FUN=function(x)  quantile(x, probs=lo)),
@@ -473,12 +476,17 @@ GetPars <- function( fn, SARs, models=mNames, varName, probs=ciLevel ) {
 }  # End GetPars function
 
 # Get instantaneous natural mortality
-natMort <- GetPars( fn="M_tot_mcmc.csv", SARs=allRegions$major, 
+#natMort <- GetPars( fn="M_tot_mcmc.csv", SARs=allRegions$major, 
+#    varName="Mortality" )
+natMort <- GetPars( fn="iscam_m_mcmc.csv", SARs=allRegions$major, 
     varName="Mortality" )
 
 # Get recruitment (number in millions)
-recruits <- GetPars( fn=paste("Nage", ageRec, "_mcmc.csv", sep=""), 
-    SARs=allRegions$major, varName="Recruitment" )
+recruits <- GetPars( fn="iscam_rt_mcmc.csv",
+                    SARs=allRegions$major, varName="Recruitment" )
+
+#recruits <- GetPars( fn=paste("Nage", ageRec, "_mcmc.csv", sep=""), 
+#    SARs=allRegions$major, varName="Recruitment" )
 
 # Get spawning biomass (thousands of tonnes)
 spBio <- GetPars( fn="iscam_sbt_mcmc.csv", SARs=allRegions$major, 

@@ -144,5 +144,69 @@ make.value.table(sog.b,
                  tabular.environment = "longtable")
 @
 
+\begin{landscapepage}
+<<hg.decision.table, results='asis', echo=FALSE>>=
+cap <- paste0("Probabilistic decision table for Haida Gwaii, AM2 model.")
+make.decision.table(hg.b,
+                    xcaption = cap,
+                    xlabel = "tab:hg-decision",
+                    font.size = 7,
+                    space.size = 8,
+                    placement = "H")
+@
+\end{landscapepage}
+
+\begin{landscapepage}
+<<prd.decision.table, results='asis', echo=FALSE>>=
+cap <- paste0("Probabilistic decision table for the Prince Rupert District, ",
+              "AM2 model.")
+make.decision.table(pr.b,
+                    xcaption = cap,
+                    xlabel = "tab:prd-decision",
+                    font.size = 7,
+                    space.size = 8,
+                    placement = "H")
+@
+\end{landscapepage}
+
+\begin{landscapepage}
+<<cc.decision.table, results='asis', echo=FALSE>>=
+cap <- paste0("Probabilistic decision table for the Central Coast, ",
+              "AM2 model.")
+make.decision.table(cc.b,
+                    xcaption = cap,
+                    xlabel = "tab:cc-decision",
+                    font.size = 7,
+                    space.size = 8,
+                    placement = "H")
+@
+\end{landscapepage}
+
+\begin{landscapepage}
+<<sog.decision.table, results='asis', echo=FALSE>>=
+cap <- paste0("Probabilistic decision table for the Strait of Georgia, ",
+              "AM2 model.")
+make.decision.table(sog.b,
+                    xcaption = cap,
+                    xlabel = "tab:sog-decision",
+                    font.size = 7,
+                    space.size = 8,
+                    placement = "H")
+@
+\end{landscapepage}
+
+\begin{landscapepage}
+<<wcvi.decision.table, results='asis', echo=FALSE>>=
+cap <- paste0("Probabilistic decision table for the WCVI, ",
+              "AM2 model.")
+make.decision.table(wcvi.b,
+                    xcaption = cap,
+                    xlabel = "tab:wcvi-decision",
+                    font.size = 7,
+                    space.size = 8,
+                    placement = "H")
+@
+\end{landscapepage}
+
 \clearpage
 

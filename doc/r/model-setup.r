@@ -81,16 +81,16 @@ if(verbose){
 ## -----------------------------------------------------------------------------
 stock.dir <- list()
 stock.name <- list()
-stock.dir[[1]] <- "01-hg"
+stock.dir[[1]] <- "HG"
 stock.name[[1]] <- "Haida Gwaii"
-stock.dir[[2]] <- "02-sog"
-stock.name[[2]] <- "SOG"
-## stock.dir[[3]] <- "03-prd"
-## stock.name[[3]] <- "Pr. Rupert"
-## stock.dir[[4]] <- "04-wcvi"
-## stock.name[[4]] <- "WCVI"
-## stock.dir[[5]] <- "05-cc"
-## stock.name[[5]] <- "Central Coast"
+stock.dir[[2]] <- "PRD"
+stock.name[[2]] <- "Pr. Rupert"
+stock.dir[[3]] <- "CC"
+stock.name[[3]] <- "Central Coast"
+stock.dir[[4]] <- "SOG"
+stock.name[[4]] <- "SOG"
+stock.dir[[5]] <- "WCVI"
+stock.name[[5]] <- "WCVI"
 
 ## -----------------------------------------------------------------------------
 ## Base model names and directories
@@ -101,7 +101,7 @@ base.model.name <- lapply(1:length(stock.name),
 
 base.model.dir.name <- lapply(1:length(stock.dir),
                               function(x){
-                                file.path(stock.dir[[x]], "01-base")})
+                                file.path(stock.dir[[x]], "AM2")})
 
 lapply(1:length(base.model.dir.name),
        function(x){
@@ -128,9 +128,9 @@ if(verbose){
 ## -----------------------------------------------------------------------------
 sens.model.dir.name.1 <- lapply(1:length(stock.dir),
                                 function(x){
-                                  file.path(stock.dir[[x]], "02-q-prior")})
+                                  file.path(stock.dir[[x]], "AM1")})
 
-sens.model.name.1 <- "Q prior"
+sens.model.name.1 <- "AM1"
 
 lapply(1:length(sens.model.dir.name.1),
        function(x){
@@ -183,30 +183,62 @@ build <- function(ovwrt.base = FALSE,
   ## Base models
   invisible(lapply(1:length(base.model.dir.name),
                    function(x){
-                     create.rdata.file(model.name = base.model.dir.name[[x]],
+                     ## Determine which stock is being loaded
+                     bm <- base.model.dir.name[[x]]
+                     if(length(grep("HG", bm))){
+                       which.stock <- 1
+                     }else if(length(grep("PRD", bm))){
+                       which.stock <- 2
+                     }else if(length(grep("CC", bm))){
+                       which.stock <- 3
+                     }else if(length(grep("SOG", bm))){
+                       which.stock <- 4
+                     }else if(length(grep("WCVI", bm))){
+                       which.stock <- 5
+                     }else{
+                       which.stock <- 0
+                     }
+                     create.rdata.file(model.name = bm,
                                        ovwrt.rdata = ovwrt.base,
                                        load.proj = TRUE,
                                        low = confidence.vals[1],
                                        high = confidence.vals[2],
                                        burnin = 0,
-                                       inc.msy.ref.pts = FALSE,
+                                       which.stock = which.stock,
+                                       which.model = 2,
                                        verbose = ss.verbose)}))
 
   ## Sensitivity models need to be unlisted from their groups
-  ##  and placed into a single list for the FOR loop below to work right
+  ##  and placed into a single list for the lapply below to work right
   sens.model.names.list <- c(unlist(sens.model.dir.name.1))
 
   ## Sensitivity models
   invisible(lapply(1:length(sens.model.names.list),
                    function(x){
+                     ## Determine which stock is being loaded
+                     sm <- sens.model.names.list[[x]]
+                     if(length(grep("HG", sm))){
+                       which.stock <- 1
+                     }else if(length(grep("PRD", sm))){
+                       which.stock <- 2
+                     }else if(length(grep("CC", sm))){
+                       which.stock <- 3
+                     }else if(length(grep("SOG", sm))){
+                       which.stock <- 4
+                     }else if(length(grep("WCVI", sm))){
+                       which.stock <- 5
+                     }else{
+                       which.stock <- 0
+                     }
                      create.rdata.file(
-                       model.name = sens.model.names.list[[x]],
+                       model.name = sm,
                        ovwrt.rdata = ovwrt.sens,
                        load.proj = TRUE,
                        low = confidence.vals[1],
                        high = confidence.vals[2],
                        burnin = 0,
-                       inc.msy.ref.pts = FALSE,
+                       which.stock = which.stock,
+                       which.model = 1,
                        verbose = ss.verbose)}))
 
 }

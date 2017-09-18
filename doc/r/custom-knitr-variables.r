@@ -6,6 +6,14 @@
 ##  model-setup.r source code.
 
 ################################################################################
+fish.name <- "Pacific herring"
+science.name <- "Clupea pallasi"
+family.name <- "Clupeidae"
+common.name <- "herring"
+Common.name <- "Herring"
+bc <- "British Columbia"
+
+################################################################################
 ## Base models and some of their outputs simplified
 ## Base model Haida Gwaii
 hg.b <- base.models[[1]][[1]]
@@ -64,9 +72,15 @@ hg.catch.yrs <- sort(unique(hg.b$dat$catch[,1]))
 hg.catch.yrs <- paste0(min(hg.catch.yrs), "--", max(hg.catch.yrs))
 hg.sig.tau <- calc.sig.tau(hg.b$ctl$params[6, 1], hg.b$ctl$params[7, 1])
 
+## Base model Prince Rupert
+pr.b <- base.models[[2]][[1]]
+
+## Base model Central coast
+cc.b <- base.models[[3]][[1]]
+
 ################################################################################
 ## Base model Strait of Georgia
-sog.b <- base.models[[2]][[1]]
+sog.b <- base.models[[4]][[1]]
 sog.b.params <- as.data.frame(sog.b$mcmc$params)
 sog.b.mcc <- sog.b$mcmccalcs
 sog.b.p.quants <- as.data.frame(sog.b.mcc$p.quants)
@@ -122,13 +136,8 @@ sog.catch.yrs <- sort(unique(sog.b$dat$catch[,1]))
 sog.catch.yrs <- paste0(min(sog.catch.yrs), "--", max(sog.catch.yrs))
 sog.sig.tau <- calc.sig.tau(sog.b$ctl$params[6, 1], sog.b$ctl$params[7, 1])
 
-################################################################################
-fish.name <- "Pacific herring"
-science.name <- "Clupea pallasi"
-family.name <- "Clupeidae"
-common.name <- "herring"
-Common.name <- "Herring"
-bc <- "British Columbia"
+## Base model WCVI
+wcvi.b <- base.models[[5]][[1]]
 
 ################################################################################
 ## Number of mcmc samples, min and max median biomass
