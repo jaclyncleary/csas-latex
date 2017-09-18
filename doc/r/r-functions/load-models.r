@@ -1338,7 +1338,6 @@ calc.probabilities <- function(model,
     n.row <- nrow(d)
 
     k <- c(tac[t] * 1000,
-           ##length(which(d$B2018 < d$X03B0)) / n.row,
            length(which(d[,paste0("B", e.yr.1)] < d$X03B0)) / n.row,
            median(d[,paste0("B", e.yr.1)] / d$X03B0))
     if(t == 1){

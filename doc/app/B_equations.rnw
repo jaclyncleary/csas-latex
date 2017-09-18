@@ -225,204 +225,201 @@ where $s_o$ is the maximum juvenile survival rate, and $\beta$ is the density ef
 
 \appsection{TABLES}
 
-% TODO: I'm not sure why these tables are causing an error
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%********************** Table 1 ************************************
+\begin{table}[!h]
+\centering
+\caption{\label{tab:variables} A list of symbols, constants and description
+  for variables used in iSCAM.}
+\begin{tabular}{lll}
+\hline
+\bf{Symbol} & \bf{Value} & \bf{Description} \\
+\hline
+%\hline \ \\[-.5ex]
+%
+\multicolumn{3}{l}{\textbf{Indices}}\\
+$s$ & & Index for sex\\
+$a$ & & Index for age\\
+$t$ & & Index for year\\
+$k$ & & Index for gear\\
+\multicolumn{3}{l}{\textbf{Model dimensions}}\\
+$S$ & $\Sexpr{hg.b$dat$num.sex}$ & Number of sexes\\
+$\acute{a}, A$ & $\Sexpr{hg.b$dat$start.age}$, $\Sexpr{hg.b$dat$end.age}$ & Youngest and oldest age class ($A$ is a plus group)\\
+$\acute{t}, T$ & $\Sexpr{hg.b$dat$start.yr}$, $\Sexpr{hg.b$dat$end.yr}$ & First and last year of catch data\\
+$K$ & $\Sexpr{hg.b$dat$num.gears}$ & Number of gears including survey gears\\
+\multicolumn{3}{l}{\textbf{Observations (data)}}\\
+$C_{k,t}$ & & catch in weight by gear $k$ in year $t$\\
+$I_{k,t}$ & & relative abundance index for gear $k$ in year $t$\\
+\multicolumn{3}{l}{\textbf{Fixed parameters}}\\
+$\rho$ & & Fraction of the total variance associated with observation error\\
+$\vartheta^2$ & & Total precision (inverse of variance) of the total error\\
+%$\vec{\gamma}_k$ & & Vector of selectivity parameters for gear $k$ \\
+\multicolumn{3}{l}{\textbf{Estimated parameters}}\\
+$R_o$ & & Age-$\acute{a}$ recruits in unfished conditions\\
+$h$ & & Steepness of the stock-rectruitment relationship\\
+$\bar{R}$ & & Average age-$\acute{a}$ recruitment from year $\acute{t}$ to $T$\\
+$\bar{R}_{init}$ & & Average age-$\acute{a}$ recruitment in year $\acute{t}-1$ \\
+$M_s$ & & Instantaneous natural mortality rate \\
+$\hat{a}_k, \hat{\gamma}_k$ & & Selectivity parameters for gear $k$ \\
+$\Gamma_{k,t}$ & & Logarithm of the instantaneous fishing mortality for gear $k$ in year $t$\\
+$\omega_t$ & & Age-$\acute{a}$ deviates from $\bar{R}$ for years $\acute{t}$ to $T$\\
+$\omega_{init,t}$ & & Age-$\acute{a}$ deviates from $\bar{R}_{init}$ for year $\acute{t}$\\
+$q_s$ & & Catchability parameter for survey $k$\\
+\multicolumn{3}{l}{\textbf{Standard deviations}}\\
+$\sigma$ & & Standard deviation for observation errors in survey index\\
+$\tau$ & & Standard deviation in process errors (recruitment deviations)\\
+$\sigma_C$ & & Standard deviation in observed catch by gear\\
+\multicolumn{3}{l}{\textbf{Residuals}}\\
+$\delta_t$ & & Annual recruitment residual\\
+$\eta_t$ & & Residual error in predicted catch\\
+\multicolumn{3}{l}{\textbf{Fixed Growth \& maturity parameters}}\\
+$l_{\infty s}$ & & Asymptotic length in mm sex $s$ \\
+$\acute{k}_s$ & & Brody growth coefficient sex $s$ \\
+$t_{o s}$ & & Theoretical age at zero length sex $s$ \\
+$\acute{a}_s$ & & Scalar in length-weight allometry for sex $s$\\
+$\acute{b}_s$ & & Power parameter in length-weight allometry for sex $s$\\
+$\dot{a}_s$ & & Age at 50\% maturity for sex $s$ \\
+$\dot{\gamma}_s$ & & Standard deviation at 50\% maturity for sex $s$\\
+\hline
+\end{tabular}
+\end{table}
+\newp
+%%********************** Table 2 ************************************
+\begin{table}[b]
+\centering
+\caption{\label{tab:steady-state-model} Steady-state age-structured model
+  assuming unequal vulnerability-at-age, age-specific fecundity and
+  Ricker type recruitment.}
+\begin{tabular}{l}
+\hline \\
+\vbox{\begin{center}\bf{Parameters}\end{center}\vspace{-1ex}} \\
+\vbox{\beq \Theta = (R_o,h,M)\,; \ \ \ R_o>0; \ \ \ 0.2 \leq h < 1.0; \ \ \ M > 0 \label{eq:df1} \eeq} \\
+\vbox{\beq \Phi = (l_{\infty,s},\acute{k}_s, t_{o,s},\acute{a}_s,\acute{b}_s,\dot{a}_s,\dot{\gamma}_s,\hat{a}_k,\hat{\gamma}_k) \label{eq:df2} \eeq} \\
+\\
+\vbox{\begin{center}\bf{Age-schedule information}\end{center}\vspace{-3ex}}
+\\
+\\
+\vbox{\beq l_{a,s}=l_{}\left(1-e^{\left(-k_s\left(a-t_{o,s}\right)\right)}\right) \label{eq:df3} \eeq} \\
+\vbox{\beq w_{a,s}=\acute{a}_s(l_{a,s})^{\acute{b}_s} \label{eq:df4} \eeq} \\
+\\
+\vbox{\beq v_a=\left(1+e^{\left(\frac{-(\hat{a}-a)}{\hat{\gamma}}\right)}\right)^{-1} \label{eq:df5} \eeq} \\
+\\
+\vbox{\beq f_{a,s}=w_{a,s}\left(1+e^{\left(\frac{-\left(\dot{a}_s-a_s\right)}{\dot{\gamma}_s}\right)}\right)^{-1} \label{eq:df6} \eeq} \\
+\\
+\\
+\vbox{\begin{center}\bf{Survivorship}\end{center}}
+\\
+\\
+\vbox{\beq \iota_a = \begin{cases}
+\frac{1}{S}, & a = 1 \\
+\iota_{a-1}e^{-M}, & a > 1 \\
+\frac{\iota_{a-1}}{(1-e^{-M})}, & a = A \\
+\end{cases}
+\label{eq:df7}
+\eeq} \\
+\vspace{4ex} \\
+\vbox{\beq \iota_a = \begin{cases}
+\frac{1}{S}, & a = 1 \\
+\hat{\iota}_{a-1,s}e^{-M-F_ev_{a-1,s}}, & a > 1 \\
+\frac{\hat{\iota}_{a-1,s}e^{-M-F_ev_{a-1,s}}}{(1-e^{-M-F_e v_{a,s}})}, & a = A \\
+\end{cases}
+\label{eq:df8}
+\eeq} \\
+\\
+\\
+\vbox{\begin{center}\bf{Incidence functions}\end{center}} \\
+\\
+\\
+\vbox{\beq \phi_E=\sum_{s=1}^S\sum_{a=1}^\infty \iota_a f_{a,s},\ \ \ \ \ \ \ \ \
+\phi_e=\sum_{s=1}^S\sum_{a=1}^\infty \hat{\iota}_{a,s} f_{a,s}
+\label{eq:df9}
+\eeq} \\
+\vspace{2ex} \\
+\vbox{\beq \phi_B=\sum_{s=1}^S\sum_{a=1}^\infty \iota_a w_{a,s} v_{a,s},\ \ \
+\phi_b=\sum_{s=1}^S\sum_{a=1}^\infty \hat{\iota}_{as} w_{a,s} v_{a,s}
+\label{eq:df10}
+\eeq} \\
+\vspace{2ex} \\
+\vbox{\beq \phi_q=\sum_{s=1}^S\sum_{a=1}^\infty
+\frac{ \hat{\iota}_{a,s} w_{a,s} v_{a,s}}{M+F_ev_{a,s}}
+\left(1-e^{(-M-F_ev_{a,s})}\right)
+\label{eq:df11}
+\eeq} \\
+\vspace{1ex} \\
+\vbox{\begin{center}\bf{Steady-state conditions}\end{center}\vspace{-4ex}} \\
+\vbox{\beq B_o=R_o\phi_B \label{eq:df12} \eeq} \\
+\\
+%% % For the next equation, if using Ricker, use:
+%% \vbox{\beq R_e=R_o \dfrac{\ln(\kappa)-\ln(\phi_E/\phi_e)}{\ln(\kappa)}\ \ \ (Ricker) \label{eq:df13} \eeq} \\
+%% % If using Beverton Holt, use:
+%% \vbox{\beq R_e=R_o \dfrac{\kappa-\phi_E/\phi_e}{\kappa-1} \label{df13} \eeq} \\
+\vbox{\beq \kappa=\frac{4h}{1-h} \label{eq:df13} \eeq} \\[2.5ex]
+\vbox{\beq R_e=R_o \frac{\kappa-\frac{\phi_E}{\phi_e}}{\kappa-1}\ \ \ (Beverton-Holt) \label{eq:df14} \eeq}\\
+\vbox{\beq C_e=F_e R_e \phi_q \label{eq:df15} \eeq} \\
+\end{tabular}
+\end{table}
+\newp
 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %********************** Table 1 ************************************
-% \begin{table}[!h]
-% \centering
-% \caption{\label{tab:variables} A list of symbols, constants and description
-%   for variables used in iSCAM.}
-% \begin{tabular}{lll}
-% \hline
-% \bf{Symbol} & \bf{Value} & \bf{Description} \\
-% \hline
-% %\hline \ \\[-.5ex]
-% %
-% \multicolumn{3}{l}{\textbf{Indices}}\\
-% $s$ & & Index for sex\\
-% $a$ & & Index for age\\
-% $t$ & & Index for year\\
-% $k$ & & Index for gear\\
-% \multicolumn{3}{l}{\textbf{Model dimensions}}\\
-% $S$ & $\Sexpr{b$dat$num.sex}$ & Number of sexes\\
-% $\acute{a}, A$ & $\Sexpr{b$dat$start.age}$, $\Sexpr{b$dat$end.age}$ & Youngest and oldest age class ($A$ is a plus group)\\
-% $\acute{t}, T$ & $\Sexpr{b$dat$start.yr}$, $\Sexpr{b$dat$end.yr}$ & First and last year of catch data\\
-% $K$ & $\Sexpr{b$dat$num.gears}$ & Number of gears including survey gears\\
-% \multicolumn{3}{l}{\textbf{Observations (data)}}\\
-% $C_{k,t}$ & & catch in weight by gear $k$ in year $t$\\
-% $I_{k,t}$ & & relative abundance index for gear $k$ in year $t$\\
-% \multicolumn{3}{l}{\textbf{Fixed parameters}}\\
-% $\rho$ & & Fraction of the total variance associated with observation error\\
-% $\vartheta^2$ & & Total precision (inverse of variance) of the total error\\
-% %$\vec{\gamma}_k$ & & Vector of selectivity parameters for gear $k$ \\
-% \multicolumn{3}{l}{\textbf{Estimated parameters}}\\
-% $R_o$ & & Age-$\acute{a}$ recruits in unfished conditions\\
-% $h$ & & Steepness of the stock-rectruitment relationship\\
-% $\bar{R}$ & & Average age-$\acute{a}$ recruitment from year $\acute{t}$ to $T$\\
-% $\bar{R}_{init}$ & & Average age-$\acute{a}$ recruitment in year $\acute{t}-1$ \\
-% $M_s$ & & Instantaneous natural mortality rate \\
-% $\hat{a}_k, \hat{\gamma}_k$ & & Selectivity parameters for gear $k$ \\
-% $\Gamma_{k,t}$ & & Logarithm of the instantaneous fishing mortality for gear $k$ in year $t$\\
-% $\omega_t$ & & Age-$\acute{a}$ deviates from $\bar{R}$ for years $\acute{t}$ to $T$\\
-% $\omega_{init,t}$ & & Age-$\acute{a}$ deviates from $\bar{R}_{init}$ for year $\acute{t}$\\
-% $q_s$ & & Catchability parameter for survey $k$\\
-% \multicolumn{3}{l}{\textbf{Standard deviations}}\\
-% $\sigma$ & & Standard deviation for observation errors in survey index\\
-% $\tau$ & & Standard deviation in process errors (recruitment deviations)\\
-% $\sigma_C$ & & Standard deviation in observed catch by gear\\
-% \multicolumn{3}{l}{\textbf{Residuals}}\\
-% $\delta_t$ & & Annual recruitment residual\\
-% $\eta_t$ & & Residual error in predicted catch\\
-% \multicolumn{3}{l}{\textbf{Fixed Growth \& maturity parameters}}\\
-% $l_{\infty s}$ & & Asymptotic length in mm sex $s$ \\
-% $\acute{k}_s$ & & Brody growth coefficient sex $s$ \\
-% $t_{o s}$ & & Theoretical age at zero length sex $s$ \\
-% $\acute{a}_s$ & & Scalar in length-weight allometry for sex $s$\\
-% $\acute{b}_s$ & & Power parameter in length-weight allometry for sex $s$\\
-% $\dot{a}_s$ & & Age at 50\% maturity for sex $s$ \\
-% $\dot{\gamma}_s$ & & Standard deviation at 50\% maturity for sex $s$\\
-% \hline
-% \end{tabular}
-% \end{table}
-% \newp
-% ********************** Table 2 ************************************
-% \begin{table}[b]
-% \centering
-% \caption{\label{tab:steady-state-model} Steady-state age-structured model
-%   assuming unequal vulnerability-at-age, age-specific fecundity and
-%   Ricker type recruitment.}
-% \begin{tabular}{l}
-% \hline \\
-% \vbox{\begin{center}\bf{Parameters}\end{center}\vspace{-1ex}} \\
-% \vbox{\beq \Theta = (R_o,h,M)\,; \ \ \ R_o>0; \ \ \ 0.2 \leq h < 1.0; \ \ \ M > 0 \label{eq:df1} \eeq} \\
-% \vbox{\beq \Phi = (l_{\infty,s},\acute{k}_s, t_{o,s},\acute{a}_s,\acute{b}_s,\dot{a}_s,\dot{\gamma}_s,\hat{a}_k,\hat{\gamma}_k) \label{eq:df2} \eeq} \\
-% \\
-% \vbox{\begin{center}\bf{Age-schedule information}\end{center}\vspace{-3ex}}
-% \\
-% \\
-% \vbox{\beq l_{a,s}=l_{}\left(1-e^{\left(-k_s\left(a-t_{o,s}\right)\right)}\right) \label{eq:df3} \eeq} \\
-% \vbox{\beq w_{a,s}=\acute{a}_s(l_{a,s})^{\acute{b}_s} \label{eq:df4} \eeq} \\
-% \\
-% \vbox{\beq v_a=\left(1+e^{\left(\frac{-(\hat{a}-a)}{\hat{\gamma}}\right)}\right)^{-1} \label{eq:df5} \eeq} \\
-% \\
-% \vbox{\beq f_{a,s}=w_{a,s}\left(1+e^{\left(\frac{-\left(\dot{a}_s-a_s\right)}{\dot{\gamma}_s}\right)}\right)^{-1} \label{eq:df6} \eeq} \\
-% \\
-% \\
-% \vbox{\begin{center}\bf{Survivorship}\end{center}}
-% \\
-% \\
-% \vbox{\beq \iota_a = \begin{cases}
-% \frac{1}{S}, & a = 1 \\
-% \iota_{a-1}e^{-M}, & a > 1 \\
-% \frac{\iota_{a-1}}{(1-e^{-M})}, & a = A \\
-% \end{cases}
-% \label{eq:df7}
-% \eeq} \\
-% \vspace{4ex} \\
-% \vbox{\beq \iota_a = \begin{cases}
-% \frac{1}{S}, & a = 1 \\
-% \hat{\iota}_{a-1,s}e^{-M-F_ev_{a-1,s}}, & a > 1 \\
-% \frac{\hat{\iota}_{a-1,s}e^{-M-F_ev_{a-1,s}}}{(1-e^{-M-F_e v_{a,s}})}, & a = A \\
-% \end{cases}
-% \label{eq:df8}
-% \eeq} \\
-% \\
-% \\
-% \vbox{\begin{center}\bf{Incidence functions}\end{center}} \\
-% \\
-% \\
-% \vbox{\beq \phi_E=\sum_{s=1}^S\sum_{a=1}^\infty \iota_a f_{a,s},\ \ \ \ \ \ \ \ \
-% \phi_e=\sum_{s=1}^S\sum_{a=1}^\infty \hat{\iota}_{a,s} f_{a,s}
-% \label{eq:df9}
-% \eeq} \\
-% \vspace{2ex} \\
-% \vbox{\beq \phi_B=\sum_{s=1}^S\sum_{a=1}^\infty \iota_a w_{a,s} v_{a,s},\ \ \
-% \phi_b=\sum_{s=1}^S\sum_{a=1}^\infty \hat{\iota}_{as} w_{a,s} v_{a,s}
-% \label{eq:df10}
-% \eeq} \\
-% \vspace{2ex} \\
-% \vbox{\beq \phi_q=\sum_{s=1}^S\sum_{a=1}^\infty
-% \frac{ \hat{\iota}_{a,s} w_{a,s} v_{a,s}}{M+F_ev_{a,s}}
-% \left(1-e^{(-M-F_ev_{a,s})}\right)
-% \label{eq:df11}
-% \eeq} \\
-% \vspace{1ex} \\
-% \vbox{\begin{center}\bf{Steady-state conditions}\end{center}\vspace{-4ex}} \\
-% \vbox{\beq B_o=R_o\phi_B \label{eq:df12} \eeq} \\
-% \\
-% %% % For the next equation, if using Ricker, use:
-% %% \vbox{\beq R_e=R_o \dfrac{\ln(\kappa)-\ln(\phi_E/\phi_e)}{\ln(\kappa)}\ \ \ (Ricker) \label{eq:df13} \eeq} \\
-% %% % If using Beverton Holt, use:
-% %% \vbox{\beq R_e=R_o \dfrac{\kappa-\phi_E/\phi_e}{\kappa-1} \label{df13} \eeq} \\
-% \vbox{\beq \kappa=\frac{4h}{1-h} \label{eq:df13} \eeq} \\[2.5ex]
-% \vbox{\beq R_e=R_o \frac{\kappa-\frac{\phi_E}{\phi_e}}{\kappa-1}\ \ \ (Beverton-Holt) \label{eq:df14} \eeq}\\
-% \vbox{\beq C_e=F_e R_e \phi_q \label{eq:df15} \eeq} \\
-% \end{tabular}
-% \end{table}
-% \newp
-% 
-% %% % ********************** Table 3 ************************************
-% 
-% \begin{table}[b]
-% \centering
-% \caption{\label{tab:catch-age-model} Statistical catch-age model using Baranov
-%   catch.}
-% \begin{tabular}{l}
-% \hline \\
-% \vbox{\begin{center}\bf{Estimated parameters}\end{center}\vspace{-1ex}}
-% \\
-% \\
-% \vbox{\beq \Theta= (R_0,h,M,\overline{R},\overline{R}_{init},\vartheta^2,\rho,\Gamma_{k,t},\{\omega_t\}_{\acute{t}=1-A}^{\acute{t}=T},\{\omega_{init,t}\}_{t=\acute{t}-A}^{t=\acute{t}-1})  \label{eq:df16} \eeq} \\
-% \\
-% \vbox{\beq \sigma=\sqrt{\frac{\rho}{\vartheta}}, \;  \;  \; \; \tau=\frac{(1-\rho)^{1/2}}{\vartheta} \label{eq:df17} \eeq} \\
-% \vspace{2ex}
-% \\
-% \vbox{\begin{center}\bf{Unobserved states}\end{center}\vspace{-4ex}} \\
-% \\
-% \vbox{\beq N_{t,a,s},\; B_t,s,\; Z_{t,a,s}  \label{eq:df18} \eeq} \\
-% \vspace{2ex} \\
-% \vbox{\begin{center}\bf{Initial states}\end{center}\vspace{-4ex}}
-% \\
-% \\
-% \\
-% \vbox{\beq N_{t,a,s}=\frac{1}{S}\overline{R}_{init}e^{\omega_{init,t}}e^{-M(a-1)};\ \ \ (\acute{t}-A)<t<1;\ \ \ 2\leq a \leq A  \label{eq:df19} \eeq} \\
-% \\
-% \vbox{\beq N_{t,a,s}=\frac{1}{S}\bar{R}e^{\omega_{t}};\ \ \ 1\leq t\leq T;\ \ \ a=1 \label{eq:df20} \eeq} \\
-% \\
-% \\
-% \vbox{\beq v_{k,a}= \frac{1}{1+e^{-\frac{\left(a - \hat{a}_k\right)}{\hat{\gamma}_k}}} \label{eq:df21} \eeq} \\
-% \\
-% \vbox{\beq  F_{k,t}=e^{\Gamma_{k,t}} \label{eq:df22} \eeq} \\
-% \\
-% \vbox{\begin{center}\bf{State dynamics ($t>1$)}\end{center}\vspace{-4ex}} \\
-% \\
-% \\
-% \vbox{\beq  B_{t,s}=\sum_a N_{t,a,s}f_{a,s} \label{eq:df23} \eeq} \\
-% \\
-% \vbox{\beq  Z_{t,a,s}=M+\sum_k F_{k,t} v_{k,t,a,s}  \label{eq:df24} \eeq} \\[2ex]
-% \\
-% \vbox{\beq \hat{C}_{k,t}=\sum _ s\sum _ a\frac {N_{{t,a,s}}w_{{a,s}}F_{k,t} v_{{k,t,a,s}} ( 1-{e^{-Z_{t,a,s}}} ) }{Z_{t,a,s}}^{\eta_t}  \label{eq:df25} \eeq} \\
-% \vspace{4ex} \\
-% \vbox{\beq N_{t,a,s} = \begin{cases}
-%            \frac{s_oE_{t-1}}{1+\beta E_{t-1}} e^{(\omega_t-0.5\tau^2)} & a=1 \\
-%            N_{t-1,a-1,s} e^{(-Z_{t-1,a-1,s})} &a>1 \\
-%            N_{t-1,a,s} e^{(-Z_{t-1,a,s})} & a=A \\
-%                       \end{cases}
-%        \label{eq:df26}
-%        \eeq} \\
-% \\
-% \vbox{\begin{center}\bf{Recruitment model}\end{center}\vspace{-4ex}} \\
-% \\
-% \\
-% %% % If using Ricker:
-% %% \vbox{\beq R_t = s_oB_{t-k}e^{-\beta B_{t-k}+\delta_t-0.5\tau^2}\ \ \  (Ricker) \label{df27} \eeq} \\
-% %% % If using Beverton-Holt:
-% \vbox{\beq R_t = \frac{s_oB_{t-k}}{1+\beta B_{t-k}}e^{\delta_{t}-0.5\tau^2}\ \ \ (Beverton-Holt) \label{eq:df27} \eeq} \\
-% 
-% \end{tabular}
-% \end{table}
-% 
-% \newp
-% 
-% \newpage
+%% ********************** Table 3 ************************************
+\begin{table}[b]
+\centering
+\caption{\label{tab:catch-age-model} Statistical catch-age model using Baranov
+  catch.}
+\begin{tabular}{l}
+\hline \\
+\vbox{\begin{center}\bf{Estimated parameters}\end{center}\vspace{-1ex}}
+\\
+\\
+\vbox{\beq \Theta= (R_0,h,M,\overline{R},\overline{R}_{init},\vartheta^2,\rho,\Gamma_{k,t},\{\omega_t\}_{\acute{t}=1-A}^{\acute{t}=T},\{\omega_{init,t}\}_{t=\acute{t}-A}^{t=\acute{t}-1})  \label{eq:df16} \eeq} \\
+\\
+\vbox{\beq \sigma=\sqrt{\frac{\rho}{\vartheta}}, \;  \;  \; \; \tau=\frac{(1-\rho)^{1/2}}{\vartheta} \label{eq:df17} \eeq} \\
+\vspace{2ex}
+\\
+\vbox{\begin{center}\bf{Unobserved states}\end{center}\vspace{-4ex}} \\
+\\
+\vbox{\beq N_{t,a,s},\; B_t,s,\; Z_{t,a,s}  \label{eq:df18} \eeq} \\
+\vspace{2ex} \\
+\vbox{\begin{center}\bf{Initial states}\end{center}\vspace{-4ex}}
+\\
+\\
+\\
+\vbox{\beq N_{t,a,s}=\frac{1}{S}\overline{R}_{init}e^{\omega_{init,t}}e^{-M(a-1)};\ \ \ (\acute{t}-A)<t<1;\ \ \ 2\leq a \leq A  \label{eq:df19} \eeq} \\
+\\
+\vbox{\beq N_{t,a,s}=\frac{1}{S}\bar{R}e^{\omega_{t}};\ \ \ 1\leq t\leq T;\ \ \ a=1 \label{eq:df20} \eeq} \\
+\\
+\\
+\vbox{\beq v_{k,a}= \frac{1}{1+e^{-\frac{\left(a - \hat{a}_k\right)}{\hat{\gamma}_k}}} \label{eq:df21} \eeq} \\
+\\
+\vbox{\beq  F_{k,t}=e^{\Gamma_{k,t}} \label{eq:df22} \eeq} \\
+\\
+\vbox{\begin{center}\bf{State dynamics ($t>1$)}\end{center}\vspace{-4ex}} \\
+\\
+\\
+\vbox{\beq  B_{t,s}=\sum_a N_{t,a,s}f_{a,s} \label{eq:df23} \eeq} \\
+\\
+\vbox{\beq  Z_{t,a,s}=M+\sum_k F_{k,t} v_{k,t,a,s}  \label{eq:df24} \eeq} \\[2ex]
+\\
+\vbox{\beq \hat{C}_{k,t}=\sum _ s\sum _ a\frac {N_{{t,a,s}}w_{{a,s}}F_{k,t} v_{{k,t,a,s}} ( 1-{e^{-Z_{t,a,s}}} ) }{Z_{t,a,s}}^{\eta_t}  \label{eq:df25} \eeq} \\
+\vspace{4ex} \\
+\vbox{\beq N_{t,a,s} = \begin{cases}
+           \frac{s_oE_{t-1}}{1+\beta E_{t-1}} e^{(\omega_t-0.5\tau^2)} & a=1 \\
+           N_{t-1,a-1,s} e^{(-Z_{t-1,a-1,s})} &a>1 \\
+           N_{t-1,a,s} e^{(-Z_{t-1,a,s})} & a=A \\
+                      \end{cases}
+       \label{eq:df26}
+       \eeq} \\
+\\
+\vbox{\begin{center}\bf{Recruitment model}\end{center}\vspace{-4ex}} \\
+\\
+\\
+%% % If using Ricker:
+%% \vbox{\beq R_t = s_oB_{t-k}e^{-\beta B_{t-k}+\delta_t-0.5\tau^2}\ \ \  (Ricker) \label{df27} \eeq} \\
+%% % If using Beverton-Holt:
+\vbox{\beq R_t = \frac{s_oB_{t-k}}{1+\beta B_{t-k}}e^{\delta_{t}-0.5\tau^2}\ \ \ (Beverton-Holt) \label{eq:df27} \eeq} \\
+
+\end{tabular}
+\end{table}
+
+\newp
+
+\newpage
