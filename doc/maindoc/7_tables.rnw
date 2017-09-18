@@ -60,7 +60,7 @@ cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
               "(catchability), $\\hat{a}$ (selectivity age-at-50\\%), and ",
               "$\\hat{\\gamma}$ (selectivity standard deviation-at-50\\%) ",
               "parameters indicate: 1 = Other fisheries, 2 = Roe seine, ",
-              "3 = Roe gillnet.")
+              "3 = Roe gillnet, 4 = Dive survey, 5 = Surface survey.")
 make.parameters.est.table(hg.b,
                           xcaption = cap,
                           xlabel = "tab:hg-parameters-posts",
@@ -89,7 +89,7 @@ cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
               "(catchability), $\\hat{a}$ (selectivity age-at-50\\%), and ",
               "$\\hat{\\gamma}$ (selectivity standard deviation-at-50\\%) ",
               "parameters indicate: 1 = Other fisheries, 2 = Roe seine, ",
-              "3 = Roe gillnet.")
+              "3 = Roe gillnet, 4 = Dive survey, 5 = Surface survey.")
 make.parameters.est.table(hg.b,
                           xcaption = cap,
                           xlabel = "tab:sog-parameters-posts",

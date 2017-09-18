@@ -314,18 +314,17 @@ make.parameters.est.table <- function(model,
                "$M$",
                "$\\overline{R}$",
                "$\\overline{R}_{init}$",
-               "$q_2$",
-               "$q_3$",
+               "$\\rho$",
+               "$\\vartheta$",
+               "$B_0$",
                "$q_4$",
                "$q_5$",
                "$\\hat{a}_1$",
                "$\\hat{\\gamma}_1$",
                "$\\hat{a}_2$",
                "$\\hat{\\gamma}_2$",
-               "$\\hat{a}_4$",
-               "$\\hat{\\gamma}_4$",
-               "$\\hat{a}_5$",
-               "$\\hat{\\gamma}_5$")
+               "$\\hat{a}_3$",
+               "$\\hat{\\gamma}_3$")
   col.names <- colnames(tab)
   col.names <- latex.bold(latex.perc(col.names))
   col.names <- c(latex.bold("Parameter"), col.names)
