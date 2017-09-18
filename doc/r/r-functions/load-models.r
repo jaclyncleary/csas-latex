@@ -1195,66 +1195,43 @@ calc.mcmc <- function(model,
   yr.f.end <- f.yrs[length(f.yrs)]
 
   r.quants <- NULL
-  if(FALSE){
-    tryCatch({
-      r.dat <- cbind(r.dat,
-                     sbt.init,
-                     sbt.end,
-                     sbt.end / sbt.init,
-                     f.end,
-                     0.2 * r.dat$bo,
-                     0.4 * r.dat$bo,
-                     0.4 * r.dat$bmsy,
-                     0.8 * r.dat$bmsy)
-      names(r.dat) <- c("bo",
-                        "bmsy",
-                        "msy",
-                        "fmsy",
-                        "umsy",
-                        paste0("b", yr.sbt.init),
-                        paste0("b", yr.sbt.end),
-                        paste0("b", yr.sbt.end, "/", yr.sbt.init),
-                        paste0("f", yr.f.end),
-                        paste0("0.2bo"),
-                        paste0("0.4bo"),
-                        paste0("0.4bmsy"),
-                        paste0("0.8bmsy"))
-      r.quants <- apply(r.dat, 2, quantile, prob = probs)
-    }, warning = function(war){
-    }, error = function(err){
-      ## If this is the case, a message will have been printed in the previous
-      ##  tryCatch above so none is needed here.
-    })
-  }
+  tryCatch({
+    r.dat <- cbind(r.dat,
+                   sbt.init,
+                   sbt.end,
+                   sbt.end / sbt.init,
+                   0.2 * r.dat$bo,
+                   0.4 * r.dat$bo)
+    names(r.dat) <- c("bo",
+                      paste0("b", yr.sbt.init),
+                      paste0("b", yr.sbt.end),
+                      paste0("b", yr.sbt.end, "/", yr.sbt.init),
+                      paste0("0.2bo"),
+                      paste0("0.4bo"))
+    r.quants <- apply(r.dat, 2, quantile, prob = probs)
+  }, warning = function(war){
+  }, error = function(err){
+    ## If this is the case, a message will have been printed in the previous
+    ##  tryCatch above so none is needed here.
+  })
 
   desc.col <- c(latex.subscr.ital("B", "0"),
-                latex.subscr.ital("B", "MSY"),
-                "MSY",
-                latex.subscr.ital("F", "MSY"),
-                latex.subscr.ital("U", "MSY"),
                 latex.subscr.ital("B", yr.sbt.init),
                 latex.subscr.ital("B", yr.sbt.end),
                 paste0(latex.subscr.ital("B", yr.sbt.end),
                        "/",
                        latex.subscr.ital("B", yr.sbt.init)),
-                latex.subscr.ital("F", yr.f.end),
                 paste0("0.2",
                        latex.subscr.ital("B", "0")),
                 paste0("0.4",
-                       latex.subscr.ital("B", "0")),
-                paste0("0.4",
-                       latex.subscr.ital("B", "MSY")),
-                paste0("0.8",
-                       latex.subscr.ital("B", "MSY")))
+                       latex.subscr.ital("B", "0")))
 
-  if(FALSE){
-    r.quants <- t(r.quants)
-    r.quants <- cbind.data.frame(desc.col, r.quants)
-    col.names <- colnames(r.quants)
-    col.names <- latex.bold(latex.perc(col.names))
-    col.names[1] <- latex.bold("Reference Point")
-    colnames(r.quants) <- col.names
-  }
+  r.quants <- t(r.quants)
+  r.quants <- cbind.data.frame(desc.col, r.quants)
+  col.names <- colnames(r.quants)
+  col.names <- latex.bold(latex.perc(col.names))
+  col.names[1] <- latex.bold("Reference Point")
+  colnames(r.quants) <- col.names
 
   proj.dat <- NULL
   if(load.proj){
