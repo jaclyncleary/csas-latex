@@ -36,8 +36,8 @@ cap <- paste0("Estimated and fixed parameters and prior probablilty ",
 make.parameters.table(hg.b,
                       xcaption = cap,
                       xlabel = "tab:hg-parameters",
-                      font.size = 9,
-                      space.size = 10,
+                      font.size = 10,
+                      space.size = 11,
                       placement = "H")
 @
 
@@ -47,8 +47,8 @@ cap <- paste0("Estimated and fixed parameters and prior probablilty ",
 make.parameters.table(pr.b,
                       xcaption = cap,
                       xlabel = "tab:pr-parameters",
-                      font.size = 9,
-                      space.size = 10,
+                      font.size = 10,
+                      space.size = 11,
                       placement = "H")
 @
 
@@ -58,8 +58,8 @@ cap <- paste0("Estimated and fixed parameters and prior probablilty ",
 make.parameters.table(hg.b,
                       xcaption = cap,
                       xlabel = "tab:cc-parameters",
-                      font.size = 9,
-                      space.size = 10,
+                      font.size = 10,
+                      space.size = 11,
                       placement = "H")
 @
 
@@ -69,8 +69,8 @@ cap <- paste0("Estimated and fixed parameters and prior probablilty ",
 make.parameters.table(sog.b,
                       xcaption = cap,
                       xlabel = "tab:sog-parameters",
-                      font.size = 9,
-                      space.size = 10,
+                      font.size = 10,
+                      space.size = 11,
                       placement = "H")
 @
 
@@ -80,8 +80,8 @@ cap <- paste0("Estimated and fixed parameters and prior probablilty ",
 make.parameters.table(hg.b,
                       xcaption = cap,
                       xlabel = "tab:wcvi-parameters",
-                      font.size = 9,
-                      space.size = 10,
+                      font.size = 10,
+                      space.size = 11,
                       placement = "H")
 @
 
@@ -96,8 +96,8 @@ cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
 make.parameters.est.table(hg.b,
                           xcaption = cap,
                           xlabel = "tab:hg-parameters-posts",
-                          font.size = 9,
-                          space.size = 10,
+                          font.size = 11,
+                          space.size = 12,
                           placement = "H")
 @
 
@@ -112,8 +112,8 @@ cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
 make.parameters.est.table(pr.b,
                           xcaption = cap,
                           xlabel = "tab:prd-parameters-posts",
-                          font.size = 9,
-                          space.size = 10,
+                          font.size = 11,
+                          space.size = 12,
                           placement = "H")
 @
 
@@ -128,8 +128,8 @@ cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
 make.parameters.est.table(cc.b,
                           xcaption = cap,
                           xlabel = "tab:cc-parameters-posts",
-                          font.size = 9,
-                          space.size = 10,
+                          font.size = 11,
+                          space.size = 12,
                           placement = "H")
 @
 
@@ -144,8 +144,8 @@ cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
 make.parameters.est.table(sog.b,
                           xcaption = cap,
                           xlabel = "tab:sog-parameters-posts",
-                          font.size = 9,
-                          space.size = 10,
+                          font.size = 11,
+                          space.size = 12,
                           placement = "H")
 @
 
@@ -160,8 +160,8 @@ cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
 make.parameters.est.table(wcvi.b,
                           xcaption = cap,
                           xlabel = "tab:wcvi-parameters-posts",
-                          font.size = 9,
-                          space.size = 10,
+                          font.size = 11,
+                          space.size = 12,
                           placement = "H")
 @
 
@@ -173,8 +173,8 @@ cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
 make.ref.points.table(hg.b,
                       xcaption = cap,
                       xlabel = "tab:hg-ref-points",
-                      font.size = 9,
-                      space.size = 10,
+                      font.size = 11,
+                      space.size = 12,
                       placement = "H")
 @
 
@@ -186,8 +186,8 @@ cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
 make.ref.points.table(pr.b,
                       xcaption = cap,
                       xlabel = "tab:prd-ref-points",
-                      font.size = 9,
-                      space.size = 10,
+                      font.size = 11,
+                      space.size = 12,
                       placement = "H")
 @
 
@@ -199,8 +199,8 @@ cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
 make.ref.points.table(cc.b,
                       xcaption = cap,
                       xlabel = "tab:cc-ref-points",
-                      font.size = 9,
-                      space.size = 10,
+                      font.size = 11,
+                      space.size = 12,
                       placement = "H")
 @
 
@@ -212,8 +212,8 @@ cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
 make.ref.points.table(sog.b,
                       xcaption = cap,
                       xlabel = "tab:sog-ref-points",
-                      font.size = 9,
-                      space.size = 10,
+                      font.size = 11,
+                      space.size = 12,
                       placement = "H")
 @
 
@@ -225,8 +225,8 @@ cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
 make.ref.points.table(wcvi.b,
                       xcaption = cap,
                       xlabel = "tab:wcvi-ref-points",
-                      font.size = 9,
-                      space.size = 10,
+                      font.size = 11,
+                      space.size = 12,
                       placement = "H")
 @
 
@@ -239,8 +239,8 @@ make.biomass.depletion.table(hg.b,
                              syr = 2007,
                              xcaption = cap,
                              xlabel = "tab:hg-spawn-biomass",
-                             font.size = 9,
-                             space.size = 10,
+                             font.size = 11,
+                             space.size = 12,
                              placement = "H",
                              tabular.environment = "longtable")
 @
@@ -254,8 +254,8 @@ make.biomass.depletion.table(pr.b,
                              syr = 2007,
                              xcaption = cap,
                              xlabel = "tab:prd-spawn-biomass",
-                             font.size = 9,
-                             space.size = 10,
+                             font.size = 11,
+                             space.size = 12,
                              placement = "H",
                              tabular.environment = "longtable")
 @
@@ -269,8 +269,8 @@ make.biomass.depletion.table(cc.b,
                              syr = 2007,
                              xcaption = cap,
                              xlabel = "tab:cc-spawn-biomass",
-                             font.size = 9,
-                             space.size = 10,
+                             font.size = 11,
+                             space.size = 12,
                              placement = "H",
                              tabular.environment = "longtable")
 @
@@ -284,8 +284,8 @@ make.biomass.depletion.table(sog.b,
                              syr = 2007,
                              xcaption = cap,
                              xlabel = "tab:sog-spawn-biomass",
-                             font.size = 9,
-                             space.size = 10,
+                             font.size = 11,
+                             space.size = 12,
                              placement = "H",
                              tabular.environment = "longtable")
 @
@@ -299,8 +299,8 @@ make.biomass.depletion.table(wcvi.b,
                              syr = 2007,
                              xcaption = cap,
                              xlabel = "tab:wcvi-spawn-biomass",
-                             font.size = 9,
-                             space.size = 10,
+                             font.size = 11,
+                             space.size = 12,
                              placement = "H",
                              tabular.environment = "longtable")
 @
@@ -315,8 +315,8 @@ make.value.table(hg.b,
                  syr = 2007,
                  xcaption = cap,
                  xlabel = "tab:hg-recruitment",
-                 font.size = 9,
-                 space.size = 10,
+                 font.size = 11,
+                 space.size = 12,
                  placement = "H",
                  tabular.environment = "longtable")
 @
@@ -330,8 +330,8 @@ make.value.table(pr.b,
                  syr = 2007,
                  xcaption = cap,
                  xlabel = "tab:prd-recruitment",
-                 font.size = 9,
-                 space.size = 10,
+                 font.size = 11,
+                 space.size = 12,
                  placement = "H",
                  tabular.environment = "longtable")
 @
@@ -345,8 +345,8 @@ make.value.table(cc.b,
                  syr = 2007,
                  xcaption = cap,
                  xlabel = "tab:cc-recruitment",
-                 font.size = 9,
-                 space.size = 10,
+                 font.size = 11,
+                 space.size = 12,
                  placement = "H",
                  tabular.environment = "longtable")
 @
@@ -360,8 +360,8 @@ make.value.table(sog.b,
                  syr = 2007,
                  xcaption = cap,
                  xlabel = "tab:sog-recruitment",
-                 font.size = 9,
-                 space.size = 10,
+                 font.size = 11,
+                 space.size = 12,
                  placement = "H",
                  tabular.environment = "longtable")
 @
@@ -375,14 +375,11 @@ make.value.table(wcvi.b,
                  syr = 2007,
                  xcaption = cap,
                  xlabel = "tab:wcvi-recruitment",
-                 font.size = 9,
-                 space.size = 10,
+                 font.size = 11,
+                 space.size = 12,
                  placement = "H",
                  tabular.environment = "longtable")
 @
-
-
-
 
 \begin{landscapepage}
 <<hg.decision.table, results='asis', echo=FALSE>>=
