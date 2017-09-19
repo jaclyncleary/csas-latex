@@ -1200,31 +1200,26 @@ calc.mcmc <- function(model,
                    sbt.init,
                    sbt.end,
                    sbt.end / sbt.init,
-                   0.2 * r.dat$bo,
-                   0.4 * r.dat$bo)
+                   0.3 * r.dat$bo)
     names(r.dat) <- c("bo",
                       paste0("b", yr.sbt.init),
                       paste0("b", yr.sbt.end),
                       paste0("b", yr.sbt.end, "/", yr.sbt.init),
-                      paste0("0.2bo"),
-                      paste0("0.4bo"))
-    r.quants <- apply(r.dat, 2, quantile, prob = probs)
+                      paste0("0.3bo"))
+  r.quants <- apply(r.dat, 2, quantile, prob = probs)
   }, warning = function(war){
   }, error = function(err){
     ## If this is the case, a message will have been printed in the previous
     ##  tryCatch above so none is needed here.
   })
 
-  desc.col <- c(latex.subscr.ital("B", "0"),
-                latex.subscr.ital("B", yr.sbt.init),
-                latex.subscr.ital("B", yr.sbt.end),
-                paste0(latex.subscr.ital("B", yr.sbt.end),
-                       "/",
-                       latex.subscr.ital("B", yr.sbt.init)),
-                paste0("0.2",
-                       latex.subscr.ital("B", "0")),
-                paste0("0.4",
-                       latex.subscr.ital("B", "0")))
+  desc.col <- c("$B_0$",
+                paste0("$B_{", yr.sbt.init, "}$"),
+                paste0("$B_{", yr.sbt.end, "}$"),
+                paste0("$B_{", yr.sbt.end,
+                       "}/",
+                       "B_{", yr.sbt.init, "}$"),
+                "$0.3B_0$")
 
   r.quants <- t(r.quants)
   r.quants <- cbind.data.frame(desc.col, r.quants)
@@ -1289,6 +1284,7 @@ calc.probabilities <- function(model,
   }
   if(which.stock < 1 | which.stock > 5){
     warning("which.stock must be between 1 and 5.")
+    return(NULL)
   }
   if(is.null(which.model)){
     warning("which.model must be 1 or 2, it is NULL.")
