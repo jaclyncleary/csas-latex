@@ -69,9 +69,9 @@ load.iscam.files <- function(model.dir,
 
 delete.rdata.files <- function(del.dir = model.dir){
   ## Delete all rdata files found in the subdirectories of the models.dir
-  ## directory recursively.
+  ## directory.
   ##
-  ## models.dir - directory name for all models location
+  ## del.dir - directory name for all models location
 
   dirs <- list.dirs(del.dir, recursive = FALSE)
   subdirs <- list.dirs(dirs, recursive = FALSE)
@@ -1038,7 +1038,6 @@ calc.mcmc <- function(model,
   ## Do the mcmc calculations, i.e. quantiles for parameters
   ## Returns a list of them all
   ##
-  ## mcmc - output of the read.mcmc function
   ## burnin - the number of posteriors to remove from the data
   ## thin - the thinning to apply to the posterior samples
   ## lower - lower quantile for confidence interval calcs
@@ -1274,8 +1273,8 @@ calc.probabilities <- function(model,
   ## Returns a data frame which has its names formatted for latex
   ## There are possibly hard-coded values in the function and it should be
   ##  re-written for each assessment.
-  ## which.stock is 1-5 for the five herring stocks: 1=HG, 2=SOG, 3=PRD,
-  ##  4=CC, 5=WCVI
+  ## which.stock is 1-5 for the five herring stocks: 1=HG, 2=PRD, 3=CC,
+  ##  4=SOG, 5=WCVI
   ## which.model is either 1=AM1 or 2=AM2 for herring.
 
   if(is.null(which.stock)){
