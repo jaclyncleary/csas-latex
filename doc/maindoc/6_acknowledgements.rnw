@@ -1,6 +1,9 @@
 \section{ACKNOWLEDGEMENTS}
 
 Thanks...
+\begin{itemize}
+\item Rob Kronlund for R code to make production plots.
+\end{itemize}
 
 % References
 \clearpage
