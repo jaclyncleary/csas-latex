@@ -470,35 +470,60 @@ make.pairs.plot(wcvi.b)
 \label{fig:wcvi-pairs}
 \end{figure}
 %%------------------------------------------------------------------------------
-
-
-
+%% Selectivity plots
 %%------------------------------------------------------------------------------
-%% SELECTIVITY PLOT
 \begin{figure}[H]
 \begin{center}
 <<hg.selex, fig.height=5,fig.width=8>>=
 make.selex.comparison.plot(hg.b, gear.names, leg = "bottomright")
 @
 \end{center}
-\caption{Estimated and Fixed selectivities for the Reference Case for Haida
-  Gwaii.}
+\caption{Estimated and Fixed selectivities for the Haida Gwaii AM2 model.}
 \label{fig:hg-selex}
+%\end{figure}
+%%------------------------------------------------------------------------------
+%\begin{figure}[H]
+\begin{center}
+<<prd.selex, fig.height=5,fig.width=8>>=
+make.selex.comparison.plot(pr.b, gear.names, leg = "bottomright")
+@
+\end{center}
+\caption{Estimated and Fixed selectivities for the Prince Rupert District model.}
+\label{fig:prd-selex}
 \end{figure}
-
+%%------------------------------------------------------------------------------
 \begin{figure}[H]
+\begin{center}
+<<cc.selex, fig.height=5,fig.width=8>>=
+make.selex.comparison.plot(cc.b, gear.names, leg = "bottomright")
+@
+\end{center}
+\caption{Estimated and Fixed selectivities for the Central Coast AM2 model.}
+\label{fig:cc-selex}
+%\end{figure}
+%%------------------------------------------------------------------------------
+%\begin{figure}[H]
 \begin{center}
 <<sog.selex, fig.height=5,fig.width=8>>=
 make.selex.comparison.plot(sog.b, gear.names, leg = "bottomright")
 @
 \end{center}
-\caption{Estimated and Fixed selectivities for the Reference Case for the
-  Strait of Georgia.}
+\caption{Estimated and Fixed selectivities for the Strait of Georgia AM2 model.}
 \label{fig:sog-selex}
 \end{figure}
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<wcvi.selex, fig.height=5,fig.width=8>>=
+make.selex.comparison.plot(wcvi.b, gear.names, leg = "bottomright")
+@
+\end{center}
+\caption{Estimated and Fixed selectivities for the WCVI AM2 model.}
+\label{fig:wcvi-selex}
+\end{figure}
+%%------------------------------------------------------------------------------
 
-%
-% %%------------------------------------------------------------------------------
+
 % %% REFERENCE POINT PLOT
 % \begin{figure}[H]
 % \begin{center}
