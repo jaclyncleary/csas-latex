@@ -88,11 +88,11 @@ make.parameters.table(hg.b,
 <<hg.parameter.est.table, results='asis', echo=FALSE>>=
 cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
               "97.5\\textsuperscript{th} percentile) and MPD estimates of key ",
-              "parameters from the Reference Case for Haida Gwaii. Subscripts on $q$ ",
+              "parameters from the Haida Gwaii AM2 model. Subscripts on $q$ ",
               "(catchability), $\\hat{a}$ (selectivity age-at-50\\%), and ",
               "$\\hat{\\gamma}$ (selectivity standard deviation-at-50\\%) ",
               "parameters indicate: 1 = Other fisheries, 2 = Roe seine, ",
-              "3 = Roe gillnet, 4 = Dive survey, 5 = Surface survey.")
+              "3 = Roe gillnet, 4 = Surface survey, 5 = Dive survey.")
 make.parameters.est.table(hg.b,
                           xcaption = cap,
                           xlabel = "tab:hg-parameters-posts",
@@ -100,6 +100,76 @@ make.parameters.est.table(hg.b,
                           space.size = 10,
                           placement = "H")
 @
+
+<<prd.parameter.est.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+              "97.5\\textsuperscript{th} percentile) and MPD estimates of key ",
+              "parameters from the Prince Rupert District AM2 model. Subscripts on $q$ ",
+              "(catchability), $\\hat{a}$ (selectivity age-at-50\\%), and ",
+              "$\\hat{\\gamma}$ (selectivity standard deviation-at-50\\%) ",
+              "parameters indicate: 1 = Other fisheries, 2 = Roe seine, ",
+              "3 = Roe gillnet, 4 = Surface survey, 5 = Dive survey.")
+make.parameters.est.table(pr.b,
+                          xcaption = cap,
+                          xlabel = "tab:prd-parameters-posts",
+                          font.size = 9,
+                          space.size = 10,
+                          placement = "H")
+@
+
+<<cc.parameter.est.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+              "97.5\\textsuperscript{th} percentile) and MPD estimates of key ",
+              "parameters from the Central Coast AM2 model. Subscripts on $q$ ",
+              "(catchability), $\\hat{a}$ (selectivity age-at-50\\%), and ",
+              "$\\hat{\\gamma}$ (selectivity standard deviation-at-50\\%) ",
+              "parameters indicate: 1 = Other fisheries, 2 = Roe seine, ",
+              "3 = Roe gillnet, 4 = Surface survey, 5 = Dive survey.")
+make.parameters.est.table(cc.b,
+                          xcaption = cap,
+                          xlabel = "tab:cc-parameters-posts",
+                          font.size = 9,
+                          space.size = 10,
+                          placement = "H")
+@
+
+<<sog.parameter.est.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+              "97.5\\textsuperscript{th} percentile) and MPD estimates of key ",
+              "parameters from the Strait of Georgia AM2 model. Subscripts on $q$ ",
+              "(catchability), $\\hat{a}$ (selectivity age-at-50\\%), and ",
+              "$\\hat{\\gamma}$ (selectivity standard deviation-at-50\\%) ",
+              "parameters indicate: 1 = Other fisheries, 2 = Roe seine, ",
+              "3 = Roe gillnet, 4 = Surface survey, 5 = Dive survey.")
+make.parameters.est.table(sog.b,
+                          xcaption = cap,
+                          xlabel = "tab:sog-parameters-posts",
+                          font.size = 9,
+                          space.size = 10,
+                          placement = "H")
+@
+
+<<wcvi.parameter.est.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+              "97.5\\textsuperscript{th} percentile) and MPD estimates of key ",
+              "parameters from the WCVI AM2 model. Subscripts on $q$ ",
+              "(catchability), $\\hat{a}$ (selectivity age-at-50\\%), and ",
+              "$\\hat{\\gamma}$ (selectivity standard deviation-at-50\\%) ",
+              "parameters indicate: 1 = Other fisheries, 2 = Roe seine, ",
+              "3 = Roe gillnet, 4 = Surface survey, 5 = Dive survey.")
+make.parameters.est.table(wcvi.b,
+                          xcaption = cap,
+                          xlabel = "tab:wcvi-parameters-posts",
+                          font.size = 9,
+                          space.size = 10,
+                          placement = "H")
+@
+
+
+
+
+
+
 
 <<hg.ref.points.table, results='asis', echo=FALSE>>=
 cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
@@ -114,21 +184,6 @@ make.ref.points.table(hg.b,
                       placement = "H")
 @
 
-<<sog.parameter.est.table, results='asis', echo=FALSE>>=
-cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-              "97.5\\textsuperscript{th} percentile) and MPD estimates of key ",
-              "parameters from the Reference Case for the Strait of Georgia. Subscripts on $q$ ",
-              "(catchability), $\\hat{a}$ (selectivity age-at-50\\%), and ",
-              "$\\hat{\\gamma}$ (selectivity standard deviation-at-50\\%) ",
-              "parameters indicate: 1 = Other fisheries, 2 = Roe seine, ",
-              "3 = Roe gillnet, 4 = Dive survey, 5 = Surface survey.")
-make.parameters.est.table(hg.b,
-                          xcaption = cap,
-                          xlabel = "tab:sog-parameters-posts",
-                          font.size = 9,
-                          space.size = 10,
-                          placement = "H")
-@
 
 <<hg.spawning.biomass.depletion.table, results='asis', echo=FALSE>>=
 cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
