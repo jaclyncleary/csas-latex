@@ -446,7 +446,7 @@ make.value.table <- function(model,
 }
 
 make.biomass.depletion.table <- function(model,
-                                         type,
+                                         syr,
                                          digits = 3,
                                          xcaption = "default",
                                          xlabel   = "default",
@@ -457,6 +457,7 @@ make.biomass.depletion.table <- function(model,
   ## Returns an xtable with both spawning biomass and depletion in it.
   ##  Based on make.value.table, but wider with both and extra headers
   ##
+  ## syr - start year for table data
   ## digits - number of decimal places for the values
   ## xcaption - caption to appear in the calling document
   ## xlabel - the label used to reference the table in latex
@@ -476,6 +477,8 @@ make.biomass.depletion.table <- function(model,
 
   tab <- f(t(out.dat), digits)
   tab <- cbind(rownames(tab), tab)
+  tab <- tab[tab[,1] >= syr,]
+
   col.names <- colnames(tab)
   col.names[1] <- "Year"
   col.names <- latex.bold(latex.perc(col.names))

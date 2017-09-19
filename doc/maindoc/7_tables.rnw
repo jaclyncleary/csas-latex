@@ -230,15 +230,13 @@ make.ref.points.table(wcvi.b,
                       placement = "H")
 @
 
-
-
-
 <<hg.spawning.biomass.depletion.table, results='asis', echo=FALSE>>=
 cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
               "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
               "spawning biomass (1000 t) and relative spawning ",
-              "biomass for the Reference Case for Haida Gwaii.")
+              "biomass for the Haida Gwaii AM2 model.")
 make.biomass.depletion.table(hg.b,
+                             syr = 2007,
                              xcaption = cap,
                              xlabel = "tab:hg-spawn-biomass",
                              font.size = 9,
@@ -247,14 +245,43 @@ make.biomass.depletion.table(hg.b,
                              tabular.environment = "longtable")
 @
 
-\clearpage
-
-<<sog.spawning.biomass.table, results='asis', echo=FALSE>>=
+<<prd.spawning.biomass.depletion.table, results='asis', echo=FALSE>>=
 cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
               "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
               "spawning biomass (1000 t) and relative spawning ",
-              "biomass for the Reference Case for the Strait of Georgia.")
+              "biomass for the Prince Rupert District AM2 model.")
+make.biomass.depletion.table(pr.b,
+                             syr = 2007,
+                             xcaption = cap,
+                             xlabel = "tab:prd-spawn-biomass",
+                             font.size = 9,
+                             space.size = 10,
+                             placement = "H",
+                             tabular.environment = "longtable")
+@
+
+<<cc.spawning.biomass.depletion.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+              "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
+              "spawning biomass (1000 t) and relative spawning ",
+              "biomass for the Central Coast AM2 model.")
+make.biomass.depletion.table(cc.b,
+                             syr = 2007,
+                             xcaption = cap,
+                             xlabel = "tab:cc-spawn-biomass",
+                             font.size = 9,
+                             space.size = 10,
+                             placement = "H",
+                             tabular.environment = "longtable")
+@
+
+<<sog.spawning.biomass.depletion.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+              "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
+              "spawning biomass (1000 t) and relative spawning ",
+              "biomass for the Strait of Georgia AM2 model.")
 make.biomass.depletion.table(sog.b,
+                             syr = 2007,
                              xcaption = cap,
                              xlabel = "tab:sog-spawn-biomass",
                              font.size = 9,
@@ -262,6 +289,22 @@ make.biomass.depletion.table(sog.b,
                              placement = "H",
                              tabular.environment = "longtable")
 @
+
+<<wcvi.spawning.biomass.depletion.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+              "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
+              "spawning biomass (1000 t) and relative spawning ",
+              "biomass for the WCVI AM2 model.")
+make.biomass.depletion.table(wcvi.b,
+                             syr = 2007,
+                             xcaption = cap,
+                             xlabel = "tab:wcvi-spawn-biomass",
+                             font.size = 9,
+                             space.size = 10,
+                             placement = "H",
+                             tabular.environment = "longtable")
+@
+
 
 <<hg.recruitment.table, results='asis', echo=FALSE>>=
 cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
