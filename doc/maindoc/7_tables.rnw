@@ -309,11 +309,42 @@ make.biomass.depletion.table(wcvi.b,
 <<hg.recruitment.table, results='asis', echo=FALSE>>=
 cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
               "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
-              "recruitment (millions) for the Reference Case for Haida Gwaii.")
+              "recruitment (millions) for the Haida Gwaii AM2 model.")
 make.value.table(hg.b,
                  type = 2,
+                 syr = 2007,
                  xcaption = cap,
                  xlabel = "tab:hg-recruitment",
+                 font.size = 9,
+                 space.size = 10,
+                 placement = "H",
+                 tabular.environment = "longtable")
+@
+
+<<prd.recruitment.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+              "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
+              "recruitment (millions) for the Prince Rupert District AM2 model.")
+make.value.table(pr.b,
+                 type = 2,
+                 syr = 2007,
+                 xcaption = cap,
+                 xlabel = "tab:prd-recruitment",
+                 font.size = 9,
+                 space.size = 10,
+                 placement = "H",
+                 tabular.environment = "longtable")
+@
+
+<<cc.recruitment.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+              "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
+              "recruitment (millions) for the Central Coast AM2 model.")
+make.value.table(cc.b,
+                 type = 2,
+                 syr = 2007,
+                 xcaption = cap,
+                 xlabel = "tab:cc-recruitment",
                  font.size = 9,
                  space.size = 10,
                  placement = "H",
@@ -323,10 +354,10 @@ make.value.table(hg.b,
 <<sog.recruitment.table, results='asis', echo=FALSE>>=
 cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
               "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
-              "recruitment (millions) for the Reference Case for the Strait ",
-              "of Georgia.")
+              "recruitment (millions) for the Strait of Georgia AM2 model.")
 make.value.table(sog.b,
                  type = 2,
+                 syr = 2007,
                  xcaption = cap,
                  xlabel = "tab:sog-recruitment",
                  font.size = 9,
@@ -334,6 +365,24 @@ make.value.table(sog.b,
                  placement = "H",
                  tabular.environment = "longtable")
 @
+
+<<wcvi.recruitment.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
+              "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
+              "recruitment (millions) for the WCVI AM2 model.")
+make.value.table(wcvi.b,
+                 type = 2,
+                 syr = 2007,
+                 xcaption = cap,
+                 xlabel = "tab:wcvi-recruitment",
+                 font.size = 9,
+                 space.size = 10,
+                 placement = "H",
+                 tabular.environment = "longtable")
+@
+
+
+
 
 \begin{landscapepage}
 <<hg.decision.table, results='asis', echo=FALSE>>=
