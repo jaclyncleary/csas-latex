@@ -22,8 +22,6 @@
 # Version 1 reads the 'old' iSCAM input and output.
 # Version 2 reads the 'new' iSCAM input and output.
 #
-# References:
-#
 ###############################################################################
 
 
@@ -106,9 +104,6 @@ mNames <- c( "AM2", "AM1" )
 allRegions <- list(
     major=c("HG", "PRD", "CC", "SoG", "WCVI"),
     minor=c("A27", "A2W") )
-# Possible regions by type
-# allRegions <- list( 
-#   major=c("HG", "PRD", "CC", "SOG", "WCVI") )
 
 # Region names
 allRegionNames <- list( 
@@ -128,15 +123,6 @@ regions <- read_csv(file=
         6, A27, Area 27, FALSE
         7, A2W, Area 2 West, FALSE",
     col_types=cols("i", "c", "c", "l") )
-
-# # Cross-walk table for SAR to region and region name
-# regions <- read_csv(file=
-#         "SAR, Region, RegionName, Major
-#         1, HG, Haida Gwaii, TRUE
-#         2, PRD, Prince Rupert District, TRUE
-#         3, CC, Central Coast, TRUE
-#         4, WCVI, West Coast Vancouver Island, TRUE",
-#     col_types=cols("i", "c", "c", "l") )
 
 # Age to highlight in figure
 ageShow <- 3
@@ -331,8 +317,7 @@ LoadADMB <- function( SARs ) {
   return( res )
 }  # End LoadADMB function
 
-# Load ADMB data
-
+# Load ADMB data (major and minor SARs)
 inputData <- LoadADMB( SARs=unlist(allRegions, use.names=FALSE) )
 
 # Arrange the ADMB output files
@@ -374,7 +359,7 @@ ArrangeOutput <- function( SARs, models ) {
   cat( " done\n" )
 }  # End ArrangeOutput function
 
-# Arrange the output files
+# Arrange the output files (major SARs only)
 ArrangeOutput( SARs=allRegions$major, models=mNames )
 
 
@@ -431,7 +416,7 @@ GetModelPars <- function( fn, SARs, models=mNames, probs=ciLevel ) {
   return( res )
 }  # End GetModelPars function
 
-# Get model parameters
+# Get model parameters (major SARs only)
 mPars <- GetModelPars( fn="iscam_mcmc.csv", SARs=allRegions$major )
 
 # Assemble model parameters
@@ -476,20 +461,15 @@ GetPars <- function( fn, SARs, models=mNames, varName, probs=ciLevel ) {
   return( res )
 }  # End GetPars function
 
-# Get instantaneous natural mortality
-#natMort <- GetPars( fn="M_tot_mcmc.csv", SARs=allRegions$major, 
-#    varName="Mortality" )
+# Get instantaneous natural mortality (major SARs only)
 natMort <- GetPars( fn="iscam_m_mcmc.csv", SARs=allRegions$major, 
     varName="Mortality" )
 
-# Get recruitment (number in millions)
+# Get recruitment (number in millions; major SARs only)
 recruits <- GetPars( fn="iscam_rt_mcmc.csv",
                     SARs=allRegions$major, varName="Recruitment" )
 
-#recruits <- GetPars( fn=paste("Nage", ageRec, "_mcmc.csv", sep=""), 
-#    SARs=allRegions$major, varName="Recruitment" )
-
-# Get spawning biomass (thousands of tonnes)
+# Get spawning biomass (thousands of tonnes; major SARs only)
 spBio <- GetPars( fn="iscam_sbt_mcmc.csv", SARs=allRegions$major, 
         varName="Abundance" ) %>%
     mutate( Survey=ifelse(Year < newSurvYr, "Surface", "Dive") )
@@ -545,7 +525,7 @@ GetProjected <- function( fn, SARs, models=mNames, probs=ciLevel ) {
   return( res )
 }  # End GetProjected function
 
-# Get projected spawning biomass
+# Get projected spawning biomass (major SARs only)
 pPars <- GetProjected( fn="iscammcmc_proj_Gear1.csv", SARs=allRegions$major )
 
 
@@ -648,7 +628,7 @@ PlotCatch <- function( SARs, dat ){
       ggsave( filename=file.path("Catch.png"), width=figWidth, height=figWidth )
 }  # End PlotCatch function
 
-# Plot catch
+# Plot catch (major and minor SARs)
 PlotCatch( SARs=regions$Region, dat=catch )
 
 # Plot total spawn index by year
@@ -693,7 +673,7 @@ PlotSpawn <- function( SARs, dat ){
           height=figWidth+0.5 )
 }  # End PlotSpawn function
 
-# Plot spawn index
+# Plot spawn index (major and minor SARs)
 PlotSpawn( SARs=unlist(allRegions, use.names=FALSE), dat=spawn )
 
 # Plot proportion-at-age
@@ -736,7 +716,7 @@ PlotAge <- function( SARs, dat ) {
           height=figWidth )
 }  # End PlotAge function
 
-# Plot proportion-at-age
+# Plot proportion-at-age (major and minor SARs)
 PlotAge( SARs=unlist(allRegions, use.names=FALSE), dat=numAgedYear )
 
 # Plot weight-at-age by year
@@ -781,7 +761,7 @@ PlotWeight <- function( SARs, dat ){
           height=figWidth )
 }  # End PlotWeight function
 
-# Plot weight-at-age
+# Plot weight-at-age (major and minor SARs)
 PlotWeight( SARs=unlist(allRegions, use.names=FALSE), dat=muWeightAge )
 
 # Plot number aged by year
@@ -814,7 +794,7 @@ PlotNumber <- function( SARs, dat ){
           height=figWidth )
 }  # End PlotNumber function
 
-# Plot number aged
+# Plot number aged (major and minor SARs)
 PlotNumber( SARs=unlist(allRegions, use.names=FALSE), dat=numAgedYear )
 
 # Story-board plot: 4 panels (abundance, recruitment, M, and SSB with catch)
@@ -938,7 +918,7 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
   }  # End k loop over regions
 }  # End PlotStoryboard function
 
-# Make the storyboard
+# Make the storyboard (major SARs only)
 PlotStoryboard( SARs=allRegions$major, models=mNames, si=spawn, qp=qPars, 
     rec=recruits, M=natMort, SSB=spBio, C=catch, bp=bPars )
 
