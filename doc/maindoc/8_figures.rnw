@@ -85,6 +85,19 @@ Time series of vertical lines indicates commercial catch, excluding spawn on kel
 } % End loop over models for storyboard
 } % End loop over stocks for storyboard
 
+% Start a loop over stocks for production
+\foreach \x in {\Sexpr{paste(allRegions$major, sep=",")}} {
+% Start a loop over models for production
+\foreach \y in {\Sexpr{paste(mNames, sep=",")}} {
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}\x/Production\y.png}
+\caption{Model output (production analysis) for Pacific herring in the \x{} major stock assessment region (SAR) for \y.}
+\label{figProduction\y\x}
+\end{figure}
+} % End loop over models for production
+} % End loop over stocks for production
+
 
 % %%------------------------------------------------------------------------------
 % %% AGE COMPOSITION PLOTS (DATA ONLY)
