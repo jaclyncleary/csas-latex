@@ -279,10 +279,10 @@ make.traces.plot(hg.b, axis.lab.freq = 200)
 \caption{Trace plots for MCMC output of estimated parameters for the Haida Gwaii
   AM2 model. The MCMC run had chain length \Sexpr{mcmc.length}, with
   a sample taken at every \Sexpr{mcmc.samp.freq}th iteration.
-  Parameters $q_k$ (catchability), $\hat{a}_k$ (selectivity-at-age-50\%), and
+  The catchability parameter $q_1$ represents the surface survey and $q_2$
+  the dive survey. Parameters $\hat{a}_k$ (selectivity-at-age-50\%), and
   $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
-  follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe,
-  $k=4$: Surface survey, $k=5$: Dive survey.}
+  follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
 \label{fig:hg-traces}
 \end{figure}
 %%------------------------------------------------------------------------------
@@ -293,12 +293,12 @@ make.traces.plot(pr.b, axis.lab.freq = 200)
 @
 \end{center}
 \caption{Trace plots for MCMC output of estimated parameters for the Prince
-  Ru[ert District AM2 model. The MCMC run had chain length \Sexpr{mcmc.length},
+  Rupert District AM2 model. The MCMC run had chain length \Sexpr{mcmc.length},
   with a sample taken at every \Sexpr{mcmc.samp.freq}th iteration.
-  Parameters $q_k$ (catchability), $\hat{a}_k$ (selectivity-at-age-50\%), and
+  The catchability parameter $q_1$ represents the surface survey and $q_2$
+  the dive survey. Parameters $\hat{a}_k$ (selectivity-at-age-50\%), and
   $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
-  follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe,
-  $k=4$: Surface survey, $k=5$: Dive survey.}
+  follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
 \label{fig:prd-traces}
 \end{figure}
 %%------------------------------------------------------------------------------
@@ -311,10 +311,10 @@ make.traces.plot(cc.b, axis.lab.freq = 200)
 \caption{Trace plots for MCMC output of estimated parameters for the Central
   Coast AM2 model. The MCMC run had chain length \Sexpr{mcmc.length}, with
   a sample taken at every \Sexpr{mcmc.samp.freq}th iteration.
-  Parameters $q_k$ (catchability), $\hat{a}_k$ (selectivity-at-age-50\%), and
+  The catchability parameter $q_1$ represents the surface survey and $q_2$
+  the dive survey. Parameters $\hat{a}_k$ (selectivity-at-age-50\%), and
   $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
-  follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe,
-  $k=4$: Surface survey, $k=5$: Dive survey.}
+  follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
 \label{fig:cc-traces}
 \end{figure}
 %%------------------------------------------------------------------------------
@@ -327,10 +327,10 @@ make.traces.plot(sog.b, axis.lab.freq = 200)
 \caption{Trace plots for MCMC output of estimated parameters for the Strait of
   Georgia AM2 model. The MCMC run had chain length \Sexpr{mcmc.length}, with
   a sample taken at every \Sexpr{mcmc.samp.freq}th iteration.
-  Parameters $q_k$ (catchability), $\hat{a}_k$ (selectivity-at-age-50\%), and
+  The catchability parameter $q_1$ represents the surface survey and $q_2$
+  the dive survey. Parameters $\hat{a}_k$ (selectivity-at-age-50\%), and
   $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
-  follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe,
-  $k=4$: Surface survey, $k=5$: Dive survey.}
+  follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
 \label{fig:sog-traces}
 \end{figure}
 %%------------------------------------------------------------------------------
@@ -343,10 +343,10 @@ make.traces.plot(wcvi.b, axis.lab.freq = 200)
 \caption{Trace plots for MCMC output of estimated parameters for the WCVI
   AM2 model. The MCMC run had chain length \Sexpr{mcmc.length}, with
   a sample taken at every \Sexpr{mcmc.samp.freq}th iteration.
-  Parameters $q_k$ (catchability), $\hat{a}_k$ (selectivity-at-age-50\%), and
+  The catchability parameter $q_1$ represents the surface survey and $q_2$
+  the dive survey. Parameters $\hat{a}_k$ (selectivity-at-age-50\%), and
   $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
-  follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe,
-  $k=4$: Surface survey, $k=5$: Dive survey.}
+  follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
 \label{fig:wcvi-traces}
 \end{figure}
 %%------------------------------------------------------------------------------
