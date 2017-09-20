@@ -323,16 +323,15 @@ Similarly, figures \ref{figStoryboardAM2\Sexpr{allRegions$major[1]}} to \ref{fig
   \item $M$
 \end{itemize}
 
-See Table \ref{tabQPars} for estimated $q$ values.
-
 \subsubsection{Fishery reference points}
 
 \begin{resdoclist}
+\item $\mli{SB}_0$
+\item $\mli{SB}_{\Sexpr{max(yrRange)+1}}$
 \item Limit reference point (LRP)
 \item Upper stock reference (USR)
-\end{resdoclist}
 
-See Table \ref{tabBPars} for esimated biomass.
+\end{resdoclist}
 
 \subsubsection{Biomass and stock status}
 
