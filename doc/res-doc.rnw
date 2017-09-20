@@ -102,8 +102,8 @@ CSAP Working Paper 2017PEL01.
 % Main body
 \Main
 
-<<abstract, child='maindoc/1_abstract.rnw'>>=
-@
+%<<abstract, child='maindoc/1_abstract.rnw'>>=
+%@
 
 <<main, child='maindoc/2_introduction.rnw'>>=
 @
@@ -111,8 +111,8 @@ CSAP Working Paper 2017PEL01.
 <<main, child='maindoc/3_modelling.rnw'>>=
 @
 
-<<main, child='maindoc/4_recommendations.rnw'>>=
-@
+%<<main, child='maindoc/4_recommendations.rnw'>>=
+%@
 
 <<main, child='maindoc/5_future.rnw'>>=
 @
