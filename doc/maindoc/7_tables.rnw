@@ -1,34 +1,34 @@
 \section{TABLES}
 
-\begin{table}[H]
-\centering
-\caption{Spawn index scaling parameters $q$, for Pacific herring stock assessment models in the major stock assessment regions (SARs).
-\qPeriods{}
-Lower and upper estimates indicate the \Sexpr{ciLevel*100}\% credible interval.
-Legend: $q_{1}$ and $q_{2}$ are the surface and dive spawn index scaling parameters, respectively.
-Note that we refer to setting $q_{2} = 1$ in AM2, but in practice this is implemented as $q_{2} \sim \mathcal{N}(\mu,\,\sigma)$, where $\mathcal{N}$ is a normal distribution with mean $\mu = 1.0$, and standard deviation $\sigma = 0.01$.}
-\begin{tabular}{llllrrr}
-\toprule
-& & & & \multicolumn{3}{c}{Estimate}\\
-\cmidrule{5-7}
-\inputsp{\Sexpr{noquote(locOutput)}QPars.tex}
-\end{tabular}
-\label{tabQPars}
-\end{table}
+% \begin{table}[H]
+% \centering
+% \caption{Spawn index scaling parameters $q$, for Pacific herring stock assessment models in the major stock assessment regions (SARs).
+% \qPeriods{}
+% Lower and upper estimates indicate the \Sexpr{ciLevel*100}\% credible interval.
+% Legend: $q_{1}$ and $q_{2}$ are the surface and dive spawn index scaling parameters, respectively.
+% Note that we refer to setting $q_{2} = 1$ in AM2, but in practice this is implemented as $q_{2} \sim \mathcal{N}(\mu,\,\sigma)$, where $\mathcal{N}$ is a normal distribution with mean $\mu = 1.0$, and standard deviation $\sigma = 0.01$.}
+% \begin{tabular}{llllrrr}
+% \toprule
+% & & & & \multicolumn{3}{c}{Estimate}\\
+% \cmidrule{5-7}
+% \inputsp{\Sexpr{noquote(locOutput)}QPars.tex}
+% \end{tabular}
+% \label{tabQPars}
+% \end{table}
 
-\begin{table}[H]
-\centering
-\caption{Spawning biomass in thousands of tonnes ($\text{t} \times 10^{3}$) for Pacific herring stock assessment models in the major stock assessment regions (SARs).
-Lower and upper estimates indicate the \Sexpr{ciLevel*100}\% credible interval.
-Legend: $\mli{SB}_{0}$ is unfished biomass, and $\mli{SB}_{\Sexpr{max(yrRange)+1}}$ is projected spawning biomass assuming no fishing in \Sexpr{max(yrRange)+1}.}
-\begin{tabular}{lllrrr}
-\toprule
-& & & \multicolumn{3}{c}{Estimate ($\text{t} \times 10^{3}$)}\\
-\cmidrule{4-6}
-\inputsp{\Sexpr{noquote(locOutput)}BPars.tex}
-\end{tabular}
-\label{tabBPars}
-\end{table}
+% \begin{table}[H]
+% \centering
+% \caption{Spawning biomass in thousands of tonnes ($\text{t} \times 10^{3}$) for Pacific herring stock assessment models in the major stock assessment regions (SARs).
+% Lower and upper estimates indicate the \Sexpr{ciLevel*100}\% credible interval.
+% Legend: $\mli{SB}_{0}$ is unfished biomass, and $\mli{SB}_{\Sexpr{max(yrRange)+1}}$ is projected spawning biomass assuming no fishing in \Sexpr{max(yrRange)+1}.}
+% \begin{tabular}{lllrrr}
+% \toprule
+% & & & \multicolumn{3}{c}{Estimate ($\text{t} \times 10^{3}$)}\\
+% \cmidrule{4-6}
+% \inputsp{\Sexpr{noquote(locOutput)}BPars.tex}
+% \end{tabular}
+% \label{tabBPars}
+% \end{table}
 
 <<hg.parameters.table, results='asis', echo=FALSE>>=
 cap <- paste0("Estimated and fixed parameters and prior probablilty ",

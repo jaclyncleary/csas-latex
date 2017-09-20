@@ -146,7 +146,7 @@ figWidth <- 6
 smLine <- "loess"
 
 # Level of confidence interval
-ciLevel <- 0.9
+ciLevel <- 0.95
 
 # Get ylimits (e.g., weight in kg) for the weight-at-age plot
 wtRange <- c( 35, 130 ) / 1000
@@ -438,6 +438,8 @@ GetPars <- function( fn, SARs, models=mNames, varName, probs=ciLevel ) {
       # Grab the data (transposed)
       raw <- fread( input=file.path(SAR, model, "mcmc", fn) ) %>%
         as_tibble( )
+      # TODO: Perform a check to make sure recruitment is for the requested age
+      # (i.e., 'ageRec').
       # Grab the years from the header names
       yrNames <- str_sub( string=names(raw), start=-4, end=-1 )
       # Calculate the median of model runs for each year
