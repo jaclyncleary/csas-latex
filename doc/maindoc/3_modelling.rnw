@@ -408,7 +408,7 @@ Driven by the estimates recent recruitments and lower natural mortality, the ass
 
 [Placeholder]
 
-Figures \ref{figProduction\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figProduction\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}} show \Sexpr{PasteNicely(mNames)} results for the \Sexpr{length(allRegionNames$major)} major SARs: \Sexpr{PasteNicely(allRegionNames$major)}, respectively.
+Figures \ref{figProduction\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figProduction\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}} show \Sexpr{PasteNicely(mNames)} production analyses for the \Sexpr{length(allRegionNames$major)} major SARs: \Sexpr{PasteNicely(allRegionNames$major)}, respectively.
 
 \subsection{SENSITIVITY ANALYSES}
 
