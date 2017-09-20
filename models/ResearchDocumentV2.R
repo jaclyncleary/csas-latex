@@ -1079,6 +1079,14 @@ qYrs <- list(
     q2=paste(range(yrRange[yrRange>=newSurvYr]), collapse="--") )
 
 
+############################
+##### Production (ARK) #####
+############################
+
+# Source Rob's production analysis
+source( file="herrSP.r" )
+
+
 ##################
 ##### Tables #####
 ##################
