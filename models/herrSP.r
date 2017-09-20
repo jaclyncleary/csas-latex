@@ -136,13 +136,14 @@ getStats <- function( objList )
     
     ut2   <- as.vector(colSums(obj$ut))
     ques  <- obj$q
-    
+
     # Spawn index.
-    It    <- obj$it_hat
+#    It    <- obj$it_hat
+    It    <- obj$d3_survey_data[, "V2"]
     # obj$it has an endline at what corresponds to 1987 so that the intended
     # vector gets read in as 2 row by 37 matrix.
     # as.vector rearranges by row, so order of years will be incorrect.
-    It    <- as.vector( t( It ) )[1:nYrs]
+#    It    <- as.vector( t( It ) )[1:nYrs]
     
     # Now scale by q's.
     qVec  <- rep( ques[2],length(It) )
