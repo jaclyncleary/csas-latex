@@ -300,6 +300,20 @@ See Appendix~\ref{chap:equations} for description of reference points calculatio
 
 Conclusion: proceed with `VX' `AMX' as our 'baseline', and include others as sensitivities?
 
+\subsubsection{Natural mortality}
+
+\subsubsection{Process and observation error}
+
+rho and kappa
+
+Matt: here is where we need the table from Sarah (with rho and kappa sensitivites) 
+
+\subsubsection{Sensitivities to prior on q}
+
+
+\subsubsection{Maturity}
+
+
 \subsection{ASSESSMENT MODEL RESULTS}
 
 [Placeholder]
