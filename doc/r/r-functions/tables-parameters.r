@@ -556,6 +556,8 @@ make.biomass.depletion.table <- function(model,
   tab <- f(t(out.dat), digits)
   tab <- cbind(rownames(tab), tab)
   tab <- tab[tab[,1] >= syr,]
+  ## Remove the projection year (last row)
+  tab <- tab[-nrow(tab),]
 
   col.names <- colnames(tab)
   col.names[1] <- "Year"
@@ -573,7 +575,7 @@ make.biomass.depletion.table <- function(model,
                              latex.amp(),
                              latex.mcol(4,
                                         "c",
-                                        latex.bold("Relative Spawning Biomass")),
+                                        latex.bold("Depletion (sbt/sbo)")),
                              latex.nline)
 
   size.string <- latex.size.str(font.size, space.size)

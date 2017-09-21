@@ -1107,6 +1107,7 @@ calc.mcmc <- function(model,
   ## Depletion
   depl.dat <- NULL
   depl.quants <- NULL
+  browser()
   tryCatch({
     depl.dat <- apply(sbt.dat,
                       2,
