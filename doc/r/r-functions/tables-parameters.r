@@ -95,8 +95,8 @@ make.parameters.table <- function(model,
                   "Log natural mortality ($ln(M)$)",
                   "Log mean recruitment ($\\ln(\\overline{R})$)",
                   "Log initial recruitment ($\\ln(\\overline{R}_{init})$)",
-                  "Variance ratio ($\\rho$)",
-                  "Inverse total variance ($\\vartheta^2$)")
+                  "Variance ratio, rho ($\\rho$)",
+                  "Inverse total variance, kappa ($\\kappa$)")
 
   param.vals <- do.call(rbind, lapply(1:nrow(params), get.vals))
 
@@ -138,23 +138,15 @@ make.parameters.table <- function(model,
   fish.est <- sum(fish.est > 0)
   ## Hardwired bounds of 0,1 for age-at-50% and 0,Inf for age-at-50% SD
   param.vals <- rbind(param.vals,
-                      c(surv.est,
-                        "[0, 1]",
-                        "None"),
                       c(fish.est,
                         "[0, 1]",
-                        "None"),
-                      c(surv.est,
-                        "[0, Inf)",
                         "None"),
                       c(fish.est,
                         "[0, Inf)",
                         "None"))
 
   param.text <- c(param.text,
-                "Survey age at 50\\% selectivity ($\\hat{a}_k$)",
-                "Fishery age at 50\\% selectivity ($\\hat{a}_k$)",
-                "Survey SD of logistic selectivity ($\\hat{\\gamma}_k$)",
+                "Fishery age at 50\\% logistic selectivity ($\\hat{a}_k$)",
                 "Fishery SD of logistic selectivity ($\\hat{\\gamma}_k$)")
 
   ## Catchability  parameters
@@ -166,15 +158,15 @@ make.parameters.table <- function(model,
   ## 2 - prior log(mean)
   ## 3 - prior SD
 
-  q <- ctl$surv.q
-  num.inds <- ctl$num.indices
-  param.vals <- rbind(param.vals,
-                      c(num.inds,
-                        "None",
-                        "Normal($0.5, 1$)"))
+  ## q <- ctl$surv.q
+  ## num.inds <- ctl$num.indices
+  ## param.vals <- rbind(param.vals,
+  ##                     c(num.inds,
+  ##                       "None",
+  ##                       "Normal($0.5, 1$)"))
 
-  param.text <- c(param.text,
-                  "Survey catchability ($q_k$)")
+  ## param.text <- c(param.text,
+  ##                 "Survey catchability ($q_k$)")
 
   ## Fishing mortality and recruitment parameters
   ##
@@ -183,9 +175,6 @@ make.parameters.table <- function(model,
   num.rec.params <- length(par$log_rec_devs)
   num.init.rec.params <- length(par$init_log_rec_devs)
   param.vals <- rbind(param.vals,
-                      c(num.f.params,
-                        "[-30, 3]",
-                        "[-30, 3]"),
                       c(num.rec.params,
                         "None",
                         "Normal($0, \\tau$)"),
@@ -194,7 +183,6 @@ make.parameters.table <- function(model,
                         "Normal($0, \\tau$)"))
 
   param.text <- c(param.text,
-                  "Log fishing mortality values ($\\Gamma_{k,t}$)",
                   "Log recruitment deviations ($\\omega_t$)",
                   "Initial log recruitment deviations ($\\omega_{init,t}$)")
 
@@ -217,6 +205,112 @@ make.parameters.table <- function(model,
         sanitize.text.function = function(x){x},
         size = size.string,
         table.placement = placement)
+}
+
+make.catchability.parameters.table <- function(am1.lst,
+                                               am2.lst,
+                                               xcaption = "default",
+                                               xlabel   = "default",
+                                               font.size = 9,
+                                               space.size = 10,
+                                               placement = "H"){
+  ## am1.lst and am2.lst aree lists of the models AM1 and AM2
+  ## to write q values for.
+  ## xcaption - caption to appear in the calling document
+  ## digits - number of digits after decimal point
+  ## xlabel - the label used to reference the table in latex
+  ## font.size - size of the font for the table
+  ## space.size - size of the vertical spaces for the table
+  ## placement - latex code for placement of the table in document
+
+  ## Catchability  parameters
+  ## q is a data frame with 1 column for each survey and 3 rows:
+  ## 1 - prior type:
+  ##      0) Uniformative prior
+  ##      1) normal prior density for log(q)
+  ##      2) random walk in q
+  ## 2 - prior log(mean)
+  ## 3 - prior SD
+
+  lst <- list()
+  st <- c("HG", "PRD", "CC", "SOG", "WCVI")
+  for(i in 1:5){
+    ## AM1
+    ctl.am1 <- am1.lst[[i]][[1]]$ctl
+    q.am1 <- as.data.frame(t(ctl.am1$surv.q))
+    q.am1$priormeanlog <- exp(q.am1$priormeanlog)
+    p.vals.am1.s <- paste0("Normal($",
+                           f(q.am1$priormeanlog[1], 3),
+                           ", ",
+                           f(q.am1$priorsd[1], 3),
+                           "$)")
+    p.vals.am1.d <- paste0("Normal($",
+                           f(q.am1$priormeanlog[2], 3),
+                           ", ",
+                           f(q.am1$priorsd[2], 3),
+                           "$)")
+    ## AM2
+    ctl.am2 <- am2.lst[[i]][[1]]$ctl
+    q.am2 <- as.data.frame(t(ctl.am2$surv.q))
+    q.am2$priormeanlog <- exp(q.am2$priormeanlog)
+    p.vals.am2.s <- paste0("Normal($",
+                           f(q.am2$priormeanlog[1], 3),
+                           ", ",
+                           f(q.am2$priorsd[1], 3),
+                           "$)")
+    p.vals.am2.d <- paste0("Normal($",
+                           f(q.am2$priormeanlog[2], 3),
+                           ", ",
+                           f(q.am2$priorsd[2], 3),
+                           "$)")
+
+
+    lst[[i]] <- rbind(c(st[i],
+                      "AM1",
+                      "Surface",
+                      "None",
+                      p.vals.am1.s),
+                    c(st[i],
+                      "AM1",
+                      "Dive",
+                      "None",
+                      p.vals.am1.d),
+                    c(st[i],
+                      "AM2",
+                      "Surface",
+                      "None",
+                      p.vals.am2.s),
+                    c(st[i],
+                      "AM2",
+                      "Dive",
+                      "None",
+                      p.vals.am2.d))
+  }
+  tab <- do.call(rbind, lst)
+  colnames(tab) <- c(latex.bold("SAR"),
+                     latex.bold("Model"),
+                     latex.bold("Survey"),
+                     latex.bold("Bounds"),
+                     latex.bold("Prior (mean, SD)"))
+
+  addtorow <- list()
+  addtorow$pos <- list(4, 8, 12, 16)
+  addtorow$command <- c("\\midrule ",
+                        "\\midrule ",
+                        "\\midrule ",
+                        "\\midrule ")
+  size.string <- latex.size.str(font.size, space.size)
+  print(xtable(tab,
+               caption = xcaption,
+               label = xlabel,
+               align = get.align(ncol(tab))),
+        caption.placement = "top",
+        include.rownames = FALSE,
+        sanitize.text.function = function(x){x},
+        size = size.string,
+        table.placement = placement,
+        add.to.row = addtorow,
+        booktabs = TRUE)
 }
 
 make.parameters.est.table <- function(model,

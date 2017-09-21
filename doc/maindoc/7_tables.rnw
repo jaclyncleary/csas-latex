@@ -30,59 +30,27 @@
 % \label{tabBPars}
 % \end{table}
 
-<<hg.parameters.table, results='asis', echo=FALSE>>=
+<<parameters.table, results='asis', echo=FALSE>>=
 cap <- paste0("Estimated and fixed parameters and prior probablilty ",
-              "distributions used in the Haida Gwaii AM2 model.")
+              "distributions used in all SAR models.")
 make.parameters.table(hg.b,
                       xcaption = cap,
-                      xlabel = "tab:hg-parameters",
+                      xlabel = "tab:parameters",
                       font.size = 10,
                       space.size = 11,
                       placement = "H")
 @
 
-<<prd.parameters.table, results='asis', echo=FALSE>>=
-cap <- paste0("Estimated and fixed parameters and prior probablilty ",
-              "distributions used in the Prince Rupert District AM2 model.")
-make.parameters.table(pr.b,
-                      xcaption = cap,
-                      xlabel = "tab:pr-parameters",
-                      font.size = 10,
-                      space.size = 11,
-                      placement = "H")
-@
-
-<<cc.parameters.table, results='asis', echo=FALSE>>=
-cap <- paste0("Estimated and fixed parameters and prior probablilty ",
-              "distributions used in the Central Coast AM2 model.")
-make.parameters.table(hg.b,
-                      xcaption = cap,
-                      xlabel = "tab:cc-parameters",
-                      font.size = 10,
-                      space.size = 11,
-                      placement = "H")
-@
-
-<<sog.parameters.table, results='asis', echo=FALSE>>=
-cap <- paste0("Estimated and fixed parameters and prior probablilty ",
-              "distributions used in the Strait of Georgia AM2 model.")
-make.parameters.table(sog.b,
-                      xcaption = cap,
-                      xlabel = "tab:sog-parameters",
-                      font.size = 10,
-                      space.size = 11,
-                      placement = "H")
-@
-
-<<wvci.parameters.table, results='asis', echo=FALSE>>=
-cap <- paste0("Estimated and fixed parameters and prior probablilty ",
-              "distributions used in the WCVI AM2 model.")
-make.parameters.table(hg.b,
-                      xcaption = cap,
-                      xlabel = "tab:wcvi-parameters",
-                      font.size = 10,
-                      space.size = 11,
-                      placement = "H")
+<<q.parameters.table, results='asis', echo=FALSE>>=
+cap <- paste0("Estimated catchability (q) parameters and ",
+              "prior probablilty distributions used in all SAR models.")
+make.catchability.parameters.table(sens.models.1,
+                                   base.models,
+                                   xcaption = cap,
+                                   xlabel = "tab:q-parameters",
+                                   font.size = 10,
+                                   space.size = 11,
+                                   placement = "H")
 @
 
 <<hg.parameter.est.table, results='asis', echo=FALSE>>=
