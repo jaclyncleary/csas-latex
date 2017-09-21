@@ -1,3 +1,6 @@
+# 1996 fixed cutoff values (thousands of metric tonnes)
+fixedCutoffs <- list( HG=10.7, PRD=12.1, CC=17.6, SoG=21.2, WCVI=18.8 )
+
 # Source functions needed to read iSCAM files.
 source( "read.admb.r" )
 
@@ -243,8 +246,8 @@ plotSAR <- function( dat, repFileList, stockName,
 {
   year        <- dat[ ,"year" ]
   sbo         <- repFileList$sbo
-  fixedCutoff <- repFileList$fixed_cutoff
-  
+  #  fixedCutoff <- repFileList$fixed_cutoff
+  fixedCutoff <- fixedCutoffs[which(names(fixedCutoffs) == stockName)]
   prodI       <- dat[ ,"surpProdI" ]
   prodRateI   <- dat[ ,"surpProdRateI" ]
   
