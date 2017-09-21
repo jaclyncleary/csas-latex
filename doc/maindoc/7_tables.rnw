@@ -54,13 +54,11 @@ make.catchability.parameters.table(sens.models.1,
 @
 
 <<hg.parameter.est.table, results='asis', echo=FALSE>>=
-cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-              "97.5\\textsuperscript{th} percentile) and MPD estimates of key ",
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of key ",
               "parameters from the Haida Gwaii AM2 model. Subscripts on $q$ ",
-              "(catchability), $\\hat{a}$ (selectivity age-at-50\\%), and ",
-              "$\\hat{\\gamma}$ (selectivity standard deviation-at-50\\%) ",
-              "parameters indicate: 1 = Other fisheries, 2 = Roe seine, ",
-              "3 = Roe gillnet, 4 = Surface survey, 5 = Dive survey.")
+              "(catchability) indicate: 1 = Surface survey, 2 = Dive survey. ",
+              "Tau ($\\tau$) and sigma ($\\sigma$) are calculated values.")
 make.parameters.est.table(hg.b,
                           xcaption = cap,
                           xlabel = "tab:hg-parameters-posts",
@@ -70,13 +68,11 @@ make.parameters.est.table(hg.b,
 @
 
 <<prd.parameter.est.table, results='asis', echo=FALSE>>=
-cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-              "97.5\\textsuperscript{th} percentile) and MPD estimates of key ",
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of key ",
               "parameters from the Prince Rupert District AM2 model. Subscripts on $q$ ",
-              "(catchability), $\\hat{a}$ (selectivity age-at-50\\%), and ",
-              "$\\hat{\\gamma}$ (selectivity standard deviation-at-50\\%) ",
-              "parameters indicate: 1 = Other fisheries, 2 = Roe seine, ",
-              "3 = Roe gillnet, 4 = Surface survey, 5 = Dive survey.")
+              "(catchability) indicate: 1 = Surface survey, 2 = Dive survey.",
+              "Tau ($\\tau$) and sigma ($\\sigma$) are calculated values.")
 make.parameters.est.table(pr.b,
                           xcaption = cap,
                           xlabel = "tab:prd-parameters-posts",
@@ -86,13 +82,11 @@ make.parameters.est.table(pr.b,
 @
 
 <<cc.parameter.est.table, results='asis', echo=FALSE>>=
-cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-              "97.5\\textsuperscript{th} percentile) and MPD estimates of key ",
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of key ",
               "parameters from the Central Coast AM2 model. Subscripts on $q$ ",
-              "(catchability), $\\hat{a}$ (selectivity age-at-50\\%), and ",
-              "$\\hat{\\gamma}$ (selectivity standard deviation-at-50\\%) ",
-              "parameters indicate: 1 = Other fisheries, 2 = Roe seine, ",
-              "3 = Roe gillnet, 4 = Surface survey, 5 = Dive survey.")
+              "(catchability) indicate: 1 = Surface survey, 2 = Dive survey.",
+              "Tau ($\\tau$) and sigma ($\\sigma$) are calculated values.")
 make.parameters.est.table(cc.b,
                           xcaption = cap,
                           xlabel = "tab:cc-parameters-posts",
@@ -102,13 +96,11 @@ make.parameters.est.table(cc.b,
 @
 
 <<sog.parameter.est.table, results='asis', echo=FALSE>>=
-cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-              "97.5\\textsuperscript{th} percentile) and MPD estimates of key ",
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of key ",
               "parameters from the Strait of Georgia AM2 model. Subscripts on $q$ ",
-              "(catchability), $\\hat{a}$ (selectivity age-at-50\\%), and ",
-              "$\\hat{\\gamma}$ (selectivity standard deviation-at-50\\%) ",
-              "parameters indicate: 1 = Other fisheries, 2 = Roe seine, ",
-              "3 = Roe gillnet, 4 = Surface survey, 5 = Dive survey.")
+              "(catchability) indicate: 1 = Surface survey, 2 = Dive survey.",
+              "Tau ($\\tau$) and sigma ($\\sigma$) are calculated values.")
 make.parameters.est.table(sog.b,
                           xcaption = cap,
                           xlabel = "tab:sog-parameters-posts",
@@ -118,13 +110,11 @@ make.parameters.est.table(sog.b,
 @
 
 <<wcvi.parameter.est.table, results='asis', echo=FALSE>>=
-cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-              "97.5\\textsuperscript{th} percentile) and MPD estimates of key ",
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of key ",
               "parameters from the WCVI AM2 model. Subscripts on $q$ ",
-              "(catchability), $\\hat{a}$ (selectivity age-at-50\\%), and ",
-              "$\\hat{\\gamma}$ (selectivity standard deviation-at-50\\%) ",
-              "parameters indicate: 1 = Other fisheries, 2 = Roe seine, ",
-              "3 = Roe gillnet, 4 = Surface survey, 5 = Dive survey.")
+              "(catchability) indicate: 1 = Surface survey, 2 = Dive survey.",
+              "Tau ($\\tau$) and sigma ($\\sigma$) are calculated values.")
 make.parameters.est.table(wcvi.b,
                           xcaption = cap,
                           xlabel = "tab:wcvi-parameters-posts",
@@ -134,8 +124,8 @@ make.parameters.est.table(wcvi.b,
 @
 
 <<hg.ref.points.table, results='asis', echo=FALSE>>=
-cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-              "97.5\\textsuperscript{th} percentile) of proposed reference ",
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) of proposed reference ",
               "points for the Haida Gwaii AM2 model. Biomass numbers are in ",
               "thousands of tonnes.")
 make.ref.points.table(hg.b,
@@ -147,8 +137,8 @@ make.ref.points.table(hg.b,
 @
 
 <<prd.ref.points.table, results='asis', echo=FALSE>>=
-cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-              "97.5\\textsuperscript{th} percentile) of proposed reference ",
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) of proposed reference ",
               "points for the Prince Rupert Disctrict AM2 model. Biomass ",
               "numbers are in thousands of tonnes.")
 make.ref.points.table(pr.b,
@@ -160,8 +150,8 @@ make.ref.points.table(pr.b,
 @
 
 <<cc.ref.points.table, results='asis', echo=FALSE>>=
-cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-              "97.5\\textsuperscript{th} percentile) of proposed reference ",
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) of proposed reference ",
               "points for the Central Coast AM2 model. Biomass numbers are in ",
               "thousands of tonnes.")
 make.ref.points.table(cc.b,
@@ -173,8 +163,8 @@ make.ref.points.table(cc.b,
 @
 
 <<sog.ref.points.table, results='asis', echo=FALSE>>=
-cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-              "97.5\\textsuperscript{th} percentile) of proposed reference ",
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) of proposed reference ",
               "points for the Strait of Georgia AM2 model. Biomass numbers are ",
               "in thousands of tonnes.")
 make.ref.points.table(sog.b,
@@ -186,8 +176,8 @@ make.ref.points.table(sog.b,
 @
 
 <<wcvi.ref.points.table, results='asis', echo=FALSE>>=
-cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-              "97.5\\textsuperscript{th} percentile) of proposed reference ",
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) of proposed reference ",
               "points for the WCVI AM2 model. Biomass numbers are in ",
               "thousands of tonnes.")
 make.ref.points.table(wcvi.b,
@@ -199,8 +189,8 @@ make.ref.points.table(wcvi.b,
 @
 
 <<hg.spawning.biomass.depletion.table, results='asis', echo=FALSE>>=
-cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-              "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of ",
               "spawning biomass (1000 t) and relative spawning ",
               "biomass for the Haida Gwaii AM2 model.")
 make.biomass.depletion.table(hg.b,
@@ -214,8 +204,8 @@ make.biomass.depletion.table(hg.b,
 @
 
 <<prd.spawning.biomass.depletion.table, results='asis', echo=FALSE>>=
-cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-              "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of ",
               "spawning biomass (1000 t) and relative spawning ",
               "biomass for the Prince Rupert District AM2 model.")
 make.biomass.depletion.table(pr.b,
@@ -229,8 +219,8 @@ make.biomass.depletion.table(pr.b,
 @
 
 <<cc.spawning.biomass.depletion.table, results='asis', echo=FALSE>>=
-cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-              "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of ",
               "spawning biomass (1000 t) and relative spawning ",
               "biomass for the Central Coast AM2 model.")
 make.biomass.depletion.table(cc.b,
@@ -244,8 +234,8 @@ make.biomass.depletion.table(cc.b,
 @
 
 <<sog.spawning.biomass.depletion.table, results='asis', echo=FALSE>>=
-cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-              "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of ",
               "spawning biomass (1000 t) and relative spawning ",
               "biomass for the Strait of Georgia AM2 model.")
 make.biomass.depletion.table(sog.b,
@@ -259,8 +249,8 @@ make.biomass.depletion.table(sog.b,
 @
 
 <<wcvi.spawning.biomass.depletion.table, results='asis', echo=FALSE>>=
-cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-              "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of ",
               "spawning biomass (1000 t) and relative spawning ",
               "biomass for the WCVI AM2 model.")
 make.biomass.depletion.table(wcvi.b,
@@ -275,8 +265,8 @@ make.biomass.depletion.table(wcvi.b,
 
 
 <<hg.recruitment.table, results='asis', echo=FALSE>>=
-cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-              "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of ",
               "recruitment (millions) for the Haida Gwaii AM2 model.")
 make.value.table(hg.b,
                  type = 2,
@@ -290,8 +280,8 @@ make.value.table(hg.b,
 @
 
 <<prd.recruitment.table, results='asis', echo=FALSE>>=
-cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-              "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of ",
               "recruitment (millions) for the Prince Rupert District AM2 model.")
 make.value.table(pr.b,
                  type = 2,
@@ -305,8 +295,8 @@ make.value.table(pr.b,
 @
 
 <<cc.recruitment.table, results='asis', echo=FALSE>>=
-cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-              "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of ",
               "recruitment (millions) for the Central Coast AM2 model.")
 make.value.table(cc.b,
                  type = 2,
@@ -320,8 +310,8 @@ make.value.table(cc.b,
 @
 
 <<sog.recruitment.table, results='asis', echo=FALSE>>=
-cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-              "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of ",
               "recruitment (millions) for the Strait of Georgia AM2 model.")
 make.value.table(sog.b,
                  type = 2,
@@ -335,8 +325,8 @@ make.value.table(sog.b,
 @
 
 <<wcvi.recruitment.table, results='asis', echo=FALSE>>=
-cap <- paste0("Posterior (2.5\\textsuperscript{th} percentile, Median, and ",
-              "97.5\\textsuperscript{th} percentile) and MPD estimates of ",
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of ",
               "recruitment (millions) for the WCVI AM2 model.")
 make.value.table(wcvi.b,
                  type = 2,

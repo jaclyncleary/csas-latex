@@ -345,6 +345,11 @@ make.parameters.est.table <- function(model,
   mpd <- model$mpd
   mpd.names <- names(mpd)
 
+  ## Remove selectivity parameters
+  mcmc.names <- mcmc.names[-grep("sel.*", mcmc.names)]
+  p.quants <- p.quants[,-grep("sel.*", colnames(p.quants))]
+  p.quants <- p.quants[,-grep("bo", colnames(p.quants))]
+
   mpd.param.vals <- NULL
   for(pname in mcmc.names){
     ## This is hack code because iscam is not outputting the same parameter
@@ -358,43 +363,25 @@ make.parameters.est.table <- function(model,
     if(pname == "bo"){
       pname <- "sbo"
     }
-    match.sel <- grep("sel[[:digit:]]+",
-                      pname)
-    match.sel.sd <- grep("selsd[[:digit:]]+",
-                         pname)
     match.q <- grep("q[[:digit:]]+",
                     pname)
-    ## Age value at 50%
-    sel.pars <- mpd$sel_par[,3]
-    ## Age SD at 50%
-    sel.sd.pars <- mpd$sel_par[,4]
     q.pars <- mpd$q
-    if(length(match.sel) > 0){
-      ## The parameter starts with "sel"
-      split.val <- strsplit(pname,
-                            "[^[:digit:]]")[[1]]
-      sel.num <- as.numeric(split.val[length(split.val)])
-      this.par <- sel.pars[sel.num]
-    }else if(length(match.sel.sd) > 0){
-      ## The parameter starts with "selsd"
-      split.val <- strsplit(pname,
-                            "[^[:digit:]]")[[1]]
-      sel.num <- as.numeric(split.val[length(split.val)])
-      this.par <- sel.sd.pars[sel.num]
-    }else if(length(match.q) > 0){
+    if(length(match.q) > 0){
       ## The parameter starts with "q"
       split.val <- strsplit(pname,
                             "[^[:digit:]]")[[1]]
       q.num <- as.numeric(split.val[length(split.val)])
       this.par <- q.pars[q.num]
-    }else{
+    }else if(pname != "sbo"){
       ## Match the mcmc name with the mpd name. Q and selectivity are special
       ##  cases, they must be extracted from vectors and matrices respectively
       this.par <- mpd[match(pname, mpd.names)]
     }
-    j <- mpd.param.vals <- c(mpd.param.vals, this.par)
+    mpd.param.vals <- c(mpd.param.vals, this.par)
   }
+
   names(mpd.param.vals) <- mcmc.names
+  mpd.param.vals$bo <- NULL
   tab <- rbind(p.quants, as.numeric(mpd.param.vals))
   row.n <- rownames(tab)
   row.n[length(row.n)] <- "MPD"
@@ -410,15 +397,10 @@ make.parameters.est.table <- function(model,
                "$\\overline{R}_{init}$",
                "$\\rho$",
                "$\\vartheta$",
-               "$B_0$",
-               "$q_4$",
-               "$q_5$",
-               "$\\hat{a}_1$",
-               "$\\hat{\\gamma}_1$",
-               "$\\hat{a}_2$",
-               "$\\hat{\\gamma}_2$",
-               "$\\hat{a}_3$",
-               "$\\hat{\\gamma}_3$")
+               "$q_1$",
+               "$q_2$",
+               "$\\tau$",
+               "$\\sigma$")
   col.names <- colnames(tab)
   col.names <- latex.bold(latex.perc(col.names))
   col.names <- c(latex.bold("Parameter"), col.names)
