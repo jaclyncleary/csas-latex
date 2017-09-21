@@ -151,6 +151,9 @@ ciLevel <- 0.95
 # Get ylimits (e.g., weight in kg) for the weight-at-age plot
 wtRange <- c( 35, 130 ) / 1000
 
+# 1996 fixed cutoff values (thousands of metric tonnes)
+fixedCutoffs <- list( HG=10.7, PRD=12.1, CC=17.6, SoG=21.2, WCVI=18.8 )
+
 
 #####################
 ##### Functions #####

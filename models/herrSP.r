@@ -1,6 +1,3 @@
-# 1996 fixed cutoff values (thousands of metric tonnes)
-fixedCutoffs <- list( HG=10.7, PRD=12.1, CC=17.6, SoG=21.2, WCVI=18.8 )
-
 # Source functions needed to read iSCAM files.
 source( "read.admb.r" )
 
@@ -480,7 +477,7 @@ for( m in 1:length(mNames) ) {
   # There are 2 Central Coast prefixes to account for the area adjustment cases,
   # but they are not named uniquely so a few lines down that is fixed when
   # mgmtAreas is patched and used to name the repList of *.rep file contents.
-  mgmtAreas <- c( "CC","HG","PRD","SoG","WCVI")
+  mgmtAreas <- allRegions$major
   fileList <- mgmtAreas
   repFiles <- paste( baseName, ".rep", sep="" )
   
@@ -488,7 +485,6 @@ for( m in 1:length(mNames) ) {
   repList <- as.list( 1:length( mgmtAreas ) )
   for ( i in 1:length(repList) )
   {
-  #  fName <- file.path( fileList[i], caseFld, repFiles[i] )
     fName <- file.path( fileList[i], caseFld, repFiles )
     cat( "\nReading ",fName,"\n" )
     repList[[i]] <- read.rep( fName )
