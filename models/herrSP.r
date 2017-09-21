@@ -284,6 +284,7 @@ plotSAR <- function( dat, repFileList, stockName,
   Dept        <- SSBt / sbo
   
   # Lower operational control point (i.e., cut-off).
+  # TODO: This should be a variable, set at the top
   Blow        <- c( 0.1, 0.25, 0.3 ) * sbo
   
   # Plot total and spawning biomass vs. year.
@@ -311,7 +312,7 @@ plotSAR <- function( dat, repFileList, stockName,
   points( year, SSBt, cex=cexSize, bg="white", col="black", pch=21 )
   
   # Indicate SSB values less than specified quantile.
-  xQuant <- quantile( SSBt, probs=0.2 )
+  xQuant <- quantile( SSBt, probs=quantSSB )
   idx <- SSBt <= xQuant
   #cat( "\nModel States\n" )
   #print( cbind( year, SSBt, idx ) )

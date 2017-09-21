@@ -146,7 +146,10 @@ figWidth <- 6
 smLine <- "loess"
 
 # Level of confidence interval
-ciLevel <- 0.95
+ciLevel <- 0.9
+
+# SSB quantile for production plots (grey points)
+quantSSB <- 0.2
 
 # Get ylimits (e.g., weight in kg) for the weight-at-age plot
 wtRange <- c( 35, 130 ) / 1000
