@@ -30,10 +30,12 @@ make.priors.posts.plot <- function(model,
   f.names <- c(dunif, dnorm, dlnorm, dbeta, dgamma)
 
   mc <- model$mcmccalcs$p.dat.log
-  ## Remove selectivity paramaters, bo, vartheta from the posts
+  ## Remove selectivity parameters, bo, vartheta, sigma, tau from the posts
   mc <- mc[, -grep("^sel.*", names(mc))]
   mc <- mc[, -grep("bo", names(mc))]
   mc <- mc[, -grep("vartheta", names(mc))]
+  mc <- mc[, -grep("tau", names(mc))]
+  mc <- mc[, -grep("sigma", names(mc))]
   post.names <- names(mc)
 
   prior.specs <- as.data.frame(model$ctl$param)
@@ -127,7 +129,6 @@ make.priors.posts.plot <- function(model,
       }
     title(xx$nm)
     }else{
-      if(i==8)browser()
       plot.marg(xx,
                 breaks = "sturges",
                 col = "wheat")
