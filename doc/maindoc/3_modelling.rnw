@@ -327,8 +327,7 @@ Autocorrelation was minor for all parameters and there was no strong evidence fo
 
 \subsubsection{Fits to data}
 
-Figures \ref{figStoryboardAM1\Sexpr{allRegions$major[1]}} to \ref{figStoryboardAM1\Sexpr{allRegions$major[length(allRegions$major)]}} show AM1 results for the \Sexpr{length(allRegionNames$major)} major SARs: \Sexpr{PasteNicely(allRegionNames$major)}, respectively.
-Similarly, figures \ref{figStoryboardAM2\Sexpr{allRegions$major[1]}} to \ref{figStoryboardAM2\Sexpr{allRegions$major[length(allRegions$major)]}} show AM2 results for the \Sexpr{length(allRegionNames$major)} aforementioned major SARs, respectively.
+Figures \ref{figStoryboard\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figStoryboard\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}} show \Sexpr{PasteNicely(mNames)} results for the \Sexpr{length(allRegionNames$major)} major SARs: \Sexpr{PasteNicely(allRegionNames$major)}, respectively.
 
 \subsubsection{Parameter estimates}
 
@@ -408,6 +407,8 @@ Driven by the estimates recent recruitments and lower natural mortality, the ass
 \subsubsection{Production analysis}
 
 [Placeholder]
+
+Figures \ref{figProduction\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figProduction\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}} show \Sexpr{PasteNicely(mNames)} production analyses for the \Sexpr{length(allRegionNames$major)} major SARs: \Sexpr{PasteNicely(allRegionNames$major)}, respectively.
 
 \subsection{SENSITIVITY ANALYSES}
 
