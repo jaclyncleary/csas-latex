@@ -480,7 +480,7 @@ for( m in 1:length(mNames) ) {
   # There are 2 Central Coast prefixes to account for the area adjustment cases,
   # but they are not named uniquely so a few lines down that is fixed when
   # mgmtAreas is patched and used to name the repList of *.rep file contents.
-  mgmtAreas <- c( "CC","HG","PRD","SOG","WCVI")
+  mgmtAreas <- c( "CC","HG","PRD","SoG","WCVI")
   fileList <- mgmtAreas
   repFiles <- paste( baseName, ".rep", sep="" )
   
