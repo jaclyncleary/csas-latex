@@ -199,8 +199,8 @@ make.biomass.depletion.table(hg.b,
                              xlabel = "tab:hg-spawn-biomass",
                              font.size = 11,
                              space.size = 12,
-                             placement = "H",
-                             tabular.environment = "longtable")
+                             placement = "H")
+                             ##tabular.environment = "longtable")
 @
 
 <<prd.spawning.biomass.depletion.table, results='asis', echo=FALSE>>=
@@ -214,8 +214,8 @@ make.biomass.depletion.table(pr.b,
                              xlabel = "tab:prd-spawn-biomass",
                              font.size = 11,
                              space.size = 12,
-                             placement = "H",
-                             tabular.environment = "longtable")
+                             placement = "H")
+                             ##tabular.environment = "longtable")
 @
 
 <<cc.spawning.biomass.depletion.table, results='asis', echo=FALSE>>=
@@ -229,8 +229,8 @@ make.biomass.depletion.table(cc.b,
                              xlabel = "tab:cc-spawn-biomass",
                              font.size = 11,
                              space.size = 12,
-                             placement = "H",
-                             tabular.environment = "longtable")
+                             placement = "H")
+                             ##tabular.environment = "longtable")
 @
 
 <<sog.spawning.biomass.depletion.table, results='asis', echo=FALSE>>=
@@ -244,8 +244,8 @@ make.biomass.depletion.table(sog.b,
                              xlabel = "tab:sog-spawn-biomass",
                              font.size = 11,
                              space.size = 12,
-                             placement = "H",
-                             tabular.environment = "longtable")
+                             placement = "H")
+                             ##tabular.environment = "longtable")
 @
 
 <<wcvi.spawning.biomass.depletion.table, results='asis', echo=FALSE>>=
@@ -259,8 +259,8 @@ make.biomass.depletion.table(wcvi.b,
                              xlabel = "tab:wcvi-spawn-biomass",
                              font.size = 11,
                              space.size = 12,
-                             placement = "H",
-                             tabular.environment = "longtable")
+                             placement = "H")
+                             ##tabular.environment = "longtable")
 @
 
 
@@ -275,8 +275,8 @@ make.value.table(hg.b,
                  xlabel = "tab:hg-recruitment",
                  font.size = 11,
                  space.size = 12,
-                 placement = "H",
-                 tabular.environment = "longtable")
+                 placement = "H")
+                 ##tabular.environment = "longtable")
 @
 
 <<prd.recruitment.table, results='asis', echo=FALSE>>=
@@ -290,8 +290,8 @@ make.value.table(pr.b,
                  xlabel = "tab:prd-recruitment",
                  font.size = 11,
                  space.size = 12,
-                 placement = "H",
-                 tabular.environment = "longtable")
+                 placement = "H")
+                 ##tabular.environment = "longtable")
 @
 
 <<cc.recruitment.table, results='asis', echo=FALSE>>=
@@ -305,8 +305,8 @@ make.value.table(cc.b,
                  xlabel = "tab:cc-recruitment",
                  font.size = 11,
                  space.size = 12,
-                 placement = "H",
-                 tabular.environment = "longtable")
+                 placement = "H")
+                 ##tabular.environment = "longtable")
 @
 
 <<sog.recruitment.table, results='asis', echo=FALSE>>=
@@ -320,8 +320,8 @@ make.value.table(sog.b,
                  xlabel = "tab:sog-recruitment",
                  font.size = 11,
                  space.size = 12,
-                 placement = "H",
-                 tabular.environment = "longtable")
+                 placement = "H")
+                 ##tabular.environment = "longtable")
 @
 
 <<wcvi.recruitment.table, results='asis', echo=FALSE>>=
@@ -335,8 +335,8 @@ make.value.table(wcvi.b,
                  xlabel = "tab:wcvi-recruitment",
                  font.size = 11,
                  space.size = 12,
-                 placement = "H",
-                 tabular.environment = "longtable")
+                 placement = "H")
+                 ##tabular.environment = "longtable")
 @
 
 \begin{landscapepage}
