@@ -102,6 +102,9 @@ CSAP Working Paper 2017PEL01.
 % Main body
 \Main
 
+%%<<test, child='maindoc/test.rnw'>>=
+%%@
+
 <<abstract, child='maindoc/1_abstract.rnw'>>=
 @
 
