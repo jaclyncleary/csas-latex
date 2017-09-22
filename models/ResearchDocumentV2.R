@@ -895,10 +895,10 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
               width=lSize, fill="black" ) +
           geom_ribbon( aes(ymin=Lower, ymax=Upper), alpha=0.5 ) +
           geom_line( size=lSize ) + 
-          # SB_0
-          geom_point( data=SB0Sub, aes(x=Year, y=Median), size=pSize ) +
-          geom_errorbar( data=SB0Sub, aes(ymin=Lower, ymax=Upper), size=lSize/2, 
-              width=0 ) +
+#          # SB_0
+#          geom_point( data=SB0Sub, aes(x=Year, y=Median), size=pSize ) +
+#          geom_errorbar( data=SB0Sub, aes(ymin=Lower, ymax=Upper), size=lSize/2, 
+#              width=0 ) +
           # SB_Proj
           geom_point( data=SBProjSub, aes(x=Year, y=Median), size=pSize ) +
           geom_errorbar( data=SBProjSub, aes(ymin=Lower, ymax=Upper), 
