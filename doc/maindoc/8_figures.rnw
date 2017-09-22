@@ -110,6 +110,18 @@ All estimates quantities are based on maximum likelihood estimates (DFO 2016).}
 } % End loop over stocks for production
 
 
+% Start a loop over stocks for current biomass
+\foreach \x in {\Sexpr{paste(allRegions$major, sep=",")}} {
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}\x/CurrentSSB.png}
+\caption{Estimated spawning biomass in \Sexpr{max(yrRange)}, $\mli{SB}_{\Sexpr{max(yrRange)}}$ in thousands of tonnes for Pacific herring in the \x{} major stock assessment region (SAR).
+The vertical black line and vertical dashed lines indicates the median and \Sexpr{ciLevel*100}\% confidence interval, respectively, for $\mli{SB}_{\Sexpr{max(yrRange)}}$.
+The vertical red line indicates $0.3\mli{SB}_0$.}
+\label{figCurrentSSB\x}
+\end{figure}
+} % End loop over stocks for current biomass
+
 % %%------------------------------------------------------------------------------
 % %% AGE COMPOSITION PLOTS (DATA ONLY)
 % 

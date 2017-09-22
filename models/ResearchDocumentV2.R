@@ -157,6 +157,9 @@ wtRange <- c( 35, 130 ) / 1000
 # 1996 fixed cutoff values (thousands of metric tonnes)
 fixedCutoffs <- list( HG=10.7, PRD=12.1, CC=17.6, SoG=21.2, WCVI=18.8 )
 
+# Proportion of B_0 for LRP
+propB0 <- 0.3
+
 
 #####################
 ##### Functions #####
@@ -201,7 +204,7 @@ LoadADMB <- function( SARs ) {
         quiet=TRUE )
     # Get the last year of data
     lastYr <- scan( file=file.path(datLoc, fName), skip=mIndex+4, n=1, 
-                   quiet=TRUE )
+        quiet=TRUE )
     # Get the vector of years
     yrRange <<- firstYr:lastYr
     # Get the youngest age
@@ -443,7 +446,7 @@ GetPars <- function( fn, SARs, models=mNames, varName, probs=ciLevel ) {
       model <- models[i]
       # Grab the data (transposed)
       raw <- fread( input=file.path(SAR, model, "mcmc", fn) ) %>%
-        as_tibble( )
+          as_tibble( )
       # TODO: Perform a check to make sure recruitment is for the requested age
       # (i.e., 'ageRec').
       # Grab the years from the header names
@@ -475,12 +478,59 @@ natMort <- GetPars( fn="iscam_m_mcmc.csv", SARs=allRegions$major,
 
 # Get recruitment (number in millions; major SARs only)
 recruits <- GetPars( fn="iscam_rt_mcmc.csv",
-                    SARs=allRegions$major, varName="Recruitment" )
+    SARs=allRegions$major, varName="Recruitment" )
 
 # Get spawning biomass (thousands of tonnes; major SARs only)
 spBio <- GetPars( fn="iscam_sbt_mcmc.csv", SARs=allRegions$major, 
         varName="Abundance" ) %>%
     mutate( Survey=ifelse(Year < newSurvYr, "Surface", "Dive") )
+
+# Assemble model values (raw)
+GetVals <- function( fn, SARs, models=mNames, varName, yr ) {
+  # Progress message
+  cat( "Loading raw",  varName, "data... " )
+  # Loop over regions
+  for( k in 1:length(SARs) ) {
+    # Get the region
+    SAR <- SARs[k]
+    # Loop over models
+    for( i in 1:length(models) ) {
+      # Get the model
+      model <- models[i]
+      # Grab the data (transposed)
+      raw <- fread( input=file.path(SAR, model, "mcmc", fn) ) %>%
+          as_tibble( )
+      # TODO: Perform a check to make sure recruitment is for the requested age
+      # (i.e., 'ageRec').
+      # Grab the years from the header names
+      yrNames <- str_sub( string=names(raw), start=-4, end=-1 )
+      # Add the year names to columns
+      colnames( raw ) <- yrNames
+      # Grab the recent year data
+      raw <- raw %>% 
+          select( which(colnames(raw)==max(yrRange)) )
+      # Calculate the median of model runs for each year
+      out <- tibble( Region=SAR, Model=model, Parameter=varName, 
+          Value=raw[[1]] )
+      # If it's the first region and model
+      if( k == 1 & i == 1 ) {
+        # Start a data frame
+        res <- out
+      } else {  # End if it's the first region and model, otherwise
+        # Append to the data frame
+        res <- bind_rows( res, out )
+      }  # End if it's not the first region and model
+    }  # End i loop over models
+  }  # End k loop over regions
+  # Update progress message
+  cat( "done\n" )
+  # Return the model output as a data frame
+  return( res )
+}  # End GetVals function
+
+# Get current year raw spawning biomass (thousands of tonnes, major SARs only)
+spBioVals <- GetVals( fn="iscam_sbt_mcmc.csv", SARs=allRegions$major, 
+    varName="Abundance", yr=2017 )
 
 # Assemble model projections
 GetProjected <- function( fn, SARs, models=mNames, probs=ciLevel ) {
@@ -592,6 +642,11 @@ bPars <- mPars %>%
     filter( TAC==0 | is.na(TAC) & Parameter %in% c("SB0", "SBProj") ) %>%
     mutate( Year=ifelse(Parameter=="SB0", min(yrRange)-1, max(yrRange)+1) ) %>%
     select( Region, Model, Parameter, Lower, Median, Upper, Year )
+
+# Format current spawning biomass for plotting
+spBioVals <- spBioVals %>%
+    left_join( y=regions, by="Region" ) %>%
+    mutate( RegionName=factor(RegionName, levels=regions$RegionName) )
 
 
 ###################
@@ -929,6 +984,54 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
 # Make the storyboard (major SARs only)
 PlotStoryboard( SARs=allRegions$major, models=mNames, si=spawn, qp=qPars, 
     rec=recruits, M=natMort, SSB=spBio, C=catch, bp=bPars )
+
+# Plot distribution of spawnin biomass in current year
+PlotCurrentSSB <- function( SARs, models, SSB, SB0, probs=ciLevel ) {
+  # Get lower CI level
+  lo <- (1 - probs) / 2
+  # Get upper CI level
+  up <- 1 - lo
+  # Loop over regions
+  for( k in 1:length(SARs) ) {
+    if( SARs[k] == "CC" )  browser()
+    # Calculate LRP
+    LRP <- SB0 %>%
+        filter( Region == SARs[k] ) %>%
+        mutate( Estimate=Median*propB0 ) %>%
+        select( -Lower, -Median, -Upper ) %>%
+        left_join( y=regions, by="Region" ) %>%
+        mutate( RegionName=factor(RegionName, levels=regions$RegionName),
+            Model=factor(Model, levels=mNames) )
+    # Subset SSB
+    SSBsub <- SSB %>%
+        filter( Region == SARs[k] ) %>%
+        mutate( Model=factor(Model, levels=mNames) )
+    # SSB quantiles
+    quantSSB <- SSBsub %>%
+        group_by( Model ) %>%
+        summarise( Lower=quantile(Value, probs=lo),
+            Median=quantile(Value, probs=0.5),
+            Upper=quantile(Value, probs=up) ) %>%
+        ungroup( )
+    # The plot
+    plotSSB <- ggplot( data=SSBsub ) +
+#        geom_histogram( aes(x=Value, y =..density..) ) +
+        geom_density( aes(x=Value), fill="grey" ) +
+        geom_vline( data=LRP, aes(xintercept=Estimate), colour="red", size=1 ) +
+        geom_vline( data=quantSSB, aes(xintercept=Lower), linetype="dashed" ) +
+        geom_vline( data=quantSSB, aes(xintercept=Median) ) +
+        geom_vline( data=quantSSB, aes(xintercept=Upper), linetype="dashed" ) +
+        labs( x=expression(paste("SB"[2017]," (t"%*%10^3, ")")), y="Density" ) +
+        facet_wrap( ~ Model, scales="free" ) +
+        myTheme +
+        ggsave( filename=file.path(SARs[k], "CurrentSSB.png"), width=figWidth, 
+            height=figWidth*0.45 )
+  }  # End k loop over regions
+}  # End PlotCurrentSSB function
+
+# Show current SSB
+PlotCurrentSSB( SARs=allRegions$major, models=mNames, SSB=spBioVals, 
+    SB0=filter(bPars, Parameter=="SB0") )
 
 # Message
 cat( "done\n" )
