@@ -243,8 +243,8 @@ plotSAR <- function( dat, repFileList, stockName,
 {
   year        <- dat[ ,"year" ]
   sbo         <- repFileList$sbo
-  fixedCutoff <- repFileList$fixed_cutoff
-  
+  #  fixedCutoff <- repFileList$fixed_cutoff
+  fixedCutoff <- fixedCutoffs[which(names(fixedCutoffs) == stockName)]
   prodI       <- dat[ ,"surpProdI" ]
   prodRateI   <- dat[ ,"surpProdRateI" ]
   
@@ -284,6 +284,7 @@ plotSAR <- function( dat, repFileList, stockName,
   Dept        <- SSBt / sbo
   
   # Lower operational control point (i.e., cut-off).
+  # TODO: This should be a variable, set at the top
   Blow        <- c( 0.1, 0.25, 0.3 ) * sbo
   
   # Plot total and spawning biomass vs. year.
@@ -311,7 +312,7 @@ plotSAR <- function( dat, repFileList, stockName,
   points( year, SSBt, cex=cexSize, bg="white", col="black", pch=21 )
   
   # Indicate SSB values less than specified quantile.
-  xQuant <- quantile( SSBt, probs=0.2 )
+  xQuant <- quantile( SSBt, probs=quantSSB )
   idx <- SSBt <= xQuant
   #cat( "\nModel States\n" )
   #print( cbind( year, SSBt, idx ) )
@@ -477,7 +478,7 @@ for( m in 1:length(mNames) ) {
   # There are 2 Central Coast prefixes to account for the area adjustment cases,
   # but they are not named uniquely so a few lines down that is fixed when
   # mgmtAreas is patched and used to name the repList of *.rep file contents.
-  mgmtAreas <- c( "CC","HG","PRD","SOG","WCVI")
+  mgmtAreas <- allRegions$major
   fileList <- mgmtAreas
   repFiles <- paste( baseName, ".rep", sep="" )
   
@@ -485,7 +486,6 @@ for( m in 1:length(mNames) ) {
   repList <- as.list( 1:length( mgmtAreas ) )
   for ( i in 1:length(repList) )
   {
-  #  fName <- file.path( fileList[i], caseFld, repFiles[i] )
     fName <- file.path( fileList[i], caseFld, repFiles )
     cat( "\nReading ",fName,"\n" )
     repList[[i]] <- read.rep( fName )
