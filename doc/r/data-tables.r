@@ -8,6 +8,7 @@ catch.data.file <- "catch.csv"
 harvest.activity.file <- "harvesting-activities.csv"
 management.file <- "management-decisions.csv"
 gear.names.file <- "gear-names.csv"
+maturity.file <- "maturity-vectors.csv"
 
 cat("Loading all data tables (csv files) from ", data.path, "\n")
 catches <- load.csv(data.path,
@@ -21,3 +22,6 @@ management.activity <- load.csv(data.path,
 gear.names <- load.csv(data.path,
                        gear.names.file,
                        header = FALSE)
+maturity.vec <- load.csv(data.path,
+                         maturity.file,
+                         header = TRUE)

@@ -444,5 +444,16 @@ make.decision.table(wcvi.am1,
 @
 \end{landscapepage}
 
+<<maturity.table, results='asis', echo=FALSE>>=
+cap <- paste0("Maturity vectors used in the sensitivity cases.")
+make.maturity.table(maturity.vec,
+                    xcaption = cap,
+                    xlabel = "tab:maturity",
+                    font.size = 11,
+                    space.size = 12,
+                    placement = "H")
+@
+
+
 \clearpage
 
