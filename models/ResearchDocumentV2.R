@@ -1084,6 +1084,10 @@ qYrs <- list(
     q1=paste(range(yrRange[yrRange<newSurvYr]), collapse="--"),
     q2=paste(range(yrRange[yrRange>=newSurvYr]), collapse="--") )
 
+# Spawn in current year
+finalYrSpawn <- inputData$spawn %>%
+    filter( Year == max(yrRange) )
+
 
 ############################
 ##### Production (ARK) #####

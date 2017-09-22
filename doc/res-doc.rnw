@@ -69,6 +69,8 @@ if(TRUE){
 # This has to be sourced after loading the models in because it depends on the model output
 source("custom-knitr-variables.r")
 
+# Load required packages
+require( tidyverse )
 
 # Locations of herring-specific R output (trailing separator for latex)
 locOutput <- file.path( "..", "models", .Platform$file.sep )
