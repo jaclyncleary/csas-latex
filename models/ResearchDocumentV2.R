@@ -993,7 +993,6 @@ PlotCurrentSSB <- function( SARs, models, SSB, SB0, probs=ciLevel ) {
   up <- 1 - lo
   # Loop over regions
   for( k in 1:length(SARs) ) {
-    if( SARs[k] == "CC" )  browser()
     # Calculate LRP
     LRP <- SB0 %>%
         filter( Region == SARs[k] ) %>%
