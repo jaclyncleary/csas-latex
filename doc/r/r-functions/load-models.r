@@ -1107,7 +1107,7 @@ calc.mcmc <- function(model,
   ## Depletion
   depl.dat <- NULL
   depl.quants <- NULL
-  browser()
+
   tryCatch({
     depl.dat <- apply(sbt.dat,
                       2,
@@ -1323,6 +1323,7 @@ calc.probabilities <- function(model,
     k <- c(tac[t] * 1000,
            length(which(d[,paste0("B", e.yr.1)] < d$X03B0)) / n.row,
            median(d[,paste0("B", e.yr.1)] / d$X03B0))
+
     if(t == 1){
       col.names <- c(latex.mlc(c(e.yr.1,
                                  "TAC",
@@ -1331,11 +1332,11 @@ calc.probabilities <- function(model,
                      latex.mlc(c(paste0("P(SB_{",
                                         e.yr.1,
                                         "}<"),
-                                 "0.30SB_0"),
+                                 "LRP 0.30SB_0"),
                                math.bold = TRUE),
                      latex.mlc(c(paste0("Med(SB_{",
                                         e.yr.1,
-                                        "}"),
+                                        "}/"),
                                  "0.30SB_0)"),
                                math.bold = TRUE))
     }
@@ -1346,14 +1347,14 @@ calc.probabilities <- function(model,
                median(d[,paste0("B", e.yr.1)] / 10700))
         if(t == 1){
           col.names <- c(col.names,
-                         latex.mlc(c(paste0("P(U_{",
+                         latex.mlc(c(paste0("P(SB_{",
                                             e.yr.1,
-                                            "}<"),
+                                            "} <"),
                                      "10,700)"),
                                    math.bold = TRUE),
                          latex.mlc(c(paste0("Med(SB_{",
                                             e.yr.1,
-                                            "}"),
+                                            "} /"),
                                      "10,700)"),
                                    math.bold = TRUE))
         }
@@ -1365,12 +1366,12 @@ calc.probabilities <- function(model,
           col.names <- c(col.names,
                          latex.mlc(c(paste0("P(U_{",
                                             e.yr.1,
-                                            "}<"),
+                                            "} <"),
                                      "21,200)"),
                                    math.bold = TRUE),
                          latex.mlc(c(paste0("Med(SB_{",
                                             e.yr.1,
-                                            "}"),
+                                            "} /"),
                                      "21,200)"),
                                    math.bold = TRUE))
         }
@@ -1382,12 +1383,12 @@ calc.probabilities <- function(model,
           col.names <- c(col.names,
                          latex.mlc(c(paste0("P(U_{",
                                             e.yr.1,
-                                            "}<"),
+                                            "} <"),
                                      "12,100)"),
                                    math.bold = TRUE),
                          latex.mlc(c(paste0("Med(SB_{",
                                             e.yr.1,
-                                            "}"),
+                                            "} /"),
                                      "12,100)"),
                                    math.bold = TRUE))
         }
@@ -1399,12 +1400,12 @@ calc.probabilities <- function(model,
           col.names <- c(col.names,
                          latex.mlc(c(paste0("P(U_{",
                                             e.yr.1,
-                                            "}<"),
+                                            "} <"),
                                      "17,600)"),
                                    math.bold = TRUE),
                          latex.mlc(c(paste0("Med(SB_{",
                                             e.yr.1,
-                                            "}"),
+                                            "} /"),
                                      "17,600)"),
                                    math.bold = TRUE))
         }
@@ -1416,12 +1417,12 @@ calc.probabilities <- function(model,
           col.names <- c(col.names,
                          latex.mlc(c(paste0("P(U_{",
                                             e.yr.1,
-                                            "}<"),
+                                            "} <"),
                                      "18,800)"),
                                    math.bold = TRUE),
                          latex.mlc(c(paste0("Med(SB_{",
                                             e.yr.1,
-                                            "}"),
+                                            "} /"),
                                      "18,800)"),
                                    math.bold = TRUE))
         }
