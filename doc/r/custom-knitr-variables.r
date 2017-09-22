@@ -149,9 +149,9 @@ wcvi.am1 <- sens.models.1[[5]][[1]]
 mcmc.num.samples <- nrow(hg.b.params)
 mcmc.burnin <- f(mcmc.num.samples - nrow(hg.b.mcc$p.dat))
 mcmc.num.samples <- f(mcmc.num.samples)
-mcmc.length <- "15 million"
-mcmc.samp.freq <- f(7500)
-mcmc.ci <- "95\\%"
+mcmc.length <- "5 million"
+mcmc.samp.freq <- f(5000)
+mcmc.ci <- "90\\%"
 
 ################################################################################
 ## Values for assessment
