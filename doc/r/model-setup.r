@@ -8,7 +8,7 @@ model.class <- "model"
 model.lst.class <- "model.list"
 
 ## Values to use in the mcmc calculations along with the median
-confidence.vals <- c(0.025, 0.975)
+confidence.vals <- c(0.05, 0.95)
 
 ## -----------------------------------------------------------------------------
 ## iscam files with names that don't change depending on model

@@ -829,8 +829,8 @@ c.model.list <- function(..., recursive = FALSE){
 calc.sig.tau <- function(rho, vartheta){
   ## Calculation of sigma and tau from rho and vartheta
 
-  tau <- f(sqrt((1 - rho) / vartheta), 1)
-  sigma <- f(sqrt(rho / vartheta), 1)
+  tau <- sqrt((1 - rho) / vartheta)
+  sigma <- sqrt(rho / vartheta)
   list(tau, sigma)
 }
 

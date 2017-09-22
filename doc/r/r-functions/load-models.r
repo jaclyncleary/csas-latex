@@ -38,6 +38,11 @@ load.iscam.files <- function(model.dir,
   model$par <- read.par.file(file.path(model.dir, par.file))
   ## Load MPD results
   model$mpd <- read.report.file(file.path(model.dir, rep.file))
+  ## Add sigma and tau
+  sigtau <- calc.sig.tau(model$mpd$rho, model$mpd$vartheta)
+  model$mpd$tau <- sigtau[[1]]
+  model$mpd$sigma <- sigtau[[2]]
+
   ## Some of the parameters need to be logged
   model$mpd <- calc.mpd.logs(model$mpd)
   model.dir.listing <- dir(model.dir)
@@ -1070,6 +1075,11 @@ calc.mcmc <- function(model,
                                           "ssb"))]
   p.dat <- fix.m(p.dat)
   p.dat <- mcmc.thin(p.dat, burnin, thin)
+  ## Calculate sigma and tau and add to p.dat
+  sigtau <- calc.sig.tau(p.dat$rho, p.dat$vartheta)
+  p.dat$tau <- sigtau[[1]]
+  p.dat$sigma <- sigtau[[2]]
+
   p.dat.log <- calc.logs(p.dat)
   p.quants <- apply(p.dat, 2, quantile, prob = probs)
   p.quants.log <- apply(p.dat.log, 2, quantile, prob = probs)
@@ -1097,6 +1107,7 @@ calc.mcmc <- function(model,
   ## Depletion
   depl.dat <- NULL
   depl.quants <- NULL
+  browser()
   tryCatch({
     depl.dat <- apply(sbt.dat,
                       2,
@@ -1105,7 +1116,7 @@ calc.mcmc <- function(model,
                          2,
                          quantile,
                          prob = probs)
-    depl.quants <- rbind(depl.quants, mpd$bt / mpd$bo)
+    depl.quants <- rbind(depl.quants, mpd$sbt / mpd$bo)
     rownames(depl.quants)[4] <- "MPD"
   }, warning = function(war){
   }, error = function(err){
