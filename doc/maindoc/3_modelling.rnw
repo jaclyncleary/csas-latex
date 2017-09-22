@@ -129,7 +129,7 @@ The model uses the mean weight at age of the last five years for projections.
 \subsubsection{Abundance index}
 
 Example for Jaclyn:
-The spawn index for \Sexpr{max(yrRange)} for HG is \Sexpr{finalYrSpawn %>% filter( Region=="HG" ) %>% select(Spawn)} thousand tonnes (Table \ref{tabSpawnHG}).
+The spawn index for \Sexpr{max(yrRange)} for HG is \Sexpr{finalYrSpawn %>% filter( Region=="HG" ) %>% select(Spawn)} tonnes (Table \ref{tabSpawnHG}).
 
 We also have an index of relative abundance (Figure \ref{figSpawnIndex}).
 The spawn survey indices provide information about how the relative stock size has changed over time and the proportions at age data provide information about the population age structure.

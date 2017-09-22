@@ -1086,7 +1086,10 @@ qYrs <- list(
 
 # Spawn in current year
 finalYrSpawn <- inputData$spawn %>%
-    filter( Year == max(yrRange) )
+    # Get spawn in final year of timeseries
+    filter( Year == max(yrRange) ) %>%
+    # Convert to tonnes, and format nicely
+    mutate( Spawn=format(Spawn*1000, big.mark=",", digits=0, scientific=FALSE) )
 
 
 ############################
