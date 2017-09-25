@@ -104,47 +104,47 @@ CSAP Working Paper 2017PEL01.
 % Main body
 \Main
 
-%%<<test, child='maindoc/test.rnw'>>=
-%%@
-
-<<abstract, child='maindoc/1_abstract.rnw'>>=
+<<test, child='maindoc/test.rnw'>>=
 @
 
-<<main, child='maindoc/2_introduction.rnw'>>=
-@
+%% <<abstract, child='maindoc/1_abstract.rnw'>>=
+%% @
 
-<<main, child='maindoc/3_modelling.rnw'>>=
-@
+%% <<main, child='maindoc/2_introduction.rnw'>>=
+%% @
 
-<<main, child='maindoc/4_recommendations.rnw'>>=
-@
+%% <<main, child='maindoc/3_modelling.rnw'>>=
+%% @
 
-<<main, child='maindoc/5_future.rnw'>>=
-@
+%% <<main, child='maindoc/4_recommendations.rnw'>>=
+%% @
 
-<<main, child='maindoc/6_acknowledgements.rnw'>>=
-@
+%% <<main, child='maindoc/5_future.rnw'>>=
+%% @
 
-<<tables, child='maindoc/7_tables.rnw'>>=
-@
+%% <<main, child='maindoc/6_acknowledgements.rnw'>>=
+%% @
 
-<<figures, child='maindoc/8_figures.rnw'>>=
-@
+%% <<tables, child='maindoc/7_tables.rnw'>>=
+%% @
+
+%% <<figures, child='maindoc/8_figures.rnw'>>=
+%% @
 
 % Start the appendices
 \Appendices
 
-\refstepcounter{chapter}
-<<biology, child='app/A_biology.rnw'>>=
-@
+%% \refstepcounter{chapter}
+%% <<biology, child='app/A_biology.rnw'>>=
+%% @
 
-\refstepcounter{chapter}
-<<equations, child='app/B_equations.rnw'>>=
-@
+%% \refstepcounter{chapter}
+%% <<equations, child='app/B_equations.rnw'>>=
+%% @
 
-\refstepcounter{chapter}
-<<input, child='app/C_input.rnw'>>=
-@
+%% \refstepcounter{chapter}
+%% <<input, child='app/C_input.rnw'>>=
+%% @
 
 % Fin
 \end{document}
