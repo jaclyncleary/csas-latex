@@ -307,7 +307,7 @@ read.data.file <- function(file = NULL,
   ## Read in the iscam datafile given by 'file'
   ## Parses the file into its constituent parts
   ## And returns a list of the contents
-
+options(warn=2)
   data <- readLines(file, warn=FALSE)
   tmp <- list()
   ind <- 0
@@ -421,7 +421,7 @@ read.data.file <- function(file = NULL,
   tmp$age.at.50.mat <- as.numeric(strsplit(dat[ind <- ind + 1],"[[:blank:]]+")[[1]])
   tmp$sd.at.50.mat  <- as.numeric(strsplit(dat[ind <- ind + 1],"[[:blank:]]+")[[1]])
   tmp$use.mat   <- as.numeric(dat[ind <- ind + 1])
-  tmp$mat.vec   <- as.numeric(strsplit(dat[ind <- ind + 1],"[[:blank:]]+")[[1]])
+  tmp$mat.vec   <- as.numeric(strsplit(dat[ind <- ind + 1],"[[:blank:]]+|,")[[1]])
 
   ## Delay-difference options
   tmp$dd.k.age   <- as.numeric(dat[ind <- ind + 1])
