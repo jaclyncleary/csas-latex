@@ -338,6 +338,9 @@ ArrangeOutput <- function( SARs, models ) {
   cat( "Arranging output files..." )
   # Loop over regions
   for( SAR in SARs ) {
+    # Update model names (i.e., the subfolders in the region folder) if NA
+    if( is.na(models) )  models <- list.dirs( path=SAR, recursive=FALSE,
+          full.names=FALSE )
     # Loop over models
     for( model in models ) {
       # Get the path
@@ -372,7 +375,7 @@ ArrangeOutput <- function( SARs, models ) {
 }  # End ArrangeOutput function
 
 # Arrange the output files (major SARs only)
-ArrangeOutput( SARs=allRegions$major, models=mNames )
+ArrangeOutput( SARs=allRegions$major, models=NA )
 
 
 ########################
