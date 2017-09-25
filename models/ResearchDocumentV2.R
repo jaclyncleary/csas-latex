@@ -338,11 +338,14 @@ ArrangeOutput <- function( SARs, models ) {
   cat( "Arranging output files..." )
   # Loop over regions
   for( SAR in SARs ) {
-    # If models is NA
+    # If models is NA (not specified)
     if( is.na(models) ) {
       # Get model names (i.e., the subfolders in the region folder)
       modelsNew <- list.dirs( path=SAR, recursive=FALSE, full.names=FALSE )
-    }  # End if models is NA
+    } else {  # End if models is NA, otherwise
+      # Use model names provided
+      modelsNew <- models
+    }  # End if models is not NA
     # Loop over models
     for( model in modelsNew ) {
       # Get the path
