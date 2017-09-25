@@ -38,6 +38,9 @@ load.iscam.files <- function(model.dir,
   model$par <- read.par.file(file.path(model.dir, par.file))
   ## Load MPD results
   model$mpd <- read.report.file(file.path(model.dir, rep.file))
+  ## Unflatten A_hat so there are nice dataframes of estimated
+  ##  numbers-at-age for each gear
+  model$mpd$ahat <- calc.ahat(model)
   ## Add sigma and tau
   sigtau <- calc.sig.tau(model$mpd$rho, model$mpd$vartheta)
   model$mpd$tau <- sigtau[[1]]
@@ -421,7 +424,7 @@ read.data.file <- function(file = NULL,
   tmp$age.at.50.mat <- as.numeric(strsplit(dat[ind <- ind + 1],"[[:blank:]]+")[[1]])
   tmp$sd.at.50.mat  <- as.numeric(strsplit(dat[ind <- ind + 1],"[[:blank:]]+")[[1]])
   tmp$use.mat   <- as.numeric(dat[ind <- ind + 1])
-  tmp$mat.vec   <- as.numeric(strsplit(dat[ind <- ind + 1],"[[:blank:]]+")[[1]])
+  tmp$mat.vec   <- as.numeric(strsplit(dat[ind <- ind + 1],"[[:blank:]]+|,")[[1]])
 
   ## Delay-difference options
   tmp$dd.k.age   <- as.numeric(dat[ind <- ind + 1])
@@ -1271,6 +1274,50 @@ calc.mcmc <- function(model,
            "u.mort.quants",
            "proj.dat"),
            function(x){get(x)})
+}
+
+calc.ahat <- function(model){
+  if(class(model) == model.lst.class){
+    model <- model[[1]]
+    if(class(model) != model.class){
+      stop("The structure of the model list is incorrect.")
+    }
+  }
+
+  mpd <- model$mpd
+  ahat <- mpd$A_hat
+  sage <- mpd$n_A_sage[1]
+  nage <- mpd$n_A_nage[1]
+  num.ages <- nage - sage + 1
+  nagv <- model$dat$num.age.gears.vec
+  age.comps <- model$dat$age.comps
+
+  ## Break up the ahat vector into its correct dimensions
+  gears <- list()
+  ind <- 1
+  for(i in 1:length(nagv)){
+    ext <- ahat[ind:(ind + nagv[i] * num.ages - 1)]
+    ind <- ind + nagv[i] * num.ages
+    ind.byage <- 1
+    gears[[i]] <- list()
+    for(j in 1:(length(ext) / num.ages)){
+      ext.byage <- ext[ind.byage:(ind.byage + num.ages - 1)]
+      ind.byage <- ind.byage + num.ages
+      gears[[i]][[j]] <- ext.byage
+    }
+    gears[[i]] <- do.call(rbind, gears[[i]])
+  }
+
+  ## Now gears is a list of dataframes, 1 for each gear
+  ## Add years to rows and ages to columns
+  gears <- lapply(1:length(nagv),
+                  function(x){
+                    gears[[x]] <- as.data.frame(gears[[x]])
+                    rownames(gears[[x]]) <- as.data.frame(age.comps[[x]])$year
+                    colnames(gears[[x]]) <- sage:nage
+                    gears[[x]]
+                  })
+  gears
 }
 
 calc.probabilities <- function(model,
