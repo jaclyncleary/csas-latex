@@ -346,8 +346,9 @@ Figures \ref{figStoryboard\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{
 \item $\mli{SB}_{\Sexpr{max(yrRange)+1}}$
 \item Limit reference point (LRP)
 \item Upper stock reference (USR)
-
 \end{resdoclist}
+
+Effective harvest rates (Figure \ref{figHarvestRate}).
 
 \subsubsection{Biomass and stock status}
 

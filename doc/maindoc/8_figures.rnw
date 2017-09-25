@@ -116,8 +116,18 @@ All estimates quantities are based on maximum likelihood estimates (DFO 2016).}
 \includegraphics[width=\linewidth]{\Sexpr{locOutput}/CurrentSSB.png}
 \caption{Estimated spawning biomass in \Sexpr{max(yrRange)}, $\mli{SB}_{\Sexpr{max(yrRange)}}$ in thousands of tonnes, t for Pacific herring in the major stock assessment regions (SARs) for models \Sexpr{PasteNicely(mNames)}.
 Vertical black lines indicate medians (solid) and \Sexpr{ciLevel*100}\% confidence intervals (dashed) for $\mli{SB}_{\Sexpr{max(yrRange)}}$.
-Vertical red lines indicate medians, and shaded red rectangles indicate \Sexpr{ciLevel*100}\% confidence intervals for the limit reference point (LRP), $0.3\mli{SB}_0$, where $\mli{SB}_0$ is the estimated unfished biomass.}
+Vertical red lines indicate medians, and shaded red rectangles indicate \Sexpr{ciLevel*100}\% confidence intervals for the limit reference point (LRP), $0.3\mli{SB}_0$, where $\mli{SB}_0$ is estimated unfished biomass.}
 \label{figCurrentSSB}
+\end{figure}
+
+% Effective harvest rate
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}/HarvestRate.png}
+\caption{Effective harvest rate for Pacific herring in the major stock assessment regions (SARs) for models \Sexpr{PasteNicely(mNames)}.
+Effective harvest rate is calculated as $\frac{C_\text{t}}{\mli{SB}_\text{t}+C_\text{t}}$ where $C_\text{t}$ is catch in year t, and $\mli{SB}_\text{t}$ is estimated spawning biomass in year t.
+Black lines indicate medians and shaded ribbons indicate \Sexpr{ciLevel*100}\% confidence intervals for spawning biomass, $\mli{SB}_\text{t}$.}
+\label{figHarvestRate}
 \end{figure}
 
 % %%------------------------------------------------------------------------------
