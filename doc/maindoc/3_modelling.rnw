@@ -356,7 +356,7 @@ To help readers view and interpret trends in results and uncertainty for each st
 The following sections also present maximum posterior density (MPD) estimates characterizing the major herring stocks for: spawn survey scaling parameter (q), age-2 recruits versus spawning biomass relationships, age-specific fishing gear selectivity, and total instantaneous mortality.
 To enable readers to compare trends between major stock areas, results for each of these types of MPD estimates for all major stock areas in the 1951-2014 times series are shown together in individual figures.
 
-Current estimated spawning biomass relative to the LRP (Figures \ref{figCurrentSSB\Sexpr{allRegions$major[1]}} to \ref{figCurrentSSB\Sexpr{allRegions$major[length(allRegions$major)]}}).
+Current estimated spawning biomass relative to the LRP (Figure \ref{figCurrentSSB}).
 
 \textbf{Haida Gwaii}
 

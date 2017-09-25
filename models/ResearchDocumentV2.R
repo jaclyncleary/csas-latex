@@ -586,6 +586,14 @@ GetProjected <- function( fn, SARs, models=mNames, probs=ciLevel ) {
 # Get projected spawning biomass (major SARs only)
 pPars <- GetProjected( fn="iscammcmc_proj_Gear1.csv", SARs=allRegions$major )
 
+## Get MPD from rep file
+#GetMPD <- function( fn, SARs, models=mNames[1] ) {
+#  
+#}  # End GetMPD function
+#
+## Get MPD (recruitment and SSB)
+#recSSB <- GetMPD( )
+    
 
 ################
 ##### Main #####
@@ -646,7 +654,8 @@ bPars <- mPars %>%
 # Format current spawning biomass for plotting
 spBioVals <- spBioVals %>%
     left_join( y=regions, by="Region" ) %>%
-    mutate( RegionName=factor(RegionName, levels=regions$RegionName) )
+    mutate( RegionName=factor(RegionName, levels=regions$RegionName),
+        Model=factor(Model, levels=mNames) )
 
 
 ###################
@@ -991,41 +1000,42 @@ PlotCurrentSSB <- function( SARs, models, SSB, SB0, probs=ciLevel ) {
   lo <- (1 - probs) / 2
   # Get upper CI level
   up <- 1 - lo
-  # Loop over regions
-  for( k in 1:length(SARs) ) {
-    # Calculate LRP
-    LRP <- SB0 %>%
-        filter( Region == SARs[k] ) %>%
-        mutate( Estimate=Median*propB0 ) %>%
-        select( -Lower, -Median, -Upper ) %>%
-        left_join( y=regions, by="Region" ) %>%
-        mutate( RegionName=factor(RegionName, levels=regions$RegionName),
-            Model=factor(Model, levels=mNames) )
-    # Subset SSB
-    SSBsub <- SSB %>%
-        filter( Region == SARs[k] ) %>%
-        mutate( Model=factor(Model, levels=mNames) )
-    # SSB quantiles
-    quantSSB <- SSBsub %>%
-        group_by( Model ) %>%
-        summarise( Lower=quantile(Value, probs=lo),
-            Median=quantile(Value, probs=0.5),
-            Upper=quantile(Value, probs=up) ) %>%
-        ungroup( )
-    # The plot
-    plotSSB <- ggplot( data=SSBsub ) +
-#        geom_histogram( aes(x=Value, y =..density..) ) +
-        geom_density( aes(x=Value), fill="grey" ) +
-        geom_vline( data=LRP, aes(xintercept=Estimate), colour="red", size=1 ) +
-        geom_vline( data=quantSSB, aes(xintercept=Lower), linetype="dashed" ) +
-        geom_vline( data=quantSSB, aes(xintercept=Median) ) +
-        geom_vline( data=quantSSB, aes(xintercept=Upper), linetype="dashed" ) +
-        labs( x=expression(paste("SB"[2017]," (t"%*%10^3, ")")), y="Density" ) +
-        facet_wrap( ~ Model, scales="free" ) +
-        myTheme +
-        ggsave( filename=file.path(SARs[k], "CurrentSSB.png"), width=figWidth, 
-            height=figWidth*0.45 )
-  }  # End k loop over regions
+  # Update SSB
+  SSB <- SSB %>%
+      mutate( RegionName=factor(RegionName, levels=regions$RegionName), 
+          Model=factor(Model, levels=mNames) )
+  # Calculate LRP
+  LRP <- SB0 %>%
+      mutate( Lower=Lower*propB0, Median=Median*propB0, Upper=Upper*propB0 ) %>%
+      left_join( y=regions, by="Region" ) %>%
+      mutate( RegionName=factor(RegionName, levels=regions$RegionName),
+          Model=factor(Model, levels=mNames) )
+  # SSB quantiles
+  quantSSB <- SSB %>%
+      group_by( RegionName, Region, Model ) %>%
+      summarise( Lower=quantile(Value, probs=lo),
+          Median=quantile(Value, probs=0.5),
+          Upper=quantile(Value, probs=up) ) %>%
+      ungroup( )
+  # The plot
+  plotSSB <- ggplot( data=SSB ) + 
+      geom_density( aes(x=Value), fill="grey" ) + 
+      geom_vline( data=LRP, aes(xintercept=Lower), colour="red", 
+          linetype="dashed" ) +
+      geom_vline( data=LRP, aes(xintercept=Median), colour="red" ) +
+      geom_rect( data=LRP, aes(xmin=Lower, xmax=Upper, ymin=-Inf, ymax=Inf),
+          colour="transparent", fill="red", alpha=0.3 ) + 
+      geom_vline( data=LRP, aes(xintercept=Upper), colour="red", 
+          linetype="dashed" ) +
+      geom_vline( data=quantSSB, aes(xintercept=Lower), linetype="dashed" ) +
+      geom_vline( data=quantSSB, aes(xintercept=Median) ) +
+      geom_vline( data=quantSSB, aes(xintercept=Upper), linetype="dashed" ) +
+      facet_wrap( Model ~ Region, scales="free", ncol=2, dir="v", 
+          labeller=label_wrap_gen(multi_line=FALSE) ) +
+      labs( x=expression(paste("SB"[2017]," (t"%*%10^3, ")")), y="Density" ) +
+      myTheme +
+      ggsave( filename=file.path("CurrentSSB.png"), width=figWidth, 
+          height=figWidth )
 }  # End PlotCurrentSSB function
 
 # Show current SSB
