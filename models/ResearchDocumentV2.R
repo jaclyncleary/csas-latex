@@ -338,11 +338,13 @@ ArrangeOutput <- function( SARs, models ) {
   cat( "Arranging output files..." )
   # Loop over regions
   for( SAR in SARs ) {
-    # Update model names (i.e., the subfolders in the region folder) if NA
-    if( is.na(models) )  models <- list.dirs( path=SAR, recursive=FALSE,
-          full.names=FALSE )
+    # If models is NA
+    if( is.na(models) ) {
+      # Get model names (i.e., the subfolders in the region folder)
+      modelsNew <- list.dirs( path=SAR, recursive=FALSE, full.names=FALSE )
+    }  # End if models is NA
     # Loop over models
-    for( model in models ) {
+    for( model in modelsNew ) {
       # Get the path
       fn <- file.path( SAR, model )
       # Pattern for mcmc files
