@@ -109,6 +109,15 @@ All estimates quantities are based on maximum likelihood estimates (DFO 2016).}
 } % End loop over models for production
 } % End loop over stocks for production
 
+% Effective harvest rate
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}/HarvestRate.png}
+\caption{Effective harvest rate for Pacific herring in the major stock assessment regions (SARs) for models \Sexpr{PasteNicely(mNames)}.
+Effective harvest rate is calculated as $\frac{C_\text{t}}{\mli{SB}_\text{t}+C_\text{t}}$ where $C_\text{t}$ is catch in year t, and $\mli{SB}_\text{t}$ is estimated spawning biomass in year t.
+Black lines indicate medians and shaded ribbons indicate \Sexpr{ciLevel*100}\% confidence intervals for spawning biomass, $\mli{SB}_\text{t}$.}
+\label{figHarvestRate}
+\end{figure}
 
 % Current biomass and LRP
 \begin{figure}[H]
@@ -120,15 +129,16 @@ Vertical red lines indicate medians, and shaded red rectangles indicate \Sexpr{c
 \label{figCurrentSSB}
 \end{figure}
 
-% Effective harvest rate
+% Beverton-Holt stock-recruitment relationsip
 \begin{figure}[H]
 \centering
-\includegraphics[width=\linewidth]{\Sexpr{locOutput}/HarvestRate.png}
-\caption{Effective harvest rate for Pacific herring in the major stock assessment regions (SARs) for models \Sexpr{PasteNicely(mNames)}.
-Effective harvest rate is calculated as $\frac{C_\text{t}}{\mli{SB}_\text{t}+C_\text{t}}$ where $C_\text{t}$ is catch in year t, and $\mli{SB}_\text{t}$ is estimated spawning biomass in year t.
-Black lines indicate medians and shaded ribbons indicate \Sexpr{ciLevel*100}\% confidence intervals for spawning biomass, $\mli{SB}_\text{t}$.}
-\label{figHarvestRate}
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}/BevertonHolt.png}
+\caption{Beverton-Holt stock-recruitment relationship for Pacific herring in the major stock assessment regions (SARs) for model \Sexpr{mNames[1]}.
+The current year, \Sexpr{max(yrRange)} is coloured black.
+Legend: tonnes (t).}
+\label{figBevertonHolt}
 \end{figure}
+
 
 % %%------------------------------------------------------------------------------
 % %% AGE COMPOSITION PLOTS (DATA ONLY)

@@ -714,7 +714,10 @@ spBioVals <- spBioVals %>%
 BevHolt <- abundMPD %>%
     full_join( recMPD, by=c("Region", "Model", "Year") ) %>%
     na.omit( ) %>%
-    mutate( CurrentYear=ifelse(Year == max(yrRange), "Yes", "No") )
+    left_join( y=regions, by="Region" ) %>%
+    mutate( RegionName=factor(RegionName, levels=regions$RegionName),
+        Model=factor(Model, levels=mNames),
+        Region=factor(Region, levels=regions$Region))
     
 # Get data for the effective harvest rate
 harvRate <- catch %>%
@@ -1133,6 +1136,29 @@ PlotHarvestRate <- function( hr, SARs, models ) {
 
 # Plot harvest rate
 PlotHarvestRate( hr=harvRate, SARs=allRegions$major, models=mNames )
+
+# Plot Beverton-Holt stock-recruitment relationship
+PlotBevertonHolt <- function( bh, SARs, models ) {
+  # Filter for desired regions and areas
+  bhSub <- bh %>%
+      filter( Region %in% SARs )
+  # The plot
+  plotBH <- ggplot( data=bhSub, aes(x=Abundance, y=Recruitment) ) + 
+      geom_point( aes(colour=Year==max(yrRange)) ) + 
+      scale_colour_grey( start=0.5, end=0 ) +
+      facet_wrap( ~ RegionName, ncol=2, scales="free", dir="v" ) +
+      labs( x=expression(paste("Spawning biomass (t"%*%10^3, ")")), 
+          y=paste("Number of age-", ageRec, " recruits (millions)", sep="") ) +
+      scale_y_continuous( label=comma ) +
+      expand_limits( x=0, y=0 ) +
+      guides( colour=FALSE ) +
+      myTheme +
+      ggsave( filename=file.path("BevertonHolt.png"), width=figWidth, 
+          height=figWidth )
+}  # End PlotBevertonHolt function
+
+# Plot Beverton-Holt
+PlotBevertonHolt( bh=filter(BevHolt, Model==mNames[1]), SARs=allRegions$major )
 
 # Message
 cat( "done\n" )

@@ -402,6 +402,8 @@ Driven by the estimates recent recruitments and lower natural mortality, the ass
 
 [Placeholder]
 
+Beverton-Holt stock-recruitment relationships (Figure \ref{figBevertonHolt}).
+
 \subsubsection{Fishing mortality}
 
 [Placeholder]
