@@ -322,15 +322,17 @@ The base case for the assessment model assumes that the
 \subsubsection{Variance parameters}
 
 <<<<<<< HEAD
-The key variance parameter in the errors-in-variables approach is the inverse of the total variance $\varphi^-2$ (i.e., total precision, varphi). The total variance is partitioned into observation and process error components by the model parameter rho $\rho$, which is the proportion of the total variance that is due to observation error (Punt and Butterworth 1993, Deriso et al. 2007). In ISCAM, standard deviations in process error (tau, $\tau$) and observation error (sigma, $\sigma$) are related and modelled using the following equations for kappa $\kappa$ and rho $\rho$.
-The base case initial values for $\kappa$ and $\rho$ were set equal to MPD estimated values from the 2016 assessment, which resulted in an observation error term ($\sigma=0.58$) and a process error term ($\tau=0.69$).  We tested model sensitivity to these initial values by varying $\vartheta^2$ and $\rho$ while estimating all leading parameters.
+The key variance parameter in the errors-in-variables approach is the inverse of the total variance $\varphi^-2$ (i.e., total precision, varphi). 
+The total variance is partitioned into observation and process error components by the model parameter rho $\rho$, which is the proportion of the total variance that is due to observation error (Punt and Butterworth 1993, Deriso et al. 2007). 
+In ISCAM, standard deviations in process error (tau, $\tau$) and observation error (sigma, $\sigma$) are related and modelled using the following equations for kappa $\kappa$ and rho $\rho$.
+The base case initial values for $\kappa$ and $\rho$ were set equal to MPD estimated values from the 2016 assessment, which resulted in an observation error term ($\sigma=0.58$) and a process error term ($\tau=0.69$).  
+We tested model sensitivity to these initial values by varying $\vartheta^2$ and $\rho$ while estimating all leading parameters.
 
 
+This analysis showed that when both $\rho$ and $\kappa$ are estimated as they are in the base case, the choice of initial value for $\rho$ and $\kappa$ does not impact estimated model parameters. 
+This is the same for AM1, AM2 and both parameterizations of M. Table xx show all estimated results.
 
 Matt: here is where we need the table from Sarah (with rho and kappa sensitivites) 
-
-This analysis showed that when both $\rho$ and $\kappa$ are estimated as they are in the base case, the choice of initial value for $\rho$ and $\kappa$ does not impact estimated model parameters. This is the same for AM1, AM2 and both parameterizations of M. Table xx show all estimated results.
-
 
 \subsubsection{Sensitivities to prior probability on survey catchability}
 
@@ -338,14 +340,24 @@ This analysis showed that when both $\rho$ and $\kappa$ are estimated as they ar
 
 \subsubsection{Maturity at age}
 
-The base case maturity vector assumes 25\% of age-2 fish are mature, 90\% of age-3 fish are mature, and 100\% maturity for fish ages 4 and older. From these assumptions the age of 50\% maturity is estimated to be approximately 2.3 years. These base case values are fixed for all BC herring stocks at values indicated from histological assessment of developing ovaries (Hay, 1985; Hay and McCarter, 1997).  
-In the recent analysis identifying limit reference points for BC Pacific Herring stocks, Kronlund et al. (2017) discuss the location of the maturity schedule in relation to estimation of FMSY. Specifically, the positioning of the maturity curve to the left of all the fishery selectivity curves contributed to high estimates of FMSY because when age at 50\% maturity is estimated to occur at a much younger age than 50\% selectivity, it essentially guarantees a large component of the population can spawn at least once before becoming vulnerable to any fishery. This infers high sustainable harvest rates, and the estimates of FMSY reported in Kronlund et al. (2017) and in Cox et al. (2015) were among the highest produced for herring species worldwide.
-The sensitivity analysis considered here involves setting the maturity at age vector equal to the selectivity of the seine roe fishery (gear 2) and then re-estimating equilibrium reference point FMSY. Hay (1985) identify that age specific maturation varies with latitude and that generally, the warmer the water temperature the earlier the maturation of herring should occur. Thus different stocks of BC Pacific Herring may have different maturity schedules as they are distributed throughout different latitudes. In the absence of recent histological studies to provide new estimates of maturity at age, we tested the model sensitivity to the fixed base values by setting the maturity at age vector equal to the selectivity of the seine roe fishery (gear 2). These values are listed in Table XX.  The selectivity of the seine roe fishery was chosen because the fishery targets pre-spawning aggregations with seine gear that is non size-selective, providing age composition samples from a mature portion of the population.  
+The base case maturity vector assumes 25\% of age-2 fish are mature, 90\% of age-3 fish are mature, and 100\% maturity for fish ages 4 and older. 
+From these assumptions the age of 50\% maturity is estimated to be approximately 2.3 years. 
+These base case values are fixed for all BC herring stocks at values indicated from histological assessment of developing ovaries (Hay, 1985; Hay and McCarter, 1997).  
+In the recent analysis identifying limit reference points for BC Pacific Herring stocks, Kronlund et al. (2017) discuss the location of the maturity schedule in relation to estimation of FMSY. 
+Specifically, the positioning of the maturity curve to the left of all the fishery selectivity curves contributed to high estimates of FMSY because when age at 50\% maturity is estimated to occur at a much younger age than 50\% selectivity, it essentially guarantees a large component of the population can spawn at least once before becoming vulnerable to any fishery. 
+This infers high sustainable harvest rates, and the estimates of FMSY reported in Kronlund et al. (2017) and in Cox et al. (2015) were among the highest produced for herring species worldwide.
+The sensitivity analysis considered here involves setting the maturity at age vector equal to the selectivity of the seine roe fishery (gear 2) and then re-estimating equilibrium reference point FMSY. 
+Hay (1985) identify that age specific maturation varies with latitude and that generally, the warmer the water temperature the earlier the maturation of herring should occur. 
+Thus different stocks of BC Pacific Herring may have different maturity schedules as they are distributed throughout different latitudes. 
+In the absence of recent histological studies to provide new estimates of maturity at age, we tested the model sensitivity to the fixed base values by setting the maturity at age vector equal to the selectivity of the seine roe fishery (gear 2). 
+These values are listed in Table XX.  
+The selectivity of the seine roe fishery was chosen because the fishery targets pre-spawning aggregations with seine gear that is non size-selective, providing age composition samples from a mature portion of the population.  
 
 Table XX. Assumed maturity schedule for the sensitivity case: maturity at age equal to selectivity of the roe seine fishery.
 
 Need to add in this Table here...
 
+Table xx. Summary of key MSY reference points
 
 
 
