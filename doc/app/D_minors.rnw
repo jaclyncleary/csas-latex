@@ -1,0 +1,6 @@
+\label{chap:minors}
+\starredchapter{APPENDIX~\thechapter. ASSESSMENT OF MINOR STOCKS}
+\lfoot{\Sexpr{fish.name}}
+\rfoot{Appendix~\thechapter~-- Assessment of minor stocks}
+
+The minor stocks are \Sexpr{PasteNicely(allRegionNames$minor)}.

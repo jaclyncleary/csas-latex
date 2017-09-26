@@ -124,3 +124,30 @@ Tables \ref{tabWeight\Sexpr{regions$Region[1]}} to \ref{tabWeight\Sexpr{regions$
 \end{longtable}
 \FloatBarrier
 } % End loop over stocks for weight-at-age
+
+% % Table of number of biosamples
+% \FloatBarrier
+% \begin{longtable}{rrrrrrrrr}
+% \caption{Number of \Sexpr{fish.name} biosamples from \Sexpr{min(yrRange)} to \Sexpr{max(yrRange)} in each stock assessment region (SAR).
+% \sampleSize{}}\\
+% \toprule
+% & \multicolumn{\Sexpr{length(unlist(allRegions))}}{c}{Number of biosamples}\\
+% \cmidrule{2-\Sexpr{length(unlist(allRegions))+1}
+% \Sexpr{noquote(namesNBio)}\\
+% \midrule
+% \endfirsthead
+% \toprule
+% \multicolumn{9}{c}{\emph{\tablename\ \thetable{} continued}}\\
+% & \multicolumn{\Sexpr{length(unlist(allRegions))}}{c}{Number of biosamples}\\
+% \cmidrule{2-\Sexpr{length(unlist(allRegions))+1}
+% \Sexpr{noquote(namesNBio)}\\
+% \midrule
+% \endhead
+% \bottomrule
+% \endfoot
+% \bottomrule
+% \endlastfoot
+% \inputsp{\Sexpr{locOutput}/NBio.tex}
+% \label{tabNBio}
+% \end{longtable}
+% \FloatBarrier
