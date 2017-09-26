@@ -338,7 +338,7 @@ build <- function(ovwrt.base = FALSE,
                              unlist(sens.model.dir.name.3),
                              unlist(sens.model.dir.name.4),
                              unlist(sens.model.dir.name.5))
-b
+
   ## Sensitivity models
   invisible(lapply(1:length(sens.model.names.list),
                    function(x){
