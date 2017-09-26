@@ -114,8 +114,9 @@ All estimates quantities are based on maximum likelihood estimates (DFO 2016).}
 \centering
 \includegraphics[width=\linewidth]{\Sexpr{locOutput}/HarvestRate.png}
 \caption{Effective harvest rate for Pacific herring in the major stock assessment regions (SARs) for models \Sexpr{PasteNicely(mNames)}.
-Effective harvest rate is calculated as $\frac{C_\text{t}}{\mli{SB}_\text{t}+C_\text{t}}$ where $C_\text{t}$ is catch in year t, and $\mli{SB}_\text{t}$ is estimated spawning biomass in year t.
-Black lines indicate medians and shaded ribbons indicate \Sexpr{ciLevel*100}\% confidence intervals for spawning biomass, $\mli{SB}_\text{t}$.}
+Effective harvest rate in year t, $U_\text{t}$ is calculated as $U_\text{t} = \frac{C_\text{t}}{\mli{SB}_\text{t} + C_\text{t}}$ where $C_\text{t}$ is catch in year t, and $\mli{SB}_\text{t}$ is estimated spawning biomass in year t.
+Black lines indicate medians and shaded ribbons indicate \Sexpr{ciLevel*100}\% confidence intervals for spawning biomass, $\mli{SB}_\text{t}$.
+Horizontal dashed lines indicate $U_\text{t} = \Sexpr{intendU}$.}
 \label{figHarvestRate}
 \end{figure}
 

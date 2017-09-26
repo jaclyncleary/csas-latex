@@ -139,6 +139,12 @@ nRoll <- 5
 # Spawn survey method changed from surface (1951--1987) to dive (1988--present)
 newSurvYr <- 1988
 
+# Intended harvest rate
+intendU <- 0.2
+
+# First year of intended harvest rate
+intendUYrs <- 1983
+
 # Figure width
 figWidth <- 6
 
@@ -655,6 +661,53 @@ abundMPD <- GetMPD( fn="iscam.rep", SARs=allRegions$major, flag="sbt",
 recMPD <- GetMPD( fn="iscam.rep", SARs=allRegions$major, flag="rt", 
     varName="Recruitment" )
 
+# Get Beverton-Holt parameters
+GetBHPars <- function( fn, SARs, models=mNames[1] ) {
+  # Progress message
+  cat( "Loading BH parameters... " )
+  # Loop over regions
+  for( k in 1:length(SARs) ) {
+    # Get the region
+    SAR <- SARs[k]
+    # Loop over models
+    for( i in 1:length(models) ) {
+      # Get the model
+      model <- models[i]
+      # Read the file (big blob)
+      obj <- readLines( con=file.path(SAR, model, fn) )
+      # Get so
+      so <- scan( file=file.path(SAR, model, fn), skip=which(obj == "so"), 
+          n=1, quiet=TRUE )
+      # Get kappa
+      kappa <- scan( file=file.path(SAR, model, fn), skip=which(obj == "kappa"), 
+          n=1, quiet=TRUE )
+      # Get beta
+      beta <- scan( file=file.path(SAR, model, fn), skip=which(obj == "beta"), 
+          n=1, quiet=TRUE )
+      # Get ro
+      ro <- scan( file=file.path(SAR, model, fn), skip=which(obj == "ro"), 
+          n=1, quiet=TRUE )
+      # Calculate the median of model runs for each year
+      out <- tibble( Region=SAR, Model=model, so=so, kappa=kappa, beta=beta,
+              ro=ro)
+      # If it's the first region and model
+      if( k == 1 & i == 1 ) {
+        # Start a data frame
+        res <- out
+      } else {  # End if it's the first region and model, otherwise
+        # Append to the data frame
+        res <- bind_rows( res, out )
+      }  # End if it's not the first region and model
+    }  # End i loop over models
+  }  # End k loop over regions
+  # Update progress message
+  cat( "done\n" )
+  # Return the model output as a data frame
+  return( res )
+}  # End GetBHPars function
+
+# Get BH parameters
+bhPars <- GetBHPars( fn="iscam.rep", SARs=allRegions$major )
 
 ################
 ##### Main #####
@@ -1133,7 +1186,9 @@ PlotHarvestRate <- function( hr, SARs, models ) {
   # The plot
   plotSSB <- ggplot( data=hrSub, aes(x=Year) ) + 
       geom_ribbon( aes(ymin=LowerHR, ymax=UpperHR), fill="grey" ) +
-      geom_line( aes(y=MedianHR) ) + 
+      geom_line( aes(y=MedianHR) ) +
+      annotate( geom="segment", x=intendUYrs, y=intendU, xend=max(yrRange), 
+          yend=intendU, linetype="dashed" ) +
       facet_grid( Region ~ Model ) +
       labs( y="Effective harvest rate" ) +
       expand_limits( y=c(0, 1) ) +
