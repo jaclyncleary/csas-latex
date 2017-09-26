@@ -420,7 +420,8 @@ make.parameters.est.table <- function(model,
         booktabs = TRUE)
 }
 
-make.ref.points.table <- function(model,
+make.ref.points.table <- function(model.am2,
+                                  model.am1,
                                   digits = 3,
                                   xcaption = "default",
                                   xlabel   = "default",
@@ -436,15 +437,39 @@ make.ref.points.table <- function(model,
   ## space.size - size of the vertical spaces for the table
   ## placement - latex code for placement of the table in document
 
-  if(class(model) == model.lst.class){
+  if(class(model.am2) == model.lst.class){
     model <- model[[1]]
     if(class(model) != model.class){
-      stop("The structure of the model list is incorrect.")
+      stop("The structure of the model.am2 list is incorrect.")
     }
   }
 
-  tab <- model$mcmccalcs$r.quants
-  tab[,-1] <- f(tab[,-1], digits)
+  if(class(model.am1) == model.lst.class){
+    model <- model[[1]]
+    if(class(model) != model.class){
+      stop("The structure of the model.am1 list is incorrect.")
+    }
+  }
+
+  tab.am2 <- model.am2$mcmccalcs$r.quants
+  tab.am2[,-1] <- f(tab.am2[,-1], digits)
+  tab.am1 <- model.am1$mcmccalcs$r.quants
+  ## Remove latex rownames from AM1 model
+  tab.am1 <- tab.am1[,-1]
+  tab <- cbind(tab.am2, tab.am1)
+
+  addtorow <- list()
+  addtorow$pos <- list(-1)
+  addtorow$command <- paste0("\\toprule",
+                             latex.amp(),
+                             latex.mcol(3,
+                                        "c",
+                                        latex.bold("AM2")),
+                             latex.amp(),
+                             latex.mcol(3,
+                                        "c",
+                                        latex.bold("AM1")),
+                             latex.nline)
 
   size.string <- latex.size.str(font.size, space.size)
   print(xtable(tab,
@@ -456,6 +481,7 @@ make.ref.points.table <- function(model,
         sanitize.text.function = function(x){x},
         size = size.string,
         table.placement = placement,
+        add.to.row = addtorow,
         booktabs = TRUE)
 }
 
