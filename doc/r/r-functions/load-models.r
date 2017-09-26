@@ -38,6 +38,9 @@ load.iscam.files <- function(model.dir,
   model$par <- read.par.file(file.path(model.dir, par.file))
   ## Load MPD results
   model$mpd <- read.report.file(file.path(model.dir, rep.file))
+  ## Unflatten A_hat so there are nice dataframes of estimated
+  ##  numbers-at-age for each gear
+  model$mpd$ahat <- calc.ahat(model)
   ## Add sigma and tau
   sigtau <- calc.sig.tau(model$mpd$rho, model$mpd$vartheta)
   model$mpd$tau <- sigtau[[1]]
@@ -421,7 +424,7 @@ read.data.file <- function(file = NULL,
   tmp$age.at.50.mat <- as.numeric(strsplit(dat[ind <- ind + 1],"[[:blank:]]+")[[1]])
   tmp$sd.at.50.mat  <- as.numeric(strsplit(dat[ind <- ind + 1],"[[:blank:]]+")[[1]])
   tmp$use.mat   <- as.numeric(dat[ind <- ind + 1])
-  tmp$mat.vec   <- as.numeric(strsplit(dat[ind <- ind + 1],"[[:blank:]]+")[[1]])
+  tmp$mat.vec   <- as.numeric(strsplit(dat[ind <- ind + 1],"[[:blank:]]+|,")[[1]])
 
   ## Delay-difference options
   tmp$dd.k.age   <- as.numeric(dat[ind <- ind + 1])
@@ -1107,7 +1110,7 @@ calc.mcmc <- function(model,
   ## Depletion
   depl.dat <- NULL
   depl.quants <- NULL
-  browser()
+
   tryCatch({
     depl.dat <- apply(sbt.dat,
                       2,
@@ -1195,8 +1198,11 @@ calc.mcmc <- function(model,
   sbt.yrs <- names(sbt.dat)
   sbt.init <- sbt.dat[,1]
   sbt.end <- sbt.dat[,ncol(sbt.dat)]
+  sbt.end.1 <- sbt.dat[,ncol(sbt.dat) - 1]
   yr.sbt.init <- sbt.yrs[1]
-  yr.sbt.end <- sbt.yrs[length(sbt.yrs)]
+  yr.sbt.end <- as.numeric(sbt.yrs[length(sbt.yrs)])
+  yr.sbt.end.1 <- yr.sbt.end - 1
+
   f.yrs <- names(f.mort.dat[[1]])
   f.yrs <- gsub(".*_([[:digit:]]+)",
                  "\\1",
@@ -1207,15 +1213,15 @@ calc.mcmc <- function(model,
   r.quants <- NULL
   tryCatch({
     r.dat <- cbind(r.dat,
-                   sbt.init,
-                   sbt.end,
-                   sbt.end / sbt.init,
-                   0.3 * r.dat$bo)
+                   0.3 * r.dat$bo,
+                   sbt.end.1,
+                   sbt.end.1 / r.dat$bo,
+                   sbt.end)
     names(r.dat) <- c("bo",
-                      paste0("b", yr.sbt.init),
-                      paste0("b", yr.sbt.end),
-                      paste0("b", yr.sbt.end, "/", yr.sbt.init),
-                      paste0("0.3bo"))
+                      paste0("0.3sbo"),
+                      paste0("sb", yr.sbt.end.1),
+                      paste0("sb", yr.sbt.end.1, "/sbo"),
+                      paste0("sb", yr.sbt.end))
   r.quants <- apply(r.dat, 2, quantile, prob = probs)
   }, warning = function(war){
   }, error = function(err){
@@ -1223,13 +1229,13 @@ calc.mcmc <- function(model,
     ##  tryCatch above so none is needed here.
   })
 
-  desc.col <- c("$B_0$",
-                paste0("$B_{", yr.sbt.init, "}$"),
-                paste0("$B_{", yr.sbt.end, "}$"),
-                paste0("$B_{", yr.sbt.end,
+  desc.col <- c("$SB_0$",
+                "$0.3SB_0$",
+                paste0("$SB_{", yr.sbt.end.1, "}$"),
+                paste0("$SB_{", yr.sbt.end.1,
                        "}/",
-                       "B_{", yr.sbt.init, "}$"),
-                "$0.3B_0$")
+                       "SB_0$"),
+                paste0("$SB_{", yr.sbt.end, "}$"))
 
   r.quants <- t(r.quants)
   r.quants <- cbind.data.frame(desc.col, r.quants)
@@ -1271,6 +1277,50 @@ calc.mcmc <- function(model,
            "u.mort.quants",
            "proj.dat"),
            function(x){get(x)})
+}
+
+calc.ahat <- function(model){
+  if(class(model) == model.lst.class){
+    model <- model[[1]]
+    if(class(model) != model.class){
+      stop("The structure of the model list is incorrect.")
+    }
+  }
+
+  mpd <- model$mpd
+  ahat <- mpd$A_hat
+  sage <- mpd$n_A_sage[1]
+  nage <- mpd$n_A_nage[1]
+  num.ages <- nage - sage + 1
+  nagv <- model$dat$num.age.gears.vec
+  age.comps <- model$dat$age.comps
+
+  ## Break up the ahat vector into its correct dimensions
+  gears <- list()
+  ind <- 1
+  for(i in 1:length(nagv)){
+    ext <- ahat[ind:(ind + nagv[i] * num.ages - 1)]
+    ind <- ind + nagv[i] * num.ages
+    ind.byage <- 1
+    gears[[i]] <- list()
+    for(j in 1:(length(ext) / num.ages)){
+      ext.byage <- ext[ind.byage:(ind.byage + num.ages - 1)]
+      ind.byage <- ind.byage + num.ages
+      gears[[i]][[j]] <- ext.byage
+    }
+    gears[[i]] <- do.call(rbind, gears[[i]])
+  }
+
+  ## Now gears is a list of dataframes, 1 for each gear
+  ## Add years to rows and ages to columns
+  gears <- lapply(1:length(nagv),
+                  function(x){
+                    gears[[x]] <- as.data.frame(gears[[x]])
+                    rownames(gears[[x]]) <- as.data.frame(age.comps[[x]])$year
+                    colnames(gears[[x]]) <- sage:nage
+                    gears[[x]]
+                  })
+  gears
 }
 
 calc.probabilities <- function(model,
@@ -1323,6 +1373,7 @@ calc.probabilities <- function(model,
     k <- c(tac[t] * 1000,
            length(which(d[,paste0("B", e.yr.1)] < d$X03B0)) / n.row,
            median(d[,paste0("B", e.yr.1)] / d$X03B0))
+
     if(t == 1){
       col.names <- c(latex.mlc(c(e.yr.1,
                                  "TAC",
@@ -1331,11 +1382,11 @@ calc.probabilities <- function(model,
                      latex.mlc(c(paste0("P(SB_{",
                                         e.yr.1,
                                         "}<"),
-                                 "0.30SB_0"),
+                                 "LRP 0.30SB_0"),
                                math.bold = TRUE),
                      latex.mlc(c(paste0("Med(SB_{",
                                         e.yr.1,
-                                        "}"),
+                                        "}/"),
                                  "0.30SB_0)"),
                                math.bold = TRUE))
     }
@@ -1346,14 +1397,14 @@ calc.probabilities <- function(model,
                median(d[,paste0("B", e.yr.1)] / 10700))
         if(t == 1){
           col.names <- c(col.names,
-                         latex.mlc(c(paste0("P(U_{",
+                         latex.mlc(c(paste0("P(SB_{",
                                             e.yr.1,
-                                            "}<"),
+                                            "} <"),
                                      "10,700)"),
                                    math.bold = TRUE),
                          latex.mlc(c(paste0("Med(SB_{",
                                             e.yr.1,
-                                            "}"),
+                                            "} /"),
                                      "10,700)"),
                                    math.bold = TRUE))
         }
@@ -1365,12 +1416,12 @@ calc.probabilities <- function(model,
           col.names <- c(col.names,
                          latex.mlc(c(paste0("P(U_{",
                                             e.yr.1,
-                                            "}<"),
+                                            "} <"),
                                      "21,200)"),
                                    math.bold = TRUE),
                          latex.mlc(c(paste0("Med(SB_{",
                                             e.yr.1,
-                                            "}"),
+                                            "} /"),
                                      "21,200)"),
                                    math.bold = TRUE))
         }
@@ -1382,12 +1433,12 @@ calc.probabilities <- function(model,
           col.names <- c(col.names,
                          latex.mlc(c(paste0("P(U_{",
                                             e.yr.1,
-                                            "}<"),
+                                            "} <"),
                                      "12,100)"),
                                    math.bold = TRUE),
                          latex.mlc(c(paste0("Med(SB_{",
                                             e.yr.1,
-                                            "}"),
+                                            "} /"),
                                      "12,100)"),
                                    math.bold = TRUE))
         }
@@ -1399,12 +1450,12 @@ calc.probabilities <- function(model,
           col.names <- c(col.names,
                          latex.mlc(c(paste0("P(U_{",
                                             e.yr.1,
-                                            "}<"),
+                                            "} <"),
                                      "17,600)"),
                                    math.bold = TRUE),
                          latex.mlc(c(paste0("Med(SB_{",
                                             e.yr.1,
-                                            "}"),
+                                            "} /"),
                                      "17,600)"),
                                    math.bold = TRUE))
         }
@@ -1416,12 +1467,12 @@ calc.probabilities <- function(model,
           col.names <- c(col.names,
                          latex.mlc(c(paste0("P(U_{",
                                             e.yr.1,
-                                            "}<"),
+                                            "} <"),
                                      "18,800)"),
                                    math.bold = TRUE),
                          latex.mlc(c(paste0("Med(SB_{",
                                             e.yr.1,
-                                            "}"),
+                                            "} /"),
                                      "18,800)"),
                                    math.bold = TRUE))
         }

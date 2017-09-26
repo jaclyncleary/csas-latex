@@ -78,7 +78,8 @@ Panel (c): posterior estimates of instantaneous natural mortality.
 Line and shaded area indicate the median and \Sexpr{ciLevel*100}\% credible interval, respectively.
 Panel (d): posterior estimate of spawning biomass ($\mli{SB}_{t}$) for each year $t$ in thousands of metric tonnes ($\text{t} \times 10^{3}$).
 Line and shaded area indicate median and \Sexpr{ciLevel*100}\% credible interval, respectively.
-Also shown is unfished biomass ($\mli{SB}_0$) at far left, and projected spawning biomass assuming no fishing ($\mli{SB}_{\Sexpr{max(yrRange)+1}}$) at the far right: circles with vertical lines indicate medians and \Sexpr{ciLevel*100}\% credible intervals, respectively.
+%unfished biomass ($\mli{SB}_0$) at far left, and
+Also shown is projected spawning biomass assuming no fishing ($\mli{SB}_{\Sexpr{max(yrRange)+1}}$) at the far right: the circle and vertical line indicates the median and \Sexpr{ciLevel*100}\% credible interval, respectively.
 Time series of vertical lines indicates commercial catch, excluding spawn on kelp (SOK).}
 \label{figStoryboard\y\x}
 \end{figure}
@@ -107,6 +108,38 @@ All estimates quantities are based on maximum likelihood estimates (DFO 2016).}
 \end{figure}
 } % End loop over models for production
 } % End loop over stocks for production
+
+% Effective harvest rate
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}/HarvestRate.png}
+\caption{Effective harvest rate for Pacific herring in the major stock assessment regions (SARs) for models \Sexpr{PasteNicely(mNames)}.
+Effective harvest rate in year t, $U_\text{t}$ is calculated as $U_\text{t} = \frac{C_\text{t}}{\mli{SB}_\text{t} + C_\text{t}}$ where $C_\text{t}$ is catch in year t, and $\mli{SB}_\text{t}$ is estimated spawning biomass in year t.
+Black lines indicate medians and shaded ribbons indicate \Sexpr{ciLevel*100}\% confidence intervals for spawning biomass, $\mli{SB}_\text{t}$.
+Horizontal dashed lines indicate $U_\text{t} = \Sexpr{intendU}$.}
+\label{figHarvestRate}
+\end{figure}
+
+% Current biomass and LRP
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}/CurrentSSB.png}
+\caption{Estimated spawning biomass in \Sexpr{max(yrRange)}, $\mli{SB}_{\Sexpr{max(yrRange)}}$ in thousands of tonnes, t for Pacific herring in the major stock assessment regions (SARs) for models \Sexpr{PasteNicely(mNames)}.
+Vertical black lines indicate medians (solid) and \Sexpr{ciLevel*100}\% confidence intervals (dashed) for $\mli{SB}_{\Sexpr{max(yrRange)}}$.
+Vertical red lines indicate medians, and shaded red rectangles indicate \Sexpr{ciLevel*100}\% confidence intervals for the limit reference point (LRP), $0.3\mli{SB}_0$, where $\mli{SB}_0$ is estimated unfished biomass.}
+\label{figCurrentSSB}
+\end{figure}
+
+% Beverton-Holt stock-recruitment relationsip
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}/BevertonHolt.png}
+\caption{Beverton-Holt stock-recruitment relationship for Pacific herring in the major stock assessment regions (SARs) for model \Sexpr{mNames[1]}.
+The current year, \Sexpr{max(yrRange)} is coloured black.
+The line indicates the Beverton-Holt stock-recruitment relationship.
+Legend: tonnes (t).}
+\label{figBevertonHolt}
+\end{figure}
 
 
 % %%------------------------------------------------------------------------------

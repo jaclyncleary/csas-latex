@@ -128,6 +128,9 @@ The model uses the mean weight at age of the last five years for projections.
 
 \subsubsection{Abundance index}
 
+Example for Jaclyn:
+The spawn index for \Sexpr{max(yrRange)} for HG is \Sexpr{finalYrSpawn %>% filter( Region=="HG" ) %>% select(Spawn)} tonnes (Table \ref{tabSpawnHG}).
+
 We also have an index of relative abundance (Figure \ref{figSpawnIndex}).
 The spawn survey indices provide information about how the relative stock size has changed over time and the proportions at age data provide information about the population age structure.
 \begin{resdoclist}
@@ -343,8 +346,9 @@ Figures \ref{figStoryboard\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{
 \item $\mli{SB}_{\Sexpr{max(yrRange)+1}}$
 \item Limit reference point (LRP)
 \item Upper stock reference (USR)
-
 \end{resdoclist}
+
+Effective harvest rates (Figure \ref{figHarvestRate}).
 
 \subsubsection{Biomass and stock status}
 
@@ -352,6 +356,8 @@ The following present marginal posterior distributions characterizing the major 
 To help readers view and interpret trends in results and uncertainty for each stock major stock area, collective sets of figures showing these four sets of model results across the 1951 to 2014 time series are presented by stock area in Figure XX-Figure XX.
 The following sections also present maximum posterior density (MPD) estimates characterizing the major herring stocks for: spawn survey scaling parameter (q), age-2 recruits versus spawning biomass relationships, age-specific fishing gear selectivity, and total instantaneous mortality.
 To enable readers to compare trends between major stock areas, results for each of these types of MPD estimates for all major stock areas in the 1951-2014 times series are shown together in individual figures.
+
+Current estimated spawning biomass relative to the LRP (Figure \ref{figCurrentSSB}).
 
 \textbf{Haida Gwaii}
 
@@ -395,6 +401,8 @@ Driven by the estimates recent recruitments and lower natural mortality, the ass
 \subsubsection{Recruitment}
 
 [Placeholder]
+
+Beverton-Holt stock-recruitment relationships (Figure \ref{figBevertonHolt}).
 
 \subsubsection{Fishing mortality}
 
