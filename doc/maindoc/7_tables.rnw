@@ -208,12 +208,42 @@ make.biomass.depletion.table(hg.b,
                              ##tabular.environment = "longtable")
 @
 
+<<hg.am1.spawning.biomass.depletion.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of ",
+              "spawning biomass (1000 t) and relative spawning ",
+              "biomass for the Haida Gwaii AM1 model.")
+make.biomass.depletion.table(hg.am1,
+                             syr = 2007,
+                             xcaption = cap,
+                             xlabel = "tab:hg-spawn-biomass",
+                             font.size = 11,
+                             space.size = 12,
+                             placement = "H")
+                             ##tabular.environment = "longtable")
+@
+
 <<prd.spawning.biomass.depletion.table, results='asis', echo=FALSE>>=
 cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
               "95\\textsuperscript{th} percentile) and MPD estimates of ",
               "spawning biomass (1000 t) and relative spawning ",
               "biomass for the Prince Rupert District AM2 model.")
 make.biomass.depletion.table(pr.b,
+                             syr = 2007,
+                             xcaption = cap,
+                             xlabel = "tab:prd-spawn-biomass",
+                             font.size = 11,
+                             space.size = 12,
+                             placement = "H")
+                             ##tabular.environment = "longtable")
+@
+
+<<prd.am1.spawning.biomass.depletion.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of ",
+              "spawning biomass (1000 t) and relative spawning ",
+              "biomass for the Prince Rupert District AM1 model.")
+make.biomass.depletion.table(pr.am1,
                              syr = 2007,
                              xcaption = cap,
                              xlabel = "tab:prd-spawn-biomass",
@@ -238,12 +268,42 @@ make.biomass.depletion.table(cc.b,
                              ##tabular.environment = "longtable")
 @
 
+<<cc.am1.spawning.biomass.depletion.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of ",
+              "spawning biomass (1000 t) and relative spawning ",
+              "biomass for the Central Coast AM1 model.")
+make.biomass.depletion.table(cc.am1,
+                             syr = 2007,
+                             xcaption = cap,
+                             xlabel = "tab:cc-spawn-biomass",
+                             font.size = 11,
+                             space.size = 12,
+                             placement = "H")
+                             ##tabular.environment = "longtable")
+@
+
 <<sog.spawning.biomass.depletion.table, results='asis', echo=FALSE>>=
 cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
               "95\\textsuperscript{th} percentile) and MPD estimates of ",
               "spawning biomass (1000 t) and relative spawning ",
               "biomass for the Strait of Georgia AM2 model.")
 make.biomass.depletion.table(sog.b,
+                             syr = 2007,
+                             xcaption = cap,
+                             xlabel = "tab:sog-spawn-biomass",
+                             font.size = 11,
+                             space.size = 12,
+                             placement = "H")
+                             ##tabular.environment = "longtable")
+@
+
+<<sog.am1.spawning.biomass.depletion.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of ",
+              "spawning biomass (1000 t) and relative spawning ",
+              "biomass for the Strait of Georgia AM1 model.")
+make.biomass.depletion.table(sog.am1,
                              syr = 2007,
                              xcaption = cap,
                              xlabel = "tab:sog-spawn-biomass",
@@ -268,6 +328,20 @@ make.biomass.depletion.table(wcvi.b,
                              ##tabular.environment = "longtable")
 @
 
+<<wcvi.am1.spawning.biomass.depletion.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of ",
+              "spawning biomass (1000 t) and relative spawning ",
+              "biomass for the WCVI AM1 model.")
+make.biomass.depletion.table(wcvi.am1,
+                             syr = 2007,
+                             xcaption = cap,
+                             xlabel = "tab:wcvi-spawn-biomass",
+                             font.size = 11,
+                             space.size = 12,
+                             placement = "H")
+                             ##tabular.environment = "longtable")
+@
 
 <<hg.recruitment.table, results='asis', echo=FALSE>>=
 cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",

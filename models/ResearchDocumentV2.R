@@ -101,9 +101,14 @@ mNames <- c( "AM2", "AM1" )
 ######################
 
 # Possible regions by type
-allRegions <- list(
-    major=c("HG", "PRD", "CC", "SoG", "WCVI"),
-    minor=c("A27", "A2W") )
+allRegions <- list(major=c("HG", "PRD", "CC", "SoG", "WCVI"),
+                   minor=c("A27", "A2W"))
+
+sens <- c("HG-natural-mortality",
+          "PRD-natural-mortality",
+          "CC-natural-mortality",
+          "SOG-natural-mortality",
+          "WCVI-natural-mortality")
 
 # Region names
 allRegionNames <- list( 
@@ -386,7 +391,7 @@ ArrangeOutput <- function( SARs, models ) {
 }  # End ArrangeOutput function
 
 # Arrange the output files (major SARs only)
-ArrangeOutput( SARs=allRegions$major, models=NA )
+ArrangeOutput( SARs=c(allRegions$major, sens), models=NA )
 
 
 ########################
@@ -629,7 +634,7 @@ GetMPD <- function( fn, SARs, models=mNames[1], flag, varName ) {
       # If Recruitment
       if( varName == "Recruitment" ) {
         # Update the year range
-        yrs <- yrRange[-c(1:2)]
+        yrs <- yrRange[-c(1:min(ageRange))]
         # Grab the object
         dat <- tibble( Recruitment=raw[[1]] )
       }  # End if Recruitment
@@ -675,14 +680,11 @@ GetBHPars <- function( fn, SARs, models=mNames[1] ) {
       model <- models[i]
       # Read the file (big blob)
       obj <- readLines( con=file.path(SAR, model, fn) )
-      # Get so
-      so <- scan( file=file.path(SAR, model, fn), skip=which(obj == "so"), 
-          n=1, quiet=TRUE )
       # Get kappa
       kappa <- scan( file=file.path(SAR, model, fn), skip=which(obj == "kappa"), 
           n=1, quiet=TRUE )
-      # Get beta
-      beta <- scan( file=file.path(SAR, model, fn), skip=which(obj == "beta"), 
+      # Get tau
+      tau <- scan( file=file.path(SAR, model, fn), skip=which(obj == "tau"), 
           n=1, quiet=TRUE )
       # Get ro
       ro <- scan( file=file.path(SAR, model, fn), skip=which(obj == "ro"), 
@@ -691,8 +693,8 @@ GetBHPars <- function( fn, SARs, models=mNames[1] ) {
       sbo <- scan( file=file.path(SAR, model, fn), skip=which(obj == "sbo"), 
           n=1, quiet=TRUE )
       # Calculate the median of model runs for each year
-      out <- tibble( Region=SAR, Model=model, so=so, kappa=kappa, beta=beta,
-              ro=ro, sbo=sbo )
+      out <- tibble( Region=SAR, Model=model, kappa=kappa, tau=tau, ro=ro, 
+          sbo=sbo )
       # If it's the first region and model
       if( k == 1 & i == 1 ) {
         # Start a data frame
@@ -803,28 +805,19 @@ maxAbund <- BevHolt %>%
     summarise( MaxAbund=MaxNA(Abundance) ) %>%
     ungroup( )
 
-# Empty table for predicted BH
-emptyTable <- expand.grid( Region=unique(BevHolt$Region), 
-        Model=unique(BevHolt$Model), 
-        Abundance=seq(0, max(BevHolt$Abundance), 1) ) %>%
-    as_tibble()
-
 # Generate predicted line for Beverton-Holt relationship
 predBH <- bhPars %>%
     full_join( y=maxAbund, by=c("Region", "Model") ) %>%
-    full_join( y=emptyTable, by=c("Region", "Model") ) %>%
-    mutate( Recruitment=kappa * ro * Abundance / (sbo + (kappa - 1) * 
-              Abundance) * exp(-0.5 * beta^2) ) %>%
-    group_by( Region, Model ) %>%
-    filter( Abundance <= MaxAbund ) %>%
+    group_by( Region, Model, kappa, tau, ro, sbo ) %>%
+    expand( Abundance=seq(from=0, to=max(MaxAbund, sbo), length.out=100) ) %>%
+    mutate( Recruitment=kappa * ro * Abundance / 
+            (sbo + (kappa-1) * Abundance) * exp(-0.5 * tau^2) ) %>%
     ungroup( ) %>%
     left_join( y=regions, by="Region" ) %>%
     mutate( RegionName=factor(RegionName, levels=regions$RegionName),
         Model=factor(Model, levels=mNames),
         Region=factor(Region, levels=regions$Region) )
-    
 
-#rrt = kappa * ro * st / (sbo + (kappa - 1) * st) * exp(-0.5 * tau^2)
 
 ###################
 ##### Figures #####
@@ -1017,6 +1010,7 @@ PlotNumber <- function( SARs, dat ){
     numberAgedPlot <- ggplot( data=datSub, aes(x=Year, y=Number, group=Year) ) + 
         geom_bar( stat="identity" ) +
         scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
+        scale_y_continuous( labels=comma ) + 
         myTheme +
         ggsave( filename=file.path(SAR, "NumberAged.png"), width=figWidth, 
             height=figWidth*0.67 )
@@ -1028,6 +1022,7 @@ PlotNumber <- function( SARs, dat ){
   numberAgePlotAll <- ggplot( data=datMajor, aes(x=Year, y=Number, group=Year) ) + 
       geom_bar( stat="identity" ) +
       scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
+      scale_y_continuous( labels=comma ) + 
       facet_wrap( ~ RegionName, ncol=2, dir="v" ) +
       myTheme +
       ggsave( filename=file.path("NumberAged.png"), width=figWidth, 
@@ -1243,6 +1238,7 @@ PlotBevertonHolt <- function( bh, bhPred, SARs, models ) {
   # The plot
   plotBH <- ggplot( data=bhSub, aes(x=Abundance, y=Recruitment) ) + 
       geom_point( aes(colour=Year==max(yrRange)) ) +
+      geom_point( data=bhPredSub, aes(x=sbo, y=ro), shape=17 ) +
       geom_line( data=bhPredSub ) + 
       scale_colour_grey( start=0.5, end=0 ) +
       facet_wrap( ~ RegionName, ncol=2, scales="free", dir="v" ) +
