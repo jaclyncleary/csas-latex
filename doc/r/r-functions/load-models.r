@@ -1198,8 +1198,11 @@ calc.mcmc <- function(model,
   sbt.yrs <- names(sbt.dat)
   sbt.init <- sbt.dat[,1]
   sbt.end <- sbt.dat[,ncol(sbt.dat)]
+  sbt.end.1 <- sbt.dat[,ncol(sbt.dat) - 1]
   yr.sbt.init <- sbt.yrs[1]
-  yr.sbt.end <- sbt.yrs[length(sbt.yrs)]
+  yr.sbt.end <- as.numeric(sbt.yrs[length(sbt.yrs)])
+  yr.sbt.end.1 <- yr.sbt.end - 1
+
   f.yrs <- names(f.mort.dat[[1]])
   f.yrs <- gsub(".*_([[:digit:]]+)",
                  "\\1",
@@ -1210,15 +1213,15 @@ calc.mcmc <- function(model,
   r.quants <- NULL
   tryCatch({
     r.dat <- cbind(r.dat,
-                   sbt.init,
-                   sbt.end,
-                   sbt.end / sbt.init,
-                   0.3 * r.dat$bo)
+                   0.3 * r.dat$bo,
+                   sbt.end.1,
+                   sbt.end.1 / r.dat$bo,
+                   sbt.end)
     names(r.dat) <- c("bo",
-                      paste0("b", yr.sbt.init),
-                      paste0("b", yr.sbt.end),
-                      paste0("b", yr.sbt.end, "/", yr.sbt.init),
-                      paste0("0.3bo"))
+                      paste0("0.3sbo"),
+                      paste0("sb", yr.sbt.end.1),
+                      paste0("sb", yr.sbt.end.1, "/sbo"),
+                      paste0("sb", yr.sbt.end))
   r.quants <- apply(r.dat, 2, quantile, prob = probs)
   }, warning = function(war){
   }, error = function(err){
@@ -1226,13 +1229,13 @@ calc.mcmc <- function(model,
     ##  tryCatch above so none is needed here.
   })
 
-  desc.col <- c("$B_0$",
-                paste0("$B_{", yr.sbt.init, "}$"),
-                paste0("$B_{", yr.sbt.end, "}$"),
-                paste0("$B_{", yr.sbt.end,
+  desc.col <- c("$SB_0$",
+                "$0.3SB_0$",
+                paste0("$SB_{", yr.sbt.end.1, "}$"),
+                paste0("$SB_{", yr.sbt.end.1,
                        "}/",
-                       "B_{", yr.sbt.init, "}$"),
-                "$0.3B_0$")
+                       "SB_0$"),
+                paste0("$SB_{", yr.sbt.end, "}$"))
 
   r.quants <- t(r.quants)
   r.quants <- cbind.data.frame(desc.col, r.quants)
