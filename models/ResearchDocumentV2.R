@@ -629,7 +629,7 @@ GetMPD <- function( fn, SARs, models=mNames[1], flag, varName ) {
       # If Recruitment
       if( varName == "Recruitment" ) {
         # Update the year range
-        yrs <- yrRange[-c(1:2)]
+        yrs <- yrRange[-c(1:min(ageRange))]
         # Grab the object
         dat <- tibble( Recruitment=raw[[1]] )
       }  # End if Recruitment
@@ -675,14 +675,11 @@ GetBHPars <- function( fn, SARs, models=mNames[1] ) {
       model <- models[i]
       # Read the file (big blob)
       obj <- readLines( con=file.path(SAR, model, fn) )
-      # Get so
-      so <- scan( file=file.path(SAR, model, fn), skip=which(obj == "so"), 
-          n=1, quiet=TRUE )
       # Get kappa
       kappa <- scan( file=file.path(SAR, model, fn), skip=which(obj == "kappa"), 
           n=1, quiet=TRUE )
-      # Get beta
-      beta <- scan( file=file.path(SAR, model, fn), skip=which(obj == "beta"), 
+      # Get tau
+      tau <- scan( file=file.path(SAR, model, fn), skip=which(obj == "tau"), 
           n=1, quiet=TRUE )
       # Get ro
       ro <- scan( file=file.path(SAR, model, fn), skip=which(obj == "ro"), 
@@ -691,8 +688,8 @@ GetBHPars <- function( fn, SARs, models=mNames[1] ) {
       sbo <- scan( file=file.path(SAR, model, fn), skip=which(obj == "sbo"), 
           n=1, quiet=TRUE )
       # Calculate the median of model runs for each year
-      out <- tibble( Region=SAR, Model=model, so=so, kappa=kappa, beta=beta,
-              ro=ro, sbo=sbo )
+      out <- tibble( Region=SAR, Model=model, kappa=kappa, tau=tau, ro=ro, 
+          sbo=sbo )
       # If it's the first region and model
       if( k == 1 & i == 1 ) {
         # Start a data frame
@@ -806,10 +803,10 @@ maxAbund <- BevHolt %>%
 # Generate predicted line for Beverton-Holt relationship
 predBH <- bhPars %>%
     full_join( y=maxAbund, by=c("Region", "Model") ) %>%
-    group_by( Region, Model, ro, kappa, sbo, beta, so ) %>%
-    expand( Abundance=seq(from=0, to=MaxAbund, length.out=100) ) %>%
-    mutate( Recruitment=kappa * ro * Abundance / (sbo + (kappa - 1) * 
-              Abundance) * exp(-0.5 * beta^2) ) %>%
+    group_by( Region, Model, kappa, tau, ro, sbo ) %>%
+    expand( Abundance=seq(from=0, to=max(MaxAbund, sbo), length.out=100) ) %>%
+    mutate( Recruitment=kappa * ro * Abundance / 
+            (sbo + (kappa-1) * Abundance) * exp(-0.5 * tau^2) ) %>%
     ungroup( ) %>%
     left_join( y=regions, by="Region" ) %>%
     mutate( RegionName=factor(RegionName, levels=regions$RegionName),
@@ -1236,6 +1233,7 @@ PlotBevertonHolt <- function( bh, bhPred, SARs, models ) {
   # The plot
   plotBH <- ggplot( data=bhSub, aes(x=Abundance, y=Recruitment) ) + 
       geom_point( aes(colour=Year==max(yrRange)) ) +
+      geom_point( data=bhPredSub, aes(x=sbo, y=ro), shape=17 ) +
       geom_line( data=bhPredSub ) + 
       scale_colour_grey( start=0.5, end=0 ) +
       facet_wrap( ~ RegionName, ncol=2, scales="free", dir="v" ) +
