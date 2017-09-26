@@ -803,28 +803,19 @@ maxAbund <- BevHolt %>%
     summarise( MaxAbund=MaxNA(Abundance) ) %>%
     ungroup( )
 
-# Empty table for predicted BH
-emptyTable <- expand.grid( Region=unique(BevHolt$Region), 
-        Model=unique(BevHolt$Model), 
-        Abundance=seq(0, max(BevHolt$Abundance), 1) ) %>%
-    as_tibble()
-
 # Generate predicted line for Beverton-Holt relationship
 predBH <- bhPars %>%
     full_join( y=maxAbund, by=c("Region", "Model") ) %>%
-    full_join( y=emptyTable, by=c("Region", "Model") ) %>%
+    group_by( Region, Model, ro, kappa, sbo, beta, so ) %>%
+    expand( Abundance=seq(from=0, to=MaxAbund, length.out=100) ) %>%
     mutate( Recruitment=kappa * ro * Abundance / (sbo + (kappa - 1) * 
               Abundance) * exp(-0.5 * beta^2) ) %>%
-    group_by( Region, Model ) %>%
-    filter( Abundance <= MaxAbund ) %>%
     ungroup( ) %>%
     left_join( y=regions, by="Region" ) %>%
     mutate( RegionName=factor(RegionName, levels=regions$RegionName),
         Model=factor(Model, levels=mNames),
         Region=factor(Region, levels=regions$Region) )
-    
 
-#rrt = kappa * ro * st / (sbo + (kappa - 1) * st) * exp(-0.5 * tau^2)
 
 ###################
 ##### Figures #####
@@ -1017,6 +1008,7 @@ PlotNumber <- function( SARs, dat ){
     numberAgedPlot <- ggplot( data=datSub, aes(x=Year, y=Number, group=Year) ) + 
         geom_bar( stat="identity" ) +
         scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
+        scale_y_continuous( labels=comma ) + 
         myTheme +
         ggsave( filename=file.path(SAR, "NumberAged.png"), width=figWidth, 
             height=figWidth*0.67 )
@@ -1028,6 +1020,7 @@ PlotNumber <- function( SARs, dat ){
   numberAgePlotAll <- ggplot( data=datMajor, aes(x=Year, y=Number, group=Year) ) + 
       geom_bar( stat="identity" ) +
       scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
+      scale_y_continuous( labels=comma ) + 
       facet_wrap( ~ RegionName, ncol=2, dir="v" ) +
       myTheme +
       ggsave( filename=file.path("NumberAged.png"), width=figWidth, 
