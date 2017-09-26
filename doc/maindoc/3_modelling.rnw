@@ -301,13 +301,23 @@ See Appendix~\ref{chap:equations} for description of reference points calculatio
 
 \subsection{SENSITIVITY ANALYSES}
 
+We tested the sensitivity of the model outputs to the following assumptions:
+
+1. Time varying natural mortality M
+2. Assumed initial values for variance parameters 
+3. The prior probablity on the survey catchability parameters (q1 and q2)
+4. The assumed fixed values for maturity at age
+
+Results for each are presented below. 
+
 Conclusion: proceed with `VX' `AMX' as our 'baseline', and include others as sensitivities?
 
 \subsubsection{Natural mortality}
 
-\subsubsection{Process and observation error}
+\subsubsection{Variance parameters}
 
-rho and kappa
+The base case initial values initial values for $\vartheta^2$ and $\rho$ were set equal to MPD estimated values from the 2016 assessment, which resulted in an observation error term ($\sigma=0.58) and a process error term ($\tau=0.69).  We tested model sensitivity to these initial values by varying $\vartheta^2$ and $\rho$ while estimating all leading parameters.
+
 
 Matt: here is where we need the table from Sarah (with rho and kappa sensitivites) 
 
@@ -323,6 +333,7 @@ The sensitivity analysis considered here involves setting the maturity at age ve
 Table XX. Assumed maturity schedule for the sensitivity case: maturity at age equal to selectivity of the roe seine fishery.
 
 Need to add in this Table here...
+
 
 \subsection{ASSESSMENT MODEL RESULTS}
 
