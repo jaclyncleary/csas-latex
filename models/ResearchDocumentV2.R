@@ -139,6 +139,12 @@ nRoll <- 5
 # Spawn survey method changed from surface (1951--1987) to dive (1988--present)
 newSurvYr <- 1988
 
+# Intended harvest rate
+intendU <- 0.2
+
+# First year of intended harvest rate
+intendUYrs <- 1983
+
 # Figure width
 figWidth <- 6
 
@@ -167,6 +173,9 @@ propB0 <- 0.3
 
 # Load helper functions
 source( file=file.path("Functions.R") )
+
+# Source functions needed to read iSCAM files.
+source( "read.admb.r" )
 
 
 ################
@@ -335,8 +344,16 @@ ArrangeOutput <- function( SARs, models ) {
   cat( "Arranging output files..." )
   # Loop over regions
   for( SAR in SARs ) {
+    # If models is NA (not specified)
+    if( is.na(models) ) {
+      # Get model names (i.e., the subfolders in the region folder)
+      modelsNew <- list.dirs( path=SAR, recursive=FALSE, full.names=FALSE )
+    } else {  # End if models is NA, otherwise
+      # Use model names provided
+      modelsNew <- models
+    }  # End if models is not NA
     # Loop over models
-    for( model in models ) {
+    for( model in modelsNew ) {
       # Get the path
       fn <- file.path( SAR, model )
       # Pattern for mcmc files
@@ -369,7 +386,7 @@ ArrangeOutput <- function( SARs, models ) {
 }  # End ArrangeOutput function
 
 # Arrange the output files (major SARs only)
-ArrangeOutput( SARs=allRegions$major, models=mNames )
+ArrangeOutput( SARs=allRegions$major, models=NA )
 
 
 ########################
@@ -586,6 +603,115 @@ GetProjected <- function( fn, SARs, models=mNames, probs=ciLevel ) {
 # Get projected spawning biomass (major SARs only)
 pPars <- GetProjected( fn="iscammcmc_proj_Gear1.csv", SARs=allRegions$major )
 
+# Get MPD from rep file
+GetMPD <- function( fn, SARs, models=mNames[1], flag, varName ) {
+  # Progress message
+  cat( "Loading MPD",  varName, "data... " )
+  # Loop over regions
+  for( k in 1:length(SARs) ) {
+    # Get the region
+    SAR <- SARs[k]
+    # Loop over models
+    for( i in 1:length(models) ) {
+      # Get the model
+      model <- models[i]
+      # Read the file (big blob)
+      obj <- read.rep( file.path(SAR, model, fn) )
+      # Grab the data (transposed)
+      raw <- obj[names(obj) == flag]
+      # If Abundance
+      if( varName == "Abundance" ) {
+        # Update the year range
+        yrs <- yrRange
+        # Grab the object
+        dat <- tibble( Abundance=raw[[1]][1:length(yrRange)] )
+      }  # End if Abundance
+      # If Recruitment
+      if( varName == "Recruitment" ) {
+        # Update the year range
+        yrs <- yrRange[-c(1:2)]
+        # Grab the object
+        dat <- tibble( Recruitment=raw[[1]] )
+      }  # End if Recruitment
+      # Calculate the median of model runs for each year
+      out <- tibble( Region=SAR, Model=model, Year=yrs ) %>%
+          cbind( dat ) %>%
+          as_tibble( )
+      # If it's the first region and model
+      if( k == 1 & i == 1 ) {
+        # Start a data frame
+        res <- out
+      } else {  # End if it's the first region and model, otherwise
+        # Append to the data frame
+        res <- bind_rows( res, out )
+      }  # End if it's not the first region and model
+    }  # End i loop over models
+  }  # End k loop over regions
+  # Update progress message
+  cat( "done\n" )
+  # Return the model output as a data frame
+  return( res )
+}  # End GetMPD function
+
+# Get MPD (abundance)
+abundMPD <- GetMPD( fn="iscam.rep", SARs=allRegions$major, flag="sbt", 
+    varName="Abundance" )
+
+# Get MPD (recruitment)
+recMPD <- GetMPD( fn="iscam.rep", SARs=allRegions$major, flag="rt", 
+    varName="Recruitment" )
+
+# Get Beverton-Holt parameters
+GetBHPars <- function( fn, SARs, models=mNames[1] ) {
+  # Progress message
+  cat( "Loading BH parameters... " )
+  # Loop over regions
+  for( k in 1:length(SARs) ) {
+    # Get the region
+    SAR <- SARs[k]
+    # Loop over models
+    for( i in 1:length(models) ) {
+      # Get the model
+      model <- models[i]
+      # Read the file (big blob)
+      obj <- readLines( con=file.path(SAR, model, fn) )
+      # Get so
+      so <- scan( file=file.path(SAR, model, fn), skip=which(obj == "so"), 
+          n=1, quiet=TRUE )
+      # Get kappa
+      kappa <- scan( file=file.path(SAR, model, fn), skip=which(obj == "kappa"), 
+          n=1, quiet=TRUE )
+      # Get beta
+      beta <- scan( file=file.path(SAR, model, fn), skip=which(obj == "beta"), 
+          n=1, quiet=TRUE )
+      # Get ro
+      ro <- scan( file=file.path(SAR, model, fn), skip=which(obj == "ro"), 
+          n=1, quiet=TRUE )
+      # Get sbo
+      sbo <- scan( file=file.path(SAR, model, fn), skip=which(obj == "sbo"), 
+          n=1, quiet=TRUE )
+      # Calculate the median of model runs for each year
+      out <- tibble( Region=SAR, Model=model, so=so, kappa=kappa, beta=beta,
+              ro=ro, sbo=sbo )
+      # If it's the first region and model
+      if( k == 1 & i == 1 ) {
+        # Start a data frame
+        res <- out
+      } else {  # End if it's the first region and model, otherwise
+        # Append to the data frame
+        res <- bind_rows( res, out )
+      }  # End if it's not the first region and model
+    }  # End i loop over models
+  }  # End k loop over regions
+  # Update progress message
+  cat( "done\n" )
+  # Return the model output as a data frame
+  return( res )
+}  # End GetBHPars function
+
+# Get BH parameters
+bhPars <- GetBHPars( fn="iscam.rep", SARs=allRegions$major )
+
 
 ################
 ##### Main #####
@@ -646,8 +772,59 @@ bPars <- mPars %>%
 # Format current spawning biomass for plotting
 spBioVals <- spBioVals %>%
     left_join( y=regions, by="Region" ) %>%
-    mutate( RegionName=factor(RegionName, levels=regions$RegionName) )
+    mutate( RegionName=factor(RegionName, levels=regions$RegionName),
+        Model=factor(Model, levels=mNames) )
 
+# Get data for the Beverton-Holt
+BevHolt <- abundMPD %>%
+    full_join( recMPD, by=c("Region", "Model", "Year") ) %>%
+    na.omit( ) %>%
+    left_join( y=regions, by="Region" ) %>%
+    mutate( RegionName=factor(RegionName, levels=regions$RegionName),
+        Model=factor(Model, levels=mNames),
+        Region=factor(Region, levels=regions$Region) )
+    
+# Get data for the effective harvest rate
+harvRate <- catch %>%
+    group_by( Region, Year ) %>%
+    summarise( Catch=SumNA(Catch) ) %>%
+    ungroup( ) %>%
+    full_join( y=spBio, by=c("Region", "Year") ) %>%
+    mutate( LowerHR=Catch/(Lower+Catch), MedianHR=Catch/(Median+Catch),
+        UpperHR=Catch/(Upper+Catch) ) %>%
+    left_join( y=regions, by="Region" ) %>%
+    mutate( RegionName=factor(RegionName, levels=regions$RegionName),
+        Model=factor(Model, levels=mNames),
+        Region=factor(Region, levels=regions$Region))
+
+# Get maximum Abundance by Region and Model
+maxAbund <- BevHolt %>%
+    group_by( Region, Model ) %>%
+    summarise( MaxAbund=MaxNA(Abundance) ) %>%
+    ungroup( )
+
+# Empty table for predicted BH
+emptyTable <- expand.grid( Region=unique(BevHolt$Region), 
+        Model=unique(BevHolt$Model), 
+        Abundance=seq(0, max(BevHolt$Abundance), 1) ) %>%
+    as_tibble()
+
+# Generate predicted line for Beverton-Holt relationship
+predBH <- bhPars %>%
+    full_join( y=maxAbund, by=c("Region", "Model") ) %>%
+    full_join( y=emptyTable, by=c("Region", "Model") ) %>%
+    mutate( Recruitment=kappa * ro * Abundance / (sbo + (kappa - 1) * 
+              Abundance) * exp(-0.5 * beta^2) ) %>%
+    group_by( Region, Model ) %>%
+    filter( Abundance <= MaxAbund ) %>%
+    ungroup( ) %>%
+    left_join( y=regions, by="Region" ) %>%
+    mutate( RegionName=factor(RegionName, levels=regions$RegionName),
+        Model=factor(Model, levels=mNames),
+        Region=factor(Region, levels=regions$Region) )
+    
+
+#rrt = kappa * ro * st / (sbo + (kappa - 1) * st) * exp(-0.5 * tau^2)
 
 ###################
 ##### Figures #####
@@ -985,52 +1162,103 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
 PlotStoryboard( SARs=allRegions$major, models=mNames, si=spawn, qp=qPars, 
     rec=recruits, M=natMort, SSB=spBio, C=catch, bp=bPars )
 
-# Plot distribution of spawnin biomass in current year
+# Plot distribution of spawning biomass in current year, and the LRP
 PlotCurrentSSB <- function( SARs, models, SSB, SB0, probs=ciLevel ) {
   # Get lower CI level
   lo <- (1 - probs) / 2
   # Get upper CI level
   up <- 1 - lo
-  # Loop over regions
-  for( k in 1:length(SARs) ) {
-    # Calculate LRP
-    LRP <- SB0 %>%
-        filter( Region == SARs[k] ) %>%
-        mutate( Estimate=Median*propB0 ) %>%
-        select( -Lower, -Median, -Upper ) %>%
-        left_join( y=regions, by="Region" ) %>%
-        mutate( RegionName=factor(RegionName, levels=regions$RegionName),
-            Model=factor(Model, levels=mNames) )
-    # Subset SSB
-    SSBsub <- SSB %>%
-        filter( Region == SARs[k] ) %>%
-        mutate( Model=factor(Model, levels=mNames) )
-    # SSB quantiles
-    quantSSB <- SSBsub %>%
-        group_by( Model ) %>%
-        summarise( Lower=quantile(Value, probs=lo),
-            Median=quantile(Value, probs=0.5),
-            Upper=quantile(Value, probs=up) ) %>%
-        ungroup( )
-    # The plot
-    plotSSB <- ggplot( data=SSBsub ) +
-#        geom_histogram( aes(x=Value, y =..density..) ) +
-        geom_density( aes(x=Value), fill="grey" ) +
-        geom_vline( data=LRP, aes(xintercept=Estimate), colour="red", size=1 ) +
-        geom_vline( data=quantSSB, aes(xintercept=Lower), linetype="dashed" ) +
-        geom_vline( data=quantSSB, aes(xintercept=Median) ) +
-        geom_vline( data=quantSSB, aes(xintercept=Upper), linetype="dashed" ) +
-        labs( x=expression(paste("SB"[2017]," (t"%*%10^3, ")")), y="Density" ) +
-        facet_wrap( ~ Model, scales="free" ) +
-        myTheme +
-        ggsave( filename=file.path(SARs[k], "CurrentSSB.png"), width=figWidth, 
-            height=figWidth*0.45 )
-  }  # End k loop over regions
+  # Update SSB
+  SSB <- SSB %>%
+      mutate( RegionName=factor(RegionName, levels=regions$RegionName), 
+          Model=factor(Model, levels=mNames) )
+  # Calculate LRP
+  LRP <- SB0 %>%
+      mutate( Lower=Lower*propB0, Median=Median*propB0, Upper=Upper*propB0 ) %>%
+      left_join( y=regions, by="Region" ) %>%
+      mutate( RegionName=factor(RegionName, levels=regions$RegionName),
+          Model=factor(Model, levels=mNames) )
+  # SSB quantiles
+  quantSSB <- SSB %>%
+      group_by( RegionName, Region, Model ) %>%
+      summarise( Lower=quantile(Value, probs=lo),
+          Median=quantile(Value, probs=0.5),
+          Upper=quantile(Value, probs=up) ) %>%
+      ungroup( )
+  # The plot
+  plotSSB <- ggplot( data=SSB ) + 
+      geom_density( aes(x=Value), fill="grey" ) + 
+#      geom_vline( data=LRP, aes(xintercept=Lower), colour="red", 
+#          linetype="dashed" ) +
+      geom_vline( data=LRP, aes(xintercept=Median), colour="red" ) +
+      geom_rect( data=LRP, aes(xmin=Lower, xmax=Upper, ymin=-Inf, ymax=Inf),
+          colour="transparent", fill="red", alpha=0.3 ) + 
+#      geom_vline( data=LRP, aes(xintercept=Upper), colour="red", 
+#          linetype="dashed" ) +
+      geom_vline( data=quantSSB, aes(xintercept=Lower), linetype="dashed" ) +
+      geom_vline( data=quantSSB, aes(xintercept=Median) ) +
+      geom_vline( data=quantSSB, aes(xintercept=Upper), linetype="dashed" ) +
+      facet_wrap( Model ~ Region, scales="free", ncol=2, dir="v", 
+          labeller=label_wrap_gen(multi_line=FALSE) ) +
+      labs( x=expression(paste("SB"[2017]," (t"%*%10^3, ")")), y="Density" ) +
+      myTheme +
+      ggsave( filename=file.path("CurrentSSB.png"), width=figWidth, 
+          height=figWidth )
 }  # End PlotCurrentSSB function
 
 # Show current SSB
 PlotCurrentSSB( SARs=allRegions$major, models=mNames, SSB=spBioVals, 
     SB0=filter(bPars, Parameter=="SB0") )
+
+# Plot effective harvest rate
+PlotHarvestRate <- function( hr, SARs, models ) {
+  # Filter for desired regions and areas
+  hrSub <- hr %>%
+      filter( Region %in% SARs, Model %in% models )
+  # The plot
+  plotSSB <- ggplot( data=hrSub, aes(x=Year) ) + 
+      geom_ribbon( aes(ymin=LowerHR, ymax=UpperHR), fill="grey" ) +
+      geom_line( aes(y=MedianHR) ) +
+      annotate( geom="segment", x=intendUYrs, y=intendU, xend=max(yrRange), 
+          yend=intendU, linetype="dashed" ) +
+      facet_grid( Region ~ Model ) +
+      labs( y="Effective harvest rate" ) +
+      expand_limits( y=c(0, 1) ) +
+      myTheme +
+      ggsave( filename=file.path("HarvestRate.png"), width=figWidth, 
+          height=figWidth )
+}  # End PlotHarvestRate function
+
+# Plot harvest rate
+PlotHarvestRate( hr=harvRate, SARs=allRegions$major, models=mNames )
+
+# Plot Beverton-Holt stock-recruitment relationship
+PlotBevertonHolt <- function( bh, bhPred, SARs, models ) {
+  # Filter for desired regions and areas
+  bhSub <- bh %>%
+      filter( Region %in% SARs )
+  # Filter for desired regions and areas
+  bhPredSub <- bhPred %>%
+      filter( Region %in% SARs )
+  # The plot
+  plotBH <- ggplot( data=bhSub, aes(x=Abundance, y=Recruitment) ) + 
+      geom_point( aes(colour=Year==max(yrRange)) ) +
+      geom_line( data=bhPredSub ) + 
+      scale_colour_grey( start=0.5, end=0 ) +
+      facet_wrap( ~ RegionName, ncol=2, scales="free", dir="v" ) +
+      labs( x=expression(paste("Spawning biomass (t"%*%10^3, ")")), 
+          y=paste("Number of age-", ageRec, " recruits (millions)", sep="") ) +
+      scale_y_continuous( label=comma ) +
+      expand_limits( x=0, y=0 ) +
+      guides( colour=FALSE ) +
+      myTheme +
+      ggsave( filename=file.path("BevertonHolt.png"), width=figWidth, 
+          height=figWidth )
+}  # End PlotBevertonHolt function
+
+# Plot Beverton-Holt
+PlotBevertonHolt( bh=filter(BevHolt, Model==mNames[1]), SARs=allRegions$major,
+    bhPred=filter(predBH, Model==mNames[1]) )
 
 # Message
 cat( "done\n" )
