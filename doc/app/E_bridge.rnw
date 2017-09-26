@@ -4,4 +4,4 @@
 \rfoot{Appendix~\thechapter~-- Bridging analysis}
 
 % [Include the PDF here.]
-\includepdf[pages=-, rotateoversize=true]{BridgingAnalysis.pdf}
+\includepdf[pages=-, rotateoversize=true, pagecommand={\thispagestyle{fancy}}]{BridgingAnalysis.pdf}
