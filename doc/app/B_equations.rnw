@@ -28,7 +28,7 @@ Much of the text and many of the equations have been taken directly from the ori
 
 Note that all the model equations are presented for a sex structured model with $S$ sexes.
 Models can therefore be constructed with data for females only, for males and females, or with unsexed data.
-This \Sexpr{fish.name} assessment is a female only model with $S=1$.
+This \Sexpr{fish.name} assessment is conducted with unsexed data with $S=1$.
 
 \appsection{ANALYTIC METHODS: EQUILIBRIUM CONSIDERATIONS}
 

@@ -451,9 +451,16 @@ make.ref.points.table <- function(model.am2,
     }
   }
 
+  proj <- model.am2$mcmccalcs$proj.quants
   tab.am2 <- model.am2$mcmccalcs$r.quants
+  ## Replace SB projected year with correct values
+  tab.am2[5,2:4] <- proj[,2]
   tab.am2[,-1] <- f(tab.am2[,-1], digits)
+
+  proj <- model.am1$mcmccalcs$proj.quants
   tab.am1 <- model.am1$mcmccalcs$r.quants
+  ## Replace SB projected year with correct values
+  tab.am1[5,2:4] <- proj[,2]
   ## Remove latex rownames from AM1 model
   tab.am1 <- tab.am1[,-1]
   tab <- cbind(tab.am2, tab.am1)

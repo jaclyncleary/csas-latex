@@ -124,7 +124,7 @@ if(verbose){
 
 ## -----------------------------------------------------------------------------
 ## Sensitivity models group 1
-## This is a list of the q-prior sensitivities, one for each stock
+## This is a list of the AM1 models, one for each stock
 ## -----------------------------------------------------------------------------
 sens.model.dir.name.1 <- lapply(1:length(stock.dir),
                                 function(x){
@@ -148,6 +148,113 @@ if(verbose){
 }
 
 ## -----------------------------------------------------------------------------
+## Sensitivity models group 2
+## This is a list of the constant natural mortality sensitivities for AM1
+## -----------------------------------------------------------------------------
+## Redefine stock.dir so that sensitivities can be loaded
+stock.dir <- list()
+stock.dir[[1]] <- "HG-natural-mortality"
+stock.dir[[2]] <- "PRD-natural-mortality"
+stock.dir[[3]] <- "CC-natural-mortality"
+stock.dir[[4]] <- "SOG-natural-mortality"
+stock.dir[[5]] <- "WCVI-natural-mortality"
+sens.model.dir.name.2 <- lapply(1:length(stock.dir),
+                                function(x){
+                                  file.path(stock.dir[[x]], "AM1_constantM")})
+
+sens.model.name.2 <- "AM1 constant M"
+
+lapply(1:length(sens.model.dir.name.2),
+       function(x){
+         verify.models(model.dir,
+                       sens.model.dir.name.2[[x]],
+                       sens.model.name.2)})
+
+if(verbose){
+  lapply(1:length(sens.model.dir.name.2),
+         function(x){
+           print.model.message(sens.model.dir.name.2[[x]],
+                               sens.model.name.2,
+                               2,
+                               model.type = "Sensitivity")})
+}
+
+## -----------------------------------------------------------------------------
+## Sensitivity models group 3
+## This is a list of the time varying natural mortality sensitivities for AM1
+## -----------------------------------------------------------------------------
+sens.model.dir.name.3 <- lapply(1:length(stock.dir),
+                                function(x){
+                                  file.path(stock.dir[[x]], "AM1_timevaryingM")})
+
+sens.model.name.3 <- "AM1 time-varying M"
+
+lapply(1:length(sens.model.dir.name.3),
+       function(x){
+         verify.models(model.dir,
+                       sens.model.dir.name.3[[x]],
+                       sens.model.name.3)})
+
+if(verbose){
+  lapply(1:length(sens.model.dir.name.3),
+         function(x){
+           print.model.message(sens.model.dir.name.3[[x]],
+                               sens.model.name.3,
+                               3,
+                               model.type = "Sensitivity")})
+}
+
+## -----------------------------------------------------------------------------
+## Sensitivity models group 4
+## This is a list of the constant natural mortality sensitivities for AM2
+## -----------------------------------------------------------------------------
+sens.model.dir.name.4 <- lapply(1:length(stock.dir),
+                                function(x){
+                                  file.path(stock.dir[[x]], "AM2_constantM")})
+
+sens.model.name.4 <- "AM2 constant M"
+
+lapply(1:length(sens.model.dir.name.4),
+       function(x){
+         verify.models(model.dir,
+                       sens.model.dir.name.4[[x]],
+                       sens.model.name.4)})
+
+if(verbose){
+  lapply(1:length(sens.model.dir.name.4),
+         function(x){
+           print.model.message(sens.model.dir.name.4[[x]],
+                               sens.model.name.4,
+                               4,
+                               model.type = "Sensitivity")})
+}
+
+## -----------------------------------------------------------------------------
+## Sensitivity models group 5
+## This is a list of the time varying natural mortality sensitivities for AM2
+## -----------------------------------------------------------------------------
+sens.model.dir.name.5 <- lapply(1:length(stock.dir),
+                                function(x){
+                                  file.path(stock.dir[[x]], "AM2_timevaryingM")})
+
+sens.model.name.5 <- "AM5 time-varying M"
+
+lapply(1:length(sens.model.dir.name.5),
+       function(x){
+         verify.models(model.dir,
+                       sens.model.dir.name.5[[x]],
+                       sens.model.name.5)})
+
+if(verbose){
+  lapply(1:length(sens.model.dir.name.5),
+         function(x){
+           print.model.message(sens.model.dir.name.5[[x]],
+                               sens.model.name.5,
+                               5,
+                               model.type = "Sensitivity")})
+}
+
+## -----------------------------------------------------------------------------
 ## Vector of directory names for all models referenced above
 ## -----------------------------------------------------------------------------
 ## ALL models must be in this list!
@@ -155,7 +262,11 @@ if(verbose){
 ##  or one will be created depending on what is found in the directory.
 ##  i.e. mcmc, retrospective, or forecast directories.
 model.dir.names <- c(base.model.dir.name,
-                     unlist(sens.model.dir.name.1))
+                     unlist(sens.model.dir.name.1),
+                     unlist(sens.model.dir.name.2),
+                     unlist(sens.model.dir.name.3),
+                     unlist(sens.model.dir.name.4),
+                     unlist(sens.model.dir.name.5))
 
 ## This function must be called from within the first knitr code chunk
 ## in the document. It is defined here so that it is in the same place
@@ -166,6 +277,18 @@ load.models.into.parent.env <- function(){
                          function(x){
                            load.models(model.dir, x)})
   sens.models.1 <<- lapply(sens.model.dir.name.1,
+                           function(x){
+                             load.models(model.dir, x)})
+  sens.models.2 <<- lapply(sens.model.dir.name.2,
+                           function(x){
+                             load.models(model.dir, x)})
+  sens.models.3 <<- lapply(sens.model.dir.name.3,
+                           function(x){
+                             load.models(model.dir, x)})
+  sens.models.4 <<- lapply(sens.model.dir.name.4,
+                           function(x){
+                             load.models(model.dir, x)})
+  sens.models.5 <<- lapply(sens.model.dir.name.5,
                            function(x){
                              load.models(model.dir, x)})
 }
@@ -210,7 +333,11 @@ build <- function(ovwrt.base = FALSE,
 
   ## Sensitivity models need to be unlisted from their groups
   ##  and placed into a single list for the lapply below to work right
-  sens.model.names.list <- c(unlist(sens.model.dir.name.1))
+  sens.model.names.list <- c(unlist(sens.model.dir.name.1),
+                             unlist(sens.model.dir.name.2),
+                             unlist(sens.model.dir.name.3),
+                             unlist(sens.model.dir.name.4),
+                             unlist(sens.model.dir.name.5))
 
   ## Sensitivity models
   invisible(lapply(1:length(sens.model.names.list),
@@ -228,7 +355,14 @@ build <- function(ovwrt.base = FALSE,
                      }else if(length(grep("WCVI", sm))){
                        which.stock <- 5
                      }else{
-                       which.stock <- 0
+                       stop("The directory ", sm, " does not contain the known stock names.")
+                     }
+                     if(length(grep("AM1", sm))){
+                       which.model = 2
+                     }else if(length(grep("AM2", sm))){
+                       which.model = 1
+                     }else{
+                       stop("The directory ", sm, " does not contain the known model names AM1 or AM2.")
                      }
                      create.rdata.file(
                        model.name = sm,
@@ -238,7 +372,7 @@ build <- function(ovwrt.base = FALSE,
                        high = confidence.vals[2],
                        burnin = 0,
                        which.stock = which.stock,
-                       which.model = 1,
+                       which.model = which.model,
                        verbose = ss.verbose)}))
 
 }

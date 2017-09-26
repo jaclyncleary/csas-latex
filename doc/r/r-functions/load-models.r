@@ -1251,6 +1251,11 @@ calc.mcmc <- function(model,
                                    thin,
                                    which.stock = which.stock,
                                    which.model = which.model)
+    proj.quants <- apply(model$mcmc$proj,
+                         2,
+                         quantile,
+                         prob = probs,
+                         na.rm = TRUE)
   }
 
   sapply(c("p.dat",
@@ -1275,7 +1280,8 @@ calc.mcmc <- function(model,
            "f.mort.quants",
            "u.mort.dat",
            "u.mort.quants",
-           "proj.dat"),
+           "proj.dat",
+           "proj.quants"),
            function(x){get(x)})
 }
 
