@@ -321,7 +321,7 @@ The base case for the assessment model assumes that the
 
 \subsubsection{Variance parameters}
 
-<<<<<<< HEAD
+
 The key variance parameter in the errors-in-variables approach is the inverse of the total variance $\varphi^-2$ (i.e., total precision, varphi). 
 The total variance is partitioned into observation and process error components by the model parameter rho $\rho$, which is the proportion of the total variance that is due to observation error (Punt and Butterworth 1993, Deriso et al. 2007). 
 In ISCAM, standard deviations in process error (tau, $\tau$) and observation error (sigma, $\sigma$) are related and modelled using the following equations for kappa $\kappa$ and rho $\rho$.
@@ -334,7 +334,7 @@ This is the same for AM1, AM2 and both parameterizations of M. Table xx show all
 
 Matt: here is where we need the table from Sarah (with rho and kappa sensitivites) 
 
-\subsubsection{Sensitivities to prior probability on survey catchability}
+\subsubsection{Prior probabilities on survey catchability}
 
 
 
@@ -353,11 +353,9 @@ In the absence of recent histological studies to provide new estimates of maturi
 These values are listed in Table XX.  
 The selectivity of the seine roe fishery was chosen because the fishery targets pre-spawning aggregations with seine gear that is non size-selective, providing age composition samples from a mature portion of the population.  
 
-Table XX. Assumed maturity schedule for the sensitivity case: maturity at age equal to selectivity of the roe seine fishery.
 
-Need to add in this Table here...
 
-Table xx. Summary of key MSY reference points
+Table xx. Summary of key MSY reference points for the base case and the maturity schedule sensitivity case
 
 
 
