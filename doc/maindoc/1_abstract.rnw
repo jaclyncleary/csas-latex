@@ -2,18 +2,18 @@
 
 This document presents a stock assessment for \Sexpr{fish.name} (\emph{\Sexpr{science.name}}, \Sexpr{common.name}) in \Sexpr{bc} using data current to \Sexpr{assess.yr}.
 Results of the work are intended to serve as advice over the short term to fishery managers and stakeholders on current stock status and likely impacts of different harvest options.
-As in previous work, an integrated combined-sex statistical catch-at-age model (ISCAM) was applied independently to each of \Sexpr{length(allRegions$major)} major stock areas and tuned to fishery-independent spawn index data, annual estimates of commercial catch since 1951, and age composition data from the commercial fishery and from the test fishery charter program.
-Assessments were done for five major stock areas: \Sexpr{PasteNicely(allRegionNames$major)}.
+An updated version of the integrated combined-sex statistical catch-at-age model (ISCAM) was applied independently to each of the  \Sexpr{length(allRegions$major)} major stock areas and tuned to fishery-independent spawn index data, annual estimates of commercial catch since 1951, and age composition data from the commercial fishery and from the test fishery charter program.
+Comprehensive stock assessments were done for five major stock areas: \Sexpr{PasteNicely(allRegionNames$major)}.
 Results are summarized as stock reconstructions, status of spawning stock in \Sexpr{assess.yr}, and projected spawning biomass in \Sexpr{assess.yr+1}.
 
-The model estimated stock-recruitment parameters, time-varying natural mortality, catchability coefficients for the survey time series, and selectivity parameters for the commercial fishery and those survey series for which age data are available.
-Estimates of unfished equilibrium spawning biomass ($\mli{SB}_0$) arose from Beverton-Holt stock-recruitment relationships (within the assessment model), calculated using average trends in weight at age, natural mortality and recruitment.
+The model estimated stock-recruitment parameters, time-varying natural mortality, catchability coefficients for the survey time series, and selectivity parameters for the commercial fishery and those survey series for which age data are available. 
+Median posterior estimates and 90\% credible intervals of spawning biomass, recruitment, time-varying natural mortality, and unfished equilibrium spawning biomass are presented for AM1 and AM2 model parameterizations.
+Unfished equilibrium spawning biomass ($\mli{SB}_0$) is the main biological reference point used for Pacific Herring and it is estimated from a  Beverton-Holt stock-recruitment relationship (parameterized within the assessment model) fitted to longterm average trends in weight at age and natural mortality.
 All calculations were made using the Bayesian Markov Chain Monte Carlo (MCMC) method to quantify the uncertainty associated with parameter estimation.
-Estimates of various quantities were calculated from these samples, and are presented as the 5 and 95\% credible quantiles, with median values in parentheses.
-Calculated probabilities are based on joint posterior distributions.
-One-year spawning biomass projections for \Sexpr{assess.yr+1} were performed for each major and minor stock area over a range of constant catches to estimate probabilities that spawning biomass and harvest rate metrics are below and above control points historically used in the management of \Sexpr{fish.name}, as specified in the herring harvest control.
+One-year projections of spawning biomass \Sexpr{assess.yr+1} were performed for each major stock area over a range of constant catches to estimate probabilities that spawning biomass and harvest rate metrics are below and above control points historically used in the management of \Sexpr{fish.name}, as specified in the herring harvest control rule. This assessment also includes presentation of current stock status and projected stock status in \Sexpr{assess.yr+1} relative to a Limit Reference Point of $0.30\cdot\mli{SB}_0$.
 Some assessment results by stock area are briefly listed below.
 
+#JSC Update here
 The median estimate of the Haida Gwaii stock biomass is projected to decline in \Sexpr{assess.yr+1} (relative to \Sexpr{assess.yr}), and in the absence of fishing the model estimates that there is a 5\% probability the stock will be below the cut-off of $0.25\cdot\mli{SB}_0$ in \Sexpr{assess.yr+1}.
 With low apparent recruitment entering the spawning population in \Sexpr{assess.yr} and similar natural mortality estimates for recent years, the model estimates the \Sexpr{assess.yr} Haida Gwaii spawning stock biomass to have declined from 2013.
 
@@ -33,15 +33,11 @@ West coast of Vancouver Island median spawning biomass has increased since 2008 
 Area 2W median spawning biomass has declined since 2011 due in part to decreases in the spawn index and apparent increases in natural mortality.
 Area 27 median spawning biomass has remained relatively constant over the past decade while natural mortality may have decreased over the same period.
 
-Two sensitivity cases were included in the working paper: application of mimicking the historical management procedure without the Poor, Average, and Good recruitment categories (fixed cut-off and assumption of $q=1$), and a preliminary evaluation of the consequences of reductions in fishery-independent survey data.
-Comparison of performance of the current (base) management procedure and the historical management procedure illustrate the historical management procedure to be more conservative with respect to stock biomass and predicted harvest rates.
-A ten-year retrospective analysis of data for the Central Coast was conducted to examine potential implications of less frequent spawn survey data (biennial instead of annual) on historical estimates of stock size.
-Systematic under-estimation of spawning biomass was observed when biomass was increasing, and systematic over-estimation of spawning biomass was observed when biomass was decreasing, with catch rates exceeding the target harvest rate in the latter case.
 
 
 \frenchabstract{
 French title  % Unicode error with the 
-%État du hareng du Pacifique (\emph{\Sexpr{science.name}}) de la Colombie-Britannique en \Sexpr{end.yr} et prévisions pour \Sexpr{end.yr + 1}
+%?tat du hareng du Pacifique (\emph{\Sexpr{science.name}}) de la Colombie-Britannique en \Sexpr{end.yr} et pr?visions pour \Sexpr{end.yr + 1}
 }
 
 [French abstract]

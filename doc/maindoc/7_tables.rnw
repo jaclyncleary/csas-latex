@@ -524,7 +524,7 @@ make.decision.table(wcvi.am1,
 \end{landscapepage}
 
 <<maturity.table, results='asis', echo=FALSE>>=
-cap <- paste0("Maturity vectors used in the sensitivity cases.")
+cap <- paste0("Assumed maturity schedule for the sensitivity case: maturity at age equal to selectivity of the roe seine fishery")
 make.maturity.table(maturity.vec,
                     xcaption = cap,
                     xlabel = "tab:maturity",
