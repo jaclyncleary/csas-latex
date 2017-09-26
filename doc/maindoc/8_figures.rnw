@@ -136,6 +136,7 @@ Vertical red lines indicate medians, and shaded red rectangles indicate \Sexpr{c
 \includegraphics[width=\linewidth]{\Sexpr{locOutput}/BevertonHolt.png}
 \caption{Beverton-Holt stock-recruitment relationship for Pacific herring in the major stock assessment regions (SARs) for model \Sexpr{mNames[1]}.
 The current year, \Sexpr{max(yrRange)} is coloured black.
+The line indicates the Beverton-Holt stock-recruitment relationship.
 Legend: tonnes (t).}
 \label{figBevertonHolt}
 \end{figure}

@@ -687,9 +687,12 @@ GetBHPars <- function( fn, SARs, models=mNames[1] ) {
       # Get ro
       ro <- scan( file=file.path(SAR, model, fn), skip=which(obj == "ro"), 
           n=1, quiet=TRUE )
+      # Get sbo
+      sbo <- scan( file=file.path(SAR, model, fn), skip=which(obj == "sbo"), 
+          n=1, quiet=TRUE )
       # Calculate the median of model runs for each year
       out <- tibble( Region=SAR, Model=model, so=so, kappa=kappa, beta=beta,
-              ro=ro)
+              ro=ro, sbo=sbo )
       # If it's the first region and model
       if( k == 1 & i == 1 ) {
         # Start a data frame
@@ -708,6 +711,7 @@ GetBHPars <- function( fn, SARs, models=mNames[1] ) {
 
 # Get BH parameters
 bhPars <- GetBHPars( fn="iscam.rep", SARs=allRegions$major )
+
 
 ################
 ##### Main #####
@@ -778,7 +782,7 @@ BevHolt <- abundMPD %>%
     left_join( y=regions, by="Region" ) %>%
     mutate( RegionName=factor(RegionName, levels=regions$RegionName),
         Model=factor(Model, levels=mNames),
-        Region=factor(Region, levels=regions$Region))
+        Region=factor(Region, levels=regions$Region) )
     
 # Get data for the effective harvest rate
 harvRate <- catch %>%
@@ -793,6 +797,34 @@ harvRate <- catch %>%
         Model=factor(Model, levels=mNames),
         Region=factor(Region, levels=regions$Region))
 
+# Get maximum Abundance by Region and Model
+maxAbund <- BevHolt %>%
+    group_by( Region, Model ) %>%
+    summarise( MaxAbund=MaxNA(Abundance) ) %>%
+    ungroup( )
+
+# Empty table for predicted BH
+emptyTable <- expand.grid( Region=unique(BevHolt$Region), 
+        Model=unique(BevHolt$Model), 
+        Abundance=seq(0, max(BevHolt$Abundance), 1) ) %>%
+    as_tibble()
+
+# Generate predicted line for Beverton-Holt relationship
+predBH <- bhPars %>%
+    full_join( y=maxAbund, by=c("Region", "Model") ) %>%
+    full_join( y=emptyTable, by=c("Region", "Model") ) %>%
+    mutate( Recruitment=kappa * ro * Abundance / (sbo + (kappa - 1) * 
+              Abundance) * exp(-0.5 * beta^2) ) %>%
+    group_by( Region, Model ) %>%
+    filter( Abundance <= MaxAbund ) %>%
+    ungroup( ) %>%
+    left_join( y=regions, by="Region" ) %>%
+    mutate( RegionName=factor(RegionName, levels=regions$RegionName),
+        Model=factor(Model, levels=mNames),
+        Region=factor(Region, levels=regions$Region) )
+    
+
+#rrt = kappa * ro * st / (sbo + (kappa - 1) * st) * exp(-0.5 * tau^2)
 
 ###################
 ##### Figures #####
@@ -1201,13 +1233,17 @@ PlotHarvestRate <- function( hr, SARs, models ) {
 PlotHarvestRate( hr=harvRate, SARs=allRegions$major, models=mNames )
 
 # Plot Beverton-Holt stock-recruitment relationship
-PlotBevertonHolt <- function( bh, SARs, models ) {
+PlotBevertonHolt <- function( bh, bhPred, SARs, models ) {
   # Filter for desired regions and areas
   bhSub <- bh %>%
       filter( Region %in% SARs )
+  # Filter for desired regions and areas
+  bhPredSub <- bhPred %>%
+      filter( Region %in% SARs )
   # The plot
   plotBH <- ggplot( data=bhSub, aes(x=Abundance, y=Recruitment) ) + 
-      geom_point( aes(colour=Year==max(yrRange)) ) + 
+      geom_point( aes(colour=Year==max(yrRange)) ) +
+      geom_line( data=bhPredSub ) + 
       scale_colour_grey( start=0.5, end=0 ) +
       facet_wrap( ~ RegionName, ncol=2, scales="free", dir="v" ) +
       labs( x=expression(paste("Spawning biomass (t"%*%10^3, ")")), 
@@ -1221,7 +1257,8 @@ PlotBevertonHolt <- function( bh, SARs, models ) {
 }  # End PlotBevertonHolt function
 
 # Plot Beverton-Holt
-PlotBevertonHolt( bh=filter(BevHolt, Model==mNames[1]), SARs=allRegions$major )
+PlotBevertonHolt( bh=filter(BevHolt, Model==mNames[1]), SARs=allRegions$major,
+    bhPred=filter(predBH, Model==mNames[1]) )
 
 # Message
 cat( "done\n" )
