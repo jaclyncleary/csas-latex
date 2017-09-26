@@ -343,6 +343,40 @@ LoadADMB <- function( SARs ) {
 # Load ADMB data (major and minor SARs)
 inputData <- LoadADMB( SARs=unlist(allRegions, use.names=FALSE) )
 
+# Load the number of biosamples
+LoadNBio <- function( SARs ) {
+  # Progress message
+  cat( "Loading number of biosamples... " )
+  # Start a loop over regions
+  for( k in 1:length(SARs) ) {
+    # Get the region
+    SAR <- SARs[k]
+    # Get the number of biosamples
+    nBio <- fread( input=paste("NumBiosamples", SAR, ".csv", sep="") )
+    # If it's the first region
+    if( k == 1 ) {
+      # Start data frame
+      dat <- nBio
+    } else {  # End if it's the first region, otherwise
+      # Append to the data frame
+      dat <- bind_rows( dat, nBio )
+    }  # End if it's not the first region
+  }  # End k loop over regions
+  # Wrangle
+  res <- dat %>%
+      as_tibble( ) %>%
+      filter( Year %in% yrRange ) %>%
+      spread( key=Region, value=Total )
+  
+  # Update the progress message
+  cat( "done\n" )
+  # Return the list
+  return( res )
+}  # End LoadNBio function
+
+# Load the number of biosamples
+nBio <- LoadNBio( SARs=unlist(allRegions, use.names=FALSE) )
+
 # Arrange the ADMB output files
 ArrangeOutput <- function( SARs, models ) {
   # Message
@@ -1234,11 +1268,13 @@ PlotBevertonHolt <- function( bh, bhPred, SARs, models ) {
       filter( Region %in% SARs )
   # Filter for desired regions and areas
   bhPredSub <- bhPred %>%
-      filter( Region %in% SARs )
+      filter( Region %in% SARs ) %>%
+      # TODO: Confirm if we should use this, or the "uncorrected" ro for points
+      mutate( ro2=ro*exp(-0.5*tau^2) )
   # The plot
   plotBH <- ggplot( data=bhSub, aes(x=Abundance, y=Recruitment) ) + 
       geom_point( aes(colour=Year==max(yrRange)) ) +
-      geom_point( data=bhPredSub, aes(x=sbo, y=ro), shape=17 ) +
+      geom_point( data=bhPredSub, aes(x=sbo, y=ro2), shape=17 ) +
       geom_line( data=bhPredSub ) + 
       scale_colour_grey( start=0.5, end=0 ) +
       facet_wrap( ~ RegionName, ncol=2, scales="free", dir="v" ) +
@@ -1393,6 +1429,22 @@ PrintWeight <- function( SARs, dat ) {
 # Print weight-at-age and get column names
 namesWeight <- PrintWeight( SARs=unlist(allRegions, use.names=FALSE), 
     dat=inputData$weight )
+
+# Print the number of biosamples
+PrintNBio <- function( dat ) {
+  # Format number of biosamples
+  xNBio <- dat %>%
+      xtable( digits=c(0, 0, rep(0, times=length(unlist(allRegions)))) )
+  # Write number of biosamples to longtable
+  WriteLongTable( dat=xNBio, fn="NBio.tex" )
+  # Column names for number of biosamples
+  myNames <- paste( names(xNBio), collapse=" & " )
+  # Return column names
+  return( myNames )
+}  # End PrintNBio function
+
+# Print number of biosamples and get column names
+namesNBio <- PrintNBio( dat=nBio )
 
 
 #################
