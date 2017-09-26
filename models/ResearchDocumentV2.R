@@ -366,8 +366,7 @@ LoadNBio <- function( SARs ) {
   res <- dat %>%
       as_tibble( ) %>%
       filter( Year %in% yrRange ) %>%
-      spread( key=Region, value=Total )
-  
+      spread( key=Region, value=Total, fill=0 )
   # Update the progress message
   cat( "done\n" )
   # Return the list
