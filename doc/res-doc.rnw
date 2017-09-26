@@ -12,6 +12,8 @@
 \usepackage{pgffor}
 % For float barriers
 \usepackage{placeins}
+% Include PDFs (i.e., whole page)
+\usepackage{pdfpages}
 
 % Custom commands used in the agecompweighting appendix
 \newcommand{\sQuote}[1]{`#1'}
