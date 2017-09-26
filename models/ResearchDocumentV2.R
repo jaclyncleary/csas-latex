@@ -101,9 +101,14 @@ mNames <- c( "AM2", "AM1" )
 ######################
 
 # Possible regions by type
-allRegions <- list(
-    major=c("HG", "PRD", "CC", "SoG", "WCVI"),
-    minor=c("A27", "A2W") )
+allRegions <- list(major=c("HG", "PRD", "CC", "SoG", "WCVI"),
+                   minor=c("A27", "A2W"))
+
+sens <- c("HG-natural-mortality",
+          "PRD-natural-mortality",
+          "CC-natural-mortality",
+          "SOG-natural-mortality",
+          "WCVI-natural-mortality")
 
 # Region names
 allRegionNames <- list( 
@@ -386,7 +391,7 @@ ArrangeOutput <- function( SARs, models ) {
 }  # End ArrangeOutput function
 
 # Arrange the output files (major SARs only)
-ArrangeOutput( SARs=allRegions$major, models=NA )
+ArrangeOutput( SARs=c(allRegions$major, sens), models=NA )
 
 
 ########################
