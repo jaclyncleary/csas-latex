@@ -6,7 +6,7 @@
 ##  model-setup.r source code.
 
 ################################################################################
-fish.name <- "Pacific herring"
+fish.name <- "Pacific Herring"
 science.name <- "Clupea pallasi"
 family.name <- "Clupeidae"
 common.name <- "herring"

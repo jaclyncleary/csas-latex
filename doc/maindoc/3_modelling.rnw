@@ -83,6 +83,7 @@ Attempts are made to collect 15-20 herring samples from each of the roe seine an
 In addition, dock-side catch sampling occurs for the FB fishery, and a small number of samples are collected from the commercial SOK and SU fisheries. 
 
 In all sampling events, one ``herring sample'' (one bucket) is roughly 100 individual herring, from which the following data are collected: fish length, weight, sex, gonad length, gonad weight, and maturity. 
+Table \ref{tabNBio} indicates the number of biosamples by year and SAR.
 
 For the purposes of stock assessment all fish within a sample are treated as independent observations, that is, there is no weighting of the biological samples by catch or spawn.
 Biological data from the commercial catch and test fishery sampling programs are pooled for each stock area.
@@ -316,7 +317,7 @@ Conclusion: proceed with `VX' `AMX' as our 'baseline', and include others as sen
 
 \subsubsection{Variance parameters}
 
-The base case initial values initial values for $\vartheta^2$ and $\rho$ were set equal to MPD estimated values from the 2016 assessment, which resulted in an observation error term ($\sigma=0.58) and a process error term ($\tau=0.69).  We tested model sensitivity to these initial values by varying $\vartheta^2$ and $\rho$ while estimating all leading parameters.
+The base case initial values initial values for $\vartheta^2$ and $\rho$ were set equal to MPD estimated values from the 2016 assessment, which resulted in an observation error term ($\sigma=0.58$) and a process error term ($\tau=0.69$).  We tested model sensitivity to these initial values by varying $\vartheta^2$ and $\rho$ while estimating all leading parameters.
 
 
 Matt: here is where we need the table from Sarah (with rho and kappa sensitivites) 

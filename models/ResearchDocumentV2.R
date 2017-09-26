@@ -346,7 +346,7 @@ inputData <- LoadADMB( SARs=unlist(allRegions, use.names=FALSE) )
 # Load the number of biosamples
 LoadNBio <- function( SARs ) {
   # Progress message
-  cat( "Loading number of biosamples... " )
+  cat( "Loading biosamples... " )
   # Start a loop over regions
   for( k in 1:length(SARs) ) {
     # Get the region

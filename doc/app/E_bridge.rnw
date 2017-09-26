@@ -1,0 +1,6 @@
+\label{chap:bridge}
+\starredchapter{APPENDIX~\thechapter. BRIDGING ANALYSIS}
+\lfoot{\Sexpr{fish.name}}
+\rfoot{Appendix~\thechapter~-- Bridging analysis}
+
+[Include the PDF here.]
