@@ -329,10 +329,9 @@ We tested model sensitivity to these initial values by varying $\vartheta^2$ and
 
 
 This analysis showed that when both $\rho$ and $\kappa$ are estimated as they are in the base case, the choice of initial value for $\rho$ and $\kappa$ does not impact estimated model parameters. 
-This is the same for AM1, AM2 and both parameterizations of $M$.
+As shown in the bridging analysis below (Appendix XX) this is the same for AM1, AM2, both parameterizations of $M$ and all stocks.
 Tables \ref{tab:hg-parameters-posts} to \ref{tab:wcvi-parameters-posts} show all estimated results.
 
-Matt: here is where we need the table from Sarah (with rho and kappa sensitivites) 
 
 \subsubsection{Prior probability distributions for survey catchability}
 
