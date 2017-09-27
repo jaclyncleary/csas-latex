@@ -318,13 +318,13 @@ Conclusion: proceed with `VX' `AMX' as our 'baseline', and include others as sen
 
 The base case for the assessment model assumes that the natural mortality M is time varying where the instantaneous natural mortality is assumed equal over all ages but varies over time (Fu et al. 2004). 
 The annual deviations in time varying M are estimated using a random walk process (Haist and Schweigert 2006).  
-For this sensitivity analysis we investigated the effects on the model outputs of estimating a single M that is constant over time. 
-All stocks and assessment model versions, AM1 and AM2, were investigated applying the constant M scenarios and the estimated outputs were compared to the time varying M base case. 
+For this sensitivity analysis we investigated the effects of estimating a single constant M over ages and time. 
+This scenario was applied to all stocks and assessment model versions (AM1 and AM2) and the results are shown in Figures XX
 
+.....MORE RESULTS NEEDED WHEN FIGURES ARE GENERATED....
 
-
-
-Support for inclusion of time varying M includes reduction in the magnitude of retrospective patterns and improved coherence between assumed and empirical fits to the spawn survey index. 
+The model outcomes were influenced by the assumption on the estimation of M.
+There is support for inclusion of time varying M in this analysis as well as from the bridging analysis (Appendix E).  Both showed a reduction in the magnitude of retrospective patterns and improved coherence between assumed and empirical fits to the spawn survey index. 
 
 \subsubsection{Variance parameters}
 
