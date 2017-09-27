@@ -895,6 +895,108 @@ make.biomass.mcmc.plot(list(wcvi.b,
 \label{fig:wcvi-biomass-m}
 \end{figure}
 %%------------------------------------------------------------------------------
+%% Sensitivity to M recruitment deviation plots
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg.recdevs.m>>=
+make.recr.mcmc.plot(list(hg.b,
+                         hg.am1,
+                         hg.am2.constm,
+                         hg.am2.tvm),
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    type = 2,
+                    offset = 0.1,
+                    ylim = c(-4, 4),
+                    leg = "topright")
+@
+\end{center}
+\caption{Natural mortality sensitivity model recruitment deviations
+  for the Haida Gwaii stock.}
+\label{fig:hg-recdevs-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<prd.recdevs.m>>=
+make.recr.mcmc.plot(list(pr.b,
+                         pr.am1,
+                         pr.am2.constm,
+                         pr.am2.tvm),
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    type = 2,
+                    offset = 0.1,
+                    ylim = c(-4, 4),
+                    leg = "topright")
+@
+\end{center}
+\caption{Natural mortality sensitivity model recruitment deviations
+  for the Prince Rupert District stock.}
+\label{fig:prd-recdevs-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<cc.recdevs.m>>=
+make.recr.mcmc.plot(list(cc.b,
+                         cc.am1,
+                         cc.am2.constm,
+                         cc.am2.tvm),
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    type = 2,
+                    offset = 0.1,
+                    ylim = c(-4, 4),
+                    leg = "topright")
+@
+\end{center}
+\caption{Natural mortality sensitivity model recruitment deviations
+  for the Central Coast stock.}
+\label{fig:cc-recdevs-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<sog.recdevs.m>>=
+make.recr.mcmc.plot(list(sog.b,
+                         sog.am1,
+                         sog.am2.constm,
+                         sog.am2.tvm),
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    type = 2,
+                    offset = 0.1,
+                    ylim = c(-4, 4),
+                    leg = "topright")
+@
+\end{center}
+\caption{Natural mortality sensitivity model recruitment deviations
+  for the Strait of Georgia stock.}
+\label{fig:sog-recdevs-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.recdevs.m>>=
+make.recr.mcmc.plot(list(wcvi.b,
+                         wcvi.am1,
+                         wcvi.am2.constm,
+                         wcvi.am2.tvm),
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    type = 2,
+                    offset = 0.1,
+                    ylim = c(-4, 4),
+                    leg = "topright")
+@
+\end{center}
+\caption{Natural mortality sensitivity model recruitment deviations
+  for the WCVI stock.}
+\label{fig:wcvi-recdevs-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
 
 
 
