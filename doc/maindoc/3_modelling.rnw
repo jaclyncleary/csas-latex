@@ -316,7 +316,15 @@ Conclusion: proceed with `VX' `AMX' as our 'baseline', and include others as sen
 
 \subsubsection{Natural mortality}
 
-The base case for the assessment model assumes that the natural mortality is time varying 
+The base case for the assessment model assumes that the natural mortality is time varying where instantaneous natural mortality is assumed equal over all ages but varies over time (Fu et al. 2004). 
+The annual deviations in time varying M are estimated using a random walk process (Haist and Schweigert 2006).  
+Support for inclusion of time varying M includes reduction in the magnitude of retrospective patterns and improved coherence between assumed and empirical fits to the spawn survey index. 
+For this sensitivity analysis we investigated the effects of estimating a single M that is constant over time. 
+All stocks and assessment model versions were investigated using the constant M scenarios and the estimated outputs were compared to the time varying M base case.
+
+
+
+
 
 \subsubsection{Variance parameters}
 
@@ -328,7 +336,7 @@ The base case initial values for $\kappa$ and $\rho$ were set equal to MPD estim
 We tested model sensitivity to these initial values by varying $\vartheta^2$ and $\rho$ while estimating all leading parameters.
 
 This analysis showed that when both $\rho$ and $\kappa$ are estimated as they are in the base case, the choice of initial value for $\rho$ and $\kappa$ does not impact estimated model parameters. 
-As shown in the bridging analysis below (Appendix XX) this is the same for AM1, AM2, both parameterizations of $M$ and all stocks.
+As shown in the bridging analysis below (Appendix E) this is the same for AM1, AM2, both parameterizations of $M$ and all stocks.
 Tables \ref{tab:hg-parameters-posts} to \ref{tab:wcvi-parameters-posts} show all estimated results.
 THESE ARE NOT THE CORRECT TABLES...We need to show the initial values as well as estimated values for SOG AM1 and AM2
 
@@ -338,7 +346,8 @@ THESE ARE NOT THE CORRECT TABLES...We need to show the initial values as well as
 There are two versions of the stock assessment model that differec in the treatment of spwn survey catchability parameters ($q_1$ and $q_2$) for the surface survey period (1951-1987) and dive survey period (1988-2016), respectively.  
 The two models are labelled AM1 ($q_1$ and $q_2$ estimated with prior probability distributions) and AM2 ($q_1$ estimated, $q_2$=1).  
 There have been concerns that the results from applying the AM1 model have been too restricting to the resulting estimations.  
-Based on this concern and the results of the bridging analysis below (Appendix XX) we conducted sensitivity analyses with different standard deviations used for both $q_1$ nd $q_2$ prior probability distributions used in the AM1 assessment model.  
+Based on this concern and the results of the bridging analysis below (Appendix E) we conducted sensitivity analyses with different standard deviations used for both $q_1$ nd $q_2$ prior probability distributions used in the AM1 assessment model (Table XX). 
+
 
 \subsubsection{Maturity at age}
 
