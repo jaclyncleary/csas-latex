@@ -43,7 +43,7 @@ Tables \ref{tabWeight\Sexpr{regions$Region[1]}} to \ref{tabWeight\Sexpr{regions$
 \foreach \x in {\Sexpr{paste(regions$Region, sep=",")}} {
 \FloatBarrier
 \begin{longtable}{rrl}
-\caption{Pacific herring spawn index in thousands of metric tonnes ($\text{t} \times 10^{3}$) from \Sexpr{min(yrRange)} to \Sexpr{max(yrRange)} in the \x{} stock assessment region (SAR).
+\caption{\Sexpr{fish.name} spawn index in thousands of metric tonnes ($\text{t} \times 10^{3}$) from \Sexpr{min(yrRange)} to \Sexpr{max(yrRange)} in the \x{} stock assessment region (SAR).
 \qPeriods{}
 \spawnIndex{}}\\
 \toprule
@@ -69,7 +69,7 @@ Tables \ref{tabWeight\Sexpr{regions$Region[1]}} to \ref{tabWeight\Sexpr{regions$
 \foreach \x in {\Sexpr{paste(regions$Region, sep=",")}} {
 \FloatBarrier
 \begin{longtable}{rrrrrrrrrrr}
-\caption{Pacific herring number-at-age from \Sexpr{min(yrRange)} to \Sexpr{max(yrRange)} in the \x{} stock assessment region (SAR).
+\caption{\Sexpr{fish.name} number-at-age from \Sexpr{min(yrRange)} to \Sexpr{max(yrRange)} in the \x{} stock assessment region (SAR).
 \legendPeriod{}
 \plusGroup{}}\\
 \toprule
@@ -99,7 +99,7 @@ Tables \ref{tabWeight\Sexpr{regions$Region[1]}} to \ref{tabWeight\Sexpr{regions$
 \foreach \x in {\Sexpr{paste(regions$Region, sep=",")}} {
 \FloatBarrier
 \begin{longtable}{rrrrrrrrrr}
-\caption{Pacific herring weight-at-age in kilograms (kg) from \Sexpr{min(yrRange)} to \Sexpr{max(yrRange)} in the \x{} stock assessment region (SAR).
+\caption{\Sexpr{fish.name} weight-at-age in kilograms (kg) from \Sexpr{min(yrRange)} to \Sexpr{max(yrRange)} in the \x{} stock assessment region (SAR).
 \seineSamples{}
 \plusGroup{}}\\
 \toprule

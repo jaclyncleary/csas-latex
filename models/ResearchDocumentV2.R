@@ -1273,7 +1273,7 @@ PlotBevertonHolt <- function( bh, bhPred, SARs, models ) {
   # The plot
   plotBH <- ggplot( data=bhSub, aes(x=Abundance, y=Recruitment) ) + 
       geom_point( aes(colour=Year==max(yrRange)) ) +
-      geom_point( data=bhPredSub, aes(x=sbo, y=ro2), shape=17 ) +
+      geom_point( data=bhPredSub, aes(x=sbo, y=ro), shape=17 ) +
       geom_line( data=bhPredSub ) + 
       scale_colour_grey( start=0.5, end=0 ) +
       facet_wrap( ~ RegionName, ncol=2, scales="free", dir="v" ) +

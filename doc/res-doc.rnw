@@ -28,12 +28,12 @@
 \newcommand{\bM}[1]{\mathlarger{\mathlarger{#1}}}
 
 % Headers and footers
-% \lhead{DRAFT -- Non-citable working paper}
-\lhead{}
+\lhead{Draft working paper -- Do not cite or circulate}
+% \lhead{}
 \rhead{}
 % \rfoot{DRAFT - DO NOT CITE}
 
-% Get rid of annoying warnings!
+% Get rid of annoying warnings -- we can remove this later when the document is running smoother
 \setlength{\headheight}{13.6pt}
 
 % Let it begin
@@ -83,7 +83,7 @@ locOutput <- file.path( "..", "models", .Platform$file.sep )
 # Load the herring data
 load( file=file.path("..", locOutput, "Image.RData") )
 
-# Source the herring data
+# TODO: Source the herring data
 # setwd( dir=file.path("..", locOutput) )
 # source( file="ResearchDocumentV2.R" )
 
