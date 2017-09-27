@@ -33,6 +33,9 @@
 \rhead{}
 % \rfoot{DRAFT - DO NOT CITE}
 
+% Get rid of annoying warnings!
+\setlength{\headheight}{13.6pt}
+
 % Let it begin
 \begin{document}
 
