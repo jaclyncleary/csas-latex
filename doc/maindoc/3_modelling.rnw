@@ -7,7 +7,7 @@ Biological parameters used in the model, including growth, weight-at-age and mat
 
 Reference points based on Maximum Sustainable Yield (MSY), including the female spawning biomass (\emph{B}\subscr{MSY}) and the annual harvest rate producing MSY (\emph{U}\subscr{MSY}), were estimated, along with reference points based on estimated equilibrium unfished spawning biomass, \emph{B}\subscr{0} (Section XX).
 Harvest decision tables (Tables~XX and XX) were created by projecting the assessment model one year into the future under a range of constant catch levels.
-For each level of catch, decision tables show the probability that projected spawning biomass in 2016 will be less than spawning biomass-based reference points, and the probablity that 2015 harvest rate will be greater than harvest rate-based reference points (Section XX).
+For each level of catch, decision tables show the probability that projected spawning biomass in 2016 will be less than spawning biomass-based reference points, and the probablity that 2015 harvest rate will be greater than harvest rate-based reference points (Section \ref{secDecisionTables}).
 
 \subsection{INPUT DATA}
 
@@ -17,7 +17,7 @@ Tables of all the data inputs are in Appendix \ref{chap:input}.
 This section describes sources of fishery-dependent data representing catch amounts and observations from commercial and test fishery biological sampling and fishery-independent data representing surface and dive \Sexpr{common.name} spawn surveys.
 The test fishery and purse seine biological samples consist of two important data types: mean weight-at-age and proportion-at-age data.
 The survey data, weight-at-age data, and proportion-at-age data are used as input for the assessment model.
-Observed trends in the data are presented in this section but key observations are interpreted in association with assessment model results (Section XX).
+Observed trends in the data are presented in this section but key observations are interpreted in association with assessment model results (Section \ref{secModelResults}).
 To help readers view and collective data sets we summarize them by major stock area in Figure XX - Figure XX.
 
 \subsubsection{Catch data}
@@ -136,7 +136,7 @@ The spawn survey indices provide information about how the relative stock size h
 \begin{resdoclist}
   \item Description of surveys (surface and dive)
   \item 2 stage model, presence only
-  \item Instead of repeating background/methods/statistics/equations from our Spawn Index technical report, it would be much easier to cite it as `in progress' (or whatever the correct term is) and circulate a draft PDF---it's in a pretty decent state
+  \item Instead of repeating background/methods/statistics/equations from our Spawn Index technical report, it would be much easier to cite it as `in progress' (or whatever the correct term is) and provide a link to the draft PDF, which is in a pretty decent state: \href{https://github.com/grinnellm/HerringSpawnDocumentation}{spawn index technical report} -- need to put the PDF on GitHub
 \end{resdoclist}
 
 Herring spawn surveys have been conducted throughout the B.C. coast beginning in the 1930s.
@@ -151,13 +151,13 @@ Estimates of spawn length, spawn width, and average number of egg layers are pre
 
 For the purposes of stock assessment, spawn survey data are represented as two independent indices: (1) surface survey index from 1951--1987 and (2) dive survey index from 1988--\Sexpr{assess.yr}.
 Spawn indices are an output of the Herring Stock Assessment Database, in units of metric tonnes of herring spawning biomass.
-Time series of spawn index by major stock area, from 1951--1987 (surface observations) and 1988--\Sexpr{assess.yr} (dive observations) are summarized in Figure XX.
+Time series of spawn index by major stock area, from 1951--1987 (surface observations) and 1988--\Sexpr{assess.yr} (dive observations) are summarized in Figure \ref{figSpawnIndex}.
 It is worth noting that since 1988, some early and late season surface surveys have been conducted, representing a small proportion of total spawn survey in a given area (Appendix XX).
 These surface data were processed so that their average width estimates are in a comparable format to those from dive survey data and surface survey average width estimates were rolled up with dive survey estimates.
 In 3 of the major stock areas (HG, PRD and CC), numeric estimates of spawning biomass (spawn index values) decreased in 2014 over 2013.
 In the other 2 stock areas (SOG and WCVI), numeric estimates of spawning biomass (spawn index values) increased in 2014 over 2013.
-Execution of the 2014 spawn survey followed all standard protocols as described in the 2013 version of Herring Spawn Survey Manual
-(\url{http://www.pac.dfo-mpo.gc.ca/science/species-especes/pelagic-pelagique/herring-hareng/hertags/pdf/SurveyManual.pdf})
+Execution of the 2014 spawn survey followed all standard protocols as described in the 2013 version of the 
+\href{http://www.pac.dfo-mpo.gc.ca/science/species-especes/pelagic-pelagique/herring-hareng/hertags/pdf/SurveyManual.pdf}{herring spawn survey manual}
 and there were no in-season or post-season concerns raised by the HCRS (contractor) or the DFO Area Managers that would raise concern around the quality of spawn survey data collected this season.
 
 \subsubsection{Proportion-at-age and catch-at-age}
@@ -366,7 +366,7 @@ The selectivity of the seine roe fishery was chosen because the fishery targets 
 
 Summary of key MSY reference points for the base case and the maturity schedule sensitivity case (Table xx).
 
-\subsection{ASSESSMENT MODEL RESULTS}
+\subsection{ASSESSMENT MODEL RESULTS}\label{secModelResults}
 
 [Placeholder]
 

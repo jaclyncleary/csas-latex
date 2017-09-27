@@ -134,8 +134,8 @@ Vertical red lines indicate medians, and shaded red rectangles indicate \Sexpr{c
 \begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{\Sexpr{locOutput}/BevertonHolt.png}
-\caption{Beverton-Holt stock-recruitment relationship for \Sexpr{fish.name} in the major stock assessment regions (SARs) for model \Sexpr{mNames[1]}.
-Points show MPD estimates, and the current year, \Sexpr{max(yrRange)} is coloured black.
+\caption{Beverton-Holt stock-recruitment relationship using MPD estimates for \Sexpr{fish.name} in the major stock assessment regions (SARs) for model \Sexpr{mNames[1]}.
+\darkThisYr{}
 Lines indicate MPD Beverton-Holt stock-recruitment relationships.
 Triangles indicate MPD estimates of unfished spawning biomass, $\mli{SB}_0$, and unfished age-\Sexpr{ageRec} recruitment, $R_0$.
 Legend: tonnes (t).}

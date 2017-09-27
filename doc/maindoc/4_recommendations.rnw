@@ -6,7 +6,7 @@
 
 [Placeholder]
 
-\subsection{DECISION TABLES}
+\subsection{DECISION TABLES}\label{secDecisionTables}
 
 [Placeholder]
 
