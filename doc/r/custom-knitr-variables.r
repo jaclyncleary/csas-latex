@@ -19,8 +19,8 @@ bc <- "British Columbia"
 hg.b <- base.models[[1]][[1]]
 hg.am1 <- sens.models.1[[1]][[1]]
 hg.am1.constm <- sens.models.2[[1]][[1]]
-hg.am2.constm <- sens.models.3[[1]][[1]]
-hg.am1.tvm <- sens.models.4[[1]][[1]]
+hg.am1.tvm <- sens.models.3[[1]][[1]]
+hg.am2.constm <- sens.models.4[[1]][[1]]
 hg.am2.tvm <- sens.models.5[[1]][[1]]
 
 hg.b.params <- as.data.frame(hg.b$mcmc$params)
@@ -82,16 +82,16 @@ hg.sig.tau <- calc.sig.tau(hg.b$ctl$params[6, 1], hg.b$ctl$params[7, 1])
 pr.b <- base.models[[2]][[1]]
 pr.am1 <- sens.models.1[[2]][[1]]
 pr.am1.constm <- sens.models.2[[2]][[1]]
-pr.am2.constm <- sens.models.3[[2]][[1]]
-pr.am1.tvm <- sens.models.4[[2]][[1]]
+pr.am1.tvm <- sens.models.3[[2]][[1]]
+pr.am2.constm <- sens.models.4[[2]][[1]]
 pr.am2.tvm <- sens.models.5[[2]][[1]]
 
 ## Base model Central coast
 cc.b <- base.models[[3]][[1]]
 cc.am1 <- sens.models.1[[3]][[1]]
 cc.am1.constm <- sens.models.2[[3]][[1]]
-cc.am2.constm <- sens.models.3[[3]][[1]]
-cc.am1.tvm <- sens.models.4[[3]][[1]]
+cc.am1.tvm <- sens.models.3[[3]][[1]]
+cc.am2.constm <- sens.models.4[[3]][[1]]
 cc.am2.tvm <- sens.models.5[[3]][[1]]
 
 ################################################################################
@@ -99,8 +99,8 @@ cc.am2.tvm <- sens.models.5[[3]][[1]]
 sog.b <- base.models[[4]][[1]]
 sog.am1 <- sens.models.1[[4]][[1]]
 sog.am1.constm <- sens.models.2[[4]][[1]]
-sog.am2.constm <- sens.models.3[[4]][[1]]
-sog.am1.tvm <- sens.models.4[[4]][[1]]
+sog.am1.tvm <- sens.models.3[[4]][[1]]
+sog.am2.constm <- sens.models.4[[4]][[1]]
 sog.am2.tvm <- sens.models.5[[4]][[1]]
 
 sog.b.params <- as.data.frame(sog.b$mcmc$params)
@@ -162,8 +162,8 @@ sog.sig.tau <- calc.sig.tau(sog.b$ctl$params[6, 1], sog.b$ctl$params[7, 1])
 wcvi.b <- base.models[[5]][[1]]
 wcvi.am1 <- sens.models.1[[5]][[1]]
 wcvi.am1.constm <- sens.models.2[[5]][[1]]
-wcvi.am2.constm <- sens.models.3[[5]][[1]]
-wcvi.am1.tvm <- sens.models.4[[5]][[1]]
+wcvi.am1.tvm <- sens.models.3[[5]][[1]]
+wcvi.am2.constm <- sens.models.4[[5]][[1]]
 wcvi.am2.tvm <- sens.models.5[[5]][[1]]
 
 ################################################################################

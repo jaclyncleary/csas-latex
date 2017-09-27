@@ -580,6 +580,228 @@ make.selex.comparison.plot(wcvi.b, gear.names, leg = "bottomright")
 \end{figure}
 %%------------------------------------------------------------------------------
 
+%%------------------------------------------------------------------------------
+%% Sensitivity plots
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg.index.surface.fit>>=
+make.index.fit.plot(list(hg.b,
+                         hg.am1,
+                         hg.am2.constm,
+                         hg.am2.tvm),
+                    start.yr = 1950,
+                    end.yr = 2016,
+                    ind = 1,
+                    leg = "topright",
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 60))
+@
+\end{center}
+\caption{Natural mortality sensitivity model index fits (lines) and inputs
+  (points and bars) for the Haida Gwaii surface survey.}
+\label{fig:hg-index-surface-fit}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<hg.index.dive.fit>>=
+make.index.fit.plot(list(hg.b,
+                         hg.am1,
+                         hg.am2.constm,
+                         hg.am2.tvm),
+                    start.yr = 1950,
+                    end.yr = 2016,
+                    ind = 2,
+                    leg = "topleft",
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 60))
+@
+\end{center}
+\caption{Natural mortality sensitivity model index fits (lines) and inputs
+  (points and bars) for the Haida Gwaii dive survey.}
+\label{fig:hg-index-dive-fit}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<prd.index.surface.fit>>=
+make.index.fit.plot(list(pr.b,
+                         pr.am1,
+                         pr.am2.constm,
+                         pr.am2.tvm),
+                    start.yr = 1950,
+                    end.yr = 2016,
+                    ind = 1,
+                    leg = "topright",
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 60))
+@
+\end{center}
+\caption{Natural mortality sensitivity model index fits (lines) and inputs
+  (points and bars) for the Prince Rupert District
+  surface survey.}
+\label{fig:prd-index-surface-fit}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<prd.index.dive.fit>>=
+make.index.fit.plot(list(pr.b,
+                         pr.am1,
+                         pr.am2.constm,
+                         pr.am2.tvm),
+                    start.yr = 1950,
+                    end.yr = 2016,
+                    ind = 2,
+                    leg = "topleft",
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 60))
+@
+\end{center}
+\caption{Natural mortality sensitivity model index fits (lines) and inputs
+  (points and bars) for the Prince Rupert District
+  dive survey.}
+\label{fig:prd-index-dive-fit}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<cc.index.surface.fit>>=
+make.index.fit.plot(list(cc.b,
+                         cc.am1,
+                         cc.am2.constm,
+                         cc.am2.tvm),
+                    start.yr = 1950,
+                    end.yr = 2016,
+                    ind = 1,
+                    leg = "topright",
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 60))
+@
+\end{center}
+\caption{Natural mortality sensitivity model index fits (lines) and inputs
+  (points and bars) for the Central Coast surface survey.}
+\label{fig:cc-index-surface-fit}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<cc.index.dive.fit>>=
+make.index.fit.plot(list(cc.b,
+                         cc.am1,
+                         cc.am2.constm,
+                         cc.am2.tvm),
+                    start.yr = 1950,
+                    end.yr = 2016,
+                    ind = 2,
+                    leg = "topleft",
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 60))
+@
+\end{center}
+\caption{Natural mortality sensitivity model index fits (lines) and inputs
+  (points and bars) for the Central Coast
+  dive survey.}
+\label{fig:cc-index-dive-fit}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<sog.index.surface.fit>>=
+make.index.fit.plot(list(sog.b,
+                         sog.am1,
+                         sog.am2.constm,
+                         sog.am2.tvm),
+                    start.yr = 1950,
+                    end.yr = 2016,
+                    ind = 1,
+                    leg = "topright",
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 220))
+@
+\end{center}
+\caption{Natural mortality sensitivity model index fits (lines) and inputs
+  (points and bars) for the Strait of Georgia
+  surface survey.}
+\label{fig:sog-index-surface-fit}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<sog.index.dive.fit>>=
+make.index.fit.plot(list(sog.b,
+                         sog.am1,
+                         sog.am2.constm,
+                         sog.am2.tvm),
+                    start.yr = 1950,
+                    end.yr = 2016,
+                    ind = 2,
+                    leg = "topleft",
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 220))
+@
+\end{center}
+\caption{Natural mortality sensitivity model index fits (lines) and inputs
+  (points and bars) for the Strait of Georgia
+  dive survey.}
+\label{fig:sog-index-dive-fit}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.index.surface.fit>>=
+make.index.fit.plot(list(wcvi.b,
+                         wcvi.am1,
+                         wcvi.am2.constm,
+                         wcvi.am2.tvm),
+                    start.yr = 1950,
+                    end.yr = 2016,
+                    ind = 1,
+                    leg = "topright",
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 150))
+@
+\end{center}
+\caption{Natural mortality sensitivity model index fits (lines) and inputs
+  (points and bars) for the WCVI
+  surface survey.}
+\label{fig:wcvi-index-surface-fit}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.index.dive.fit>>=
+make.index.fit.plot(list(wcvi.b,
+                         wcvi.am1,
+                         wcvi.am2.constm,
+                         wcvi.am2.tvm),
+                    start.yr = 1950,
+                    end.yr = 2016,
+                    ind = 2,
+                    leg = "topleft",
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 150))
+@
+\end{center}
+\caption{Natural mortality sensitivity model index fits (lines) and inputs
+  (points and bars) for the WCVI
+  dive survey.}
+\label{fig:wcvi-index-dive-fit}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+
+
 
 % %% REFERENCE POINT PLOT
 % \begin{figure}[H]
