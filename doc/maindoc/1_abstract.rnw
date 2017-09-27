@@ -34,8 +34,6 @@ West coast of Vancouver Island median spawning biomass has increased since 2008 
 Area 2W median spawning biomass has declined since 2011 due in part to decreases in the spawn index and apparent increases in natural mortality.
 Area 27 median spawning biomass has remained relatively constant over the past decade while natural mortality may have decreased over the same period.
 
-
-
 \frenchabstract{
 French title  % Unicode error with the 
 %?tat du hareng du Pacifique (\emph{\Sexpr{science.name}}) de la Colombie-Britannique en \Sexpr{end.yr} et pr?visions pour \Sexpr{end.yr + 1}
