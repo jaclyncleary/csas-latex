@@ -8,7 +8,7 @@
 
 Assessments of \Sexpr{fish.name} stocks in \Sexpr{bc} were done for \Sexpr{length(allRegionNames$major)} major stock assessment regions (SARs): \Sexpr{PasteNicely(allRegionNames$major)}.
 We also present data for \Sexpr{length(allRegionNames$minor)} minor SARs: \Sexpr{PasteNicely(allRegionNames$minor)}.
-Assessments for the five major \Sexpr{common.name} stocks areas are reported in the main body of this report, whereas assessments for the two minor stock areas are reported in Appendix D (#MG). 
+Assessments for the five major \Sexpr{common.name} stocks areas are reported in the main body of this report, whereas assessments for the two minor stock areas are reported in Appendix D (MG). 
 There are several key components to the management procedures of \Sexpr{fish.name} (\emph{\Sexpr{science.name}}) in BC.
 Here we define a management procedure as the suite of activities that leads to catches in any given year.
 These components include: which, and how much data are collected; what is assumed about stock structure, the stock assessment model used; and the \Sexpr{common.name} harvest control rule (HCR) that mathematically converts some estimate of current stock status to a total allowable catch (TAC) (de la Mare 1998) and implementation errors.
@@ -20,7 +20,8 @@ Since it was implemented in 1986 and formally tested in Hall et al. (1988), ther
 In addition to operational changes in the application of management procedures, there is some evidence for environmental and ecological changes that resulted in apparent changes in size at age and natural mortality that would have affected management procedure performance even if it had been consistently applied.
 As a result, it is difficult to attribute departures from the original predictions of management procedure performance (in terms of probability of fisheries closures, average annual variability of catch) to any single cause.
 
-This year's assessment presents two base cases assessments for each of the 5 major stocks: "AM1" denoting the case where surface (1951-1987) and dive (1988+) survey catchability parameters (q1 and q2 [#MG: can you make these q_1 and q_2 with q-italicized]) are estimated using a prior distribution, and "AM2" denoting the case where the surface survey catchability (q_1) is estimated and the dive survey catchability is fixed at q2 = 1. The ISCAM modelling code used in \Sexpr{assess.yr} has been updated to the new platform, the detailes of which are described in the Bridging Analysis, Appendix E (#MG). 
+This year's assessment presents two base cases assessments for each of the 5 major stocks: ``AM1'' denoting the case where surface (1951-1987) and dive (1988+) survey catchability parameters ($q_1$ and $q_2$) are estimated using a prior distribution, and ``AM2'' denoting the case where the surface survey catchability ($q_1$) is estimated and the dive survey catchability is fixed at $q_2 = 1$.
+The ISCAM modelling code used in \Sexpr{assess.yr} has been updated to the new platform, the detailes of which are described in the Bridging Analysis, Appendix \ref{chap:bridge}. 
 Sensitivity cases for AM1 and AM2 investigate (1) estimation of time-varying vs. constant natural mortality, (2) errors-in-variables parameterization of process and observation error, (3) sensitivity to broadening of the prior on \textit{q}, and (4) juxtaposition of maturity-at-age and selectivity-at-age. Sensitivity cases are presented for all 5 major stocks.
 
 

@@ -3,5 +3,5 @@
 \lfoot{\Sexpr{fish.name}}
 \rfoot{Appendix~\thechapter~-- Bridging analysis}
 
-% [Include the PDF here.]
+% Include the PDF
 \includepdf[pages=-, rotateoversize=true, pagecommand={\thispagestyle{fancy}}]{BridgingAnalysis.pdf}

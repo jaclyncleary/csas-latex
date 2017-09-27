@@ -39,7 +39,7 @@ For the purposes of stock assessment, catch data are summarized by gear type and
 \end{description}
 
 Currently, catch input to the stock assessment model does not include mortality from the commercial SOK fishery, nor any recreational or FSC fisheries.
-The commercial SOK fishery is licensed based on pounds of validated SOK product, not tonnes of fish used/ spawned, and there is currently no basis for verifying mortality imposed on the population by this fishery.
+The commercial SOK fishery is licensed based on pounds of validated SOK product, not tonnes of fish used or spawned, and there is currently no basis for verifying mortality imposed on the population by this fishery.
 
 A summary of recent fishing activity is described below by major SAR.
 For areas where commercial food and bait, special use and roe fisheries have occurred, catches by fishery are summarized by stock area in Figure XX to Figure XX.
@@ -47,14 +47,14 @@ Raw catch data for each stock area from 1951 to \Sexpr{assess.yr} are included i
 
 \textbf{Haida Gwaii}
 
-Haida Gwaii was closed to commercial roe fisheries from 2002-2013 and commercial spawn-on-kelp (SOK) fisheries from 2004-2013.
+Haida Gwaii was closed to commercial roe fisheries from 2002--2013 and commercial spawn-on-kelp (SOK) fisheries from 2004--2013.
 Commercial roe and SOK fishing opportunities were available in 2014, however they were not pursued following an agreement between the commercial sector and local First Nations.
 First Nations FSC fisheries operate within traditional territories of individual Nations, harvesting wild SOK and though closed-ponding for SOK.
 
 \textbf{Prince Rupert District}
 
 There are currently five commercial fisheries operating in the PRD.
-They are: the Winter fishery - food and bait herring (FB) that operates November - February; Seine Roe (SN) that operates February - March; Gillnet Roe (GN) that operates February - March; Spawn-on-kelp (SOK) that operates March - May; and Special Use (SU) that uses multiple gear types and operates year round although mainly in fall/ winter period. First Nations FSC fisheries operate within traditional territories of individual Nations, fishing both whole herring (year round), SOK, and spawn-on-boughs (March-May).
+They are: the Winter fishery - food and bait herring (FB) that operates November - February; Seine Roe (SN) that operates February - March; Gillnet Roe (GN) that operates February - March; Spawn-on-kelp (SOK) that operates March - May; and Special Use (SU) that uses multiple gear types and operates year round although mainly in fall/winter period. First Nations FSC fisheries operate within traditional territories of individual Nations, fishing both whole herring (year round), SOK, and spawn-on-boughs (March-May).
 
 \textbf{Central Coast}
 
@@ -118,7 +118,7 @@ Measurable declines in weight-at-age are evident for all major herring stocks, f
 Declining weight-at-age may be attributed to any number of factors, including: fishing effects (i.e., gear selectivity), environmental effects (changes in ocean productivity), or it may be attributed to by changes in sampling protocols (shorter time frame over which samples are collected).
 Declining weight-at-age is observed in all five of the major stocks, and despite area closures over the last 10-years, has continued to occur in the HG and WCVI stocks.
 This trend has been observed in B.C. and U.S. waters, from California to Alaska (Schweigert et al., 2002).
-Changes in weight at age are not unique to Pacific Herring: they have also been observed in Pacific Hake (JTC 2014) and Pacific Halibut.
+Changes in weight at age are not unique to \Sexpr{fish.name}: they have also been observed in Pacific Hake (JTC 2014) and Pacific Halibut.
 The direct cause and influence of this decline should be investigated in the context of the assessment framework because changes in growth patterns will result different optimal harvest rate estimates like $F_\mli{MSY}$.
 In addition, weight at age is a key element for the calculation of key reference points that related to the scale of the stock size, like the unfished state $B_0$ and $B_\mli{MSY}$.  
 
@@ -220,7 +220,7 @@ As in HG, PRD and CC areas, the age composition data were dominated by age 4 fis
 
 The spawn survey index increased from 84 kt in 2013 to 120 kt (Figure XX).
 There were 32 seine-caught samples (roe season only, Appendix XX) available for determining the weight at age and proportions at age in 2014 (Figure XX, XX).
-Relative to 2013, weight at age for age 2 and age 10 fish declined by 33 and 9 \% respectively, but otherwise all weight at age increased for age 3-9 fish by 1-14\%.
+Relative to 2013, weight at age for age 2 and age 10 fish declined by 33 and 9\% respectively, but otherwise all weight at age increased for age 3-9 fish by 1-14\%.
 The 2014 weights at age are between 78 and 99\% of the long term (1951-2014) averages.
 Unlike the other major stock areas the age composition data was dominated by several age classes (Figure XX).
 
@@ -307,11 +307,11 @@ We tested the sensitivity of the model estimates to the following assumptions:
 \begin{resdoclist}
   \item Assumed time varying natural mortality
   \item Assumed initial values for variance parameters $\vartheta^2$ and $\rho$
-  \item The prior probablity on the survey catchability parameters ($\q$1 and $\q$2)
+  \item The prior probablity on the survey catchability parameters ($q_1$ and $q_2$)
   \item The assumed fixed values for maturity at age
 \end{resdoclist}
 
-Results for each are presented below. 
+Results for each are presented below.
 
 Conclusion: proceed with `VX' `AMX' as our 'baseline', and include others as sensitivities?
 
@@ -343,12 +343,12 @@ Matt: here is where we need the table from Sarah (with rho and kappa sensitivite
 The base case maturity vector assumes 25\% of age-2 fish are mature, 90\% of age-3 fish are mature, and 100\% maturity for fish ages 4 and older. 
 From these assumptions the age of 50\% maturity is estimated to be approximately 2.3 years. 
 These base case values are fixed for all BC herring stocks at values indicated from histological assessment of developing ovaries (Hay, 1985; Hay and McCarter, 1997).  
-In the recent analysis identifying limit reference points for BC Pacific Herring stocks, Kronlund et al. (2017) discuss the location of the maturity schedule in relation to estimation of FMSY. 
+In the recent analysis identifying limit reference points for BC \Sexpr{fish.name} stocks, Kronlund et al. (2017) discuss the location of the maturity schedule in relation to estimation of FMSY. 
 Specifically, the positioning of the maturity curve to the left of all the fishery selectivity curves contributed to high estimates of FMSY because when age at 50\% maturity is estimated to occur at a much younger age than 50\% selectivity, it essentially guarantees a large component of the population can spawn at least once before becoming vulnerable to any fishery. 
 This infers high sustainable harvest rates, and the estimates of FMSY reported in Kronlund et al. (2017) and in Cox et al. (2015) were among the highest produced for herring species worldwide.
 The sensitivity analysis considered here involves setting the maturity at age vector equal to the selectivity of the seine roe fishery (gear 2) and then re-estimating equilibrium reference point FMSY. 
 Hay (1985) identify that age specific maturation varies with latitude and that generally, the warmer the water temperature the earlier the maturation of herring should occur. 
-Thus different stocks of BC Pacific Herring may have different maturity schedules as they are distributed throughout different latitudes. 
+Thus different stocks of BC \Sexpr{fish.name} may have different maturity schedules as they are distributed throughout different latitudes. 
 In the absence of recent histological studies to provide new estimates of maturity at age, we tested the model sensitivity to the fixed base values by setting the maturity at age vector equal to the selectivity of the seine roe fishery (gear 2). 
 These values are listed in Table XX.  
 The selectivity of the seine roe fishery was chosen because the fishery targets pre-spawning aggregations with seine gear that is non size-selective, providing age composition samples from a mature portion of the population.  

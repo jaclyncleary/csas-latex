@@ -67,7 +67,7 @@ Missing weight-at-age values (i.e., years where there are no biological samples)
 \begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{\Sexpr{locOutput}\x/Storyboard\y.png}
-\caption{Model output for Pacific herring in the \x{} major stock assessment region (SAR) for \y.
+\caption{Model output for \Sexpr{fish.name} in the \x{} major stock assessment region (SAR) for \y.
 Panel (a): model fit to time series of scaled spawn survey data in thousands of metric tonnes ($\text{t} \times 10^{3})$.
 \qPeriods{}
 The spawn survey data (i.e., spawn index) is scaled to abundance via the spawn survey scaling parameter $q$.
@@ -93,7 +93,7 @@ Time series of vertical lines indicates commercial catch, excluding spawn on kel
 \begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{\Sexpr{locOutput}\x/Production\y.png}
-\caption{Production analysis for Pacific herring in the \x{} major stock assessment region (SAR) for \y.
+\caption{Production analysis for \Sexpr{fish.name} in the \x{} major stock assessment region (SAR) for \y.
 Panel (a): time series of estimated spawning biomass (circles) and catch (vertical bars).
 The lower \Sexpr{quantSSB*100}\% of spawning biomass estimates are shaded grey.
 Reference lines are shown at estimates of $0.1B_0$, (red dashed line) $0.25B_0$ (blue dashed line), $0.3B_0$ (green dashed line), the 1996 fixed cutoff value (thick blue long dashed line), and unfished spawning biomass (solid blue line).
@@ -113,7 +113,7 @@ All estimates quantities are based on maximum likelihood estimates (DFO 2016).}
 \begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{\Sexpr{locOutput}/HarvestRate.png}
-\caption{Effective harvest rate for Pacific herring in the major stock assessment regions (SARs) for models \Sexpr{PasteNicely(mNames)}.
+\caption{Effective harvest rate for \Sexpr{fish.name} in the major stock assessment regions (SARs) for models \Sexpr{PasteNicely(mNames)}.
 Effective harvest rate in year t, $U_\text{t}$ is calculated as $U_\text{t} = \frac{C_\text{t}}{\mli{SB}_\text{t} + C_\text{t}}$ where $C_\text{t}$ is catch in year t, and $\mli{SB}_\text{t}$ is estimated spawning biomass in year t.
 Black lines indicate medians and shaded ribbons indicate \Sexpr{ciLevel*100}\% confidence intervals for spawning biomass, $\mli{SB}_\text{t}$.
 Horizontal dashed lines indicate $U_\text{t} = \Sexpr{intendU}$.}
@@ -124,7 +124,7 @@ Horizontal dashed lines indicate $U_\text{t} = \Sexpr{intendU}$.}
 \begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{\Sexpr{locOutput}/CurrentSSB.png}
-\caption{Estimated spawning biomass in \Sexpr{max(yrRange)}, $\mli{SB}_{\Sexpr{max(yrRange)}}$ in thousands of tonnes, t for Pacific herring in the major stock assessment regions (SARs) for models \Sexpr{PasteNicely(mNames)}.
+\caption{Estimated spawning biomass in \Sexpr{max(yrRange)}, $\mli{SB}_{\Sexpr{max(yrRange)}}$ in thousands of tonnes, t for \Sexpr{fish.name} in the major stock assessment regions (SARs) for models \Sexpr{PasteNicely(mNames)}.
 Vertical black lines indicate medians (solid) and \Sexpr{ciLevel*100}\% confidence intervals (dashed) for $\mli{SB}_{\Sexpr{max(yrRange)}}$.
 Vertical red lines indicate medians, and shaded red rectangles indicate \Sexpr{ciLevel*100}\% confidence intervals for the limit reference point (LRP), $0.3\mli{SB}_0$, where $\mli{SB}_0$ is estimated unfished biomass.}
 \label{figCurrentSSB}
@@ -134,7 +134,7 @@ Vertical red lines indicate medians, and shaded red rectangles indicate \Sexpr{c
 \begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{\Sexpr{locOutput}/BevertonHolt.png}
-\caption{Beverton-Holt stock-recruitment relationship for Pacific herring in the major stock assessment regions (SARs) for model \Sexpr{mNames[1]}.
+\caption{Beverton-Holt stock-recruitment relationship for \Sexpr{fish.name} in the major stock assessment regions (SARs) for model \Sexpr{mNames[1]}.
 Points show MPD estimates, and the current year, \Sexpr{max(yrRange)} is coloured black.
 Lines indicate MPD Beverton-Holt stock-recruitment relationships.
 Triangles indicate MPD estimates of unfished spawning biomass, $\mli{SB}_0$, and unfished age-\Sexpr{ageRec} recruitment, $R_0$.

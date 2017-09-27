@@ -8,12 +8,13 @@ Results are summarized as stock reconstructions, status of spawning stock in \Se
 
 The model estimated stock-recruitment parameters, time-varying natural mortality, catchability coefficients for the survey time series, and selectivity parameters for the commercial fishery and those survey series for which age data are available. 
 Median posterior estimates and 90\% credible intervals of spawning biomass, recruitment, time-varying natural mortality, and unfished equilibrium spawning biomass are presented for AM1 and AM2 model parameterizations.
-Unfished equilibrium spawning biomass ($\mli{SB}_0$) is the main biological reference point used for Pacific Herring and it is estimated from a  Beverton-Holt stock-recruitment relationship (parameterized within the assessment model) fitted to longterm average trends in weight at age and natural mortality.
+Unfished equilibrium spawning biomass ($\mli{SB}_0$) is the main biological reference point used for \Sexpr{fish.name} and it is estimated from a  Beverton-Holt stock-recruitment relationship (parameterized within the assessment model) fitted to longterm average trends in weight at age and natural mortality.
 All calculations were made using the Bayesian Markov Chain Monte Carlo (MCMC) method to quantify the uncertainty associated with parameter estimation.
-One-year projections of spawning biomass \Sexpr{assess.yr+1} were performed for each major stock area over a range of constant catches to estimate probabilities that spawning biomass and harvest rate metrics are below and above control points historically used in the management of \Sexpr{fish.name}, as specified in the herring harvest control rule. This assessment also includes presentation of current stock status and projected stock status in \Sexpr{assess.yr+1} relative to a Limit Reference Point of $0.30\cdot\mli{SB}_0$.
+One-year projections of spawning biomass \Sexpr{assess.yr+1} were performed for each major stock area over a range of constant catches to estimate probabilities that spawning biomass and harvest rate metrics are below and above control points historically used in the management of \Sexpr{fish.name}, as specified in the herring harvest control rule.
+This assessment also includes presentation of current stock status and projected stock status in \Sexpr{assess.yr+1} relative to a Limit Reference Point of $0.30\cdot\mli{SB}_0$.
 Some assessment results by stock area are briefly listed below.
 
-#JSC Update here
+%JSC Update here
 The median estimate of the Haida Gwaii stock biomass is projected to decline in \Sexpr{assess.yr+1} (relative to \Sexpr{assess.yr}), and in the absence of fishing the model estimates that there is a 5\% probability the stock will be below the cut-off of $0.25\cdot\mli{SB}_0$ in \Sexpr{assess.yr+1}.
 With low apparent recruitment entering the spawning population in \Sexpr{assess.yr} and similar natural mortality estimates for recent years, the model estimates the \Sexpr{assess.yr} Haida Gwaii spawning stock biomass to have declined from 2013.
 

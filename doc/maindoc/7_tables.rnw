@@ -2,7 +2,7 @@
 
 % \begin{table}[H]
 % \centering
-% \caption{Spawn index scaling parameters $q$, for Pacific herring stock assessment models in the major stock assessment regions (SARs).
+% \caption{Spawn index scaling parameters $q$, for \Sexpr{fish.name} stock assessment models in the major stock assessment regions (SARs).
 % \qPeriods{}
 % Lower and upper estimates indicate the \Sexpr{ciLevel*100}\% credible interval.
 % Legend: $q_{1}$ and $q_{2}$ are the surface and dive spawn index scaling parameters, respectively.
@@ -18,7 +18,7 @@
 
 % \begin{table}[H]
 % \centering
-% \caption{Spawning biomass in thousands of tonnes ($\text{t} \times 10^{3}$) for Pacific herring stock assessment models in the major stock assessment regions (SARs).
+% \caption{Spawning biomass in thousands of tonnes ($\text{t} \times 10^{3}$) for \Sexpr{fish.name} stock assessment models in the major stock assessment regions (SARs).
 % Lower and upper estimates indicate the \Sexpr{ciLevel*100}\% credible interval.
 % Legend: $\mli{SB}_{0}$ is unfished biomass, and $\mli{SB}_{\Sexpr{max(yrRange)+1}}$ is projected spawning biomass assuming no fishing in \Sexpr{max(yrRange)+1}.}
 % \begin{tabular}{lllrrr}
