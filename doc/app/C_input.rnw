@@ -9,6 +9,7 @@ Tables \ref{tabCatch\Sexpr{regions$Region[1]}} to \ref{tabCatch\Sexpr{regions$Re
 Tables \ref{tabSpawn\Sexpr{regions$Region[1]}} to \ref{tabSpawn\Sexpr{regions$Region[length(regions$Region)]}} have time series of spawn index in thousands of metric tonnes (t$ \times 10^3$) for the aforementioned SARs, respectively.
 Tables \ref{tabNumAged\Sexpr{regions$Region[1]}} to \ref{tabNumAged\Sexpr{regions$Region[length(regions$Region)]}} have time series of number-at-age for the aforementioned SARs, respectively.
 Tables \ref{tabWeight\Sexpr{regions$Region[1]}} to \ref{tabWeight\Sexpr{regions$Region[length(regions$Region)]}} have time series of weight-at-age for the aforementioned SARs, respectively.
+Table \ref{tabNBio} has the number of biological samples by year and SAR.
 
 % Start a loop over stocks for catch
 \foreach \x in {\Sexpr{paste(regions$Region, sep=",")}} {
@@ -151,3 +152,6 @@ Tables \ref{tabWeight\Sexpr{regions$Region[1]}} to \ref{tabWeight\Sexpr{regions$
 \label{tabNBio}
 \end{longtable}
 \FloatBarrier
+
+% Dirty hack to maintain correct appendix letters
+\newpage

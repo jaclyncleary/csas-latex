@@ -227,6 +227,7 @@ where $s_o$ is the maximum juvenile survival rate, and $\beta$ is the density ef
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %********************** Table 1 ************************************
+\FloatBarrier
 \begin{table}[!h]
 \centering
 \caption{\label{tab:variables} A list of symbols, constants and description
@@ -283,8 +284,9 @@ $\dot{\gamma}_s$ & & Standard deviation at 50\% maturity for sex $s$\\
 \hline
 \end{tabular}
 \end{table}
-\newp
+\FloatBarrier
 %%********************** Table 2 ************************************
+\FloatBarrier
 \begin{table}[b]
 \centering
 \caption{\label{tab:steady-state-model} Steady-state age-structured model
@@ -358,9 +360,10 @@ $\dot{\gamma}_s$ & & Standard deviation at 50\% maturity for sex $s$\\
 \vbox{\beq C_e=F_e R_e \phi_q \label{eq:df15} \eeq} \\
 \end{tabular}
 \end{table}
-\newp
+\FloatBarrier
 
 %% ********************** Table 3 ************************************
+\FloatBarrier
 \begin{table}[b]
 \centering
 \caption{\label{tab:catch-age-model} Statistical catch-age model using Baranov
@@ -419,7 +422,7 @@ $\dot{\gamma}_s$ & & Standard deviation at 50\% maturity for sex $s$\\
 
 \end{tabular}
 \end{table}
+\FloatBarrier
 
-\newp
-
+% Dirty hack to maintain correct appendix letters
 \newpage

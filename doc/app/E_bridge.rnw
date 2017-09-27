@@ -1,7 +1,9 @@
 \label{chap:bridge}
-\starredchapter{APPENDIX~\thechapter. BRIDGING ANALYSIS}
+% \starredchapter{APPENDIX~\thechapter. BRIDGING ANALYSIS}
 \lfoot{\Sexpr{fish.name}}
 \rfoot{Appendix~\thechapter~-- Bridging analysis}
 
 % Include the PDF
-\includepdf[pages=-, rotateoversize=true, pagecommand={\thispagestyle{fancy}}]{BridgingAnalysis.pdf}
+%\includepdf[pages=-, rotateoversize=true, pagecommand={\thispagestyle{fancy}}]{BridgingAnalysis.pdf}
+\includepdf[pages=1, pagecommand={\starredchapter{APPENDIX~\thechapter. BRIDGING ANALYSIS} \thispagestyle{fancy}}]{BridgingAnalysis.pdf}
+\includepdf[pages=2-, pagecommand={\thispagestyle{fancy}}]{BridgingAnalysis.pdf}
