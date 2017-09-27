@@ -799,7 +799,102 @@ make.index.fit.plot(list(wcvi.b,
 \label{fig:wcvi-index-dive-fit}
 \end{figure}
 %%------------------------------------------------------------------------------
+%% Sensitivity to M biomass plots
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg.biomass.m>>=
+make.biomass.mcmc.plot(list(hg.b,
+                            hg.am1,
+                            hg.am2.constm,
+                            hg.am2.tvm),
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 250),
+                    leg = "topright",
+                    show.bo.line = TRUE)
+@
+\end{center}
+\caption{Natural mortality sensitivity model biomass trajectories
+  for the Haida Gwaii stock.}
+\label{fig:hg-biomass-m}
+\end{figure}
+%%------------------------------------------------------------------------------
 
+\begin{figure}[H]
+\begin{center}
+<<prd.biomass.m>>=
+make.biomass.mcmc.plot(list(pr.b,
+                            pr.am1,
+                            pr.am2.constm,
+                            pr.am2.tvm),
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 120),
+                    leg = "topright",
+                    show.bo.line = TRUE)
+@
+\end{center}
+\caption{Natural mortality sensitivity model biomass trajectories
+  for the Prince Rupert District stock.}
+\label{fig:prd-biomass-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<cc.biomass.m>>=
+make.biomass.mcmc.plot(list(cc.b,
+                            cc.am1,
+                            cc.am2.constm,
+                            cc.am2.tvm),
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 150),
+                    leg = "topright",
+                    show.bo.line = TRUE)
+@
+\end{center}
+\caption{Natural mortality sensitivity model biomass trajectories
+  for the Central Coast stock.}
+\label{fig:prd-biomass-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<sog.biomass.m>>=
+make.biomass.mcmc.plot(list(sog.b,
+                            sog.am1,
+                            sog.am2.constm,
+                            sog.am2.tvm),
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 350),
+                    leg = "topright",
+                    show.bo.line = TRUE)
+@
+\end{center}
+\caption{Natural mortality sensitivity model biomass trajectories
+  for the Strait of Georgia stock.}
+\label{fig:sog-biomass-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.biomass.m>>=
+make.biomass.mcmc.plot(list(wcvi.b,
+                            wcvi.am1,
+                            wcvi.am2.constm,
+                            wcvi.am2.tvm),
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 250),
+                    leg = "topright",
+                    show.bo.line = TRUE)
+@
+\end{center}
+\caption{Natural mortality sensitivity model biomass trajectories
+  for the WCVI stock.}
+\label{fig:wcvi-biomass-m}
+\end{figure}
+%%------------------------------------------------------------------------------
 
 
 
