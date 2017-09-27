@@ -301,7 +301,7 @@ See Appendix~\ref{chap:equations} for description of reference points calculatio
 
 \subsection{SENSITIVITY ANALYSES}
 
-We tested the sensitivity of the model estimates to the following assumptions:
+We tested the sensitivity of the results from base case assessment model identified in the bridging analysis in Appendix E to the following assumptions:
 
 \begin{resdoclist}
   \item Assumed time varying natural mortality
@@ -310,21 +310,21 @@ We tested the sensitivity of the model estimates to the following assumptions:
   \item The assumed fixed values for maturity at age
 \end{resdoclist}
 
-Results for each are presented below.
+Further details and results for each of these sensitivity analyses are presented below.
 
 Conclusion: proceed with `VX' `AMX' as our 'baseline', and include others as sensitivities?
 
 \subsubsection{Natural mortality}
 
-The base case for the assessment model assumes that the natural mortality is time varying where instantaneous natural mortality is assumed equal over all ages but varies over time \citep{fu2004}. 
+The base case for the assessment model assumes that the natural mortality $M$ is time varying where instantaneous natural mortality is assumed equal over all ages but varies over time \citep{fu2004}.
 The annual deviations in time varying M are estimated using a random walk process (Haist and Schweigert 2006).  
+For this sensitivity analysis we investigated the effects on the model outputs of estimating a single M that is constant over time. 
+All stocks and assessment model versions, AM1 and AM2, were investigated applying the constant M scenarios and the estimated outputs were compared to the time varying M base case. 
+
+
+
+
 Support for inclusion of time varying M includes reduction in the magnitude of retrospective patterns and improved coherence between assumed and empirical fits to the spawn survey index. 
-For this sensitivity analysis we investigated the effects of estimating a single M that is constant over time. 
-All stocks and assessment model versions were investigated using the constant M scenarios and the estimated outputs were compared to the time varying M base case.
-
-
-
-
 
 \subsubsection{Variance parameters}
 
