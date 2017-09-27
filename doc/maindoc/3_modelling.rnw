@@ -327,7 +327,6 @@ In ISCAM, standard deviations in process error (tau, $\tau$) and observation err
 The base case initial values for $\kappa$ and $\rho$ were set equal to MPD estimated values from the 2016 assessment, which resulted in an observation error term ($\sigma=0.58$) and a process error term ($\tau=0.69$).  
 We tested model sensitivity to these initial values by varying $\vartheta^2$ and $\rho$ while estimating all leading parameters.
 
-
 This analysis showed that when both $\rho$ and $\kappa$ are estimated as they are in the base case, the choice of initial value for $\rho$ and $\kappa$ does not impact estimated model parameters. 
 This is the same for AM1, AM2 and both parameterizations of $M$.
 Tables \ref{tab:hg-parameters-posts} to \ref{tab:wcvi-parameters-posts} show all estimated results.
@@ -410,7 +409,7 @@ With no apparent recruitment entering the spawning population in 2014 and simila
 The base case assessment estimates relatively small declines in spawning stock biomass in 2014 (Figure \ref{figStoryboardAM2PRD}).
 The survey data indicate declines of approximately 35\% - however the model over-fits the most recent observation (Appendix XX).
 The model's historical reconstructions using the full set of age-composition data of the predicted survey biomass have not estimated the same, occasionally very large changes in the index: for example the decline from 2005 from 28 kt to 10 kt 2004 or from 12 kt to 28kt between 2009 and 2010; so that the model's estimate of the survey variance is relatively high (at the MPD, sigma=0.46).
-As it was in HG, the model estimates that the last large recruitment event was in 2012 and that there is no evidence for large 2013 or 2014 cohorts (Figure XX, Table XX).
+As it was in HG, the model estimates that the last large recruitment event was in 2012 and that there is no evidence for large 2013 or 2014 cohorts (Figure \ref{figStoryboardAM2PRD}, Table XX).
 Natural mortality is estimated to be highly uncertain, with trajectories that are a range of decreasing, stable, and increasing (Figure \ref{figStoryboardAM2PRD}).
 The base case estimates that current median (90\% credibility intervals) spawning stock biomass is 29 (16, 51) kt (Figure \ref{figStoryboardAM2PRD}, Table XX) and depletion levels in 2014 than in 2013 (Figure XX), estimated to be 0.46 (0.23, 84) (Table XX).
 
@@ -426,14 +425,14 @@ The 2014 spawning stock biomass and depletion levels estimated to be 24 (14,41) 
 \textbf{Strait of Georgia}
 
 The model fits the recent spawn survey index and age composition data (Figure \ref{figStoryboardAM2SoG}) by estimating both relatively large recent recruitments (2010 particularly) and improved survival of through natural mortality of all cohorts (Figure \ref{figStoryboardAM2SoG}, Table XX).
-The model fits recent increasing trends in spawn survey index (Appendix \ref{chap:input}) and estimates recent spawning stock biomass trajectory that has been increasing since 2010 (Figure XX).
+The model fits recent increasing trends in spawn survey index (Appendix \ref{chap:input}) and estimates recent spawning stock biomass trajectory that has been increasing since 2010 (Figure \ref{figSpawnIndex}).
 The current spawning stock biomass and depletion levels are 186 (116, 289) kt and 1.31 (0.84, 1.96) respectively (Table XX).
 
 \textbf{West Coast of Vancouver Island}
 
 To fit the recent age composition and survey data, the model estimates a slow upward trajectory for the stock.
-The model fits the most recent spawn survey index (Appendix XX) and explains the combination of the survey index and the proportions at age data that are dominated by 3 year old fish) as a large recruitment (Figure XX).
-Natural mortality is very uncertain with an apparent decline in the median estimate but a range of trajectories that include increasing and stable (Figure XX).
+The model fits the most recent spawn survey index (Appendix \ref{chap:input}) and explains the combination of the survey index and the proportions at age data that are dominated by 3 year old fish) as a large recruitment (Figure \ref{figStoryboardAM2WCVI}).
+Natural mortality is very uncertain with an apparent decline in the median estimate but a range of trajectories that include increasing and stable (Figure \ref{figStoryboardAM2WCVI}).
 Driven by the estimates recent recruitments and lower natural mortality, the assessment estimates 2014 spawning stock biomass and depletion levels of 30 (18,52) kt and 0.52 (0.31, 0.84) respectively (Table XX).
 
 \subsubsection{Recruitment}
