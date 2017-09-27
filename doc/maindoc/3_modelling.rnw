@@ -331,19 +331,20 @@ There is support for inclusion of time varying M in this analysis as well as fro
 
 The key variance parameter in the errors-in-variables approach is the inverse of the total variance $\varphi^-2$ (i.e., total precision, varphi). 
 The total variance is partitioned into observation and process error components by the model parameter rho $\rho$, which is the proportion of the total variance that is due to observation error (Punt and Butterworth 1993, Deriso et al. 2007). 
-In ISCAM, standard deviations in process error (tau, $\tau$) and observation error (sigma, $\sigma$) are related and modelled using the following equations for kappa $\kappa$ and rho $\rho$.
+In ISCAM, standard deviations in process error (tau, $\tau$) and observation error (sigma, $\sigma$) are related and modelled using  equations XX for kappa $\kappa$ and rho $\rho$.
 The base case initial values for $\kappa$ and $\rho$ were set equal to MPD estimated values from the 2016 assessment, which resulted in an observation error term ($\sigma=0.58$) and a process error term ($\tau=0.69$).  
 We tested model sensitivity to these initial values by varying $\vartheta^2$ and $\rho$ while estimating all leading parameters.
 
-This analysis showed that when both $\rho$ and $\kappa$ are estimated as they are in the base case, the choice of initial value for $\rho$ and $\kappa$ does not impact estimated model parameters. 
-As shown in the bridging analysis below (Appendix E) this is the same for AM1, AM2, both parameterizations of $M$ and all stocks.
+This analysis showed that when both $\rho$ and $\kappa$ are estimated, the choice of initial value for $\rho$ and $\kappa$ does not impact estimated model parameters. 
+As shown in table XX for the Strait of Georgia.  This trend can also be seen in the bridging analysis below (Appendix E) for AM1, AM2, both parameterizations of $M$ in the first sensitivity analysis and all stocks.  In the bridging analysis we also investigated the effects of fixing either $\kappa$ or $\rho$ and only estimating one of these parameters at a time. Under these scenarios we found that the estimated results were influenced by the initial values of $\kappa$ and $\rho$, which is why the base case estimating both parameters was chosen.
+
 Tables \ref{tab:hg-parameters-posts} to \ref{tab:wcvi-parameters-posts} show all estimated results.
-THESE ARE NOT THE CORRECT TABLES...We need to show the initial values as well as estimated values for SOG AM1 and AM2
+THESE ARE NOT THE CORRECT TABLES...We need to show the initial values as well as estimated values.Just for SOG AM1 and AM2 though...
 
 
 \subsubsection{Prior probability distributions for survey catchability}
 
-There are two versions of the stock assessment model that differec in the treatment of spwn survey catchability parameters ($q_1$ and $q_2$) for the surface survey period (1951-1987) and dive survey period (1988-2016), respectively.  
+There are two versions of the stock assessment model that differ in the treatment of spawn survey catchability parameters ($q_1$ and $q_2$) for the surface survey period (1951-1987) and dive survey period (1988-2016), respectively.  
 The two models are labelled AM1 ($q_1$ and $q_2$ estimated with prior probability distributions) and AM2 ($q_1$ estimated, $q_2$=1).  
 There have been concerns that the results from applying the AM1 model have been too restricting to the resulting estimations.  
 Based on this concern and the results of the bridging analysis below (Appendix E) we conducted sensitivity analyses with different standard deviations used for both $q_1$ nd $q_2$ prior probability distributions used in the AM1 assessment model (Table XX). 
