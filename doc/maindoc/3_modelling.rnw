@@ -345,13 +345,9 @@ THESE ARE NOT THE CORRECT TABLES...We need to show the initial values as well as
 
 \subsubsection{Prior probability distributions for survey catchability}
 
-<<<<<<< HEAD
 There are two versions of the stock assessment model that differ in the treatment of spawn survey catchability parameters ($q_1$ and $q_2$) for the surface survey period (1951-1987) and dive survey period (1988-2016), respectively.  
 The two models are labelled AM1 ($q_1$ and $q_2$ estimated with prior probability distributions) and AM2 ($q_1$ estimated, $q_2$=1).  
-=======
-There are two versions of the stock assessment model that differec in the treatment of spwn survey catchability parameters ($q_1$ and $q_2$) for the surface survey period (1951-1987) and dive survey period (1988-2016), respectively.  
-The two models are labelled AM1 ($q_1$ and $q_2$ estimated with prior probability distributions) and AM2 ($q_1$ estimated, $q_2=1$).  
->>>>>>> mgrinnell/herring
+
 There have been concerns that the results from applying the AM1 model have been too restricting to the resulting estimations.  
 Based on this concern and the results of the bridging analysis below (Appendix E) we conducted sensitivity analyses with different standard deviations used for both $q_1$ and $q_2$ prior probability distributions used in the AM1 assessment model (Table XX). 
 
