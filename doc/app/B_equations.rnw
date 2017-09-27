@@ -422,4 +422,5 @@ $\dot{\gamma}_s$ & & Standard deviation at 50\% maturity for sex $s$\\
 
 \newp
 
+% Dirty hack to maintain correct appendix letters
 \newpage

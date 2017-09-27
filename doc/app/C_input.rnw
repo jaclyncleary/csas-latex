@@ -151,3 +151,6 @@ Tables \ref{tabWeight\Sexpr{regions$Region[1]}} to \ref{tabWeight\Sexpr{regions$
 \label{tabNBio}
 \end{longtable}
 \FloatBarrier
+
+% Dirty hack to maintain correct appendix letters
+\newpage

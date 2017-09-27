@@ -108,4 +108,5 @@ See Eq.~\ref{eq:matage}.}
 \end{figure}
 %%%%%%%%%%%%%%%%%%%%%%%
 
-\clearpage
+% Dirty hack to maintain correct appendix letters
+\newpage
