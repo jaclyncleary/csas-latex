@@ -6,6 +6,7 @@ Thanks...
 \end{itemize}
 
 % References
+% TODO: Move this to the res-doc.rnw
 \clearpage
 \bibliographystyle{res-doc}
 \bibliography{../../all}
