@@ -347,8 +347,8 @@ TABLES...We need to show the initial values as well as estimated values.Just for
 There are two versions of the base stock assessment model that differ in the treatment of spawn survey catchability parameters ($q_1$ and $q_2$) for the surface survey period (1951-1987) and dive survey period (1988-2016), respectively.  
 The two models are labelled AM1 ($q_1$ and $q_2$ estimated with prior probability distributions) and AM2 ($q_1$ estimated, $q_2$=1).  
 
-There have been concerns that the results from applying the AM1 model have been too restricting to the resulting estimations.  
-Based on this concern and the results of the bridging analysis below (Appendix E) we conducted sensitivity analyses testing the effects of different prior standard deviations for both $q_1$ and $q_2$ used in the AM1 version of the assessment model. The different scenarios are listed in Table XX.
+There have been concerns that the results from applying the prior probability distributions on $q_1$ and $q_2$ in the AM1 model have been too restricting to the resulting estimations.  
+Based on this concern and the results of the bridging analysis below (Appendix E) we conducted sensitivity analyses testing the effects of tightening and broadening of the prior distribution on $q$ by changing the standard deviation of this prior while keeping the mean constant.  The different scenarios are listed in Table XX.
 
 Figure XX shows the influence of the standard deviations on the prior distributions. 
 .....NEED TO ADD THE PRIOR/POSTERIOR PLOT FIGURES FOR EACH SENSITIVITY AND POSSIBLY STOCK
