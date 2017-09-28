@@ -149,18 +149,7 @@ The authors recommend the phasing-in of any new management procedure (i.e., chan
 
 \subsubsection{Upper Stock Reference}
 
-A fully specified set of objectives that includes both LRPs and TRPs will be necessary to meet goals for renewal of the Pacific Herring management system and consistency with the DFO PA Framework. 
-The Framework defines the Upper Stock Reference (USR) as the boundary between the healthy and cautious zones, making the USR the stock level threshold below which removals must be progressively reduced in order to avoid reaching the LRP. 
-Thus, the USR must be set at an appropriate distance above the LRP to provide sufficient opportunity for the management system to recognize a declining stock status and sufficient time for management actions to have effect.
-The hybrid constant escapement /constant harvest rate feature of the herring HCR was intended to maintain a minimum escapement level equivalent to the cut-off, however in practice this was not achieved because the biomass level at which the harvest was reduced ($0.31\cdot\mli{SB}_0$) does not provide sufficient time for management actions (reduced harvest rates) to have effect.
-
-The DFO PA Framework also identifies the importance of Target Reference Points (TRPs) which are determined by productivity objectives for the stock, broader biological considerations and social and economic objectives for the fishery. 
-The USR and TRP can equivalent, and at the TRP cannot be lower than the USR.
-
-
-(1)
-(2)
-(3)
+A fully specified set of objectives that includes both LRPs and TRPs will be necessary to meet goals for renewal of the Pacific Herring management system and consistency with the DFO PA Framework.
 
 
 \subsection{ASSESSMENT HISTORY}
