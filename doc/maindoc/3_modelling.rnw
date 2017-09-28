@@ -374,6 +374,8 @@ The selectivity of the seine roe fishery was chosen because the fishery targets 
 
 Summary of key MSY reference points for the base case and the maturity schedule sensitivity case (Table xx).
 
+Changing maturity to equal selectivity doesn't make the Fmsy estimates "usable" in a management procedure. 
+
 \subsection{ASSESSMENT MODEL RESULTS}\label{secModelResults}
 
 [Placeholder]
