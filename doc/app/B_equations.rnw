@@ -375,7 +375,7 @@ $\dot{\gamma}_s$ & & Standard deviation at 50\% maturity for sex $s$\\
 \\
 \vbox{\beq \Theta= (R_0,h,M,\overline{R},\overline{R}_{init},\vartheta^2,\rho,\Gamma_{k,t},\{\omega_t\}_{\acute{t}=1-A}^{\acute{t}=T},\{\omega_{init,t}\}_{t=\acute{t}-A}^{t=\acute{t}-1})  \label{eq:df16} \eeq} \\
 \\
-\vbox{\beq \sigma=\sqrt{\frac{\rho}{\vartheta}}, \;  \;  \; \; \tau=\frac{(1-\rho)^{1/2}}{\vartheta} \label{eq:df17} \eeq} \\
+\vbox{\beq \sigma=\sqrt{\rho}\vartheta, \;  \;  \; \; \tau=\sqrt{(1-\rho)}\vartheta \label{eq:df17} \eeq} \\
 \vspace{2ex}
 \\
 \vbox{\begin{center}\bf{Unobserved states}\end{center}\vspace{-4ex}} \\
