@@ -67,7 +67,7 @@ With the terms `major' and `minor' being used to describe relative differences i
 Stock boundaries for major and minor stocks attempt to capture the habitat range of relatively discrete migratory \Sexpr{common.name} stocks, and are based on historical records of commercial catch and spawning locations.
 Each stock assessment region (SAR) is comprised of several to many \Sexpr{common.name} Statistical Areas that are further broken down into \Sexpr{common.name} Sections and then Locations.
 Maps identifying stock boundaries and Statistical Areas for each SAR can be found at:
-\url{http://www.pac.dfo-mpo.gc.ca/science/species-especes/pelagic-pelagique/herring-hareng/herspawn/pages/default0-eng.html}.
+\url{www.pac.dfo-mpo.gc.ca/science/species-especes/pelagic-pelagique/herring-hareng/herspawn/pages/default0-eng.html}.
 
 \subsection{ECOSYSTEM CONSIDERATIONS}
 
@@ -78,7 +78,7 @@ Over the time series depicted in the \Sexpr{fish.name} assessment (1951-2012), p
 
 DFO is currently compiling data to develop ecosystem modeling approaches in the hope that this endeavor (along with other ecosystem modeling initiatives at the University of British Columbia) will help explain how environmental and ecological interactions have affected BC \Sexpr{common.name} stocks, and how they are likely to be affected in the future.
 
-In the meantime, DFO Pacific Region has committed to a Management Strategy Evaluation (MSE) process for \Sexpr{fish.name} within which the performance of management procedures in the face of ecosystem impacts on natural mortality and growth will be tested. Testing the performance of management procedures in the face such ecosystem changes for BC \Sexpr{common.name} stocks is a priority area of research for DFO.
+In the meantime, DFO Pacific Region has committed to a Management Strategy Evaluation (MSE) process for \Sexpr{fish.name} within which the performance of management procedures in the face of ecosystem impacts on natural mortality and growth will be tested. Testing the performance of management procedures in the face of ecosystem changes for BC \Sexpr{common.name} stocks is a priority area of research for DFO.
 
 \subsection{HERRING FISHERIES}
 
@@ -86,7 +86,7 @@ In the meantime, DFO Pacific Region has committed to a Management Strategy Evalu
 First Nations have traditionally harvested whole \Sexpr{common.name} and \Sexpr{common.name} spawn for food, social and ceremonial (FSC) purposes.
 The commercial \Sexpr{fish.name} fishery started in BC in the 19th century for the local food market, and quickly expanded into a dry salt fishery for the orient.
 In 1937 a reduction fishery was also established to produce fishmeal and fish oil (Hourston and Haegele, 1980).
-After the collapse of the Pacific sardine in the late 1940s, \Sexpr{fish.name} became the major fishery off Canada's Pacific coast, and catches steadily increased to over 200,000 tonnes in the early 1960s (Beamish et al. 2004).
+After the collapse of the Pacific Sardine in the late 1940s, \Sexpr{fish.name} became the major fishery off Canada's Pacific coast, and catches steadily increased to over 200,000 tonnes in the early 1960s (Beamish et al. 2004).
 
 From the early 1930s to the late 1960s, \Sexpr{common.name} were commercially harvested and processed (reduced) into relatively low-value products such as fishmeal and oil.
 Commercial catches increased dramatically in the early 1960s, but were unsustainable.
@@ -95,28 +95,38 @@ As a result, the commercial fishery collapsed and was closed by the federal gove
 During the closure from 1967 to 1971, limited fishing activity occurred at low levels (Hourston 1980).
 At this time, there was a growing interest in harvesting roe \Sexpr{common.name} for export to Japan, where \Sexpr{common.name} stocks had been decimated.
 A small experimental roe harvest began in 1971 and expanded rapidly until 1983, when a fixed harvest rate was introduced to regulate catch.
-A series of above average year-classes occurred in the early 1970s, rapidly rebuilding stocks and permitting the re-opening of areas for commercial fishing.
+A series of above average year-classes occurred in the early 1970s, rapidly rebuilding stocks and permitting the re-opening of all areas for commercial fishing.
 
 \subsection{MANAGEMENT OF MAJOR HERRING STOCKS}
 
-The Kronlund et al. working paper (Sept. 2013 CSAS meeting) describes the current harvest control rule (HCR) for major \Sexpr{common.name} stocks in some detail.
-Readers should note that in this document we have used $\mli{SB}$ to denote spawning stock biomass instead of $B$, used in the Kronlund et al. working paper.
-The harvest rule can be stated as follows (after Martell et. al 2012):
+The harvest rule for Pacific Herring is described as \citep{martell2012}:
 \begin{equation} \label{eqHarvestRule}
 U'_{T+1} = \begin{cases}
-0 & B_{T+1} \leq 0.25 \cdot \mli{SB}_0 \\
-\text{min} \left( \frac{B_{T+1} - 0.25 \cdot \mli{SB}_0}{B_{T+1}}, ~ 0.2 \right) & B_{T+1} > 0.25 \cdot \mli{SB}_0
+0 & SB_{T+1} \leq 0.25 \cdot \mli{SB}_0 \\
+\text{min} \left( \frac{SB_{T+1} - 0.25 \cdot \mli{SB}_0}{B_{T+1}}, ~ 0.2 \right) & B_{T+1} > 0.25 \cdot \mli{SB}_0
 \end{cases}
 \end{equation}
-where $T$ is the terminal year for the stock assessment, $B_{T+1}$ is the prefishery forecast biomass in year $T+1$, and $\mli{SB}_0$ is the unfished equilibrium spawning stock biomass.
+where $T$ is the terminal year for the stock assessment, $SB_{T+1}$ is the prefishery forecast biomass in year $T+1$, and $\mli{SB}_0$ is the unfished equilibrium spawning stock biomass.
 The output from the harvest control rule is the intended annual harvest rate, which is reduced to zero as the spawning stock is depleted to the level of $0.25\cdot\mli{SB}_0$.
 
-The HCR was based in part on analyses conducted on the SOG stock in the mid to late 1980s suggesting it should insure that stocks would be above cut-off levels with high probability.
+For the major stock areas, the harvest control rule is a hybrid that combines both constant escapement and constant harvest rate policies, allowing for a reduced harvest rate in areas where the intended 20\% annual harvest rate would bring the forecast pre-fishery mature spawning biomass (i.e., the “escapement”) to levels below the cut-off value of $0.25\cdot\mli{SB}_0$ \citep {cleary2010}. 
+This cut-off value was selected based on simulation work (Hall 1986, Hall et al. 1988, Zheng et al. 1993, Haist et al. 1993)  suggesting that for stocks above the $0.25\cdot\mli{SB}_0$ level, that the hybrid HCR would produce lower catch variance and fewer fishery closures than a constant escapement rule. 
+The simulation work focussed on an analysis of stock dynamics for the SOG stock only.
+
 Contrary to the predictions of the analyses done in the late 1980s, some \Sexpr{common.name} stocks appear to have been below cut-off levels relatively frequently.
 Since 1986 there have been several different stock assessments models used, each of which had different assumptions and new data so that for each assessment, in each year, there were new estimates of current and unfished spawning biomass levels; it is therefore not possible to compare the current stock assessments estimates to what would have been estimated historically.
 Accordingly, the best approximation that is available to determine if stocks were above or below cut-offs is to examine historical Integrated Fisheries Management Plans.
 On the basis of this analysis, three of the major \Sexpr{common.name} stocks, WCVI, CC, and HG, were below cut-off for 32\%, 21\%, and 46\% of years, respectively from 1986 to 2013.
 The relative contribution of harvest, environmental/ecological interactions causing changes in natural mortality and growth, or alternative assessment models (in particular more conservative models applied before 2011), and/or other factors to the stocks having been estimated to be below cut-offs is currently not well understood.
+
+Since the introduction of the HCR for Pacific Herring, the policy environment for Canadian fisheries changed with the introduction of the Sustainable Fisheries Framework in 2009 (www.dfo-mpo.gc.ca/fm-gp/pechesfisheries/fish-ren-peche/sff-cpd/overview-cadre-eng.htm), and specifically the Fisheries Decision-making Framework incorporating the Precautionary Approach (www.dfo-mpo.gc.ca/fm-gp/peches-fisheries/fish-ren-peche/sff-cpd/precaution-eng.htm), hereafter called the DMF policy. 
+The DMF policy is one component of the Sustainable Fisheries Framework, the Department's national strategy for moving DFO towards an ecosystem approach to management of Canadian fisheries. 
+The 2017 Request for Scientific Information and Advice (RSIA) submitted by Fisheries Management has requested that advice for Pacific Herring be consistent with the DMF policy requirement to characterize uncertainty and risk.
+
+DFO Pacific Region has committed to Renewal of the Management Framework for Pacific Herring, including updated simulation analyses of harvest control rules. 
+Although the herring HCR was not originally designed to address the intent of the DMF policy, the form of the rule does meet the requirement to reduce the fishing rate as stock status declines to low levels of abundance, a tactic intended to encourage stock growth towards the target biomass reference point. 
+Simulation analyses of HCR will occur within a Management Strategy Evaluation (MSE) process, focussing on establishing Management Procedures compliant with the DMF policy, including avoiding Limit Reference Points (LRP) with high probabiliy and establishing Upper Stock Reference (USR) points or target biomass levels.
+
 
 \subsection{BIOLOGICAL REFERENCE POINTS}
 

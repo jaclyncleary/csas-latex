@@ -8,5 +8,5 @@ Thanks...
 % References
 \clearpage
 \bibliographystyle{res-doc}
-\bibliography{../../all}
+\bibliography{'../../all'}
 \clearpage
