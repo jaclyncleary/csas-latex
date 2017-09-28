@@ -108,7 +108,12 @@ sens <- c("HG-natural-mortality",
           "PRD-natural-mortality",
           "CC-natural-mortality",
           "SOG-natural-mortality",
-          "WCVI-natural-mortality")
+          "WCVI-natural-mortality",
+          "HG-q-priors",
+          "PRD-q-priors",
+          "CC-q-priors",
+          "SOG-q-priors",
+          "WCVI-q-priors")
 
 # Region names
 allRegionNames <- list( 

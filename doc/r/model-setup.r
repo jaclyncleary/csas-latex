@@ -255,6 +255,88 @@ if(verbose){
 }
 
 ## -----------------------------------------------------------------------------
+## Sensitivity models group 6
+## This is a list of the q priors "a" sensitivities for AM1
+## -----------------------------------------------------------------------------
+## Redefine stock.dir so that sensitivities can be loaded
+stock.dir <- list()
+stock.dir[[1]] <- "HG-q-priors"
+stock.dir[[2]] <- "PRD-q-priors"
+stock.dir[[3]] <- "CC-q-priors"
+stock.dir[[4]] <- "SOG-q-priors"
+stock.dir[[5]] <- "WCVI-q-priors"
+sens.model.dir.name.6 <- lapply(1:length(stock.dir),
+                                function(x){
+                                  file.path(stock.dir[[x]], "AM1qa")})
+
+sens.model.name.6 <- "AM1 q-a"
+
+lapply(1:length(sens.model.dir.name.6),
+       function(x){
+         verify.models(model.dir,
+                       sens.model.dir.name.6[[x]],
+                       sens.model.name.6)})
+
+if(verbose){
+  lapply(1:length(sens.model.dir.name.6),
+         function(x){
+           print.model.message(sens.model.dir.name.6[[x]],
+                               sens.model.name.6,
+                               6,
+                               model.type = "Sensitivity")})
+}
+
+## -----------------------------------------------------------------------------
+## Sensitivity models group 7
+## This is a list of the q priors "b" sensitivities for AM1
+## -----------------------------------------------------------------------------
+sens.model.dir.name.7 <- lapply(1:length(stock.dir),
+                                function(x){
+                                  file.path(stock.dir[[x]], "AM1qb")})
+
+sens.model.name.7 <- "AM1 q-b"
+
+lapply(1:length(sens.model.dir.name.7),
+       function(x){
+         verify.models(model.dir,
+                       sens.model.dir.name.7[[x]],
+                       sens.model.name.7)})
+
+if(verbose){
+  lapply(1:length(sens.model.dir.name.7),
+         function(x){
+           print.model.message(sens.model.dir.name.7[[x]],
+                               sens.model.name.7,
+                               7,
+                               model.type = "Sensitivity")})
+}
+
+## -----------------------------------------------------------------------------
+## Sensitivity models group 8
+## This is a list of the q priors "c" sensitivities for AM1
+## -----------------------------------------------------------------------------
+sens.model.dir.name.8 <- lapply(1:length(stock.dir),
+                                function(x){
+                                  file.path(stock.dir[[x]], "AM1qc")})
+
+sens.model.name.8 <- "AM1 q-c"
+
+lapply(1:length(sens.model.dir.name.8),
+       function(x){
+         verify.models(model.dir,
+                       sens.model.dir.name.8[[x]],
+                       sens.model.name.8)})
+
+if(verbose){
+  lapply(1:length(sens.model.dir.name.8),
+         function(x){
+           print.model.message(sens.model.dir.name.8[[x]],
+                               sens.model.name.8,
+                               8,
+                               model.type = "Sensitivity")})
+}
+
+## -----------------------------------------------------------------------------
 ## Vector of directory names for all models referenced above
 ## -----------------------------------------------------------------------------
 ## ALL models must be in this list!
@@ -266,7 +348,10 @@ model.dir.names <- c(base.model.dir.name,
                      unlist(sens.model.dir.name.2),
                      unlist(sens.model.dir.name.3),
                      unlist(sens.model.dir.name.4),
-                     unlist(sens.model.dir.name.5))
+                     unlist(sens.model.dir.name.5),
+                     unlist(sens.model.dir.name.6),
+                     unlist(sens.model.dir.name.7),
+                     unlist(sens.model.dir.name.8))
 
 ## This function must be called from within the first knitr code chunk
 ## in the document. It is defined here so that it is in the same place
@@ -289,6 +374,15 @@ load.models.into.parent.env <- function(){
                            function(x){
                              load.models(model.dir, x)})
   sens.models.5 <<- lapply(sens.model.dir.name.5,
+                           function(x){
+                             load.models(model.dir, x)})
+  sens.models.6 <<- lapply(sens.model.dir.name.6,
+                           function(x){
+                             load.models(model.dir, x)})
+  sens.models.7 <<- lapply(sens.model.dir.name.7,
+                           function(x){
+                             load.models(model.dir, x)})
+  sens.models.8 <<- lapply(sens.model.dir.name.8,
                            function(x){
                              load.models(model.dir, x)})
 }
@@ -337,7 +431,10 @@ build <- function(ovwrt.base = FALSE,
                              unlist(sens.model.dir.name.2),
                              unlist(sens.model.dir.name.3),
                              unlist(sens.model.dir.name.4),
-                             unlist(sens.model.dir.name.5))
+                             unlist(sens.model.dir.name.5),
+                             unlist(sens.model.dir.name.6),
+                             unlist(sens.model.dir.name.7),
+                             unlist(sens.model.dir.name.8))
 
   ## Sensitivity models
   invisible(lapply(1:length(sens.model.names.list),
