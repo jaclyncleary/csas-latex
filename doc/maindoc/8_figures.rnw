@@ -1,5 +1,13 @@
 \section{FIGURES}
 
+% DFO precautionary approach zones
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{maindoc/figures/DFOPA.png}
+\caption{Zones in the Fisheries and Oceans Canada's precautionary approach paradigm.}
+\label{figDFOPA}
+\end{figure}
+
 % Map of BC
 \begin{figure}[H]
 \centering

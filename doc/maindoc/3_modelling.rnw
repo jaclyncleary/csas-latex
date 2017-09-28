@@ -116,7 +116,7 @@ We also show the number of biological samples by year (Figure \ref{figNumberAged
 Measurable declines in weight-at-age are evident for all major herring stocks, from the mid-1980s to 2010 as shown in Figure \ref{figWeightAge}.
 Declining weight-at-age may be attributed to any number of factors, including: fishing effects (i.e., gear selectivity), environmental effects (changes in ocean productivity), or it may be attributed to by changes in sampling protocols (shorter time frame over which samples are collected).
 Declining weight-at-age is observed in all five of the major stocks, and despite area closures over the last 10-years, has continued to occur in the HG and WCVI stocks.
-This trend has been observed in B.C. and U.S. waters, from California to Alaska (Schweigert et al., 2002).
+This trend has been observed in B.C. and U.S. waters, from California to Alaska \citep{schweigert2002}.
 Changes in weight at age are not unique to \Sexpr{fish.name}: they have also been observed in Pacific Hake (JTC 2014) and Pacific Halibut.
 The direct cause and influence of this decline should be investigated in the context of the assessment framework because changes in growth patterns will result different optimal harvest rate estimates like $F_\mli{MSY}$.
 In addition, weight at age is a key element for the calculation of key reference points that related to the scale of the stock size, like the unfished state $B_0$ and $B_\mli{MSY}$.  
@@ -166,10 +166,10 @@ Observed proportions-at-age from Gear 2 biological samples (roe seine, seine tes
 %Trends in proportion-at-age by Gear 1 and Gear 3 are included in Appendix XX.
 Adjustments made in analytical procedures included weighting Area 8 biological samples by their average relative contribution over the past 20 years (7\%), due to concerns that data acquired and used for the Central Coast area resulted from an uncommonly high number of samples (6 of 13) that were collected from Statistical Area 8 (which is historically an unfished area with consistently smaller (age 2) fish), Area 8; and, removing WCVI Statistical Area 24 samples, because it was determined that they were not representative.
 
-We also use the catch-at-age data for a catch curve analysis (Chapman and Robson, 1960) for ages 6--10.
+We also use the catch-at-age data for a catch curve analysis \citep{chapman1960} for ages 6--10.
 Here we determine static $Z_\mli{stat}$ from the traditional catch curve method (the slope of the log of catches at age) and also dynamically as $Z_\mli{dyn}=log(\sum P6-9, t\sum P7-10, t+1)$.
 Our main motivation for doing so was to check if the apparent time-varying natural mortality estimated by the assessment model could be confirmed using the data alone, and also to address some concerns expressed by participants at last year's review meeting about the validity of the assessment model estimating time-varying natural mortality ($M$).
-While the reliability of the catch curve method can be diminished by variable recruitment, time-varying $M$ and other factors, they have been shown to capture the general magnitude of the total mortality Z, in other fish stocks (Allen 1997, Thorson and Prager 2011).
+While the reliability of the catch curve method can be diminished by variable recruitment, time-varying $M$ and other factors, they have been shown to capture the general magnitude of the total mortality Z, in other fish stocks \citep{allen1997, thorson2011}.
 
 The assessment model's estimates of $Z$ are likely more reliable than either static or dynamic catch curve estimates because it explicitly accounts for variable recruitment and $F$ (that will distort catch curve estimates of $Z$ if they are variable).
 Understanding that the absolute value of $Z$ estimates would be incorrect with catch curve analyses, one key thing that we hoped to examine was if $Z$s estimated by the catch curve methods followed a similar pattern to ISCAM's estimates of $Z$ particularly for HG, CC and WCVI stock areas where after fishing ceased the only other source of changes in Z would be $M$.
@@ -259,12 +259,13 @@ A Bayesian statistical catch-at-age model was applied to assess each of the \Sex
 The model is based on the Integrated Statistical Catch Age Model (iSCAM) framework \citep{martell2011}.
 Full model details are provided in Appendix \ref{chap:equations}.
 
-Marginal posterior distributions for estimated model parameters were constructed using the AD Model Builder built in Metropolis-Hastings algorithm (Fournier et al., 2012).
+Marginal posterior distributions for estimated model parameters were constructed using the AD Model Builder built in Metropolis-Hastings algorithm \citep{fournier2012}.
 For each major assessment area, a systematic sample of 5,000 points were taken from a chain of length 5,000,000, intended to represent a random sample from the marginal posterior distribution.
-These analytical steps (Bayesian methods) are the same as were applied in September 2011 (Martell et al. 2012), September 2012 (Cleary et al. working paper; DFO 2012b), and September 2013 (Cleary et al. working paper; DFO 2014) and are consistent with previous years' assessments using HCAM (Cleary and Schweigert 2012; Schweigert et al. 2009).
+These analytical steps (Bayesian methods) are the same as were applied in September 2011 \citep{martell2011}, September 2012 [Cleary et al. working paper] \citep{herring2012b}, and September 2013 [Cleary et al. working paper] \citep{herring2014} and are consistent with previous years' assessments using HCAM \citep{cleary2012, schweigert2009}.
+% Not sure how to cite 'Cleary et al. working paper'
 This procedure integrates over the full range of uncertainty producing a posterior distribution for each parameter estimated in the model. Then, these samples are used to construct marginal distributions for derived quantities (e.g., SB0).
 See Appendix XX for technical description of model and applications.
-Priority areas of research identified during past CSAS meetings (2011-2013) are summarized in Appendix XX.
+Priority areas of research identified during past CSAS meetings (2011--2013) are summarized in Appendix XX.
 
 \subsubsection{Prior probability distributions}
 
@@ -317,13 +318,13 @@ Conclusion: proceed with `VX' `AMX' as our 'baseline', and include others as sen
 \subsubsection{Natural mortality}
 
 The base case for the assessment model assumes that the natural mortality $M$ is time varying where instantaneous natural mortality is assumed equal over all ages but varies over time \citep{fu2004}.
-The annual deviations in time varying M are estimated using a random walk process (Haist and Schweigert 2006).  
+The annual deviations in time varying M are estimated using a random walk process \citep{haist2006}.  
 For this sensitivity analysis we investigated the effects of estimating a single constant M over ages and time. 
-This scenario was applied to all stocks and assessment model versions (AM1 and AM2) and the results are shown in Figures XX
+This scenario was applied to all stocks and assessment model versions (AM1 and AM2) and the results are shown in Figures XX.
 
 .....MORE RESULTS NEEDED WHEN FIGURES ARE GENERATED....
 
-The model outcomes were influenced by the assumption on the estimation of M.
+The model outcomes were influenced by the assumption on the estimation of M. 
 There is support for inclusion of time varying M in this analysis as well as from the bridging analysis (Appendix E).  Both showed a reduction in the magnitude of retrospective patterns and improved coherence between assumed and empirical fits to the spawn survey index. 
 
 \subsubsection{Variance parameters}
@@ -339,17 +340,15 @@ This analysis showed that when both $\rho$ and $\kappa$ are estimated, the choic
 As shown in table XX for the Strait of Georgia.  This trend can also be seen in the bridging analysis below (Appendix E) for AM1, AM2, both parameterizations of $M$ in the first sensitivity analysis and all stocks.  In the bridging analysis we also investigated the effects of fixing either $\kappa$ or $\rho$ and only estimating one of these parameters at a time. Under these scenarios we found that the estimated results were influenced by the initial values of $\kappa$ and $\rho$, which is why the base case estimating both parameters was chosen.
 
 Tables XX to XX show all estimated results. 
-THESE ARE NOT THE CORRECT TABLES...We need to show the initial values as well as estimated values.Just for SOG AM1 and AM2 though...
-
-
+TABLES...We need to show the initial values as well as estimated values.Just for SOG AM1 and AM2 though...
 
 \subsubsection{Prior probability distributions for survey catchability}
 
-There are two versions of the stock assessment model that differ in the treatment of spawn survey catchability parameters ($q_1$ and $q_2$) for the surface survey period (1951-1987) and dive survey period (1988-2016), respectively.  
+There are two versions of the base stock assessment model that differ in the treatment of spawn survey catchability parameters ($q_1$ and $q_2$) for the surface survey period (1951-1987) and dive survey period (1988-2016), respectively.  
 The two models are labelled AM1 ($q_1$ and $q_2$ estimated with prior probability distributions) and AM2 ($q_1$ estimated, $q_2$=1).  
 
-There have been concerns that the results from applying the AM1 model have been too restricting to the resulting estimations.  
-Based on this concern and the results of the bridging analysis below (Appendix E) we conducted sensitivity analyses testing the effects of different prior standard deviations for both $q_1$ and $q_2$ used in the AM1 version of the assessment model. The different scenarios are listed in Table XX.
+There have been concerns that the results from applying the prior probability distributions on $q_1$ and $q_2$ in the AM1 model have been too restricting to the resulting estimations.  
+Based on this concern and the results of the bridging analysis below (Appendix E) we conducted sensitivity analyses testing the effects of tightening and broadening of the prior distribution on $q$ by changing the standard deviation of this prior while keeping the mean constant.  The different scenarios are listed in Table XX.
 
 Figure XX shows the influence of the standard deviations on the prior distributions. 
 .....NEED TO ADD THE PRIOR/POSTERIOR PLOT FIGURES FOR EACH SENSITIVITY AND POSSIBLY STOCK
@@ -361,18 +360,19 @@ Figure XX shows the effects of the different prior distributions on the estimate
 
 The base case maturity vector assumes 25\% of age-2 fish are mature, 90\% of age-3 fish are mature, and 100\% maturity for fish ages 4 and older. 
 From these assumptions the age of 50\% maturity is estimated to be approximately 2.3 years. 
-These base case values are fixed for all BC herring stocks at values indicated from histological assessment of developing ovaries (Hay, 1985; Hay and McCarter, 1997).  
-In the recent analysis identifying limit reference points for BC \Sexpr{fish.name} stocks, Kronlund et al. (2017) discuss the location of the maturity schedule in relation to estimation of FMSY. 
+These base case values are fixed for all BC herring stocks at values indicated from histological assessment of developing ovaries \citep{hay1985, hay1999}.  
+In the recent analysis identifying limit reference points for BC \Sexpr{fish.name} stocks, \citet{kronlund2017} discuss the location of the maturity schedule in relation to estimation of FMSY. 
 Specifically, the positioning of the maturity curve to the left of all the fishery selectivity curves contributed to high estimates of FMSY because when age at 50\% maturity is estimated to occur at a much younger age than 50\% selectivity, it essentially guarantees a large component of the population can spawn at least once before becoming vulnerable to any fishery. 
-This infers high sustainable harvest rates, and the estimates of FMSY reported in Kronlund et al. (2017) and in Cox et al. (2015) were among the highest produced for herring species worldwide.
+This infers high sustainable harvest rates, and the estimates of FMSY reported in \citet{kronlund2017} and in \citet{herring2015} were among the highest produced for herring species worldwide.
 The sensitivity analysis considered here involves setting the maturity at age vector equal to the selectivity of the seine roe fishery (gear 2) and then re-estimating equilibrium reference point FMSY. 
-Hay (1985) identify that age specific maturation varies with latitude and that generally, the warmer the water temperature the earlier the maturation of herring should occur. 
+\citet{hay1985} identify that age specific maturation varies with latitude and that generally, the warmer the water temperature the earlier the maturation of herring should occur. 
 Thus different stocks of BC \Sexpr{fish.name} may have different maturity schedules as they are distributed throughout different latitudes. 
 In the absence of recent histological studies to provide new estimates of maturity at age, we tested the model sensitivity to the fixed base values by setting the maturity at age vector equal to the selectivity of the seine roe fishery (gear 2). 
 These values are listed in Table \ref{tab:maturity}.  
 The selectivity of the seine roe fishery was chosen because the fishery targets pre-spawning aggregations with seine gear that is non size-selective, providing age composition samples from a mature portion of the population.  
 
-Summary of key MSY reference points for the base case and the maturity schedule sensitivity case (Table xx).
+The key MSY reference points for the base case and the maturity schedule sensitivity case are summarized in Table xx.  
+
 
 Changing maturity to equal selectivity doesn't make the Fmsy estimates "usable" in a management procedure. 
 

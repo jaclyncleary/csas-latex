@@ -115,6 +115,10 @@ CSAP Working Paper 2017PEL01.
 <<abstract, child='maindoc/1_abstract.rnw'>>=
 @
 
+% The next two lines are required to start off numbering
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
 <<introduction, child='maindoc/2_introduction.rnw'>>=
 @
 

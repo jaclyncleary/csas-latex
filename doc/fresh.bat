@@ -10,6 +10,7 @@ del *.ps
 del *.toc
 del *.txt
 del *.out
+del *-concordance.tex
 del *.synctex.gz*
 del res-doc.tex
 del res-doc.pdf
