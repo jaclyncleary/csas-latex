@@ -348,9 +348,11 @@ There are two versions of the base stock assessment model that differ in the tre
 The two models are labelled AM1 ($q_1$ and $q_2$ estimated with prior probability distributions) and AM2 ($q_1$ estimated, $q_2$=1).  
 
 There have been concerns that the results from applying the prior probability distributions on $q_1$ and $q_2$ in the AM1 model have been too restricting to the resulting estimations.  
-Based on this concern and the results of the bridging analysis below (Appendix E) we conducted sensitivity analyses testing the effects of tightening and broadening of the prior distribution on $q$ by changing the standard deviation of this prior while keeping the mean constant.  The different scenarios are listed in Table XX.
+Based on this concern and the results of the bridging analysis below (Appendix E) we conducted sensitivity analyses testing the effects of broadening of the prior distribution on $q$ by changing the standard deviation of this prior while keeping the mean constant.  In the base case for AM1 the q prior distributions have the mean set at 0.566 and the standard deviation set to 0.274 for both $q_1$ and $q_2$.  For the sensitivity scenarios we increased the standard deviation to 0.5, 2.0 and 3.0 for both $q_1$ and $q_2$.  
 
-Figure XX shows the influence of the standard deviations on the prior distributions. 
+Model estimates of are similar for all sensitivity cases and the base case (Figure X and Figure XX).  We see only minor increases in spawning biomass, depletion and natural mortality with increasing standard deviation and minor decrease in the estimates of $q_1$ and $q_2$.  
+
+Figure XX shows the influence of increasing the standard deviations on the prior and posterior distributions for both $q_1$ and $q_2$.   
 .....NEED TO ADD THE PRIOR/POSTERIOR PLOT FIGURES FOR EACH SENSITIVITY AND POSSIBLY STOCK
 
 Figure XX shows the effects of the different prior distributions on the estimates of some of the leading parameters. 
