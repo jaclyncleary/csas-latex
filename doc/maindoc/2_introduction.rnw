@@ -112,7 +112,7 @@ U'_{T+1} = \begin{cases}
 where $T$ is the terminal year for the stock assessment, $SB_{T+1}$ is the prefishery forecast biomass in year $T+1$, and $\mli{SB}_0$ is the unfished equilibrium spawning stock biomass.
 The output from the harvest control rule is the intended annual harvest rate, which is reduced to zero as the spawning stock is depleted to the level of $0.25\cdot\mli{SB}_0$.
 
-For the major stock areas, the harvest control rule is a hybrid that combines both constant escapement and constant harvest rate policies, allowing for a reduced harvest rate in areas where the intended 20\% annual harvest rate would bring the forecast pre-fishery mature spawning biomass (i.e., the `escapement') to levels below the cut-off value of $0.25\cdot\mli{SB}_0$ \citep{cleary2012}.  % JC: Is this the correct citation?
+For the major stock areas, the harvest control rule is a hybrid that combines both constant escapement and constant harvest rate policies, allowing for a reduced harvest rate in areas where the intended 20\% annual harvest rate would bring the forecast pre-fishery mature spawning biomass (i.e., the `escapement') to levels below the cut-off value of $0.25\cdot\mli{SB}_0$ \citep{cleary2010,cleary2012}.
 This cut-off value was selected based on simulation work (Hall 1986, Hall et al. 1988, Zheng et al. 1993, Haist et al. 1993)  suggesting that for stocks above the $0.25\cdot\mli{SB}_0$ level, that the hybrid HCR would produce lower catch variance and fewer fishery closures than a constant escapement rule.
 The simulation work focussed on an analysis of stock dynamics for the SOG stock only.
 
@@ -159,30 +159,32 @@ The USR and TRP can be equivalent, and the TRP cannot be lower than the USR.
 The USR is to be developed by fishery managers informed by consultations with the fishery and other interests, with advice and input from Science. 
 Although socio-economic factors may influence the location of the USR, these factors must not diminish its role in guiding management of the risk of approaching the LRP.
 
-Appendix F in \cite{kronlund2017} provides a broad review of approaches to establishing both limit and target reference points for herring stocks worldwide for clupeids. 
+Within the DFO PA Framework, the target harvest rate is intended to be reduced once stock biomass falls below the USR. Simulation-evaluation of proposed USR in conjunction with candidate HCRs provides an evidence-based approach for identifying USR placed sufficiently above the LRP to avoid the stock falling below the LRP with high probability.
+A comprehensive review of approaches to establishing both limit and target reference points for herring stocks worldwide for clupeids is included in Appendix F in \cite{kronlund2017}. 
 Relevant examples for establishing the USR include:
+(1) Interim USRs were defined at biomass levels to which stocks are expected to grow under average recruitment \citep{dfo2005}.
+Recommended for Southern Gulf of St. Lawrence Atlantic Herring
+(2) The USR, referred to as $B_BUF$, is defined as the lowest observed historical spawning-stock biomass which produced good recruitment.
+Recommended for West coast of Newfoundland (NAFO Div 4R) Atlantic Herring \citep{mcquinn1999}
+(3) The biological limit, $B_lim$ is established as the minimum spawning stock biomass that would ensure adequate recruitment based on available stock-recruitment information, and the $B_pa$, the precautionary level for stock biomass, is set at 5.0 million tonnes which is 2x the $B_lim$ of 2.5 million 
+Recommended for Norwegian spring-spawning herring \citep{tjelmeland2009}.
 
-(1) Southern Gulf of St. Lawrence Atlantic Herring
-Interim USRs were defined at biomass levels to which stocks are expected to grow under average recruitment \citep{dfo2005}.
-(2) West coast of Newfoundland (NAFO Div 4R) Atlantic Herring
-The USR, referred to as $B_BUF$, is defined as the lowest observed historical spawning-stock biomass which produced good recruitment \citep{mcquinn1999}.
-(3) Norwegian spring-spawning herring
-The biological limit, $B_lim$ is established as the minimum spawning stock biomass that would ensure adequate recruitment based on available stock-recruitment information, and the $B_pa$, the precautionary level for stock biomass, is set at 5.0 million tonnes which is 2x the $B_lim$ of 2.5 million \citep{tjelmeland2009}.
-In all these examples, the biological references points are implemented as the lower and upper operational control points (OCPs) in a hockey-stick shaped harvest control rule.
+In these examples, the biological references points are implemented as the lower and upper operational control points (OCPs) in a hockey-stick shaped harvest control rule.
 
-Other examples from Canadian fisheries include:
+For Canadian fisheries in the Maritimes Region, a commonly used approach to defining the USR (and the boundary between the cautious and healthy zones) is to set the USR equal to 2x the LRP.
+The following model-based approaches are used \citep{dfo2012}:
+(4) Set the LRP at 40\% of spawning stock biomass at maximum sustainable yield ($SSB_MSY$) and the USR at 80\% of $SSB_MSY$
+Recommended for 3NOPs4VWX+5 Atlantic Halibut, 4VsW Atlantic Cod, 4X5Y Haddock, 4VWX American Plaice;
+(5) LRP established based on analysis of stock-recruitment data, with proposed USR equal to 2x the LRP
+Recommended for 4X5Y Atlantic Cod;
+(6) Reference points based on analysis of carrying capacity: LRP at 25\% of carrying capacity and USR at 50\% of carrying capacity
+Recommended for 4VWX Snow Crab.
 
-(1)
-(2)
-(3)
+Where model-based estimates were not available, empirical approaches to approximating $B_MSY$ are used, with LRP and USR set at 40\% and 80\% of $B_MSY$ proxies \citep{dfo2012}.
 
+\cite{Sinclair-Starr:2005} suggest using the long-term average biomass ($B_avg$) as a proxy USR. This approach of defining a historical target reference point is recommended for Rock Sole \citep{holt-starr:2016} and for Pacific cod \citep{forrest2015}. An alternative to using the long-term average biomass is the average biomass during a productive period ($B_avg-prod$).
 
-
-
-
-However, BMSY is commonly regarded as a target level (e.g., UN 2002).  
-
-
+Jaclyn is HERE
 Check: APPENDIX F MANAGEMENT PARAMETERS FOR HERRING STOCKS (Kronlund et al. 2017)
 
 \subsection{ASSESSMENT HISTORY}
