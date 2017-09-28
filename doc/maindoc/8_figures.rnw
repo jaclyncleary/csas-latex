@@ -1557,7 +1557,7 @@ make.q.plot(list(wcvi.b,
 %% @
 %% \end{center}
 %% \caption{Pairs plots for MCMC output of estimated parameters in for the Haida
-%%   Gwaii AM2 model with constant natural mortality.
+%%   Gwaii AM2 model with time-varying natural mortality.
 %%   See Figure~\ref{fig:hg-traces} for parameter descriptions.}
 %% \label{fig:hg-tvm-pairs}
 %% \end{figure}
@@ -1649,7 +1649,7 @@ make.q.plot(list(wcvi.b,
 %% @
 %% \end{center}
 %% \caption{Pairs plots for MCMC output of estimated parameters in for the
-%%   Prince Rupert District AM2 model with constant natural mortality.
+%%   Prince Rupert District AM2 model with time-varying natural mortality.
 %%   See Figure~\ref{fig:prd-traces} for parameter descriptions.}
 %% \label{fig:prd-tvm-pairs}
 %% \end{figure}
@@ -1741,7 +1741,7 @@ make.q.plot(list(wcvi.b,
 %% @
 %% \end{center}
 %% \caption{Pairs plots for MCMC output of estimated parameters in for the
-%%   Central Coast AM2 model with constant natural mortality.
+%%   Central Coast AM2 model with time-varying natural mortality.
 %%   See Figure~\ref{fig:prd-traces} for parameter descriptions.}
 %% \label{fig:cc-tvm-pairs}
 %% \end{figure}
@@ -1833,7 +1833,7 @@ make.q.plot(list(wcvi.b,
 %% @
 %% \end{center}
 %% \caption{Pairs plots for MCMC output of estimated parameters in for the
-%%   Strait of Georgia AM2 model with constant natural mortality.
+%%   Strait of Georgia AM2 model with time-varying natural mortality.
 %%   See Figure~\ref{fig:prd-traces} for parameter descriptions.}
 %% \label{fig:sog-tvm-pairs}
 %% \end{figure}
@@ -1925,7 +1925,7 @@ make.q.plot(list(wcvi.b,
 %% @
 %% \end{center}
 %% \caption{Pairs plots for MCMC output of estimated parameters in for the
-%%   WCVI AM2 model with constant natural mortality.
+%%   WCVI AM2 model with time-varying natural mortality.
 %%   See Figure~\ref{fig:prd-traces} for parameter descriptions.}
 %% \label{fig:wcvi-tvm-pairs}
 %% \end{figure}
