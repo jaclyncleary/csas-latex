@@ -7,7 +7,7 @@ Biological parameters used in the model, including growth, weight-at-age and mat
 
 Reference points based on Maximum Sustainable Yield (MSY), including the female spawning biomass (\emph{B}\subscr{MSY}) and the annual harvest rate producing MSY (\emph{U}\subscr{MSY}), were estimated, along with reference points based on estimated equilibrium unfished spawning biomass, \emph{B}\subscr{0} (Section XX).
 Harvest decision tables (Tables~XX and XX) were created by projecting the assessment model one year into the future under a range of constant catch levels.
-For each level of catch, decision tables show the probability that projected spawning biomass in 2016 will be less than spawning biomass-based reference points, and the probablity that 2015 harvest rate will be greater than harvest rate-based reference points (Section XX).
+For each level of catch, decision tables show the probability that projected spawning biomass in 2016 will be less than spawning biomass-based reference points, and the probablity that 2015 harvest rate will be greater than harvest rate-based reference points (Section \ref{secDecisionTables}).
 
 \subsection{INPUT DATA}
 
@@ -17,7 +17,7 @@ Tables of all the data inputs are in Appendix \ref{chap:input}.
 This section describes sources of fishery-dependent data representing catch amounts and observations from commercial and test fishery biological sampling and fishery-independent data representing surface and dive \Sexpr{common.name} spawn surveys.
 The test fishery and purse seine biological samples consist of two important data types: mean weight-at-age and proportion-at-age data.
 The survey data, weight-at-age data, and proportion-at-age data are used as input for the assessment model.
-Observed trends in the data are presented in this section but key observations are interpreted in association with assessment model results (Section XX).
+Observed trends in the data are presented in this section but key observations are interpreted in association with assessment model results (Section \ref{secModelResults}).
 To help readers view and collective data sets we summarize them by major stock area in Figure XX - Figure XX.
 
 \subsubsection{Catch data}
@@ -136,7 +136,7 @@ The spawn survey indices provide information about how the relative stock size h
 \begin{resdoclist}
   \item Description of surveys (surface and dive)
   \item 2 stage model, presence only
-  \item Instead of repeating background/methods/statistics/equations from our Spawn Index technical report, it would be much easier to cite it as `in progress' (or whatever the correct term is) and circulate a draft PDF---it's in a pretty decent state
+  \item Instead of repeating background/methods/statistics/equations from our Spawn Index technical report, it would be much easier to provide a link to the draft PDF (or email it around with this draft): \href{https://github.com/grinnellm/HerringSpawnDocumentation}{spawn index technical report} -- need to put the PDF on GitHub
 \end{resdoclist}
 
 Herring spawn surveys have been conducted throughout the B.C. coast beginning in the 1930s.
@@ -151,13 +151,13 @@ Estimates of spawn length, spawn width, and average number of egg layers are pre
 
 For the purposes of stock assessment, spawn survey data are represented as two independent indices: (1) surface survey index from 1951--1987 and (2) dive survey index from 1988--\Sexpr{assess.yr}.
 Spawn indices are an output of the Herring Stock Assessment Database, in units of metric tonnes of herring spawning biomass.
-Time series of spawn index by major stock area, from 1951--1987 (surface observations) and 1988--\Sexpr{assess.yr} (dive observations) are summarized in Figure XX.
+Time series of spawn index by major stock area, from 1951--1987 (surface observations) and 1988--\Sexpr{assess.yr} (dive observations) are summarized in Figure \ref{figSpawnIndex}.
 It is worth noting that since 1988, some early and late season surface surveys have been conducted, representing a small proportion of total spawn survey in a given area (Appendix XX).
 These surface data were processed so that their average width estimates are in a comparable format to those from dive survey data and surface survey average width estimates were rolled up with dive survey estimates.
 In 3 of the major stock areas (HG, PRD and CC), numeric estimates of spawning biomass (spawn index values) decreased in 2014 over 2013.
 In the other 2 stock areas (SOG and WCVI), numeric estimates of spawning biomass (spawn index values) increased in 2014 over 2013.
-Execution of the 2014 spawn survey followed all standard protocols as described in the 2013 version of Herring Spawn Survey Manual
-(\url{http://www.pac.dfo-mpo.gc.ca/science/species-especes/pelagic-pelagique/herring-hareng/hertags/pdf/SurveyManual.pdf})
+Execution of the 2014 spawn survey followed all standard protocols as described in the 2013 version of the 
+\href{http://www.pac.dfo-mpo.gc.ca/science/species-especes/pelagic-pelagique/herring-hareng/hertags/pdf/SurveyManual.pdf}{herring spawn survey manual}
 and there were no in-season or post-season concerns raised by the HCRS (contractor) or the DFO Area Managers that would raise concern around the quality of spawn survey data collected this season.
 
 \subsubsection{Proportion-at-age and catch-at-age}
@@ -301,7 +301,7 @@ See Appendix~\ref{chap:equations} for description of reference points calculatio
 
 \subsection{SENSITIVITY ANALYSES}
 
-We tested the sensitivity of the model estimates to the following assumptions:
+We tested the sensitivity of the results from base case assessment model identified in the bridging analysis in Appendix E to the following assumptions:
 
 \begin{resdoclist}
   \item Assumed time varying natural mortality
@@ -310,33 +310,52 @@ We tested the sensitivity of the model estimates to the following assumptions:
   \item The assumed fixed values for maturity at age
 \end{resdoclist}
 
-Results for each are presented below.
+Further details and results for each of these sensitivity analyses are presented below.
 
 Conclusion: proceed with `VX' `AMX' as our 'baseline', and include others as sensitivities?
 
 \subsubsection{Natural mortality}
 
-The base case for the assessment model assumes that the 
+The base case for the assessment model assumes that the natural mortality $M$ is time varying where instantaneous natural mortality is assumed equal over all ages but varies over time \citep{fu2004}.
+The annual deviations in time varying M are estimated using a random walk process (Haist and Schweigert 2006).  
+For this sensitivity analysis we investigated the effects of estimating a single constant M over ages and time. 
+This scenario was applied to all stocks and assessment model versions (AM1 and AM2) and the results are shown in Figures XX
+
+.....MORE RESULTS NEEDED WHEN FIGURES ARE GENERATED....
+
+The model outcomes were influenced by the assumption on the estimation of M.
+There is support for inclusion of time varying M in this analysis as well as from the bridging analysis (Appendix E).  Both showed a reduction in the magnitude of retrospective patterns and improved coherence between assumed and empirical fits to the spawn survey index. 
 
 \subsubsection{Variance parameters}
 
 
 The key variance parameter in the errors-in-variables approach is the inverse of the total variance $\varphi^-2$ (i.e., total precision, varphi). 
 The total variance is partitioned into observation and process error components by the model parameter rho $\rho$, which is the proportion of the total variance that is due to observation error (Punt and Butterworth 1993, Deriso et al. 2007). 
-In ISCAM, standard deviations in process error (tau, $\tau$) and observation error (sigma, $\sigma$) are related and modelled using the following equations for kappa $\kappa$ and rho $\rho$.
+In ISCAM, standard deviations in process error (tau, $\tau$) and observation error (sigma, $\sigma$) are related and modelled using  equations XX for kappa $\kappa$ and rho $\rho$.
 The base case initial values for $\kappa$ and $\rho$ were set equal to MPD estimated values from the 2016 assessment, which resulted in an observation error term ($\sigma=0.58$) and a process error term ($\tau=0.69$).  
 We tested model sensitivity to these initial values by varying $\vartheta^2$ and $\rho$ while estimating all leading parameters.
 
+This analysis showed that when both $\rho$ and $\kappa$ are estimated, the choice of initial value for $\rho$ and $\kappa$ does not impact estimated model parameters. 
+As shown in table XX for the Strait of Georgia.  This trend can also be seen in the bridging analysis below (Appendix E) for AM1, AM2, both parameterizations of $M$ in the first sensitivity analysis and all stocks.  In the bridging analysis we also investigated the effects of fixing either $\kappa$ or $\rho$ and only estimating one of these parameters at a time. Under these scenarios we found that the estimated results were influenced by the initial values of $\kappa$ and $\rho$, which is why the base case estimating both parameters was chosen.
 
-This analysis showed that when both $\rho$ and $\kappa$ are estimated as they are in the base case, the choice of initial value for $\rho$ and $\kappa$ does not impact estimated model parameters. 
-This is the same for AM1, AM2 and both parameterizations of $M$.
-Tables \ref{tab:hg-parameters-posts} to \ref{tab:wcvi-parameters-posts} show all estimated results.
+Tables XX to XX show all estimated results. 
+THESE ARE NOT THE CORRECT TABLES...We need to show the initial values as well as estimated values.Just for SOG AM1 and AM2 though...
 
-Matt: here is where we need the table from Sarah (with rho and kappa sensitivites) 
 
-\subsubsection{Prior probabilities on survey catchability}
 
-[Placeholder]
+\subsubsection{Prior probability distributions for survey catchability}
+
+There are two versions of the stock assessment model that differ in the treatment of spawn survey catchability parameters ($q_1$ and $q_2$) for the surface survey period (1951-1987) and dive survey period (1988-2016), respectively.  
+The two models are labelled AM1 ($q_1$ and $q_2$ estimated with prior probability distributions) and AM2 ($q_1$ estimated, $q_2$=1).  
+
+There have been concerns that the results from applying the AM1 model have been too restricting to the resulting estimations.  
+Based on this concern and the results of the bridging analysis below (Appendix E) we conducted sensitivity analyses testing the effects of different prior standard deviations for both $q_1$ and $q_2$ used in the AM1 version of the assessment model. The different scenarios are listed in Table XX.
+
+Figure XX shows the influence of the standard deviations on the prior distributions. 
+.....NEED TO ADD THE PRIOR/POSTERIOR PLOT FIGURES FOR EACH SENSITIVITY AND POSSIBLY STOCK
+
+Figure XX shows the effects of the different prior distributions on the estimates of some of the leading parameters. 
+.......NEED TO ADD THE 4 panel plots for each AM1qa, AM1qb, and AM1qc with Sbt, Depletion, Mt, qt
 
 \subsubsection{Maturity at age}
 
@@ -350,12 +369,14 @@ The sensitivity analysis considered here involves setting the maturity at age ve
 Hay (1985) identify that age specific maturation varies with latitude and that generally, the warmer the water temperature the earlier the maturation of herring should occur. 
 Thus different stocks of BC \Sexpr{fish.name} may have different maturity schedules as they are distributed throughout different latitudes. 
 In the absence of recent histological studies to provide new estimates of maturity at age, we tested the model sensitivity to the fixed base values by setting the maturity at age vector equal to the selectivity of the seine roe fishery (gear 2). 
-These values are listed in Table XX.  
+These values are listed in Table \ref{tab:maturity}.  
 The selectivity of the seine roe fishery was chosen because the fishery targets pre-spawning aggregations with seine gear that is non size-selective, providing age composition samples from a mature portion of the population.  
 
 Summary of key MSY reference points for the base case and the maturity schedule sensitivity case (Table xx).
 
-\subsection{ASSESSMENT MODEL RESULTS}
+Changing maturity to equal selectivity doesn't make the Fmsy estimates "usable" in a management procedure. 
+
+\subsection{ASSESSMENT MODEL RESULTS}\label{secModelResults}
 
 [Placeholder]
 
@@ -410,7 +431,7 @@ With no apparent recruitment entering the spawning population in 2014 and simila
 The base case assessment estimates relatively small declines in spawning stock biomass in 2014 (Figure \ref{figStoryboardAM2PRD}).
 The survey data indicate declines of approximately 35\% - however the model over-fits the most recent observation (Appendix XX).
 The model's historical reconstructions using the full set of age-composition data of the predicted survey biomass have not estimated the same, occasionally very large changes in the index: for example the decline from 2005 from 28 kt to 10 kt 2004 or from 12 kt to 28kt between 2009 and 2010; so that the model's estimate of the survey variance is relatively high (at the MPD, sigma=0.46).
-As it was in HG, the model estimates that the last large recruitment event was in 2012 and that there is no evidence for large 2013 or 2014 cohorts (Figure XX, Table XX).
+As it was in HG, the model estimates that the last large recruitment event was in 2012 and that there is no evidence for large 2013 or 2014 cohorts (Figure \ref{figStoryboardAM2PRD}, Table XX).
 Natural mortality is estimated to be highly uncertain, with trajectories that are a range of decreasing, stable, and increasing (Figure \ref{figStoryboardAM2PRD}).
 The base case estimates that current median (90\% credibility intervals) spawning stock biomass is 29 (16, 51) kt (Figure \ref{figStoryboardAM2PRD}, Table XX) and depletion levels in 2014 than in 2013 (Figure XX), estimated to be 0.46 (0.23, 84) (Table XX).
 
@@ -426,14 +447,14 @@ The 2014 spawning stock biomass and depletion levels estimated to be 24 (14,41) 
 \textbf{Strait of Georgia}
 
 The model fits the recent spawn survey index and age composition data (Figure \ref{figStoryboardAM2SoG}) by estimating both relatively large recent recruitments (2010 particularly) and improved survival of through natural mortality of all cohorts (Figure \ref{figStoryboardAM2SoG}, Table XX).
-The model fits recent increasing trends in spawn survey index (Appendix \ref{chap:input}) and estimates recent spawning stock biomass trajectory that has been increasing since 2010 (Figure XX).
+The model fits recent increasing trends in spawn survey index (Appendix \ref{chap:input}) and estimates recent spawning stock biomass trajectory that has been increasing since 2010 (Figure \ref{figSpawnIndex}).
 The current spawning stock biomass and depletion levels are 186 (116, 289) kt and 1.31 (0.84, 1.96) respectively (Table XX).
 
 \textbf{West Coast of Vancouver Island}
 
 To fit the recent age composition and survey data, the model estimates a slow upward trajectory for the stock.
-The model fits the most recent spawn survey index (Appendix XX) and explains the combination of the survey index and the proportions at age data that are dominated by 3 year old fish) as a large recruitment (Figure XX).
-Natural mortality is very uncertain with an apparent decline in the median estimate but a range of trajectories that include increasing and stable (Figure XX).
+The model fits the most recent spawn survey index (Appendix \ref{chap:input}) and explains the combination of the survey index and the proportions at age data that are dominated by 3 year old fish) as a large recruitment (Figure \ref{figStoryboardAM2WCVI}).
+Natural mortality is very uncertain with an apparent decline in the median estimate but a range of trajectories that include increasing and stable (Figure \ref{figStoryboardAM2WCVI}).
 Driven by the estimates recent recruitments and lower natural mortality, the assessment estimates 2014 spawning stock biomass and depletion levels of 30 (18,52) kt and 0.52 (0.31, 0.84) respectively (Table XX).
 
 \subsubsection{Recruitment}

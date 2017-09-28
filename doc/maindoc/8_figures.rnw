@@ -134,8 +134,8 @@ Vertical red lines indicate medians, and shaded red rectangles indicate \Sexpr{c
 \begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{\Sexpr{locOutput}/BevertonHolt.png}
-\caption{Beverton-Holt stock-recruitment relationship for \Sexpr{fish.name} in the major stock assessment regions (SARs) for model \Sexpr{mNames[1]}.
-Points show MPD estimates, and the current year, \Sexpr{max(yrRange)} is coloured black.
+\caption{Beverton-Holt stock-recruitment relationship using MPD estimates for \Sexpr{fish.name} in the major stock assessment regions (SARs) for model \Sexpr{mNames[1]}.
+\darkThisYr{}
 Lines indicate MPD Beverton-Holt stock-recruitment relationships.
 Triangles indicate MPD estimates of unfished spawning biomass, $\mli{SB}_0$, and unfished age-\Sexpr{ageRec} recruitment, $R_0$.
 Legend: tonnes (t).}
@@ -579,6 +579,712 @@ make.selex.comparison.plot(wcvi.b, gear.names, leg = "bottomright")
 \label{fig:wcvi-selex}
 \end{figure}
 %%------------------------------------------------------------------------------
+
+%%------------------------------------------------------------------------------
+%% Sensitivity plots
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg.index.surface.fit>>=
+make.index.fit.plot(list(hg.b,
+                         hg.am1,
+                         hg.am2.constm,
+                         hg.am2.tvm),
+                    start.yr = 1950,
+                    end.yr = 2016,
+                    ind = 1,
+                    leg = "topright",
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 60))
+@
+\end{center}
+\caption{Natural mortality sensitivity model index fits (lines) and inputs
+  (points and bars) for the Haida Gwaii surface survey.}
+\label{fig:hg-index-surface-fit}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<hg.index.dive.fit>>=
+make.index.fit.plot(list(hg.b,
+                         hg.am1,
+                         hg.am2.constm,
+                         hg.am2.tvm),
+                    start.yr = 1950,
+                    end.yr = 2016,
+                    ind = 2,
+                    leg = "topleft",
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 60))
+@
+\end{center}
+\caption{Natural mortality sensitivity model index fits (lines) and inputs
+  (points and bars) for the Haida Gwaii dive survey.}
+\label{fig:hg-index-dive-fit}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<prd.index.surface.fit>>=
+make.index.fit.plot(list(pr.b,
+                         pr.am1,
+                         pr.am2.constm,
+                         pr.am2.tvm),
+                    start.yr = 1950,
+                    end.yr = 2016,
+                    ind = 1,
+                    leg = "topright",
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 60))
+@
+\end{center}
+\caption{Natural mortality sensitivity model index fits (lines) and inputs
+  (points and bars) for the Prince Rupert District
+  surface survey.}
+\label{fig:prd-index-surface-fit}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<prd.index.dive.fit>>=
+make.index.fit.plot(list(pr.b,
+                         pr.am1,
+                         pr.am2.constm,
+                         pr.am2.tvm),
+                    start.yr = 1950,
+                    end.yr = 2016,
+                    ind = 2,
+                    leg = "topleft",
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 60))
+@
+\end{center}
+\caption{Natural mortality sensitivity model index fits (lines) and inputs
+  (points and bars) for the Prince Rupert District
+  dive survey.}
+\label{fig:prd-index-dive-fit}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<cc.index.surface.fit>>=
+make.index.fit.plot(list(cc.b,
+                         cc.am1,
+                         cc.am2.constm,
+                         cc.am2.tvm),
+                    start.yr = 1950,
+                    end.yr = 2016,
+                    ind = 1,
+                    leg = "topright",
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 60))
+@
+\end{center}
+\caption{Natural mortality sensitivity model index fits (lines) and inputs
+  (points and bars) for the Central Coast surface survey.}
+\label{fig:cc-index-surface-fit}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<cc.index.dive.fit>>=
+make.index.fit.plot(list(cc.b,
+                         cc.am1,
+                         cc.am2.constm,
+                         cc.am2.tvm),
+                    start.yr = 1950,
+                    end.yr = 2016,
+                    ind = 2,
+                    leg = "topleft",
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 60))
+@
+\end{center}
+\caption{Natural mortality sensitivity model index fits (lines) and inputs
+  (points and bars) for the Central Coast
+  dive survey.}
+\label{fig:cc-index-dive-fit}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<sog.index.surface.fit>>=
+make.index.fit.plot(list(sog.b,
+                         sog.am1,
+                         sog.am2.constm,
+                         sog.am2.tvm),
+                    start.yr = 1950,
+                    end.yr = 2016,
+                    ind = 1,
+                    leg = "topright",
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 220))
+@
+\end{center}
+\caption{Natural mortality sensitivity model index fits (lines) and inputs
+  (points and bars) for the Strait of Georgia
+  surface survey.}
+\label{fig:sog-index-surface-fit}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<sog.index.dive.fit>>=
+make.index.fit.plot(list(sog.b,
+                         sog.am1,
+                         sog.am2.constm,
+                         sog.am2.tvm),
+                    start.yr = 1950,
+                    end.yr = 2016,
+                    ind = 2,
+                    leg = "topleft",
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 220))
+@
+\end{center}
+\caption{Natural mortality sensitivity model index fits (lines) and inputs
+  (points and bars) for the Strait of Georgia
+  dive survey.}
+\label{fig:sog-index-dive-fit}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.index.surface.fit>>=
+make.index.fit.plot(list(wcvi.b,
+                         wcvi.am1,
+                         wcvi.am2.constm,
+                         wcvi.am2.tvm),
+                    start.yr = 1950,
+                    end.yr = 2016,
+                    ind = 1,
+                    leg = "topright",
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 150))
+@
+\end{center}
+\caption{Natural mortality sensitivity model index fits (lines) and inputs
+  (points and bars) for the WCVI
+  surface survey.}
+\label{fig:wcvi-index-surface-fit}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.index.dive.fit>>=
+make.index.fit.plot(list(wcvi.b,
+                         wcvi.am1,
+                         wcvi.am2.constm,
+                         wcvi.am2.tvm),
+                    start.yr = 1950,
+                    end.yr = 2016,
+                    ind = 2,
+                    leg = "topleft",
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 150))
+@
+\end{center}
+\caption{Natural mortality sensitivity model index fits (lines) and inputs
+  (points and bars) for the WCVI
+  dive survey.}
+\label{fig:wcvi-index-dive-fit}
+\end{figure}
+%%------------------------------------------------------------------------------
+%% Sensitivity to M biomass plots
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg.biomass.m>>=
+make.biomass.mcmc.plot(list(hg.b,
+                            hg.am1,
+                            hg.am2.constm,
+                            hg.am2.tvm),
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 250),
+                    leg = "topright",
+                    show.bo.line = TRUE)
+@
+\end{center}
+\caption{Natural mortality sensitivity model biomass trajectories
+  for the Haida Gwaii stock.}
+\label{fig:hg-biomass-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<prd.biomass.m>>=
+make.biomass.mcmc.plot(list(pr.b,
+                            pr.am1,
+                            pr.am2.constm,
+                            pr.am2.tvm),
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 120),
+                    leg = "topright",
+                    show.bo.line = TRUE)
+@
+\end{center}
+\caption{Natural mortality sensitivity model biomass trajectories
+  for the Prince Rupert District stock.}
+\label{fig:prd-biomass-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<cc.biomass.m>>=
+make.biomass.mcmc.plot(list(cc.b,
+                            cc.am1,
+                            cc.am2.constm,
+                            cc.am2.tvm),
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 150),
+                    leg = "topright",
+                    show.bo.line = TRUE)
+@
+\end{center}
+\caption{Natural mortality sensitivity model biomass trajectories
+  for the Central Coast stock.}
+\label{fig:prd-biomass-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<sog.biomass.m>>=
+make.biomass.mcmc.plot(list(sog.b,
+                            sog.am1,
+                            sog.am2.constm,
+                            sog.am2.tvm),
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 350),
+                    leg = "topright",
+                    show.bo.line = TRUE)
+@
+\end{center}
+\caption{Natural mortality sensitivity model biomass trajectories
+  for the Strait of Georgia stock.}
+\label{fig:sog-biomass-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.biomass.m>>=
+make.biomass.mcmc.plot(list(wcvi.b,
+                            wcvi.am1,
+                            wcvi.am2.constm,
+                            wcvi.am2.tvm),
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    ylim = c(0, 250),
+                    leg = "topright",
+                    show.bo.line = TRUE)
+@
+\end{center}
+\caption{Natural mortality sensitivity model biomass trajectories
+  for the WCVI stock.}
+\label{fig:wcvi-biomass-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+%% Sensitivity to M recruitment deviation plots
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg.recdevs.m>>=
+make.recr.mcmc.plot(list(hg.b,
+                         hg.am1,
+                         hg.am2.constm,
+                         hg.am2.tvm),
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    type = 2,
+                    offset = 0.1,
+                    ylim = c(-4, 4),
+                    leg = "topright")
+@
+\end{center}
+\caption{Natural mortality sensitivity model recruitment deviations
+  for the Haida Gwaii stock.}
+\label{fig:hg-recdevs-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<prd.recdevs.m>>=
+make.recr.mcmc.plot(list(pr.b,
+                         pr.am1,
+                         pr.am2.constm,
+                         pr.am2.tvm),
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    type = 2,
+                    offset = 0.1,
+                    ylim = c(-4, 4),
+                    leg = "topright")
+@
+\end{center}
+\caption{Natural mortality sensitivity model recruitment deviations
+  for the Prince Rupert District stock.}
+\label{fig:prd-recdevs-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<cc.recdevs.m>>=
+make.recr.mcmc.plot(list(cc.b,
+                         cc.am1,
+                         cc.am2.constm,
+                         cc.am2.tvm),
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    type = 2,
+                    offset = 0.1,
+                    ylim = c(-4, 4),
+                    leg = "topright")
+@
+\end{center}
+\caption{Natural mortality sensitivity model recruitment deviations
+  for the Central Coast stock.}
+\label{fig:cc-recdevs-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<sog.recdevs.m>>=
+make.recr.mcmc.plot(list(sog.b,
+                         sog.am1,
+                         sog.am2.constm,
+                         sog.am2.tvm),
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    type = 2,
+                    offset = 0.1,
+                    ylim = c(-4, 4),
+                    leg = "topright")
+@
+\end{center}
+\caption{Natural mortality sensitivity model recruitment deviations
+  for the Strait of Georgia stock.}
+\label{fig:sog-recdevs-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.recdevs.m>>=
+make.recr.mcmc.plot(list(wcvi.b,
+                         wcvi.am1,
+                         wcvi.am2.constm,
+                         wcvi.am2.tvm),
+                    model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                    type = 2,
+                    offset = 0.1,
+                    ylim = c(-4, 4),
+                    leg = "topright")
+@
+\end{center}
+\caption{Natural mortality sensitivity model recruitment deviations
+  for the WCVI stock.}
+\label{fig:wcvi-recdevs-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+%% Sensitivity to M Fishing mortality plots
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg.f.gear1.m>>=
+make.fishing.mort.mcmc.plot(list(hg.b,
+                                      hg.am1,
+                                      hg.am2.constm,
+                                      hg.am2.tvm),
+                                 model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                                 which.gear = 1,
+                                 ylim = c(0,17),
+                                 leg = "topright")
+@
+\end{center}
+\caption{Natural mortality sensitivity model recruitment deviations
+  for the Haida Gwaii stock for gear 1.}
+\label{fig:hg-f-gear1-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<hg.f.gear2.m>>=
+make.fishing.mort.mcmc.plot(list(hg.b,
+                                      hg.am1,
+                                      hg.am2.constm,
+                                      hg.am2.tvm),
+                                 model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                                 which.gear = 2,
+                                 ylim = c(0,1),
+                                 leg = "topleft")
+@
+\end{center}
+\caption{Natural mortality sensitivity model recruitment deviations
+  for the Haida Gwaii stock for gear 2.}
+\label{fig:hg-f-gear2-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<hg.f.gear3.m>>=
+make.fishing.mort.mcmc.plot(list(hg.b,
+                                      hg.am1,
+                                      hg.am2.constm,
+                                      hg.am2.tvm),
+                                 model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                                 which.gear = 3,
+                                 ylim = c(0,0.6),
+                                 leg = "topleft")
+@
+\end{center}
+\caption{Natural mortality sensitivity model recruitment deviations
+  for the Haida Gwaii stock for gear 3.}
+\label{fig:hg-f-gear3-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<prd.f.gear1.m>>=
+make.fishing.mort.mcmc.plot(list(pr.b,
+                                 pr.am1,
+                                 pr.am2.constm,
+                                 pr.am2.tvm),
+                                 model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                                 which.gear = 1,
+                                 ylim = c(0,6),
+                                 leg = "topright")
+@
+\end{center}
+\caption{Natural mortality sensitivity model recruitment deviations
+  for the Prince Rupert District stock for gear 1.}
+\label{fig:prd-f-gear1-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<prd.f.gear2.m>>=
+make.fishing.mort.mcmc.plot(list(pr.b,
+                                 pr.am1,
+                                 pr.am2.constm,
+                                 pr.am2.tvm),
+                                 model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                                 which.gear = 2,
+                                 ylim = c(0,0.5),
+                                 leg = "topright")
+@
+\end{center}
+\caption{Natural mortality sensitivity model recruitment deviations
+  for the Prince Rupert District stock for gear 2.}
+\label{fig:prd-f-gear2-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<prd.f.gear3.m>>=
+make.fishing.mort.mcmc.plot(list(pr.b,
+                                 pr.am1,
+                                 pr.am2.constm,
+                                 pr.am2.tvm),
+                                 model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                                 which.gear = 3,
+                                 ylim = c(0,1.3),
+                                 leg = "topleft")
+@
+\end{center}
+\caption{Natural mortality sensitivity model recruitment deviations
+  for the Prince Rupert District stock for gear 3.}
+\label{fig:prd-f-gear3-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<cc.f.gear1.m>>=
+make.fishing.mort.mcmc.plot(list(cc.b,
+                                 cc.am1,
+                                 cc.am2.constm,
+                                 cc.am2.tvm),
+                                 model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                                 which.gear = 1,
+                                 ylim = c(0,7),
+                                 leg = "topright")
+@
+\end{center}
+\caption{Natural mortality sensitivity model recruitment deviations
+  for the Central Coast stock for gear 1.}
+\label{fig:cc-f-gear1-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<cc.f.gear2.m>>=
+make.fishing.mort.mcmc.plot(list(cc.b,
+                                 cc.am1,
+                                 cc.am2.constm,
+                                 cc.am2.tvm),
+                                 model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                                 which.gear = 2,
+                                 ylim = c(0,1.2),
+                                 leg = "topleft")
+@
+\end{center}
+\caption{Natural mortality sensitivity model recruitment deviations
+  for the Central Coast stock for gear 2.}
+\label{fig:cc-f-gear2-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<cc.f.gear3.m>>=
+make.fishing.mort.mcmc.plot(list(cc.b,
+                                 cc.am1,
+                                 cc.am2.constm,
+                                 cc.am2.tvm),
+                                 model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                                 which.gear = 3,
+                                 ylim = c(0,1.3),
+                                 leg = "topright")
+@
+\end{center}
+\caption{Natural mortality sensitivity model recruitment deviations
+  for the Central Coast stock for gear 3.}
+\label{fig:cc-f-gear3-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<sog.f.gear1.m>>=
+make.fishing.mort.mcmc.plot(list(sog.b,
+                                 sog.am1,
+                                 sog.am2.constm,
+                                 sog.am2.tvm),
+                                 model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                                 which.gear = 1,
+                                 ylim = c(0,4),
+                                 leg = "topright")
+@
+\end{center}
+\caption{Natural mortality sensitivity model recruitment deviations
+  for the Strait of Georgia stock for gear 1.}
+\label{fig:sog-f-gear1-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<sog.f.gear2.m>>=
+make.fishing.mort.mcmc.plot(list(sog.b,
+                                 sog.am1,
+                                 sog.am2.constm,
+                                 sog.am2.tvm),
+                                 model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                                 which.gear = 2,
+                                 ylim = c(0,0.3),
+                                 leg = "topleft")
+@
+\end{center}
+\caption{Natural mortality sensitivity model recruitment deviations
+  for the Strait of Georgia stock for gear 2.}
+\label{fig:sog-f-gear2-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<sog.f.gear3.m>>=
+make.fishing.mort.mcmc.plot(list(sog.b,
+                                 sog.am1,
+                                 sog.am2.constm,
+                                 sog.am2.tvm),
+                                 model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                                 which.gear = 3,
+                                 ylim = c(0,0.7),
+                                 leg = "topleft")
+@
+\end{center}
+\caption{Natural mortality sensitivity model recruitment deviations
+  for the Strait of Georgia stock for gear 3.}
+\label{fig:sog-f-gear3-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.f.gear1.m>>=
+make.fishing.mort.mcmc.plot(list(wcvi.b,
+                                 wcvi.am1,
+                                 wcvi.am2.constm,
+                                 wcvi.am2.tvm),
+                                 model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                                 which.gear = 1,
+                                 ylim = c(0,5),
+                                 leg = "topright")
+@
+\end{center}
+\caption{Natural mortality sensitivity model recruitment deviations
+  for the WCVI stock for gear 1.}
+\label{fig:wcvi-f-gear1-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.f.gear2.m>>=
+make.fishing.mort.mcmc.plot(list(wcvi.b,
+                                 wcvi.am1,
+                                 wcvi.am2.constm,
+                                 wcvi.am2.tvm),
+                                 model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                                 which.gear = 2,
+                                 ylim = c(0,1),
+                                 leg = "topleft")
+@
+\end{center}
+\caption{Natural mortality sensitivity model recruitment deviations
+  for the WCVI stock for gear 2.}
+\label{fig:wcvi-f-gear2-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.f.gear3.m>>=
+make.fishing.mort.mcmc.plot(list(wcvi.b,
+                                 wcvi.am1,
+                                 wcvi.am2.constm,
+                                 wcvi.am2.tvm),
+                                 model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                                 which.gear = 3,
+                                 ylim = c(0,1),
+                                 leg = "topleft")
+@
+\end{center}
+\caption{Natural mortality sensitivity model recruitment deviations
+  for the WCVI stock for gear 3.}
+\label{fig:wcvi-f-gear3-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+
+
 
 
 % %% REFERENCE POINT PLOT

@@ -6,7 +6,7 @@ del *.dvi
 del *.log
 del *.lot
 del *.lof
-del *.pdf
+del res-doc.pdf
 del *.ps
 del *.toc
 del *.txt

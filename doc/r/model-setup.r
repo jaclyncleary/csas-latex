@@ -237,7 +237,7 @@ sens.model.dir.name.5 <- lapply(1:length(stock.dir),
                                 function(x){
                                   file.path(stock.dir[[x]], "AM2_timevaryingM")})
 
-sens.model.name.5 <- "AM5 time-varying M"
+sens.model.name.5 <- "AM2 time-varying M"
 
 lapply(1:length(sens.model.dir.name.5),
        function(x){
