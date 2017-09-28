@@ -1373,6 +1373,98 @@ make.nage2.plot(list(wcvi.b,
 \label{fig:wcvi-nage2-m}
 \end{figure}
 %%------------------------------------------------------------------------------
+%% Sensitivity to M number at age 2 plots
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg.q.m>>=
+make.q.plot(list(hg.b,
+                 hg.am1,
+                 hg.am2.constm,
+                 hg.am2.tvm),
+            model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+            ylim = c(0,2),
+            leg = "topleft")
+@
+\end{center}
+\caption{Natural mortality sensitivity models survey q
+  for the Haida Gwaii stock.}
+\label{fig:hg-q-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<prd.q.m>>=
+make.q.plot(list(pr.b,
+                 pr.am1,
+                 pr.am2.constm,
+                 pr.am2.tvm),
+            model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+            ylim = c(0,2),
+            leg = "topleft")
+@
+\end{center}
+\caption{Natural mortality sensitivity models survey q
+  for the Prince Rupert District stock.}
+\label{fig:hg-pr-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<cc.q.m>>=
+make.q.plot(list(cc.b,
+                 cc.am1,
+                 cc.am2.constm,
+                 cc.am2.tvm),
+            model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+            ylim = c(0,2),
+            leg = "topleft")
+@
+\end{center}
+\caption{Natural mortality sensitivity models survey q
+  for the Central Coast stock.}
+\label{fig:cc-q-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<sog.q.m>>=
+make.q.plot(list(sog.b,
+                 sog.am1,
+                 sog.am2.constm,
+                 sog.am2.tvm),
+            model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+            ylim = c(0,2),
+            leg = "topright")
+@
+\end{center}
+\caption{Natural mortality sensitivity models survey q
+  for the Strait of Georgia stock.}
+\label{fig:sog-q-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.q.m>>=
+make.q.plot(list(wcvi.b,
+                 wcvi.am1,
+                 wcvi.am2.constm,
+                 wcvi.am2.tvm),
+            model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+            ylim = c(0,2),
+            leg = "topright")
+@
+\end{center}
+\caption{Natural mortality sensitivity models survey q
+  for the WCVI stock.}
+\label{fig:wcvi-q-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
 
 
 
