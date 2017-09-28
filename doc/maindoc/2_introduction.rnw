@@ -112,7 +112,7 @@ U'_{T+1} = \begin{cases}
 where $T$ is the terminal year for the stock assessment, $SB_{T+1}$ is the prefishery forecast biomass in year $T+1$, and $\mli{SB}_0$ is the unfished equilibrium spawning stock biomass.
 The output from the harvest control rule is the intended annual harvest rate, which is reduced to zero as the spawning stock is depleted to the level of $0.25\cdot\mli{SB}_0$.
 
-For the major stock areas, the harvest control rule is a hybrid that combines both constant escapement and constant harvest rate policies, allowing for a reduced harvest rate in areas where the intended 20\% annual harvest rate would bring the forecast pre-fishery mature spawning biomass (i.e., the `escapement') to levels below the cut-off value of $0.25\cdot\mli{SB}_0$ \citep{cleary2012}.  % JC: Is this the correct citation?
+For the major stock areas, the harvest control rule is a hybrid that combines both constant escapement and constant harvest rate policies, allowing for a reduced harvest rate in areas where the intended 20\% annual harvest rate would bring the forecast pre-fishery mature spawning biomass (i.e., the `escapement') to levels below the cut-off value of $0.25\cdot\mli{SB}_0$ \citep{cleary2010}.
 This cut-off value was selected based on simulation work (Hall 1986, Hall et al. 1988, Zheng et al. 1993, Haist et al. 1993)  suggesting that for stocks above the $0.25\cdot\mli{SB}_0$ level, that the hybrid HCR would produce lower catch variance and fewer fishery closures than a constant escapement rule.
 The simulation work focussed on an analysis of stock dynamics for the SOG stock only.
 
