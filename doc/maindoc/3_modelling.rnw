@@ -349,8 +349,13 @@ There are two versions of the stock assessment model that differ in the treatmen
 The two models are labelled AM1 ($q_1$ and $q_2$ estimated with prior probability distributions) and AM2 ($q_1$ estimated, $q_2$=1).  
 
 There have been concerns that the results from applying the AM1 model have been too restricting to the resulting estimations.  
-Based on this concern and the results of the bridging analysis below (Appendix E) we conducted sensitivity analyses with different standard deviations used for both $q_1$ and $q_2$ prior probability distributions used in the AM1 assessment model (Table XX). 
+Based on this concern and the results of the bridging analysis below (Appendix E) we conducted sensitivity analyses testing the effects of different prior standard deviations for both $q_1$ and $q_2$ used in the AM1 version of the assessment model. The different scenarios are listed in Table XX.
 
+Figure XX shows the influence of the standard deviations on the prior distributions. 
+.....NEED TO ADD THE PRIOR/POSTERIOR PLOT FIGURES FOR EACH SENSITIVITY AND POSSIBLY STOCK
+
+Figure XX shows the effects of the different prior distributions on the estimates of some of the leading parameters. 
+.......NEED TO ADD THE 4 panel plots for each AM1qa, AM1qb, and AM1qc with Sbt, Depletion, Mt, qt
 
 \subsubsection{Maturity at age}
 
