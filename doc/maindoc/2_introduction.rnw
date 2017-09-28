@@ -162,8 +162,11 @@ Although socio-economic factors may influence the location of the USR, these fac
 Appendix F in \cite{kronlund2017} provides a broad review of approaches to establishing both limit and target reference points for herring stocks worldwide for clupeids. 
 Relevant examples for establishing the USR include:
 
-(1) Southern Gulf of St. Lawrence herring
+(1) Southern Gulf of St. Lawrence Atlantic Herring
 Interim USRs were defined at biomass levels to which stocks are expected to grow under average recruitment \citep{dfo2005}
+
+(2) West coast of Newfoundland (NAFO Div 4R) Atlantic Herring
+
 
 (2) spring-spawning and autumn-spawning stocks
 
