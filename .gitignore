@@ -15,15 +15,14 @@ res-doc.lof
 res-doc.lot
 doc/figure
 doc/res-doc.tex
-<<<<<<< HEAD
 doc/knitr-cache
+res-doc.synctex(busy)
 models-backup
 models-mwe
 models-arrowtooth
 *-concordance.tex
 *.synctex.gz
 .DS_Store
-=======
 doc/knitr-cache/
 models/
 models-backup/
