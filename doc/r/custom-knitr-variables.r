@@ -187,7 +187,7 @@ mcmc.num.samples <- nrow(hg.b.params)
 mcmc.burnin <- f(mcmc.num.samples - nrow(hg.b.mcc$p.dat))
 mcmc.num.samples <- f(mcmc.num.samples)
 mcmc.length <- "5 million"
-mcmc.samp.freq <- f(5000)
+mcmc.samp.freq <- f(1000)
 mcmc.ci <- "90\\%"
 
 ################################################################################
