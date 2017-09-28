@@ -112,7 +112,7 @@ U'_{T+1} = \begin{cases}
 where $T$ is the terminal year for the stock assessment, $SB_{T+1}$ is the prefishery forecast biomass in year $T+1$, and $\mli{SB}_0$ is the unfished equilibrium spawning stock biomass.
 The output from the harvest control rule is the intended annual harvest rate, which is reduced to zero as the spawning stock is depleted to the level of $0.25\cdot\mli{SB}_0$.
 
-For the major stock areas, the harvest control rule is a hybrid that combines both constant escapement and constant harvest rate policies, allowing for a reduced harvest rate in areas where the intended 20\% annual harvest rate would bring the forecast pre-fishery mature spawning biomass (i.e., the `escapement') to levels below the cut-off value of $0.25\cdot\mli{SB}_0$ \citep {cleary2010}.
+For the major stock areas, the harvest control rule is a hybrid that combines both constant escapement and constant harvest rate policies, allowing for a reduced harvest rate in areas where the intended 20\% annual harvest rate would bring the forecast pre-fishery mature spawning biomass (i.e., the `escapement') to levels below the cut-off value of $0.25\cdot\mli{SB}_0$ \citep{cleary2012}.  % JC: Is this the correct citation?
 This cut-off value was selected based on simulation work (Hall 1986, Hall et al. 1988, Zheng et al. 1993, Haist et al. 1993)  suggesting that for stocks above the $0.25\cdot\mli{SB}_0$ level, that the hybrid HCR would produce lower catch variance and fewer fishery closures than a constant escapement rule.
 The simulation work focussed on an analysis of stock dynamics for the SOG stock only.
 
@@ -159,12 +159,20 @@ The USR and TRP can be equivalent, and the TRP cannot be lower than the USR.
 The USR is to be developed by fishery managers informed by consultations with the fishery and other interests, with advice and input from Science. 
 Although socio-economic factors may influence the location of the USR, these factors must not diminish its role in guiding management of the risk of approaching the LRP.
 
-(1)
-(2) Southern Gulf of St. Lawrence herring
-(3) spring-spawning and autumn-spawning stocks
+Appendix F in \cite{kronlund2017} provides a broad review of approaches to establishing both limit and target reference points for herring stocks worldwide for clupeids. 
+Relevant examples for establishing the USR include:
+
+(1) Southern Gulf of St. Lawrence Atlantic Herring
+Interim USRs were defined at biomass levels to which stocks are expected to grow under average recruitment \citep{dfo2005}
+
+(2) West coast of Newfoundland (NAFO Div 4R) Atlantic Herring
+
+
+(2) spring-spawning and autumn-spawning stocks
 
 
 However, BMSY is commonly regarded as a target level (e.g., UN 2002).  
+
 
 Check: APPENDIX F MANAGEMENT PARAMETERS FOR HERRING STOCKS (Kronlund et al. 2017)
 
