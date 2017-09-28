@@ -1282,6 +1282,97 @@ make.fishing.mort.mcmc.plot(list(wcvi.b,
 \label{fig:wcvi-f-gear3-m}
 \end{figure}
 %%------------------------------------------------------------------------------
+%% Sensitivity to M number at age 2 plots
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg.nage2.m>>=
+make.nage2.plot(list(hg.b,
+                     hg.am1,
+                     hg.am2.constm,
+                     hg.am2.tvm),
+                model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                ylim = c(0,5000),
+                leg = "topright")
+@
+\end{center}
+\caption{Natural mortality sensitivity models number at age 2
+  (in millions) for the Haida Gwaii stock.}
+\label{fig:hg-nage2-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<prd.nage2.m>>=
+make.nage2.plot(list(pr.b,
+                     pr.am1,
+                     pr.am2.constm,
+                     pr.am2.tvm),
+                model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                ylim = c(0,3000),
+                leg = "topright")
+@
+\end{center}
+\caption{Natural mortality sensitivity models number at age 2
+  (in millions) for the Prince Rupert stock.}
+\label{fig:pr-nage2-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<cc.nage2.m>>=
+make.nage2.plot(list(cc.b,
+                     cc.am1,
+                     cc.am2.constm,
+                     cc.am2.tvm),
+                model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                ylim = c(0,2500),
+                leg = "topright")
+@
+\end{center}
+\caption{Natural mortality sensitivity models number at age 2
+  (in millions) for the Central Coast stock.}
+\label{fig:cc-nage2-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<sog.nage2.m>>=
+make.nage2.plot(list(sog.b,
+                     sog.am1,
+                     sog.am2.constm,
+                     sog.am2.tvm),
+                model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                ylim = c(0,8000),
+                leg = "topleft")
+@
+\end{center}
+\caption{Natural mortality sensitivity models number at age 2
+  (in millions) for the Strait of Georgia stock.}
+\label{fig:sog-nage2-m}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.nage2.m>>=
+make.nage2.plot(list(wcvi.b,
+                     wcvi.am1,
+                     wcvi.am2.constm,
+                     wcvi.am2.tvm),
+                model.names = c("AM2","AM1","AM2 Constant M","AM2 Time-varying M"),
+                ylim = c(0,5000),
+                leg = "topright")
+@
+\end{center}
+\caption{Natural mortality sensitivity models number at age 2
+  (in millions) for the WCVI stock.}
+\label{fig:wcvi-nage2-m}
+\end{figure}
+%%------------------------------------------------------------------------------
 
 
 

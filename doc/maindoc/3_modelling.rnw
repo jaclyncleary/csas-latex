@@ -320,11 +320,11 @@ Conclusion: proceed with `VX' `AMX' as our 'baseline', and include others as sen
 The base case for the assessment model assumes that the natural mortality $M$ is time varying where instantaneous natural mortality is assumed equal over all ages but varies over time \citep{fu2004}.
 The annual deviations in time varying M are estimated using a random walk process \citep{haist2006}.  
 For this sensitivity analysis we investigated the effects of estimating a single constant M over ages and time. 
-This scenario was applied to all stocks and assessment model versions (AM1 and AM2) and the results are shown in Figures XX
+This scenario was applied to all stocks and assessment model versions (AM1 and AM2) and the results are shown in Figures XX.
 
 .....MORE RESULTS NEEDED WHEN FIGURES ARE GENERATED....
 
-The model outcomes were influenced by the assumption on the estimation of M.
+The model outcomes were influenced by the assumption on the estimation of M. 
 There is support for inclusion of time varying M in this analysis as well as from the bridging analysis (Appendix E).  Both showed a reduction in the magnitude of retrospective patterns and improved coherence between assumed and empirical fits to the spawn survey index. 
 
 \subsubsection{Variance parameters}
@@ -340,11 +340,11 @@ This analysis showed that when both $\rho$ and $\kappa$ are estimated, the choic
 As shown in table XX for the Strait of Georgia.  This trend can also be seen in the bridging analysis below (Appendix E) for AM1, AM2, both parameterizations of $M$ in the first sensitivity analysis and all stocks.  In the bridging analysis we also investigated the effects of fixing either $\kappa$ or $\rho$ and only estimating one of these parameters at a time. Under these scenarios we found that the estimated results were influenced by the initial values of $\kappa$ and $\rho$, which is why the base case estimating both parameters was chosen.
 
 Tables XX to XX show all estimated results. 
-THESE ARE NOT THE CORRECT TABLES...We need to show the initial values as well as estimated values.Just for SOG AM1 and AM2 though...
+TABLES...We need to show the initial values as well as estimated values.Just for SOG AM1 and AM2 though...
 
 \subsubsection{Prior probability distributions for survey catchability}
 
-There are two versions of the stock assessment model that differ in the treatment of spawn survey catchability parameters ($q_1$ and $q_2$) for the surface survey period (1951-1987) and dive survey period (1988-2016), respectively.  
+There are two versions of the base stock assessment model that differ in the treatment of spawn survey catchability parameters ($q_1$ and $q_2$) for the surface survey period (1951-1987) and dive survey period (1988-2016), respectively.  
 The two models are labelled AM1 ($q_1$ and $q_2$ estimated with prior probability distributions) and AM2 ($q_1$ estimated, $q_2$=1).  
 
 There have been concerns that the results from applying the AM1 model have been too restricting to the resulting estimations.  
@@ -371,7 +371,8 @@ In the absence of recent histological studies to provide new estimates of maturi
 These values are listed in Table \ref{tab:maturity}.  
 The selectivity of the seine roe fishery was chosen because the fishery targets pre-spawning aggregations with seine gear that is non size-selective, providing age composition samples from a mature portion of the population.  
 
-Summary of key MSY reference points for the base case and the maturity schedule sensitivity case (Table xx).
+The key MSY reference points for the base case and the maturity schedule sensitivity case are summarized in Table xx.  
+
 
 Changing maturity to equal selectivity doesn't make the Fmsy estimates "usable" in a management procedure. 
 
