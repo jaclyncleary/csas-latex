@@ -22,6 +22,9 @@ hg.am1.constm <- sens.models.2[[1]][[1]]
 hg.am1.tvm <- sens.models.3[[1]][[1]]
 hg.am2.constm <- sens.models.4[[1]][[1]]
 hg.am2.tvm <- sens.models.5[[1]][[1]]
+hg.qa <- sens.models.6[[1]][[1]]
+hg.qb <- sens.models.7[[1]][[1]]
+hg.qc <- sens.models.8[[1]][[1]]
 
 hg.b.params <- as.data.frame(hg.b$mcmc$params)
 hg.b.mcc <- hg.b$mcmccalcs
@@ -85,6 +88,9 @@ pr.am1.constm <- sens.models.2[[2]][[1]]
 pr.am1.tvm <- sens.models.3[[2]][[1]]
 pr.am2.constm <- sens.models.4[[2]][[1]]
 pr.am2.tvm <- sens.models.5[[2]][[1]]
+pr.qa <- sens.models.6[[2]][[1]]
+pr.qb <- sens.models.7[[2]][[1]]
+pr.qc <- sens.models.8[[2]][[1]]
 
 ## Base model Central coast
 cc.b <- base.models[[3]][[1]]
@@ -93,6 +99,9 @@ cc.am1.constm <- sens.models.2[[3]][[1]]
 cc.am1.tvm <- sens.models.3[[3]][[1]]
 cc.am2.constm <- sens.models.4[[3]][[1]]
 cc.am2.tvm <- sens.models.5[[3]][[1]]
+cc.qa <- sens.models.6[[3]][[1]]
+cc.qb <- sens.models.7[[3]][[1]]
+cc.qc <- sens.models.8[[3]][[1]]
 
 ################################################################################
 ## Base model Strait of Georgia
@@ -102,6 +111,9 @@ sog.am1.constm <- sens.models.2[[4]][[1]]
 sog.am1.tvm <- sens.models.3[[4]][[1]]
 sog.am2.constm <- sens.models.4[[4]][[1]]
 sog.am2.tvm <- sens.models.5[[4]][[1]]
+sog.qa <- sens.models.6[[4]][[1]]
+sog.qb <- sens.models.7[[4]][[1]]
+sog.qc <- sens.models.8[[4]][[1]]
 
 sog.b.params <- as.data.frame(sog.b$mcmc$params)
 sog.b.mcc <- sog.b$mcmccalcs
@@ -165,6 +177,9 @@ wcvi.am1.constm <- sens.models.2[[5]][[1]]
 wcvi.am1.tvm <- sens.models.3[[5]][[1]]
 wcvi.am2.constm <- sens.models.4[[5]][[1]]
 wcvi.am2.tvm <- sens.models.5[[5]][[1]]
+wcvi.qa <- sens.models.6[[5]][[1]]
+wcvi.qb <- sens.models.7[[5]][[1]]
+wcvi.qc <- sens.models.8[[5]][[1]]
 
 ################################################################################
 ## Number of mcmc samples, min and max median biomass
