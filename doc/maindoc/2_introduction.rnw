@@ -138,6 +138,12 @@ Simulation analyses of HCR will occur within a Management Strategy Evaluation (M
 
 [Use some text from the Rob's LRP paper?]
 
+LRP
+USR
+
+The recently reviewed and approved CSAS publication "The Selection and Role of Limit Reference Points for Pacific Herring (\mli{Clupea pallasii}) in British Columbia, Canada" (\citep{kronlund2017}) is a significant and new contribution of research to the topic of biological reference points for \Sexpr{fish.name} and other forage species. 
+
+
 \subsection{ASSESSMENT HISTORY}
 
 [Placeholder]
