@@ -159,9 +159,16 @@ The USR and TRP can be equivalent, and the TRP cannot be lower than the USR.
 The USR is to be developed by fishery managers informed by consultations with the fishery and other interests, with advice and input from Science. 
 Although socio-economic factors may influence the location of the USR, these factors must not diminish its role in guiding management of the risk of approaching the LRP.
 
-(1)
-(2) Southern Gulf of St. Lawrence herring
-(3) spring-spawning and autumn-spawning stocks
+Appendix F in \cite{kronlund2017} provides a broad review of approaches to establishing both limit and target reference points for herring stocks worldwide for clupeids. 
+Relevant examples for establishing the USR include:
+
+(1) Southern Gulf of St. Lawrence Atlantic Herring
+Interim USRs were defined at biomass levels to which stocks are expected to grow under average recruitment \citep{dfo2005}
+
+(2) West coast of Newfoundland (NAFO Div 4R) Atlantic Herring
+
+
+(2) spring-spawning and autumn-spawning stocks
 
 
 However, BMSY is commonly regarded as a target level (e.g., UN 2002).  
