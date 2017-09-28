@@ -163,12 +163,21 @@ Appendix F in \cite{kronlund2017} provides a broad review of approaches to estab
 Relevant examples for establishing the USR include:
 
 (1) Southern Gulf of St. Lawrence Atlantic Herring
-Interim USRs were defined at biomass levels to which stocks are expected to grow under average recruitment \citep{dfo2005}
-
+Interim USRs were defined at biomass levels to which stocks are expected to grow under average recruitment \citep{dfo2005}.
 (2) West coast of Newfoundland (NAFO Div 4R) Atlantic Herring
+The USR, referred to as $B_BUF$, is defined as the lowest observed historical spawning-stock biomass which produced good recruitment \citep{mcquinn1999}.
+(3) Norwegian spring-spawning herring
+The biological limit, $B_lim$ is established as the minimum spawning stock biomass that would ensure adequate recruitment based on available stock-recruitment information, and the $B_pa$, the precautionary level for stock biomass, is set at 5.0 million tonnes which is 2x the $B_lim$ of 2.5 million \citep{tjelmeland2009}.
+In all these examples, the biological references points are implemented as the lower and upper operational control points (OCPs) in a hockey-stick shaped harvest control rule.
+
+Other examples from Canadian fisheries include:
+
+(1)
+(2)
+(3)
 
 
-(2) spring-spawning and autumn-spawning stocks
+
 
 
 However, BMSY is commonly regarded as a target level (e.g., UN 2002).  
