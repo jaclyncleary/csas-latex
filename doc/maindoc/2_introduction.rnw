@@ -1,14 +1,10 @@
-% The next two lines are required to start off numbering
-\pagenumbering{arabic}
-\setcounter{page}{1}
-
 \section{INTRODUCTION}
 
 \subsection{CONTEXT FOR THE \Sexpr{assess.yr} ASSESSMENT}
 
 Assessments of \Sexpr{fish.name} stocks in \Sexpr{bc} were done for \Sexpr{length(allRegionNames$major)} major stock assessment regions (SARs): \Sexpr{PasteNicely(allRegionNames$major)}.
 We also present data for \Sexpr{length(allRegionNames$minor)} minor SARs: \Sexpr{PasteNicely(allRegionNames$minor)}.
-Assessments for the five major \Sexpr{common.name} stocks areas are reported in the main body of this report, whereas assessments for the two minor stock areas are reported in Appendix \ref{chap:minors}. 
+Assessments for the five major \Sexpr{common.name} stocks areas are reported in the main body of this report, whereas assessments for the two minor stock areas are reported in Appendix \ref{chap:minors}.
 There are several key components to the management procedures of \Sexpr{fish.name} (\emph{\Sexpr{science.name}}) in BC.
 Here we define a management procedure as the suite of activities that leads to catches in any given year.
 These components include: which, and how much data are collected; what is assumed about stock structure, the stock assessment model used; and the \Sexpr{common.name} harvest control rule (HCR) that mathematically converts some estimate of current stock status to a total allowable catch (TAC) \citep{delamare1998} and implementation errors.
@@ -21,7 +17,7 @@ In addition to operational changes in the application of management procedures, 
 As a result, it is difficult to attribute departures from the original predictions of management procedure performance (in terms of probability of fisheries closures, average annual variability of catch) to any single cause.
 
 This year's assessment presents two base cases assessments for each of the 5 major stocks: ``AM1'' denoting the case where surface (\Sexpr{min(yrRange)}--\Sexpr{newSurvYr-1}) and dive (\Sexpr{newSurvYr} -- \Sexpr{max(yrRange)}) survey catchability parameters ($q_1$ and $q_2$) are estimated using a prior distribution, and ``AM2'' denoting the case where the surface survey catchability ($q_1$) is estimated and the dive survey catchability is fixed at $q_2 = 1$.
-The ISCAM modelling code used in \Sexpr{assess.yr} has been updated to the new platform, the detailes of which are described in the Bridging Analysis, Appendix \ref{chap:bridge}. 
+The ISCAM modelling code used in \Sexpr{assess.yr} has been updated to the new platform, the detailes of which are described in the Bridging Analysis, Appendix \ref{chap:bridge}.
 
 Sensitivity cases for AM1 and AM2 investigate
 (1) estimation of time-varying vs. constant natural mortality,
@@ -60,7 +56,7 @@ Research examining stock structure of \Sexpr{fish.name} includes studies using g
 This research identified four stocks of \Sexpr{fish.name} in BC, as well as stocks in southeast Alaska, Washington, and California.
 In BC, differences in timing of spawning were identified as the main isolating mechanisms among stocks, although it is also recognized that geographic isolation of spawning populations may also have some effect in maintaining genetic distinctiveness among stocks.
 The genetic research concludes that the limited genetic differentiation observed among \Sexpr{fish.name} populations in BC is consistent with among-population straying rates that are sufficient to homogenize allele frequencies over broad areas but \citet{beacham2008} also caution that while straying among \Sexpr{fish.name} populations in BC is sufficient to lead to minimal genetic differentiation among \Sexpr{fish.name} from different areas, the levels of straying may not be sufficient to offset overexploitation of the species in specific regions.
- 
+
 Beginning in the 1930s, BC \Sexpr{fish.name} have been the subject of three tag-recovery programs.
 The first study employed internal belly tags (1936--1967),
 the second external anchor tags (1979--1992),
@@ -92,8 +88,8 @@ In the meantime, DFO Pacific Region has committed to a Management Strategy Evalu
 \Sexpr{Common.name} have been harvested for many years to provide a variety of food products.
 First Nations have traditionally harvested whole \Sexpr{common.name} and \Sexpr{common.name} spawn for food, social and ceremonial (FSC) purposes.
 The commercial \Sexpr{fish.name} fishery started in BC in the 19th century for the local food market, and quickly expanded into a dry salt fishery for the orient.
-In 1937 a reduction fishery was also established to produce fishmeal and fish oil (Hourston and Haegele, 1980).
-After the collapse of the Pacific Sardine in the late 1940s, \Sexpr{fish.name} became the major fishery off Canada's Pacific coast, and catches steadily increased to over 200,000 tonnes in the early 1960s (Beamish et al. 2004).
+In 1937 a reduction fishery was also established to produce fishmeal and fish oil \citep{hourston1980}.
+After the collapse of the Pacific Sardine in the late 1940s, \Sexpr{fish.name} became the major fishery off Canada's Pacific coast, and catches steadily increased to over 200,000 tonnes in the early 1960s \citep{beamish2004}.
 
 From the early 1930s to the late 1960s, \Sexpr{common.name} were commercially harvested and processed (reduced) into relatively low-value products such as fishmeal and oil.
 Commercial catches increased dramatically in the early 1960s, but were unsustainable.
@@ -106,7 +102,7 @@ A series of above average year-classes occurred in the early 1970s, rapidly rebu
 
 \subsection{MANAGEMENT OF MAJOR HERRING STOCKS}
 
-The harvest rule for Pacific Herring is described as \citep{martell2012}:
+The harvest rule for Pacific Herring is described as \citep{martell2011}:
 \begin{equation} \label{eqHarvestRule}
 U'_{T+1} = \begin{cases}
 0 & SB_{T+1} \leq 0.25 \cdot \mli{SB}_0 \\
@@ -116,8 +112,8 @@ U'_{T+1} = \begin{cases}
 where $T$ is the terminal year for the stock assessment, $SB_{T+1}$ is the prefishery forecast biomass in year $T+1$, and $\mli{SB}_0$ is the unfished equilibrium spawning stock biomass.
 The output from the harvest control rule is the intended annual harvest rate, which is reduced to zero as the spawning stock is depleted to the level of $0.25\cdot\mli{SB}_0$.
 
-For the major stock areas, the harvest control rule is a hybrid that combines both constant escapement and constant harvest rate policies, allowing for a reduced harvest rate in areas where the intended 20\% annual harvest rate would bring the forecast pre-fishery mature spawning biomass (i.e., the “escapement”) to levels below the cut-off value of $0.25\cdot\mli{SB}_0$ \citep {cleary2010}. 
-This cut-off value was selected based on simulation work (Hall 1986, Hall et al. 1988, Zheng et al. 1993, Haist et al. 1993)  suggesting that for stocks above the $0.25\cdot\mli{SB}_0$ level, that the hybrid HCR would produce lower catch variance and fewer fishery closures than a constant escapement rule. 
+For the major stock areas, the harvest control rule is a hybrid that combines both constant escapement and constant harvest rate policies, allowing for a reduced harvest rate in areas where the intended 20\% annual harvest rate would bring the forecast pre-fishery mature spawning biomass (i.e., the `escapement') to levels below the cut-off value of $0.25\cdot\mli{SB}_0$ \citep {cleary2010}.
+This cut-off value was selected based on simulation work (Hall 1986, Hall et al. 1988, Zheng et al. 1993, Haist et al. 1993)  suggesting that for stocks above the $0.25\cdot\mli{SB}_0$ level, that the hybrid HCR would produce lower catch variance and fewer fishery closures than a constant escapement rule.
 The simulation work focussed on an analysis of stock dynamics for the SOG stock only.
 
 Contrary to the predictions of the analyses done in the late 1980s, some \Sexpr{common.name} stocks appear to have been below cut-off levels relatively frequently.
@@ -126,13 +122,12 @@ Accordingly, the best approximation that is available to determine if stocks wer
 On the basis of this analysis, three of the major \Sexpr{common.name} stocks, WCVI, CC, and HG, were below cut-off for 32\%, 21\%, and 46\% of years, respectively from 1986 to 2013.
 The relative contribution of harvest, environmental and ecological interactions causing changes in natural mortality and growth, or alternative assessment models (in particular more conservative models applied before 2011), and/or other factors to the stocks having been estimated to be below cut-offs is currently not well understood.
 
-Since the introduction of the HCR for \Sexpr{fish.name} the policy environment for Canadian fisheries has changed with the introduction of the Sustainable Fisheries Framework in 2009 (www.dfo-mpo.gc.ca/fm-gp/pechesfisheries/fish-ren-peche/sff-cpd/overview-cadre-eng.htm) which includes A Fisheries Decision-Making Framework Incorporating the Precautionary Approach (www.dfo-mpo.gc.ca/reports-rapports/regs/sff-cpd/precaution-eng.htm), hereafter called the DFO PA Framework. 
-The DMF policy is one component of the Sustainable Fisheries Framework, the Department's national strategy for moving DFO towards an ecosystem approach to management of Canadian fisheries. 
+Since the introduction of the HCR for \Sexpr{fish.name} the policy environment for Canadian fisheries has changed with the introduction of the \href{http://www.dfo-mpo.gc.ca/reports-rapports/regs/sff-cpd/overview-cadre-eng.htm}{sustainable fisheries framework} in 2009 which includes a \href{http://www.dfo-mpo.gc.ca/reports-rapports/regs/sff-cpd/precaution-eng.htm}{fisheries decision-making framework incorporating the precautionary approach}, hereafter called the DFO PA Framework.
+The DMF policy is one component of the Sustainable Fisheries Framework, the Department's national strategy for moving DFO towards an ecosystem approach to management of Canadian fisheries.
 The 2017 Request for Scientific Information and Advice (RSIA) submitted by Fisheries Management has requested that advice for Pacific Herring be consistent with the DMF policy requirement to characterize uncertainty and risk.
-DFO Pacific Region has committed to Renewal of the Management Framework for \Sexpr{fish.name}, including updated simulation analyses of harvest control rules. 
-Although the \Sexpr{common.name} HCR was not originally designed to address the intent of the DMF policy, the form of the rule does meet the requirement to reduce the fishing rate as stock status declines to low levels of abundance, a tactic intended to encourage stock growth towards the target biomass reference point. 
+DFO Pacific Region has committed to Renewal of the Management Framework for \Sexpr{fish.name}, including updated simulation analyses of harvest control rules.
+Although the \Sexpr{common.name} HCR was not originally designed to address the intent of the DMF policy, the form of the rule does meet the requirement to reduce the fishing rate as stock status declines to low levels of abundance, a tactic intended to encourage stock growth towards the target biomass reference point.
 Simulation analyses of HCR will occur within a Management Strategy Evaluation (MSE) process, focussing on establishing Management Procedures compliant with the DMF policy, including avoiding Limit Reference Points (LRP) with high probabiliy and establishing Upper Stock Reference (USR) points or target biomass levels.
-
 
 \subsection{BIOLOGICAL REFERENCE POINTS}
 
@@ -143,17 +138,19 @@ JC: blurb about $\mli{SB}_0$ -- unfished equilibrium spawning biomass, based on 
 
 The recently reviewed and approved CSAS publication "The Selection and Role of Limit Reference Points for Pacific Herring (\emph{Clupea pallasii}) in British Columbia, Canada" \citep{kronlund2017} is a significant and new contribution of research to the topic of biological reference points for \Sexpr{fish.name} and other forage species. 
 The DFO PA Framework specifies that a Limit Reference Point (LRP) should be positioned before a state of serious harm occurs, rather than at the state of serious harm and that it must be avoided with high probability.
-Kronlund et al. (2017) use an evidence-based production analysis conditional on current data and stock assessment model assumptions, to evaluate whether the major \Sexpr{fish.name} stocks in British Columbia show stock states consistent with signs of possible serious harm.
-The production analysis identified recent persistent states of low production and low biomass (LP-LB states) for the Central Coast (CC), Haida Gwaii (HG) and West Coast of Vancouver Island (WCVI) management areas. 
+\citet{kronlund2017} use an evidence-based production analysis conditional on current data and stock assessment model assumptions, to evaluate whether the major \Sexpr{fish.name} stocks in British Columbia show stock states consistent with signs of possible serious harm.
+The production analysis identified recent persistent states of low production and low biomass (LP-LB states) for the Central Coast (CC), Haida Gwaii (HG) and West Coast of Vancouver Island (WCVI) management areas.
 The outcome of the research and the review meeting support for the recommended spawning biomass-based LRP of $0.30\cdot\mli{SB}_0$ for the CC, HG, and WCVI stocks based on results of the production analysis and consistency with international best practice recommendations.
 Persistent LP-LB states were not diagnosed for stocks in the Prince Rupert District (PRD) and Strait of Georgia (SOG) management areas, however a LRP of $0.30\cdot\mli{SB}_0$ is also recommended for the PRD and SOG stocks as it aligns with best practice recommendations, and because these stocks are geographically adjacent to stocks for which recent low LP-LB states were detected.
 
-The authors recommend the phasing-in of any new management procedure (i.e., changes to data collection, stock assessment models and/or harvest control rules) designed to avoid LRPs and achieve targets in order to mitigate short-term consequences to resource users. Specific recommendations on \emph{how to} apply LRPs in the context of annual advice derived from stock assessment models were beyond the scope of the paper. However as requested in the Terms of Reference, this assessment presents current estimates of spawning biomass for each major stock relative to the LRP.
+The authors recommend the phasing-in of any new management procedure (i.e., changes to data collection, stock assessment models and/or harvest control rules) designed to avoid LRPs and achieve targets in order to mitigate short-term consequences to resource users.
+Specific recommendations on \emph{how to} apply LRPs in the context of annual advice derived from stock assessment models were beyond the scope of the paper.
+However as requested in the Terms of Reference, this assessment presents current estimates of spawning biomass for each major stock relative to the LRP.
 
 \subsubsection{Upper Stock Reference}
 
 A fully specified set of objectives that includes both LRPs and TRPs will be necessary to meet goals for renewal of the Pacific Herring management system and consistency with the DFO PA Framework. 
-The Framework defines the Upper Stock Reference (USR) as the boundary between the healthy and cautious zones, making the USR the stock level threshold below which removals must be progressively reduced in order to avoid reaching the LRP (CITE PAzone figure). 
+The Framework defines the Upper Stock Reference (USR) as the boundary between the healthy and cautious zones, making the USR the stock level threshold below which removals must be progressively reduced in order to avoid reaching the LRP (Figure \ref{figDFOPA}).
 Thus, the USR must be set at an appropriate distance above the LRP to provide sufficient opportunity for the management system to recognize a declining stock status and sufficient time for management actions to have effect.
 The hybrid constant escapement /constant harvest rate feature of the herring HCR was intended to maintain a minimum escapement level equivalent to the cut-off, however in practice this was not achieved because the biomass level at which the harvest was reduced ($0.31\cdot\mli{SB}_0$) does not provide sufficient time for management actions (reduced harvest rates) to have effect.
 
@@ -169,9 +166,7 @@ Although socio-economic factors may influence the location of the USR, these fac
 
 However, BMSY is commonly regarded as a target level (e.g., UN 2002).  
 
-Check: APPENDIX F – MANAGEMENT PARAMETERS FOR HERRING STOCKS (Kronlund et al. 2017)
-
-
+Check: APPENDIX F MANAGEMENT PARAMETERS FOR HERRING STOCKS (Kronlund et al. 2017)
 
 \subsection{ASSESSMENT HISTORY}
 
