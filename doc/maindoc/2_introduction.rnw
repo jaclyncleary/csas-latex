@@ -136,6 +136,9 @@ Simulation analyses of HCR will occur within a Management Strategy Evaluation (M
 
 \subsection{BIOLOGICAL REFERENCE POINTS}
 
+JC: blurb about $\mli{SB}_0$ -- unfished equilibrium spawning biomass, based on long-term average weight-age and average natural mortality. Not a dynamic calc. This reference point meets PA opolicy specifications in that we use long timeseries of data...
+
+
 \subsubsection{Limit Reference Point}
 
 The recently reviewed and approved CSAS publication "The Selection and Role of Limit Reference Points for Pacific Herring (\emph{Clupea pallasii}) in British Columbia, Canada" \citep{kronlund2017} is a significant and new contribution of research to the topic of biological reference points for \Sexpr{fish.name} and other forage species. 
@@ -155,8 +158,9 @@ Thus, the USR must be set at an appropriate distance above the LRP to provide su
 The hybrid constant escapement /constant harvest rate feature of the herring HCR was intended to maintain a minimum escapement level equivalent to the cut-off, however in practice this was not achieved because the biomass level at which the harvest was reduced ($0.31\cdot\mli{SB}_0$) does not provide sufficient time for management actions (reduced harvest rates) to have effect.
 
 The DFO PA Framework also identifies the importance of the Target Reference Points (TRP) which is determined by productivity objectives for the stock, broader biological considerations and social and economic objectives for the fishery. 
-The USR and TRP can equivalent, and the TRP cannot be lower than the USR and may be higher.
-The USR is to be developed by fishery managers informed by consultations with the fishery and other interests, with advice and input from Science. Although socio-economic factors may influence the location of the USR, these factors must not diminish its role in guiding management of the risk of approaching the LRP.
+The USR and TRP can be equivalent, and the TRP cannot be lower than the USR.
+The USR is to be developed by fishery managers informed by consultations with the fishery and other interests, with advice and input from Science. 
+Although socio-economic factors may influence the location of the USR, these factors must not diminish its role in guiding management of the risk of approaching the LRP.
 
 (1)
 (2) Southern Gulf of St. Lawrence herring
