@@ -358,7 +358,8 @@ LoadNBio <- function( SARs ) {
     # Get the region
     SAR <- SARs[k]
     # Get the number of biosamples
-    nBio <- fread( input=paste("NumBiosamples", SAR, ".csv", sep="") )
+    nBio <- fread( input=paste("NumBiosamples", SAR, ".csv", sep=""), 
+        verbose=FALSE)
     # If it's the first region
     if( k == 1 ) {
       # Start data frame
@@ -454,7 +455,8 @@ GetModelPars <- function( fn, SARs, models=mNames, probs=ciLevel ) {
       # Get the model
       model <- models[i]
       # Load the file and wrangle
-      raw <- fread( input=file.path(SAR, models[i], "mcmc", fn) ) %>%
+      raw <- fread( input=file.path(SAR, models[i], "mcmc", fn), 
+              verbose=FALSE ) %>%
           as_tibble( ) %>%
           mutate( Model=model, Region=SAR ) %>%
           select( Region, Model, bo, q1, q2 ) %>%
@@ -506,7 +508,7 @@ GetPars <- function( fn, SARs, models=mNames, varName, probs=ciLevel ) {
       # Get the model
       model <- models[i]
       # Grab the data (transposed)
-      raw <- fread( input=file.path(SAR, model, "mcmc", fn) ) %>%
+      raw <- fread( input=file.path(SAR, model, "mcmc", fn), verbose=FALSE ) %>%
           as_tibble( )
       # TODO: Perform a check to make sure recruitment is for the requested age
       # (i.e., 'ageRec').
@@ -559,7 +561,7 @@ GetVals <- function( fn, SARs, models=mNames, varName, yr ) {
       # Get the model
       model <- models[i]
       # Grab the data (transposed)
-      raw <- fread( input=file.path(SAR, model, "mcmc", fn) ) %>%
+      raw <- fread( input=file.path(SAR, model, "mcmc", fn), verbose=FALSE ) %>%
           as_tibble( )
       # TODO: Perform a check to make sure recruitment is for the requested age
       # (i.e., 'ageRec').
@@ -612,7 +614,7 @@ GetProjected <- function( fn, SARs, models=mNames, probs=ciLevel ) {
       # Generate a name for next year's projected biomass
       sbNextYr <- paste("B", max(yrRange)+1, sep="")
       # Grab the data
-      raw <- fread( input=file.path(SAR, model, "mcmc", fn) ) %>%
+      raw <- fread( input=file.path(SAR, model, "mcmc", fn), verbose=FALSE ) %>%
           as_tibble( ) %>%
           rename_( "SBProj"=sbNextYr ) %>%
           mutate( Region=SAR, Model=model ) %>%
