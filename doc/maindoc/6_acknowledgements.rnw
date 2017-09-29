@@ -8,11 +8,9 @@ Thanks...
 % References
 % TODO: Move this to the res-doc.rnw
 \clearpage
-\bibliographystyle{../res-doc}
-\bibliography{all}
+\bibliographystyle{res-doc}
+\bibliography{../../all}
 \clearpage
-
-
 
 %\bibliographystyle{../res-doc}
 %\bibliography{test}
