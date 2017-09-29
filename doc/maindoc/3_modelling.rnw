@@ -358,7 +358,7 @@ Figure XX shows the influence of increasing the standard deviations on the prior
 Figure XX shows the effects of the different prior distributions on the estimates of some of the leading parameters. 
 .......NEED TO ADD THE 4 panel plots for each AM1qa, AM1qb, and AM1qc with Sbt, Depletion, Mt, qt
 
-\subsubsection{Maturity at age}
+\subsubsection{Maturity at age} \label{secMatAge}
 
 The base case maturity vector assumes 25\% of age-2 fish are mature, 90\% of age-3 fish are mature, and 100\% maturity for fish ages 4 and older. 
 From these assumptions the age of 50\% maturity is estimated to be approximately 2.3 years. 
