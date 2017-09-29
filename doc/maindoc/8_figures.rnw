@@ -1,6 +1,6 @@
 \section{FIGURES}
 
-% DFO precautionary approach zones
+% DFO precautionary approach  zones
 \begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{maindoc/figures/DFOPA.png}
