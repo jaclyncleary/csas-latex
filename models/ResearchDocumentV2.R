@@ -104,6 +104,7 @@ mNames <- c( "AM2", "AM1" )
 allRegions <- list(major=c("HG", "PRD", "CC", "SoG", "WCVI"),
                    minor=c("A27", "A2W"))
 
+# Sensitivity runs
 sens <- c("HG-natural-mortality",
           "PRD-natural-mortality",
           "CC-natural-mortality",
