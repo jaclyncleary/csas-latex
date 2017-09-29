@@ -16,7 +16,7 @@ Since it was implemented in 1986 and formally tested in \citet{hall1988}, there 
 In addition to operational changes in the application of management procedures, there is some evidence for environmental and ecological changes that resulted in apparent changes in size at age and natural mortality that would have affected management procedure performance even if it had been consistently applied.
 As a result, it is difficult to attribute departures from the original predictions of management procedure performance (in terms of probability of fisheries closures, average annual variability of catch) to any single cause.
 
-This year's assessment presents two base cases assessments for each of the 5 major stocks: ``AM1'' denoting the case where surface (\Sexpr{min(yrRange)}--\Sexpr{newSurvYr-1}) and dive (\Sexpr{newSurvYr} -- \Sexpr{max(yrRange)}) survey catchability parameters ($q_1$ and $q_2$) are estimated using a prior distribution, and ``AM2'' denoting the case where the surface survey catchability ($q_1$) is estimated and the dive survey catchability is fixed at $q_2 = 1$.
+This year's assessment presents two base cases assessments for each of the 5 major stocks: ``AM1'' denoting the case where surface (\Sexpr{min(yrRange)}--\Sexpr{newSurvYr-1}) and dive (\Sexpr{newSurvYr}--\Sexpr{max(yrRange)}) survey catchability parameters ($q_1$ and $q_2$) are estimated using a prior distribution, and ``AM2'' denoting the case where the surface survey catchability ($q_1$) is estimated and the dive survey catchability is fixed at $q_2 = 1$.
 The ISCAM modelling code used in \Sexpr{assess.yr} has been updated to the new platform, the detailes of which are described in the Bridging Analysis, Appendix \ref{chap:bridge}.
 
 Sensitivity cases for AM1 and AM2 investigate
@@ -113,6 +113,7 @@ where $T$ is the terminal year for the stock assessment, $SB_{T+1}$ is the prefi
 The output from the harvest control rule is the intended annual harvest rate, which is reduced to zero as the spawning stock is depleted to the level of $0.25\cdot\mli{SB}_0$.
 
 For the major stock areas, the harvest control rule is a hybrid that combines both constant escapement and constant harvest rate policies, allowing for a reduced harvest rate in areas where the intended 20\% annual harvest rate would bring the forecast pre-fishery mature spawning biomass (i.e., the `escapement') to levels below the cut-off value of $0.25\cdot\mli{SB}_0$ \citep{cleary2010,cleary2012}.
+
 This cut-off value was selected based on simulation work (Hall 1986, Hall et al. 1988, Zheng et al. 1993, Haist et al. 1993)  suggesting that for stocks above the $0.25\cdot\mli{SB}_0$ level, that the hybrid HCR would produce lower catch variance and fewer fishery closures than a constant escapement rule.
 The simulation work focussed on an analysis of stock dynamics for the SOG stock only.
 
@@ -145,7 +146,7 @@ Attempts to estimate \emph{F}\subscr{MSY} using \emph{ISCAM} are presented in \r
 
 \subsubsection{Limit Reference Point}
 
-The recently reviewed and approved CSAS publication "The Selection and Role of Limit Reference Points for Pacific Herring (\emph{Clupea pallasii}) in British Columbia, Canada" \citep{kronlund2017} is a significant and new contribution of research to the topic of biological reference points for \Sexpr{fish.name} and other forage species. 
+The recently reviewed and approved CSAS publication ``The Selection and Role of Limit Reference Points for Pacific Herring (\emph{Clupea pallasii}) in British Columbia, Canada'' \citep{kronlund2017} is a significant and new contribution of research to the topic of biological reference points for \Sexpr{fish.name} and other forage species.
 The DFO PA Framework specifies that a Limit Reference Point (LRP) should be positioned before a state of serious harm occurs, rather than at the state of serious harm and that it must be avoided with high probability.
 \citet{kronlund2017} use an evidence-based production analysis conditional on current data and stock assessment model assumptions, to evaluate whether the major \Sexpr{fish.name} stocks in British Columbia show stock states consistent with signs of possible serious harm.
 The production analysis identified recent persistent states of low production and low biomass (LP-LB states) for the Central Coast (CC), Haida Gwaii (HG) and West Coast of Vancouver Island (WCVI) management areas.
@@ -158,14 +159,14 @@ However as requested in the Terms of Reference, this assessment presents current
 
 \subsubsection{Upper Stock Reference}
 
-A fully specified set of objectives that includes both LRPs and TRPs will be necessary to meet goals for renewal of the Pacific Herring management system and consistency with the DFO PA Framework. 
+A fully specified set of objectives that includes both LRPs and TRPs will be necessary to meet goals for renewal of the Pacific Herring management system and consistency with the DFO PA Framework.
 The Framework defines the Upper Stock Reference (USR) as the boundary between the healthy and cautious zones, making the USR the stock level threshold below which removals must be progressively reduced in order to avoid reaching the LRP (Figure \ref{figDFOPA}).
 Thus, the USR must be set at an appropriate distance above the LRP to provide sufficient opportunity for the management system to recognize a declining stock status and sufficient time for management actions to have effect.
 The hybrid constant escapement /constant harvest rate feature of the herring HCR was intended to maintain a minimum escapement level equivalent to the cut-off, however in practice this was not achieved because the biomass level at which the harvest was reduced ($0.31\cdot\mli{SB}_0$) does not provide sufficient time for management actions (reduced harvest rates) to have effect.
 
-The DFO PA Framework also identifies the importance of the Target Reference Points (TRP) which is determined by productivity objectives for the stock, broader biological considerations and social and economic objectives for the fishery. 
+The DFO PA Framework also identifies the importance of the Target Reference Points (TRP) which is determined by productivity objectives for the stock, broader biological considerations and social and economic objectives for the fishery.
 The USR and TRP can be equivalent, and the TRP cannot be lower than the USR.
-The USR is to be developed by fishery managers informed by consultations with the fishery and other interests, with advice and input from Science. 
+The USR is to be developed by fishery managers informed by consultations with the fishery and other interests, with advice and input from Science.
 Although socio-economic factors may influence the location of the USR, these factors must not diminish its role in guiding management of the risk of approaching the LRP.
 
 Within the DFO PA Framework, the target harvest rate is intended to be reduced once stock biomass falls below the USR. Simulation-evaluation of proposed USR in conjunction with candidate HCRs provides an evidence-based approach for identifying USR placed sufficiently above the LRP to avoid the stock falling below the LRP with high probability.

@@ -3,7 +3,7 @@
 \lfoot{\Sexpr{fish.name}}
 \rfoot{Appendix~\thechapter~-- Assessment of minor stocks}
 
-We do not do a formal stock assessment for the \Sexpr{fish.name} minor stocks, \Sexpr{PasteNicely(allRegionNames$minor)}.
+We do not do formal stock assessments for \Sexpr{fish.name} minor stocks, \Sexpr{PasteNicely(allRegionNames$minor)}.
 
 % Dirty hack to maintain correct appendix letters
 \newpage
