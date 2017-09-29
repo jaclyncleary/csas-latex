@@ -1933,6 +1933,242 @@ make.q.plot(list(wcvi.am1.constm,
 %%------------------------------------------------------------------------------
 %%------------------------------------------------------------------------------
 
+%%------------------------------------------------------------------------------
+%% Sensitivity to Q MCMC diagnostic plots
+%%------------------------------------------------------------------------------
+%% \begin{figure}[H]
+%% \begin{center}
+%% <<hg.qa>>=
+%% make.priors.posts.plot(hg.qa, priors.only = FALSE)
+%% @
+%% \end{center}
+%% \caption{Prior probability distributions (lines) with comparative posterior
+%%   histograms (bars) used in the Haida Gwaii AM1 model with the standard
+%%   deviation on survey q set to \Sexpr{hg.qa$ctl$surv.q[3,1]}.
+%%   Parameters $q_k$ represent gears where: $k=1$ is the surface
+%%   survey and $k=2$ is the dive survey. The dotted red lines are the MPD
+%%   estimates.}
+%% \label{fig:hg-qa}
+%% \end{figure}
+
+%% \begin{figure}[H]
+%% \begin{center}
+%% <<hg.qb>>=
+%% make.priors.posts.plot(hg.qb, priors.only = FALSE)
+%% @
+%% \end{center}
+%% \caption{Prior probability distributions (lines) with comparative posterior
+%%   histograms (bars) used in the Haida Gwaii AM1 model with the standard
+%%   deviation on survey q set to \Sexpr{hg.qb$ctl$surv.q[3,1]}.
+%%   Parameters $q_k$ represent gears where: $k=1$ is the surface
+%%   survey and $k=2$ is the dive survey. The dotted red lines are the MPD
+%%   estimates.}
+%% \label{fig:hg-qb}
+%% \end{figure}
+
+%% \begin{figure}[H]
+%% \begin{center}
+%% <<hg.qc>>=
+%% make.priors.posts.plot(hg.qc, priors.only = FALSE)
+%% @
+%% \end{center}
+%% \caption{Prior probability distributions (lines) with comparative posterior
+%%   histograms (bars) used in the Haida Gwaii AM1 model with the standard
+%%   deviation on survey q set to \Sexpr{hg.qc$ctl$surv.q[3,1]}.
+%%   Parameters $q_k$ represent gears where: $k=1$ is the surface
+%%   survey and $k=2$ is the dive survey. The dotted red lines are the MPD
+%%   estimates.}
+%% \label{fig:hg-qc}
+%% \end{figure}
+
+%% %%------------------------------------------------------------------------------
+
+%% \begin{figure}[H]
+%% \begin{center}
+%% <<prd.qa>>=
+%% make.priors.posts.plot(pr.qa, priors.only = FALSE)
+%% @
+%% \end{center}
+%% \caption{Prior probability distributions (lines) with comparative posterior
+%%   histograms (bars) used in the Prince Rupert District AM1 model with the standard
+%%   deviation on survey q set to \Sexpr{pr.qa$ctl$surv.q[3,1]}.
+%%   Parameters $q_k$ represent gears where: $k=1$ is the surface
+%%   survey and $k=2$ is the dive survey. The dotted red lines are the MPD
+%%   estimates.}
+%% \label{fig:pr-qa}
+%% \end{figure}
+
+%% \begin{figure}[H]
+%% \begin{center}
+%% <<prd.qb>>=
+%% make.priors.posts.plot(pr.qb, priors.only = FALSE)
+%% @
+%% \end{center}
+%% \caption{Prior probability distributions (lines) with comparative posterior
+%%   histograms (bars) used in the Prince Rupert District AM1 model with the standard
+%%   deviation on survey q set to \Sexpr{pr.qb$ctl$surv.q[3,1]}.
+%%   Parameters $q_k$ represent gears where: $k=1$ is the surface
+%%   survey and $k=2$ is the dive survey. The dotted red lines are the MPD
+%%   estimates.}
+%% \label{fig:pr-qb}
+%% \end{figure}
+
+%% \begin{figure}[H]
+%% \begin{center}
+%% <<prd.qc>>=
+%% make.priors.posts.plot(pr.qc, priors.only = FALSE)
+%% @
+%% \end{center}
+%% \caption{Prior probability distributions (lines) with comparative posterior
+%%   histograms (bars) used in the Prince Rupert District AM1 model with the standard
+%%   deviation on survey q set to \Sexpr{pr.qc$ctl$surv.q[3,1]}.
+%%   Parameters $q_k$ represent gears where: $k=1$ is the surface
+%%   survey and $k=2$ is the dive survey. The dotted red lines are the MPD
+%%   estimates.}
+%% \label{fig:pr-qc}
+%% \end{figure}
+
+%% %%------------------------------------------------------------------------------
+
+%% \begin{figure}[H]
+%% \begin{center}
+%% <<cc.qa>>=
+%% make.priors.posts.plot(cc.qa, priors.only = FALSE)
+%% @
+%% \end{center}
+%% \caption{Prior probability distributions (lines) with comparative posterior
+%%   histograms (bars) used in the Central Coast AM1 model with the standard
+%%   deviation on survey q set to \Sexpr{cc.qa$ctl$surv.q[3,1]}.
+%%   Parameters $q_k$ represent gears where: $k=1$ is the surface
+%%   survey and $k=2$ is the dive survey. The dotted red lines are the MPD
+%%   estimates.}
+%% \label{fig:cc-qa}
+%% \end{figure}
+
+%% \begin{figure}[H]
+%% \begin{center}
+%% <<cc.qb>>=
+%% make.priors.posts.plot(cc.qb, priors.only = FALSE)
+%% @
+%% \end{center}
+%% \caption{Prior probability distributions (lines) with comparative posterior
+%%   histograms (bars) used in the Central Coast AM1 model with the standard
+%%   deviation on survey q set to \Sexpr{cc.qb$ctl$surv.q[3,1]}.
+%%   Parameters $q_k$ represent gears where: $k=1$ is the surface
+%%   survey and $k=2$ is the dive survey. The dotted red lines are the MPD
+%%   estimates.}
+%% \label{fig:cc-qb}
+%% \end{figure}
+
+%% \begin{figure}[H]
+%% \begin{center}
+%% <<cc.qc>>=
+%% make.priors.posts.plot(cc.qb, priors.only = FALSE)
+%% @
+%% \end{center}
+%% \caption{Prior probability distributions (lines) with comparative posterior
+%%   histograms (bars) used in the Central Coast AM1 model with the standard
+%%   deviation on survey q set to \Sexpr{cc.qb$ctl$surv.q[3,1]}.
+%%   Parameters $q_k$ represent gears where: $k=1$ is the surface
+%%   survey and $k=2$ is the dive survey. The dotted red lines are the MPD
+%%   estimates.}
+%% \label{fig:cc-qb}
+%% \end{figure}
+
+%% %%------------------------------------------------------------------------------
+
+%% \begin{figure}[H]
+%% \begin{center}
+%% <<sog.qa>>=
+%% make.priors.posts.plot(sog.qa, priors.only = FALSE)
+%% @
+%% \end{center}
+%% \caption{Prior probability distributions (lines) with comparative posterior
+%%   histograms (bars) used in the Strait of Georgia AM1 model with the standard
+%%   deviation on survey q set to \Sexpr{sog.qa$ctl$surv.q[3,1]}.
+%%   Parameters $q_k$ represent gears where: $k=1$ is the surface
+%%   survey and $k=2$ is the dive survey. The dotted red lines are the MPD
+%%   estimates.}
+%% \label{fig:sog-qa}
+%% \end{figure}
+
+%% \begin{figure}[H]
+%% \begin{center}
+%% <<sog.qb>>=
+%% make.priors.posts.plot(sog.qb, priors.only = FALSE)
+%% @
+%% \end{center}
+%% \caption{Prior probability distributions (lines) with comparative posterior
+%%   histograms (bars) used in the Strait of Georgia AM1 model with the standard
+%%   deviation on survey q set to \Sexpr{sog.qb$ctl$surv.q[3,1]}.
+%%   Parameters $q_k$ represent gears where: $k=1$ is the surface
+%%   survey and $k=2$ is the dive survey. The dotted red lines are the MPD
+%%   estimates.}
+%% \label{fig:sog-qb}
+%% \end{figure}
+
+%% \begin{figure}[H]
+%% \begin{center}
+%% <<sog.qc>>=
+%% make.priors.posts.plot(sog.qc, priors.only = FALSE)
+%% @
+%% \end{center}
+%% \caption{Prior probability distributions (lines) with comparative posterior
+%%   histograms (bars) used in the Strait of Georgia AM1 model with the standard
+%%   deviation on survey q set to \Sexpr{sog.qc$ctl$surv.q[3,1]}.
+%%   Parameters $q_k$ represent gears where: $k=1$ is the surface
+%%   survey and $k=2$ is the dive survey. The dotted red lines are the MPD
+%%   estimates.}
+%% \label{fig:sog-qc}
+%% \end{figure}
+
+%% %%------------------------------------------------------------------------------
+
+%% \begin{figure}[H]
+%% \begin{center}
+%% <<wcvi.qa>>=
+%% make.priors.posts.plot(wcvi.qa, priors.only = FALSE)
+%% @
+%% \end{center}
+%% \caption{Prior probability distributions (lines) with comparative posterior
+%%   histograms (bars) used in the WCVI AM1 model with the standard
+%%   deviation on survey q set to \Sexpr{wcvi.qa$ctl$surv.q[3,1]}.
+%%   Parameters $q_k$ represent gears where: $k=1$ is the surface
+%%   survey and $k=2$ is the dive survey. The dotted red lines are the MPD
+%%   estimates.}
+%% \label{fig:wcvi-qa}
+%% \end{figure}
+
+%% \begin{figure}[H]
+%% \begin{center}
+%% <<wcvi.qb>>=
+%% make.priors.posts.plot(wcvi.qb, priors.only = FALSE)
+%% @
+%% \end{center}
+%% \caption{Prior probability distributions (lines) with comparative posterior
+%%   histograms (bars) used in the WCVI AM1 model with the standard
+%%   deviation on survey q set to \Sexpr{wcvi.qb$ctl$surv.q[3,1]}.
+%%   Parameters $q_k$ represent gears where: $k=1$ is the surface
+%%   survey and $k=2$ is the dive survey. The dotted red lines are the MPD
+%%   estimates.}
+%% \label{fig:wcvi-qb}
+%% \end{figure}
+
+%% \begin{figure}[H]
+%% \begin{center}
+%% <<wcvi.qc>>=
+%% make.priors.posts.plot(wcvi.qc, priors.only = FALSE)
+%% @
+%% \end{center}
+%% \caption{Prior probability distributions (lines) with comparative posterior
+%%   histograms (bars) used in the WCVI AM1 model with the standard
+%%   deviation on survey q set to \Sexpr{wcvi.qc$ctl$surv.q[3,1]}.
+%%   Parameters $q_k$ represent gears where: $k=1$ is the surface
+%%   survey and $k=2$ is the dive survey. The dotted red lines are the MPD
+%%   estimates.}
+%% \label{fig:wcvi-qc}
+%% \end{figure}
+
 
 
 
