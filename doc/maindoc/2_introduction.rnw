@@ -12,21 +12,21 @@ How well a particular management procedure performs depends on what objectives a
 Accordingly, the performance of any given management procedure cannot be viewed without understanding management objectives.
 
 \Sexpr{fish.name}{} has been managed using a set harvest control rule but according to our definition above, the management procedure applied in practice has been in a constant state of flux.
-Since it was implemented in 1986 and formally tested in \citet{hall1988}, there is no single element that has not changed: the survey data changed in \Sexpr{newSurvYr} to the dive survey; the harvest control rule changed from being applied to the current spawning biomass estimate to the projected spawning stock biomass estimate; and assessment model assumptions have changed on multiple occasions with different discrete and instantaneous formulations, alternative assumptions about \textit{q}, and others that included empirical weight at age and time-varying estimates of natural mortality; plus many others.
+Since it was implemented in 1986 and formally tested in \citet{hall1988}, there is no single element that has not changed: the survey data changed in \Sexpr{newSurvYr} to the dive survey; the harvest control rule changed from being applied to the current spawning biomass estimate to the projected spawning stock biomass estimate; and assessment model assumptions have changed on multiple occasions with different discrete and instantaneous formulations, alternative assumptions about $q$, and others that included empirical weight at age and time-varying estimates of natural mortality; plus many others.
 In addition to operational changes in the application of management procedures, there is some evidence for environmental and ecological changes that resulted in apparent changes in size at age and natural mortality that would have affected management procedure performance even if it had been consistently applied.
 As a result, it is difficult to attribute departures from the original predictions of management procedure performance (in terms of probability of fisheries closures, average annual variability of catch) to any single cause.
 
 This year's assessment presents two base cases assessments for each of the 5 major stocks: ``AM1'' denoting the case where surface (\Sexpr{min(yrRange)}--\Sexpr{newSurvYr-1}) and dive (\Sexpr{newSurvYr}--\Sexpr{max(yrRange)}) survey catchability parameters ($q_1$ and $q_2$) are estimated using a prior distribution, and ``AM2'' denoting the case where the surface survey catchability ($q_1$) is estimated and the dive survey catchability is fixed at $q_2 = 1$.
 The ISCAM modelling code used in \Sexpr{assess.yr} has been updated to the new platform, the detailes of which are described in the Bridging Analysis, Appendix \ref{chap:bridge}.
 
-Sensitivity cases for AM2 and AM1 investigate:
+Sensitivity cases for \Sexpr{PasteNicely(mNames)} investigate:
 \begin{resdoclist}
 \item Estimation of time-varying vs. constant natural mortality,
 \item Errors-in-variables parameterization of process and observation error,
 \item Sensitivity to broadening of the prior on $q$, and
 \item Juxtaposition of maturity-at-age and selectivity-at-age.
 \end{resdoclist}
-Sensitivity cases are presented for all 5 major stocks.
+Sensitivity cases are presented for all \Sexpr{length(allRegions$major)} major stocks.
 
 \subsection{LIFE HISTORY}
 
@@ -111,11 +111,12 @@ U'_{T+1} = \begin{cases}
 \text{min} \left( \frac{SB_{T+1} - 0.25 \cdot \mli{SB}_0}{B_{T+1}}, ~ 0.2 \right) & B_{T+1} > 0.25 \cdot \mli{SB}_0
 \end{cases}
 \end{equation}
-where $T$ is the terminal year for the stock assessment, $SB_{T+1}$ is the prefishery forecast biomass in year $T+1$, and $\mli{SB}_0$ is the unfished equilibrium spawning stock biomass.
+where $T$ is the terminal year for the stock assessment, $\mli{SB}_{T+1}$ is the prefishery forecast biomass in year $T+1$, and $\mli{SB}_0$ is the unfished equilibrium spawning stock biomass.
 The output from the harvest control rule is the intended annual harvest rate, which is reduced to zero as the spawning stock is depleted to the level of $0.25\cdot\mli{SB}_0$.
 
 For the major stock areas, the harvest control rule is a hybrid that combines both constant escapement and constant harvest rate policies, allowing for a reduced harvest rate in areas where the intended 20\% annual harvest rate would bring the forecast pre-fishery mature spawning biomass (i.e., the `escapement') to levels below the cut-off value of $0.25\cdot\mli{SB}_0$ \citep{cleary2010,cleary2012}.
 
+% Need to get these citations
 This cut-off value was selected based on simulation work (Hall 1986, Hall et al. 1988, Zheng et al. 1993, Haist et al. 1993)  suggesting that for stocks above the $0.25\cdot\mli{SB}_0$ level, that the hybrid HCR would produce lower catch variance and fewer fishery closures than a constant escapement rule.
 The simulation work focussed on an analysis of stock dynamics for the SOG stock only.
 
@@ -138,11 +139,11 @@ Unfished equilibrium spawning biomass ($\mli{SB}_0$) has been part of the manage
 Annual science advice includes presentation of estimated stock status relative to the long-term average unfished spawning biomass, and presentation of probabilistic decision tables with projected pre-fishery biomass relative to fractions of $\mli{SB}_0$ (e.g., $0.25\cdot\mli{SB}_0$ and $0.30\cdot\mli{SB}_0$).
 Time series estimates of weight-at-age show significant declines in mean weight-at-age for all major stocks between 1980-2010 as well as increasing and decreasing trends in estimated natural mortality.
 Given these nonstationary dynamics $\mli{SB}_0$ is calculated using on long-term average weight-at-age and average natural mortality and we do not present dynamic estimates of $\mli{SB}_0$, i.e., based on shorter time series or during "high" or "low" productivivity periods.
-Regarding the calculation of reference points, the DFO PA Framework recommends "as long as a time series as possible should be used in establishing reference points for a stock. 
+Regarding the calculation of reference points, the DFO PA Framework recommends ``as long as a time series as possible should be used in establishing reference points for a stock''.
 Many stocks will show substantial variation in productivity over a long time series, and this variation should be taken into account when setting the reference points." 
 
 Evidence of nonstationarity as well as modelling of three selectivity types due to concurrent harvesting by multiple gear types limits our ability to calculate and evaluate equilibrium reference points such as $B_\text{MSY}$ in the management procedure.
-Previous attempts to estimate $B_\text{MSY}$ for BC Pacific Herring stocks has resulted in unusually high estimates of $F_\text{MSY}$ (e.g., Martell et al 2012).
+Previous attempts to estimate $B_\text{MSY}$ for BC Pacific Herring stocks has resulted in unusually high estimates of $F_\text{MSY}$ \citep{martell2011}.
 
 Attempts to estimate $F_\text{MSY}$ using \emph{ISCAM} are presented in \ref{secMatAge} of the Sensitivity Analyses, based on a single gear type (roe seine), in order to investigate whether overlap or lack of overlap in maturity and selectivity curves impacts estimates of  $F_\text{MSY}$.  %SH to check this statement (is single gear correct?)
 
@@ -202,28 +203,17 @@ Since then, the design of the model has undergone re-structuring various model c
 One major change introduced in 2011 \citep{martell2011} was setting the model to estimate the spawn dive survey scaling parameter \emph{q}\subscr{2}, rather than setting it fixed at \emph{q}\subscr{1}=1.0, as was done in previous assessment models. 
 Another major change introduced in 2011 was to make the fishery cut-offs in the harvest control rule dependent on the model’s most recent estimate of unfished spawning biomass $\mli{SB}_0$ (i.e., cease fishing when the stock is estimated to be below $0.25\cdot\mli{SB}_0$). 
 In previous model iterations, the fishery cut-offs were fixed at absolute biomass levels based on 1996 estimates of $0.25\cdot\mli{SB}_0$ \citep{schweigert1997}.  
-Throughout this document, the term Assessment Model 1 (AM1) describes the more recent management procedure (MP), which estimates the scaling factor for the surface survey \emph{q}\subscr{1} (1951-1987) and dive survey \emph{q}\subscr{2} (1988-2017) using informative priors; and uses estimated fishery cut-offs.
-Assessment Model 2 (AM2) refers to an approximation of the historical MP, in which the surface survey \emph{q}\subscr{1} (1951-1987) is estimated, the dive survey \emph{q}\subscr{2} (1988-2017) is fixed at 1.0 and the fishery cut-offs are fixed at 1996 levels.
+Throughout this document, the term Assessment Model 1 (AM1) describes the more recent management procedure (MP), which estimates the scaling factor for the surface survey $q_1$ (1951-1987) and dive survey $q_2$ (1988-2017) using informative priors; and uses estimated fishery cut-offs.
+Assessment Model 2 (AM2) refers to an approximation of the historical MP, in which the surface survey $q_1$ (1951-1987) is estimated, the dive survey $q_2$ (1988-2017) is fixed at 1.0 and the fishery cut-offs are fixed at 1996 levels.
 There have been a number of requests to evaluate the potential consequences of applying AM1 vs. AM2 using simulation modelling. 
 This reflects concerns that the consequences of applying AM1 were not simulation-tested prior to its implementation in 2011, which, along with lack of rebuilding in some areas, has led to questioning the performance of AM1.
 Both MPs have been peer reviewed through CSAS and both have been implemented in the provision of science advice for Pacific Herring in previous years. 
 
-To address concerns arising both from previous CSAS processes and from implementation of each approach, the 2016 Science Response \citep{herring2016} includes a table developed by the Herring Technical Working Group (HTWG) that describes the main attributes and limitations of AM1 and AM2, to support short-term decision-making (see \citet{herring2016} Table A.1).
+To address concerns arising both from previous CSAS processes and from implementation of each approach, the 2016 Science Response \citep{herring2016} includes a table developed by the Herring Technical Working Group (HTWG) that describes the main attributes and limitations of AM1 and AM2, to support short-term decision-making \citep[see][Table A.1]{herring2016}.
 The status of BC herring stocks in 2017 and forecasts for 2018 are provided in the form of dual stock assessment updates, using the AM1 \citep{martell2011} and AM2 (approximation of \citet{cleary2012}) MPs.
 
-0.8\emph{B}\subscr{MSY}
-\emph{q}\subscr{1}
-\emph{q}\subscr{2}
-$0.25\cdot\mli{SB}_0$ 
-$\mli{SB}_0$
-
-To address concerns arising both from previous CSAS processes and from implementation of each approach, the 2016 Science Response \citep{herring2016} includes a table developed by the Herring Technical Working Group (HTWG) that describes the main attributes and limitations of AM1 and AM2, to support short-term decision-making (Table A.1 in \citet{herring2016}). %MH: pls help here
-The status of BC herring stocks in 2017 and forecasts for 2018 are provided in the form of dual stock assessment updates, using the AM1 \citep{martell2011} and AM2 (approximation of \citet{cleary2012}) MPs.
-
-% 0.8\emph{B}\subscr{MSY}
-% \emph{q}\subscr{1}
-% \emph{q}\subscr{2}
-% $0.25\cdot\mli{SB}_0$ 
+% 0.8$B_\textMSY}$
+% $q_1$
+% $q_2$
+% $0.25B_0$
 % $\mli{SB}_0$
-% $F_\text{MSY}$
-% $\mli{SSB}_\text{MSY}$

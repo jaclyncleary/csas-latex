@@ -112,27 +112,27 @@ CSAP Working Paper 2017PEL01.
 %%<<test, child='maindoc/test.rnw'>>=
 %%@
 
-<<abstract, child='maindoc/1_abstract.rnw'>>=
-@
+%<<abstract, child='maindoc/1_abstract.rnw'>>=
+%@
 
 % The next two lines are required to start off numbering
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
-%%<<introduction, child='maindoc/2_introduction.rnw'>>=
-%%@
-
-<<modelling, child='maindoc/3_modelling.rnw'>>=
+<<introduction, child='maindoc/2_introduction.rnw'>>=
 @
 
-%%<<recommendations, child='maindoc/4_recommendations.rnw'>>=
-%%@
+%<<modelling, child='maindoc/3_modelling.rnw'>>=
+%@
 
-<<future, child='maindoc/5_future.rnw'>>=
-@
+%<<recommendations, child='maindoc/4_recommendations.rnw'>>=
+%@
 
-<<acknowledgements, child='maindoc/6_acknowledgements.rnw'>>=
-@
+%<<future, child='maindoc/5_future.rnw'>>=
+%@
+
+%<<acknowledgements, child='maindoc/6_acknowledgements.rnw'>>=
+%@
 
 % References
 \clearpage
@@ -140,34 +140,34 @@ CSAP Working Paper 2017PEL01.
 \bibliography{all}
 \clearpage
 
-<<tables, child='maindoc/7_tables.rnw'>>=
-@
+%<<tables, child='maindoc/7_tables.rnw'>>=
+%@
 
-<<figures, child='maindoc/8_figures.rnw'>>=
-@
+%<<figures, child='maindoc/8_figures.rnw'>>=
+%@
 
-% Start the appendices
-\Appendices
+% % Start the appendices
+% \Appendices
 
-%%\refstepcounter{chapter}
-%%<<biology, child='app/A_biology.rnw'>>=
-%%@
-
-%%\refstepcounter{chapter}
-%%<<equations, child='app/B_equations.rnw'>>=
-%%@
-
-%%\refstepcounter{chapter}
-%%<<input, child='app/C_input.rnw'>>=
-%%@
-
-%%\refstepcounter{chapter}
-%%<<minors, child='app/D_minors.rnw'>>=
-%%@
-
-%%\refstepcounter{chapter}
-%%<<bridge, child='app/E_bridge.rnw'>>=
-%%@
+% \refstepcounter{chapter}
+% <<biology, child='app/A_biology.rnw'>>=
+% @
+% 
+% \refstepcounter{chapter}
+% <<equations, child='app/B_equations.rnw'>>=
+% @
+% 
+% \refstepcounter{chapter}
+% <<input, child='app/C_input.rnw'>>=
+% @
+% 
+% \refstepcounter{chapter}
+% <<minors, child='app/D_minors.rnw'>>=
+% @
+% 
+% \refstepcounter{chapter}
+% <<bridge, child='app/E_bridge.rnw'>>=
+% @
 
 % Fin
 \end{document}
