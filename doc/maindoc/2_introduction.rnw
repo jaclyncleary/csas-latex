@@ -139,10 +139,10 @@ Given these nonstationary dynamics $\mli{SB}_0$ is calculated using on long-term
 Regarding the calculation of reference points, the DFO PA Framework recommends "as long as a time series as possible should be used in establishing reference points for a stock. 
 Many stocks will show substantial variation in productivity over a long time series, and this variation should be taken into account when setting the reference points." 
 
-Evidence of nonstationarity as well as modelling of three selectivity types due to concurrent harvesting by multiple gear types limits our ability to calculate and evaluate equilibrium reference points such as \emph{B}\subscr{MSY} in the management procedure.
-Previous attempts to estimate \emph{F}\subscr{MSY} for BC Pacific Herring stocks has resulted in unusually high estimates of \emph{F}\subscr{MSY} (e.g., Martell et al 2012).
+Evidence of nonstationarity as well as modelling of three selectivity types due to concurrent harvesting by multiple gear types limits our ability to calculate and evaluate equilibrium reference points such as $B_\text{MSY}$ in the management procedure.
+Previous attempts to estimate $B_\text{MSY}$ for BC Pacific Herring stocks has resulted in unusually high estimates of $F_\text{MSY}$ (e.g., Martell et al 2012).
 
-Attempts to estimate \emph{F}\subscr{MSY} using \emph{ISCAM} are presented in \ref{secMatAge} of the Sensitivity Analyses, based on a single gear type (roe seine), in order to investigate whether overlap or lack of overlap in maturity and selectivity curves impacts estimates of  \emph{F}\subscr{MSY}.  %SH to check this statement (is single gear correct?)
+Attempts to estimate $F_\text{MSY}$ using \emph{ISCAM} are presented in \ref{secMatAge} of the Sensitivity Analyses, based on a single gear type (roe seine), in order to investigate whether overlap or lack of overlap in maturity and selectivity curves impacts estimates of  $F_\text{MSY}$.  %SH to check this statement (is single gear correct?)
 
 \subsubsection{Limit Reference Point}
 
@@ -183,7 +183,7 @@ In these examples, the biological references points are implemented as the lower
 
 For Canadian fisheries in the Maritimes Region, a commonly used approach to defining the USR (and the boundary between the cautious and healthy zones) is to set the USR equal to 2x the LRP.
 The following model-based approaches are used \citep{dfo2012}:
-(4) Set the LRP at 40\% of spawning stock biomass at maximum sustainable yield ($SSB_MSY$) and the USR at 80\% of $SSB_MSY$
+(4) Set the LRP at 40\% of spawning stock biomass at maximum sustainable yield ($\mli{SSB}_\text{MSY}$) and the USR at 80\% of $\mli{SSB}_\text{MSY}$
 Recommended for 3NOPs4VWX+5 Atlantic Halibut, 4VsW Atlantic Cod, 4X5Y Haddock, 4VWX American Plaice;
 (5) LRP established based on analysis of stock-recruitment data, with proposed USR equal to 2x the LRP
 Recommended for 4X5Y Atlantic Cod;
@@ -192,8 +192,8 @@ Recommended for 4VWX Snow Crab.
 
 Where model-based estimates were not available, empirical approaches to approximating $B_MSY$ are used, with LRP and USR set at 40\% and 80\% of $B_MSY$ proxies \citep{dfo2012}.
 
-\cite{Sinclair-Starr:2005} suggest using the long-term average biomass ($B_avg$) as a proxy USR. This approach of defining a historical target reference point is recommended for Rock Sole \citep{holt2016} and for Pacific cod \citep{forrest2015}. 
-An alternative to using the long-term average biomass is the average biomass during a productive period ($B_avg-prod$).
+\cite{Sinclair-Starr:2005} suggest using the long-term average biomass $B_\text{avg}$ as a proxy USR. This approach of defining a historical target reference point is recommended for Rock Sole \citep{holt2016} and for Pacific cod \citep{forrest2015}. 
+An alternative to using the long-term average biomass is the average biomass during a productive period $B_\text{avg-prod}$.
 
 \subsection{ASSESSMENT HISTORY}
 
@@ -215,3 +215,5 @@ The status of BC herring stocks in 2017 and forecasts for 2018 are provided in t
 % \emph{q}\subscr{2}
 % $0.25\cdot\mli{SB}_0$ 
 % $\mli{SB}_0$
+% $F_\text{MSY}$
+% $\mli{SSB}_\text{MSY}$
