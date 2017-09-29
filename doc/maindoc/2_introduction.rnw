@@ -139,10 +139,7 @@ Regarding the calculation of reference points, the DFO PA Framework recommends "
 Many stocks will show substantial variation in productivity over a long time series, and this variation should be taken into account when setting the reference points." 
 
 Evidence of nonstationarity as well as modelling of three selectivity types due to concurrent harvesting by multiple gear types limits our ability to calculate and evaluate equilibrium reference points such as \emph{B}\subscr{MSY} in the management procedure.
-Previous attempts to estimate \emph{F}\subscr{MSY} for BC Pacific Herring stocks has resulted in unusually high estimates of \emph{F}\subscr{MSY} (e.g., \cite{martell2011}). Attempts to estimate \emph{F}\subscr{MSY} using \emph{ISCAM} are presented in Section 2.4.4 Maturity-at-age of the Sensitivity Analyses, based on a single gear type (roe seine), in order to investigate whether overlap or lack of overlap in maturity and selectivity curves impacts estimates of  \emph{F}\subscr{MSY}.  %SH to check this statement
-
-%$ \mli{SB}_0$
-% 0.8\emph{B}\subscr{MSY}
+Previous attempts to estimate \emph{F}\subscr{MSY} for BC Pacific Herring stocks has resulted in unusually high estimates of \emph{F}\subscr{MSY} (e.g., \cite{martell2011}). Attempts to estimate \emph{F}\subscr{MSY} using \emph{ISCAM} are presented in \ref{secMatAge} of the Sensitivity Analyses, based on a single gear type (roe seine), in order to investigate whether overlap or lack of overlap in maturity and selectivity curves impacts estimates of  \emph{F}\subscr{MSY}.  %SH to check this statement (is single gear correct?)
 
 \subsubsection{Limit Reference Point}
 
@@ -196,12 +193,28 @@ Where model-based estimates were not available, empirical approaches to approxim
 
 \subsection{ASSESSMENT HISTORY}
 
+Annual stock assessments for the BC Pacific Herring major stocks have been conducted using a catch-age model since the mid-2000s \citep{haist2006}. 
+Since then, the design of the model has undergone re-structuring various model components, as often as every 2-3 years, to address issues identified during peer-review.
+One major change introduced in 2011 \citep{martell2011} was setting the model to estimate the spawn dive survey scaling parameter \emph{q}\subscr{2}, rather than setting it fixed at \emph{q}\subscr{1}=1.0, as was done in previous assessment models. 
+Another major change introduced in 2011 was to make the fishery cut-offs in the harvest control rule dependent on the model’s most recent estimate of unfished spawning biomass $\mli{SB}_0$ (i.e., cease fishing when the stock is estimated to be below $0.25\cdot\mli{SB}_0$). 
+In previous model iterations, the fishery cut-offs were fixed at absolute biomass levels based on 1996 estimates of $0.25\cdot\mli{SB}_0$ \citep{schweigert1997}.  
+Throughout this document, the term Assessment Model 1 (AM1) describes the more recent management procedure (MP), which estimates the scaling factor for the surface survey \emph{q}\subscr{1} (1951-1987) and dive survey \emph{q}\subscr{2} (1988-2017) using informative priors; and uses estimated fishery cut-offs.
+Assessment Model 2 (AM2) refers to an approximation of the historical MP, in which the surface survey \emph{q}\subscr{1} (1951-1987) is estimated, the dive survey \emph{q}\subscr{2} (1988-2017) is fixed at 1.0 and the fishery cut-offs are fixed at 1996 levels.
+There have been a number of requests to evaluate the potential consequences of applying AM1 vs. AM2 using simulation modelling. This reflects concerns that the consequences of applying AM1 were not simulation-tested prior to its implementation in 2011, which, along with lack of rebuilding in some areas, has led to questioning the performance of AM1.
+
+Both MPs have been peer reviewed through CSAS and both have been implemented in the provision of science advice for Pacific Herring in previous years. To address concerns arising both from previous CSAS processes and from implementation of each approach, the HTWG has also recommended inclusion of a table to describe the main attributes and limitations of AM1 and AM2, to support short-term decision-making (Table A.1).
+
+
+The status of BC herring stocks in 2017 and forecasts for 2018 are provided in the form of dual stock assessment updates, using the AM1 \citep{martell2011} and AM2 (approximation of Cleary and Schweigert 2011) MPs. 
 
 
 
 
-
-
+% 0.8\emph{B}\subscr{MSY}
+% \emph{q}\subscr{1}
+% \emph{q}\subscr{2}
+% $0.25\cdot\mli{SB}_0$ 
+% $\mli{SB}_0$
 
 
 
