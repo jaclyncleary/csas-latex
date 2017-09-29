@@ -5,12 +5,3 @@ Thanks...
 \item Rob Kronlund for R code to make production plots.
 \end{itemize}
 
-% References
-% TODO: Move this to the res-doc.rnw
-\clearpage
-\bibliographystyle{res-doc}
-\bibliography{../../all}
-\clearpage
-
-%\bibliographystyle{../res-doc}
-%\bibliography{test}

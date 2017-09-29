@@ -134,6 +134,12 @@ CSAP Working Paper 2017PEL01.
 <<acknowledgements, child='maindoc/6_acknowledgements.rnw'>>=
 @
 
+% References
+\clearpage
+\bibliographystyle{res-doc}
+\bibliography{all}
+\clearpage
+
 <<tables, child='maindoc/7_tables.rnw'>>=
 @
 
