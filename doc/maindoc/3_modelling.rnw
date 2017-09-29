@@ -315,7 +315,10 @@ Conclusion: proceed with `VX' `AMX' as our 'baseline', and include others as sen
 
 The base case for the assessment model assumes that the natural mortality $M$ is time varying where instantaneous natural mortality is assumed equal over all ages but varies over time \citep{fu2004}.
 The annual deviations in time varying M are estimated using a random walk process \citep{haist2006}.  
-For this sensitivity analysis we investigated the effects of estimating a single constant M over ages and time. 
+For this sensitivity analysis we investigated the effects of estimating a single constant M over ages and time. The main motivation for this sensitivity analysis was to further investigate the impact of using time-varying Natural mortality in the assessment model.  
+
+....JC I remember you telling me about references of Alaska assessments using different constant M values???THink we should add it here?
+
 This scenario was applied to all stocks and assessment model versions (AM1 and AM2) and the results are shown in Figures XX.
 
 .....MORE RESULTS NEEDED WHEN FIGURES ARE GENERATED....
