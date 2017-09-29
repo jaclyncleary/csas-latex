@@ -131,8 +131,18 @@ Simulation analyses of HCR will occur within a Management Strategy Evaluation (M
 
 \subsection{BIOLOGICAL REFERENCE POINTS}
 
-JC: blurb about $\mli{SB}_0$ -- unfished equilibrium spawning biomass, based on long-term average weight-age and average natural mortality. Not a dynamic calc. This reference point meets PA opolicy specifications in that we use long timeseries of data...
+Unfished equilibrium spawning biomass ($\mli{SB}_0$) has been part of the management procedure for Pacific Herring since 1986 when $0.25\cdot\mli{SB}_0$ was adopted as a commercial fishing threshold (cut-off) in the harvest control rule. 
+Annual science advice includes presentation of estimated stock status relative to the long-term average unfished spawning biomass, and presentation of probabilistic decision tables with projected pre-fishery biomass relative to fractions of $\mli{SB}_0$ (e.g., $0.25\cdot\mli{SB}_0$ and $0.30\cdot\mli{SB}_0$).
+Time series estimates of weight-at-age show significant declines in mean weight-at-age for all major stocks between 1980-2010 as well as increasing and decreasing trends in estimated natural mortality.
+Given these nonstationary dynamics $\mli{SB}_0$ is calculated using on long-term average weight-at-age and average natural mortality and we do not present dynamic estimates of $\mli{SB}_0$, i.e., based on shorter time series or during "high" or "low" productivivity periods.
+Regarding the calculation of reference points, the DFO PA Framework recommends "as long as a time series as possible should be used in establishing reference points for a stock. 
+Many stocks will show substantial variation in productivity over a long time series, and this variation should be taken into account when setting the reference points." 
 
+Evidence of nonstationarity as well as modelling of three selectivity types due to concurrent harvesting by multiple gear types limits our ability to calculate and evaluate equilibrium reference points such as \emph{B}\subscr{MSY} in the management procedure.
+Previous attempts to estimate \emph{F}\subscr{MSY} for BC Pacific Herring stocks has resulted in unusually high estimates of \emph{F}\subscr{MSY} (e.g., \cite{martell2011}). Attempts to estimate \emph{F}\subscr{MSY} using \emph{ISCAM} are presented in Section 2.4.4 Maturity-at-age of the Sensitivity Analyses, based on a single gear type (roe seine), in order to investigate whether overlap or lack of overlap in maturity and selectivity curves impacts estimates of  \emph{F}\subscr{MSY}.  %SH to check this statement
+
+%$ \mli{SB}_0$
+% 0.8\emph{B}\subscr{MSY}
 
 \subsubsection{Limit Reference Point}
 
@@ -184,10 +194,17 @@ Where model-based estimates were not available, empirical approaches to approxim
 
 \cite{Sinclair-Starr:2005} suggest using the long-term average biomass ($B_avg$) as a proxy USR. This approach of defining a historical target reference point is recommended for Rock Sole \citep{holt-starr:2016} and for Pacific cod \citep{forrest2015}. An alternative to using the long-term average biomass is the average biomass during a productive period ($B_avg-prod$).
 
-Jaclyn is HERE
-Check: APPENDIX F MANAGEMENT PARAMETERS FOR HERRING STOCKS (Kronlund et al. 2017)
-
 \subsection{ASSESSMENT HISTORY}
+
+
+
+
+
+
+
+
+
+
 
 [Placeholder]
 
