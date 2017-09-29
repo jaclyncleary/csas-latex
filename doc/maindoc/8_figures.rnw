@@ -1260,7 +1260,7 @@ make.fishing.mort.mcmc.plot(list(wcvi.am1.constm,
                                  wcvi.am1.tvm,
                                  wcvi.am2.constm,
                                  wcvi.am2.tvm),
-                                 model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Constant M","AM2 Time-varying M),
+                                 model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Constant M","AM2 Time-varying M"),
                                  which.gear = 2,
                                  ylim = c(0,1),
                                  leg = "topleft")
