@@ -192,14 +192,9 @@ Recommended for 4VWX Snow Crab.
 
 Where model-based estimates were not available, empirical approaches to approximating $B_MSY$ are used, with LRP and USR set at 40\% and 80\% of $B_MSY$ proxies \citep{dfo2012}.
 
-<<<<<<< HEAD
-\citet{Sinclair-Starr:2005} suggest using the long-term average biomass ($B_avg$) as a proxy USR.
-This approach of defining a historical target reference point is recommended for Rock Sole \citep{holt-starr:2016} and for Pacific cod \citep{forrest2015}.
-An alternative to using the long-term average biomass is the average biomass during a productive period ($B_avg-prod$).
-=======
-\cite{Sinclair-Starr:2005} suggest using the long-term average biomass $B_\text{avg}$ as a proxy USR. This approach of defining a historical target reference point is recommended for Rock Sole \citep{holt2016} and for Pacific cod \citep{forrest2015}. 
+\cite{Sinclair-Starr:2005} suggest using the long-term average biomass $B_\text{avg}$ as a proxy USR.
+This approach of defining a historical target reference point is recommended for Rock Sole \citep{holt2016} and for Pacific cod \citep{forrest2015}. 
 An alternative to using the long-term average biomass is the average biomass during a productive period $B_\text{avg-prod}$.
->>>>>>> jaclyncleary/herring
 
 \subsection{ASSESSMENT HISTORY}
 
@@ -214,6 +209,7 @@ There have been a number of requests to evaluate the potential consequences of a
 This reflects concerns that the consequences of applying AM1 were not simulation-tested prior to its implementation in 2011, which, along with lack of rebuilding in some areas, has led to questioning the performance of AM1.
 Both MPs have been peer reviewed through CSAS and both have been implemented in the provision of science advice for Pacific Herring in previous years. 
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 To address concerns arising both from previous CSAS processes and from implementation of each approach, the 2016 Science Response \citep{herring2016} includes a table developed by the Herring Technical Working Group (HTWG) that describes the main attributes and limitations of AM1 and AM2, to support short-term decision-making (see \citet{herring2016} Table A.1).
 The status of BC herring stocks in 2017 and forecasts for 2018 are provided in the form of dual stock assessment updates, using the AM1 \citep{martell2011} and AM2 (approximation of \citet{cleary2012}) MPs.
@@ -224,6 +220,9 @@ The status of BC herring stocks in 2017 and forecasts for 2018 are provided in t
 $0.25\cdot\mli{SB}_0$ 
 $\mli{SB}_0$
 =======
+=======
+
+>>>>>>> Shawkshaw/herring
 To address concerns arising both from previous CSAS processes and from implementation of each approach, the 2016 Science Response \citep{herring2016} includes a table developed by the Herring Technical Working Group (HTWG) that describes the main attributes and limitations of AM1 and AM2, to support short-term decision-making (Table A.1 in \cite{herring2016}). %MH: pls help here
 The status of BC herring stocks in 2017 and forecasts for 2018 are provided in the form of dual stock assessment updates, using the AM1 \citep{martell2011} and AM2 (approximation of \cite{cleary2012}) MPs.
 
@@ -234,4 +233,7 @@ The status of BC herring stocks in 2017 and forecasts for 2018 are provided in t
 % $\mli{SB}_0$
 % $F_\text{MSY}$
 % $\mli{SSB}_\text{MSY}$
+<<<<<<< HEAD
 >>>>>>> jaclyncleary/herring
+=======
+>>>>>>> Shawkshaw/herring
