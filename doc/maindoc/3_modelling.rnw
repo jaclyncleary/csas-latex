@@ -296,10 +296,6 @@ These thresholds are consistent with biomass targets and limits in place in othe
 Given the large uncertainty in estimated \emph{B}\subscr{0} in this assessment (see Results, section XX, we also suggest B\subscr{1996}, the estimated spawning biomass at the beginning of the time series, as a candidate benchmark to measure relative fishing impacts for this stock.
 See Appendix~\ref{chap:equations} for description of reference points calculations.
 
-\subsection{BRIDGING ANALYSIS}
-
-[Placeholder]
-
 \subsection{SENSITIVITY ANALYSES}
 
 We tested the sensitivity of the results from base case assessment model identified in the bridging analysis in Appendix E to the following assumptions:
