@@ -1,0 +1,109 @@
+Stock,Model ,Sensitivity Case,Parameter,Initial Values,Estimated Values
+SOG,AM1,Base,Log recruitment (ln(R0 )),7.28,8.04
+SOG,AM1,Base,Steepness (h),0.8,0.7
+SOG,AM1,Base,Log natural mortality (ln(M )),-0.69186,-0.60012
+SOG,AM1,Base,Log mean recruitment (ln(R)),7.09,7.74
+SOG,AM1,Base,Log initial recruitment (ln(Rinit )),5.97,6.39
+SOG,AM1,Base,"Variance ratio, rho (?)",0.413297,0.24794
+SOG,AM1,Base,"Inverse total variance, kappa (?)",1.22062,1.7287
+SOG,AM1,Base,sigma,0.58189,0.37872
+SOG,AM1,Base,tau,0.6933,0.65958
+SOG,AM1,1,Log recruitment (ln(R0 )),7.28,8.04
+SOG,AM1,1,Steepness (h),0.8,0.7
+SOG,AM1,1,Log natural mortality (ln(M )),-0.69186,-0.60012
+SOG,AM1,1,Log mean recruitment (ln(R)),7.09,7.74
+SOG,AM1,1,Log initial recruitment (ln(Rinit )),5.97,6.39
+SOG,AM1,1,"Variance ratio, rho (?)",0.5,0.24794
+SOG,AM1,1,"Inverse total variance, kappa (?)",0.5,1.7287
+SOG,AM1,1,sigma,1,0.37872
+SOG,AM1,1,tau,1,0.65958
+SOG,AM1,2,Log recruitment (ln(R0 )),7.28,8.04
+SOG,AM1,2,Steepness (h),0.8,0.7
+SOG,AM1,2,Log natural mortality (ln(M )),-0.69186,-0.60012
+SOG,AM1,2,Log mean recruitment (ln(R)),7.09,7.74
+SOG,AM1,2,Log initial recruitment (ln(Rinit )),5.97,6.39
+SOG,AM1,2,"Variance ratio, rho (?)",0.05882,0.247937
+SOG,AM1,2,"Inverse total variance, kappa (?)",1.47059,1.72868
+SOG,AM1,2,sigma,0.2,0.37872
+SOG,AM1,2,tau,0.8,0.65958
+SOG,AM1,3,Log recruitment (ln(R0 )),7.28,8.04
+SOG,AM1,3,Steepness (h),0.8,0.7
+SOG,AM1,3,Log natural mortality (ln(M )),-0.69186,-0.60012
+SOG,AM1,3,Log mean recruitment (ln(R)),7.09,7.74
+SOG,AM1,3,Log initial recruitment (ln(Rinit )),5.97,6.39
+SOG,AM1,3,"Variance ratio, rho (?)",0.33166,0.24794
+SOG,AM1,3,"Inverse total variance, kappa (?)",2.89287,1.72868
+SOG,AM1,3,sigma,0.3386,0.37872
+SOG,AM1,3,tau,0.48066,0.65958
+SOG,AM1,4,Log recruitment (ln(R0 )),7.28,8.04
+SOG,AM1,4,Steepness (h),0.8,0.7
+SOG,AM1,4,Log natural mortality (ln(M )),-0.69186,-0.60012
+SOG,AM1,4,Log mean recruitment (ln(R)),7.09,7.74
+SOG,AM1,4,Log initial recruitment (ln(Rinit )),5.97,6.39
+SOG,AM1,4,"Variance ratio, rho (?)",0.4133,0.247937
+SOG,AM1,4,"Inverse total variance, kappa (?)",1.22062,1.72868
+SOG,AM1,4,sigma,0.581889989,0.37872
+SOG,AM1,4,tau,0.6933,0.65958
+SOG,AM1,5,Log recruitment (ln(R0 )),7.28,8.04
+SOG,AM1,5,Steepness (h),0.8,0.7
+SOG,AM1,5,Log natural mortality (ln(M )),-0.69186,-0.60012
+SOG,AM1,5,Log mean recruitment (ln(R)),7.09,7.74
+SOG,AM1,5,Log initial recruitment (ln(Rinit )),5.97,6.39
+SOG,AM1,5,"Variance ratio, rho (?)",0.8,0.247937
+SOG,AM1,5,"Inverse total variance, kappa (?)",0.8,1.72868
+SOG,AM1,5,sigma,1,0.37872
+SOG,AM1,5,tau,0.5,0.65958
+SOG,AM2,Base,Log recruitment (ln(R0 )),7.28,7.32
+SOG,AM2,Base,Steepness (h),0.8,0.8
+SOG,AM2,Base,Log natural mortality (ln(M )),-0.69186,-0.78778
+SOG,AM2,Base,Log mean recruitment (ln(R)),7.09,6.97
+SOG,AM2,Base,Log initial recruitment (ln(Rinit )),5.97,5.62
+SOG,AM2,Base,"Variance ratio, rho (?)",0.413297,0.2726
+SOG,AM2,Base,"Inverse total variance, kappa (?)",1.22062,1.6435
+SOG,AM2,Base,sigma,0.58189,0.40727
+SOG,AM2,Base,tau,0.6933,0.66529
+SOG,AM2,1,Log recruitment (ln(R0 )),7.28,7.32
+SOG,AM2,1,Steepness (h),0.8,0.8
+SOG,AM2,1,Log natural mortality (ln(M )),-0.69186,-0.78778
+SOG,AM2,1,Log mean recruitment (ln(R)),7.09,6.97
+SOG,AM2,1,Log initial recruitment (ln(Rinit )),5.97,5.62
+SOG,AM2,1,"Variance ratio, rho (?)",0.5,0.2726
+SOG,AM2,1,"Inverse total variance, kappa (?)",0.5,1.6435
+SOG,AM2,1,sigma,1,0.40727
+SOG,AM2,1,tau,1,0.66529
+SOG,AM2,2,Log recruitment (ln(R0 )),7.28,7.32
+SOG,AM2,2,Steepness (h),0.8,0.8
+SOG,AM2,2,Log natural mortality (ln(M )),-0.69186,-0.78778
+SOG,AM2,2,Log mean recruitment (ln(R)),7.09,6.97
+SOG,AM2,2,Log initial recruitment (ln(Rinit )),5.97,5.62
+SOG,AM2,2,"Variance ratio, rho (?)",0.05882,0.272596
+SOG,AM2,2,"Inverse total variance, kappa (?)",1.47059,1.64346
+SOG,AM2,2,sigma,0.2,0.40727
+SOG,AM2,2,tau,0.8,0.66529
+SOG,AM2,3,Log recruitment (ln(R0 )),7.28,7.32
+SOG,AM2,3,Steepness (h),0.8,0.8
+SOG,AM2,3,Log natural mortality (ln(M )),-0.69186,-0.78778
+SOG,AM2,3,Log mean recruitment (ln(R)),7.09,6.97
+SOG,AM2,3,Log initial recruitment (ln(Rinit )),5.97,5.62
+SOG,AM2,3,"Variance ratio, rho (?)",0.33166,0.2726
+SOG,AM2,3,"Inverse total variance, kappa (?)",2.89287,1.64346
+SOG,AM2,3,sigma,0.3386,0.40727
+SOG,AM2,3,tau,0.48066,0.66529
+SOG,AM2,4,Log recruitment (ln(R0 )),7.28,7.32
+SOG,AM2,4,Steepness (h),0.8,0.8
+SOG,AM2,4,Log natural mortality (ln(M )),-0.69186,-0.78778
+SOG,AM2,4,Log mean recruitment (ln(R)),7.09,6.97
+SOG,AM2,4,Log initial recruitment (ln(Rinit )),5.97,5.62
+SOG,AM2,4,"Variance ratio, rho (?)",0.413297,0.272596
+SOG,AM2,4,"Inverse total variance, kappa (?)",1.22062,1.64346
+SOG,AM2,4,sigma,0.581889989,0.40727
+SOG,AM2,4,tau,0.6933,0.66529
+SOG,AM2,5,Log recruitment (ln(R0 )),7.28,7.32
+SOG,AM2,5,Steepness (h),0.8,0.8
+SOG,AM2,5,Log natural mortality (ln(M )),-0.69186,-0.78778
+SOG,AM2,5,Log mean recruitment (ln(R)),7.09,6.97
+SOG,AM2,5,Log initial recruitment (ln(Rinit )),5.97,5.62
+SOG,AM2,5,"Variance ratio, rho (?)",0.8,0.272596
+SOG,AM2,5,"Inverse total variance, kappa (?)",0.8,1.64346
+SOG,AM2,5,sigma,1,0.40727
+SOG,AM2,5,tau,0.5,0.66529
