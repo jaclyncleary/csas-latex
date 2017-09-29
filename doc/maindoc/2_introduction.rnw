@@ -19,11 +19,13 @@ As a result, it is difficult to attribute departures from the original predictio
 This year's assessment presents two base cases assessments for each of the 5 major stocks: ``AM1'' denoting the case where surface (\Sexpr{min(yrRange)}--\Sexpr{newSurvYr-1}) and dive (\Sexpr{newSurvYr}--\Sexpr{max(yrRange)}) survey catchability parameters ($q_1$ and $q_2$) are estimated using a prior distribution, and ``AM2'' denoting the case where the surface survey catchability ($q_1$) is estimated and the dive survey catchability is fixed at $q_2 = 1$.
 The ISCAM modelling code used in \Sexpr{assess.yr} has been updated to the new platform, the detailes of which are described in the Bridging Analysis, Appendix \ref{chap:bridge}.
 
-Sensitivity cases for AM1 and AM2 investigate
-(1) estimation of time-varying vs. constant natural mortality,
-(2) errors-in-variables parameterization of process and observation error,
-(3) sensitivity to broadening of the prior on \textit{q}, and
-(4) juxtaposition of maturity-at-age and selectivity-at-age.
+Sensitivity cases for AM2 and AM1 investigate:
+\begin{resdoclist}
+\item Estimation of time-varying vs. constant natural mortality,
+\item Errors-in-variables parameterization of process and observation error,
+\item Sensitivity to broadening of the prior on $q$, and
+\item Juxtaposition of maturity-at-age and selectivity-at-age.
+\end{resdoclist}
 Sensitivity cases are presented for all 5 major stocks.
 
 \subsection{LIFE HISTORY}
@@ -172,23 +174,20 @@ Although socio-economic factors may influence the location of the USR, these fac
 Within the DFO PA Framework, the target harvest rate is intended to be reduced once stock biomass falls below the USR. Simulation-evaluation of proposed USR in conjunction with candidate HCRs provides an evidence-based approach for identifying USR placed sufficiently above the LRP to avoid the stock falling below the LRP with high probability.
 A comprehensive review of approaches to establishing both limit and target reference points for herring stocks worldwide for clupeids is included in Appendix F in \citet{kronlund2017}. 
 Relevant examples for establishing the USR include:
-(1) Interim USRs were defined at biomass levels to which stocks are expected to grow under average recruitment \citep{dfo2005}.
-Recommended for Southern Gulf of St. Lawrence Atlantic Herring
-(2) The USR, referred to as $B_BUF$, is defined as the lowest observed historical spawning-stock biomass which produced good recruitment.
-Recommended for West coast of Newfoundland (NAFO Div 4R) Atlantic Herring \citep{mcquinn1999}
-(3) The biological limit, $B_lim$ is established as the minimum spawning stock biomass that would ensure adequate recruitment based on available stock-recruitment information, and the $B_pa$, the precautionary level for stock biomass, is set at 5.0 million tonnes which is 2x the $B_lim$ of 2.5 million 
-Recommended for Norwegian spring-spawning herring \citep{tjelmeland2009}.
-
+\begin{resdoclist}
+\item Interim USRs were defined at biomass levels to which stocks are expected to grow under average recruitment \citep{dfo2005}; recommended for Southern Gulf of St. Lawrence Atlantic Herring,
+\item The USR, referred to as $B_\text{BUF}$, is defined as the lowest observed historical spawning-stock biomass which produced good recruitment; recommended for West coast of Newfoundland (NAFO Div 4R) Atlantic Herring \citep{mcquinn1999}, and
+\item The biological limit, $B_\text{lim}$ is established as the minimum spawning stock biomass that would ensure adequate recruitment based on available stock-recruitment information, and the $B_\text{pa}$, the precautionary level for stock biomass, is set at 5.0 million tonnes which is $2\times$ the $B_\text{lim}$ of 2.5 million tonnes; recommended for Norwegian spring-spawning herring \citep{tjelmeland2009}.
+\end{resdoclist}
 In these examples, the biological references points are implemented as the lower and upper operational control points (OCPs) in a hockey-stick shaped harvest control rule.
 
-For Canadian fisheries in the Maritimes Region, a commonly used approach to defining the USR (and the boundary between the cautious and healthy zones) is to set the USR equal to 2x the LRP.
+For Canadian fisheries in the Maritimes Region, a commonly used approach to defining the USR (and the boundary between the cautious and healthy zones) is to set the USR equal to $2\times$ the LRP.
 The following model-based approaches are used \citep{dfo2012}:
-(4) Set the LRP at 40\% of spawning stock biomass at maximum sustainable yield ($\mli{SSB}_\text{MSY}$) and the USR at 80\% of $\mli{SSB}_\text{MSY}$
-Recommended for 3NOPs4VWX+5 Atlantic Halibut, 4VsW Atlantic Cod, 4X5Y Haddock, 4VWX American Plaice;
-(5) LRP established based on analysis of stock-recruitment data, with proposed USR equal to 2x the LRP
-Recommended for 4X5Y Atlantic Cod;
-(6) Reference points based on analysis of carrying capacity: LRP at 25\% of carrying capacity and USR at 50\% of carrying capacity
-Recommended for 4VWX Snow Crab.
+\begin{resdoclist}[resume*]
+\item Set the LRP at 40\% of spawning stock biomass at maximum sustainable yield ($\mli{SSB}_\text{MSY}$) and the USR at 80\% of $\mli{SSB}_\text{MSY}$; recommended for 3NOPs4VWX+5 Atlantic Halibut, 4VsW Atlantic Cod, 4X5Y Haddock, 4VWX American Plaice,
+\item LRP established based on analysis of stock-recruitment data, with proposed USR equal to $2\times$ the LRP; recommended for 4X5Y Atlantic Cod, and 
+\item Reference points based on analysis of carrying capacity: LRP at 25\% of carrying capacity and USR at 50\% of carrying capacity; recommended for 4VWX Snow Crab.
+\end{resdoclist}
 
 Where model-based estimates were not available, empirical approaches to approximating $B_MSY$ are used, with LRP and USR set at 40\% and 80\% of $B_MSY$ proxies \citep{dfo2012}.
 

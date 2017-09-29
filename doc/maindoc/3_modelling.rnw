@@ -128,7 +128,7 @@ The model uses the mean weight at age of the last five years for projections.
 
 \subsubsection{Abundance index}
 
-Example for Jaclyn:
+%Example for Jaclyn:
 %The spawn index for \Sexpr{max(yrRange)} for HG is \Sexpr{finalYrSpawn >% filter( Region=="HG" ) %>% select(Spawn)} tonnes (Table \ref{tabSpawnHG}).
 
 We also have an index of relative abundance (Figure \ref{figSpawnIndex}).
@@ -238,34 +238,40 @@ The 2014 weights at age are between 78 and 95\% of the long term (1951-2014) ave
 
 This assessment reports a base case of a catch-age model that is fitted to three sources of data: commercial catch, spawn survey biomass index, and proportions-at-age.
 Two alternate management procedures are also explored (Section XX).
-The assessment depends primarily upon the spawn survey biomass index (surface: 1951 - 1987, dive: 1988 - 2014) for information on the scale of the major herring stocks.
+The assessment depends primarily upon the spawn survey biomass index (surface: 1951 - 1987, dive: 1988 - 2017) for information on the scale of the major herring stocks.
 Fishery and seine test fishery age-composition data (1951-2014) are combined for each of the three gear types, contributing to the assessment model's ability to resolve strong and weak cohorts, and to forecast recruitment. 
 
 The assessment uses Bayesian methods to incorporate prior information and integrate over parameter uncertainty to provide results that can be probabilistically interpreted.
 The exploration of uncertainty is not limited to parameter uncertainty as structural uncertainty is investigated through retrospective analyses (Section XX).
 
-\subsubsection{Changes from the 2013 assessment}
+\subsubsection{Changes from the 2016 assessment}
 
-The assessment model was compiled using AD Model Builder (ADMB) version 11.1, released May 10, 2013.
-This version included a number of improvements to algorithms and libraries, and the correction of defects (bugs).
-A defect (bug fix) was also made to catch equations within the Baranov.cxx file.
-These changes are considered regular year-to-year updates and lead to slight differences in model estimates and projections when comparing Base\_2013 runs (Section XX) with results captured in the September 2013 assessment document.
-
-Adjustments made in analytical procedures included weighting Area 8 biological samples by their average relative contribution over the past 20 years (7\%), due to concerns that data acquired and used for the Central Coast area resulted from an uncommonly high number of samples (6 of 13) that were collected from Statistical Area 8 (which is historically an unfished area with consistently smaller (age 2) fish), Area 8; and, removing WCVI Statistical Area 24 samples, because it was determined that they were not representative.
-
+The assessment model was compiled using AD Model Builder (ADMB) version 11.6, released December 20, 2016.
+There were no changes made to the methods used for compiling model input data (survey indices, catch, biological information). 
+Adjustments were made to some of the analytical procedures within \emph{ISCAM} as described in the Bridging Analysis, APPENDIX E. 
+These changes are considered regular year-to-year updates and lead to slight differences in model estimates and projections when comparing 2016 base model runs with results captured in the September 2016 assessment document.
+%JC: edits completed
 \subsubsection{Model description}
 
 A Bayesian statistical catch-at-age model was applied to assess each of the \Sexpr{length(allRegions$major)} \Sexpr{fish.name} major SARs separately.
-The model is based on the Integrated Statistical Catch Age Model (iSCAM) framework \citep{martell2011}.
-Full model details are provided in Appendix \ref{chap:equations}.
+The Integrated Statistical Catch Age Model (\emph{ISCAM}) was first reviewed and implemented for the assessment of Pacific Herring in 2011 \citep{martell2011}.
+Updates to ISCAM are explained in the Bridging Analysis, Appendix E, and full model details are provided in Appendix \ref{chap:equations}.
 
 Marginal posterior distributions for estimated model parameters were constructed using the AD Model Builder built in Metropolis-Hastings algorithm \citep{fournier2012}.
-For each major assessment area, a systematic sample of 5,000 points were taken from a chain of length 5,000,000, intended to represent a random sample from the marginal posterior distribution.
-These analytical steps (Bayesian methods) are the same as were applied in September 2011 \citep{martell2011}, September 2012 [Cleary et al. working paper] \citep{herring2012b}, and September 2013 [Cleary et al. working paper] \citep{herring2014} and are consistent with previous years' assessments using HCAM \citep{cleary2012, schweigert2009}.
-% Not sure how to cite 'Cleary et al. working paper'
-This procedure integrates over the full range of uncertainty producing a posterior distribution for each parameter estimated in the model. Then, these samples are used to construct marginal distributions for derived quantities (e.g., SB0).
-See Appendix XX for technical description of model and applications.
-Priority areas of research identified during past CSAS meetings (2011--2013) are summarized in Appendix XX.
+For each major assessment area, a systematic sample of 1,000 points were taken from a chain of length 5,000,000, intended to represent a random sample from the marginal posterior distribution.
+These analytical steps (Bayesian methods) are the same as were applied annually since September 2011 \citep{martell2011}, and are consistent with previous years' assessments using Herring Catch Age Model (\emph{HCAM} and \emph{HCAMv2}) \citep{cleary2012, schweigert2009}.
+
+The Bayesian estimation procedure integrates over the full range of uncertainty producing a posterior distribution for each parameter estimated in the model. Then, these samples are used to construct marginal distributions for derived quantities (e.g., $\mli{SB}_0$).
+Priority areas of research identified during past CSAS meetings (2011--2016) are summarized in Appendix \ref{secFutureResearch}. 
+%JC: edits completed
+
+% 0.8\emph{B}\subscr{MSY}
+% \emph{q}\subscr{1}
+% \emph{q}\subscr{2}
+% $0.25\cdot\mli{SB}_0$ 
+% $\mli{SB}_0$
+% $F_\text{MSY}$
+% $\mli{SSB}_\text{MSY}$
 
 \subsubsection{Prior probability distributions}
 
@@ -283,7 +289,7 @@ The DFO Fishery Decision-making Framework Incorporating the Precautionary Approa
 
 Provisional values of USR = 0.8\emph{B}\subscr{MSY} and LRP = 0.4\emph{B}\subscr{MSY} are suggested in the absence of stock-specific reference points.
 The framework suggests a limit reference removal rate of F\subscr{MSY}.
-Therefore, we refer to the reference removal rate as the limit removal rate (LRR) throughout this document.
+
 
 A harvest control rule based on these reference points that is coincident with the choice of LRP, USR, and LRR would apply a linear reduction in fishing mortality as the stock falls below the USR, and would cease fishing when the stock reaches the LRP, but see \citet{cox2013}.
 This is illustrated for a hypothetical stock in Figure~\ref{fig:hcrillustration}, where the USR and LRP are shown as vertical lines and the removal rate is shown as a blue line.
@@ -327,7 +333,6 @@ The model outcomes were influenced by the assumption on the estimation of M.
 There is support for inclusion of time varying M in this analysis as well as from the bridging analysis (Appendix E).  Both showed a reduction in the magnitude of retrospective patterns and improved coherence between assumed and empirical fits to the spawn survey index. 
 
 \subsubsection{Variance parameters}
-
 
 The key variance parameter in the errors-in-variables approach is the inverse of the total variance $\varphi^-2$ (i.e., total precision, varphi). 
 The total variance is partitioned into observation and process error components by the model parameter rho $\rho$, which is the proportion of the total variance that is due to observation error (Punt and Butterworth 1993, Deriso et al. 2007). 
@@ -376,14 +381,13 @@ Changing maturity to equal selectivity doesn't make the Fmsy estimates "usable" 
 
 \subsection{ASSESSMENT MODEL RESULTS}\label{secModelResults}
 
-[Placeholder]
-
 \subsubsection{Model diagnostics}
 
 The joint posterior distribution was numerically approximated using the Markov Chain Monte Carlo (MCMC) routines built into AD Model Builder \citep{fournier2012}.
-For the Reference Case and all sensitivity cases, posterior samples were drawn systematically every \Sexpr{mcmc.samp.freq} iterations from a chain of length \Sexpr{mcmc.length}, resulting in \Sexpr{mcmc.num.samples} posterior samples (the first \Sexpr{mcmc.burnin} samples were dropped to allow for sufficient burn-in).
+For AM1 and AM2 base cases and all sensitivity cases, posterior samples were drawn systematically every \Sexpr{mcmc.samp.freq} iterations from a chain of length \Sexpr{mcmc.length}, resulting in \Sexpr{mcmc.num.samples} posterior samples (the first \Sexpr{mcmc.burnin} samples were dropped to allow for sufficient burn-in).
 Convergence was diagnosed using visual inspection of the trace plots (Figure~\ref{fig:traces}) and visual examination of autocorrelation in posterior chains (Figure~\ref{fig:autocor}).
-Autocorrelation was minor for all parameters and there was no strong evidence for lack of convergence.
+Autocorrelation was minor for all parameters in the AM1 and AM2 base model runs and there was no strong evidence for lack of convergence.
+%JC: edits completed
 
 \subsubsection{Fits to data}
 
@@ -407,7 +411,7 @@ Figures \ref{figStoryboard\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{
 
 Effective harvest rates (Figure \ref{figHarvestRate}).
 
-\subsubsection{Biomass and stock status}
+\subsubsection{Biomass and stock status} \label{secStockStatus}
 
 The following present marginal posterior distributions characterizing the major herring stocks for the following parameters and derived quantities: recruitment, instantaneous natural mortality, biomass reconstructions and stock depletion.
 To help readers view and interpret trends in results and uncertainty for each stock major stock area, collective sets of figures showing these four sets of model results across the \Sexpr{min(yrRange)} to \Sexpr{max(yrRange)} time series are presented by stock area in Figures \ref{figStoryboard\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figStoryboard\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}}.
@@ -469,15 +473,12 @@ Beverton-Holt stock-recruitment relationships (Figure \ref{figBevertonHolt}).
 
 [Placeholder]
 
-\subsubsection{Production analysis}
+\subsubsection{Production analysis} \label{secProdAnal}
 
 [Placeholder]
 
 Figures \ref{figProduction\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figProduction\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}} show \Sexpr{PasteNicely(mNames)} production analyses for the \Sexpr{length(allRegionNames$major)} major SARs: \Sexpr{PasteNicely(allRegionNames$major)}, respectively.
 
-\subsection{SENSITIVITY ANALYSES}
-
-[Placeholder]
 
 \subsection{ASSUMPTIONS AND UNCERTAINTY}
 
