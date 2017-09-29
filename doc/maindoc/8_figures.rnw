@@ -1471,6 +1471,419 @@ make.q.plot(list(wcvi.am1.constm,
   for the WCVI stock.}
 \label{fig:wcvi-q-m}
 \end{figure}
+
+%%------------------------------------------------------------------------------
+%% Sensitivity to Q 4-panel plots
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg.4panel.qa, fig.width = 7.5, fig.height = 7.5>>=
+layout(matrix(c(1, 2, 3, 4), nrow = 2, ncol = 2, byrow = TRUE))
+make.biomass.mcmc.plot(list(hg.qa),
+                     ylim = c(0, 150),
+                      show.bo.line = TRUE,
+                     ind.letter = "a")
+make.depletion.mcmc.plot(list(hg.qa),
+                        ylim = c(0, 12),
+                        ind.letter = "b")
+make.m.plot(list(hg.qa),
+            ylim = c(0, 1.8),
+            ind.letter = "c")
+make.q.plot(list(hg.qa),
+            ylim = c(0, 2),
+            ind.letter = "d")
+@
+\end{center}
+\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+  the sensitivity model where the survey q
+  standard deviation prior is set to
+  \Sexpr{hg.qa$ctl$surv.q[3,1]}
+  for the Haida Gwaii stock.}
+\label{fig:hg-4panel-qa}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<hg.4panel.qb, fig.width = 7.5, fig.height = 7.5>>=
+layout(matrix(c(1, 2, 3, 4), nrow = 2, ncol = 2, byrow = TRUE))
+make.biomass.mcmc.plot(list(hg.qb),
+                     ylim = c(0, 150),
+                      show.bo.line = TRUE,
+                     ind.letter = "a")
+make.depletion.mcmc.plot(list(hg.qb),
+                        ylim = c(0, 12),
+                        ind.letter = "b")
+make.m.plot(list(hg.qb),
+            ylim = c(0, 1.8),
+            ind.letter = "c")
+make.q.plot(list(hg.qb),
+            ylim = c(0, 2),
+            ind.letter = "d")
+@
+\end{center}
+\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+  the sensitivity model where the survey q
+  standard deviation prior is set to
+  \Sexpr{hg.qb$ctl$surv.q[3,1]}
+  for the Haida Gwaii stock.}
+\label{fig:hg-4panel-qb}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<hg.4panel.qc, fig.width = 7.5, fig.height = 7.5>>=
+layout(matrix(c(1, 2, 3, 4), nrow = 2, ncol = 2, byrow = TRUE))
+make.biomass.mcmc.plot(list(hg.qc),
+                     ylim = c(0, 150),
+                      show.bo.line = TRUE,
+                     ind.letter = "a")
+make.depletion.mcmc.plot(list(hg.qc),
+                        ylim = c(0, 12),
+                        ind.letter = "b")
+make.m.plot(list(hg.qc),
+            ylim = c(0, 1.8),
+            ind.letter = "c")
+make.q.plot(list(hg.qc),
+            ylim = c(0, 2),
+            ind.letter = "d")
+@
+\end{center}
+\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+  the sensitivity model where the survey q
+  standard deviation prior is set to
+  \Sexpr{hg.qc$ctl$surv.q[3,1]}
+  for the Haida Gwaii stock.}
+\label{fig:hg-4panel-qc}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<prd.4panel.qa, fig.width = 7.5, fig.height = 7.5>>=
+layout(matrix(c(1, 2, 3, 4), nrow = 2, ncol = 2, byrow = TRUE))
+make.biomass.mcmc.plot(list(pr.qa),
+                     ylim = c(0, 150),
+                      show.bo.line = TRUE,
+                     ind.letter = "a")
+make.depletion.mcmc.plot(list(pr.qa),
+                        ylim = c(0, 4),
+                        ind.letter = "b")
+make.m.plot(list(pr.qa),
+            ylim = c(0, 1),
+            ind.letter = "c")
+make.q.plot(list(pr.qa),
+            ylim = c(0, 2),
+            ind.letter = "d")
+@
+\end{center}
+\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+  the sensitivity model where the survey q
+  standard deviation prior is set to
+  \Sexpr{pr.qa$ctl$surv.q[3,1]}
+  for the Prince Rupert District stock.}
+\label{fig:prd-4panel-qa}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<prd.4panel.qb, fig.width = 7.5, fig.height = 7.5>>=
+layout(matrix(c(1, 2, 3, 4), nrow = 2, ncol = 2, byrow = TRUE))
+make.biomass.mcmc.plot(list(pr.qb),
+                     ylim = c(0, 150),
+                      show.bo.line = TRUE,
+                     ind.letter = "a")
+make.depletion.mcmc.plot(list(pr.qb),
+                        ylim = c(0, 4),
+                        ind.letter = "b")
+make.m.plot(list(pr.qb),
+            ylim = c(0, 1),
+            ind.letter = "c")
+make.q.plot(list(pr.qb),
+            ylim = c(0, 2),
+            ind.letter = "d")
+@
+\end{center}
+\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+  the sensitivity model where the survey q
+  standard deviation prior is set to
+  \Sexpr{pr.qb$ctl$surv.q[3,1]}
+  for the Prince Rupert District stock.}
+\label{fig:prd-4panel-qb}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<prd.4panel.qc, fig.width = 7.5, fig.height = 7.5>>=
+layout(matrix(c(1, 2, 3, 4), nrow = 2, ncol = 2, byrow = TRUE))
+make.biomass.mcmc.plot(list(pr.qc),
+                     ylim = c(0, 150),
+                      show.bo.line = TRUE,
+                     ind.letter = "a")
+make.depletion.mcmc.plot(list(pr.qc),
+                        ylim = c(0, 4),
+                        ind.letter = "b")
+make.m.plot(list(pr.qc),
+            ylim = c(0, 1),
+            ind.letter = "c")
+make.q.plot(list(pr.qc),
+            ylim = c(0, 2),
+            ind.letter = "d")
+@
+\end{center}
+\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+  the sensitivity model where the survey q
+  standard deviation prior is set to
+  \Sexpr{pr.qc$ctl$surv.q[3,1]}
+  for the Prince Rupert District stock.}
+\label{fig:prd-4panel-qc}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<cc.4panel.qa, fig.width = 7.5, fig.height = 7.5>>=
+layout(matrix(c(1, 2, 3, 4), nrow = 2, ncol = 2, byrow = TRUE))
+make.biomass.mcmc.plot(list(cc.qa),
+                     ylim = c(0, 150),
+                      show.bo.line = TRUE,
+                     ind.letter = "a")
+make.depletion.mcmc.plot(list(cc.qa),
+                        ylim = c(0, 2.5),
+                        ind.letter = "b")
+make.m.plot(list(cc.qa),
+            ylim = c(0, 1.2),
+            ind.letter = "c")
+make.q.plot(list(cc.qa),
+            ylim = c(0, 1.5),
+            ind.letter = "d")
+@
+\end{center}
+\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+  the sensitivity model where the survey q
+  standard deviation prior is set to
+  \Sexpr{cc.qa$ctl$surv.q[3,1]}
+  for the Central Coast stock.}
+\label{fig:cc-4panel-qa}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<cc.4panel.qb, fig.width = 7.5, fig.height = 7.5>>=
+layout(matrix(c(1, 2, 3, 4), nrow = 2, ncol = 2, byrow = TRUE))
+make.biomass.mcmc.plot(list(cc.qb),
+                     ylim = c(0, 150),
+                      show.bo.line = TRUE,
+                     ind.letter = "a")
+make.depletion.mcmc.plot(list(cc.qb),
+                        ylim = c(0, 2.5),
+                        ind.letter = "b")
+make.m.plot(list(cc.qb),
+            ylim = c(0, 1.2),
+            ind.letter = "c")
+make.q.plot(list(cc.qb),
+            ylim = c(0, 1.5),
+            ind.letter = "d")
+@
+\end{center}
+\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+  the sensitivity model where the survey q
+  standard deviation prior is set to
+  \Sexpr{cc.qb$ctl$surv.q[3,1]}
+  for the Central Coast stock.}
+\label{fig:cc-4panel-qb}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<cc.4panel.qc, fig.width = 7.5, fig.height = 7.5>>=
+layout(matrix(c(1, 2, 3, 4), nrow = 2, ncol = 2, byrow = TRUE))
+make.biomass.mcmc.plot(list(cc.qc),
+                     ylim = c(0, 150),
+                      show.bo.line = TRUE,
+                     ind.letter = "a")
+make.depletion.mcmc.plot(list(cc.qc),
+                        ylim = c(0, 2.5),
+                        ind.letter = "b")
+make.m.plot(list(cc.qc),
+            ylim = c(0, 1.2),
+            ind.letter = "c")
+make.q.plot(list(cc.qc),
+            ylim = c(0, 1.5),
+            ind.letter = "d")
+@
+\end{center}
+\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+  the sensitivity model where the survey q
+  standard deviation prior is set to
+  \Sexpr{cc.qc$ctl$surv.q[3,1]}
+  for the Central Coast stock.}
+\label{fig:cc-4panel-qc}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<sog.4panel.qa, fig.width = 7.5, fig.height = 7.5>>=
+layout(matrix(c(1, 2, 3, 4), nrow = 2, ncol = 2, byrow = TRUE))
+make.biomass.mcmc.plot(list(sog.qa),
+                     ylim = c(0, 250),
+                      show.bo.line = TRUE,
+                     ind.letter = "a")
+make.depletion.mcmc.plot(list(sog.qa),
+                        ylim = c(0, 2.2),
+                        ind.letter = "b")
+make.m.plot(list(sog.qa),
+            ylim = c(0, 1.5),
+            ind.letter = "c")
+make.q.plot(list(sog.qa),
+            ylim = c(0, 1.5),
+            ind.letter = "d")
+@
+\end{center}
+\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+  the sensitivity model where the survey q
+  standard deviation prior is set to
+  \Sexpr{sog.qa$ctl$surv.q[3,1]}
+  for the Strait of Georgia stock.}
+\label{fig:sog-4panel-qa}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<sog.4panel.qb, fig.width = 7.5, fig.height = 7.5>>=
+layout(matrix(c(1, 2, 3, 4), nrow = 2, ncol = 2, byrow = TRUE))
+make.biomass.mcmc.plot(list(sog.qb),
+                     ylim = c(0, 250),
+                      show.bo.line = TRUE,
+                     ind.letter = "a")
+make.depletion.mcmc.plot(list(sog.qb),
+                        ylim = c(0, 2.2),
+                        ind.letter = "b")
+make.m.plot(list(sog.qb),
+            ylim = c(0, 1.5),
+            ind.letter = "c")
+make.q.plot(list(sog.qb),
+            ylim = c(0, 1.5),
+            ind.letter = "d")
+@
+\end{center}
+\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+  the sensitivity model where the survey q
+  standard deviation prior is set to
+  \Sexpr{sog.qb$ctl$surv.q[3,1]}
+  for the Strait of Georgia stock.}
+\label{fig:sog-4panel-qb}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<sog.4panel.qc, fig.width = 7.5, fig.height = 7.5>>=
+layout(matrix(c(1, 2, 3, 4), nrow = 2, ncol = 2, byrow = TRUE))
+make.biomass.mcmc.plot(list(sog.qc),
+                     ylim = c(0, 250),
+                      show.bo.line = TRUE,
+                     ind.letter = "a")
+make.depletion.mcmc.plot(list(sog.qc),
+                        ylim = c(0, 2.2),
+                        ind.letter = "b")
+make.m.plot(list(sog.qc),
+            ylim = c(0, 1.5),
+            ind.letter = "c")
+make.q.plot(list(sog.qc),
+            ylim = c(0, 1.5),
+            ind.letter = "d")
+@
+\end{center}
+\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+  the sensitivity model where the survey q
+  standard deviation prior is set to
+  \Sexpr{sog.qc$ctl$surv.q[3,1]}
+  for the Strait of Georgia stock.}
+\label{fig:sog-4panel-qc}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<wcvi.4panel.qa, fig.width = 7.5, fig.height = 7.5>>=
+layout(matrix(c(1, 2, 3, 4), nrow = 2, ncol = 2, byrow = TRUE))
+make.biomass.mcmc.plot(list(wcvi.qa),
+                     ylim = c(0, 200),
+                      show.bo.line = TRUE,
+                     ind.letter = "a")
+make.depletion.mcmc.plot(list(wcvi.qa),
+                        ylim = c(0, 3),
+                        ind.letter = "b")
+make.m.plot(list(wcvi.qa),
+            ylim = c(0, 1.5),
+            ind.letter = "c")
+make.q.plot(list(wcvi.qa),
+            ylim = c(0, 1.5),
+            ind.letter = "d")
+@
+\end{center}
+\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+  the sensitivity model where the survey q
+  standard deviation prior is set to
+  \Sexpr{wcvi.qa$ctl$surv.q[3,1]}
+  for the WCVI stock.}
+\label{fig:wcvi-4panel-qa}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.4panel.qb, fig.width = 7.5, fig.height = 7.5>>=
+layout(matrix(c(1, 2, 3, 4), nrow = 2, ncol = 2, byrow = TRUE))
+make.biomass.mcmc.plot(list(wcvi.qb),
+                     ylim = c(0, 200),
+                      show.bo.line = TRUE,
+                     ind.letter = "a")
+make.depletion.mcmc.plot(list(wcvi.qb),
+                        ylim = c(0, 3),
+                        ind.letter = "b")
+make.m.plot(list(wcvi.qb),
+            ylim = c(0, 1.5),
+            ind.letter = "c")
+make.q.plot(list(wcvi.qb),
+            ylim = c(0, 1.5),
+            ind.letter = "d")
+@
+\end{center}
+\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+  the sensitivity model where the survey q
+  standard deviation prior is set to
+  \Sexpr{wcvi.qb$ctl$surv.q[3,1]}
+  for the WCVI stock.}
+\label{fig:wcvi-4panel-qb}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.4panel.qc, fig.width = 7.5, fig.height = 7.5>>=
+layout(matrix(c(1, 2, 3, 4), nrow = 2, ncol = 2, byrow = TRUE))
+make.biomass.mcmc.plot(list(wcvi.qc),
+                     ylim = c(0, 150),
+                      show.bo.line = TRUE,
+                     ind.letter = "a")
+make.depletion.mcmc.plot(list(wcvi.qc),
+                        ylim = c(0, 4),
+                        ind.letter = "b")
+make.m.plot(list(wcvi.qc),
+            ylim = c(0, 1.5),
+            ind.letter = "c")
+make.q.plot(list(wcvi.qc),
+            ylim = c(0, 1.5),
+            ind.letter = "d")
+@
+\end{center}
+\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+  the sensitivity model where the survey q
+  standard deviation prior is set to
+  \Sexpr{wcvi.qc$ctl$surv.q[3,1]}
+  for the WCVI stock.}
+\label{fig:wcvi-4panel-qc}
+\end{figure}
+
 %%------------------------------------------------------------------------------
 %% Sensitivity to M MCMC diagnostic plots
 %%------------------------------------------------------------------------------
