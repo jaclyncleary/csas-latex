@@ -159,12 +159,8 @@ The USR and TRP can be equivalent, and the TRP cannot be lower than the USR.
 The USR is to be developed by fishery managers informed by consultations with the fishery and other interests, with advice and input from Science.
 Although socio-economic factors may influence the location of the USR, these factors must not diminish its role in guiding management of the risk of approaching the LRP.
 
-<<<<<<< HEAD
-Appendix F in \cite{kronlund2017} provides a broad review of approaches to establishing both limit and target reference points for herring stocks worldwide for clupeids.
-=======
 Within the DFO PA Framework, the target harvest rate is intended to be reduced once stock biomass falls below the USR. Simulation-evaluation of proposed USR in conjunction with candidate HCRs provides an evidence-based approach for identifying USR placed sufficiently above the LRP to avoid the stock falling below the LRP with high probability.
 A comprehensive review of approaches to establishing both limit and target reference points for herring stocks worldwide for clupeids is included in Appendix F in \cite{kronlund2017}. 
->>>>>>> jcleary/herring
 Relevant examples for establishing the USR include:
 (1) Interim USRs were defined at biomass levels to which stocks are expected to grow under average recruitment \citep{dfo2005}.
 Recommended for Southern Gulf of St. Lawrence Atlantic Herring
@@ -184,19 +180,7 @@ Recommended for 4X5Y Atlantic Cod;
 (6) Reference points based on analysis of carrying capacity: LRP at 25\% of carrying capacity and USR at 50\% of carrying capacity
 Recommended for 4VWX Snow Crab.
 
-<<<<<<< HEAD
-(1)
-(2)
-(3)
-
-
-
-
-
-However, BMSY is commonly regarded as a target level (e.g., UN 2002).
-=======
 Where model-based estimates were not available, empirical approaches to approximating $B_MSY$ are used, with LRP and USR set at 40\% and 80\% of $B_MSY$ proxies \citep{dfo2012}.
->>>>>>> jcleary/herring
 
 \cite{Sinclair-Starr:2005} suggest using the long-term average biomass ($B_avg$) as a proxy USR. This approach of defining a historical target reference point is recommended for Rock Sole \citep{holt-starr:2016} and for Pacific cod \citep{forrest2015}. An alternative to using the long-term average biomass is the average biomass during a productive period ($B_avg-prod$).
 
