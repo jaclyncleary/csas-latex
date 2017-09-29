@@ -140,9 +140,9 @@ Regarding the calculation of reference points, the DFO PA Framework recommends "
 Many stocks will show substantial variation in productivity over a long time series, and this variation should be taken into account when setting the reference points." 
 
 Evidence of nonstationarity as well as modelling of three selectivity types due to concurrent harvesting by multiple gear types limits our ability to calculate and evaluate equilibrium reference points such as \emph{B}\subscr{MSY} in the management procedure.
-Previous attempts to estimate \emph{F}\subscr{MSY} for BC Pacific Herring stocks has resulted in unusually high estimates of \emph{F}\subscr{MSY} (e.g., Martell et al 2012).
-
-Attempts to estimate \emph{F}\subscr{MSY} using \emph{ISCAM} are presented in \ref{secMatAge} of the Sensitivity Analyses, based on a single gear type (roe seine), in order to investigate whether overlap or lack of overlap in maturity and selectivity curves impacts estimates of  \emph{F}\subscr{MSY}.  %SH to check this statement (is single gear correct?)
+Previous attempts to estimate \emph{F}\subscr{MSY} for BC Pacific Herring stocks has resulted in unusually high estimates of \emph{F}\subscr{MSY} (e.g., \citet{martell2011}).
+Attempts to estimate \emph{F}\subscr{MSY} using \emph{ISCAM} are presented in \ref{secMatAge}
+of the Sensitivity Analyses, based on a single gear type (roe seine), in order to investigate whether overlap or lack of overlap in maturity and selectivity curves impacts estimates of  \emph{F}\subscr{MSY}. % SH to check this statement (is single gear correct?)
 
 \subsubsection{Limit Reference Point}
 
@@ -170,7 +170,7 @@ The USR is to be developed by fishery managers informed by consultations with th
 Although socio-economic factors may influence the location of the USR, these factors must not diminish its role in guiding management of the risk of approaching the LRP.
 
 Within the DFO PA Framework, the target harvest rate is intended to be reduced once stock biomass falls below the USR. Simulation-evaluation of proposed USR in conjunction with candidate HCRs provides an evidence-based approach for identifying USR placed sufficiently above the LRP to avoid the stock falling below the LRP with high probability.
-A comprehensive review of approaches to establishing both limit and target reference points for herring stocks worldwide for clupeids is included in Appendix F in \cite{kronlund2017}. 
+A comprehensive review of approaches to establishing both limit and target reference points for herring stocks worldwide for clupeids is included in Appendix F in \citet{kronlund2017}. 
 Relevant examples for establishing the USR include:
 (1) Interim USRs were defined at biomass levels to which stocks are expected to grow under average recruitment \citep{dfo2005}.
 Recommended for Southern Gulf of St. Lawrence Atlantic Herring
@@ -192,7 +192,8 @@ Recommended for 4VWX Snow Crab.
 
 Where model-based estimates were not available, empirical approaches to approximating $B_MSY$ are used, with LRP and USR set at 40\% and 80\% of $B_MSY$ proxies \citep{dfo2012}.
 
-\cite{Sinclair-Starr:2005} suggest using the long-term average biomass ($B_avg$) as a proxy USR. This approach of defining a historical target reference point is recommended for Rock Sole \citep{holt2016} and for Pacific cod \citep{forrest2015}. 
+\citet{Sinclair-Starr:2005} suggest using the long-term average biomass ($B_avg$) as a proxy USR.
+This approach of defining a historical target reference point is recommended for Rock Sole \citep{holt-starr:2016} and for Pacific cod \citep{forrest2015}.
 An alternative to using the long-term average biomass is the average biomass during a productive period ($B_avg-prod$).
 
 \subsection{ASSESSMENT HISTORY}
@@ -207,11 +208,12 @@ Assessment Model 2 (AM2) refers to an approximation of the historical MP, in whi
 There have been a number of requests to evaluate the potential consequences of applying AM1 vs. AM2 using simulation modelling. 
 This reflects concerns that the consequences of applying AM1 were not simulation-tested prior to its implementation in 2011, which, along with lack of rebuilding in some areas, has led to questioning the performance of AM1.
 Both MPs have been peer reviewed through CSAS and both have been implemented in the provision of science advice for Pacific Herring in previous years. 
-To address concerns arising both from previous CSAS processes and from implementation of each approach, the 2016 Science Response \citep{herring2016} includes a table developed by the Herring Technical Working Group (HTWG) that describes the main attributes and limitations of AM1 and AM2, to support short-term decision-making (Table A.1 in \cite{herring2016}). %MH: pls help here
-The status of BC herring stocks in 2017 and forecasts for 2018 are provided in the form of dual stock assessment updates, using the AM1 \citep{martell2011} and AM2 (approximation of \cite{cleary2012}) MPs.
 
-% 0.8\emph{B}\subscr{MSY}
-% \emph{q}\subscr{1}
-% \emph{q}\subscr{2}
-% $0.25\cdot\mli{SB}_0$ 
-% $\mli{SB}_0$
+To address concerns arising both from previous CSAS processes and from implementation of each approach, the 2016 Science Response \citep{herring2016} includes a table developed by the Herring Technical Working Group (HTWG) that describes the main attributes and limitations of AM1 and AM2, to support short-term decision-making (see \citet{herring2016} Table A.1).
+The status of BC herring stocks in 2017 and forecasts for 2018 are provided in the form of dual stock assessment updates, using the AM1 \citep{martell2011} and AM2 (approximation of \citet{cleary2012}) MPs.
+
+0.8\emph{B}\subscr{MSY}
+\emph{q}\subscr{1}
+\emph{q}\subscr{2}
+$0.25\cdot\mli{SB}_0$ 
+$\mli{SB}_0$
