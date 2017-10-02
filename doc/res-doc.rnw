@@ -140,8 +140,8 @@ CSAP Working Paper 2017PEL01.
 \bibliography{all}
 \clearpage
 
-<<tables, child='maindoc/7_tables.rnw'>>=
-@
+%%<<tables, child='maindoc/7_tables.rnw'>>=
+%%@
 
 % <<figures, child='maindoc/8_figures.rnw'>>=
 % @
