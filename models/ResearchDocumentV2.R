@@ -419,7 +419,7 @@ ArrangeOutput <- function( SARs, models ) {
       # Get names of mcmc files
       mcmcFNs <- list.files( path=fn, pattern=mcmcPattern, full.names=TRUE )
       # Error if there are no files
-      if( length(mcmcFNs) == 0 )  stop( "No mcmc output files found in '",
+      if( length(mcmcFNs) == 0 )  warning( "No mcmc output files found in '",
             fn, "'", call.=FALSE )
       # Copy mcmc files to 'mcmc' directory
       copied <- file.copy( from=mcmcFNs, to=file.path(fn, "mcmc") )
