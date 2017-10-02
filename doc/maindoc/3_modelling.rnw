@@ -478,9 +478,31 @@ Beverton-Holt stock-recruitment relationships (Figure \ref{figBevertonHolt}).
 
 \subsubsection{Production analysis} \label{secProdAnal}
 
-[Placeholder]
+\citet{kronlund2017} use an analysis of surplus production to evaluate whether the major \Sexpr{fish.name} stocks in British Columbia show stock states consistent with signs of possible serious harm, the result of which identified recent persistent states of low production and low biomass (LP-LB states) for the Central Coast (CC), Haida Gwaii (HG) and West Coast of Vancouver Island (WCVI) management areas.
 
+The production analysis was updated for the major Pacific Herring stocks with the addition of 2017 catch data and MPD spawning biomass estimates for AM1 and AM2.  
 Figures \ref{figProduction\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figProduction\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}} show \Sexpr{PasteNicely(mNames)} production analyses for the \Sexpr{length(allRegionNames$major)} major SARs: \Sexpr{PasteNicely(allRegionNames$major)}, respectively.
+Median posterior distributions of the estimated spawning biomass in 2017 for each major stock, and juxtaposition of the estimated LRP are presented in Figure X. 
+The updated production analysis was compared to results presented in \citet{kronlund2017} and the key results are the same and provide continued support to the recommendations of \citet{kronlund2017}.
+
+\begin{resdoclist}
+\item HG: Spawning biomass production and production rate are negative (AM1 and AM2) and the estimated spawning biomass in 2017 is below the LRP of $0.30\cdot\mli{SB}_0$ (AM1 and AM2)
+\item PRD: Spawning biomass production and production rate are positive (AM1 and AM2) and the estimated spawning biomass in 2017 is above the LRP of $0.30\cdot\mli{SB}_0$ (AM1 and AM2)
+\item CC: Spawning biomass production and production rate are positive (AM1 and AM2) and the estimated spawning biomass in 2017 is above the LRP of $0.30\cdot\mli{SB}_0$ (AM1 and AM2)
+\item SOG:Spawning biomass production and production rate are positive (AM1 and AM2) and the estimated spawning biomass in 2017 is above the LRP of $0.30\cdot\mli{SB}_0$ (AM1 and AM2)
+\item WCVI: Spawning biomass production and production rate are negative (AM1 and AM2). AM1: estimated spawning biomass in 2017 is above the LRP of $0.30\cdot\mli{SB}_0$; AM2: estimated spawning biomass in 2017 is approaching the LRP of $0.30\cdot\mli{SB}_0$.
+\end{resdoclist}
+%JC: inspect posterior distributions and update.
+
+
+% 0.8\emph{B}\subscr{MSY}
+% \emph{q}\subscr{1}
+% \emph{q}\subscr{2}
+% $0.25\cdot\mli{SB}_0$ 
+% $\mli{SB}_0$
+% $F_\text{MSY}$
+% $\mli{SSB}_\text{MSY}$
+% $0.30\cdot\mli{SB}_0$ 
 
 
 \subsection{ASSUMPTIONS AND UNCERTAINTY}
