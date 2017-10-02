@@ -304,7 +304,7 @@ See Appendix~\ref{chap:equations} for description of reference points calculatio
 
 \subsection{SENSITIVITY ANALYSES}
 
-We tested the sensitivity of the results from base case assessment model identified in the bridging analysis in Appendix E to the following assumptions:
+We tested the sensitivity of the results from the base case assessment model identified in the bridging analysis in Appendix E to the following assumptions:
 
 \begin{resdoclist}
   \item Assumed time varying natural mortality
@@ -377,10 +377,11 @@ In the absence of recent histological studies to provide new estimates of maturi
 These values are listed in Table \ref{tab:maturity}.  
 The selectivity of the seine roe fishery was chosen because the fishery targets pre-spawning aggregations with seine gear that is non size-selective, providing age composition samples from a mature portion of the population.  
 
-The key MSY reference points for the base case and the maturity schedule sensitivity case are summarized in Table xx.  
+The key MSY reference points, Sbo and SB2017 for the base case and the maturity schedule sensitivity case are summarized in Table xx.  
 
 
-Changing maturity to equal selectivity doesn't make the Fmsy estimates "usable" in a management procedure. 
+Changing maturity to equal selectivity doesn't make the Fmsy estimates "usable" in a management procedure. We compared trends in M~t for Base and mat=sel and trends were similar (results not shown)
+
 
 \subsection{ASSESSMENT MODEL RESULTS}\label{secModelResults}
 
