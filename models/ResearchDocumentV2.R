@@ -388,7 +388,7 @@ ArrangeOutput <- function( SARs, models ) {
   # Start a counter
   iCount <- 1
   # Message
-  cat( "Arranging output files... " )
+  cat( "Arranging output files..." )
   # Loop over regions
   for( SAR in SARs ) {
     # If models is NA (not specified)
