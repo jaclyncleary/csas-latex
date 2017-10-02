@@ -1,4 +1,4 @@
-Stock,Model ,Sensitivity Case,Parameter,Initial Values,Estimated Values
+Stock,Model ,SensitivityCase,Parameter,InitialValues,EstimatedValues
 SOG,AM1,Base,Log recruitment (ln(R0 )),7.28,8.04
 SOG,AM1,Base,Steepness (h),0.8,0.7
 SOG,AM1,Base,Log natural mortality (ln(M )),-0.69186,-0.60012

@@ -27,6 +27,7 @@ require(knitr)
 require(lubridate)
 require(PBSmodelling)
 require(xtable)
+require(tidyverse)
 
 ## Code to load the catch/TAC data, making catch figures, and making tables
 ##  for catch/TAC.
