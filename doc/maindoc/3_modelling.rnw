@@ -340,7 +340,10 @@ In ISCAM, standard deviations in process error (tau, $\tau$) and observation err
 The base case initial values for $\kappa$ and $\rho$ were set equal to MPD estimated values from the 2016 assessment, which resulted in an observation error term ($\sigma=0.58$) and a process error term ($\tau=0.69$).  
 We tested model sensitivity to these initial values by varying $\vartheta^2$ and $\rho$ while estimating all leading parameters.
 
-This analysis showed that when both $\rho$ and $\kappa$ are estimated, the choice of initial value for $\rho$ and $\kappa$ does not impact estimated model parameters, as shown in table XX for the Strait of Georgia, AM1 and AM2.  This trend can also be seen in the bridging analysis below (Appendix E) for AM1, AM2, both parameterizations of $M$ in the first sensitivity analysis and all stocks.  In the bridging analysis we also investigated the effects of fixing either $\kappa$ or $\rho$ and only estimating one of these parameters at a time. Under these scenarios we found that the estimated results were influenced by the initial values of $\kappa$ and $\rho$, which is why the base case estimating both parameters was chosen.
+This analysis showed that when both $\rho$ and $\kappa$ are estimated, the choice of initial value for $\rho$ and $\kappa$ does not impact estimated model parameters, as shown in table XX for the Strait of Georgia, AM1 and AM2.  
+This trend can also be seen in the bridging analysis below (Appendix E) for AM1, AM2, both parameterizations of $M$ in the first sensitivity analysis and all stocks.  
+In the bridging analysis we also investigated the effects of fixing either $\kappa$ or $\rho$ and only estimating one of these parameters at a time. 
+Under these scenarios we found that the estimated results were influenced by the initial values of $\kappa$ and $\rho$, which is why the base case estimating both parameters was chosen.
 
 
 \subsubsection{Prior probability distributions for survey catchability}
@@ -354,7 +357,7 @@ Based on this concern and the results of the bridging analysis below (Appendix E
 Model estimates show increases in spawning biomass, depletion and natural mortality with increasing standard deviation and minor decrease in the estimates of $q_1$ and $q_2$ for all stock groups (Figure X and Figure XX).  All these increases and decreases are minor and have minor impacts on the outcomes of the assessment.... 
 
 Figure XX shows the influence of increasing the standard deviations on the prior and posterior distributions for both $q_1$ and $q_2$.   
-.....NEED TO ADD THE PRIOR/POSTERIOR PLOT FIGURES FOR EACH SENSITIVITY AND POSSIBLY STOCK
+
 
 Figure XX shows the effects of the different prior distributions on the estimates of some of the leading parameters. 
 .......NEED TO ADD THE 4 panel plots for each AM1qa, AM1qb, and AM1qc with Sbt, Depletion, Mt, qt

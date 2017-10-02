@@ -1019,7 +1019,7 @@ make.fishing.mort.mcmc.plot(list(hg.am1.constm,
                                  leg = "topright")
 @
 \end{center}
-\caption{Natural mortality sensitivity model recruitment deviations
+\caption{Natural mortality sensitivity model fishing mortality
   for the Haida Gwaii stock for gear 1.}
 \label{fig:hg-f-gear1-m}
 \end{figure}
@@ -1038,7 +1038,7 @@ make.fishing.mort.mcmc.plot(list(hg.am1.constm,
                                  leg = "topleft")
 @
 \end{center}
-\caption{Natural mortality sensitivity model recruitment deviations
+\caption{Natural mortality sensitivity model fishing mortality
   for the Haida Gwaii stock for gear 2.}
 \label{fig:hg-f-gear2-m}
 \end{figure}
@@ -1057,7 +1057,7 @@ make.fishing.mort.mcmc.plot(list(hg.am1.constm,
                                  leg = "topleft")
 @
 \end{center}
-\caption{Natural mortality sensitivity model recruitment deviations
+\caption{Natural mortality sensitivity model fishing mortality
   for the Haida Gwaii stock for gear 3.}
 \label{fig:hg-f-gear3-m}
 \end{figure}
@@ -1076,7 +1076,7 @@ make.fishing.mort.mcmc.plot(list(pr.am1.constm,
                                  leg = "topright")
 @
 \end{center}
-\caption{Natural mortality sensitivity model recruitment deviations
+\caption{Natural mortality sensitivity model fishing mortality
   for the Prince Rupert District stock for gear 1.}
 \label{fig:prd-f-gear1-m}
 \end{figure}
@@ -1095,7 +1095,7 @@ make.fishing.mort.mcmc.plot(list(pr.am1.constm,
                                  leg = "topright")
 @
 \end{center}
-\caption{Natural mortality sensitivity model recruitment deviations
+\caption{Natural mortality sensitivity model fishing mortality
   for the Prince Rupert District stock for gear 2.}
 \label{fig:prd-f-gear2-m}
 \end{figure}
@@ -1114,7 +1114,7 @@ make.fishing.mort.mcmc.plot(list(pr.am1.constm,
                                  leg = "topleft")
 @
 \end{center}
-\caption{Natural mortality sensitivity model recruitment deviations
+\caption{Natural mortality sensitivity model fishing mortality
   for the Prince Rupert District stock for gear 3.}
 \label{fig:prd-f-gear3-m}
 \end{figure}
@@ -1133,7 +1133,7 @@ make.fishing.mort.mcmc.plot(list(cc.am1.constm,
                                  leg = "topright")
 @
 \end{center}
-\caption{Natural mortality sensitivity model recruitment deviations
+\caption{Natural mortality sensitivity model fishing mortality
   for the Central Coast stock for gear 1.}
 \label{fig:cc-f-gear1-m}
 \end{figure}
@@ -1152,7 +1152,7 @@ make.fishing.mort.mcmc.plot(list(cc.am1.constm,
                                  leg = "topleft")
 @
 \end{center}
-\caption{Natural mortality sensitivity model recruitment deviations
+\caption{Natural mortality sensitivity model fishing mortality
   for the Central Coast stock for gear 2.}
 \label{fig:cc-f-gear2-m}
 \end{figure}
@@ -1171,7 +1171,7 @@ make.fishing.mort.mcmc.plot(list(cc.am1.constm,
                                  leg = "topright")
 @
 \end{center}
-\caption{Natural mortality sensitivity model recruitment deviations
+\caption{Natural mortality sensitivity model fishing mortality
   for the Central Coast stock for gear 3.}
 \label{fig:cc-f-gear3-m}
 \end{figure}
@@ -1190,7 +1190,7 @@ make.fishing.mort.mcmc.plot(list(sog.am1.constm,
                                  leg = "topright")
 @
 \end{center}
-\caption{Natural mortality sensitivity model recruitment deviations
+\caption{Natural mortality sensitivity model fishing mortality
   for the Strait of Georgia stock for gear 1.}
 \label{fig:sog-f-gear1-m}
 \end{figure}
@@ -1209,7 +1209,7 @@ make.fishing.mort.mcmc.plot(list(sog.am1.constm,
                                  leg = "topleft")
 @
 \end{center}
-\caption{Natural mortality sensitivity model recruitment deviations
+\caption{Natural mortality sensitivity model fishing mortality
   for the Strait of Georgia stock for gear 2.}
 \label{fig:sog-f-gear2-m}
 \end{figure}
@@ -1228,7 +1228,7 @@ make.fishing.mort.mcmc.plot(list(sog.am1.constm,
                                  leg = "topleft")
 @
 \end{center}
-\caption{Natural mortality sensitivity model recruitment deviations
+\caption{Natural mortality sensitivity model fishing mortality
   for the Strait of Georgia stock for gear 3.}
 \label{fig:sog-f-gear3-m}
 \end{figure}
@@ -1247,7 +1247,7 @@ make.fishing.mort.mcmc.plot(list(wcvi.am1.constm,
                                  leg = "topright")
 @
 \end{center}
-\caption{Natural mortality sensitivity model recruitment deviations
+\caption{Natural mortality sensitivity model fishing mortality
   for the WCVI stock for gear 1.}
 \label{fig:wcvi-f-gear1-m}
 \end{figure}
@@ -1266,7 +1266,7 @@ make.fishing.mort.mcmc.plot(list(wcvi.am1.constm,
                                  leg = "topleft")
 @
 \end{center}
-\caption{Natural mortality sensitivity model recruitment deviations
+\caption{Natural mortality sensitivity model fishing mortality
   for the WCVI stock for gear 2.}
 \label{fig:wcvi-f-gear2-m}
 \end{figure}
@@ -1285,7 +1285,7 @@ make.fishing.mort.mcmc.plot(list(wcvi.am1.constm,
                                  leg = "topleft")
 @
 \end{center}
-\caption{Natural mortality sensitivity model recruitment deviations
+\caption{Natural mortality sensitivity model fishing mortality
   for the WCVI stock for gear 3.}
 \label{fig:wcvi-f-gear3-m}
 \end{figure}
