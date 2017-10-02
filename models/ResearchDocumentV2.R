@@ -385,8 +385,10 @@ nBio <- LoadNBio( SARs=unlist(allRegions, use.names=FALSE) )
 
 # Arrange the ADMB output files
 ArrangeOutput <- function( SARs, models ) {
+  # Start a counter
+  iCount <- 1
   # Message
-  cat( "Arranging output files..." )
+  cat( "Arranging output files... " )
   # Loop over regions
   for( SAR in SARs ) {
     # If models is NA (not specified)
@@ -406,6 +408,8 @@ ArrangeOutput <- function( SARs, models ) {
       # If there is already a folder called 'mcmc': assume already processed and
       # skip to the next iteration
       if( "mcmc" %in% list.files(path=fn) )  next
+      # If there are files to move, print a message
+      cat( "\n\t", fn, sep="" )
       # Make a subfolder called 'mcmc'
       dir.create( path=file.path(fn, "mcmc") )
       # Get names of batch files
@@ -414,6 +418,7 @@ ArrangeOutput <- function( SARs, models ) {
       file.copy( from=batFNs, to=file.path(fn, "mcmc") )
       # Get names of mcmc files
       mcmcFNs <- list.files( path=fn, pattern=mcmcPattern, full.names=TRUE )
+      # TODO: Warning if there are no files
       # Copy mcmc files to 'mcmc' directory
       copied <- file.copy( from=mcmcFNs, to=file.path(fn, "mcmc") )
       # If they all copied
