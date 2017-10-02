@@ -140,14 +140,14 @@ CSAP Working Paper 2017PEL01.
 \bibliography{all}
 \clearpage
 
-<<tables, child='maindoc/7_tables.rnw'>>=
-@
+%%<<tables, child='maindoc/7_tables.rnw'>>=
+%%@
 
 <<figures, child='maindoc/8_figures.rnw'>>=
 @
 
 % Start the appendices
-\Appendices
+%%\Appendices
 
 \refstepcounter{chapter}
 <<biology, child='app/A_biology.rnw'>>=
