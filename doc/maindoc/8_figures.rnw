@@ -1885,6 +1885,193 @@ make.q.plot(list(wcvi.qc),
 \end{figure}
 
 %%------------------------------------------------------------------------------
+%% Age proportion extimates plots
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg.ageest.gear1>>=
+make.age.comp.estimates.plot(hg.b, 1)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 1 (other fisheries),
+  for Haida Gwaii. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:hg-ageest-gear1}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<hg.ageest.gear2>>=
+make.age.comp.estimates.plot(hg.b, 2)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 2 (roe seine),
+  for Haida Gwaii. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:hg-ageest-gear2}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<hg.ageest.gear3>>=
+make.age.comp.estimates.plot(hg.b, 3)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 3 (row gillnet),
+  for Haida Gwaii. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:hg-ageest-gear3}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<prd.ageest.gear1>>=
+make.age.comp.estimates.plot(pr.b, 1)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 1 (other fisheries),
+  for the Prince Rupert District. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:prd-ageest-gear1}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<prd.ageest.gear2>>=
+make.age.comp.estimates.plot(pr.b, 2)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 2 (roe seine),
+  for the Prince Rupert District. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:prd-ageest-gear2}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<prd.ageest.gear3>>=
+make.age.comp.estimates.plot(pr.b, 3)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 3 (roe gillnet),
+  for the Prince Rupert District. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:prd-ageest-gear3}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<cc.ageest.gear1>>=
+make.age.comp.estimates.plot(cc.b, 1)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 1 (other fisheries),
+  for the Central Coast. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:cc-ageest-gear1}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<cc.ageest.gear2>>=
+make.age.comp.estimates.plot(cc.b, 2)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 2 (roe seine),
+  for the Central Coast. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:cc-ageest-gear2}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<cc.ageest.gear3>>=
+make.age.comp.estimates.plot(cc.b, 3)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 3 (roe gillnet),
+  for the Central Coast. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:cc-ageest-gear3}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<sog.ageest.gear1>>=
+make.age.comp.estimates.plot(sog.b, 1)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 1 (other fisheries),
+  for the Strait of Georgia. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:sog-ageest-gear1}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<sog.ageest.gear2>>=
+make.age.comp.estimates.plot(sog.b, 2)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 2 (roe seine),
+  for the Strait of Georgia. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:sog-ageest-gear2}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<sog.ageest.gear3>>=
+make.age.comp.estimates.plot(sog.b, 3)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 3 (roe gillnet),
+  for the Strait of Georgia. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:sog-ageest-gear3}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<wcvi.ageest.gear1>>=
+make.age.comp.estimates.plot(wcvi.b, 1)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 1 (other fisheries),
+  for the WCVI. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:wcvi-ageest-gear1}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.ageest.gear2>>=
+make.age.comp.estimates.plot(wcvi.b, 2)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 2 (roe seine),
+  for the WCVI. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:wcvi-ageest-gear2}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.ageest.gear3>>=
+make.age.comp.estimates.plot(wcvi.b, 3)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 3 (roe gillnet),
+  for the WCVI. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:wcvi-ageest-gear3}
+\end{figure}
+
+%%------------------------------------------------------------------------------
 %% Sensitivity to M MCMC diagnostic plots
 %%------------------------------------------------------------------------------
 %% \begin{figure}[H]
