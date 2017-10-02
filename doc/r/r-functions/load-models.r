@@ -884,6 +884,7 @@ read.mcmc <- function(model.dir = NULL,
   mcmcrtfn   <- file.path(model.dir, mcmc.recr.file)
   mcmcrdevfn <- file.path(model.dir, mcmc.recr.devs.file)
   mcmcftfn   <- file.path(model.dir, mcmc.fishing.mort.file)
+  mcmcmfn    <- file.path(model.dir, mcmc.natural.mort.file)
   mcmcutfn   <- file.path(model.dir, mcmc.fishing.mort.u.file)
   mcmcvbtfn  <- file.path(model.dir, mcmc.vuln.biomass.file)
   mcmcprojfn <- file.path(model.dir, mcmc.proj.file)
@@ -903,6 +904,9 @@ read.mcmc <- function(model.dir = NULL,
   if(file.exists(mcmcftfn)){
     ft         <- read.csv(mcmcftfn)
     tmp$ft     <- extract.area.sex.matrices(ft, prefix = "ft")
+  }
+  if(file.exists(mcmcmfn)){
+    tmp$m         <- read.csv(mcmcmfn)
   }
   if(file.exists(mcmcutfn)){
     ut         <- read.csv(mcmcutfn)
@@ -1125,6 +1129,14 @@ calc.mcmc <- function(model,
   }, error = function(err){
   })
 
+  ## Natural mortality
+  nat.mort.dat <- mcmc.thin(mc$m, burnin, thin)
+  colnames(nat.mort.dat) <- gsub("m_age2_", "", colnames(nat.mort.dat))
+  nat.mort.quants <- apply(nat.mort.dat,
+                           2,
+                           quantile,
+                           prob = probs)
+
   ## Recruitment
   recr.dat <- mcmc.thin(mc$rt[[1]], burnin, thin)
   recr.mean <- apply(recr.dat,
@@ -1268,6 +1280,8 @@ calc.mcmc <- function(model,
            "sbt.quants",
            "depl.dat",
            "depl.quants",
+           "nat.mort.dat",
+           "nat.mort.quants",
            "recr.dat",
            "recr.quants",
            "recr.devs.dat",
