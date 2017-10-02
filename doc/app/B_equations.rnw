@@ -35,7 +35,7 @@ This \Sexpr{fish.name} assessment is conducted with unsexed data with $S=1$.
 \subsection{A Steady-State Age-Structured Model}
 
 For the steady-state conditions represented in Table~\ref{tab:steady-state-model}, we assume the parameter vector $\Theta$ in Eq.~\ref{eq:df1} is unknown and would be estimated by fitting iSCAM to data.
-For a given set of sex-specific growth parameters and maturity-at-age parameters defined by Eq.~\ref{eq:df2}, growth is assumed to follow von Bertalanffy (Eq.~\ref{eq:df3}), mean weight-at-age is given by the allometric relationship in Eq.~\ref{eq:df4}, and the age and sex-specific vulnerability is given by an age-based logistic function (Eq.~\ref{eq:df5}).
+For a given set of sex-specific growth parameters and maturity-at-age parameters defined by Eq.~\ref{eq:df2}, growth is assumed to follow von Bertalanffy (Eq.~\ref{eq:df3}), mean weight-at-age is given by the allometric relationship in Eq.~\ref{eq:df4}, and the age-specific vulnerability is given by an age-based logistic function (Eq.~\ref{eq:df5}).
 The terms vulnerability and selectivity are used interchangeably throughout this document, although, technically, selectivity refers to the fishing gear, while vulnerability refers to all processes affecting the availability of fish to the fishery.
 Selectivity parameters can be fixed or estimated.
 
@@ -59,8 +59,11 @@ These steady-state conditions are critical for determining various reference poi
 
 \subsection{MSY-based Reference Points}
 
-When defining reference points for this assessment, only the commercial trawl fishery was used to calculate MSY quantities.
-In the case of a single fishery, iSCAM calculates \emph{F}\subscr{MSY} by finding the value of \emph{F}\subscr{e} that results in the zero derivative of Eq.~\ref{eq:df15}.
+%....THIS IS NOT THE CASE FOR HERRING WE MAY NEED TO DOUBLE CHECK THIS WITH ROBYN.....
+%When defining reference points for this assessment, only the commercial trawl fishery was used to calculate MSY quantities.
+%In the case of a single fishery, 
+
+iSCAM calculates \emph{F}\subscr{MSY} by finding the value of \emph{F}\subscr{e} that results in the zero derivative of Eq.~\ref{eq:df15}.
 This is accomplished numerically using a Newton-Raphson method where an initial guess for \emph{F}\subscr{MSY} is set equal to $M$.
 Given an estimate of \emph{F}\subscr{MSY}, other reference points such as MSY and \emph{B}\subscr{MSY} are calculated using the equations in Table~\ref{tab:steady-state-model}.
 
@@ -71,10 +74,10 @@ The estimated parameters $R_0$, $h$, and $M$, are the leading population paramet
 
 Variance components of the model were partitioned using an errors in variables approach.
 The key variance parameter is the inverse of the total variance $\vartheta^2$ (i.e., total precision).
-This parameter can be fixed or estimated, and was fixed for this model.
+This parameter can be fixed or estimated, and was estimated for this model.
 The total variance is partitioned into observation and process error components by the model parameter $\rho$, which represents the proportion of the total variance that is due to observation error (Eq.~\ref{eq:df17}, \citep{punt1999, deriso2007}).
 
-The unobserved state variables in Eq.~\ref{eq:df18} include the numbers-at-age in year $t$ of sex $s$ ($N_{t,a,s}$), the spawning stock biomass in year $t$ of sex $s$ ($B_{t,s}$), and the total age- and sex-specific total mortality rate ($Z_{t,a,s}$).
+The unobserved state variables in Eq.~\ref{eq:df18} include the numbers-at-age in year $t$ ($N_{t,a}$), the total biomass in year $t$ ($B_{t}$), the spawning stock biomass ($SB_{t}$) and the total age-specific total mortality rate ($Z_{t,a}$).
 The initial numbers-at-age in the first year (Eq.~\ref{eq:df19}) and the annual recruits (Eq.~\ref{eq:df20}) are treated as estimated parameters and used to initialize the numbers-at-age array.
 
 Vulnerability-at-age is here assumed time-invariant and is modelled using a two-parameter logistic function (Eq.~\ref{eq:df21}).
@@ -85,7 +88,9 @@ In years where there are zero reported catches for a given fleet, no correspondi
 
 State variables in each year are updated using Eqns.~\ref{eq:df23}--\ref{eq:df26}, where the spawning biomass is the product of the numbers-at-age and the mature biomass-at-age (Eq.~\ref{eq:df23}).
 The total mortality rate is given by Eq.~\ref{eq:df24}, and the total catch (in weight) for each gear is given by Eq.~\ref{eq:df25}, assuming that both natural and fishing mortality occur simultaneously throughout the year.
-The sex-specific numbers-at-age are propagated over time using Eq. \ref{eq:df26}, where members of the plus group (age $A$) are all assumed to have the same total mortality rate.
+
+Numbers-at-age are propagated over time using Eq. \ref{eq:df26}, where members of the plus group (age $A$) are all assumed to have the same total mortality rate.
+
 Recruitment to age $k$ is assumed to follow a Beverton-Holt model for \Sexpr{fish.name} (Eq.~\ref{eq:df27}) where the maximum juvenile survival rate ($s_o$) is defined by $s_o=\kappa/\phi_E$.
 For the Beverton-Holt model, $\beta$ is derived by solving Eq.~\ref{eq:df27} for $\beta$ conditional on estimates of $h$ and $R_o$.
 
@@ -132,9 +137,9 @@ where $T_k$ is the total number of catch observations for gear type $k$.
 
 \subsection{Relative Abundance Data}
 
-The relative abundance data are assumed to be proportional to biomass that is vulnerable to the sampling gear:
+For Pacific herring the relative abundance data are assumed to be proportional to spawning biomass so the $k$th survey the vulnerable biomass available to the survey sampling gear:
 \begin{equation}\label{eq:df30}
-V_{k,t} = \sum_a N_{t,a} e^{-\lambda_{k,t} Z_{t,a}} v_{k,a} w_a
+V_{k,t} = \sum_a SB_{t,a} e^{-\lambda_{k,t} M_{t,a}} f_{a,t}
 \end{equation}
 where $v_{k,a}$ is the age-specific selectivity of gear $k$, and $w_a$ is the mean-weight-at-age.
 A user specified fraction of the total mortality $\lambda_{k,t}$ adjusts the numbers-at-age to correct for survey timing.
@@ -162,7 +167,9 @@ where $\rho \varphi^2$ is the proportion of the total error that is associated w
 The $ \omega_{k,t}$ terms allow each observation to be weighted relative to the total error $\rho \varphi^2$; for example, to omit a particular observation, set $\omega_{k,t}=0$, or to give 2 times the weight, then set $\omega_{k,t}=2.0$.
 To assume all observations have the same variance then simply set $\omega_{k,t}=1$.
 Note that if $\omega_{k,t}=0$ then Eq.~\ref{eq:df32} is undefined; therefore, iSCAM adds a small constant to $\omega_{k,t}$ ($e^{-10}$, which is equivalent to assuming an extremely large variance) to ensure the likelihood can be evaluated.
-In this assessment, values for $\omega{k,t}$ were set to inverse of the annual CVs from the survey (Table~\ref{tab:indices})
+
+In the case of the \Sexpr{fish.name} assessment, the spawn survey data post 1988 were assumed to be 1.166 times as precise as the pre-dive survey data (1951-1987). To implement this, objective function weights for the 1951-1987 data were set equal to unity and the contemporary data was assigned a relative weight of 1.166. The standard deviation in the observation errors is condistional on estimated values of $\rho and \varphi^2$.
+%In this assessment, values for $\omega{k,t}$ were set to inverse of the annual CVs from the survey (Table~\ref{tab:indices})
 
 \subsection{Age composition data}
 
@@ -219,12 +226,15 @@ s_o = \frac{\kappa}{\phi_E}
 \begin{equation}\label{eq:df38}
 \beta = \frac{\kappa-1}{B_o}\ \ \  (Beverton-Holt)
 \end{equation}
-where $s_o$ is the maximum juvenile survival rate, and $\beta$ is the density effect on recruitment.
+where $s_o$ is the maximum juvenile survival rate, and $\beta$ is the density effect on recruitment, and $B_o$ is the unfished spawning stock biomass.  Unfished steady-state spawning stock biomass per recruit is given by $\phi_E$, which is the sum of products between age-specific survivorship and relative fecundity. In the cases where the natural mortality rate is allowed to vary over time, the calculation of $\phi_E$, and the corresponding unfished spawning stock biomass ($B_o$) is based on the average natural mortality rate over the entire time period.  This subtle calculation has implications for reference point calculations in cases where there are increasing or decreasing trends in natural mortality rates trend upwards, estimates of $B_o$ decrease. 
+
+
 
 \clearpage
 
 \appsection{TABLES}
 
+%DO WE WANT TO REMOVE THE SEX s INDEX FROM THESE EQUATIONS????
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %********************** Table 1 ************************************
 \FloatBarrier

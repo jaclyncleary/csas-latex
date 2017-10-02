@@ -304,7 +304,7 @@ See Appendix~\ref{chap:equations} for description of reference points calculatio
 
 \subsection{SENSITIVITY ANALYSES}
 
-We tested the sensitivity of the results from base case assessment model identified in the bridging analysis in Appendix E to the following assumptions:
+We tested the sensitivity of the results from the base case assessment model identified in the bridging analysis in Appendix E to the following assumptions:
 
 \begin{resdoclist}
   \item Assumed time varying natural mortality
@@ -329,7 +329,7 @@ This scenario was applied to all stocks and assessment model versions (AM1 and A
 
 .....MORE RESULTS NEEDED WHEN FIGURES ARE GENERATED....
 
-The model outcomes were influenced by the assumption on the estimation of M. 
+The model outcomes were influenced by the assumption on the estimation of M. The addition of time varying M appears to improve model fits to the spawn index 
 There is support for inclusion of time varying M in this analysis as well as from the bridging analysis (Appendix E).  Both showed a reduction in the magnitude of retrospective patterns and improved coherence between assumed and empirical fits to the spawn survey index. 
 
 \subsubsection{Variance parameters}
@@ -338,7 +338,7 @@ The key variance parameter in the errors-in-variables approach is the inverse of
 The total variance is partitioned into observation and process error components by the model parameter rho $\rho$, which is the proportion of the total variance that is due to observation error (Punt and Butterworth 1993, Deriso et al. 2007). 
 In ISCAM, standard deviations in process error (tau, $\tau$) and observation error (sigma, $\sigma$) are related and modelled using  equations XX for kappa $\kappa$ and rho $\rho$.
 The base case initial values for $\kappa$ and $\rho$ were set equal to MPD estimated values from the 2016 assessment, which resulted in an observation error term ($\sigma=0.58$) and a process error term ($\tau=0.69$).  
-We tested model sensitivity to these initial values by varying $\vartheta^2$ and $\rho$ while estimating all leading parameters.
+We tested model sensitivity to these initial values $\vartheta^2$ and $\rho$ by varying them, while estimating all leading parameters.
 
 This analysis showed that when both $\rho$ and $\kappa$ are estimated, the choice of initial value for $\rho$ and $\kappa$ does not impact estimated model parameters, as shown in table XX for the Strait of Georgia, AM1 and AM2.  
 This trend can also be seen in the bridging analysis below (Appendix E) for AM1, AM2, both parameterizations of $M$ in the first sensitivity analysis and all stocks.  
@@ -377,10 +377,11 @@ In the absence of recent histological studies to provide new estimates of maturi
 These values are listed in Table \ref{tab:maturity}.  
 The selectivity of the seine roe fishery was chosen because the fishery targets pre-spawning aggregations with seine gear that is non size-selective, providing age composition samples from a mature portion of the population.  
 
-The key MSY reference points for the base case and the maturity schedule sensitivity case are summarized in Table xx.  
+The key MSY reference points, Sbo and SB2017 for the base case and the maturity schedule sensitivity case are summarized in Table xx.  
 
 
-Changing maturity to equal selectivity doesn't make the Fmsy estimates "usable" in a management procedure. 
+Changing maturity to equal selectivity doesn't make the Fmsy estimates "usable" in a management procedure. We compared trends in M~t for Base and mat=sel and trends were similar (results not shown)
+
 
 \subsection{ASSESSMENT MODEL RESULTS}\label{secModelResults}
 
