@@ -1,24 +1,30 @@
 \section{STOCK ASSESSMENT MODELLING}
 
 We applied a statistical catch-at-age model in a Bayesian estimation framework to assess the coastwide stock of \Sexpr{fish.name}.
+The model was fit to catch data, two survey indices of relative spawner biomass, and to age composition data from the commercial fisheries and the herring test fishery.
+A matrix of average weight-at-age from 1951--\Sexpr{assess.yr} was also estimated external to the model, using biological samples from the seine caught fish (seine roe, food and bait, seine test).
+Additional biological parameters such as growth parameters and maturity schedules were taken from external analyses and input to the assessment model as fixed parameters that were assumed to remain constant over time (Section \ref{secAssumedBiolPars}).
 
-The model was fit to catch data, two indices of abundance with associated coefficients of variation, and to age composition data from the commercial trawl fishery and a research surveys.
-Biological parameters used in the model, including growth, weight-at-age and maturity schedules, were estimated independently (Appendix~XX) and input to the assessment model as fixed parameters that were assumed to remain constant over time.
+Reference points based on estimated long-term average unfished equilbrium spawning biomass ($\mli{SB}_0$) and estimates of current stock status relative to estimated unfished spawning biomass ($\mli{SSB}_{2017} / \mli{SB}_0$) are presented in Table X and X. 
+Estimates of $\mli{SSB}$ and depletion levels ($\mli{SSB} / \mli{SB}_0$) for the recent 10-years are presented in Tables X to X.
 
-Reference points based on Maximum Sustainable Yield (MSY), including the female spawning biomass (\emph{B}\subscr{MSY}) and the annual harvest rate producing MSY (\emph{U}\subscr{MSY}), were estimated, along with reference points based on estimated equilibrium unfished spawning biomass, \emph{B}\subscr{0} (Section XX).
-Harvest decision tables (Tables~XX and XX) were created by projecting the assessment model one year into the future under a range of constant catch levels.
-For each level of catch, decision tables show the probability that projected spawning biomass in 2016 will be less than spawning biomass-based reference points, and the probablity that 2015 harvest rate will be greater than harvest rate-based reference points (Section \ref{secDecisionTables}).
+Maximum Sustainable Yield (MSY) and the annual harvest rate producing MSY (\emph{U}\subscr{MSY}), were presented only within the context of the Sensitivity Analysis investigating interactions between maturity-at-age and selectivity-at-age (Section \ref{secMatAge}).
+
+Harvest decision tables (Tables~XX and XX) were created by projecting the assessment model one year into the future, given range of assumed catch levels.
+One year projections of spawning biomass assume recent 5-year average estimates of natural mortality and weight-at-age.
+For each level of catch, decision tables show the probability that projected spawning biomass in 2018 will be less than the LRP ($0.30\cdot\mli{SB}_0$), the fixed cut-off (for AM2), and the probablity that the effective harvest rate for each catch level will be greater than target harvest rates of 5\%, 10\% and 20\% (Section \ref{secDecisionTables}).
+%JC: completed.
 
 \subsection{INPUT DATA}
 
 We use both fishery dependent and fishery independent time series data for stock assessment of \Sexpr{fish.name}.
 Tables of all the data inputs are in Appendix \ref{chap:input}.
 
-This section describes sources of fishery-dependent data representing catch amounts and observations from commercial and test fishery biological sampling and fishery-independent data representing surface and dive \Sexpr{common.name} spawn surveys.
-The test fishery and purse seine biological samples consist of two important data types: mean weight-at-age and proportion-at-age data.
-The survey data, weight-at-age data, and proportion-at-age data are used as input for the assessment model.
+This section describes sources of fishery-dependent data: validated catch and biological samples from commercial fisheries, and fishery-independent data: biological samples from the test fishery program and a herring egg deposition survey (aka spawn survey) used to estimate a relative index of spawner biomass  \Sexpr{common.name}.
+Time series of commerical catch, spawn survey data, average weight-at-age data, and proportion-at-age data are used as input for the assessment model.
 Observed trends in the data are presented in this section but key observations are interpreted in association with assessment model results (Section \ref{secModelResults}).
-To help readers view and collective data sets we summarize them by major stock area in Figure XX - Figure XX.
+To help readers view the collective data sets we summarize them by major stock area in Figure XX - Figure XX.
+%JC: completed.
 
 \subsubsection{Catch data}
 
@@ -39,6 +45,9 @@ For the purposes of stock assessment, catch data are summarized by gear type and
 
 Currently, catch input to the stock assessment model does not include mortality from the commercial SOK fishery, nor any recreational or FSC fisheries.
 The commercial SOK fishery is licensed based on pounds of validated SOK product, not tonnes of fish used or spawned, and there is currently no basis for verifying mortality imposed on the population by this fishery.
+
+Commercial catch data are aggregated into three gear types/ fishery periods: (1) Historic reduction fishery and FB, (2) Seine roe and test , and (3) Gillnet roe.
+The same aggregation is applied to the biological sampling data to calculate proportions-at-age data input.
 
 A summary of recent fishing activity is described below by major SAR.
 For areas where commercial food and bait, special use and roe fisheries have occurred, catches by fishery are summarized by stock area in Figure \ref{figCatch}.
@@ -72,95 +81,82 @@ First Nations FSC fisheries operate within traditional territories of individual
 The West Coast Vancouver Island has been closed to commercial roe and spawn-on-kelp (SOK) fisheries since 2006 (with SOK permitted in 2011).
 First Nations FSC fisheries operate within traditional territories of individual Nations, fishing whole herring (year round), spawn-on-boughs (March - April), and SOK (closed and open ponding).
 Commercial fishing opportunities were not permitted in 2013/14 following an interlocutory injunction as a result of a federal court decision.
+%JC: completed.
 
 \subsubsection{Biological data}
 
+Biological samples are used to provide model inputs of average weight-at-age and proportion-at-age by gear type/ fishery period ($n=3$).
+
 Biological samples are collected from the major commercial herring fisheries and through the test fishery program.
-The test fishery charter program began in 1975.
-One objective of this program has been to collect supplementary biological samples in areas where catch sampling was not considered to be representative of mature fish in that stock area (because roe fisheries target large spawning aggregations), and to collect biological samples in areas closed to commercial fishing (providing the sole source of biological data for these areas).
-Attempts are made to collect 15-20 herring samples from each of the roe seine and roe gillnet fisheries (during validation).
-In addition, dock-side catch sampling occurs for the FB fishery, and a small number of samples are collected from the commercial SOK and SU fisheries. 
+The test fishery seine charter program began in 1975. 
+The charter vessels collect sounding information, reporting locations and approximate size of pre-spawning aggregations of Pacific Herring on a daily basis, and collects biological samples from pre-spawning aggregations via purse seine. 
+The present-day objective of test fishery biological sampling program is to collect samples in a variety of areas both open and closed to  commercial fishing (providing the sole source of biological data for closed areas).
+Through a dock-side catch sampling contract, attempts are made to collect 15-20 herring samples from each of the roe seine and roe gillnet fisheries (during validation).
+In addition, catch sampling are collected for the FB fishery, and a small number of samples are collected from the commercial SOK and SU fisheries. 
 
 In all sampling events, one ``herring sample'' (one bucket) is roughly 100 individual herring, from which the following data are collected: fish length, weight, sex, gonad length, gonad weight, and maturity. 
-Table \ref{tabNBio} indicates the number of biosamples by year and SAR.
+Table \ref{tabNBio} indicates the number of biological samples by year and SAR.
 
-For the purposes of stock assessment all fish within a sample are treated as independent observations, that is, there is no weighting of the biological samples by catch or spawn.
-Biological data from the commercial catch and test fishery sampling programs are pooled for each stock area.
-These pooled data are used to populate matrices of weight-at-age and proportions-at-age used as input data for the assessment model.
+For the purposes of stock assessment all fish within a ''herring sample'' are treated as independent observations, that is, there is no weighting of the biological samples by catch or spawn.
+Proportions-at-age data are aggregated into three gear types/ fishery periods: (1) Historic reduction fishery and FB samples, (2) Seine roe and test samples, and (3) Gillnet roe samples.
+The same aggregation is applied to the commercial catch data.
 
-Weight-at-age is averaged over all seine-caught fish (Gear 1 and 2, where available) into a single matrix of weight-at-age by year for each stock area.
+A stock-specific matrix of weight-at-age exists for each of the five major stocks.  
+The matrix of weight-at-age for years 1951--\Sexpr{assess.yr} is the average weight over all seine-caught fish (Gear 1 and 2, where available) for each age catogory 2 to 10+. 
+Gillnet caught fish are excluded from the calculation of average weight-at-age.
 The number of biological samples used in the calculation of proportions-at-age and weight-at-age by year and SAR is summarized in Appendix \ref{chap:input}.
-Proportions-at-age are summarized by gear type into three aforementioned fishing categories.
 
 Herring are aged at the DFO Sclerochronology Lab at the Pacific Biological Station, Nanaimo, B.C.
 Since 1985, ageing convention for aged finfish species is to use a January-1 birthday.
-Prior to this change herring were aged with a July-1 birthday coinciding with their biological birthday ranging from mid March (southern stocks) to early June (northern stocks).
-
+Prior to this change Pacific Herring were aged with a July-1 birthday coinciding with their biological birthday ranging from mid March (southern stocks) to early June (northern stocks).
 Herring ageing data arising from catch samples collected July-1 to Dec-31 are ``+1 age-incremented''.
 That is, during data import, +1 ages are added to the ages of fish collected from July-1 to Dec-31 (e.g., age-2 fish become age-3 fish).
 This protocol has been in place since 1985, recognizing that these summer-fall collected fish would be 1-year older had they been removed from the population during roe season (March-April).
 Herring aged prior to 1985 have been age-adjusted for consistency across all years.
 
-Mean weight at age data are important to the assessment in several ways (Figure \ref{figWeightAge}).
-Firstly, using a time series of weight at allows the stock assessment to capture the effects of time-varying changes in weight at age.
-These data are an important determinant of current biomass because this quantity is given by the sum of the element wise product of numbers at age and weight at age vectors so that even given fixed numbers at age, biomass will change considerably with changes in size at age.
-Finally, changes in mean weight at age affect the estimate of the theoretical unfished biomass as we discuss in the retrospective analyses, Section XX.
-And we have proportion-at-age (Figure \ref{figProportionAge}).
-We also show the number of biological samples by year (Figure \ref{figNumberAged}).
+Mean weight-at-age data are important to the assessment in several ways (Figure \ref{figWeightAge}).
+Firstly, using a time series of weight-at-age allows the assessment model to capture the effects of time-varying changes in weight-at-age, which are relevant and significant for Pacific Herring (also referred to as nonstationarity).
+Second, these data are an important determinant in estimating current biomass because this quantity is given by the sum of the element wise product of numbers-at-age and weight-at-age vectors so that even given fixed numbers-at-age, biomass will change considerably with changes in weight-at-age.
+Finally, changes in mean weight-at-age affect the estimate of the equilibrium unfished biomass, the key reference point for Pacific Herring.
 
-\begin{itemize}
-  \item We include biological samples from test and commercial samples.
-  \item We did not include sampling from NTC pilot `nearshore' program.
-\end{itemize}
+Proportions-at-age and the number of biological samples by year are presented in Figure \ref{figProportionAge} and Figure \ref{figNumberAged}.
 
 Measurable declines in weight-at-age are evident for all major herring stocks, from the mid-1980s to 2010 as shown in Figure \ref{figWeightAge}.
-Declining weight-at-age may be attributed to any number of factors, including: fishing effects (i.e., gear selectivity), environmental effects (changes in ocean productivity), or it may be attributed to by changes in sampling protocols (shorter time frame over which samples are collected).
-Declining weight-at-age is observed in all five of the major stocks, and despite area closures over the last 10-years, has continued to occur in the HG and WCVI stocks.
+All stocks show a leveling off or increase in the recent-most 5-years.
+Declining weight-at-age may be attributed to any number of factors, including fishing effects (i.e., gear selectivity) and environmental effects (changes in ocean productivity), or it may be attributed to by changes in sampling protocols (shorter time frame over which samples are collected).
+Declining weight-at-age is observed in all five of the major stocks, and despite area closures over the last 10-years has continued to occur in the HG and WCVI stocks.
 This trend has been observed in B.C. and U.S. waters, from California to Alaska \citep{schweigert2002}.
-Changes in weight at age are not unique to \Sexpr{fish.name}: they have also been observed in Pacific Hake (JTC 2014) and Pacific Halibut.
-The direct cause and influence of this decline should be investigated in the context of the assessment framework because changes in growth patterns will result different optimal harvest rate estimates like $F_\mli{MSY}$.
-In addition, weight at age is a key element for the calculation of key reference points that related to the scale of the stock size, like the unfished state $B_0$ and $B_\mli{MSY}$.  
-
-Even if the mechanisms behind weight at age changes are not well understood, the model does account for observed changes for reconstructions and predictions.
-A matrix of empirically derived proportion-at-age data is required as input for this catch-age model.
-As changes in weight at age are observed, the model's estimates of current and historical biomass levels as well as egg output per spawner are adjusted to include these effects.
-The model uses the mean weight at age of the last five years for projections.
+Changes in weight-at-age are not unique to \Sexpr{fish.name}: they have also been observed in Pacific Hake (JTC 2014) and Pacific Halibut.
+The direct cause and influence of this decline should be investigated in the context of the assessment framework because changes in growth patterns will result in different reference point estimates and different estimated optimal harvest rate.
+Even though the mechanisms behind weight-at-age changes are not well understood, the model does account for observed changes in stock reconstructions and predictions.
+%JC: completed.
 
 \subsubsection{Abundance index}
 
-%Example for Jaclyn:
-%The spawn index for \Sexpr{max(yrRange)} for HG is \Sexpr{finalYrSpawn >% filter( Region=="HG" ) %>% select(Spawn)} tonnes (Table \ref{tabSpawnHG}).
-
-We also have an index of relative abundance (Figure \ref{figSpawnIndex}).
-The spawn survey indices provide information about how the relative stock size has changed over time and the proportions at age data provide information about the population age structure.
-\begin{resdoclist}
-  \item Description of surveys (surface and dive)
-  \item 2 stage model, presence only
-  \item Instead of repeating background/methods/statistics/equations from our Spawn Index technical report, it would be much easier to provide a link to the draft PDF (or email it around with this draft): \href{https://github.com/grinnellm/HerringSpawnDocumentation}{spawn index technical report} -- need to put the PDF on GitHub
-\end{resdoclist}
-
-Herring spawn surveys have been conducted throughout the B.C. coast beginning in the 1930s.
+Herring egg deposition (spawn) surveys have been conducted throughout the B.C. coast beginning in the 1930s.
+The time series of spawn survey data used for the assessment of Pacific Herring begins in 1951. 
 Prior to 1988, spawn surveys were conducted from the surface either by walking the beach at low tide or using a drag from a skiff to estimate the shoreline length and width of spawn.
-Beginning in 1988, herring spawn surveys using SCUBA methods were introduced and were implemented coastwide within a couple of years, initially being conducted by DFO staff and eventually through contract divers hired through the test fishery program.
-Prior to the 2006 Larocque ruling the test fishery program was funded through an allocation of fish, and from 2007-2014 this data collection program has been funded by DFO.
-In 2014, dive surveys were conducted in all major and minor assessment regions.
+In 1988, SCUBA methods were introduced to measure herring spawn along transects and were SCUBA methods were implemented coastwide within a couple of years
 
 Both survey methods (surface or dive) involve collecting information on spawn length (parallel to shore), spawn width (perpendicular to shore), and number of egg layers by vegetation type.
-These data are used to calculate egg densities per spawning bed, with the ultimate goal of estimating spawning biomass, following the methods of Schweigert et al. (2001).
-Estimates of spawn length, spawn width, and average number of egg layers are presented in Appendix B for all major stock areas.
+These data are used to calculate egg densities per spawning bed, with the ultimate goal of back-calculating the biomass of mature spawners estimated to have deposited the eggs.
+Execution of the 2017 spawn survey followed all standard protocols as described in the 2013 version of the 
+\href{http://www.pac.dfo-mpo.gc.ca/science/species-especes/pelagic-pelagique/herring-hareng/hertags/pdf/SurveyManual.pdf}{herring spawn survey manual}.
+Detailed background, methods, and equations for calculating the spawn index are summarized in the Spawn Index technical report (\href{https://github.com/grinnellm/HerringSpawnDocumentation}{spawn index technical report}).
 
 For the purposes of stock assessment, spawn survey data are represented as two independent indices: (1) surface survey index from 1951--1987 and (2) dive survey index from 1988--\Sexpr{assess.yr}.
 Spawn indices are an output of the Herring Stock Assessment Database, in units of metric tonnes of herring spawning biomass.
 Time series of spawn index by major stock area, from 1951--1987 (surface observations) and 1988--\Sexpr{assess.yr} (dive observations) are summarized in Figure \ref{figSpawnIndex}.
-It is worth noting that since 1988, some early and late season surface surveys have been conducted, representing a small proportion of total spawn survey in a given area (Appendix XX).
-These surface data were processed so that their average width estimates are in a comparable format to those from dive survey data and surface survey average width estimates were rolled up with dive survey estimates.
-In 3 of the major stock areas (HG, PRD and CC), numeric estimates of spawning biomass (spawn index values) decreased in 2014 over 2013.
-In the other 2 stock areas (SOG and WCVI), numeric estimates of spawning biomass (spawn index values) increased in 2014 over 2013.
-Execution of the 2014 spawn survey followed all standard protocols as described in the 2013 version of the 
-\href{http://www.pac.dfo-mpo.gc.ca/science/species-especes/pelagic-pelagique/herring-hareng/hertags/pdf/SurveyManual.pdf}{herring spawn survey manual}
-and there were no in-season or post-season concerns raised by the HCRS (contractor) or the DFO Area Managers that would raise concern around the quality of spawn survey data collected this season.
+It is worth noting that since 1988, some early and late season surface surveys have been conducted, representing a small proportion of total spawn survey in a given area (Appendix XX-JC- do we have this?).
+These surface survey data are processed such that the average width estimates are in a comparable format to those from the dive survey data and these observations are combined with the dive survey estimates into a single survey index.
+
+In 4 of the major stock areas (HG, CC, SOG, WCVI), numeric estimates of spawning biomass (spawn index values) decreased in 2017 over 2016.
+In PRD, numeric estimates of spawning biomass (spawn index values) neither increased nor decreased from 2016 to 2017.
+%JC: completed.
 
 \subsubsection{Proportion-at-age and catch-at-age}
+
+%%JC here
 
 Observed proportions-at-age from Gear 2 biological samples (roe seine, seine test, SOK, where available) by stock area are summarized in Figure \ref{figProportionAge}.
 %Trends in proportion-at-age by Gear 1 and Gear 3 are included in Appendix XX.
@@ -179,7 +175,7 @@ $Z_\mli{dyn}$ does track the trends estimated using the assessment model (Figure
 In the SOG, $Z_\mli{dyn}$ also tracked the recent declines in $Z$.
 Notwithstanding the difference in the absolute value of $Z$ between the catch curve estimates and the assessment model, the catch curve analysis does support the assessment model's assumption that $M$ is time-varying in capturing similar patterns to the assessment model in the closed areas, when the only component of $Z$ that could have been in effect was $M$.
 
-\subsubsection{Previous analyses}
+\subsubsection{Assumed biological parameters} \label{secAssumedBiolPars}
 
 The model also requires length-at-age and weight-length/weight-at-age relationshiops, which were done in previous analyses and are not included here (REFs?).
 
@@ -238,7 +234,7 @@ The 2014 weights at age are between 78 and 95\% of the long term (1951-2014) ave
 
 This assessment reports a base case of a catch-age model that is fitted to three sources of data: commercial catch, spawn survey biomass index, and proportions-at-age.
 Two alternate management procedures are also explored (Section XX).
-The assessment depends primarily upon the spawn survey biomass index (surface: 1951 - 1987, dive: 1988 - 2017) for information on the scale of the major herring stocks.
+The assessment depends primarily upon the spawn survey biomass index (surface: 1951-- 1987, dive: 1988-- \Sexpr{assess.yr}) for information on the scale of the major herring stocks.
 Fishery and seine test fishery age-composition data (1951-2014) are combined for each of the three gear types, contributing to the assessment model's ability to resolve strong and weak cohorts, and to forecast recruitment. 
 
 The assessment uses Bayesian methods to incorporate prior information and integrate over parameter uncertainty to provide results that can be probabilistically interpreted.
@@ -250,7 +246,14 @@ The assessment model was compiled using AD Model Builder (ADMB) version 11.6, re
 There were no changes made to the methods used for compiling model input data (survey indices, catch, biological information). 
 Adjustments were made to some of the analytical procedures within \emph{ISCAM} as described in the Bridging Analysis, APPENDIX E. 
 These changes are considered regular year-to-year updates and lead to slight differences in model estimates and projections when comparing 2016 base model runs with results captured in the September 2016 assessment document.
+
+The most significant update was to the estimation of the variance structure. 
+In \citet{martell2011} the errors-in-variables approach (partitioning of variance between observation and process error) parameterized varphi as the total standard deviation of the process error, rather than the total variance.
+Given the recommendation of the reviewers in 2011 and to bring the assessment in line with best practices, the current assessment includes updates to the errors-in-variables approach to represent partitioning of the total precision (ref EQUATIONS).
+This change to partitioning of the total variance impacts model estimates of leading parameters and unfished biomass ($\mli{SB}_0$). 
+The Bridging Analysis (Appendix E) provides a comparison of these differences.
 %JC: edits completed
+
 \subsubsection{Model description}
 
 A Bayesian statistical catch-at-age model was applied to assess each of the \Sexpr{length(allRegions$major)} \Sexpr{fish.name} major SARs separately.
@@ -482,9 +485,9 @@ Beverton-Holt stock-recruitment relationships (Figure \ref{figBevertonHolt}).
 
 \citet{kronlund2017} use an analysis of surplus production to evaluate whether the major \Sexpr{fish.name} stocks in British Columbia show stock states consistent with signs of possible serious harm, the result of which identified recent persistent states of low production and low biomass (LP-LB states) for the Central Coast (CC), Haida Gwaii (HG) and West Coast of Vancouver Island (WCVI) management areas.
 
-The production analysis was updated for the major Pacific Herring stocks with the addition of 2017 catch data and MPD spawning biomass estimates for AM1 and AM2.  
+The production analysis was updated for the major Pacific Herring stocks with the addition of \Sexpr{assess.yr} catch data and MPD spawning biomass estimates for AM1 and AM2.  
 Figures \ref{figProduction\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figProduction\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}} show \Sexpr{PasteNicely(mNames)} production analyses for the \Sexpr{length(allRegionNames$major)} major SARs: \Sexpr{PasteNicely(allRegionNames$major)}, respectively.
-Median posterior distributions of the estimated spawning biomass in 2017 for each major stock, and juxtaposition of the estimated LRP are presented in Figure X. 
+Median posterior distributions of the estimated spawning biomass in \Sexpr{assess.yr} for each major stock, and juxtaposition of the estimated LRP are presented in Figure X. 
 The updated production analysis was compared to results presented in \citet{kronlund2017} and the key results are the same and provide continued support to the recommendations of \citet{kronlund2017}.
 
 \begin{resdoclist}
@@ -510,3 +513,7 @@ The updated production analysis was compared to results presented in \citet{kron
 \subsection{ASSUMPTIONS AND UNCERTAINTY}
 
 [Placeholder]
+
+
+JC- delete AppendixA
+
