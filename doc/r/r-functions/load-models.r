@@ -1094,12 +1094,12 @@ calc.mcmc <- function(model,
   ## Reference points
   r.dat <- NULL
   tryCatch({
-    r.dat <- as.data.frame(params.dat[ , which(nm %in% c("bo"))])
+    r.dat <- as.data.frame(params.dat[ , which(nm %in% c("sbo"))])
     r.dat <- mcmc.thin(r.dat, burnin, thin)
-    colnames(r.dat) <- "bo"
+    colnames(r.dat) <- "sbo"
   }, warning = function(war){
   }, error = function(err){
-    warning("MCMC calculations for B0 failed.\n")
+    warning("MCMC calculations for SB0 failed.\n")
   })
 
   ## Spawning biomass
@@ -1118,12 +1118,12 @@ calc.mcmc <- function(model,
   tryCatch({
     depl.dat <- apply(sbt.dat,
                       2,
-                      function(x){x / r.dat$bo})
-    depl.quants <- apply(sbt.dat / r.dat$bo,
+                      function(x){x / r.dat$sbo})
+    depl.quants <- apply(sbt.dat / r.dat$sbo,
                          2,
                          quantile,
                          prob = probs)
-    depl.quants <- rbind(depl.quants, mpd$sbt / mpd$bo)
+    depl.quants <- rbind(depl.quants, mpd$sbt / mpd$sbo)
     rownames(depl.quants)[4] <- "MPD"
   }, warning = function(war){
   }, error = function(err){
@@ -1225,11 +1225,11 @@ calc.mcmc <- function(model,
   r.quants <- NULL
   tryCatch({
     r.dat <- cbind(r.dat,
-                   0.3 * r.dat$bo,
+                   0.3 * r.dat$sbo,
                    sbt.end.1,
-                   sbt.end.1 / r.dat$bo,
+                   sbt.end.1 / r.dat$sbo,
                    sbt.end)
-    names(r.dat) <- c("bo",
+    names(r.dat) <- c("sbo",
                       paste0("0.3sbo"),
                       paste0("sb", yr.sbt.end.1),
                       paste0("sb", yr.sbt.end.1, "/sbo"),
@@ -1389,7 +1389,6 @@ calc.probabilities <- function(model,
     d <- proj[proj$TAC == tac[t],]
     d <- mcmc.thin(d, burnin, thin)
     n.row <- nrow(d)
-
     k <- c(tac[t] * 1000,
            length(which(d[,paste0("B", e.yr.1)] < d$X03B0)) / n.row,
            median(d[,paste0("B", e.yr.1)] / d$X03B0))
