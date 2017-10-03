@@ -277,6 +277,7 @@ Prior values and standard deviations in priors remain the same.
 We explore sensitivity of model estimates to assumptions about standard deviation on the \emph{q} prior in Section {}.
 %JC: edits completed
 
+
 \subsubsection{Fishery reference points}
 
 The DFO Fishery Decision-making Framework Incorporating the Precautionary Approach (PA) policy \citep{dfo09} requires stock status to be characterized using three reference points:
