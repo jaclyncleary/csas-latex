@@ -277,6 +277,7 @@ Priority areas of research identified during past CSAS meetings (2011--2016) are
 
 [Placeholder]
 
+
 \subsubsection{Fishery reference points}
 
 The DFO Fishery Decision-making Framework Incorporating the Precautionary Approach (PA) policy \citep{dfo09} requires stock status to be characterized using three reference points:
