@@ -418,8 +418,8 @@ ArrangeOutput <- function( SARs, models ) {
       file.copy( from=batFNs, to=file.path(fn, "mcmc") )
       # Get names of mcmc files
       mcmcFNs <- list.files( path=fn, pattern=mcmcPattern, full.names=TRUE )
-      # Error if there are no files
-      if( length(mcmcFNs) == 0 )  stop( "No mcmc output files found in '",
+      # Warning if there are no files
+      if( length(mcmcFNs) == 0 )  warning( "No mcmc output files found in '",
             fn, "'", call.=FALSE )
       # Copy mcmc files to 'mcmc' directory
       copied <- file.copy( from=mcmcFNs, to=file.path(fn, "mcmc") )
@@ -466,8 +466,8 @@ GetModelPars <- function( fn, SARs, models=mNames, probs=ciLevel ) {
               verbose=FALSE ) %>%
           as_tibble( ) %>%
           mutate( Model=model, Region=SAR ) %>%
-          select( Region, Model, bo, q1, q2 ) %>%
-          rename( SB0=bo )
+          select( Region, Model, sbo, q1, q2 ) %>%
+          rename( SB0=sbo )
       # Reshare to long
       rLong <- raw %>%
           gather( -Region, -Model, key="Parameter", value="Value" )
@@ -1213,13 +1213,13 @@ PlotCurrentSSB <- function( SARs, models, SSB, SB0, probs=ciLevel ) {
   up <- 1 - lo
   # Update SSB
   SSB <- SSB %>%
-      mutate( RegionName=factor(RegionName, levels=regions$RegionName), 
+      mutate( Region=factor(Region, levels=regions$Region), 
           Model=factor(Model, levels=mNames) )
   # Calculate LRP
   LRP <- SB0 %>%
       mutate( Lower=Lower*propB0, Median=Median*propB0, Upper=Upper*propB0 ) %>%
       left_join( y=regions, by="Region" ) %>%
-      mutate( RegionName=factor(RegionName, levels=regions$RegionName),
+      mutate( Region=factor(Region, levels=regions$Region),
           Model=factor(Model, levels=mNames) )
   # SSB quantiles
   quantSSB <- SSB %>%

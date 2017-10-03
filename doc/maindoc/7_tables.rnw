@@ -533,6 +533,28 @@ make.maturity.table(maturity.vec,
                     placement = "H")
 @
 
+\begin{landscapepage}
+<<variance.results.AM2, results='asis', echo=FALSE>>=
+cap <- paste0("Variance parameter results for AM2, SoG")
+variance.results.AM2 <- variance.results %>%
+  as_tibble( ) %>%
+  filter( Model == "AM2" ) %>%
+  select( Parameter, SensitivityCase, InitialValues, EstimatedValues ) %>%
+  rename( Case=SensitivityCase, Initial=InitialValues, Estimated=EstimatedValues ) %>%
+  gather( Initial, Estimated, key="Type", value="Value" ) %>%
+  unite( CaseType, Case, Type ) %>%
+  mutate( CaseType=factor(CaseType, levels=unique(CaseType)) ) %>%
+  spread( CaseType, Value ) %>%
+  mutate( Parameter=factor(Parameter, levels=unique(variance.results$Parameter)) ) %>%
+  arrange( Parameter )
+make.maturity.table(variance.results.AM2,
+                    xcaption = cap,
+                    xlabel = "tab:variance.results.AM2",
+                    font.size = 11,
+                    space.size = 12,
+                    placement = "H")
+@
+\end{landscapepage}
 
 \clearpage
 

@@ -5,7 +5,8 @@ make.index.fit.plot <- function(models,
                                 end.yr,
                                 ind,
                                 ylim = c(0, 20),
-                                ind.letter = NULL){
+                                ind.letter = NULL,
+                                show.cv = FALSE){
   ## Plot the index fits for MPDs
   ##
   ## models - a list of  model objects (list can be length 1)
@@ -60,25 +61,38 @@ make.index.fit.plot <- function(models,
                             xlim = xlim,
                             ylim = ylim,
                             col = x)})
+
+  is.equal <- function(mylist) {
+    check.eq <- sapply(mylist[-1],
+                       function(x){
+                         x == mylist[[1]]})
+    as.logical(apply(check.eq, 1, prod))
+  }
+  ## If all the input data are equal, this is TRUE and
+  ##  the crosses will be black
+  inp.are.eq <- all(is.equal(index))
+
   ## Then the points and arrows for the index inputs
   p.pts <- lapply(1:length(yrs),
                   function(x){
                     points(yrs[[x]],
                            index[[x]],
                            pch = 3,
-                           col = x,
+                           col = ifelse(inp.are.eq, 1, x),
                            lwd = 2)})
-  p.arrows <- lapply(1:length(yrs),
-                     function(x){
-                       arrows(yrs[[x]],
-                              index[[x]] + cv[[x]] * index[[x]],
-                              yrs[[x]],
-                              index[[x]] - cv[[x]] * index[[x]],
-                              code = 3,
-                              angle = 90,
-                              length = 0.0,
-                              col = 1,
-                              lwd = 2)})
+  if(show.cv){
+    p.arrows <- lapply(1:length(yrs),
+                       function(x){
+                         arrows(yrs[[x]],
+                                index[[x]] + cv[[x]] * index[[x]],
+                                yrs[[x]],
+                                index[[x]] - cv[[x]] * index[[x]],
+                                code = 3,
+                                angle = 90,
+                                length = 0.0,
+                                col = 1,
+                                lwd = 2)})
+  }
   axis(1,
        at = seq(min(xlim), max(xlim)),
        labels = seq(min(xlim), max(xlim)))

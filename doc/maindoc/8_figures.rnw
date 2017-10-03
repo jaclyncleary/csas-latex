@@ -594,6 +594,10 @@ make.selex.comparison.plot(wcvi.b, gear.names, leg = "bottomright")
 \begin{figure}[H]
 \begin{center}
 <<hg.index.surface.fit>>=
+leg.names <- c("AM1 Constant M",
+               "AM1 Time-varying M",
+               "AM2 Constant M",
+               "AM2 Time-varying M")
 make.index.fit.plot(list(hg.am1.constm,
                          hg.am1.tvm,
                          hg.am2.constm,
@@ -602,7 +606,7 @@ make.index.fit.plot(list(hg.am1.constm,
                     end.yr = 2016,
                     ind = 1,
                     leg = "topright",
-                    model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                    model.names = leg.names,
                     ylim = c(0, 60))
 @
 \end{center}
@@ -623,7 +627,7 @@ make.index.fit.plot(list(hg.am1.constm,
                     end.yr = 2016,
                     ind = 2,
                     leg = "topleft",
-                    model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                    model.names = leg.names,
                     ylim = c(0, 60))
 @
 \end{center}
@@ -644,7 +648,7 @@ make.index.fit.plot(list(pr.am1.constm,
                     end.yr = 2016,
                     ind = 1,
                     leg = "topright",
-                    model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                    model.names = leg.names,
                     ylim = c(0, 60))
 @
 \end{center}
@@ -666,7 +670,7 @@ make.index.fit.plot(list(pr.am1.constm,
                     end.yr = 2016,
                     ind = 2,
                     leg = "topleft",
-                    model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                    model.names = leg.names,
                     ylim = c(0, 60))
 @
 \end{center}
@@ -688,7 +692,7 @@ make.index.fit.plot(list(cc.am1.constm,
                     end.yr = 2016,
                     ind = 1,
                     leg = "topright",
-                    model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                    model.names = leg.names,
                     ylim = c(0, 60))
 @
 \end{center}
@@ -709,7 +713,7 @@ make.index.fit.plot(list(cc.am1.constm,
                     end.yr = 2016,
                     ind = 2,
                     leg = "topleft",
-                    model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                    model.names = leg.names,
                     ylim = c(0, 60))
 @
 \end{center}
@@ -731,7 +735,7 @@ make.index.fit.plot(list(sog.am1.constm,
                     end.yr = 2016,
                     ind = 1,
                     leg = "topright",
-                    model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                    model.names = leg.names,
                     ylim = c(0, 220))
 @
 \end{center}
@@ -753,7 +757,7 @@ make.index.fit.plot(list(sog.am1.constm,
                     end.yr = 2016,
                     ind = 2,
                     leg = "topleft",
-                    model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                    model.names = leg.names,
                     ylim = c(0, 220))
 @
 \end{center}
@@ -775,7 +779,7 @@ make.index.fit.plot(list(wcvi.am1.constm,
                     end.yr = 2016,
                     ind = 1,
                     leg = "topright",
-                    model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                    model.names = leg.names,
                     ylim = c(0, 150))
 @
 \end{center}
@@ -797,7 +801,7 @@ make.index.fit.plot(list(wcvi.am1.constm,
                     end.yr = 2016,
                     ind = 2,
                     leg = "topleft",
-                    model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                    model.names = leg.names,
                     ylim = c(0, 150))
 @
 \end{center}
@@ -816,7 +820,7 @@ make.biomass.mcmc.plot(list(hg.am1.constm,
                             hg.am1.tvm,
                             hg.am2.constm,
                             hg.am2.tvm),
-                    model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                    model.names = leg.names,
                     ylim = c(0, 250),
                     leg = "topright",
                     show.bo.line = TRUE)
@@ -835,7 +839,7 @@ make.biomass.mcmc.plot(list(pr.b,
                             pr.am1.tvm,
                             pr.am2.constm,
                             pr.am2.tvm),
-                    model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                    model.names = leg.names,
                     ylim = c(0, 120),
                     leg = "topright",
                     show.bo.line = TRUE)
@@ -854,7 +858,7 @@ make.biomass.mcmc.plot(list(cc.am1.constm,
                             cc.am1.tvm,
                             cc.am2.constm,
                             cc.am2.tvm),
-                    model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                    model.names = leg.names,
                     ylim = c(0, 150),
                     leg = "topright",
                     show.bo.line = TRUE)
@@ -873,7 +877,7 @@ make.biomass.mcmc.plot(list(sog.am1.constm,
                             sog.am1.tvm,
                             sog.am2.constm,
                             sog.am2.tvm),
-                    model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                    model.names = leg.names,
                     ylim = c(0, 350),
                     leg = "topright",
                     show.bo.line = TRUE)
@@ -892,7 +896,7 @@ make.biomass.mcmc.plot(list(wcvi.am1.constm,
                             wcvi.am1.tvm,
                             wcvi.am2.constm,
                             wcvi.am2.tvm),
-                    model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                    model.names = leg.names,
                     ylim = c(0, 250),
                     leg = "topright",
                     show.bo.line = TRUE)
@@ -912,7 +916,7 @@ make.recr.mcmc.plot(list(hg.am1.constm,
                          hg.am1.tvm,
                          hg.am2.constm,
                          hg.am2.tvm),
-                    model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                    model.names = leg.names,
                     type = 2,
                     offset = 0.1,
                     ylim = c(-4, 4),
@@ -932,7 +936,7 @@ make.recr.mcmc.plot(list(pr.am1.constm,
                          pr.am1.tvm,
                          pr.am2.constm,
                          pr.am2.tvm),
-                    model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                    model.names = leg.names,
                     type = 2,
                     offset = 0.1,
                     ylim = c(-4, 4),
@@ -952,7 +956,7 @@ make.recr.mcmc.plot(list(cc.am1.constm,
                          cc.am1.tvm,
                          cc.am2.constm,
                          cc.am2.tvm),
-                    model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                    model.names = leg.names,
                     type = 2,
                     offset = 0.1,
                     ylim = c(-4, 4),
@@ -972,7 +976,7 @@ make.recr.mcmc.plot(list(sog.am1.constm,
                          sog.am1.tvm,
                          sog.am2.constm,
                          sog.am2.tvm),
-                    model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                    model.names = leg.names,
                     type = 2,
                     offset = 0.1,
                     ylim = c(-4, 4),
@@ -992,7 +996,7 @@ make.recr.mcmc.plot(list(wcvi.am1.constm,
                          wcvi.am1.tvm,
                          wcvi.am2.constm,
                          wcvi.am2.tvm),
-                    model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                    model.names = leg.names,
                     type = 2,
                     offset = 0.1,
                     ylim = c(-4, 4),
@@ -1003,292 +1007,106 @@ make.recr.mcmc.plot(list(wcvi.am1.constm,
   for the WCVI stock.}
 \label{fig:wcvi-recdevs-m}
 \end{figure}
+
 %%------------------------------------------------------------------------------
-%% Sensitivity to M Fishing mortality plots
+%% Sensitivity to M Natural mortality plots
 %%------------------------------------------------------------------------------
 \begin{figure}[H]
 \begin{center}
-<<hg.f.gear1.m>>=
-make.fishing.mort.mcmc.plot(list(hg.am1.constm,
+<<hg.m>>=
+make.natural.mort.mcmc.plot(list(hg.am1.constm,
                                  hg.am1.tvm,
                                  hg.am2.constm,
                                  hg.am2.tvm),
-                                 model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                                 model.names = leg.names,
                                  which.gear = 1,
-                                 ylim = c(0,17),
+                                 ylim = c(0,2),
                                  leg = "topright")
 @
 \end{center}
-\caption{Natural mortality sensitivity model fishing mortality
-  for the Haida Gwaii stock for gear 1.}
-\label{fig:hg-f-gear1-m}
+\caption{Natural mortality for the sensitivity to the natural mortality parameter
+  for the Haida Gwaii stock.}
+\label{fig:hg-m}
 \end{figure}
+
 %%------------------------------------------------------------------------------
 
 \begin{figure}[H]
 \begin{center}
-<<hg.f.gear2.m>>=
-make.fishing.mort.mcmc.plot(list(hg.am1.constm,
-                                      hg.am1.tvm,
-                                      hg.am2.constm,
-                                      hg.am2.tvm),
-                                 model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
-                                 which.gear = 2,
-                                 ylim = c(0,1),
-                                 leg = "topleft")
-@
-\end{center}
-\caption{Natural mortality sensitivity model fishing mortality
-  for the Haida Gwaii stock for gear 2.}
-\label{fig:hg-f-gear2-m}
-\end{figure}
-%%------------------------------------------------------------------------------
-
-\begin{figure}[H]
-\begin{center}
-<<hg.f.gear3.m>>=
-make.fishing.mort.mcmc.plot(list(hg.am1.constm,
-                                      hg.am1.tvm,
-                                      hg.am2.constm,
-                                      hg.am2.tvm),
-                                 model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
-                                 which.gear = 3,
-                                 ylim = c(0,0.6),
-                                 leg = "topleft")
-@
-\end{center}
-\caption{Natural mortality sensitivity model fishing mortality
-  for the Haida Gwaii stock for gear 3.}
-\label{fig:hg-f-gear3-m}
-\end{figure}
-%%------------------------------------------------------------------------------
-
-\begin{figure}[H]
-\begin{center}
-<<prd.f.gear1.m>>=
-make.fishing.mort.mcmc.plot(list(pr.am1.constm,
+<<prd.m>>=
+make.natural.mort.mcmc.plot(list(pr.am1.constm,
                                  pr.am1.tvm,
                                  pr.am2.constm,
                                  pr.am2.tvm),
-                                 model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                                 model.names = leg.names,
                                  which.gear = 1,
-                                 ylim = c(0,6),
-                                 leg = "topright")
-@
-\end{center}
-\caption{Natural mortality sensitivity model fishing mortality
-  for the Prince Rupert District stock for gear 1.}
-\label{fig:prd-f-gear1-m}
-\end{figure}
-%%------------------------------------------------------------------------------
-
-\begin{figure}[H]
-\begin{center}
-<<prd.f.gear2.m>>=
-make.fishing.mort.mcmc.plot(list(pr.am1.constm,
-                                 pr.am1.tvm,
-                                 pr.am2.constm,
-                                 pr.am2.tvm),
-                                 model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
-                                 which.gear = 2,
-                                 ylim = c(0,0.5),
-                                 leg = "topright")
-@
-\end{center}
-\caption{Natural mortality sensitivity model fishing mortality
-  for the Prince Rupert District stock for gear 2.}
-\label{fig:prd-f-gear2-m}
-\end{figure}
-%%------------------------------------------------------------------------------
-
-\begin{figure}[H]
-\begin{center}
-<<prd.f.gear3.m>>=
-make.fishing.mort.mcmc.plot(list(pr.am1.constm,
-                                 pr.am1.tvm,
-                                 pr.am2.constm,
-                                 pr.am2.tvm),
-                                 model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
-                                 which.gear = 3,
-                                 ylim = c(0,1.3),
-                                 leg = "topleft")
-@
-\end{center}
-\caption{Natural mortality sensitivity model fishing mortality
-  for the Prince Rupert District stock for gear 3.}
-\label{fig:prd-f-gear3-m}
-\end{figure}
-%%------------------------------------------------------------------------------
-
-\begin{figure}[H]
-\begin{center}
-<<cc.f.gear1.m>>=
-make.fishing.mort.mcmc.plot(list(cc.am1.constm,
-                                 cc.am1.tvm,
-                                 cc.am2.constm,
-                                 cc.am2.tvm),
-                                 model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
-                                 which.gear = 1,
-                                 ylim = c(0,7),
-                                 leg = "topright")
-@
-\end{center}
-\caption{Natural mortality sensitivity model fishing mortality
-  for the Central Coast stock for gear 1.}
-\label{fig:cc-f-gear1-m}
-\end{figure}
-%%------------------------------------------------------------------------------
-
-\begin{figure}[H]
-\begin{center}
-<<cc.f.gear2.m>>=
-make.fishing.mort.mcmc.plot(list(cc.am1.constm,
-                                 cc.am1.tvm,
-                                 cc.am2.constm,
-                                 cc.am2.tvm),
-                                 model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
-                                 which.gear = 2,
-                                 ylim = c(0,1.2),
-                                 leg = "topleft")
-@
-\end{center}
-\caption{Natural mortality sensitivity model fishing mortality
-  for the Central Coast stock for gear 2.}
-\label{fig:cc-f-gear2-m}
-\end{figure}
-%%------------------------------------------------------------------------------
-
-\begin{figure}[H]
-\begin{center}
-<<cc.f.gear3.m>>=
-make.fishing.mort.mcmc.plot(list(cc.am1.constm,
-                                 cc.am1.tvm,
-                                 cc.am2.constm,
-                                 cc.am2.tvm),
-                                 model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
-                                 which.gear = 3,
-                                 ylim = c(0,1.3),
-                                 leg = "topright")
-@
-\end{center}
-\caption{Natural mortality sensitivity model fishing mortality
-  for the Central Coast stock for gear 3.}
-\label{fig:cc-f-gear3-m}
-\end{figure}
-%%------------------------------------------------------------------------------
-
-\begin{figure}[H]
-\begin{center}
-<<sog.f.gear1.m>>=
-make.fishing.mort.mcmc.plot(list(sog.am1.constm,
-                                 sog.am1.tvm,
-                                 sog.am2.constm,
-                                 sog.am2.tvm),
-                                 model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
-                                 which.gear = 1,
-                                 ylim = c(0,4),
-                                 leg = "topright")
-@
-\end{center}
-\caption{Natural mortality sensitivity model fishing mortality
-  for the Strait of Georgia stock for gear 1.}
-\label{fig:sog-f-gear1-m}
-\end{figure}
-%%------------------------------------------------------------------------------
-
-\begin{figure}[H]
-\begin{center}
-<<sog.f.gear2.m>>=
-make.fishing.mort.mcmc.plot(list(sog.am1.constm,
-                                 sog.am1.tvm,
-                                 sog.am2.constm,
-                                 sog.am2.tvm),
-                                 model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
-                                 which.gear = 2,
-                                 ylim = c(0,0.3),
-                                 leg = "topleft")
-@
-\end{center}
-\caption{Natural mortality sensitivity model fishing mortality
-  for the Strait of Georgia stock for gear 2.}
-\label{fig:sog-f-gear2-m}
-\end{figure}
-%%------------------------------------------------------------------------------
-
-\begin{figure}[H]
-\begin{center}
-<<sog.f.gear3.m>>=
-make.fishing.mort.mcmc.plot(list(sog.am1.constm,
-                                 sog.am1.tvm,
-                                 sog.am2.constm,
-                                 sog.am2.tvm),
-                                 model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
-                                 which.gear = 3,
-                                 ylim = c(0,0.7),
-                                 leg = "topleft")
-@
-\end{center}
-\caption{Natural mortality sensitivity model fishing mortality
-  for the Strait of Georgia stock for gear 3.}
-\label{fig:sog-f-gear3-m}
-\end{figure}
-%%------------------------------------------------------------------------------
-
-\begin{figure}[H]
-\begin{center}
-<<wcvi.f.gear1.m>>=
-make.fishing.mort.mcmc.plot(list(wcvi.am1.constm,
-                                 wcvi.am1.tvm,
-                                 wcvi.am2.constm,
-                                 wcvi.am2.tvm),
-                                 model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
-                                 which.gear = 1,
-                                 ylim = c(0,5),
-                                 leg = "topright")
-@
-\end{center}
-\caption{Natural mortality sensitivity model fishing mortality
-  for the WCVI stock for gear 1.}
-\label{fig:wcvi-f-gear1-m}
-\end{figure}
-%%------------------------------------------------------------------------------
-
-\begin{figure}[H]
-\begin{center}
-<<wcvi.f.gear2.m>>=
-make.fishing.mort.mcmc.plot(list(wcvi.am1.constm,
-                                 wcvi.am1.tvm,
-                                 wcvi.am2.constm,
-                                 wcvi.am2.tvm),
-                                 model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
-                                 which.gear = 2,
                                  ylim = c(0,1),
-                                 leg = "topleft")
+                                 leg = "topright")
 @
 \end{center}
-\caption{Natural mortality sensitivity model fishing mortality
-  for the WCVI stock for gear 2.}
-\label{fig:wcvi-f-gear2-m}
+\caption{Natural mortality for the sensitivity to the natural mortality parameter
+  for the Prince Rupert District stock.}
+\label{fig:prd-m}
 \end{figure}
+
 %%------------------------------------------------------------------------------
 
 \begin{figure}[H]
 \begin{center}
-<<wcvi.f.gear3.m>>=
-make.fishing.mort.mcmc.plot(list(wcvi.am1.constm,
+<<cc.m>>=
+make.natural.mort.mcmc.plot(list(cc.am1.constm,
+                                 cc.am1.tvm,
+                                 cc.am2.constm,
+                                 cc.am2.tvm),
+                                 model.names = leg.names,
+                                 which.gear = 1,
+                                 ylim = c(0,1),
+                                 leg = "topright")
+@
+\end{center}
+\caption{Natural mortality for the sensitivity to the natural mortality parameter
+  for the Central Coast stock.}
+\label{fig:cc-m}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<sog.m>>=
+make.natural.mort.mcmc.plot(list(sog.am1.constm,
+                                 sog.am1.tvm,
+                                 sog.am2.constm,
+                                 sog.am2.tvm),
+                                 model.names = leg.names,
+                                 which.gear = 1,
+                                 ylim = c(0,2),
+                                 leg = "topright")
+@
+\end{center}
+\caption{Natural mortality for the sensitivity to the natural mortality parameter
+  for the Strait of Georgia stock.}
+\label{fig:sog-m}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.m>>=
+make.natural.mort.mcmc.plot(list(wcvi.am1.constm,
                                  wcvi.am1.tvm,
                                  wcvi.am2.constm,
                                  wcvi.am2.tvm),
-                                 model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
-                                 which.gear = 3,
-                                 ylim = c(0,1),
-                                 leg = "topleft")
+                                 model.names = leg.names,
+                                 which.gear = 1,
+                                 ylim = c(0,2),
+                                 leg = "topright")
 @
 \end{center}
-\caption{Natural mortality sensitivity model fishing mortality
-  for the WCVI stock for gear 3.}
-\label{fig:wcvi-f-gear3-m}
+\caption{Natural mortality for the sensitivity to the natural mortality parameter
+  for the WCVI stock.}
+\label{fig:wcvi-m}
 \end{figure}
+
 %%------------------------------------------------------------------------------
 %% Sensitivity to M number at age 2 plots
 %%------------------------------------------------------------------------------
@@ -1299,7 +1117,7 @@ make.nage2.plot(list(hg.am1.constm,
                      hg.am1.tvm,
                      hg.am2.constm,
                      hg.am2.tvm),
-                model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                model.names = leg.names,
                 ylim = c(0,5000),
                 leg = "topright")
 @
@@ -1317,7 +1135,7 @@ make.nage2.plot(list(pr.am1.constm,
                      pr.am1.tvm,
                      pr.am2.constm,
                      pr.am2.tvm),
-                model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                model.names = leg.names,
                 ylim = c(0,3000),
                 leg = "topright")
 @
@@ -1335,7 +1153,7 @@ make.nage2.plot(list(cc.am1.constm,
                      cc.am1.tvm,
                      cc.am2.constm,
                      cc.am2.tvm),
-                model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                model.names = leg.names,
                 ylim = c(0,2500),
                 leg = "topright")
 @
@@ -1353,7 +1171,7 @@ make.nage2.plot(list(sog.am1.constm,
                      sog.am1.tvm,
                      sog.am2.constm,
                      sog.am2.tvm),
-                model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                model.names = leg.names,
                 ylim = c(0,8000),
                 leg = "topleft")
 @
@@ -1371,7 +1189,7 @@ make.nage2.plot(list(wcvi.am1.constm,
                      wcvi.am1.tvm,
                      wcvi.am2.constm,
                      wcvi.am2.tvm),
-                model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+                model.names = leg.names,
                 ylim = c(0,5000),
                 leg = "topright")
 @
@@ -1390,7 +1208,7 @@ make.q.plot(list(hg.am1.constm,
                  hg.am1.tvm,
                  hg.am2.constm,
                  hg.am2.tvm),
-            model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+            model.names = leg.names,
             ylim = c(0,2),
             leg = "topleft")
 @
@@ -1408,7 +1226,7 @@ make.q.plot(list(pr.am1.constm,
                  pr.am1.tvm,
                  pr.am2.constm,
                  pr.am2.tvm),
-            model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+            model.names = leg.names,
             ylim = c(0,2),
             leg = "topleft")
 @
@@ -1426,7 +1244,7 @@ make.q.plot(list(cc.am1.constm,
                  cc.am1.tvm,
                  cc.am2.constm,
                  cc.am2.tvm),
-            model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+            model.names = leg.names,
             ylim = c(0,2),
             leg = "topleft")
 @
@@ -1444,7 +1262,7 @@ make.q.plot(list(sog.am1.constm,
                  sog.am1.tvm,
                  sog.am2.constm,
                  sog.am2.tvm),
-            model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+            model.names = leg.names,
             ylim = c(0,2),
             leg = "topright")
 @
@@ -1462,7 +1280,7 @@ make.q.plot(list(wcvi.am1.constm,
                  wcvi.am1.tvm,
                  wcvi.am2.constm,
                  wcvi.am2.tvm),
-            model.names = c("AM1 Time-varying M","AM1 Constant M","AM2 Time-varying M","AM2 Constant M"),
+            model.names = leg.names,
             ylim = c(0,2),
             leg = "topright")
 @
@@ -1882,6 +1700,193 @@ make.q.plot(list(wcvi.qc),
   \Sexpr{wcvi.qc$ctl$surv.q[3,1]}
   for the WCVI stock.}
 \label{fig:wcvi-4panel-qc}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% Age proportion extimates plots
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg.ageest.gear1>>=
+make.age.comp.estimates.plot(hg.b, 1)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 1 (other fisheries),
+  for Haida Gwaii. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:hg-ageest-gear1}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<hg.ageest.gear2>>=
+make.age.comp.estimates.plot(hg.b, 2)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 2 (roe seine),
+  for Haida Gwaii. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:hg-ageest-gear2}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<hg.ageest.gear3>>=
+make.age.comp.estimates.plot(hg.b, 3)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 3 (row gillnet),
+  for Haida Gwaii. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:hg-ageest-gear3}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<prd.ageest.gear1>>=
+make.age.comp.estimates.plot(pr.b, 1)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 1 (other fisheries),
+  for the Prince Rupert District. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:prd-ageest-gear1}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<prd.ageest.gear2>>=
+make.age.comp.estimates.plot(pr.b, 2)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 2 (roe seine),
+  for the Prince Rupert District. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:prd-ageest-gear2}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<prd.ageest.gear3>>=
+make.age.comp.estimates.plot(pr.b, 3)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 3 (roe gillnet),
+  for the Prince Rupert District. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:prd-ageest-gear3}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<cc.ageest.gear1>>=
+make.age.comp.estimates.plot(cc.b, 1)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 1 (other fisheries),
+  for the Central Coast. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:cc-ageest-gear1}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<cc.ageest.gear2>>=
+make.age.comp.estimates.plot(cc.b, 2)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 2 (roe seine),
+  for the Central Coast. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:cc-ageest-gear2}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<cc.ageest.gear3>>=
+make.age.comp.estimates.plot(cc.b, 3)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 3 (roe gillnet),
+  for the Central Coast. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:cc-ageest-gear3}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<sog.ageest.gear1>>=
+make.age.comp.estimates.plot(sog.b, 1)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 1 (other fisheries),
+  for the Strait of Georgia. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:sog-ageest-gear1}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<sog.ageest.gear2>>=
+make.age.comp.estimates.plot(sog.b, 2)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 2 (roe seine),
+  for the Strait of Georgia. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:sog-ageest-gear2}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<sog.ageest.gear3>>=
+make.age.comp.estimates.plot(sog.b, 3)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 3 (roe gillnet),
+  for the Strait of Georgia. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:sog-ageest-gear3}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<wcvi.ageest.gear1>>=
+make.age.comp.estimates.plot(wcvi.b, 1)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 1 (other fisheries),
+  for the WCVI. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:wcvi-ageest-gear1}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.ageest.gear2>>=
+make.age.comp.estimates.plot(wcvi.b, 2)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 2 (roe seine),
+  for the WCVI. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:wcvi-ageest-gear2}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.ageest.gear3>>=
+make.age.comp.estimates.plot(wcvi.b, 3)
+@
+\end{center}
+\caption{Estimated proportion-at-age versus time for Gear 3 (roe gillnet),
+  for the WCVI. The area of each circle reflects the proportion-at-age,
+  each column sums to 1, zeros are not shown. Plus group is age-10.}
+\label{fig:wcvi-ageest-gear3}
 \end{figure}
 
 %%------------------------------------------------------------------------------
