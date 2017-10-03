@@ -142,7 +142,7 @@ Both survey methods (surface or dive) involve collecting information on spawn le
 These data are used to calculate egg densities per spawning bed, with the ultimate goal of back-calculating the biomass of mature spawners estimated to have deposited the eggs.
 Execution of the 2017 spawn survey followed all standard protocols as described in the 2013 version of the 
 \href{http://www.pac.dfo-mpo.gc.ca/science/species-especes/pelagic-pelagique/herring-hareng/hertags/pdf/SurveyManual.pdf}{herring spawn survey manual}.
-Detailed background, methods, and equations for calculating the spawn index are summarized in the (\href{https://github.com/grinnellm/HerringSpawnDocumentation}{spawn index technical report}).
+Detailed background, methods, and equations for calculating the spawn index are summarized in the \href{https://github.com/grinnellm/HerringSpawnDocumentation/blob/master/SpawnIndexTechnicalReport.pdf}{draft spawn index technical report}.
 
 For the purposes of stock assessment, spawn survey data are represented as two independent indices:
 (1) surface survey index from 1951--1987 and
@@ -187,50 +187,98 @@ As described in Section XX, indications from histological assessment of developi
 \subsubsection{Data summaries for major SARs}
 
 We provide a brief description of input data to the assessment model for each of the major \Sexpr{fish.name} SARs.
+There are 4 timeseries of data for each major SAR: catch by gear type, spawn index, number-at-age, and weight-at-age.
+We provide tables of these timeseries in Appendix \ref{chap:input}.
+% Note that the following paragraphs are semi-automated, and they require user input.
 
 \textbf{Haida Gwaii}
 
-The survey index declined in 2014 from approximately 16 kilo tonnes (kt) in 2013 to 10.6 kt (Figure \ref{figSpawnIndex}).
-Relative to 2013, changes in mean weight at age depended on age.
-Mean weight at age for age 2, 5, 6 fish increased a minimum of 8\% to a maximum of approximately 15\% (for age 2) (Figure \ref{figWeightAge}).
-While the trajectory for size at age has generally been upward since 2011, the ratio of the 2014 mean weight at age to the 1951-2014 mean is between 66 and 98\%.
-The proportions at age were dominated by age 4 fish (Figure \ref{figProportionAge}).
-There were 12 seine-test vessel samples (each of approximately 100 fish) used to calculate mean weight at age and proportions at age data in 2014 (Appendix \ref{chap:input}).
+There was no commercial catch in \Sexpr{max(yrRange)} (Figure \ref{figCatch}).
+The spawn index decreased from 
+\Sexpr{prevYrSpawn %>% filter( Region == "HG" ) %>% select( Spawn )} 
+tonnes in \Sexpr{max(yrRange)-1} to 
+\Sexpr{finalYrSpawn %>% filter( Region == "HG" ) %>% select( Spawn )}
+tonnes in \Sexpr{max(yrRange)} (Figure \ref{figSpawnIndex}).
+Generally, mean weight-at-age for age-\Sexpr{min(ageRange)} to -\Sexpr{max(ageRange)}+ has been stable or increasing since 2010 (Figure \ref{figWeightAge}).
+In \Sexpr{max(yrRange)}, proportion-at-age was dominated by age-3 fish, and older age classes (i.e., age-\Sexpr{agePlusProp}+) contributed
+\Sexpr{finalYrPropAge %>% filter( Region == "HG", Age == 6 ) %>% select( Percent )}\%
+(Figure \ref{figProportionAge}).
+There were
+\Sexpr{finalYrNBio %>% select( HG )}
+biological samples used to calculate mean weight-at-age and proportion-at-age data in \Sexpr{max(yrRange)} (Table \ref{tabNBio}).
+\sampleSize{}
 
 \textbf{Prince Rupert District}
 
-The survey index declined from 25.7 kt in 2013 to 17.1 kt in 2014 (Figure \ref{figSpawnIndex}).
-There were 15 seine-caught samples (excludes the gillnet fishery samples, Appendix \ref{chap:input}) available for determining the weight at age and proportions at age in 2014 (Figures \ref{figWeightAge}, and \ref{figProportionAge}, respectively).
-Weight at age increased for 2 and 4 year old fish by approximately 25\% (not shown) but declined for age 3 fish; for ages 5-10, weight at age did not change by more than 5\%.
-The current weight at age for all age classes is between 78-98\% of the 1951-2014 means.
-The proportions at age were dominated by age 4 fish from the 2011 cohort (Figure \ref{figProportionAge}).
+The total commercial catch in \Sexpr{max(yrRange)} was
+\Sexpr{finalYrCatch %>% filter( Region == "PRD") %>% select( Catch )}
+tonnes (Figure \ref{figCatch}).
+The spawn index increased from 
+\Sexpr{prevYrSpawn %>% filter( Region == "PRD" ) %>% select( Spawn )} 
+tonnes in \Sexpr{max(yrRange)-1} to 
+\Sexpr{finalYrSpawn %>% filter( Region == "PRD" ) %>% select( Spawn )}
+tonnes in \Sexpr{max(yrRange)} (Figure \ref{figSpawnIndex}).
+Generally, mean weight-at-age for age-\Sexpr{min(ageRange)} to -\Sexpr{max(ageRange)}+ has been stable or increasing since 2010 (Figure \ref{figWeightAge}).
+In \Sexpr{max(yrRange)}, proportion-at-age was dominated by age-5 fish, and older age classes (i.e., age-\Sexpr{agePlusProp}+) contributed
+\Sexpr{finalYrPropAge %>% filter( Region == "PRD", Age == 6 ) %>% select( Percent )}\%
+(Figure \ref{figProportionAge}).
+There were
+\Sexpr{finalYrNBio %>% select( PRD )}
+biological samples used to calculate mean weight-at-age and proportion-at-age data in \Sexpr{max(yrRange)} (Table \ref{tabNBio}).
+\sampleSize{}
 
 \textbf{Central Coast}
 
-The spawn survey index declined from 20.4 kt to 13.21 kt, (Figure \ref{figSpawnIndex}).
-There were 13 seine-caught samples (excludes the gillnet fishery samples, Appendix \ref{chap:input}) available for determining the weight at age and proportions at age in 2014 but there was concern that these included an uncommonly high number of samples collected from Statistical Area 8, which is historically an unfished area with consistently smaller (age 2) fish (DFO 2015).
-As a result, Area 8 biological samples were weighted by their average relative contribution over the past 20 years (7\%) in the final analysis (Figure XX, XX).
-Mean weight at age declined for all age classes:  for age 2,4,5,6,8 fish, the declines were less than 10\% but for age 3 and 9 fish the declines were 18 and 28\% respectively.
-The 2014 weights at age are between 56 and 91\% of the long term (1951-2014) averages.
-As in HG, PRD and CC areas, the age composition data were dominated by age 4 fish (Figure \ref{figProportionAge}).
+There was no commercial catch in \Sexpr{max(yrRange)} (Figure \ref{figCatch}).
+The spawn index decreased from 
+\Sexpr{prevYrSpawn %>% filter( Region == "CC" ) %>% select( Spawn )} 
+tonnes in \Sexpr{max(yrRange)-1} to 
+\Sexpr{finalYrSpawn %>% filter( Region == "CC" ) %>% select( Spawn )}
+tonnes in \Sexpr{max(yrRange)} (Figure \ref{figSpawnIndex}).
+Generally, mean weight-at-age for age-\Sexpr{min(ageRange)} to -\Sexpr{max(ageRange)}+ has been stable or increasing since 2010 (Figure \ref{figWeightAge}).
+In \Sexpr{max(yrRange)}, proportion-at-age was dominated by age-5 fish, and older age classes (i.e., age-\Sexpr{agePlusProp}+) contributed
+\Sexpr{finalYrPropAge %>% filter( Region == "CC", Age == 6 ) %>% select( Percent )}\%
+(Figure \ref{figProportionAge}).
+There were
+\Sexpr{finalYrNBio %>% select( CC )}
+biological samples used to calculate mean weight-at-age and proportion-at-age data in \Sexpr{max(yrRange)} (Table \ref{tabNBio}).
+\sampleSize{}
 
 \textbf{Strait of Georgia}
 
-The spawn survey index increased from 84 kt in 2013 to 120 kt (Figure \ref{figSpawnIndex}).
-There were 32 seine-caught samples (roe season only, Appendix \ref{chap:input}) available for determining the weight at age and proportions at age in 2014 (Figures \ref{figWeightAge}, \& \ref{figProportionAge}, respectively).
-Relative to 2013, weight at age for age 2 and age 10 fish declined by 33 and 9\% respectively, but otherwise all weight at age increased for age 3-9 fish by 1-14\%.
-The 2014 weights at age are between 78 and 99\% of the long term (1951-2014) averages.
-Unlike the other major stock areas the age composition data was dominated by several age classes (Figure \ref{figProportionAge}).
+The total commercial catch in \Sexpr{max(yrRange)} was
+\Sexpr{finalYrCatch %>% filter( Region == "SoG") %>% select( Catch )}
+tonnes (Figure \ref{figCatch}).
+The spawn index decreased from 
+\Sexpr{prevYrSpawn %>% filter( Region == "SoG" ) %>% select( Spawn )} 
+tonnes in \Sexpr{max(yrRange)-1} to 
+\Sexpr{finalYrSpawn %>% filter( Region == "SoG" ) %>% select( Spawn )}
+tonnes in \Sexpr{max(yrRange)} (Figure \ref{figSpawnIndex}).
+Generally, mean weight-at-age for age-\Sexpr{min(ageRange)} to -\Sexpr{max(ageRange)}+ has been stable or increasing since 2010 (Figure \ref{figWeightAge}).
+In \Sexpr{max(yrRange)}, proportion-at-age was relatively even among age-3 to -5 fish, and older age classes (i.e., age-\Sexpr{agePlusProp}+) contributed
+\Sexpr{finalYrPropAge %>% filter( Region == "SoG", Age == 6 ) %>% select( Percent )}\%
+(Figure \ref{figProportionAge}).
+There were
+\Sexpr{finalYrNBio %>% select( SoG )}
+biological samples used to calculate mean weight-at-age and proportion-at-age data in \Sexpr{max(yrRange)} (Table \ref{tabNBio}).
+\sampleSize{}
 
 \textbf{West Coast of Vancouver Island}
 
-The spawn survey index increased from 12.3 in 2013 to 13.9 kt (Figure \ref{figSpawnIndex}).
-The current spawn survey index is at approximately 30\% of the maximum survey biomass observed in the dive survey time series.
-There were 4 seine-caught samples for determining the weight at age and proportions at age in 2014 but there was concern that a Statistical Area 24 sample was not representative and was removed from the analysis (DFO 2015).
-Therefore the number of samples underlying the mean weight at age data for the WCVI is very small (n=3), preceded by n=5 in 2013, as compared with n=10, 14, 23, 22, and 12 in years 2012-2008, respectively (Appendix\ref{chap:input}).
-Save age 2 fish, the observed mean weight at age increased, or remained the same for all age classes (Figure \ref{figWeightAge}, based on the 4 seine-test fishery samples collected in 2014).
-The observed proportions at age were dominated by age 3 fish (Figure \ref{figProportionAge}).
-The 2014 weights at age are between 78 and 95\% of the long term (1951-2014) averages.
+There was no commercial catch in \Sexpr{max(yrRange)} (Figure \ref{figCatch}).
+The spawn index decreased from 
+\Sexpr{prevYrSpawn %>% filter( Region == "WCVI" ) %>% select( Spawn )} 
+tonnes in \Sexpr{max(yrRange)-1} to 
+\Sexpr{finalYrSpawn %>% filter( Region == "WCVI" ) %>% select( Spawn )}
+tonnes in \Sexpr{max(yrRange)} (Figure \ref{figSpawnIndex}).
+Generally, mean weight-at-age for age-\Sexpr{min(ageRange)} to -\Sexpr{max(ageRange)}+ has been stable or increasing since 2010 (Figure \ref{figWeightAge}).
+In \Sexpr{max(yrRange)}, proportion-at-age was dominated by age-4 fish, and older age classes (i.e., age-\Sexpr{agePlusProp}+) contributed
+\Sexpr{finalYrPropAge %>% filter( Region == "WCVI", Age == 6 ) %>% select( Percent )}\%
+(Figure \ref{figProportionAge}).
+There were
+\Sexpr{finalYrNBio %>% select( WCVI )}
+biological samples used to calculate mean weight-at-age and proportion-at-age data in \Sexpr{max(yrRange)} (Table \ref{tabNBio}).
+\sampleSize{}
 
 \subsection{STATISTICAL CATCH-AT-AGE MODEL}
 
