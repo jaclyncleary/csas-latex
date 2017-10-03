@@ -1499,6 +1499,15 @@ prevYrSpawn <- inputData$spawn %>%
     # Convert to tonnes, and format nicely
     mutate( Spawn=format(Spawn*1000, big.mark=",", digits=0, scientific=FALSE) )
 
+# Spawn direction (increased or decreased from last year)
+dirSpawn <- inputData$spawn %>% 
+    filter( Year %in% (max(yrRange)-1):max(yrRange) ) %>% 
+    group_by( Region ) %>% 
+    mutate( Direction=ifelse(Spawn>lag(Spawn, n=1), "increased", 
+            "decreased") ) %>% 
+    ungroup( ) %>%
+    filter( Year == max(yrRange) )
+
 # Proportion at age in current year
 finalYrPropAge <- numAgedYear %>%
     filter( Year == max(yrRange) ) %>%

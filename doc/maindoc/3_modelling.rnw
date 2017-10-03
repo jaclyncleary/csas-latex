@@ -184,7 +184,9 @@ We provide tables of these timeseries in Appendix \ref{chap:input}.
 \textbf{Haida Gwaii}
 
 There was no commercial catch in \Sexpr{max(yrRange)} (Figure \ref{figCatch}).
-The spawn index decreased from 
+The spawn index
+\Sexpr{dirSpawn %>% filter( Region == "HG" ) %>% select( Direction )}
+from
 \Sexpr{prevYrSpawn %>% filter( Region == "HG" ) %>% select( Spawn )} 
 tonnes in \Sexpr{max(yrRange)-1} to 
 \Sexpr{finalYrSpawn %>% filter( Region == "HG" ) %>% select( Spawn )}
@@ -203,7 +205,9 @@ biological samples used to calculate mean weight-at-age and proportion-at-age da
 The total commercial catch in \Sexpr{max(yrRange)} was
 \Sexpr{finalYrCatch %>% filter( Region == "PRD") %>% select( Catch )}
 tonnes (Figure \ref{figCatch}).
-The spawn index increased from 
+The spawn index
+\Sexpr{dirSpawn %>% filter( Region == "PRD" ) %>% select( Direction )}
+from
 \Sexpr{prevYrSpawn %>% filter( Region == "PRD" ) %>% select( Spawn )} 
 tonnes in \Sexpr{max(yrRange)-1} to 
 \Sexpr{finalYrSpawn %>% filter( Region == "PRD" ) %>% select( Spawn )}
@@ -220,7 +224,9 @@ biological samples used to calculate mean weight-at-age and proportion-at-age da
 \textbf{Central Coast}
 
 There was no commercial catch in \Sexpr{max(yrRange)} (Figure \ref{figCatch}).
-The spawn index decreased from 
+The spawn index
+\Sexpr{dirSpawn %>% filter( Region == "CC" ) %>% select( Direction )}
+from
 \Sexpr{prevYrSpawn %>% filter( Region == "CC" ) %>% select( Spawn )} 
 tonnes in \Sexpr{max(yrRange)-1} to 
 \Sexpr{finalYrSpawn %>% filter( Region == "CC" ) %>% select( Spawn )}
@@ -239,7 +245,9 @@ biological samples used to calculate mean weight-at-age and proportion-at-age da
 The total commercial catch in \Sexpr{max(yrRange)} was
 \Sexpr{finalYrCatch %>% filter( Region == "SoG") %>% select( Catch )}
 tonnes (Figure \ref{figCatch}).
-The spawn index decreased from 
+The spawn index
+\Sexpr{dirSpawn %>% filter( Region == "SoG" ) %>% select( Direction )}
+from
 \Sexpr{prevYrSpawn %>% filter( Region == "SoG" ) %>% select( Spawn )} 
 tonnes in \Sexpr{max(yrRange)-1} to 
 \Sexpr{finalYrSpawn %>% filter( Region == "SoG" ) %>% select( Spawn )}
@@ -256,7 +264,9 @@ biological samples used to calculate mean weight-at-age and proportion-at-age da
 \textbf{West Coast of Vancouver Island}
 
 There was no commercial catch in \Sexpr{max(yrRange)} (Figure \ref{figCatch}).
-The spawn index decreased from 
+The spawn index
+\Sexpr{dirSpawn %>% filter( Region == "WCVI" ) %>% select( Direction )}
+from
 \Sexpr{prevYrSpawn %>% filter( Region == "WCVI" ) %>% select( Spawn )} 
 tonnes in \Sexpr{max(yrRange)-1} to 
 \Sexpr{finalYrSpawn %>% filter( Region == "WCVI" ) %>% select( Spawn )}
