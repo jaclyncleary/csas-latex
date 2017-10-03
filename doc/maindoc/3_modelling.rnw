@@ -268,17 +268,14 @@ The Bayesian estimation procedure integrates over the full range of uncertainty 
 Priority areas of research identified during past CSAS meetings (2011--2016) are summarized in Appendix \ref{secFutureResearch}. 
 %JC: edits completed
 
-% 0.8\emph{B}\subscr{MSY}
-% \emph{q}\subscr{1}
-% \emph{q}\subscr{2}
-% $0.25\cdot\mli{SB}_0$ 
-% $\mli{SB}_0$
-% $F_\text{MSY}$
-% $\mli{SSB}_\text{MSY}$
-
 \subsubsection{Prior probability distributions}
 
-[Placeholder]
+Prior probability distributions for leading parameters for each major stock are shown in Table X and Figure X.
+The form of each distribution remains the same as was implemented in \citet{martell2011} and as has been implemented in each subsequent assessment.
+The initial values for each leading parameter were set equal to the MPD estimates from the 2016 assessment for each stock area.
+Prior values and standard deviations in priors remain the same.
+We explore sensitivity of model estimates to assumptions about standard deviation on the \emph{q} prior in Section {}.
+%JC: edits completed
 
 
 \subsubsection{Fishery reference points}
