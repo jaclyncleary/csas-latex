@@ -158,24 +158,11 @@ In PRD, numeric estimates of spawning biomass (spawn index values) neither incre
 
 \subsubsection{Proportion-at-age and catch-at-age}
 
-%%JC here
-
 Observed proportions-at-age from Gear 2 biological samples (roe seine, seine test, SOK, where available) by stock area are summarized in Figure \ref{figProportionAge}.
 %Trends in proportion-at-age by Gear 1 and Gear 3 are included in Appendix XX.
 Adjustments made in analytical procedures included weighting Area 8 biological samples by their average relative contribution over the past 20 years (7\%), due to concerns that data acquired and used for the Central Coast area resulted from an uncommonly high number of samples (6 of 13) that were collected from Statistical Area 8 (which is historically an unfished area with consistently smaller (age 2) fish), Area 8; and, removing WCVI Statistical Area 24 samples, because it was determined that they were not representative.
 
-We also use the catch-at-age data for a catch curve analysis \citep{chapman1960} for ages 6--10.
-Here we determine static $Z_\mli{stat}$ from the traditional catch curve method (the slope of the log of catches at age) and also dynamically as $Z_\mli{dyn}=log(\sum P6-9, t\sum P7-10, t+1)$.
-Our main motivation for doing so was to check if the apparent time-varying natural mortality estimated by the assessment model could be confirmed using the data alone, and also to address some concerns expressed by participants at last year's review meeting about the validity of the assessment model estimating time-varying natural mortality ($M$).
-While the reliability of the catch curve method can be diminished by variable recruitment, time-varying $M$ and other factors, they have been shown to capture the general magnitude of the total mortality Z, in other fish stocks \citep{allen1997, thorson2011}.
 
-The assessment model's estimates of $Z$ are likely more reliable than either static or dynamic catch curve estimates because it explicitly accounts for variable recruitment and $F$ (that will distort catch curve estimates of $Z$ if they are variable).
-Understanding that the absolute value of $Z$ estimates would be incorrect with catch curve analyses, one key thing that we hoped to examine was if $Z$s estimated by the catch curve methods followed a similar pattern to ISCAM's estimates of $Z$ particularly for HG, CC and WCVI stock areas where after fishing ceased the only other source of changes in Z would be $M$.
-We plot the catch curve estimates of $Z$ alone with those output from the assessment model for comparison in Figure XX (red and green, and black lines, respectively).
-
-$Z_\mli{dyn}$ does track the trends estimated using the assessment model (Figure 8, red), with the running average in $Z\mli{dyn}$ showing the same pattern as the increasing trends in $M$ estimated by the assessment model from the early 1990s-2008 in the CC, HG and WCVI.
-In the SOG, $Z_\mli{dyn}$ also tracked the recent declines in $Z$.
-Notwithstanding the difference in the absolute value of $Z$ between the catch curve estimates and the assessment model, the catch curve analysis does support the assessment model's assumption that $M$ is time-varying in capturing similar patterns to the assessment model in the closed areas, when the only component of $Z$ that could have been in effect was $M$.
 
 \subsubsection{Assumed biological parameters} \label{secAssumedBiolPars}
 
