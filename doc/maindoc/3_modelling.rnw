@@ -149,7 +149,7 @@ For the purposes of stock assessment, spawn survey data are represented as two i
 (2) dive survey index from 1988--\Sexpr{assess.yr}.
 Spawn indices are an output of the Herring Stock Assessment Database, in units of metric tonnes of herring spawning biomass.
 Time series of spawn index by major stock area, from 1951--1987 (surface observations) and 1988--\Sexpr{assess.yr} (dive observations) are summarized in Figure \ref{figSpawnIndex}.
-%It is worth noting that since 1988, some early and late season surface surveys have been conducted, representing a small proportion of total spawn survey in a given area (Appendix XX-JC- do we have this? MG:No).
+%It is worth noting that since 1988, some early and late season surface surveys have been conducted, representing a small proportion of total spawn survey in a given area (Appendix XX-JC- do we have this? MG:No).JC: add in 2018.
 Surface survey data are processed such that the average width estimates are in a comparable format to those from the dive survey data and these observations are combined with the dive survey estimates into a single survey index.
 
 In 4 of the major stock areas (HG, CC, SOG, WCVI), numeric estimates of spawning biomass (spawn index values) decreased in 2017 over 2016.
@@ -158,13 +158,16 @@ In PRD, numeric estimates of spawning biomass (spawn index values) neither incre
 
 \subsubsection{Proportion-at-age and catch-at-age}
 
+INCOMPLETE SECTION
+
 Observed proportions-at-age from Gear 2 biological samples (roe seine, seine test, SOK, where available) by stock area are summarized in Figure \ref{figProportionAge}.
 %Trends in proportion-at-age by Gear 1 and Gear 3 are included in Appendix XX.
 Adjustments made in analytical procedures included weighting Area 8 biological samples by their average relative contribution over the past 20 years (7\%), due to concerns that data acquired and used for the Central Coast area resulted from an uncommonly high number of samples (6 of 13) that were collected from Statistical Area 8 (which is historically an unfished area with consistently smaller (age 2) fish), Area 8; and, removing WCVI Statistical Area 24 samples, because it was determined that they were not representative.
 
 
-
 \subsubsection{Assumed biological parameters} \label{secAssumedBiolPars}
+
+INCOMPLETE SECTION (MATT)
 
 The model also requires length-at-age and weight-length/weight-at-age relationshiops, which were done in previous analyses and are not included here (REFs?).
 
@@ -178,7 +181,7 @@ We provide a brief description of input data to the assessment model for each of
 \textbf{Haida Gwaii}
 
 The survey index declined in 2014 from approximately 16 kilo tonnes (kt) in 2013 to 10.6 kt (Figure \ref{figSpawnIndex}).
-Relative to 2013, changes in mean weight at age depended on age.
+
 Mean weight at age for age 2, 5, 6 fish increased a minimum of 8\% to a maximum of approximately 15\% (for age 2) (Figure \ref{figWeightAge}).
 While the trajectory for size at age has generally been upward since 2011, the ratio of the 2014 mean weight at age to the 1951-2014 mean is between 66 and 98\%.
 The proportions at age were dominated by age 4 fish (Figure \ref{figProportionAge}).
@@ -228,6 +231,7 @@ Fishery and seine test fishery age-composition data (1951-2014) are combined for
 
 The assessment uses Bayesian methods to incorporate prior information and integrate over parameter uncertainty to provide results that can be probabilistically interpreted.
 The exploration of uncertainty is not limited to parameter uncertainty as structural uncertainty is investigated through retrospective analyses (Section XX).
+%JC: edits completed
 
 \subsubsection{Changes from the 2016 assessment}
 
@@ -247,7 +251,7 @@ The Bridging Analysis (Appendix E) provides a comparison of these differences.
 
 A Bayesian statistical catch-at-age model was applied to assess each of the \Sexpr{length(allRegions$major)} \Sexpr{fish.name} major SARs separately.
 The Integrated Statistical Catch Age Model (\emph{ISCAM}) was first reviewed and implemented for the assessment of Pacific Herring in 2011 \citep{martell2011}.
-Updates to ISCAM are explained in the Bridging Analysis, Appendix E, and full model details are provided in Appendix \ref{chap:equations}.
+Updates to ISCAM are explained in the Bridging Analysis, Appendix D, and full model details are provided in Appendix \ref{chap:equations}.
 
 Marginal posterior distributions for estimated model parameters were constructed using the AD Model Builder built in Metropolis-Hastings algorithm \citep{fournier2012}.
 For each major assessment area, a systematic sample of 1,000 points were taken from a chain of length 5,000,000, intended to represent a random sample from the marginal posterior distribution.
@@ -360,8 +364,11 @@ Autocorrelation was minor for all parameters in the AM1 and AM2 base model runs 
 \subsubsection{Fits to data}
 
 Figures \ref{figStoryboard\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figStoryboard\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}} show \Sexpr{PasteNicely(mNames)} results for the \Sexpr{length(allRegionNames$major)} major SARs: \Sexpr{PasteNicely(allRegionNames$major)}, respectively.
+%JC: edits completed
 
 \subsubsection{Parameter estimates}
+
+INCOMPLETE SECTION
 
 \begin{itemize}
   \item $q$
@@ -369,6 +376,8 @@ Figures \ref{figStoryboard\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{
 \end{itemize}
 
 \subsubsection{Fishery reference points}
+
+INCOMPLETE SECTION
 
 \begin{resdoclist}
 \item $\mli{SB}_0$
@@ -380,6 +389,8 @@ Figures \ref{figStoryboard\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{
 Effective harvest rates (Figure \ref{figHarvestRate}).
 
 \subsubsection{Biomass and stock status} \label{secStockStatus}
+
+%JC HERE
 
 The following present marginal posterior distributions characterizing the major herring stocks for the following parameters and derived quantities: recruitment, instantaneous natural mortality, biomass reconstructions and stock depletion.
 To help readers view and interpret trends in results and uncertainty for each stock major stock area, collective sets of figures showing these four sets of model results across the \Sexpr{min(yrRange)} to \Sexpr{max(yrRange)} time series are presented by stock area in Figures \ref{figStoryboard\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figStoryboard\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}}.
