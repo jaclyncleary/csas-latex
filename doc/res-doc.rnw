@@ -143,33 +143,31 @@ CSAP Working Paper 2017PEL01.
 <<tables, child='maindoc/7_tables.rnw'>>=
 @
 
-
 <<figures, child='maindoc/8_figures.rnw'>>=
 @
-
 
 % Start the appendices
 \Appendices
 
-%\refstepcounter{chapter}
-%%<<biology, child='app/A_biology.rnw'>>=
-%%@
+\refstepcounter{chapter}
+<<biology, child='app/A_biology.rnw'>>=
+@
 
 \refstepcounter{chapter}
 <<equations, child='app/B_equations.rnw'>>=
 @
 
-%%\refstepcounter{chapter}
-%%<<input, child='app/C_input.rnw'>>=
-%%@
+\refstepcounter{chapter}
+<<input, child='app/C_input.rnw'>>=
+@
 
-%%\refstepcounter{chapter}
-%%<<minors, child='app/D_minors.rnw'>>=
-%%@
+\refstepcounter{chapter}
+<<minors, child='app/D_minors.rnw'>>=
+@
 
-%%\refstepcounter{chapter}
-%%<<bridge, child='app/E_bridge.rnw'>>=
-%%@
+\refstepcounter{chapter}
+<<bridge, child='app/E_bridge.rnw'>>=
+@
 
 % Fin
 \end{document}
