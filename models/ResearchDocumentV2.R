@@ -1476,12 +1476,46 @@ qYrs <- list(
     q1=paste(range(yrRange[yrRange<newSurvYr]), collapse="--"),
     q2=paste(range(yrRange[yrRange>=newSurvYr]), collapse="--") )
 
+# Catch in current year
+finalYrCatch <- catch %>%
+    complete( Year=yrRange, Region=unlist(allRegions, use.names=FALSE),
+        fill=list(Catch=0) ) %>%
+    group_by( Region, Year ) %>%
+    summarise( Catch=SumNA(Catch) ) %>%
+    ungroup() %>%
+    filter( Year == max(yrRange) ) %>%
+    select( Region, Catch ) %>%
+    mutate( Catch=format(Catch*1000, big.mark=",", digits=0, scientific=FALSE) )
+
 # Spawn in current year
 finalYrSpawn <- inputData$spawn %>%
-    # Get spawn in final year of timeseries
     filter( Year == max(yrRange) ) %>%
+    mutate( Spawn=format(Spawn*1000, big.mark=",", digits=0, scientific=FALSE) )
+
+# Spawn in previous year
+prevYrSpawn <- inputData$spawn %>%
+    # Get spawn in final year of timeseries
+    filter( Year == max(yrRange)-1 ) %>%
     # Convert to tonnes, and format nicely
     mutate( Spawn=format(Spawn*1000, big.mark=",", digits=0, scientific=FALSE) )
+
+# Spawn direction (increased or decreased from last year)
+dirSpawn <- inputData$spawn %>% 
+    filter( Year %in% (max(yrRange)-1):max(yrRange) ) %>% 
+    group_by( Region ) %>% 
+    mutate( Direction=ifelse(Spawn>lag(Spawn, n=1), "increased", 
+            "decreased") ) %>% 
+    ungroup( ) %>%
+    filter( Year == max(yrRange) )
+
+# Proportion at age in current year
+finalYrPropAge <- numAgedYear %>%
+    filter( Year == max(yrRange) ) %>%
+    mutate( Percent=format(Proportion*100, digits=0, scientific=FALSE) )
+
+# Number of biosamples in current year
+finalYrNBio <- nBio %>%
+    filter( Year == max(yrRange) )
 
 
 ############################
