@@ -718,3 +718,135 @@ make.sens.q.table <- function(models,
         table.placement = placement,
         booktabs = TRUE)
 }
+
+make.variance.table <- function(var,
+                                which.model = 1,
+                                digits = 3,
+                                xcaption = "default",
+                                xlabel   = "default",
+                                font.size = 9,
+                                space.size = 10,
+                                placement = "H"){
+  ## var - the variance parameter results data as loaded from
+  ##  variance-parameter-results.csv
+  ## which.model to make the table for, 1 = AM1, 2 = AM2
+  ## digits - number of decimal places for the values
+  ## xcaption - caption to appear in the calling document
+  ## xlabel - the label used to reference the table in latex
+  ## font.size - size of the font for the table
+  ## space.size - size of the vertical spaces for the table
+  ## placement - latex code for placement of the table in document
+
+  if(which.model == 1){
+    model <- "AM1"
+  }else if(which.model == 2){
+    model <- "AM2"
+  }else{
+    stop("which.model must be 1 or 2.")
+  }
+
+  var.res <- var %>%
+    as_tibble( ) %>%
+    filter( Model == model ) %>%
+    select( Parameter, SensitivityCase, InitialValues, EstimatedValues ) %>%
+    rename( Case=SensitivityCase, Initial=InitialValues, Estimated=EstimatedValues ) %>%
+    gather( Initial, Estimated, key="Type", value="Value" ) %>%
+    unite( CaseType, Case, Type ) %>%
+    mutate( CaseType=factor(CaseType, levels=unique(CaseType)) ) %>%
+    spread( CaseType, Value ) %>%
+    mutate( Parameter=factor(Parameter, levels=unique(variance.results$Parameter)) ) %>%
+    arrange( Parameter )
+
+  var.res <- as.data.frame(var.res)
+  ## Change the order of the columns
+  tab <- var.res[,c(1,2,8,3,9,4,10,5,11,6,12,7,13)]
+  tab[,1] <- c("Log recruitment ($ln(R_0)$)",
+               "Steepness ($h$)",
+               "Log natural mortality ($ln(M)$)",
+               "Log mean recruitment ($\\ln(\\overline{R})$)",
+               "Log initial recruitment ($\\ln(\\overline{R}_{init})$)",
+               "Variance ratio, rho ($\\rho$)",
+               "Inverse total variance, kappa ($\\kappa$)",
+               "Sigma ($\\sigma$)",
+               "Tau ($\\tau$)")
+
+  addtorow <- list()
+  addtorow$pos <- list(0)
+  addtorow$command <- paste0(latex.amp(),
+                             latex.mcol(2,
+                                        "c",
+                                        latex.bold("Base")),
+                             latex.amp(),
+                             latex.mcol(2,
+                                        "c",
+                                        latex.bold("1")),
+                             latex.amp(),
+                             latex.mcol(2,
+                                        "c",
+                                        latex.bold("2")),
+                             latex.amp(),
+                             latex.mcol(2,
+                                        "c",
+                                        latex.bold("3")),
+                             latex.amp(),
+                             latex.mcol(2,
+                                        "c",
+                                        latex.bold("4")),
+                             latex.amp(),
+                             latex.mcol(2,
+                                        "c",
+                                        latex.bold("5")),
+                             latex.nline,
+                             ## underscores
+                             latex.cmidr("2-3", "lr"),
+                             " ",
+                             latex.cmidr("4-5", "lr"),
+                             " ",
+                             latex.cmidr("6-7", "lr"),
+                             " ",
+                             latex.cmidr("8-9", "lr"),
+                             " ",
+                             latex.cmidr("10-11", "lr"),
+                             " ",
+                             latex.cmidr("12-13", "lr"),
+                             latex.bold("Leading Parameters"),
+                             latex.amp(),
+                             latex.bold("Initial"),
+                             latex.amp(),
+                             latex.bold("Estimated"),
+                             latex.amp(),
+                             latex.bold("Initial"),
+                             latex.amp(),
+                             latex.bold("Estimated"),
+                             latex.amp(),
+                             latex.bold("Initial"),
+                             latex.amp(),
+                             latex.bold("Estimated"),
+                             latex.amp(),
+                             latex.bold("Initial"),
+                             latex.amp(),
+                             latex.bold("Estimated"),
+                             latex.amp(),
+                             latex.bold("Initial"),
+                             latex.amp(),
+                             latex.bold("Estimated"),
+                             latex.amp(),
+                             latex.bold("Initial"),
+                             latex.amp(),
+                             latex.bold("Estimated"),
+                             latex.nline)
+
+  size.string <- latex.size.str(font.size, space.size)
+  print(xtable(tab,
+               caption = xcaption,
+               label = xlabel,
+               align = get.align(ncol(tab))),
+        caption.placement = "top",
+        include.rownames = FALSE,
+        include.colnames = FALSE,
+        sanitize.text.function = function(x){x},
+        size = size.string,
+        add.to.row = addtorow,
+        table.placement = placement,
+        booktabs = TRUE)
+}
