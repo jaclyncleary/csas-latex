@@ -97,7 +97,7 @@ In addition, catch sampling are collected for the FB fishery, and a small number
 In all sampling events, one ``herring sample'' (one bucket) is roughly 100 individual herring, from which the following data are collected: fish length, weight, sex, gonad length, gonad weight, and maturity. 
 Table \ref{tabNBio} indicates the number of biological samples by year and SAR.
 
-For the purposes of stock assessment all fish within a ''herring sample'' are treated as independent observations, that is, there is no weighting of the biological samples by catch or spawn.
+For the purposes of stock assessment all fish within a ``herring sample'' are treated as independent observations, that is, there is no weighting of the biological samples by catch or spawn.
 Proportions-at-age data are aggregated into three gear types/ fishery periods: (1) Historic reduction fishery and FB samples, (2) Seine roe and test samples, and (3) Gillnet roe samples.
 The same aggregation is applied to the commercial catch data.
 
@@ -142,13 +142,15 @@ Both survey methods (surface or dive) involve collecting information on spawn le
 These data are used to calculate egg densities per spawning bed, with the ultimate goal of back-calculating the biomass of mature spawners estimated to have deposited the eggs.
 Execution of the 2017 spawn survey followed all standard protocols as described in the 2013 version of the 
 \href{http://www.pac.dfo-mpo.gc.ca/science/species-especes/pelagic-pelagique/herring-hareng/hertags/pdf/SurveyManual.pdf}{herring spawn survey manual}.
-Detailed background, methods, and equations for calculating the spawn index are summarized in the Spawn Index technical report (\href{https://github.com/grinnellm/HerringSpawnDocumentation}{spawn index technical report}).
+Detailed background, methods, and equations for calculating the spawn index are summarized in the (\href{https://github.com/grinnellm/HerringSpawnDocumentation}{spawn index technical report}).
 
-For the purposes of stock assessment, spawn survey data are represented as two independent indices: (1) surface survey index from 1951--1987 and (2) dive survey index from 1988--\Sexpr{assess.yr}.
+For the purposes of stock assessment, spawn survey data are represented as two independent indices:
+(1) surface survey index from 1951--1987 and
+(2) dive survey index from 1988--\Sexpr{assess.yr}.
 Spawn indices are an output of the Herring Stock Assessment Database, in units of metric tonnes of herring spawning biomass.
 Time series of spawn index by major stock area, from 1951--1987 (surface observations) and 1988--\Sexpr{assess.yr} (dive observations) are summarized in Figure \ref{figSpawnIndex}.
-It is worth noting that since 1988, some early and late season surface surveys have been conducted, representing a small proportion of total spawn survey in a given area (Appendix XX-JC- do we have this?).
-These surface survey data are processed such that the average width estimates are in a comparable format to those from the dive survey data and these observations are combined with the dive survey estimates into a single survey index.
+%It is worth noting that since 1988, some early and late season surface surveys have been conducted, representing a small proportion of total spawn survey in a given area (Appendix XX-JC- do we have this? MG:No).
+Surface survey data are processed such that the average width estimates are in a comparable format to those from the dive survey data and these observations are combined with the dive survey estimates into a single survey index.
 
 In 4 of the major stock areas (HG, CC, SOG, WCVI), numeric estimates of spawning biomass (spawn index values) decreased in 2017 over 2016.
 In PRD, numeric estimates of spawning biomass (spawn index values) neither increased nor decreased from 2016 to 2017.
@@ -283,9 +285,9 @@ We explore sensitivity of model estimates to assumptions about standard deviatio
 The DFO Fishery Decision-making Framework Incorporating the Precautionary Approach (PA) policy \citep{dfo09} requires stock status to be characterized using three reference points:
 
 \begin{resdoclist}
-  \item a Reference Removal Rate
-  \item an Upper Stock Reference point (USR)
-  \item a Limit Reference Point (LRP)
+  \item A Reference Removal Rate,
+  \item An Upper Stock Reference point (USR), and
+  \item A Limit Reference Point (LRP).
 \end{resdoclist}
 
 Provisional values of USR = 0.8\emph{B}\subscr{MSY} and LRP = 0.4\emph{B}\subscr{MSY} are suggested in the absence of stock-specific reference points.
@@ -308,10 +310,10 @@ See Appendix~\ref{chap:equations} for description of reference points calculatio
 We tested the sensitivity of the results from the base case assessment model identified in the bridging analysis in Appendix E to the following assumptions:
 
 \begin{resdoclist}
-  \item Assumed time varying natural mortality
-  \item Assumed initial values for variance parameters $\vartheta^2$ and $\rho$
-  \item The prior probablity on the survey catchability parameters ($q_1$ and $q_2$)
-  \item The assumed fixed values for maturity at age
+  \item Assumed time varying natural mortality,
+  \item Assumed initial values for variance parameters $\vartheta^2$ and $\rho$,
+  \item The prior probablity on the survey catchability parameters ($q_1$ and $q_2$), and
+  \item The assumed fixed values for maturity at age.
 \end{resdoclist}
 
 Further details and results for each of these sensitivity analyses are presented below.
