@@ -419,7 +419,7 @@ The projected pre-fishery spawing biomass in 2018 is 3,270 t (AM2) or 6,090 t (A
 %3- stock status relative to LRP
 %4- projected biomass in 2018
 
-Since the mid-1990s, the PRD stock is characterized by two periods of consistent, stable biomass: 1996-2003 and 2006-2016 (Figure \ref{} and Table \ref{}. 
+Since the mid-1990s, the PRD stock is characterized by two periods of consistent, stable biomass: 1996-2003 and 2006-2017 (Figure \ref{figStoryboardAM2PRD} and \ref{figStoryboardAM1PRD} and Table \ref{tab:prd-spawn-biomass-am2} and \ref{tab:prd-spawn-biomass-am1}. 
 
 
 These stable trends in the biomass estimates are consistent with trends in dive survey observations (Figures 8a and 9a, Table A.2). Both AM1 and AM2 estimate a large recruitment of age 2 fish to the population in 2014 and 2015, relative to the last 10-years (Figures 8b and 9b), owing largely to the age composition information showing a high proportion of samples consisting of this age class. The median AM1 estimate of the 2016 spawning biomass is 22,289 t, relative to 22,799 t in 2015 (Table 2). AM2 shows a similar pattern, with estimates of 20,747 t in 2016 and 21,043 t in 2015. Stock status in 2016 is estimated at 38% (AM1) and 35% (AM2) of the unfished level (Table 3). Both AM1 and AM2 predict a continued stable trend in spawning biomass, with forecast biomass in 2017 similar to 2016 levels (Table 4). Similarities in biomass estimates from both models is due to AM1 estimating q2 at 0.93 (Table A.2). For PRD (AM1), there is information in the data to support a q2 value that differs from the prior of ~0.5.
