@@ -395,14 +395,26 @@ To enable readers to compare model estimates between major stock areas, results 
 %JC: edits completed
 
 \textbf{Haida Gwaii}
-%JC HERE
-AM1 and AM2 base case assessments estimate a decline in spawning stock biomass in 2017, relative to 2013 and a correspondingly lower stock status relative to the unfished state.
-Recall that the data indicate a lower spawn survey biomass estimate in 2014, relatively minor increases in weight at age and age composition that is dominated by a single cohort of age-4 fish (Figure \ref{figProportionAge}).
-In order to fit these observations, the model estimates that the last large recruitment event, in 2012, has been followed by relative small recruitments in 2013 and 2014 (Figure \ref{figStoryboardAM2HG}).
-While estimates of current natural mortality remain highly uncertain, there is a recent increase in the median (Figure \ref{figStoryboardAM2HG}).
-With no apparent recruitment entering the spawning population in 2014 and similar natural mortality, the model estimates that current spawning stock biomass has declined from 2013 (Figure \ref{figStoryboardAM2HG}) with a median and 90\% credibility intervals of 23 kt (12, 44) tonnes (Table XX) and lower depletion levels in 2014 than in 2013 (Figure XX), estimated to be 0.67 (0.35, 1.25) (Table XX).
+
+%1- trend in estimated SSB
+%2- depletion levels
+%3- stock status relative to LRP
+%4- projected biomass in 2018
+
+AM1 and AM2 base case assessments estimate a declining trend in spawning stock biomass since 2013 (MG Ref Tables 13 and 14). 
+AM2 estimates the median spawning biomass in 2017 ($\mli{SSB}_{2017}$) at 3,963 t and xx\% of $\mli{SB}_0$. 
+AM1 estimates the median spawning biomass in 2017 ($\mli{SSB}_{2017}$) at 7,336 t and xx\% of $\mli{SB}_0$.
+The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 estimates of $\mli{SSB}_{2017}$ and stock status relative to $\mli{SB}_0$ are lower (CHECK) than the AM1 estimates.
+
+From Figure \ref{figBevertonHolt}, number of age-2 recruits is near the origin of  estimates of current natural mortality remain highly uncertain, there is an increase in the median since 2012 (Figure \ref{figStoryboardAM2HG}).
+Spawning biomass is no apparent recruitment entering the spawning population in 2017 and similar natural mortality, the model estimates that current spawning stock biomass has declined from 2013 (Figure \ref{figStoryboardAM2HG}) with a median and 90\% credibility intervals of 23 kt (12, 44) tonnes (Table XX) and lower depletion levels in 2014 than in 2013 (Figure XX), estimated to be 0.67 (0.35, 1.25) (Table XX).
 
 \textbf{Prince Rupert District}
+
+%1- trend in estimated SSB
+%2- depletion levels
+%3- stock status relative to LRP
+%4- projected biomass in 2018
 
 The base case assessment estimates relatively small declines in spawning stock biomass in 2014 (Figure \ref{figStoryboardAM2PRD}).
 The survey data indicate declines of approximately 35\% - however the model over-fits the most recent observation (Appendix XX).
@@ -413,6 +425,11 @@ The base case estimates that current median (90\% credibility intervals) spawnin
 
 \textbf{Central Coast}
 
+%1- trend in estimated SSB
+%2- depletion levels
+%3- stock status relative to LRP
+%4- projected biomass in 2018
+
 Interpreting the model fits to the CC data is complex.
 The age composition data show an apparent increase in the proportions of age 2 fish since 2013 (increasing from 2\% in 2013 to 14\% in 2014).
 The spawn survey data indicate a decline in the spawning biomass index between 2013 and 2014 - but - this pattern is not born out in the model's reconstructions.
@@ -422,11 +439,22 @@ The 2014 spawning stock biomass and depletion levels estimated to be 24 (14,41) 
 
 \textbf{Strait of Georgia}
 
+
+%1- trend in estimated SSB
+%2- depletion levels
+%3- stock status relative to LRP
+%4- projected biomass in 2018
+
 The model fits the recent spawn survey index and age composition data (Figure \ref{figStoryboardAM2SoG}) by estimating both relatively large recent recruitments (2010 particularly) and improved survival of through natural mortality of all cohorts (Figure \ref{figStoryboardAM2SoG}, Table XX).
 The model fits recent increasing trends in spawn survey index (Appendix \ref{chap:input}) and estimates recent spawning stock biomass trajectory that has been increasing since 2010 (Figure \ref{figSpawnIndex}).
 The current spawning stock biomass and depletion levels are 186 (116, 289) kt and 1.31 (0.84, 1.96) respectively (Table XX).
 
 \textbf{West Coast of Vancouver Island}
+
+%1- trend in estimated SSB
+%2- depletion levels
+%3- stock status relative to LRP
+%4- projected biomass in 2018
 
 To fit the recent age composition and survey data, the model estimates a slow upward trajectory for the stock.
 The model fits the most recent spawn survey index (Appendix \ref{chap:input}) and explains the combination of the survey index and the proportions at age data that are dominated by 3 year old fish) as a large recruitment (Figure \ref{figStoryboardAM2WCVI}).
@@ -455,7 +483,7 @@ The production analysis was updated for the major Pacific Herring stocks with th
 Figures \ref{figProduction\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figProduction\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}} show \Sexpr{PasteNicely(mNames)} production analyses for the \Sexpr{length(allRegionNames$major)} major SARs: \Sexpr{PasteNicely(allRegionNames$major)}, respectively.
 The updated production analysis was compared to results presented in \citet{kronlund2017} and the key results are the same and provide continued support to the recommendations of \citet{kronlund2017}.
 Median posterior distributions of the estimated spawning biomass in \Sexpr{assess.yr} for each major stock, and juxtaposition of the estimated LRP are presented in Figure X. %MG add \ref 
-The following bullets report estimated $\mli{SSB}_{2017} relative to the LRP ($0.30\cdot\mli{SB}_0$):
+The following bullets report estimated $\mli{SSB}_{2017}$ relative to the LRP ($0.30\cdot\mli{SB}_0$):
 
 \begin{resdoclist}
 \item HG: Spawning biomass production and production rate are negative (AM1 and AM2) and the estimated spawning biomass in 2017 is below the LRP of $0.30\cdot\mli{SB}_0$ (AM1 and AM2)
