@@ -246,7 +246,14 @@ The assessment model was compiled using AD Model Builder (ADMB) version 11.6, re
 There were no changes made to the methods used for compiling model input data (survey indices, catch, biological information). 
 Adjustments were made to some of the analytical procedures within \emph{ISCAM} as described in the Bridging Analysis, APPENDIX E. 
 These changes are considered regular year-to-year updates and lead to slight differences in model estimates and projections when comparing 2016 base model runs with results captured in the September 2016 assessment document.
+
+The most significant update was to the estimation of the variance structure. 
+In \citet{martell2011} the errors-in-variables approach (partitioning of variance between observation and process error) parameterized varphi as the total standard deviation of the process error, rather than the total variance.
+Given the recommendation of the reviewers in 2011 and to bring the assessment in line with best practices, the current assessment includes updates to the errors-in-variables approach to represent partitioning of the total precision (ref EQUATIONS).
+This change to partitioning of the total variance impacts model estimates of leading parameters and unfished biomass ($\mli{SB}_0$). 
+The Bridging Analysis (Appendix E) provides a comparison of these differences.
 %JC: edits completed
+
 \subsubsection{Model description}
 
 A Bayesian statistical catch-at-age model was applied to assess each of the \Sexpr{length(allRegions$major)} \Sexpr{fish.name} major SARs separately.
