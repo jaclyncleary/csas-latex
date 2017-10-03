@@ -292,7 +292,7 @@ We tested the sensitivity of the results from the base case assessment model ide
 
 Further details and results for each of these sensitivity analyses are presented below.
 
-Conclusion: proceed with `VX' `AMX' as our 'baseline', and include others as sensitivities?
+%Conclusion: proceed with `VX' `AMX' as our 'baseline', and include others as sensitivities?
 
 \subsubsection{Natural mortality}
 
@@ -300,14 +300,20 @@ The base case for the assessment model assumes that the natural mortality $M$ is
 The annual deviations in time varying M are estimated using a random walk process \citep{haist2006}.  
 For this sensitivity analysis we investigated the effects of estimating a single constant M over ages and time. The main motivation for this sensitivity analysis was to further investigate the impact of using time-varying Natural mortality in the assessment model.  
 
-....JC I remember you telling me about references of Alaska assessments using different constant M values???THink we should add it here?
+%....JC I remember you telling me about references of Alaska assessments using different constant M values???THink we should add it here?
 
-This scenario was applied to all stocks and assessment model versions (AM1 and AM2) and the results are shown in Figures XX.
+The constant natural mortality scenario was applied to all stocks and assessment model versions (AM1 and AM2) and the results are shown in Figures 56 to 90.
 
-.....MORE RESULTS NEEDED WHEN FIGURES ARE GENERATED....
+The model outcomes were influenced by the assumption on the estimation of M. 
+The addition of time varying M appears to improve assumed model and empirical fits to the spawn index for both AM1 and AM2 versions of the assessment model for all stocks, see Figures 56-65. 
+For most stocks the resulting spawning biomass, recreuitment deviations and number of age-2s  showed little differece between the models assuming constant $M$ over timevarying $M for both AM1 and AM2, see Figures 66-70, 71-75 and 81-85, respectively. 
+HG and WCVI stocks did show some trends for the constant $M$ models to overestimate these in some of the years.
+%may want to remove this last sentence as the evidance is sparse
+Recruitment deviations showed similar trends to the spawning biomass with HG and WCVI stocks showing the greatest variation between constant $M$ and timevarying $M$.
+The resulting trends in $q_t$ are similar between stocks with the greatest variations between constant and time varying $M$ models seen in AM1 $q_2$. 
+%Can not see the natural mortality plots yet...
 
-The model outcomes were influenced by the assumption on the estimation of M. The addition of time varying M appears to improve model fits to the spawn index 
-There is support for inclusion of time varying M in this analysis as well as from the bridging analysis (Appendix E).  Both showed a reduction in the magnitude of retrospective patterns and improved coherence between assumed and empirical fits to the spawn survey index. 
+There is support for inclusion of time varying $M$ as the base case for the assessment in this analysis as well as from the bridging analysis (Appendix E) based on the reduction in the magnitude of retrospective patterns and improved coherence between assumed and empirical fits to the spawn survey index. 
 
 \subsubsection{Variance parameters}
 
