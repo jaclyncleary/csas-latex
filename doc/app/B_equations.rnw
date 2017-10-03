@@ -226,8 +226,49 @@ s_o = \frac{\kappa}{\phi_E}
 \begin{equation}\label{eq:df38}
 \beta = \frac{\kappa-1}{B_o}\ \ \  (Beverton-Holt)
 \end{equation}
-where $s_o$ is the maximum juvenile survival rate, and $\beta$ is the density effect on recruitment, and $B_o$ is the unfished spawning stock biomass.  Unfished steady-state spawning stock biomass per recruit is given by $\phi_E$, which is the sum of products between age-specific survivorship and relative fecundity. In the cases where the natural mortality rate is allowed to vary over time, the calculation of $\phi_E$, and the corresponding unfished spawning stock biomass ($B_o$) is based on the average natural mortality rate over the entire time period.  This subtle calculation has implications for reference point calculations in cases where there are increasing or decreasing trends in natural mortality rates trend upwards, estimates of $B_o$ decrease. 
+where $s_o$ is the maximum juvenile survival rate, and $\beta$ is the density effect on recruitment, and $B_o$ is the unfished spawning stock biomass.  
+Unfished steady-state spawning stock biomass per recruit is given by $\phi_E$, which is the sum of products between age-specific survivorship and relative fecundity. 
+In the cases where the natural mortality rate is allowed to vary over time, the calculation of $\phi_E$, and the corresponding unfished spawning stock biomass ($B_o$) is based on the average natural mortality rate over the entire time period.  
+This subtle calculation has implications for reference point calculations in cases where there are increasing or decreasing trends in natural mortality rates trend upwards, estimates of $B_o$ decrease. 
 
+
+\subsection*{Parameter Estimation and Uncertainty}
+	
+Parameter estimation and quantifying uncertainty was carried out using the tools available in AD Model Builder \url{http://admb-project.org/}.  
+AD Model Builder (ADMB) is a software for creating computer programs to estimate the parameters and associated probability distributions for nonlinear statistical models.  
+The software is freely available from \url{http://admb-project.org/}.  
+This software was used to develop ISCAM, and the source code and documentation for the original version of ISCAM (on which ISCAM is based) is freely available from \url{https://sites.google.com/site/ISCAMproject/}, or from a subversion repository at \url{http://code.google.com/p/ISCAM-project/}.
+
+There are actually five distinct components that make up the objective function that ADMB is minimizing:
+\[
+f = \mbox{negative loglikelihoods}+\mbox{constraints}+\mbox{priors for parameters}+\mbox{survey priors}+\mbox{convergence penalties}.
+\]
+The purpose of this section is to completely document all of the components that make up the objective function.  
+
+\paragraph{Negative loglikelihoods}
+The negative loglikelihoods pertain specifically elements that deal with the data and variance partitioning and have already been described in detail in section \ref{secLikelihoods}.  
+There are four specific elements that make up the vector of the objective function:
+\begin{equation}\label{eq11}
+	\vec{\ell}=\ell_C, \ell_I, \ell_A, \ell_\delta.
+\end{equation}
+To reiterate, these are the likelihood of the catch data $\ell_C$, likelihood of the survey data $\ell_I$, the likelihood of the age-composition data $\ell_A$ and the likelihood of the stock-recruitment residuals $\ell_\delta$.  
+Each of these elements are expressed in negative log-space, and ADMB attempts to estimate model parameters by minimizing the sum of these elements.
+
+\paragraph{Constraints}
+There are two specific constraints that are described here: 1) parameter bounds, and 2) constraints to ensure that a parameter vector sums to 0.  
+In ISCAM the user must specify the lower and upper bounds for the leading parameters defined in the control file ($\ln(R_o),h,\ln(M),\ln(\bar{R}),\ddot{R},\rho,\vartheta$).  
+All estimated selectivity parameters $\vec{\gamma}_k$ are estimated in log space and have a minimum and maximum values of -5.0 and 5.0, respectively. These values are hard-wired into the code, but should be sufficiently large/small enough to capture a wide range of selectivities.  
+Estimated fishing mortality rates are also constrained (in log space) to have a minimum value of -30, and a maximum value of 3.0. 
+Log annual recruitment deviations are also constrained to have minimum and maximum values of -15.0 and 15.0 and there is an additional constraint to ensure the vector of deviations sums to 0. 
+This is necessary in order to be able to estimate the average recruitment $\bar{R}$. 
+Finally, the annual log deviations in natural mortality rates are constrained to lie between -5.0 and 5.0.
+
+\paragraph{Priors for parameters}
+Each of the seven leading parameters specified in the control file ($\ln(R_o),h,\ln(M),\ln(\bar{R}),\ln(\ddot{R}),\rho,\vartheta$) are declared as bounded parameters and in addition the user can also specify an informative prior distribution for each of these parameters.  
+Five distinct prior distributions can be implemented: uniform, normal, lognormal, beta and a gamma distribution.
+For the Pacific herring, a bounded recruitment uniform prior was specified for  the log of unfished recruitment U(-5,15), a beta prior was assumed for steepness Beta(10.0,4.92), a normal prior was specified for the log of natural mortality rate \emph{N}(-0.79,0.4), a bounded uniform prior for both the log of initial recruitment and average recruitment U(-5.0,15.0), a beta prior for the variance partitioning parameter $\rho \tilde \beta(17.086,39.0559)$, and a gamma prior for the inverse total standard deviation parameter $\vartheta \tilde \Gamma(25,28.75)$. 
+The scaling parameter $q$ for each of the surveys is not treated as an unknown parameter within the code; rather, the maximum posterior density estimate for $ln(q)$ conditional on all other parameters is used to scale the predicted spawning biomass to the observed acoustic biomass index.  
+The priors for the log of both survey $q$'s are assumed to be informative $\emph{N}(-0.569,0.276)$ for the AM1. For AM2 the prior on $q_1$ was assumed uninformative $\emph{N}(1,1)$ and informative for $q_2$ $\emph{N}(1,0.01)$
 
 
 \clearpage

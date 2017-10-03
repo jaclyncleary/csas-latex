@@ -97,7 +97,7 @@ In addition, catch sampling are collected for the FB fishery, and a small number
 In all sampling events, one ``herring sample'' (one bucket) is roughly 100 individual herring, from which the following data are collected: fish length, weight, sex, gonad length, gonad weight, and maturity. 
 Table \ref{tabNBio} indicates the number of biological samples by year and SAR.
 
-For the purposes of stock assessment all fish within a ''herring sample'' are treated as independent observations, that is, there is no weighting of the biological samples by catch or spawn.
+For the purposes of stock assessment all fish within a ``herring sample'' are treated as independent observations, that is, there is no weighting of the biological samples by catch or spawn.
 Proportions-at-age data are aggregated into three gear types/ fishery periods: (1) Historic reduction fishery and FB samples, (2) Seine roe and test samples, and (3) Gillnet roe samples.
 The same aggregation is applied to the commercial catch data.
 
@@ -142,13 +142,15 @@ Both survey methods (surface or dive) involve collecting information on spawn le
 These data are used to calculate egg densities per spawning bed, with the ultimate goal of back-calculating the biomass of mature spawners estimated to have deposited the eggs.
 Execution of the 2017 spawn survey followed all standard protocols as described in the 2013 version of the 
 \href{http://www.pac.dfo-mpo.gc.ca/science/species-especes/pelagic-pelagique/herring-hareng/hertags/pdf/SurveyManual.pdf}{herring spawn survey manual}.
-Detailed background, methods, and equations for calculating the spawn index are summarized in the Spawn Index technical report (\href{https://github.com/grinnellm/HerringSpawnDocumentation}{spawn index technical report}).
+Detailed background, methods, and equations for calculating the spawn index are summarized in the (\href{https://github.com/grinnellm/HerringSpawnDocumentation}{spawn index technical report}).
 
-For the purposes of stock assessment, spawn survey data are represented as two independent indices: (1) surface survey index from 1951--1987 and (2) dive survey index from 1988--\Sexpr{assess.yr}.
+For the purposes of stock assessment, spawn survey data are represented as two independent indices:
+(1) surface survey index from 1951--1987 and
+(2) dive survey index from 1988--\Sexpr{assess.yr}.
 Spawn indices are an output of the Herring Stock Assessment Database, in units of metric tonnes of herring spawning biomass.
 Time series of spawn index by major stock area, from 1951--1987 (surface observations) and 1988--\Sexpr{assess.yr} (dive observations) are summarized in Figure \ref{figSpawnIndex}.
-It is worth noting that since 1988, some early and late season surface surveys have been conducted, representing a small proportion of total spawn survey in a given area (Appendix XX-JC- do we have this?).
-These surface survey data are processed such that the average width estimates are in a comparable format to those from the dive survey data and these observations are combined with the dive survey estimates into a single survey index.
+%It is worth noting that since 1988, some early and late season surface surveys have been conducted, representing a small proportion of total spawn survey in a given area (Appendix XX-JC- do we have this? MG:No).JC: add in 2018.
+Surface survey data are processed such that the average width estimates are in a comparable format to those from the dive survey data and these observations are combined with the dive survey estimates into a single survey index.
 
 In 4 of the major stock areas (HG, CC, SOG, WCVI), numeric estimates of spawning biomass (spawn index values) decreased in 2017 over 2016.
 In PRD, numeric estimates of spawning biomass (spawn index values) neither increased nor decreased from 2016 to 2017.
@@ -156,26 +158,16 @@ In PRD, numeric estimates of spawning biomass (spawn index values) neither incre
 
 \subsubsection{Proportion-at-age and catch-at-age}
 
-%%JC here
+INCOMPLETE SECTION
 
 Observed proportions-at-age from Gear 2 biological samples (roe seine, seine test, SOK, where available) by stock area are summarized in Figure \ref{figProportionAge}.
 %Trends in proportion-at-age by Gear 1 and Gear 3 are included in Appendix XX.
 Adjustments made in analytical procedures included weighting Area 8 biological samples by their average relative contribution over the past 20 years (7\%), due to concerns that data acquired and used for the Central Coast area resulted from an uncommonly high number of samples (6 of 13) that were collected from Statistical Area 8 (which is historically an unfished area with consistently smaller (age 2) fish), Area 8; and, removing WCVI Statistical Area 24 samples, because it was determined that they were not representative.
 
-We also use the catch-at-age data for a catch curve analysis \citep{chapman1960} for ages 6--10.
-Here we determine static $Z_\mli{stat}$ from the traditional catch curve method (the slope of the log of catches at age) and also dynamically as $Z_\mli{dyn}=log(\sum P6-9, t\sum P7-10, t+1)$.
-Our main motivation for doing so was to check if the apparent time-varying natural mortality estimated by the assessment model could be confirmed using the data alone, and also to address some concerns expressed by participants at last year's review meeting about the validity of the assessment model estimating time-varying natural mortality ($M$).
-While the reliability of the catch curve method can be diminished by variable recruitment, time-varying $M$ and other factors, they have been shown to capture the general magnitude of the total mortality Z, in other fish stocks \citep{allen1997, thorson2011}.
-
-The assessment model's estimates of $Z$ are likely more reliable than either static or dynamic catch curve estimates because it explicitly accounts for variable recruitment and $F$ (that will distort catch curve estimates of $Z$ if they are variable).
-Understanding that the absolute value of $Z$ estimates would be incorrect with catch curve analyses, one key thing that we hoped to examine was if $Z$s estimated by the catch curve methods followed a similar pattern to ISCAM's estimates of $Z$ particularly for HG, CC and WCVI stock areas where after fishing ceased the only other source of changes in Z would be $M$.
-We plot the catch curve estimates of $Z$ alone with those output from the assessment model for comparison in Figure XX (red and green, and black lines, respectively).
-
-$Z_\mli{dyn}$ does track the trends estimated using the assessment model (Figure 8, red), with the running average in $Z\mli{dyn}$ showing the same pattern as the increasing trends in $M$ estimated by the assessment model from the early 1990s-2008 in the CC, HG and WCVI.
-In the SOG, $Z_\mli{dyn}$ also tracked the recent declines in $Z$.
-Notwithstanding the difference in the absolute value of $Z$ between the catch curve estimates and the assessment model, the catch curve analysis does support the assessment model's assumption that $M$ is time-varying in capturing similar patterns to the assessment model in the closed areas, when the only component of $Z$ that could have been in effect was $M$.
 
 \subsubsection{Assumed biological parameters} \label{secAssumedBiolPars}
+
+INCOMPLETE SECTION (MATT)
 
 The model also requires length-at-age and weight-length/weight-at-age relationshiops, which were done in previous analyses and are not included here (REFs?).
 
@@ -189,7 +181,7 @@ We provide a brief description of input data to the assessment model for each of
 \textbf{Haida Gwaii}
 
 The survey index declined in 2014 from approximately 16 kilo tonnes (kt) in 2013 to 10.6 kt (Figure \ref{figSpawnIndex}).
-Relative to 2013, changes in mean weight at age depended on age.
+
 Mean weight at age for age 2, 5, 6 fish increased a minimum of 8\% to a maximum of approximately 15\% (for age 2) (Figure \ref{figWeightAge}).
 While the trajectory for size at age has generally been upward since 2011, the ratio of the 2014 mean weight at age to the 1951-2014 mean is between 66 and 98\%.
 The proportions at age were dominated by age 4 fish (Figure \ref{figProportionAge}).
@@ -239,6 +231,7 @@ Fishery and seine test fishery age-composition data (1951-2014) are combined for
 
 The assessment uses Bayesian methods to incorporate prior information and integrate over parameter uncertainty to provide results that can be probabilistically interpreted.
 The exploration of uncertainty is not limited to parameter uncertainty as structural uncertainty is investigated through retrospective analyses (Section XX).
+%JC: edits completed
 
 \subsubsection{Changes from the 2016 assessment}
 
@@ -246,12 +239,19 @@ The assessment model was compiled using AD Model Builder (ADMB) version 11.6, re
 There were no changes made to the methods used for compiling model input data (survey indices, catch, biological information). 
 Adjustments were made to some of the analytical procedures within \emph{ISCAM} as described in the Bridging Analysis, APPENDIX E. 
 These changes are considered regular year-to-year updates and lead to slight differences in model estimates and projections when comparing 2016 base model runs with results captured in the September 2016 assessment document.
+
+The most significant update was to the estimation of the variance structure. 
+In \citet{martell2011} the errors-in-variables approach (partitioning of variance between observation and process error) parameterized varphi as the total standard deviation of the process error, rather than the total variance.
+Given the recommendation of the reviewers in 2011 and to bring the assessment in line with best practices, the current assessment includes updates to the errors-in-variables approach to represent partitioning of the total precision (ref EQUATIONS).
+This change to partitioning of the total variance impacts model estimates of leading parameters and unfished biomass ($\mli{SB}_0$). 
+The Bridging Analysis (Appendix E) provides a comparison of these differences.
 %JC: edits completed
+
 \subsubsection{Model description}
 
 A Bayesian statistical catch-at-age model was applied to assess each of the \Sexpr{length(allRegions$major)} \Sexpr{fish.name} major SARs separately.
 The Integrated Statistical Catch Age Model (\emph{ISCAM}) was first reviewed and implemented for the assessment of Pacific Herring in 2011 \citep{martell2011}.
-Updates to ISCAM are explained in the Bridging Analysis, Appendix E, and full model details are provided in Appendix \ref{chap:equations}.
+Updates to ISCAM are explained in the Bridging Analysis, Appendix D, and full model details are provided in Appendix \ref{chap:equations}.
 
 Marginal posterior distributions for estimated model parameters were constructed using the AD Model Builder built in Metropolis-Hastings algorithm \citep{fournier2012}.
 For each major assessment area, a systematic sample of 1,000 points were taken from a chain of length 5,000,000, intended to represent a random sample from the marginal posterior distribution.
@@ -261,52 +261,24 @@ The Bayesian estimation procedure integrates over the full range of uncertainty 
 Priority areas of research identified during past CSAS meetings (2011--2016) are summarized in Appendix \ref{secFutureResearch}. 
 %JC: edits completed
 
-% 0.8\emph{B}\subscr{MSY}
-% \emph{q}\subscr{1}
-% \emph{q}\subscr{2}
-% $0.25\cdot\mli{SB}_0$ 
-% $\mli{SB}_0$
-% $F_\text{MSY}$
-% $\mli{SSB}_\text{MSY}$
-
 \subsubsection{Prior probability distributions}
 
-[Placeholder]
-
-\subsubsection{Fishery reference points}
-
-The DFO Fishery Decision-making Framework Incorporating the Precautionary Approach (PA) policy \citep{dfo09} requires stock status to be characterized using three reference points:
-
-\begin{resdoclist}
-  \item a Reference Removal Rate
-  \item an Upper Stock Reference point (USR)
-  \item a Limit Reference Point (LRP)
-\end{resdoclist}
-
-Provisional values of USR = 0.8\emph{B}\subscr{MSY} and LRP = 0.4\emph{B}\subscr{MSY} are suggested in the absence of stock-specific reference points.
-The framework suggests a limit reference removal rate of F\subscr{MSY}.
-
-
-A harvest control rule based on these reference points that is coincident with the choice of LRP, USR, and LRR would apply a linear reduction in fishing mortality as the stock falls below the USR, and would cease fishing when the stock reaches the LRP, but see \citet{cox2013}.
-This is illustrated for a hypothetical stock in Figure~\ref{fig:hcrillustration}, where the USR and LRP are shown as vertical lines and the removal rate is shown as a blue line.
-We make the observation that the rate at which the fishing mortality should be reduced is unspecified in the PA policy, but is usually depicted as a linear ramp between the USR and LRP (Figure~\ref{fig:hcrillustration}).
-
-There is some uncertainty in \emph{F}\subscr{MSY} (and annual harvest rate \emph{U}\subscr{MSY}), driven by uncertainty in the trawl fishery selectivity resulting from possible under-representation of freezer trawl ages discussed above (but see Section XX).
-We therefore also present alternative candidate reference points for \Sexpr{fish.name} that are less reliant on estimated selectivity.
-We suggest an USR = $0.4$\emph{B}\subscr{0} and a LRP = $0.2$\emph{B}\subscr{0}.
-These thresholds are consistent with biomass targets and limits in place in other jusrisdictions including Australia \citep{smith2007} and the U.S.A. \citep{restrepo1998}.
-Given the large uncertainty in estimated \emph{B}\subscr{0} in this assessment (see Results, section XX, we also suggest B\subscr{1996}, the estimated spawning biomass at the beginning of the time series, as a candidate benchmark to measure relative fishing impacts for this stock.
-See Appendix~\ref{chap:equations} for description of reference points calculations.
+Prior probability distributions for leading parameters for each major stock are shown in Table X and Figure X.
+The form of each distribution remains the same as was implemented in \citet{martell2011} and as has been implemented in each subsequent assessment.
+The initial values for each leading parameter were set equal to the MPD estimates from the 2016 assessment for each stock area.
+Prior values and standard deviations in priors remain the same.
+We explore sensitivity of model estimates to assumptions about standard deviation on the \emph{q} prior in Section \ref{secPriorq}.
+%JC: edits completed
 
 \subsection{SENSITIVITY ANALYSES}
 
 We tested the sensitivity of the results from the base case assessment model identified in the bridging analysis in Appendix E to the following assumptions:
 
 \begin{resdoclist}
-  \item Assumed time varying natural mortality
-  \item Assumed initial values for variance parameters $\vartheta^2$ and $\rho$
-  \item The prior probablity on the survey catchability parameters ($q_1$ and $q_2$)
-  \item The assumed fixed values for maturity at age
+  \item Assumed time varying natural mortality,
+  \item Assumed initial values for variance parameters $\vartheta^2$ and $\rho$,
+  \item The prior probablity on the survey catchability parameters ($q_1$ and $q_2$), and
+  \item The assumed fixed values for maturity at age.
 \end{resdoclist}
 
 Further details and results for each of these sensitivity analyses are presented below.
@@ -342,7 +314,7 @@ In the bridging analysis we also investigated the effects of fixing either $\kap
 Under these scenarios we found that the estimated results were influenced by the initial values of $\kappa$ and $\rho$, which is why the base case estimating both parameters was chosen.
 
 
-\subsubsection{Prior probability distributions for survey catchability}
+\subsubsection{Prior probability distributions for survey catchability} \label{secPriorq}
 
 There are two versions of the base stock assessment model that differ in the treatment of spawn survey catchability parameters ($q_1$ and $q_2$) for the surface survey period (1951-1987) and dive survey period (1988-2016), respectively.  
 The two models are labelled AM1 ($q_1$ and $q_2$ estimated with prior probability distributions) and AM2 ($q_1$ estimated, $q_2$=1).  
@@ -392,8 +364,11 @@ Autocorrelation was minor for all parameters in the AM1 and AM2 base model runs 
 \subsubsection{Fits to data}
 
 Figures \ref{figStoryboard\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figStoryboard\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}} show \Sexpr{PasteNicely(mNames)} results for the \Sexpr{length(allRegionNames$major)} major SARs: \Sexpr{PasteNicely(allRegionNames$major)}, respectively.
+%JC: edits completed
 
 \subsubsection{Parameter estimates}
+
+INCOMPLETE SECTION
 
 \begin{itemize}
   \item $q$
@@ -401,6 +376,8 @@ Figures \ref{figStoryboard\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{
 \end{itemize}
 
 \subsubsection{Fishery reference points}
+
+INCOMPLETE SECTION
 
 \begin{resdoclist}
 \item $\mli{SB}_0$
@@ -413,16 +390,16 @@ Effective harvest rates (Figure \ref{figHarvestRate}).
 
 \subsubsection{Biomass and stock status} \label{secStockStatus}
 
-The following present marginal posterior distributions characterizing the major herring stocks for the following parameters and derived quantities: recruitment, instantaneous natural mortality, biomass reconstructions and stock depletion.
+The following present posterior distributions characterizing the major herring stocks for the following parameters and derived quantities: recruitment, instantaneous natural mortality, biomass reconstructions and stock depletion.
+Estimated spawning biomass relative to the LRP is presented in Figure \ref{figCurrentSSB}.
 To help readers view and interpret trends in results and uncertainty for each stock major stock area, collective sets of figures showing these four sets of model results across the \Sexpr{min(yrRange)} to \Sexpr{max(yrRange)} time series are presented by stock area in Figures \ref{figStoryboard\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figStoryboard\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}}.
 The following sections also present maximum posterior density (MPD) estimates characterizing the major herring stocks for: spawn survey scaling parameter ($q$), age-2 recruits versus spawning biomass relationships, age-specific fishing gear selectivity, and total instantaneous mortality.
-To enable readers to compare trends between major stock areas, results for each of these types of MPD estimates for all major stock areas in the 1951-2014 times series are shown together in individual figures.
-
-Current estimated spawning biomass relative to the LRP (Figure \ref{figCurrentSSB}).
+To enable readers to compare model estimates between major stock areas, results for each of these types of MPD estimates for all major stock areas in the \Sexpr{min(yrRange)} - \Sexpr{max(yrRange)} times series are shown together in individual figures.
+%JC: edits completed
 
 \textbf{Haida Gwaii}
-
-The base case assessment estimates a decline in spawning stock biomass in 2014, relative to 2013 and a correspondingly lower stock status relative to the unfished state.
+%JC HERE
+AM1 and AM2 base case assessments estimate a decline in spawning stock biomass in 2017, relative to 2013 and a correspondingly lower stock status relative to the unfished state.
 Recall that the data indicate a lower spawn survey biomass estimate in 2014, relatively minor increases in weight at age and age composition that is dominated by a single cohort of age-4 fish (Figure \ref{figProportionAge}).
 In order to fit these observations, the model estimates that the last large recruitment event, in 2012, has been followed by relative small recruitments in 2013 and 2014 (Figure \ref{figStoryboardAM2HG}).
 While estimates of current natural mortality remain highly uncertain, there is a recent increase in the median (Figure \ref{figStoryboardAM2HG}).
@@ -479,8 +456,9 @@ Beverton-Holt stock-recruitment relationships (Figure \ref{figBevertonHolt}).
 
 The production analysis was updated for the major Pacific Herring stocks with the addition of \Sexpr{assess.yr} catch data and MPD spawning biomass estimates for AM1 and AM2.  
 Figures \ref{figProduction\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figProduction\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}} show \Sexpr{PasteNicely(mNames)} production analyses for the \Sexpr{length(allRegionNames$major)} major SARs: \Sexpr{PasteNicely(allRegionNames$major)}, respectively.
-Median posterior distributions of the estimated spawning biomass in \Sexpr{assess.yr} for each major stock, and juxtaposition of the estimated LRP are presented in Figure X. 
 The updated production analysis was compared to results presented in \citet{kronlund2017} and the key results are the same and provide continued support to the recommendations of \citet{kronlund2017}.
+Median posterior distributions of the estimated spawning biomass in \Sexpr{assess.yr} for each major stock, and juxtaposition of the estimated LRP are presented in Figure X. %MG add \ref 
+The following bullets report estimated $\mli{SSB}_{2017} relative to the LRP ($0.30\cdot\mli{SB}_0$):
 
 \begin{resdoclist}
 \item HG: Spawning biomass production and production rate are negative (AM1 and AM2) and the estimated spawning biomass in 2017 is below the LRP of $0.30\cdot\mli{SB}_0$ (AM1 and AM2)
@@ -489,7 +467,14 @@ The updated production analysis was compared to results presented in \citet{kron
 \item SOG:Spawning biomass production and production rate are positive (AM1 and AM2) and the estimated spawning biomass in 2017 is above the LRP of $0.30\cdot\mli{SB}_0$ (AM1 and AM2)
 \item WCVI: Spawning biomass production and production rate are negative (AM1 and AM2). AM1: estimated spawning biomass in 2017 is above the LRP of $0.30\cdot\mli{SB}_0$; AM2: estimated spawning biomass in 2017 is approaching the LRP of $0.30\cdot\mli{SB}_0$.
 \end{resdoclist}
-%JC: inspect posterior distributions and update.
+%JC: edits completed
+
+\subsection{ASSUMPTIONS AND UNCERTAINTY}
+
+[Placeholder]
+
+
+JC- delete AppendixA
 
 
 % 0.8\emph{B}\subscr{MSY}
@@ -500,12 +485,4 @@ The updated production analysis was compared to results presented in \citet{kron
 % $F_\text{MSY}$
 % $\mli{SSB}_\text{MSY}$
 % $0.30\cdot\mli{SB}_0$ 
-
-
-\subsection{ASSUMPTIONS AND UNCERTAINTY}
-
-[Placeholder]
-
-
-JC- delete AppendixA
-
+% $\mli{SSB}_{2017} / \mli{SB}_0$
