@@ -2,6 +2,7 @@
 
 Thanks...
 \begin{itemize}
-\item Rob Kronlund for R code to make production plots.
+\item Rob Kronlund for \textbf{R} code to generage production plots.
+\item We would not have been able to produce this document without the \href{https://github.com/andrew-edwards/csas-latex}{\texttt{csas-latex} template} developed by Andy Edwards and Chris Grandin.
 \end{itemize}
 
