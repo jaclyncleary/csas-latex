@@ -56,3 +56,92 @@ make.maturity.table <- function(mat,
         booktabs = TRUE)
 
 }
+
+make.maturity.sens.table <- function(mat,
+                                     which.model = 1,
+                                     end.yr,
+                                     digits = 3,
+                                     xcaption = "default",
+                                     xlabel   = "default",
+                                     font.size = 9,
+                                     space.size = 10,
+                                     placement = "H"){
+  ## mat - the data loaded from the maturity-sensitivity-results-table.csv file
+  ## which.model to make the table for, 1 = AM1, 2 = AM2
+  ## end.yr - used for the end SB year in the table
+  ## digits - number of decimal places for the values
+  ## xcaption - caption to appear in the calling document
+  ## xlabel - the label used to reference the table in latex
+  ## font.size - size of the font for the table
+  ## space.size - size of the vertical spaces for the table
+  ## placement - latex code for placement of the table in document
+
+  if(which.model == 1){
+    model <- "AM1"
+  }else if(which.model == 2){
+    model <- "AM2"
+  }else{
+    stop("which.model must be 1 or 2.")
+  }
+
+  tab <- mat[mat$Model == model,]
+  base <- tab[tab$Maturity == "Base", -c(2,3)]
+  sens <- tab[tab$Maturity == "Selectivity", -c(2,3)]
+  tab <- cbind(base, sens)
+  tab <- tab[,-6]
+
+  tab[,1] <- c(latex.bold("HG"),
+               latex.bold("PRD"),
+               latex.bold("CC"),
+               latex.bold("SOG"),
+               latex.bold("WCVI"))
+
+  addtorow <- list()
+  addtorow$pos <- list(0)
+  addtorow$command <- paste0(latex.amp(),
+                             latex.mcol(4,
+                                        "c",
+                                        latex.bold("Base Case")),
+                             latex.amp(),
+                             latex.mcol(4,
+                                        "c",
+                                        latex.mlc(c("Sensitivity Case",
+                                                    "maturity set to selectivity"))),
+                             latex.nline,
+                             ## underscores
+                             latex.cmidr("2-5", "lr"),
+                             " ",
+                             latex.cmidr("6-9", "lr"),
+                             latex.bold("Stock"),
+                             latex.amp(),
+                             latex.bold("SB\\subscr{0}"),
+                             latex.amp(),
+                             latex.bold(paste0("SB\\subscr{", end.yr, "}")),
+                             latex.amp(),
+                             latex.bold("F\\subscr{MSY}"),
+                             latex.amp(),
+                             latex.bold("MSY"),
+                             latex.amp(),
+                             latex.bold("SB\\subscr{0}"),
+                             latex.amp(),
+                             latex.bold(paste0("SB\\subscr{", end.yr, "}")),
+                             latex.amp(),
+                             latex.bold("F\\subscr{MSY}"),
+                             latex.amp(),
+                             latex.bold("MSY"),
+                             latex.nline)
+
+  size.string <- latex.size.str(font.size, space.size)
+  print(xtable(tab,
+               caption = xcaption,
+               label = xlabel,
+               align = get.align(ncol(tab))),
+        caption.placement = "top",
+        include.rownames = FALSE,
+        include.colnames = FALSE,
+        sanitize.text.function = function(x){x},
+        size = size.string,
+        add.to.row = addtorow,
+        table.placement = placement,
+        booktabs = TRUE)
+}

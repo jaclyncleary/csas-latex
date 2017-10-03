@@ -557,5 +557,31 @@ make.variance.table(variance.results,
 @
 \end{landscapepage}
 
+<<maturity.sens.AM1, results='asis', echo=FALSE>>=
+cap <- paste0("Maturity sensitivity reference points for the Strait of",
+              " Georgia AM1 model.")
+make.maturity.sens.table(maturity.sens,
+                         which.model = 1,
+                         end.yr = end.yr + 1,
+                         xcaption = cap,
+                         xlabel = "tab:maturity-sens.am1",
+                         font.size = 11,
+                         space.size = 12,
+                         placement = "H")
+@
+
+<<maturity.sens.AM2, results='asis', echo=FALSE>>=
+cap <- paste0("Maturity sensitivity reference points for the Strait of",
+              " Georgia AM2 model.")
+make.maturity.sens.table(maturity.sens,
+                         which.model = 2,
+                         end.yr = end.yr + 1,
+                         xcaption = cap,
+                         xlabel = "tab:maturity-sens.am2",
+                         font.size = 11,
+                         space.size = 12,
+                         placement = "H")
+@
+
 \clearpage
 

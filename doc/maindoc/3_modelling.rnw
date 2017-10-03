@@ -458,7 +458,7 @@ The production analysis was updated for the major Pacific Herring stocks with th
 Figures \ref{figProduction\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figProduction\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}} show \Sexpr{PasteNicely(mNames)} production analyses for the \Sexpr{length(allRegionNames$major)} major SARs: \Sexpr{PasteNicely(allRegionNames$major)}, respectively.
 The updated production analysis was compared to results presented in \citet{kronlund2017} and the key results are the same and provide continued support to the recommendations of \citet{kronlund2017}.
 Median posterior distributions of the estimated spawning biomass in \Sexpr{assess.yr} for each major stock, and juxtaposition of the estimated LRP are presented in Figure X. %MG add \ref 
-The following bullets report estimated $\mli{SSB}_{2017} relative to the LRP ($0.30\cdot\mli{SB}_0$):
+The following bullets report estimated $\mli{SSB}_{2017}$ relative to the LRP ($0.30\cdot\mli{SB}_0$):
 
 \begin{resdoclist}
 \item HG: Spawning biomass production and production rate are negative (AM1 and AM2) and the estimated spawning biomass in 2017 is below the LRP of $0.30\cdot\mli{SB}_0$ (AM1 and AM2)
