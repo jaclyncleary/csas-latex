@@ -454,18 +454,18 @@ To enable readers to compare model estimates between major stock areas, results 
 
 \textbf{Haida Gwaii}
 
-%1- trend in estimated SSB
-%2- depletion levels
-%3- stock status relative to LRP
-%4- projected biomass in 2018
+AM2 and AM1 base case assessments estimate a declining trend in spawning stock biomass since 2013 (Table \ref{tab:hg-spawn-biomass-am2} and \ref{tab:hg-spawn-biomass-am1}).
+AM2 estimates the median spawning biomass in 2017 ($\mli{SSB}_{2017}$) at 3,963 t and XX\% of $\mli{SB}_0$. 
+AM1 estimates the median spawning biomass in 2017 ($\mli{SSB}_{2017}$) at 7,336 t and XX\% of $\mli{SB}_0$.
+Both AM2 and AM1 models estimate $\mli{SSB}_{2017}$ to be below the LRP of $0.30\cdot\mli{SB}_0$ (Figure \figCurrentSSB).
+The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 estimates of $\mli{SSB}_{2017}$ and stock status relative to $\mli{SB}_0$ are lower (CHECK) than the AM1 estimates, due largely to differences in model estimates of \emph{q}\subscr{2} (Table \ref{tab:q-parameters}).
 
-AM1 and AM2 base case assessments estimate a declining trend in spawning stock biomass since 2013 (MG Ref Tables 13 and 14). 
-AM2 estimates the median spawning biomass in 2017 ($\mli{SSB}_{2017}$) at 3,963 t and xx\% of $\mli{SB}_0$. 
-AM1 estimates the median spawning biomass in 2017 ($\mli{SSB}_{2017}$) at 7,336 t and xx\% of $\mli{SB}_0$.
-The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 estimates of $\mli{SSB}_{2017}$ and stock status relative to $\mli{SB}_0$ are lower (CHECK) than the AM1 estimates.
+There is no apparent recruitment entering the spawning population in 2017: 
+Figure \ref{figBevertonHolt} shows the number of age-2 recruits is near the origin of B-H sotck recruit curve (SH verify terminology) and Figure \ref{fig:hg-ageest-gear2} shows a higher proportion of 3-year olds relative to age-2s. 
+Although model estimates of current natural mortality remain highly uncertain, there is an increasing trend in the median estimates of natural mortality since 2012 (Figure \ref{figStoryboardAM2HG}).
 
-From Figure \ref{figBevertonHolt}, number of age-2 recruits is near the origin of  estimates of current natural mortality remain highly uncertain, there is an increase in the median since 2012 (Figure \ref{figStoryboardAM2HG}).
-Spawning biomass is no apparent recruitment entering the spawning population in 2017 and similar natural mortality, the model estimates that current spawning stock biomass has declined from 2013 (Figure \ref{figStoryboardAM2HG}) with a median and 90\% credibility intervals of 23 kt (12, 44) tonnes (Table XX) and lower depletion levels in 2014 than in 2013 (Figure XX), estimated to be 0.67 (0.35, 1.25) (Table XX).
+The projected pre-fishery spawing biomass in 2018 is 3,270 t (AM2) or 6,090 t (AM1), consisting of XX\% (median) age-3 fish and XX\% (median) age-4 and older fish (Table \ref{tab:hg-ref-points} and XX).  
+%JC: edits completed
 
 \textbf{Prince Rupert District}
 
@@ -473,6 +473,13 @@ Spawning biomass is no apparent recruitment entering the spawning population in 
 %2- depletion levels
 %3- stock status relative to LRP
 %4- projected biomass in 2018
+
+Since the mid-1990s, the PRD stock is characterized by two periods of consistent, stable biomass: 1996-2003 and 2006-2017 (Figure \ref{figStoryboardAM2PRD} and \ref{figStoryboardAM1PRD} and Table \ref{tab:prd-spawn-biomass-am2} and \ref{tab:prd-spawn-biomass-am1}. 
+
+
+These stable trends in the biomass estimates are consistent with trends in dive survey observations (Figures 8a and 9a, Table A.2). Both AM1 and AM2 estimate a large recruitment of age 2 fish to the population in 2014 and 2015, relative to the last 10-years (Figures 8b and 9b), owing largely to the age composition information showing a high proportion of samples consisting of this age class. The median AM1 estimate of the 2016 spawning biomass is 22,289 t, relative to 22,799 t in 2015 (Table 2). AM2 shows a similar pattern, with estimates of 20,747 t in 2016 and 21,043 t in 2015. Stock status in 2016 is estimated at 38% (AM1) and 35% (AM2) of the unfished level (Table 3). Both AM1 and AM2 predict a continued stable trend in spawning biomass, with forecast biomass in 2017 similar to 2016 levels (Table 4). Similarities in biomass estimates from both models is due to AM1 estimating q2 at 0.93 (Table A.2). For PRD (AM1), there is information in the data to support a q2 value that differs from the prior of ~0.5.
+
+
 
 The base case assessment estimates relatively small declines in spawning stock biomass in 2014 (Figure \ref{figStoryboardAM2PRD}).
 The survey data indicate declines of approximately 35\% - however the model over-fits the most recent observation (Appendix XX).
