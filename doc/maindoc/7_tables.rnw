@@ -534,27 +534,54 @@ make.maturity.table(maturity.vec,
 @
 
 \begin{landscapepage}
+<<variance.results.AM1, results='asis', echo=FALSE>>=
+cap <- paste0("Variance parameter results for AM1, SoG")
+make.variance.table(variance.results,
+                    which.model = 1,
+                    xcaption = cap,
+                    xlabel = "tab:variance-results-AM1",
+                    font.size = 9,
+                    space.size = 10,
+                    placement = "H")
+@
+
 <<variance.results.AM2, results='asis', echo=FALSE>>=
 cap <- paste0("Variance parameter results for AM2, SoG")
-variance.results.AM2 <- variance.results %>%
-  as_tibble( ) %>%
-  filter( Model == "AM2" ) %>%
-  select( Parameter, SensitivityCase, InitialValues, EstimatedValues ) %>%
-  rename( Case=SensitivityCase, Initial=InitialValues, Estimated=EstimatedValues ) %>%
-  gather( Initial, Estimated, key="Type", value="Value" ) %>%
-  unite( CaseType, Case, Type ) %>%
-  mutate( CaseType=factor(CaseType, levels=unique(CaseType)) ) %>%
-  spread( CaseType, Value ) %>%
-  mutate( Parameter=factor(Parameter, levels=unique(variance.results$Parameter)) ) %>%
-  arrange( Parameter )
-make.maturity.table(variance.results.AM2,
+make.variance.table(variance.results,
+                    which.model = 2,
                     xcaption = cap,
-                    xlabel = "tab:variance.results.AM2",
-                    font.size = 11,
-                    space.size = 12,
+                    xlabel = "tab:variance-results-AM2",
+                    font.size = 9,
+                    space.size = 10,
                     placement = "H")
 @
 \end{landscapepage}
+
+<<maturity.sens.AM1, results='asis', echo=FALSE>>=
+cap <- paste0("Maturity sensitivity reference points for the Strait of",
+              " Georgia AM1 model.")
+make.maturity.sens.table(maturity.sens,
+                         which.model = 1,
+                         end.yr = end.yr + 1,
+                         xcaption = cap,
+                         xlabel = "tab:maturity-sens.am1",
+                         font.size = 11,
+                         space.size = 12,
+                         placement = "H")
+@
+
+<<maturity.sens.AM2, results='asis', echo=FALSE>>=
+cap <- paste0("Maturity sensitivity reference points for the Strait of",
+              " Georgia AM2 model.")
+make.maturity.sens.table(maturity.sens,
+                         which.model = 2,
+                         end.yr = end.yr + 1,
+                         xcaption = cap,
+                         xlabel = "tab:maturity-sens.am2",
+                         font.size = 11,
+                         space.size = 12,
+                         placement = "H")
+@
 
 \clearpage
 
