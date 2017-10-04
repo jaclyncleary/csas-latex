@@ -1473,8 +1473,8 @@ thisSeason <- paste( yrRange[nYrs-1], yrRange[nYrs], sep="/" )
 
 # Formatted year ranges for q1 (surface) and q2 (dive)
 qYrs <- list(
-    q1=paste(range(yrRange[yrRange<newSurvYr]), collapse="--"),
-    q2=paste(range(yrRange[yrRange>=newSurvYr]), collapse="--") )
+    q1=paste(range(yrRange[yrRange<newSurvYr]), collapse=" to "),
+    q2=paste(range(yrRange[yrRange>=newSurvYr]), collapse=" to ") )
 
 # Catch in current year
 finalYrCatch <- catch %>%
