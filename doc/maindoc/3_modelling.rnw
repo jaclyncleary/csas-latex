@@ -572,13 +572,3 @@ The following bullets report estimated $\mli{SSB}_{2017}$ relative to the LRP ($
 
 JC- delete AppendixA
 
-
-% 0.8\emph{B}\subscr{MSY}
-% \emph{q}\subscr{1}
-% \emph{q}\subscr{2}
-% $0.25\cdot\mli{SB}_0$ 
-% $\mli{SB}_0$
-% $F_\text{MSY}$
-% $\mli{SSB}_\text{MSY}$
-% $0.30\cdot\mli{SB}_0$ 
-% $\mli{SSB}_{2017} / \mli{SB}_0$
