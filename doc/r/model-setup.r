@@ -344,6 +344,47 @@ if(verbose){
 }
 
 ## -----------------------------------------------------------------------------
+## Retrospectives
+## -----------------------------------------------------------------------------
+stock.dir[[1]] <- "HG"
+stock.dir[[2]] <- "PRD"
+stock.dir[[3]] <- "CC"
+stock.dir[[4]] <- "SOG"
+stock.dir[[5]] <- "WCVI"
+retro.string <- c(paste0("0", 1:9), 10)
+retro.names.am1 <- list()
+retro.names.am2 <- list()
+retro.yr <- list()
+for(i in 1:length(stock.dir)){
+  retro.names.am1[[i]] <- list()
+  retro.names.am2[[i]] <- list()
+  for(j in 1:length(retro.string)){
+    if(stock.dir[i] == "HG"){
+      which.stock <- 1
+    }else if(stock.dir[i] == "PRD"){
+      which.stock <- 2
+    }else if(stock.dir[i] == "CC"){
+      which.stock <- 3
+    }else if(stock.dir[i] == "SOG"){
+      which.stock <- 4
+    }else if(stock.dir[i] == "WCVI"){
+      which.stock <- 5
+    }else{
+      stop("The retrospectives directory does not contain the known stock names.")
+    }
+    ## Create lists of the names of the retrospectives for AM1 and AM2
+    retro.names.am1[[i]][[j]] <- file.path(stock.dir[i],
+                                           retro.string[j],
+                                           stock.dir[i],
+                                           "AM1")
+    retro.names.am2[[i]][[j]] <- file.path(stock.dir[i],
+                                           retro.string[j],
+                                           stock.dir[i],
+                                           "AM2")
+  }
+}
+
+## -----------------------------------------------------------------------------
 ## Vector of directory names for all models referenced above
 ## -----------------------------------------------------------------------------
 ## ALL models must be in this list!
@@ -392,6 +433,17 @@ load.models.into.parent.env <- function(){
   sens.models.8 <<- lapply(sens.model.dir.name.8,
                            function(x){
                              load.models(model.dir, x)})
+  base.retro.models <<- lapply(retro.names.am1,
+                               function(x){
+                                 lapply(x,
+                                        function(y){
+                                          tmp <- load.models(retro.dir, y)
+                                        })})
+  am1.retro.models <<- lapply(retro.names.am2,
+                               function(x){
+                                 lapply(x,
+                                        function(y){
+                                          load.models(retro.dir, y)})})
 }
 
 build <- function(ovwrt.base = FALSE,
@@ -481,17 +533,13 @@ build <- function(ovwrt.base = FALSE,
                        which.model = which.model,
                        verbose = ss.verbose)}))
 
-  ## -----------------------------------------------------------------------------
   ## Retrospective models
-  ## This is a list of the AM1 models, one for each stock
-  ## -----------------------------------------------------------------------------
   stock.dir[[1]] <- "HG"
   stock.dir[[2]] <- "PRD"
   stock.dir[[3]] <- "CC"
   stock.dir[[4]] <- "SOG"
   stock.dir[[5]] <- "WCVI"
   retro.string <- c(paste0("0", 1:9), 10)
-  ## Load each stock's retro year models into a list
   retro.dirs.am1 <- list()
   retro.dirs.am2 <- list()
   retro.yr <- list()

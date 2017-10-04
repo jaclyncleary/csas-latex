@@ -224,6 +224,8 @@ create.rdata.file.retro <- function(model.dir,
   tmp <- strsplit(model.dir, "/")[[1]]
   ## Remove all double-dots
   tmp <- tmp[tmp != ".."]
+  ## Keep only the last two strings
+  tmp <- tmp[c(length(tmp) - 1, length(tmp))]
   rdata.file <- paste0(tmp, collapse = "-")
   rdata.file <- file.path(model.dir, paste0(rdata.file, ".RData"))
   if(file.exists(rdata.file)){
@@ -260,10 +262,9 @@ create.rdata.file.retro <- function(model.dir,
 load.models <- function(models.dir,
                         model.dir.names){
   ## Load model(s) and return as a list.
-
   rdata.files <- lapply(model.dir.names,
                         function(x){
-                          i <- file.path(model.dir, x)
+                          i <- file.path(models.dir, x)
                           j <- sub("/.*", "", x)
                           k <- sub(".*/", "", x)
                           file.path(i, paste0(j, "-", k, ".Rdata"))})
