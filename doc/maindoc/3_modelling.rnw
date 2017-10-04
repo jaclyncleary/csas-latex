@@ -418,6 +418,12 @@ These results confirm that changing maturity to equal selectivity doesn't make t
 
 \subsection{ASSESSMENT MODEL RESULTS}\label{secModelResults}
 
+\subsubsection{Base case models}
+
+INCOMPLETE SECTION
+
+%BRIEF DESCRIPTION, JUSTIFICATION FOR BASE CASE MODEL RUNS (AM2 AND AM1) AND WHY NO CHANGES BASED ON SENSITIIVTY RUNS
+
 \subsubsection{Model diagnostics}
 
 The joint posterior distribution was numerically approximated using the Markov Chain Monte Carlo (MCMC) routines built into AD Model Builder \citep{fournier2012}.
@@ -440,16 +446,19 @@ INCOMPLETE SECTION
   \item $M$
 \end{itemize}
 
-\subsubsection{Fishery reference points}
+%Here we need to describe prior/ posterior distributions for leading parameters
 
-INCOMPLETE SECTION
+%%\subsubsection{Fishery reference points}
 
-\begin{resdoclist}
-\item $\mli{SB}_0$
-\item $\mli{SB}_{\Sexpr{max(yrRange)+1}}$
-\item Limit reference point (LRP)
-\item Upper stock reference (USR)
-\end{resdoclist}
+%JC: I'm not sure we need this section. We discuss LRP and USR in INTRO, and report LRP in Biomass and stock status
+
+% 
+% \begin{resdoclist}
+% \item $\mli{SB}_0$
+% \item $\mli{SB}_{\Sexpr{max(yrRange)+1}}$
+% \item Limit reference point (LRP)
+% \item Upper stock reference (USR)
+% \end{resdoclist}
 
 \subsubsection{Biomass and stock status} \label{secStockStatus}
 
@@ -563,7 +572,7 @@ where $\mli{SB}_t$ and $\mli{C}_t$ are the estimated spawning biomass and catch 
 Figure \ref{figHarvestRate} presents time series estimates of effective harvest rates for each stock area.
 %JC: edits completed
 
-%\subsubsection{Relative spawning biomass}
+%%\subsubsection{Relative spawning biomass}
 
 % depletion estimates are referenced in Biomass and Stock Status summaries. 
 
@@ -588,6 +597,16 @@ The following bullets report estimated $\mli{SB}_{2017}$ relative to the LRP ($0
 
 \subsection{ASSUMPTIONS AND UNCERTAINTY}
 
-[Placeholder]
+This assessment uses Bayesian methods to incorporate prior information and integrate over parameter uncertainty to provide results that can be probabilistically interpreted.  
+Measures of uncertainty in this assessment underestimate the true uncertainty in current stock status and future projections because they do not account for alternative structural models for Pacific Herring population dynamics (e.g., natural mortality) and fishery processes (e.g., selectivity), the effects of data-weighting schemes, and the scientific basis for prior probability distribution choices.
+The base case assessment models AM2 and AM2 integrate over the substantial uncertainty associated with several important model parameters including: spawn survey catchability (\emph{q}), the productivity of the stock (via the steepness parameter, \emph{h}, of the stock-recruitment relationship), the rate of natural mortality (\emph{M}), and recruitment deviations. 
+Although the Bayesian results presented include estimation uncertainty, this within-model uncertainty is likely an underestimate of the true uncertainty in current stock status and future projections, since it does not include structural modelling choices, data-weighting uncertainty, assessment errors and scientific uncertainty in selection of prior probability distributions.
+The only way to develop a management procedure that is robust to the true range of uncertainty in current stock status and future projections with rigorous testing using feedback simulations.
 
+Estimation bias is explored through retrospective analyses.
+%JC: edits completed
+
+\subsection{RETROSPECTIVE ANALYSES}
+
+[placeholder]
 
