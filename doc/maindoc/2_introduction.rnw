@@ -35,7 +35,7 @@ Sensitivity cases for \Sexpr{PasteNicely(mNames)} investigate:
 \end{resdoclist}
 Sensitivity cases are presented for all \Sexpr{length(allRegions$major)} major stocks.
 
-\subsection{LIFE HISTORY}
+\subsection{LIFE HISTORY}\label{secLifeHist}
 
 \Sexpr{fish.name} is a pelagic species migrating between inshore spawning and offshore feeding areas of the North Pacific.
 In the eastern Pacific, \Sexpr{common.name} distribution ranges from California to the Beaufort Sea.
@@ -46,10 +46,10 @@ It is generally believed that in the Strait of Georgia the young-of-year \Sexpr{
 
 \Sexpr{Common.name} are iteroparous and return to spawn each year once reaching maturity, until they die naturally or intercepted in fisheries.
 Based on many years of tagging data it is evident that while \Sexpr{common.name} generally return to the same large geographical region each year they do not home to the same spawning beach or bay each year \citep{hay2001, flostrand2009}.
-Each female produces about 20--40,000 eggs and quite consistently about 100 eggs/g of female weight with larger females producing more eggs than smaller and younger fish \citep{hourston1980, hay1985}.
+Each female produces about 20--40,000 eggs and quite consistently about 100 eggs/g of female weight, with larger females producing more eggs than smaller and younger fish \citep{hourston1980, hay1985}.
 
 The age of maturity of \Sexpr{common.name} is difficult to assess since few surveys of maturing fish have been conducted in the offshore areas.
-Indications from histological assessment of developing ovaries suggests that about 25 percent of fish mature at age 2 and at least 90\% are mature at age 3 (D. Hay, unpublished data).
+Indications from histological assessment of developing ovaries suggests that about 25\% of \Sexpr{fish.name} mature at age 2, and at least 90\% mature at age 3 (D. Hay, unpublished data).
 This is consistent with observations for southern BC stocks, as described above.
 
 The majority of \Sexpr{common.name} in BC appear to occur as large schooling aggregations exhibiting seasonal migratory behaviour.

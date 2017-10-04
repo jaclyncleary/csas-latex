@@ -1500,6 +1500,7 @@ prevYrSpawn <- inputData$spawn %>%
     mutate( Spawn=format(Spawn*1000, big.mark=",", digits=0, scientific=FALSE) )
 
 # Spawn direction (increased or decreased from last year)
+# TODO: Update the name to `directionSpawn` -- this sounds like a directory
 dirSpawn <- inputData$spawn %>% 
     filter( Year %in% (max(yrRange)-1):max(yrRange) ) %>% 
     group_by( Region ) %>% 
