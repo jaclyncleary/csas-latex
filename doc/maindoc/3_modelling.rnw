@@ -408,7 +408,7 @@ Thus different stocks of BC \Sexpr{fish.name} may have different maturity schedu
 In the absence of recent histological studies to provide new estimates of maturity at age, we tested the model sensitivity to the fixed base values by setting the maturity at age vector equal to the selectivity of the seine roe fishery (gear 2; Table \ref{tab:maturity}).
 The selectivity of the seine roe fishery was chosen because the fishery targets pre-spawning aggregations with seine gear that is non size-selective, providing age composition samples from a mature portion of the population.  
 
-The resulting estimates showed minor differents between the fixed maturity vector model and the sensitivity case where the maturity at age is set to the selectivity at age (results not shown). 
+The resulting estimates of the leading parameters showed minor differences between the fixed maturity vector model and the sensitivity case where the maturity at age is set to the selectivity at age (results not shown). 
 We further investigated the key MSY reference points, $\mli{SB}_0$ and $\mli{SB}_{2017}$ for the base case and the maturity schedule sensitivity case (Table \ref{tab:maturity}). % Is this the right table? It was hard-coded as 36, which seems wrong.
 The ratio of ($\mli{SB}_{2017} / \mli{SB}_0$) were also very similar for all stocks and model variations (\Sexpr{PasteNicely(mNames)}). 
 These results confirm that changing maturity to equal selectivity doesn't make the Fmsy estimates reliable in a management procedure, potentially because of their dependence on natural mortality as well, and the LRPs were not substantially different. 
