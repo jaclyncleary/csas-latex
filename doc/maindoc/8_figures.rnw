@@ -610,7 +610,7 @@ make.index.fit.plot(list(hg.am1.constm,
                     ylim = c(0, 60))
 @
 \end{center}
-\caption{Natural mortality sensitivity model index fits (lines) and inputs
+\caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and inputs
   (points and bars) for the Haida Gwaii surface survey.}
 \label{fig:hg-index-surface-fit}
 \end{figure}
@@ -631,7 +631,7 @@ make.index.fit.plot(list(hg.am1.constm,
                     ylim = c(0, 60))
 @
 \end{center}
-\caption{Natural mortality sensitivity model index fits (lines) and inputs
+\caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and inputs
   (points and bars) for the Haida Gwaii dive survey.}
 \label{fig:hg-index-dive-fit}
 \end{figure}
@@ -652,7 +652,7 @@ make.index.fit.plot(list(pr.am1.constm,
                     ylim = c(0, 60))
 @
 \end{center}
-\caption{Natural mortality sensitivity model index fits (lines) and inputs
+\caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and inputs
   (points and bars) for the Prince Rupert District
   surface survey.}
 \label{fig:prd-index-surface-fit}
@@ -674,7 +674,7 @@ make.index.fit.plot(list(pr.am1.constm,
                     ylim = c(0, 60))
 @
 \end{center}
-\caption{Natural mortality sensitivity model index fits (lines) and inputs
+\caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and inputs
   (points and bars) for the Prince Rupert District
   dive survey.}
 \label{fig:prd-index-dive-fit}
@@ -696,7 +696,7 @@ make.index.fit.plot(list(cc.am1.constm,
                     ylim = c(0, 60))
 @
 \end{center}
-\caption{Natural mortality sensitivity model index fits (lines) and inputs
+\caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and inputs
   (points and bars) for the Central Coast surface survey.}
 \label{fig:cc-index-surface-fit}
 \end{figure}
@@ -717,7 +717,7 @@ make.index.fit.plot(list(cc.am1.constm,
                     ylim = c(0, 60))
 @
 \end{center}
-\caption{Natural mortality sensitivity model index fits (lines) and inputs
+\caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and inputs
   (points and bars) for the Central Coast
   dive survey.}
 \label{fig:cc-index-dive-fit}
@@ -739,7 +739,7 @@ make.index.fit.plot(list(sog.am1.constm,
                     ylim = c(0, 220))
 @
 \end{center}
-\caption{Natural mortality sensitivity model index fits (lines) and inputs
+\caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and inputs
   (points and bars) for the Strait of Georgia
   surface survey.}
 \label{fig:sog-index-surface-fit}
@@ -761,7 +761,7 @@ make.index.fit.plot(list(sog.am1.constm,
                     ylim = c(0, 220))
 @
 \end{center}
-\caption{Natural mortality sensitivity model index fits (lines) and inputs
+\caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and inputs
   (points and bars) for the Strait of Georgia
   dive survey.}
 \label{fig:sog-index-dive-fit}
@@ -783,7 +783,7 @@ make.index.fit.plot(list(wcvi.am1.constm,
                     ylim = c(0, 150))
 @
 \end{center}
-\caption{Natural mortality sensitivity model index fits (lines) and inputs
+\caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and inputs
   (points and bars) for the WCVI
   surface survey.}
 \label{fig:wcvi-index-surface-fit}
@@ -805,7 +805,7 @@ make.index.fit.plot(list(wcvi.am1.constm,
                     ylim = c(0, 150))
 @
 \end{center}
-\caption{Natural mortality sensitivity model index fits (lines) and inputs
+\caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and inputs
   (points and bars) for the WCVI
   dive survey.}
 \label{fig:wcvi-index-dive-fit}
@@ -823,70 +823,70 @@ make.biomass.mcmc.plot(list(hg.am1.constm,
                     model.names = leg.names,
                     ylim = c(0, 250),
                     leg = "topright",
-                    show.bo.line = TRUE)
+                    show.bo.line = FALSE)
 @
 \end{center}
-\caption{Natural mortality sensitivity model biomass trajectories
+\caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model biomass trajectories
   for the Haida Gwaii stock.}
 \label{fig:hg-biomass-m}
 \end{figure}
 %%------------------------------------------------------------------------------
 
-\begin{figure}[H]
-\begin{center}
-<<prd.biomass.m>>=
-make.biomass.mcmc.plot(list(pr.b,
-                            pr.am1.tvm,
-                            pr.am2.constm,
-                            pr.am2.tvm),
-                    model.names = leg.names,
-                    ylim = c(0, 120),
-                    leg = "topright",
-                    show.bo.line = TRUE)
-@
-\end{center}
-\caption{Natural mortality sensitivity model biomass trajectories
-  for the Prince Rupert District stock.}
-\label{fig:prd-biomass-m}
-\end{figure}
+%\begin{figure}[H]
+%\begin{center}
+%<<prd.biomass.m>>=
+%make.biomass.mcmc.plot(list(pr.b,
+                           % pr.am1.tvm,
+                           % pr.am2.constm,
+                           % pr.am2.tvm),
+                   % model.names = leg.names,
+                   % ylim = c(0, 120),
+                   % leg = "topright",
+                   % show.bo.line = TRUE)
+%@
+%\end{center}
+%\caption{Natural mortality sensitivity model biomass trajectories
+%  for the Prince Rupert District stock.}
+%\label{fig:prd-biomass-m}
+%\end{figure}
 %%------------------------------------------------------------------------------
 
-\begin{figure}[H]
-\begin{center}
-<<cc.biomass.m>>=
-make.biomass.mcmc.plot(list(cc.am1.constm,
-                            cc.am1.tvm,
-                            cc.am2.constm,
-                            cc.am2.tvm),
-                    model.names = leg.names,
-                    ylim = c(0, 150),
-                    leg = "topright",
-                    show.bo.line = TRUE)
-@
-\end{center}
-\caption{Natural mortality sensitivity model biomass trajectories
-  for the Central Coast stock.}
-\label{fig:prd-biomass-m}
-\end{figure}
+%\begin{figure}[H]
+%\begin{center}
+%<<cc.biomass.m>>=
+%make.biomass.mcmc.plot(list(cc.am1.constm,
+                            %cc.am1.tvm,
+                           % cc.am2.constm,
+                           % cc.am2.tvm),
+                    %model.names = leg.names,
+                    %ylim = c(0, 150),
+                    %leg = "topright",
+                    %show.bo.line = TRUE)
+%@
+%\end{center}
+%\caption{Natural mortality sensitivity model biomass trajectories
+  %for the Central Coast stock.}
+%\label{fig:prd-biomass-m}
+%\end{figure}
 %%------------------------------------------------------------------------------
 
-\begin{figure}[H]
-\begin{center}
-<<sog.biomass.m>>=
-make.biomass.mcmc.plot(list(sog.am1.constm,
-                            sog.am1.tvm,
-                            sog.am2.constm,
-                            sog.am2.tvm),
-                    model.names = leg.names,
-                    ylim = c(0, 350),
-                    leg = "topright",
-                    show.bo.line = TRUE)
-@
-\end{center}
-\caption{Natural mortality sensitivity model biomass trajectories
-  for the Strait of Georgia stock.}
-\label{fig:sog-biomass-m}
-\end{figure}
+%\begin{figure}[H]
+%\begin{center}
+%<<sog.biomass.m>>=
+%make.biomass.mcmc.plot(list(sog.am1.constm,
+%                            sog.am1.tvm,
+%                           sog.am2.constm,
+ %                           sog.am2.tvm),
+%                    model.names = leg.names,
+%                    ylim = c(0, 350),
+%                    leg = "topright",
+%                   show.bo.line = TRUE)
+%@
+%\end{center}
+%\caption{Natural mortality sensitivity model biomass trajectories
+%  for the Strait of Georgia stock.}
+%\label{fig:sog-biomass-m}
+%\end{figure}
 %%------------------------------------------------------------------------------
 
 \begin{figure}[H]
@@ -899,10 +899,10 @@ make.biomass.mcmc.plot(list(wcvi.am1.constm,
                     model.names = leg.names,
                     ylim = c(0, 250),
                     leg = "topright",
-                    show.bo.line = TRUE)
+                    show.bo.line = FALSE)
 @
 \end{center}
-\caption{Natural mortality sensitivity model biomass trajectories
+\caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model biomass trajectories
   for the WCVI stock.}
 \label{fig:wcvi-biomass-m}
 \end{figure}
@@ -923,7 +923,7 @@ make.recr.mcmc.plot(list(hg.am1.constm,
                     leg = "topright")
 @
 \end{center}
-\caption{Natural mortality sensitivity model recruitment deviations
+\caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model recruitment deviations
   for the Haida Gwaii stock.}
 \label{fig:hg-recdevs-m}
 \end{figure}
@@ -943,7 +943,7 @@ make.recr.mcmc.plot(list(pr.am1.constm,
                     leg = "topright")
 @
 \end{center}
-\caption{Natural mortality sensitivity model recruitment deviations
+\caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model recruitment deviations
   for the Prince Rupert District stock.}
 \label{fig:prd-recdevs-m}
 \end{figure}
@@ -963,7 +963,7 @@ make.recr.mcmc.plot(list(cc.am1.constm,
                     leg = "topright")
 @
 \end{center}
-\caption{Natural mortality sensitivity model recruitment deviations
+\caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model recruitment deviations
   for the Central Coast stock.}
 \label{fig:cc-recdevs-m}
 \end{figure}
@@ -983,7 +983,7 @@ make.recr.mcmc.plot(list(sog.am1.constm,
                     leg = "topright")
 @
 \end{center}
-\caption{Natural mortality sensitivity model recruitment deviations
+\caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model recruitment deviations
   for the Strait of Georgia stock.}
 \label{fig:sog-recdevs-m}
 \end{figure}
@@ -1003,7 +1003,7 @@ make.recr.mcmc.plot(list(wcvi.am1.constm,
                     leg = "topright")
 @
 \end{center}
-\caption{Natural mortality sensitivity model recruitment deviations
+\caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model recruitment deviations
   for the WCVI stock.}
 \label{fig:wcvi-recdevs-m}
 \end{figure}
@@ -1024,7 +1024,7 @@ make.natural.mort.mcmc.plot(list(hg.am1.constm,
                                  leg = "topright")
 @
 \end{center}
-\caption{Natural mortality for the sensitivity to the natural mortality parameter
+\caption{Natural Mortality Sensitivity Case: Natural mortality for the sensitivity to the natural mortality parameter
   for the Haida Gwaii stock.}
 \label{fig:hg-m}
 \end{figure}
@@ -1044,7 +1044,7 @@ make.natural.mort.mcmc.plot(list(pr.am1.constm,
                                  leg = "topright")
 @
 \end{center}
-\caption{Natural mortality for the sensitivity to the natural mortality parameter
+\caption{Natural Mortality Sensitivity Case: Natural mortality for the sensitivity to the natural mortality parameter
   for the Prince Rupert District stock.}
 \label{fig:prd-m}
 \end{figure}
@@ -1064,7 +1064,7 @@ make.natural.mort.mcmc.plot(list(cc.am1.constm,
                                  leg = "topright")
 @
 \end{center}
-\caption{Natural mortality for the sensitivity to the natural mortality parameter
+\caption{Natural Mortality Sensitivity Case: Natural mortality for the sensitivity to the natural mortality parameter
   for the Central Coast stock.}
 \label{fig:cc-m}
 \end{figure}
@@ -1082,7 +1082,7 @@ make.natural.mort.mcmc.plot(list(sog.am1.constm,
                                  leg = "topright")
 @
 \end{center}
-\caption{Natural mortality for the sensitivity to the natural mortality parameter
+\caption{Natural Mortality Sensitivity Case: Natural mortality for the sensitivity to the natural mortality parameter
   for the Strait of Georgia stock.}
 \label{fig:sog-m}
 \end{figure}
@@ -1102,7 +1102,7 @@ make.natural.mort.mcmc.plot(list(wcvi.am1.constm,
                                  leg = "topright")
 @
 \end{center}
-\caption{Natural mortality for the sensitivity to the natural mortality parameter
+\caption{Natural Mortality Sensitivity Case: Natural mortality for the sensitivity to the natural mortality parameter
   for the WCVI stock.}
 \label{fig:wcvi-m}
 \end{figure}
@@ -1110,96 +1110,96 @@ make.natural.mort.mcmc.plot(list(wcvi.am1.constm,
 %%------------------------------------------------------------------------------
 %% Sensitivity to M number at age 2 plots
 %%------------------------------------------------------------------------------
-\begin{figure}[H]
-\begin{center}
-<<hg.nage2.m>>=
-make.nage2.plot(list(hg.am1.constm,
-                     hg.am1.tvm,
-                     hg.am2.constm,
-                     hg.am2.tvm),
-                model.names = leg.names,
-                ylim = c(0,5000),
-                leg = "topright")
-@
-\end{center}
-\caption{Natural mortality sensitivity models number at age 2
-  (in millions) for the Haida Gwaii stock.}
-\label{fig:hg-nage2-m}
-\end{figure}
+%\begin{figure}[H]
+%\begin{center}
+%<<hg.nage2.m>>=
+%make.nage2.plot(list(hg.am1.constm,
+%                     hg.am1.tvm,
+%                     hg.am2.constm,
+%                     hg.am2.tvm),
+%                model.names = leg.names,
+%                ylim = c(0,5000),
+%                leg = "topright")
+%@
+%\end{center}
+%\caption{Natural mortality sensitivity models number at age 2
+ % (in millions) for the Haida Gwaii stock.}
+%\label{fig:hg-nage2-m}
+%\end{figure}
 %%------------------------------------------------------------------------------
 
-\begin{figure}[H]
-\begin{center}
-<<prd.nage2.m>>=
-make.nage2.plot(list(pr.am1.constm,
-                     pr.am1.tvm,
-                     pr.am2.constm,
-                     pr.am2.tvm),
-                model.names = leg.names,
-                ylim = c(0,3000),
-                leg = "topright")
-@
-\end{center}
-\caption{Natural mortality sensitivity models number at age 2
-  (in millions) for the Prince Rupert stock.}
-\label{fig:pr-nage2-m}
-\end{figure}
+%\begin{figure}[H]
+%\begin{center}
+%<<prd.nage2.m>>=
+%make.nage2.plot(list(pr.am1.constm,
+%                     pr.am1.tvm,
+%                     pr.am2.constm,
+%                     pr.am2.tvm),
+%                model.names = leg.names,
+%                ylim = c(0,3000),
+%                leg = "topright")
+%@
+%\end{center}
+%\caption{Natural mortality sensitivity models number at age 2
+ % (in millions) for the Prince Rupert stock.}
+%\label{fig:pr-nage2-m}
+%\end{figure}
 %%------------------------------------------------------------------------------
 
-\begin{figure}[H]
-\begin{center}
-<<cc.nage2.m>>=
-make.nage2.plot(list(cc.am1.constm,
-                     cc.am1.tvm,
-                     cc.am2.constm,
-                     cc.am2.tvm),
-                model.names = leg.names,
-                ylim = c(0,2500),
-                leg = "topright")
-@
-\end{center}
-\caption{Natural mortality sensitivity models number at age 2
-  (in millions) for the Central Coast stock.}
-\label{fig:cc-nage2-m}
-\end{figure}
+%\begin{figure}[H]
+%\begin{center}
+%<<cc.nage2.m>>=
+%make.nage2.plot(list(cc.am1.constm,
+%                     cc.am1.tvm,
+%                     cc.am2.constm,
+%                     cc.am2.tvm),
+%                model.names = leg.names,
+%                ylim = c(0,2500),
+%                leg = "topright")
+%@
+%\end{center}
+%\caption{Natural mortality sensitivity models number at age 2
+%  (in millions) for the Central Coast stock.}
+%\label{fig:cc-nage2-m}
+%\end{figure}
 %%------------------------------------------------------------------------------
 
-\begin{figure}[H]
-\begin{center}
-<<sog.nage2.m>>=
-make.nage2.plot(list(sog.am1.constm,
-                     sog.am1.tvm,
-                     sog.am2.constm,
-                     sog.am2.tvm),
-                model.names = leg.names,
-                ylim = c(0,8000),
-                leg = "topleft")
-@
-\end{center}
-\caption{Natural mortality sensitivity models number at age 2
-  (in millions) for the Strait of Georgia stock.}
-\label{fig:sog-nage2-m}
-\end{figure}
+%\begin{figure}[H]
+%\begin{center}
+%<<sog.nage2.m>>=
+%make.nage2.plot(list(sog.am1.constm,
+%                     sog.am1.tvm,
+%                     sog.am2.constm,
+%                     sog.am2.tvm),
+%                model.names = leg.names,
+%                ylim = c(0,8000),
+%                leg = "topleft")
+%@
+%\end{center}
+%\caption{Natural mortality sensitivity models number at age 2
+%  (in millions) for the Strait of Georgia stock.}
+%\label{fig:sog-nage2-m}
+%\end{figure}
 %%------------------------------------------------------------------------------
 
-\begin{figure}[H]
-\begin{center}
-<<wcvi.nage2.m>>=
-make.nage2.plot(list(wcvi.am1.constm,
-                     wcvi.am1.tvm,
-                     wcvi.am2.constm,
-                     wcvi.am2.tvm),
-                model.names = leg.names,
-                ylim = c(0,5000),
-                leg = "topright")
-@
-\end{center}
-\caption{Natural mortality sensitivity models number at age 2
-  (in millions) for the WCVI stock.}
-\label{fig:wcvi-nage2-m}
-\end{figure}
+%\begin{figure}[H]
+%\begin{center}
+%<<wcvi.nage2.m>>=
+%make.nage2.plot(list(wcvi.am1.constm,
+%                     wcvi.am1.tvm,
+%                     wcvi.am2.constm,
+%                     wcvi.am2.tvm),
+%                model.names = leg.names,
+%                ylim = c(0,5000),
+%                leg = "topright")
+%@
+%\end{center}
+%\caption{Natural mortality sensitivity models number at age 2
+%  (in millions) for the WCVI stock.}
+%\label{fig:wcvi-nage2-m}
+%\end{figure}
 %%------------------------------------------------------------------------------
-%% Sensitivity to M number at age 2 plots
+%% Sensitivity to M survey q priors
 %%------------------------------------------------------------------------------
 \begin{figure}[H]
 \begin{center}
@@ -1213,64 +1213,64 @@ make.q.plot(list(hg.am1.constm,
             leg = "topleft")
 @
 \end{center}
-\caption{Natural mortality sensitivity models survey q
+\caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity models survey q
   for the Haida Gwaii stock.}
 \label{fig:hg-q-m}
 \end{figure}
 %%------------------------------------------------------------------------------
 
-\begin{figure}[H]
-\begin{center}
-<<prd.q.m>>=
-make.q.plot(list(pr.am1.constm,
-                 pr.am1.tvm,
-                 pr.am2.constm,
-                 pr.am2.tvm),
-            model.names = leg.names,
-            ylim = c(0,2),
-            leg = "topleft")
-@
-\end{center}
-\caption{Natural mortality sensitivity models survey q
-  for the Prince Rupert District stock.}
-\label{fig:hg-pr-m}
-\end{figure}
+%\begin{figure}[H]
+%\begin{center}
+%<<prd.q.m>>=
+%make.q.plot(list(pr.am1.constm,
+%                 pr.am1.tvm,
+%                 pr.am2.constm,
+%                 pr.am2.tvm),
+%            model.names = leg.names,
+%            ylim = c(0,2),
+%            leg = "topleft")
+%@
+%\end{center}
+%\caption{Natural mortality sensitivity models survey q
+ % for the Prince Rupert District stock.}
+%\label{fig:hg-pr-m}
+%\end{figure}
 %%------------------------------------------------------------------------------
 
-\begin{figure}[H]
-\begin{center}
-<<cc.q.m>>=
-make.q.plot(list(cc.am1.constm,
-                 cc.am1.tvm,
-                 cc.am2.constm,
-                 cc.am2.tvm),
-            model.names = leg.names,
-            ylim = c(0,2),
-            leg = "topleft")
-@
-\end{center}
-\caption{Natural mortality sensitivity models survey q
-  for the Central Coast stock.}
-\label{fig:cc-q-m}
-\end{figure}
+%\begin{figure}[H]
+%\begin{center}
+%<<cc.q.m>>=
+%make.q.plot(list(cc.am1.constm,
+%                 cc.am1.tvm,
+%                 cc.am2.constm,
+%                cc.am2.tvm),
+%            model.names = leg.names,
+%            ylim = c(0,2),
+%            leg = "topleft")
+%@
+%\end{center}
+%\caption{Natural mortality sensitivity models survey q
+ % for the Central Coast stock.}
+%\label{fig:cc-q-m}
+%\end{figure}
 %%------------------------------------------------------------------------------
 
-\begin{figure}[H]
-\begin{center}
-<<sog.q.m>>=
-make.q.plot(list(sog.am1.constm,
-                 sog.am1.tvm,
-                 sog.am2.constm,
-                 sog.am2.tvm),
-            model.names = leg.names,
-            ylim = c(0,2),
-            leg = "topright")
-@
-\end{center}
-\caption{Natural mortality sensitivity models survey q
-  for the Strait of Georgia stock.}
-\label{fig:sog-q-m}
-\end{figure}
+%\begin{figure}[H]
+%\begin{center}
+%<<sog.q.m>>=
+%make.q.plot(list(sog.am1.constm,
+%                 sog.am1.tvm,
+%                 sog.am2.constm,
+%                 sog.am2.tvm),
+%            model.names = leg.names,
+%            ylim = c(0,2),
+%            leg = "topright")
+%@
+%\end{center}
+%\caption{Natural mortality sensitivity models survey q
+%  for the Strait of Georgia stock.}
+%\label{fig:sog-q-m}
+%\end{figure}
 %%------------------------------------------------------------------------------
 
 \begin{figure}[H]
@@ -1285,7 +1285,7 @@ make.q.plot(list(wcvi.am1.constm,
             leg = "topright")
 @
 \end{center}
-\caption{Natural mortality sensitivity models survey q
+\caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity models survey q
   for the WCVI stock.}
 \label{fig:wcvi-q-m}
 \end{figure}
@@ -1312,7 +1312,7 @@ make.q.plot(list(hg.qa),
             ind.letter = "d")
 @
 \end{center}
-\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+\caption{q Prior Sensitivity Case: Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
   the sensitivity model where the survey q
   standard deviation prior is set to
   \Sexpr{hg.qa$ctl$surv.q[3,1]}
@@ -1339,7 +1339,7 @@ make.q.plot(list(hg.qb),
             ind.letter = "d")
 @
 \end{center}
-\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+\caption{q Prior Sensitivity Case: Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
   the sensitivity model where the survey q
   standard deviation prior is set to
   \Sexpr{hg.qb$ctl$surv.q[3,1]}
@@ -1366,7 +1366,7 @@ make.q.plot(list(hg.qc),
             ind.letter = "d")
 @
 \end{center}
-\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+\caption{q Prior Sensitivity Case: Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
   the sensitivity model where the survey q
   standard deviation prior is set to
   \Sexpr{hg.qc$ctl$surv.q[3,1]}
@@ -1394,7 +1394,7 @@ make.q.plot(list(pr.qa),
             ind.letter = "d")
 @
 \end{center}
-\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+\caption{q Prior Sensitivity Case: Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
   the sensitivity model where the survey q
   standard deviation prior is set to
   \Sexpr{pr.qa$ctl$surv.q[3,1]}
@@ -1421,7 +1421,7 @@ make.q.plot(list(pr.qb),
             ind.letter = "d")
 @
 \end{center}
-\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+\caption{q Prior Sensitivity Case: Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
   the sensitivity model where the survey q
   standard deviation prior is set to
   \Sexpr{pr.qb$ctl$surv.q[3,1]}
@@ -1448,7 +1448,7 @@ make.q.plot(list(pr.qc),
             ind.letter = "d")
 @
 \end{center}
-\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+\caption{q Prior Sensitivity Case: Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
   the sensitivity model where the survey q
   standard deviation prior is set to
   \Sexpr{pr.qc$ctl$surv.q[3,1]}
@@ -1476,7 +1476,7 @@ make.q.plot(list(cc.qa),
             ind.letter = "d")
 @
 \end{center}
-\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+\caption{q Prior Sensitivity Case: Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
   the sensitivity model where the survey q
   standard deviation prior is set to
   \Sexpr{cc.qa$ctl$surv.q[3,1]}
@@ -1503,7 +1503,7 @@ make.q.plot(list(cc.qb),
             ind.letter = "d")
 @
 \end{center}
-\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+\caption{q Prior Sensitivity Case: Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
   the sensitivity model where the survey q
   standard deviation prior is set to
   \Sexpr{cc.qb$ctl$surv.q[3,1]}
@@ -1530,7 +1530,7 @@ make.q.plot(list(cc.qc),
             ind.letter = "d")
 @
 \end{center}
-\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+\caption{q Prior Sensitivity Case: Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
   the sensitivity model where the survey q
   standard deviation prior is set to
   \Sexpr{cc.qc$ctl$surv.q[3,1]}
@@ -1558,7 +1558,7 @@ make.q.plot(list(sog.qa),
             ind.letter = "d")
 @
 \end{center}
-\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+\caption{q Prior Sensitivity Case: Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
   the sensitivity model where the survey q
   standard deviation prior is set to
   \Sexpr{sog.qa$ctl$surv.q[3,1]}
@@ -1585,7 +1585,7 @@ make.q.plot(list(sog.qb),
             ind.letter = "d")
 @
 \end{center}
-\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+\caption{q Prior Sensitivity Case: Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
   the sensitivity model where the survey q
   standard deviation prior is set to
   \Sexpr{sog.qb$ctl$surv.q[3,1]}
@@ -1612,7 +1612,7 @@ make.q.plot(list(sog.qc),
             ind.letter = "d")
 @
 \end{center}
-\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+\caption{q Prior Sensitivity Case: Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
   the sensitivity model where the survey q
   standard deviation prior is set to
   \Sexpr{sog.qc$ctl$surv.q[3,1]}
@@ -1640,7 +1640,7 @@ make.q.plot(list(wcvi.qa),
             ind.letter = "d")
 @
 \end{center}
-\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+\caption{q Prior Sensitivity Case: Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
   the sensitivity model where the survey q
   standard deviation prior is set to
   \Sexpr{wcvi.qa$ctl$surv.q[3,1]}
@@ -1667,7 +1667,7 @@ make.q.plot(list(wcvi.qb),
             ind.letter = "d")
 @
 \end{center}
-\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+\caption{q Prior Sensitivity Case: Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
   the sensitivity model where the survey q
   standard deviation prior is set to
   \Sexpr{wcvi.qb$ctl$surv.q[3,1]}
@@ -1694,7 +1694,7 @@ make.q.plot(list(wcvi.qc),
             ind.letter = "d")
 @
 \end{center}
-\caption{Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
+\caption{q Prior Sensitivity Case: Biomass (a), Depletion (b), Natural Mortality (c) and Survey Q (d) for
   the sensitivity model where the survey q
   standard deviation prior is set to
   \Sexpr{wcvi.qc$ctl$surv.q[3,1]}
@@ -1887,6 +1887,202 @@ make.age.comp.estimates.plot(wcvi.b, 3)
   for the WCVI. The area of each circle reflects the proportion-at-age,
   each column sums to 1, zeros are not shown. Plus group is age-10.}
 \label{fig:wcvi-ageest-gear3}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% AM2 retrospective biomass plots
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg.am2.retro.biomass, results='asis', echo=FALSE, fig.height=6.5>>=
+leg.names <- c("Base",
+               "-1 yr",
+               "-2 yrs",
+               "-3 yrs",
+               "-4 yrs",
+               "-5 yrs",
+               "-6 yrs",
+               "-7 yrs",
+               "-8 yrs",
+               "-9 yrs",
+               "-10 yrs")
+make.biomass.retro.mpd.plot(hg.b,
+                            base.retro.models[[1]],
+                            ylim = c(0, 90),
+                            show.bo.line = TRUE,
+                            model.names = leg.names,
+                            leg = "topright")
+@
+\end{center}
+\caption{Restrospective spawning biomass for the
+  Haida Gwaii AM2 model.}
+\label{fig:hg-retro-biomass}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<prd.am2.retro.biomass, results='asis', echo=FALSE, fig.height=6.5>>=
+make.biomass.retro.mpd.plot(pr.b,
+                            base.retro.models[[2]],
+                            ylim = c(0, 100),
+                            show.bo.line = TRUE,
+                            model.names = leg.names,
+                            leg = "topright")
+@
+\end{center}
+\caption{Restrospective spawning biomass for the
+  Prince Rupert District AM2 model.}
+\label{fig:prd-retro-biomass}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<cc.am2.retro.biomass, results='asis', echo=FALSE, fig.height=6.5>>=
+make.biomass.retro.mpd.plot(cc.b,
+                            base.retro.models[[3]],
+                            ylim = c(0, 90),
+                            show.bo.line = TRUE,
+                            model.names = leg.names,
+                            leg = "topleft")
+@
+\end{center}
+\caption{Restrospective spawning biomass for the
+  Central Coast AM2 model.}
+\label{fig:cc-retro-biomass}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<sog.am2.retro.biomass, results='asis', echo=FALSE, fig.height=6.5>>=
+make.biomass.retro.mpd.plot(sog.b,
+                            base.retro.models[[4]],
+                            ylim = c(0, 350),
+                            show.bo.line = TRUE,
+                            model.names = leg.names,
+                            leg = "topleft")
+@
+\end{center}
+\caption{Restrospective spawning biomass for the
+  Strait of Georgia AM2 model.}
+\label{fig:sog-retro-biomass}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.am2.retro.biomass, results='asis', echo=FALSE, fig.height=6.5>>=
+make.biomass.retro.mpd.plot(wcvi.b,
+                            base.retro.models[[5]],
+                            ylim = c(0, 100),
+                            show.bo.line = TRUE,
+                            model.names = leg.names,
+                            leg = "topright")
+@
+\end{center}
+\caption{Restrospective spawning biomass for the
+  WCVI AM2 model.}
+\label{fig:wcvi-retro-biomass}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% AM1 retrospective biomass plots
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg.am1.retro.biomass, results='asis', echo=FALSE, fig.height=6.5>>=
+leg.names <- c("Base",
+               "-1 yr",
+               "-2 yrs",
+               "-3 yrs",
+               "-4 yrs",
+               "-5 yrs",
+               "-6 yrs",
+               "-7 yrs",
+               "-8 yrs",
+               "-9 yrs",
+               "-10 yrs")
+make.biomass.retro.mpd.plot(hg.am1,
+                            am1.retro.models[[1]],
+                            ylim = c(0, 90),
+                            show.bo.line = TRUE,
+                            model.names = leg.names,
+                            leg = "topright")
+@
+\end{center}
+\caption{Restrospective spawning biomass for the
+  Haida Gwaii AM1 model.}
+\label{fig:hg-am1-retro-biomass}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<prd.am1.retro.biomass, results='asis', echo=FALSE, fig.height=6.5>>=
+make.biomass.retro.mpd.plot(pr.am1,
+                            am1.retro.models[[2]],
+                            ylim = c(0, 100),
+                            show.bo.line = TRUE,
+                            model.names = leg.names,
+                            leg = "topright")
+@
+\end{center}
+\caption{Restrospective spawning biomass for the
+  Prince Rupert District AM1 model.}
+\label{fig:prd-am1-retro-biomass}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<cc.am1.retro.biomass, results='asis', echo=FALSE, fig.height=6.5>>=
+make.biomass.retro.mpd.plot(cc.am1,
+                            am1.retro.models[[3]],
+                            ylim = c(0, 90),
+                            show.bo.line = TRUE,
+                            model.names = leg.names,
+                            leg = "topleft")
+@
+\end{center}
+\caption{Restrospective spawning biomass for the
+  Central Coast AM1 model.}
+\label{fig:cc-am1-retro-biomass}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<sog.am1.retro.biomass, results='asis', echo=FALSE, fig.height=6.5>>=
+make.biomass.retro.mpd.plot(sog.am1,
+                            am1.retro.models[[4]],
+                            ylim = c(0, 350),
+                            show.bo.line = TRUE,
+                            model.names = leg.names,
+                            leg = "topleft")
+@
+\end{center}
+\caption{Restrospective spawning biomass for the
+  Strait of Georgia AM1 model.}
+\label{fig:sog-am1-retro-biomass}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.am1.retro.biomass, results='asis', echo=FALSE, fig.height=6.5>>=
+make.biomass.retro.mpd.plot(wcvi.am1,
+                            am1.retro.models[[5]],
+                            ylim = c(0, 100),
+                            show.bo.line = TRUE,
+                            model.names = leg.names,
+                            leg = "topright")
+@
+\end{center}
+\caption{Restrospective spawning biomass for the
+  WCVI AM1 model.}
+\label{fig:wcvi-am1-retro-biomass}
 \end{figure}
 
 %%------------------------------------------------------------------------------
