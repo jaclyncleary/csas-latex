@@ -233,10 +233,10 @@ This subtle calculation has implications for reference point calculations in cas
 
 \subsection{Parameter Estimation and Uncertainty}
 	
-Parameter estimation and quantifying uncertainty was carried out using the tools available in \href{http://admb-project.org/}{AD Model Builder}.  
+Parameter estimation and quantifying uncertainty was carried out using the tools available in AD Model Builder.
 AD Model Builder (ADMB) is a software for creating computer programs to estimate the parameters and associated probability distributions for nonlinear statistical models.  
 The software is freely available from \href{http://admb-project.org/}{the ADMB project}.
-This software was used to develop ISCAM, and the source code and documentation for the original version of ISCAM (on which ISCAM is based) is freely available from \href{https://sites.google.com/site/ISCAMproject/}{the ISCAM project}, or from a subversion repository on \href{http://code.google.com/p/ISCAM-project/}{GitHub}.
+This software was used to develop ISCAM, and the source code and documentation for the original version of ISCAM (on which ISCAM is based) is freely available from \href{https://sites.google.com/site/ISCAMproject/}{the ISCAM project}, or from \href{http://code.google.com/p/ISCAM-project/}{a subversion repository} on GitHub.
 
 There are actually five distinct components that make up the objective function that ADMB is minimizing:
 \[
