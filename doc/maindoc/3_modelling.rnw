@@ -384,7 +384,6 @@ There is support for continued inclusion of time varying $M$ as the base case fo
 
 \subsubsection{Variance parameters}
 
-
 The key variance parameter in the errors-in-variables approach is the inverse of the total variance $\varphi^-2$ (i.e., total precision, varphi). 
 The total variance is partitioned into observation and process error components by the model parameter rho $\rho$, which is the proportion of the total variance that is due to observation error \citep{punt1999, deriso2007}.
 % Are these the right citations?
