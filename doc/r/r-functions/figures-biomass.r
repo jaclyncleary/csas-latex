@@ -211,3 +211,106 @@ make.depletion.mcmc.plot <- function(models,
     panel.letter(ind.letter)
   }
 }
+
+make.biomass.retro.mpd.plot <- function(base.model,
+                                        models,
+                                        model.names = NULL,
+                                        ylim,
+                                        offset = 0.1,
+                                        show.bo.line = FALSE,
+                                        ind.letter = NULL,
+                                        leg = NULL,
+                                        ...
+                                        ){
+  ## Plot the biomass for the mpd case of the models
+  ##
+  ## bo.offset - offset to the left for the bo point an bars
+  ## offset - the amount on the x-axis to offset each point and line for
+  ##  multiple models
+  ## append.base.txt - text to append to the name of the first model
+  ## show.bo.line - show the reference lines 0.2 and 0.4bo
+
+  par(mar = c(5.1, 5.1, 4.1, 3.1))
+
+  sbt <- lapply(models,
+                function(x){
+                  x[[1]]$mpd$sbt})
+
+  sbo <- base.model$mpd$sbo
+
+  yrs <- lapply(models,
+                function(x){
+                  x[[1]]$mpd$syr:(x[[1]]$mpd$nyr + 1)})
+  xlim <- lapply(1:length(yrs),
+                 function(x){
+                   c(min(yrs[[x]]), max(yrs[[x]]))})
+  xlim <- do.call(rbind, xlim)
+  xlim <- c(min(xlim), max(xlim))
+
+  if(is.null(dev.list())){
+    ## If layout() is used outside this function,
+    ##  it calls plot.new and will mess up the figures
+    ##  if we call it again
+    plot.new()
+  }
+  plot.window(xlim = xlim,
+              ylim = ylim,
+              xlab = "",
+              ylab = "")
+
+  base.yrs <- base.model$mpd$syr:(base.model$mpd$nyr + 1)
+  base.sbt <- base.model$mpd$sbt
+  plot(base.yrs,
+       base.sbt,
+       col = 1,
+       lwd = 3,
+       las = 1,
+       lty = 1,
+       xlim = xlim,
+       ylim = ylim,
+       xlab = "",
+       ylab = "",
+       type = "l",
+       ...)
+  lapply(1:length(yrs),
+         function(x){
+           lines(yrs[[x]],
+                 sbt[[x]],
+                 xlab = "",
+                 ylab = "",
+                 col = x + 1,
+                 las = 1,
+                 lwd = 2,
+                 lty = 2,
+                 xlim = xlim,
+                 ylim = ylim,
+                 ...)})
+
+  if(show.bo.line){
+    abline(h = 0.3 * sbo,
+           col = "red",
+           lty = 1,
+           lwd = 2)
+    mtext(expression("0.3B"[0]),
+          4,
+          at = 0.3 * sbo,
+          col = "red",
+          las = 1)
+  }
+
+  mtext("Year", 1, line = 3)
+  mtext("Biomass (1000 mt)", 2, line = 3)
+
+  if(!is.null(model.names) & !is.null(leg)){
+    legend(leg,
+           model.names,
+           bg = "transparent",
+           col = 1:length(models),
+           lty = c(1, rep(2, length(model.names) - 1)),
+           lwd = 2)
+  }
+
+  if(!is.null(ind.letter)){
+    panel.letter(ind.letter)
+  }
+}
