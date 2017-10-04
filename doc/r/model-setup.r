@@ -45,6 +45,12 @@ model.dir <- file.path("..", "..", "models")
 if(verbose) cat0("Models directory: \n  ", model.dir)
 
 ## -----------------------------------------------------------------------------
+## Directory in which the retrospective model directories reside
+## -----------------------------------------------------------------------------
+retro.dir <- file.path("..", "..", "retrospectives")
+if(verbose) cat0("Retrospectives directory: \n  ", retro.dir)
+
+## -----------------------------------------------------------------------------
 ## File names which must exists in each model directory
 ## -----------------------------------------------------------------------------
 exe.file.name <- "iscam.exe"
@@ -389,7 +395,8 @@ load.models.into.parent.env <- function(){
 }
 
 build <- function(ovwrt.base = FALSE,
-                  ovwrt.sens = FALSE){
+                  ovwrt.sens = FALSE,
+                  ovwrt.retro = FALSE){
   ## Once the model setup has been verified, this function will create the
   ##  corresponding RData files. Each model defined in the models-setup.r
   ##  file will have its own RData file holding the model object as defined
@@ -397,6 +404,7 @@ build <- function(ovwrt.base = FALSE,
   ##
   ## ovwrt.base - overwrite the RData file for the base model?
   ## ovwrt.sens - overwrite the RData files for the sensitivity models?
+  ## ovwrt.retro - overwrite the RData files for the retrospective runs?
 
   ## Base models
   invisible(lapply(1:length(base.model.dir.name),
@@ -473,4 +481,63 @@ build <- function(ovwrt.base = FALSE,
                        which.model = which.model,
                        verbose = ss.verbose)}))
 
+  ## -----------------------------------------------------------------------------
+  ## Retrospective models
+  ## This is a list of the AM1 models, one for each stock
+  ## -----------------------------------------------------------------------------
+  stock.dir[[1]] <- "HG"
+  stock.dir[[2]] <- "PRD"
+  stock.dir[[3]] <- "CC"
+  stock.dir[[4]] <- "SOG"
+  stock.dir[[5]] <- "WCVI"
+  retro.string <- c(paste0("0", 1:9), 10)
+  ## Load each stock's retro year models into a list
+  retro.dirs.am1 <- list()
+  retro.dirs.am2 <- list()
+  retro.yr <- list()
+  for(i in 1:length(stock.dir)){
+    retro.dirs.am1[[i]] <- list()
+    retro.dirs.am2[[i]] <- list()
+    for(j in 1:length(retro.string)){
+      if(stock.dir[i] == "HG"){
+        which.stock <- 1
+      }else if(stock.dir[i] == "PRD"){
+        which.stock <- 2
+      }else if(stock.dir[i] == "CC"){
+        which.stock <- 3
+      }else if(stock.dir[i] == "SOG"){
+        which.stock <- 4
+      }else if(stock.dir[i] == "WCVI"){
+        which.stock <- 5
+      }else{
+        stop("The retrospectives directory does not contain the known stock names.")
+      }
+      create.rdata.file.retro(
+        model.dir = file.path(retro.dir,
+                              stock.dir[i],
+                              retro.string[j],
+                              stock.dir[i],
+                              "AM1"),
+        ovwrt.rdata = ovwrt.retro,
+        load.proj = TRUE,
+        low = confidence.vals[1],
+        high = confidence.vals[2],
+        burnin = 0,
+        which.stock = which.stock,
+        which.model = 1)
+      create.rdata.file.retro(
+        model.dir = file.path(retro.dir,
+                              stock.dir[i],
+                              retro.string[j],
+                              stock.dir[i],
+                              "AM2"),
+        ovwrt.rdata = ovwrt.retro,
+        load.proj = TRUE,
+        low = confidence.vals[1],
+        high = confidence.vals[2],
+        burnin = 0,
+        which.stock = which.stock,
+        which.model = 2)
+    }
+  }
 }
