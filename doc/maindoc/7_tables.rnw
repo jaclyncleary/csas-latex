@@ -123,6 +123,76 @@ make.parameters.est.table(wcvi.b,
                           placement = "H")
 @
 
+<<hg..am1.parameter.est.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of key ",
+              "parameters from the Haida Gwaii AM1 model. Subscripts on $q$ ",
+              "(catchability) indicate: 1 = Surface survey, 2 = Dive survey. ",
+              "Tau ($\\tau$) and sigma ($\\sigma$) are calculated values.")
+make.parameters.est.table(hg.am1,
+                          xcaption = cap,
+                          xlabel = "tab:hg-am1-parameters-posts",
+                          font.size = 11,
+                          space.size = 12,
+                          placement = "H")
+@
+
+<<prd.am1.parameter.est.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of key ",
+              "parameters from the Prince Rupert District AM1 model. Subscripts on $q$ ",
+              "(catchability) indicate: 1 = Surface survey, 2 = Dive survey.",
+              "Tau ($\\tau$) and sigma ($\\sigma$) are calculated values.")
+make.parameters.est.table(pr.am1,
+                          xcaption = cap,
+                          xlabel = "tab:prd-am1-parameters-posts",
+                          font.size = 11,
+                          space.size = 12,
+                          placement = "H")
+@
+
+<<cc.am1.parameter.est.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of key ",
+              "parameters from the Central Coast AM1 model. Subscripts on $q$ ",
+              "(catchability) indicate: 1 = Surface survey, 2 = Dive survey.",
+              "Tau ($\\tau$) and sigma ($\\sigma$) are calculated values.")
+make.parameters.est.table(cc.am1,
+                          xcaption = cap,
+                          xlabel = "tab:cc-am1-parameters-posts",
+                          font.size = 11,
+                          space.size = 12,
+                          placement = "H")
+@
+
+<<sog.am1.parameter.est.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of key ",
+              "parameters from the Strait of Georgia AM1 model. Subscripts on $q$ ",
+              "(catchability) indicate: 1 = Surface survey, 2 = Dive survey.",
+              "Tau ($\\tau$) and sigma ($\\sigma$) are calculated values.")
+make.parameters.est.table(sog.am1,
+                          xcaption = cap,
+                          xlabel = "tab:sog-am1-parameters-posts",
+                          font.size = 11,
+                          space.size = 12,
+                          placement = "H")
+@
+
+<<wcvi.am1.parameter.est.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of key ",
+              "parameters from the WCVI AM1 model. Subscripts on $q$ ",
+              "(catchability) indicate: 1 = Surface survey, 2 = Dive survey.",
+              "Tau ($\\tau$) and sigma ($\\sigma$) are calculated values.")
+make.parameters.est.table(wcvi.am1,
+                          xcaption = cap,
+                          xlabel = "tab:wcvi-am1-parameters-posts",
+                          font.size = 11,
+                          space.size = 12,
+                          placement = "H")
+@
+
 <<hg.ref.points.table, results='asis', echo=FALSE>>=
 cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
               "95\\textsuperscript{th} percentile) of proposed reference ",
