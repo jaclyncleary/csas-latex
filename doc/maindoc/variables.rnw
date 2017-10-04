@@ -2,6 +2,7 @@
 \newcommand{\sampleSize}{Each sample is approximately 100 fish.}
 \newcommand{\seineSamples}{Biological summaries only include samples collected using seine nets (commercial and test) due to size-selectivity of other gear types such as gillnet.}
 \newcommand{\repSamples}{Only representative biological samples are included, where `representative' indicates whether the herring sample in the set accurately reflects the larger herring school.}
+% TODO: This should have a variable to specify the maximum age (and then remove \plusGroupProp)
 \newcommand{\plusGroup}{The age-\Sexpr{max(ageRange)} class is a `plus group' which includes fish ages \Sexpr{max(ageRange)} and older.}
 \newcommand{\spawnIndex}{The `spawn index' represents the raw survey data only, and is not scaled by the spawn survey scaling parameter, $q$.}
 \newcommand{\trendLine}{The thick black line is a \Sexpr{smLine} curve, and the shaded area is the \Sexpr{ciLevel*100}\% confidence interval.}
