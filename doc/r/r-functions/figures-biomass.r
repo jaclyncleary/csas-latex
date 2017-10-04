@@ -32,7 +32,7 @@ make.biomass.mcmc.plot <- function(models,
                        x$mcmccalcs$r.quants})
   sbo.raw <- lapply(r.quants,
                     function(x){
-                      x[rownames(x) == "bo", ]})
+                      x[rownames(x) == "sbo", ]})
   sbo <- lapply(sbo.raw,
                 function(x){
                   as.numeric(x[,2:4])})
@@ -89,7 +89,7 @@ make.biomass.mcmc.plot <- function(models,
            col = "red",
            lty = 1,
            lwd = 2)
-    mtext(expression("0.3B"[0]),
+    mtext(expression("0.3SB"[0]),
           4,
           at = 0.3 * sbo[[1]][2],
           col = "red",
@@ -291,7 +291,7 @@ make.biomass.retro.mpd.plot <- function(base.model,
            col = "red",
            lty = 1,
            lwd = 2)
-    mtext(expression("0.3B"[0]),
+    mtext(expression("0.3SB"[0]),
           4,
           at = 0.3 * sbo,
           col = "red",
