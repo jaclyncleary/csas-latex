@@ -8,7 +8,7 @@ Additional biological parameters such as growth parameters and maturity schedule
 Reference points based on estimated long-term average unfished equilbrium spawning biomass ($\mli{SB}_0$) and estimates of current stock status relative to estimated unfished spawning biomass ($\mli{SB}_{2017} / \mli{SB}_0$) are presented in Tables \ref{tab:hg-ref-points} to \ref{tab:wcvi-ref-points}. 
 Estimates of $\mli{SB}$ and depletion levels ($\mli{SB} / \mli{SB}_0$) for the recent 10 years are presented for models \Sexpr{PasteNicely(mNames)} in Tables \ref{tab:hg-spawn-biomass-am2} to \ref{tab:wcvi-spawn-biomass-am1}.
 
-Maximum Sustainable Yield (MSY) and the annual harvest rate producing MSY (\emph{U}\subscr{MSY}), were presented only within the context of the Sensitivity Analysis investigating interactions between maturity-at-age and selectivity-at-age (Section \ref{secMatAge}).
+Maximum Sustainable Yield (MSY) and the annual harvest rate producing MSY ($U_\text{MSY}$), were presented only within the context of the Sensitivity Analysis investigating interactions between maturity-at-age and selectivity-at-age (Section \ref{secMatAge}).
 
 Harvest decision tables were created by projecting the assessment model one year into the future, given range of assumed catch levels (Tables \ref{tab:hg-am2-decision} to \ref{tab:wcvi-am1-decision}).
 One year projections of spawning biomass assume recent 5-year average estimates of natural mortality and weight-at-age.
@@ -399,10 +399,10 @@ All these increases and decreases are minor and will have little to no impacts o
 The base case maturity vector assumes 25\% of age-2 fish are mature, 90\% of age-3 fish are mature, and 100\% maturity for fish ages 4 and older. 
 From these assumptions the age of 50\% maturity is estimated to be approximately 2.3 years. 
 These base case values are fixed for all BC herring stocks at values indicated from histological assessment of developing ovaries \citep{hay1985, hay1999}.  
-In the recent analysis identifying limit reference points for BC \Sexpr{fish.name} stocks, \citet{kronlund2017} discuss the location of the maturity schedule in relation to estimation of $F_\mli{MSY}$. 
-Specifically, the positioning of the maturity curve to the left of all the fishery selectivity curves contributed to high estimates of $F_\mli{MSY}$ because when age at 50\% maturity is estimated to occur at a much younger age than 50\% selectivity, it essentially guarantees a large component of the population can spawn at least once before becoming vulnerable to any fishery. 
-This infers high sustainable harvest rates, and the estimates of $F_\mli{MSY}$ reported in \citet{kronlund2017} and in \citet{herring2015} were among the highest produced for herring species worldwide.
-The sensitivity analysis considered here involves setting the maturity at age vector equal to the selectivity of the seine roe fishery (gear 2) and then re-estimating equilibrium reference point $F_\mli{MSY}$. 
+In the recent analysis identifying limit reference points for BC \Sexpr{fish.name} stocks, \citet{kronlund2017} discuss the location of the maturity schedule in relation to estimation of $F_\text{MSY}$. 
+Specifically, the positioning of the maturity curve to the left of all the fishery selectivity curves contributed to high estimates of $F_\text{MSY}$ because when age at 50\% maturity is estimated to occur at a much younger age than 50\% selectivity, it essentially guarantees a large component of the population can spawn at least once before becoming vulnerable to any fishery. 
+This infers high sustainable harvest rates, and the estimates of $F_\text{MSY}$ reported in \citet{kronlund2017} and in \citet{herring2015} were among the highest produced for herring species worldwide.
+The sensitivity analysis considered here involves setting the maturity at age vector equal to the selectivity of the seine roe fishery (gear 2) and then re-estimating equilibrium reference point $F_\text{MSY}$. 
 \citet{hay1985} identify that age specific maturation varies with latitude and that generally, the warmer the water temperature the earlier the maturation of herring should occur. 
 Thus different stocks of BC \Sexpr{fish.name} may have different maturity schedules as they are distributed throughout different latitudes. 
 In the absence of recent histological studies to provide new estimates of maturity at age, we tested the model sensitivity to the fixed base values by setting the maturity at age vector equal to the selectivity of the seine roe fishery (gear 2; Table \ref{tab:maturity}).
@@ -412,7 +412,7 @@ The resulting estimates of the leading parameters showed minor differences betwe
 We further investigated the key MSY reference points, $\mli{SB}_0$ and $\mli{SB}_{2017}$ for the base case and the maturity schedule sensitivity case (Table \ref{tab:maturity}). % Is this the right table? It was hard-coded as 36, which seems wrong.
 The ratio of ($\mli{SB}_{2017} / \mli{SB}_0$) were also very similar for all stocks and model variations (\Sexpr{PasteNicely(mNames)}). 
 
-These results confirm that changing maturity to equal selectivity doesn't make the $F_\mli{MSY}$ estimates reliable in a management procedure, potentially because of their dependence on natural mortality as well, and the LRPs were not substantially different. 
+These results confirm that changing maturity to equal selectivity doesn't make the $F_\text{MSY}$ estimates reliable in a management procedure, potentially because of their dependence on natural mortality as well, and the LRPs were not substantially different. 
 
 \subsection{ASSESSMENT MODEL RESULTS}\label{secModelResults}
 
@@ -576,18 +576,19 @@ Figure \ref{figHarvestRate} presents time series estimates of effective harvest 
 
 \citet{kronlund2017} use an analysis of surplus production to evaluate whether the major \Sexpr{fish.name} stocks in British Columbia show stock states consistent with signs of possible serious harm, the result of which identified recent persistent states of low production and low biomass (LP-LB states) for the Central Coast (CC), Haida Gwaii (HG) and West Coast of Vancouver Island (WCVI) management areas.
 
-The production analysis was updated for the major Pacific Herring stocks with the addition of \Sexpr{assess.yr} catch data and MPD spawning biomass estimates for AM1 and AM2.  
+The production analysis was updated for the major Pacific Herring stocks with the addition of \Sexpr{assess.yr} catch data and MPD spawning biomass estimates for \Sexpr{PasteNicely(mNames)}.  
 Figures \ref{figProduction\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figProduction\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}} show \Sexpr{PasteNicely(mNames)} production analyses for the \Sexpr{length(allRegionNames$major)} major SARs: \Sexpr{PasteNicely(allRegionNames$major)}, respectively.
 The updated production analysis was compared to results presented in \citet{kronlund2017} and the key results are the same and provide continued support to the recommendations of \citet{kronlund2017}.
 Median posterior distributions of the estimated spawning biomass in \Sexpr{assess.yr} for each major stock, and juxtaposition of the estimated LRP are presented in Figure \ref{figCurrentSSB}.
 The following bullets report estimated $\mli{SB}_{2017}$ relative to the LRP ($0.30\cdot\mli{SB}_0$):
 
 \begin{resdoclist}
-\item HG: Spawning biomass production and production rate are negative (\Sexpr{PasteNicely(mNames)}) and the estimated spawning biomass in 2017 is below the LRP of $0.30\cdot\mli{SB}_0$ (AM1 and AM2)
-\item PRD: Spawning biomass production and production rate are positive (AM1 and AM2) and the estimated spawning biomass in 2017 is above the LRP of $0.30\cdot\mli{SB}_0$ (AM1 and AM2)
-\item CC: Spawning biomass production and production rate are positive (AM1 and AM2) and the estimated spawning biomass in 2017 is above the LRP of $0.30\cdot\mli{SB}_0$ (AM1 and AM2)
-\item SOG:Spawning biomass production and production rate are positive (AM1 and AM2) and the estimated spawning biomass in 2017 is above the LRP of $0.30\cdot\mli{SB}_0$ (AM1 and AM2)
-\item WCVI: Spawning biomass production and production rate are negative (AM1 and AM2). AM1: estimated spawning biomass in 2017 is above the LRP of $0.30\cdot\mli{SB}_0$; AM2: estimated spawning biomass in 2017 is approaching the LRP of $0.30\cdot\mli{SB}_0$.
+\item HG: Spawning biomass production and production rate are negative (\Sexpr{PasteNicely(mNames)}) and the estimated spawning biomass in 2017 is below the LRP of $0.30\cdot\mli{SB}_0$ (\Sexpr{PasteNicely(mNames)})
+\item PRD: Spawning biomass production and production rate are positive (\Sexpr{PasteNicely(mNames)}) and the estimated spawning biomass in 2017 is above the LRP of $0.30\cdot\mli{SB}_0$ (\Sexpr{PasteNicely(mNames)})
+\item CC: Spawning biomass production and production rate are positive (\Sexpr{PasteNicely(mNames)}) and the estimated spawning biomass in 2017 is above the LRP of $0.30\cdot\mli{SB}_0$ (\Sexpr{PasteNicely(mNames)})
+\item SOG:Spawning biomass production and production rate are positive (\Sexpr{PasteNicely(mNames)}) and the estimated spawning biomass in 2017 is above the LRP of $0.30\cdot\mli{SB}_0$ (\Sexpr{PasteNicely(mNames)})
+\item WCVI: Spawning biomass production and production rate are negative (\Sexpr{PasteNicely(mNames)}).
+AM1: estimated spawning biomass in 2017 is above the LRP of $0.30\cdot\mli{SB}_0$; AM2: estimated spawning biomass in 2017 is approaching the LRP of $0.30\cdot\mli{SB}_0$.
 \end{resdoclist}
 %JC: edits completed
 
@@ -595,7 +596,7 @@ The following bullets report estimated $\mli{SB}_{2017}$ relative to the LRP ($0
 
 This assessment uses Bayesian methods to incorporate prior information and integrate over parameter uncertainty to provide results that can be probabilistically interpreted.  
 Measures of uncertainty in this assessment underestimate the true uncertainty in current stock status and future projections because they do not account for alternative structural models for Pacific Herring population dynamics (e.g., natural mortality) and fishery processes (e.g., selectivity), the effects of data-weighting schemes, and the scientific basis for prior probability distribution choices.
-The base case assessment models AM2 and AM2 integrate over the substantial uncertainty associated with several important model parameters including: spawn survey catchability (\emph{q}), the productivity of the stock (via the steepness parameter, \emph{h}, of the stock-recruitment relationship), the rate of natural mortality (\emph{M}), and recruitment deviations. 
+The base case assessment models \Sexpr{PasteNicely(mNames)} integrate over the substantial uncertainty associated with several important model parameters including: spawn survey catchability ($q$), the productivity of the stock (via the steepness parameter, $h$, of the stock-recruitment relationship), the rate of natural mortality ($M$), and recruitment deviations. 
 Although the Bayesian results presented include estimation uncertainty, this within-model uncertainty is likely an underestimate of the true uncertainty in current stock status and future projections, since it does not include structural modelling choices, data-weighting uncertainty, assessment errors and scientific uncertainty in selection of prior probability distributions.
 The only way to develop a management procedure that is robust to the true range of uncertainty in current stock status and future projections with rigorous testing using feedback simulations.
 
