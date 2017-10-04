@@ -6,7 +6,7 @@ A matrix of average weight-at-age from \Sexpr{paste(range(yrRange), collapse=" t
 Additional biological parameters such as growth parameters and maturity schedules were taken from external analyses and input to the assessment model as fixed parameters that were assumed to remain constant over time (Section \ref{secAssumedBiolPars}).
 
 Reference points based on estimated long-term average unfished equilbrium spawning biomass ($\mli{SB}_0$) and estimates of current stock status relative to estimated unfished spawning biomass ($\mli{SSB}_{2017} / \mli{SB}_0$) are presented in Table X and X. 
-Estimates of $\mli{SSB}$ and depletion levels ($\mli{SSB} / \mli{SB}_0$) for the recent 10-years are presented in Tables X to X.
+Estimates of $\mli{SSB}$ and depletion levels ($\mli{SSB} / \mli{SB}_0$) for the recent 10 years are presented in Tables X to X.
 
 Maximum Sustainable Yield (MSY) and the annual harvest rate producing MSY (\emph{U}\subscr{MSY}), were presented only within the context of the Sensitivity Analysis investigating interactions between maturity-at-age and selectivity-at-age (Section \ref{secMatAge}).
 
@@ -108,7 +108,7 @@ Proportions-at-age data are aggregated into three gear types/ fishery periods:
 The same aggregation is applied to the commercial catch data.
 
 A stock-specific matrix of weight-at-age exists for each of the five major stocks.  
-The matrix of weight-at-age for years \Sexpr{paste(range(yrRange), collapse=" to ")} is the average weight over all seine-caught fish (Gear 1 and 2, where available) for each age category 2 to 10+. 
+The matrix of weight-at-age for years \Sexpr{paste(range(yrRange), collapse=" to ")} is the average weight over all seine-caught fish (Gear 1 and 2, where available) for each age categories 2 to 10+. 
 Gillnet caught fish are excluded from the calculation of average weight-at-age.
 The number of biological samples used in the calculation of proportions-at-age and weight-at-age by year and SAR is summarized in Appendix \ref{chap:input}.
 
@@ -132,7 +132,7 @@ All stocks show a leveling off or increase in the recent-most 5-years.
 Declining weight-at-age may be attributed to any number of factors, including fishing effects (i.e., gear selectivity) and environmental effects (changes in ocean productivity), or it may be attributed to by changes in sampling protocols (shorter time frame over which samples are collected).
 Declining weight-at-age is observed in all five of the major stocks, and despite area closures over the last 10-years has continued to occur in the HG and WCVI stocks.
 This trend has been observed in B.C. and U.S. waters, from California to Alaska \citep{schweigert2002}.
-Changes in weight-at-age are not unique to \Sexpr{fish.name}: they have also been observed in Pacific Hake (JTC 2014) and Pacific Halibut.
+Changes in weight-at-age are not unique to \Sexpr{fish.name}: they have also been observed in Pacific Hake \citep{jtc2004} and Pacific Halibut.
 The direct cause and influence of this decline should be investigated in the context of the assessment framework because changes in growth patterns will result in different reference point estimates and different estimated optimal harvest rate.
 Even though the mechanisms behind weight-at-age changes are not well understood, the model does account for observed changes in stock reconstructions and predictions.
 %JC: completed.
