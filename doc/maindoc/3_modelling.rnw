@@ -414,6 +414,7 @@ The selectivity of the seine roe fishery was chosen because the fishery targets 
 The resulting estimates of the leading parameters showed minor differences between the fixed maturity vector model and the sensitivity case where the maturity at age is set to the selectivity at age (results not shown). 
 We further investigated the key MSY reference points, $\mli{SB}_0$ and $\mli{SB}_{2017}$ for the base case and the maturity schedule sensitivity case (Table 36).   
 The ratio of ($\mli{SB}_{2017} / \mli{SB}_0$) were also very similar for all stocks and model variations (AM1 and AM2). 
+
 These results confirm that changing maturity to equal selectivity doesn't make the Fmsy estimates reliable in a management procedure, potentially because of their dependence on natural mortality as well, and the LRPs were not substantially different. 
 
 \subsection{ASSESSMENT MODEL RESULTS}\label{secModelResults}

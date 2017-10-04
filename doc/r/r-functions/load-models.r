@@ -188,13 +188,83 @@ create.rdata.file <- function(models.dir = model.dir,
   invisible()
 }
 
+create.rdata.file.retro <- function(model.dir,
+                                    ovwrt.rdata = FALSE,
+                                    load.proj = TRUE,
+                                    low = 0.025,
+                                    high = 0.975,
+                                    burnin = 1000,
+                                    which.stock = NULL,
+                                    which.model = NULL,
+                                    verbose = FALSE){
+  ## Create an rdata file to hold the restrospective model's data and outputs.
+  ## If an RData file exists, and overwrite is FALSE, return immediately.
+  ## If no RData file exists, the model will be loaded from outputs into
+  ##  an R list and saved as an RData file in the correct directory.
+  ## When this function exits, an RData file will be located in the
+  ##  directory given by model.name.
+  ## Assumes the files model-setup.r and utilities.r has been sourced.
+  ##
+  ## models.dir - directory name for all models location
+  ## ovwrt.rdata - overwrite the RData file if it exists?
+  ## load.proj - load the projections from the mcmc and do the calculations
+  ##  to construct the decision tables
+  ## low - lower quantile value to apply to mcmc samples
+  ## high - higher quantile value to apply to mcmc samples
+  ## which.stock and which.model are passed to load.iscam.files
+
+  if(!dir.exists(model.dir)){
+    stop("Error - the directory ", model.dir,
+         " does not exist. Fix the problem and try again.\n")
+  }
+  ## The RData file will have the same name as the directory it is in
+  ## If the model.dir has a slash in it, remove the slash and
+  ##  everything before it. This allows a model to have a name which
+  ##  is a path.
+  tmp <- strsplit(model.dir, "/")[[1]]
+  ## Remove all double-dots
+  tmp <- tmp[tmp != ".."]
+  ## Keep only the last two strings
+  tmp <- tmp[c(length(tmp) - 1, length(tmp))]
+  rdata.file <- paste0(tmp, collapse = "-")
+  rdata.file <- file.path(model.dir, paste0(rdata.file, ".RData"))
+  if(file.exists(rdata.file)){
+    if(ovwrt.rdata){
+      ## Delete the RData file
+      cat0("RData file found in ", model.dir,
+           ". Deleting...\n")
+      unlink(rdata.file, force = TRUE)
+    }else{
+      cat0("RData file found in ", model.dir, "\n")
+      return(invisible())
+    }
+  }else{
+    cat0("No RData file found in ", model.dir,
+         ". Creating one now.\n")
+  }
+
+  ## If this point is reached, no RData file exists so it
+  ##  has to be built from scratch
+  model <- load.iscam.files(model.dir,
+                            low = low,
+                            high = high,
+                            load.proj = load.proj,
+                            burnin = burnin,
+                            which.stock = which.stock,
+                            which.model = which.model)
+
+
+  ## Save the model as an RData file
+  save(model, file = rdata.file)
+  invisible()
+}
+
 load.models <- function(models.dir,
                         model.dir.names){
   ## Load model(s) and return as a list.
-
   rdata.files <- lapply(model.dir.names,
                         function(x){
-                          i <- file.path(model.dir, x)
+                          i <- file.path(models.dir, x)
                           j <- sub("/.*", "", x)
                           k <- sub(".*/", "", x)
                           file.path(i, paste0(j, "-", k, ".Rdata"))})
