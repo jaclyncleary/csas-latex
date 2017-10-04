@@ -5,8 +5,8 @@ The model was fit to catch data, two survey indices of relative spawner biomass,
 A matrix of average weight-at-age from \Sexpr{paste(range(yrRange), collapse=" to ")} was also estimated external to the model, using biological samples from the seine caught fish (seine roe, food and bait, seine test).
 Additional biological parameters such as growth parameters and maturity schedules were taken from external analyses and input to the assessment model as fixed parameters that were assumed to remain constant over time (Section \ref{secAssumedBiolPars}).
 
-Reference points based on estimated long-term average unfished equilbrium spawning biomass ($\mli{SB}_0$) and estimates of current stock status relative to estimated unfished spawning biomass ($\mli{SSB}_{2017} / \mli{SB}_0$) are presented in Table X and X. 
-Estimates of $\mli{SSB}$ and depletion levels ($\mli{SSB} / \mli{SB}_0$) for the recent 10 years are presented in Tables X to X.
+Reference points based on estimated long-term average unfished equilbrium spawning biomass ($\mli{SB}_0$) and estimates of current stock status relative to estimated unfished spawning biomass ($\mli{SB}_{2017} / \mli{SB}_0$) are presented in Table X and X. 
+Estimates of $\mli{SB}$ and depletion levels ($\mli{SB} / \mli{SB}_0$) for the recent 10 years are presented in Tables X to X.
 
 Maximum Sustainable Yield (MSY) and the annual harvest rate producing MSY (\emph{U}\subscr{MSY}), were presented only within the context of the Sensitivity Analysis investigating interactions between maturity-at-age and selectivity-at-age (Section \ref{secMatAge}).
 
@@ -188,102 +188,102 @@ We provide tables of these timeseries in Appendix \ref{chap:input}.
 
 \textbf{Haida Gwaii}
 
-There were no commercial fisheries in \Sexpr{max(yrRange)} (Figure \ref{figCatch}).
-The spawn index
-\Sexpr{dirSpawn %>% filter( Region == "HG" ) %>% select( Direction )}
-from
-\Sexpr{prevYrSpawn %>% filter( Region == "HG" ) %>% select( Spawn )} 
-tonnes in \Sexpr{max(yrRange)-1} to 
-\Sexpr{finalYrSpawn %>% filter( Region == "HG" ) %>% select( Spawn )}
-tonnes in \Sexpr{max(yrRange)} (Figure \ref{figSpawnIndex}).
-Generally, mean weight-at-age for age-\Sexpr{min(ageRange)} to -\Sexpr{max(ageRange)}+ has been stable or increasing since 2010 (Figure \ref{figWeightAge}).
-In \Sexpr{max(yrRange)}, proportion-at-age was dominated by age-3 fish, and older age classes (i.e., age-\Sexpr{agePlusProp}+) contributed
-\Sexpr{finalYrPropAge %>% filter( Region == "HG", Age == 6 ) %>% select( Percent )}\%
-(Figure \ref{figProportionAge}).
-There were
-\Sexpr{finalYrNBio %>% select( HG )}
-biological samples used to calculate mean weight-at-age and proportion-at-age data in \Sexpr{max(yrRange)} (Table \ref{tabNBio}).
-\sampleSize{}
-
-\textbf{Prince Rupert District}
-
-The total commercial catch in \Sexpr{max(yrRange)} was
-\Sexpr{finalYrCatch %>% filter( Region == "PRD") %>% select( Catch )}
-tonnes (Figure \ref{figCatch}).
-The spawn index
-\Sexpr{dirSpawn %>% filter( Region == "PRD" ) %>% select( Direction )}
-from
-\Sexpr{prevYrSpawn %>% filter( Region == "PRD" ) %>% select( Spawn )} 
-tonnes in \Sexpr{max(yrRange)-1} to 
-\Sexpr{finalYrSpawn %>% filter( Region == "PRD" ) %>% select( Spawn )}
-tonnes in \Sexpr{max(yrRange)} (Figure \ref{figSpawnIndex}).
-Generally, mean weight-at-age for age-\Sexpr{min(ageRange)} to -\Sexpr{max(ageRange)}+ has been stable or increasing since 2010 (Figure \ref{figWeightAge}).
-In \Sexpr{max(yrRange)}, proportion-at-age was dominated by age-5 fish, and older age classes (i.e., age-\Sexpr{agePlusProp}+) contributed
-\Sexpr{finalYrPropAge %>% filter( Region == "PRD", Age == 6 ) %>% select( Percent )}\%
-(Figure \ref{figProportionAge}).
-There were
-\Sexpr{finalYrNBio %>% select( PRD )}
-biological samples used to calculate mean weight-at-age and proportion-at-age data in \Sexpr{max(yrRange)} (Table \ref{tabNBio}).
-\sampleSize{}
-
-\textbf{Central Coast}
-
-There were no commercial roe fisheries in \Sexpr{max(yrRange)} (Figure \ref{figCatch}), thus the catch input for 2017 is zero.
-The spawn index
-\Sexpr{dirSpawn %>% filter( Region == "CC" ) %>% select( Direction )}
-from
-\Sexpr{prevYrSpawn %>% filter( Region == "CC" ) %>% select( Spawn )} 
-tonnes in \Sexpr{max(yrRange)-1} to 
-\Sexpr{finalYrSpawn %>% filter( Region == "CC" ) %>% select( Spawn )}
-tonnes in \Sexpr{max(yrRange)} (Figure \ref{figSpawnIndex}).
-Generally, mean weight-at-age for age-\Sexpr{min(ageRange)} to -\Sexpr{max(ageRange)}+ has been stable or increasing since 2010 (Figure \ref{figWeightAge}).
-In \Sexpr{max(yrRange)}, proportion-at-age was dominated by age-5 fish, and older age classes (i.e., age-\Sexpr{agePlusProp}+) contributed
-\Sexpr{finalYrPropAge %>% filter( Region == "CC", Age == 6 ) %>% select( Percent )}\%
-(Figure \ref{figProportionAge}).
-There were
-\Sexpr{finalYrNBio %>% select( CC )}
-biological samples used to calculate mean weight-at-age and proportion-at-age data in \Sexpr{max(yrRange)} (Table \ref{tabNBio}).
-\sampleSize{}
-
-\textbf{Strait of Georgia}
-
-The total commercial catch in \Sexpr{max(yrRange)} was
-\Sexpr{finalYrCatch %>% filter( Region == "SoG") %>% select( Catch )}
-tonnes (Figure \ref{figCatch}).
-The spawn index
-\Sexpr{dirSpawn %>% filter( Region == "SoG" ) %>% select( Direction )}
-from
-\Sexpr{prevYrSpawn %>% filter( Region == "SoG" ) %>% select( Spawn )} 
-tonnes in \Sexpr{max(yrRange)-1} to 
-\Sexpr{finalYrSpawn %>% filter( Region == "SoG" ) %>% select( Spawn )}
-tonnes in \Sexpr{max(yrRange)} (Figure \ref{figSpawnIndex}).
-Generally, mean weight-at-age for age-\Sexpr{min(ageRange)} to -\Sexpr{max(ageRange)}+ has been stable or increasing since 2010 (Figure \ref{figWeightAge}).
-In \Sexpr{max(yrRange)}, proportion-at-age was relatively even among age-3 to -5 fish, and older age classes (i.e., age-\Sexpr{agePlusProp}+) contributed
-\Sexpr{finalYrPropAge %>% filter( Region == "SoG", Age == 6 ) %>% select( Percent )}\%
-(Figure \ref{figProportionAge}).
-There were
-\Sexpr{finalYrNBio %>% select( SoG )}
-biological samples used to calculate mean weight-at-age and proportion-at-age data in \Sexpr{max(yrRange)} (Table \ref{tabNBio}).
-\sampleSize{}
-
-\textbf{West Coast of Vancouver Island}
-
-There were no commercial fisheries in \Sexpr{max(yrRange)} (Figure \ref{figCatch}).
-The spawn index
-\Sexpr{dirSpawn %>% filter( Region == "WCVI" ) %>% select( Direction )}
-from
-\Sexpr{prevYrSpawn %>% filter( Region == "WCVI" ) %>% select( Spawn )} 
-tonnes in \Sexpr{max(yrRange)-1} to 
-\Sexpr{finalYrSpawn %>% filter( Region == "WCVI" ) %>% select( Spawn )}
-tonnes in \Sexpr{max(yrRange)} (Figure \ref{figSpawnIndex}).
-Generally, mean weight-at-age for age-\Sexpr{min(ageRange)} to -\Sexpr{max(ageRange)}+ has been stable or increasing since 2010 (Figure \ref{figWeightAge}).
-In \Sexpr{max(yrRange)}, proportion-at-age was dominated by age-4 fish, and older age classes (i.e., age-\Sexpr{agePlusProp}+) contributed
-\Sexpr{finalYrPropAge %>% filter( Region == "WCVI", Age == 6 ) %>% select( Percent )}\%
-(Figure \ref{figProportionAge}).
-There were
-\Sexpr{finalYrNBio %>% select( WCVI )}
-biological samples used to calculate mean weight-at-age and proportion-at-age data in \Sexpr{max(yrRange)} (Table \ref{tabNBio}).
-\sampleSize{}
+% There were no commercial fisheries in \Sexpr{max(yrRange)} (Figure \ref{figCatch}).
+% The spawn index
+% \Sexpr{dirSpawn %>% filter( Region == "HG" ) %>% select( Direction )}
+% from
+% \Sexpr{prevYrSpawn %>% filter( Region == "HG" ) %>% select( Spawn )} 
+% tonnes in \Sexpr{max(yrRange)-1} to 
+% \Sexpr{finalYrSpawn %>% filter( Region == "HG" ) %>% select( Spawn )}
+% tonnes in \Sexpr{max(yrRange)} (Figure \ref{figSpawnIndex}).
+% Generally, mean weight-at-age for age-\Sexpr{min(ageRange)} to -\Sexpr{max(ageRange)}+ has been stable or increasing since 2010 (Figure \ref{figWeightAge}).
+% In \Sexpr{max(yrRange)}, proportion-at-age was dominated by age-3 fish, and older age classes (i.e., age-\Sexpr{agePlusProp}+) contributed
+% \Sexpr{finalYrPropAge %>% filter( Region == "HG", Age == 6 ) %>% select( Percent )}\%
+% (Figure \ref{figProportionAge}).
+% There were
+% \Sexpr{finalYrNBio %>% select( HG )}
+% biological samples used to calculate mean weight-at-age and proportion-at-age data in \Sexpr{max(yrRange)} (Table \ref{tabNBio}).
+% \sampleSize{}
+% 
+% \textbf{Prince Rupert District}
+% 
+% The total commercial catch in \Sexpr{max(yrRange)} was
+% \Sexpr{finalYrCatch %>% filter( Region == "PRD") %>% select( Catch )}
+% tonnes (Figure \ref{figCatch}).
+% The spawn index
+% \Sexpr{dirSpawn %>% filter( Region == "PRD" ) %>% select( Direction )}
+% from
+% \Sexpr{prevYrSpawn %>% filter( Region == "PRD" ) %>% select( Spawn )} 
+% tonnes in \Sexpr{max(yrRange)-1} to 
+% \Sexpr{finalYrSpawn %>% filter( Region == "PRD" ) %>% select( Spawn )}
+% tonnes in \Sexpr{max(yrRange)} (Figure \ref{figSpawnIndex}).
+% Generally, mean weight-at-age for age-\Sexpr{min(ageRange)} to -\Sexpr{max(ageRange)}+ has been stable or increasing since 2010 (Figure \ref{figWeightAge}).
+% In \Sexpr{max(yrRange)}, proportion-at-age was dominated by age-5 fish, and older age classes (i.e., age-\Sexpr{agePlusProp}+) contributed
+% \Sexpr{finalYrPropAge %>% filter( Region == "PRD", Age == 6 ) %>% select( Percent )}\%
+% (Figure \ref{figProportionAge}).
+% There were
+% \Sexpr{finalYrNBio %>% select( PRD )}
+% biological samples used to calculate mean weight-at-age and proportion-at-age data in \Sexpr{max(yrRange)} (Table \ref{tabNBio}).
+% \sampleSize{}
+% 
+% \textbf{Central Coast}
+% 
+% There were no commercial roe fisheries in \Sexpr{max(yrRange)} (Figure \ref{figCatch}), thus the catch input for 2017 is zero.
+% The spawn index
+% \Sexpr{dirSpawn %>% filter( Region == "CC" ) %>% select( Direction )}
+% from
+% \Sexpr{prevYrSpawn %>% filter( Region == "CC" ) %>% select( Spawn )} 
+% tonnes in \Sexpr{max(yrRange)-1} to 
+% \Sexpr{finalYrSpawn %>% filter( Region == "CC" ) %>% select( Spawn )}
+% tonnes in \Sexpr{max(yrRange)} (Figure \ref{figSpawnIndex}).
+% Generally, mean weight-at-age for age-\Sexpr{min(ageRange)} to -\Sexpr{max(ageRange)}+ has been stable or increasing since 2010 (Figure \ref{figWeightAge}).
+% In \Sexpr{max(yrRange)}, proportion-at-age was dominated by age-5 fish, and older age classes (i.e., age-\Sexpr{agePlusProp}+) contributed
+% \Sexpr{finalYrPropAge %>% filter( Region == "CC", Age == 6 ) %>% select( Percent )}\%
+% (Figure \ref{figProportionAge}).
+% There were
+% \Sexpr{finalYrNBio %>% select( CC )}
+% biological samples used to calculate mean weight-at-age and proportion-at-age data in \Sexpr{max(yrRange)} (Table \ref{tabNBio}).
+% \sampleSize{}
+% 
+% \textbf{Strait of Georgia}
+% 
+% The total commercial catch in \Sexpr{max(yrRange)} was
+% \Sexpr{finalYrCatch %>% filter( Region == "SoG") %>% select( Catch )}
+% tonnes (Figure \ref{figCatch}).
+% The spawn index
+% \Sexpr{dirSpawn %>% filter( Region == "SoG" ) %>% select( Direction )}
+% from
+% \Sexpr{prevYrSpawn %>% filter( Region == "SoG" ) %>% select( Spawn )} 
+% tonnes in \Sexpr{max(yrRange)-1} to 
+% \Sexpr{finalYrSpawn %>% filter( Region == "SoG" ) %>% select( Spawn )}
+% tonnes in \Sexpr{max(yrRange)} (Figure \ref{figSpawnIndex}).
+% Generally, mean weight-at-age for age-\Sexpr{min(ageRange)} to -\Sexpr{max(ageRange)}+ has been stable or increasing since 2010 (Figure \ref{figWeightAge}).
+% In \Sexpr{max(yrRange)}, proportion-at-age was relatively even among age-3 to -5 fish, and older age classes (i.e., age-\Sexpr{agePlusProp}+) contributed
+% \Sexpr{finalYrPropAge %>% filter( Region == "SoG", Age == 6 ) %>% select( Percent )}\%
+% (Figure \ref{figProportionAge}).
+% There were
+% \Sexpr{finalYrNBio %>% select( SoG )}
+% biological samples used to calculate mean weight-at-age and proportion-at-age data in \Sexpr{max(yrRange)} (Table \ref{tabNBio}).
+% \sampleSize{}
+% 
+% \textbf{West Coast of Vancouver Island}
+% 
+% There were no commercial fisheries in \Sexpr{max(yrRange)} (Figure \ref{figCatch}).
+% The spawn index
+% \Sexpr{dirSpawn %>% filter( Region == "WCVI" ) %>% select( Direction )}
+% from
+% \Sexpr{prevYrSpawn %>% filter( Region == "WCVI" ) %>% select( Spawn )} 
+% tonnes in \Sexpr{max(yrRange)-1} to 
+% \Sexpr{finalYrSpawn %>% filter( Region == "WCVI" ) %>% select( Spawn )}
+% tonnes in \Sexpr{max(yrRange)} (Figure \ref{figSpawnIndex}).
+% Generally, mean weight-at-age for age-\Sexpr{min(ageRange)} to -\Sexpr{max(ageRange)}+ has been stable or increasing since 2010 (Figure \ref{figWeightAge}).
+% In \Sexpr{max(yrRange)}, proportion-at-age was dominated by age-4 fish, and older age classes (i.e., age-\Sexpr{agePlusProp}+) contributed
+% \Sexpr{finalYrPropAge %>% filter( Region == "WCVI", Age == 6 ) %>% select( Percent )}\%
+% (Figure \ref{figProportionAge}).
+% There were
+% \Sexpr{finalYrNBio %>% select( WCVI )}
+% biological samples used to calculate mean weight-at-age and proportion-at-age data in \Sexpr{max(yrRange)} (Table \ref{tabNBio}).
+% \sampleSize{}
 
 \subsection{STATISTICAL CATCH-AT-AGE MODEL}
 
@@ -412,8 +412,8 @@ These values are listed in Table \ref{tab:maturity}.
 The selectivity of the seine roe fishery was chosen because the fishery targets pre-spawning aggregations with seine gear that is non size-selective, providing age composition samples from a mature portion of the population.  
 
 The resulting estimates showed minor differents between the fixed maturity vector model and the sensitivity case where the maturity at age is set to the selectivity at age (results not shown). 
-We further investigated the key MSY reference points, $\mli{SB}_0$ and $\mli{SSB}_{2017}$ for the base case and the maturity schedule sensitivity case (Table 36).   
-The ratio of ($\mli{SSB}_{2017} / \mli{SB}_0$) were also very similar for all stocks and model variations (AM1 and AM2). 
+We further investigated the key MSY reference points, $\mli{SB}_0$ and $\mli{SB}_{2017}$ for the base case and the maturity schedule sensitivity case (Table 36).   
+The ratio of ($\mli{SB}_{2017} / \mli{SB}_0$) were also very similar for all stocks and model variations (AM1 and AM2). 
 These results confirm that changing maturity to equal selectivity doesn't make the Fmsy estimates reliable in a management procedure, potentially because of their dependence on natural mortality as well, and the LRPs were not substantially different. 
 
 \subsection{ASSESSMENT MODEL RESULTS}\label{secModelResults}
@@ -465,25 +465,25 @@ To enable readers to compare model estimates between major stock areas, results 
 \textbf{Haida Gwaii}
 
 AM2 and AM1 base case assessments estimate a declining trend in spawning stock biomass since 2013 (Table \ref{tab:hg-spawn-biomass-am2} and \ref{tab:hg-spawn-biomass-am1}).
-AM2 estimates the median spawning biomass in 2017 ($\mli{SSB}_{2017}$) at 3,963 t and 17\% of $\mli{SB}_0$. 
-AM1 estimates the median spawning biomass in 2017 ($\mli{SSB}_{2017}$) at 7,336 t and 25\% of $\mli{SB}_0$.
-Both AM2 and AM1 models estimate $\mli{SSB}_{2017}$ to be below the LRP of $0.30\cdot\mli{SB}_0$ (Figure \ref{figCurrentSSB}).
-The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 estimates of $\mli{SSB}_{2017}$ and stock status relative to $\mli{SB}_0$ are lower than the AM1 estimates, due largely to differences in model estimates of $q_2$ (Table \ref{tab:q-parameters}).
+AM2 estimates the median spawning biomass in 2017 ($\mli{SB}_{2017}$) at 3,963 t and 17\% of $\mli{SB}_0$. 
+AM1 estimates the median spawning biomass in 2017 ($\mli{SB}_{2017}$) at 7,336 t and 25\% of $\mli{SB}_0$.
+Both AM2 and AM1 models estimate $\mli{SB}_{2017}$ to be below the LRP of $0.30\cdot\mli{SB}_0$ (Figure \ref{figCurrentSSB}) by greater than 50\% probability.
+The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 estimates of $\mli{SB}_{2017}$ and stock status relative to $\mli{SB}_0$ are lower than the AM1 estimates, due largely to differences in model estimates of $q_2$ (Table \ref{tab:q-parameters}).
 
 There is no apparent recruitment entering the spawning population in 2017: 
 Figure \ref{figBevertonHolt} shows the number of age-2 recruits is near the origin of B-H stock recruit curve (SH verify terminology) and Figure \ref{fig:hg-ageest-gear2} shows a higher proportion of 3-year olds relative to age-2s. 
 Although model estimates of current natural mortality remain highly uncertain, there is an increasing trend in the median estimates of natural mortality since 2012 (Figure \ref{figStoryboardAM2HG} and \ref{figStoryboardAM2HG}).
 
-The projected pre-fishery spawing biomass in 2018 is 3,270 t (AM2) or 6,090 t (AM1), consisting of XX\% (median) age-3 fish and XX\% (median) age-4 and older fish (Table \ref{tab:hg-ref-points} and XX).  
+The projected pre-fishery spawing biomass in 2018 is 3,270 t (AM2) or 6,090 t (AM1), similar to $\mli{SB}_{2017}$ levels, consisting of XX\% (median) age-3 fish and XX\% (median) age-4 and older fish (Table \ref{tab:hg-ref-points} and XX).  
 %JC: edits completed
 
 \textbf{Prince Rupert District}
 
 Since the mid-1990s, the PRD stock is characterized by two periods of consistent and stable biomass: 
 1996-2003 and 2006-2017 (Figure \ref{figStoryboardAM2PRD} and \ref{figStoryboardAM1PRD} and Table \ref{tab:prd-spawn-biomass-am2} and \ref{tab:prd-spawn-biomass-am1}). 
-AM2 estimates the median spawning biomass in 2017 ($\mli{SSB}_{2017}$) at 21,738 t and 34\% of $\mli{SB}_0$. 
-AM1 estimates the median spawning biomass in 2017 ($\mli{SSB}_{2017}$) at 22,820 t and 36\% of $\mli{SB}_0$.
-Based on a comparison of median estimates, both AM2 and AM1 models estimate $\mli{SSB}_{2017}$ to be above the LRP of $0.30\cdot\mli{SB}_0$ by greater than 50\% probability (Figure \ref{figCurrentSSB}).
+AM2 estimates the median spawning biomass in 2017 ($\mli{SB}_{2017}$) at 21,738 t and 34\% of $\mli{SB}_0$. 
+AM1 estimates the median spawning biomass in 2017 ($\mli{SB}_{2017}$) at 22,820 t and 36\% of $\mli{SB}_0$.
+Based on a comparison of median estimates, both AM2 and AM1 models estimate $\mli{SB}_{2017}$ to be above the LRP of $0.30\cdot\mli{SB}_0$ by greater than 50\% probability but less than 95\% probability (Figure \ref{figCurrentSSB}).
 Numeric estimates of spawning biomass and stock status are very similar between AM2 and AM1, due to similarities in model estimates of $q_1$ and $q_2$ (Table \ref{tab:q-parameters}).
 
 Both AM2 and AM1 estimate a large recruitment of age 2 fish to the population in 2014, relative to the last 10 years, owing largely to the age composition information showing a high proportion of samples consisting of this age class. 
@@ -491,37 +491,41 @@ Figure \ref{figBevertonHolt} shows the number of age-2 recruits in 2017 as near 
 Figure \ref{fig:prd-ageest-gear2} shows a higher proportion of 4 and 5-year old fish relative to ages 2 and 3.
 Although model estimates of current natural mortality remain highly uncertain, there is an decreasing trend in the median estimates of natural mortality since 2006 (Figure \ref{figStoryboardAM2PRD} and \ref{figStoryboardAM1PRD}).
 
-Both AM2 and AM1 predict a continued stable trend in spawning biomass, with projected pre-fishery spawning biomass in 2018 similar to 2017 levels (Table \ref{tab:prd-ref-points}), consisting of XX\% (median) age-3 fish and XX\% (median) age-4 and older fish (Table XX).  
+Both AM2 and AM1 predict a continued stable trend in spawning biomass, with projected pre-fishery spawning biomass in 2018 of 21,553 t (AM2) and 22,590 t (AM1, Table \ref{tab:prd-ref-points}), consisting of XX\% (median) age-3 fish and XX\% (median) age-4 and older fish (Table XX).  
 %JC: edits completed
 
 \textbf{Central Coast}
 
-%4- projected biomass in 2018
 The survey index increased from 2012 - 2016 and declined from 2016 to 2017 (Figure \ref{figStoryboardAM2CC} and \ref{figStoryboardAM1CC}).
 AM2 and AM1 base case assessments estimate an increasing trend in spawning stock biomass since 2012 (Figure \ref{figStoryboardAM2CC} and \ref{figStoryboardAM1CC} and Table \ref{tab:cc-spawn-biomass-am2} and \ref{tab:cc-spawn-biomass-am1}). 
 
-AM2 estimates the median spawning biomass in 2017 ($\mli{SSB}_{2017}$) at 30,474 t and 55\% of $\mli{SB}_0$. 
-AM1 estimates the median spawning biomass in 2017 ($\mli{SSB}_{2017}$) at 49,620 t and 80\% of $\mli{SB}_0$.
-Based on a comparison of median estimates, both AM2 and AM1 models estimate $\mli{SSB}_{2017}$ to be above the LRP of $0.30\cdot\mli{SB}_0$ by greater than 50\% probability (Figure \ref{figCurrentSSB}).
-The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 estimates of $\mli{SSB}_{2017}$ and stock status relative to $\mli{SB}_0$ are lower than the AM1 estimates, due largely to differences in model estimates of $q_2$ (Table \ref{tab:q-parameters}).
+AM2 estimates the median spawning biomass in 2017 ($\mli{SB}_{2017}$) at 30,474 t and 55\% of $\mli{SB}_0$. 
+AM1 estimates the median spawning biomass in 2017 ($\mli{SB}_{2017}$) at 49,620 t and 80\% of $\mli{SB}_0$.
+Based on a comparison of median estimates, both AM2 and AM1 models estimate $\mli{SB}_{2017}$ to be above the LRP of $0.30\cdot\mli{SB}_0$ by greater than 95\% probability (Figure \ref{figCurrentSSB}).
+The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 estimates of $\mli{SB}_{2017}$ and stock status relative to $\mli{SB}_0$ are lower than the AM1 estimates, due largely to differences in model estimates of $q_2$ (Table \ref{tab:q-parameters}).
 
 Figure \ref{figBevertonHolt} shows average-to-below-average number of age-2 recruits in 2017 with 5-year old fish comprising the highest estimated proportion of fish, arising from the 2012 cohort (Figure \ref{fig:cc-ageest-gear2}).
 There is no apparent recruitment entering the spawning population in 2017.
 Model estimates of current natural mortality are highly uncertain in the recent-most years. Figure \ref{figStoryboardAM2CC} and \ref{figStoryboardAM2CC} indicate a declining trend in estimated natural mortality since 2008.
 
-The projected pre-fishery spawing biomass in 2018 is 30,078 t (AM2) or 47,900 t (AM1), consisting of XX\% (median) age-3 fish and XX\% (median) age-4 and older fish (Table \ref{tab:cc-ref-points} and XX).  
+The projected pre-fishery spawing biomass in 2018 is 30,078 t (AM2) or 47,900 t (AM1), similar to $\mli{SB}_{2017}$ levels, consisting of XX\% (median) age-3 fish and XX\% (median) age-4 and older fish (Table \ref{tab:cc-ref-points} and XX).  
 %JC: edits completed
 
 \textbf{Strait of Georgia}
 
-%1- trend in estimated SSB
-%2- depletion levels
-%3- stock status relative to LRP
-%4- projected biomass in 2018
+The survey index increased from 2013 - 2016 and declined from 2016 to 2017 (Figure \ref{figStoryboardAM2SOG} and \ref{figStoryboardAM1SOG}).
+AM2 and AM1 base case assessments estimate an increasing trend in spawning stock biomass since 2010 (Figure \ref{figStoryboardAM2SOG} and \ref{figStoryboardAM1SOG} and Table \ref{tab:sog-spawn-biomass-am2} and \ref{tab:sog-spawn-biomass-am1}). 
 
-The model fits the recent spawn survey index and age composition data (Figure \ref{figStoryboardAM2SoG}) by estimating both relatively large recent recruitments (2010 particularly) and improved survival of through natural mortality of all cohorts (Figure \ref{figStoryboardAM2SoG}, Table XX).
-The model fits recent increasing trends in spawn survey index (Appendix \ref{chap:input}) and estimates recent spawning stock biomass trajectory that has been increasing since 2010 (Figure \ref{figSpawnIndex}).
-The current spawning stock biomass and depletion levels are 186 (116, 289) kt and 1.31 (0.84, 1.96) respectively (Table XX).
+AM2 estimates the median spawning biomass in 2017 ($\mli{SB}_{2017}$) at 114,626 t and 81\% of $\mli{SB}_0$. 
+AM1 estimates the median spawning biomass in 2017 ($\mli{SB}_{2017}$) at 175,960 t and 108\% of $\mli{SB}_0$.
+Based on a comparison of median estimates, both AM2 and AM1 models estimate $\mli{SB}_{2017}$ to be above the LRP of $0.30\cdot\mli{SB}_0$ by greater than 95\% probability (Figure \ref{figCurrentSSB}).
+The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 estimates of $\mli{SB}_{2017}$ and stock status relative to $\mli{SB}_0$ are lower than the AM1 estimates, due largely to differences in model estimates of $q_2$ (Table \ref{tab:q-parameters}).
+
+Figure \ref{figBevertonHolt} shows above-average number of age-2 recruits in 2017 with 3 and 4-year old fish comprising the highest estimated proportion of fish, which is consistent with the previous 5 years (Figure \ref{fig:sog-ageest-gear2}).
+Although model estimates of current natural mortality are highly uncertain, there is an decreasing trend in the median estimates of natural mortality since 2007 (Figure \ref{figStoryboardAM2SOG} and \ref{figStoryboardAM1SOG}).
+
+The projected pre-fishery spawing biomass in 2018 is 106,415 t (AM2) or 152,700 t (AM1), declining from 2017, consisting of XX\% (median) age-3 fish and XX\% (median) age-4 and older fish (Table \ref{tab:sog-ref-points} and XX).  
+%JC: edits completed
 
 \textbf{West Coast of Vancouver Island}
 
@@ -530,10 +534,20 @@ The current spawning stock biomass and depletion levels are 186 (116, 289) kt an
 %3- stock status relative to LRP
 %4- projected biomass in 2018
 
-To fit the recent age composition and survey data, the model estimates a slow upward trajectory for the stock.
-The model fits the most recent spawn survey index (Appendix \ref{chap:input}) and explains the combination of the survey index and the proportions at age data that are dominated by 3 year old fish) as a large recruitment (Figure \ref{figStoryboardAM2WCVI}).
-Natural mortality is very uncertain with an apparent decline in the median estimate but a range of trajectories that include increasing and stable (Figure \ref{figStoryboardAM2WCVI}).
-Driven by the estimates recent recruitments and lower natural mortality, the assessment estimates 2014 spawning stock biomass and depletion levels of 30 (18,52) kt and 0.52 (0.31, 0.84) respectively (Table XX).
+Since 2005 the WCVI stock has been in a prolonged low productivity low biomass state, increasing in 2016 and then declining in 2017.
+At these low biomass levels, the WCVI stock is characterized by seemingly abrupt differences in year-to-year survey biomass. 
+AM2 and AM1 base case assessments estimate a decline in spawning stock biomass from 2016 to 2017 (Table \ref{tab:wcvi-spawn-biomass-am2} and \ref{tab:wcvi-spawn-biomass-am1}).
+AM2 estimates the median spawning biomass in 2017 ($\mli{SB}_{2017}$) at 17,742 t and 37\% of $\mli{SB}_0$. 
+AM1 estimates the median spawning biomass in 2017 ($\mli{SB}_{2017}$) at 32,810 t and 56\% of $\mli{SB}_0$.
+Based on a comparison of median estimates, both AM2 and AM1 models estimate $\mli{SB}_{2017}$ to be above the LRP of $0.30\cdot\mli{SB}_0$, by greater than 50\% probability but less than 95\% probability (Figure \ref{figCurrentSSB}).
+The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 estimates of $\mli{SB}_{2017}$ and stock status relative to $\mli{SB}_0$ are lower than the AM1 estimates, due largely to differences in model estimates of $q_2$ (Table \ref{tab:q-parameters}).
+
+There is no apparent recruitment entering the spawning population in 2017: 
+Figure \ref{figBevertonHolt} shows the number of age-2 recruits is below-average and Figure \ref{fig:wcvi-ageest-gear2} shows a higher proportion of 4-year olds relative to ages 2 and 3. 
+Although model estimates of current natural mortality remain highly uncertain, there is an increasing trend in the median estimates of natural mortality since 2014 (Figure \ref{figStoryboardAM2WCVI} and \ref{figStoryboardAM2WCVI}).
+
+The projected pre-fishery spawing biomass in 2018 is 18,640 t (AM2) or 33,530 t (AM1), similar to $\mli{SB}_{2017}$ levels, consisting of XX\% (median) age-3 fish and XX\% (median) age-4 and older fish (Table \ref{tab:wcvi-ref-points} and XX).  
+%JC: edits completed
 
 \subsubsection{Recruitment}
 
@@ -557,7 +571,7 @@ The production analysis was updated for the major Pacific Herring stocks with th
 Figures \ref{figProduction\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figProduction\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}} show \Sexpr{PasteNicely(mNames)} production analyses for the \Sexpr{length(allRegionNames$major)} major SARs: \Sexpr{PasteNicely(allRegionNames$major)}, respectively.
 The updated production analysis was compared to results presented in \citet{kronlund2017} and the key results are the same and provide continued support to the recommendations of \citet{kronlund2017}.
 Median posterior distributions of the estimated spawning biomass in \Sexpr{assess.yr} for each major stock, and juxtaposition of the estimated LRP are presented in Figure \ref{figCurrentSSB}.
-The following bullets report estimated $\mli{SSB}_{2017}$ relative to the LRP ($0.30\cdot\mli{SB}_0$):
+The following bullets report estimated $\mli{SB}_{2017}$ relative to the LRP ($0.30\cdot\mli{SB}_0$):
 
 \begin{resdoclist}
 \item HG: Spawning biomass production and production rate are negative (AM1 and AM2) and the estimated spawning biomass in 2017 is below the LRP of $0.30\cdot\mli{SB}_0$ (AM1 and AM2)
