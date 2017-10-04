@@ -472,46 +472,27 @@ The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 
 
 There is no apparent recruitment entering the spawning population in 2017: 
 Figure \ref{figBevertonHolt} shows the number of age-2 recruits is near the origin of B-H sotck recruit curve (SH verify terminology) and Figure \ref{fig:hg-ageest-gear2} shows a higher proportion of 3-year olds relative to age-2s. 
-Although model estimates of current natural mortality remain highly uncertain, there is an increasing trend in the median estimates of natural mortality since 2012 (Figure \ref{figStoryboardAM2HG}).
+Although model estimates of current natural mortality remain highly uncertain, there is an increasing trend in the median estimates of natural mortality since 2012 (Figure \ref{figStoryboardAM2HG} and \ref{figStoryboardAM2HG}).
 
 The projected pre-fishery spawing biomass in 2018 is 3,270 t (AM2) or 6,090 t (AM1), consisting of XX\% (median) age-3 fish and XX\% (median) age-4 and older fish (Table \ref{tab:hg-ref-points} and XX).  
 %JC: edits completed
 
 \textbf{Prince Rupert District}
 
-%1- trend in estimated SSB
-%2- depletion levels
-%3- stock status relative to LRP
-%4- projected biomass in 2018
-
 Since the mid-1990s, the PRD stock is characterized by two periods of consistent and stable biomass: 
 1996-2003 and 2006-2017 (Figure \ref{figStoryboardAM2PRD} and \ref{figStoryboardAM1PRD} and Table \ref{tab:prd-spawn-biomass-am2} and \ref{tab:prd-spawn-biomass-am1}). 
 AM2 estimates the median spawning biomass in 2017 ($\mli{SSB}_{2017}$) at 21,738 t and 34\% of $\mli{SB}_0$. 
 AM1 estimates the median spawning biomass in 2017 ($\mli{SSB}_{2017}$) at 22,820 t and 36\% of $\mli{SB}_0$.
-Based on a comparison of median estimates, both AM2 and AM1 models estimate $\mli{SSB}_{2017}$ to be above the LRP of $0.30\cdot\mli{SB}_0$ (Figure \ref{figCurrentSSB}).
+Based on a comparison of median estimates, both AM2 and AM1 models estimate $\mli{SSB}_{2017}$ to be above the LRP of $0.30\cdot\mli{SB}_0$ by greater than 50\% probability (Figure \ref{figCurrentSSB}).
 Numeric estimates of spawning biomass and stock status are very similar between AM2 and AM1, due to similarities in model estimates of $q_1$ and $q_2$ (Table \ref{tab:q-parameters}).
 
-%JC HERE
+Both AM2 and AM1 estimate a large recruitment of age 2 fish to the population in 2014, relative to the last 10 years, owing largely to the age composition information showing a high proportion of samples consisting of this age class. 
+Figure \ref{figBevertonHolt} shows the number of age-2 recruits in 2017 as near average, just below the B-H stock recruit curve.
+Figure \ref{fig:prd-ageest-gear2} shows a higher proportion of 4 and 5-year old fish relative to ages 2 and 3.
+Although model estimates of current natural mortality remain highly uncertain, there is an decreasing trend in the median estimates of natural mortality since 2006 (Figure \ref{figStoryboardAM2PRD} and \ref{figStoryboardAM1PRD}).
 
-Both AM1 and AM2 estimate a large recruitment of age 2 fish to the population in 2014, relative to the last 10 years, owing largely to the age composition information showing a high proportion of samples consisting of this age class. 
-
-Figure \ref{figBevertonHolt} shows the number of age-2 recruits is near the origin of B-H sotck recruit curve (SH verify terminology) and Figure \ref{fig:hg-ageest-gear2} shows a higher proportion of 3-year olds relative to age-2s. 
-Although model estimates of current natural mortality remain highly uncertain, there is an increasing trend in the median estimates of natural mortality since 2012 (Figure \ref{figStoryboardAM2HG}).
-
-
-
-Both AM2 and AM1 predict a continued stable trend in spawning biomass, with forecast biomass in 2018 similar to 2017 levels (Table 4). Similarities in biomass estimates from both models is due to AM1 estimating $q_2=0.93$ (Table A.2). For PRD (AM1), there is information in the data to support a $q_2$ value that differs from the prior of ~0.5.
-
-
-Both AM1 and AM2 predict a continued stable trend in spawning biomass, with projected pre-fishery spawning biomass in 2018 similar to 2017 levels (Table \ref{tab:prd-parameters-posts}).
-
-
-The base case assessment estimates relatively small declines in spawning stock biomass in 2014 (Figure \ref{figStoryboardAM2PRD}).
-The survey data indicate declines of approximately 35\% - however the model over-fits the most recent observation (Appendix XX).
-The model's historical reconstructions using the full set of age-composition data of the predicted survey biomass have not estimated the same, occasionally very large changes in the index: for example the decline from 2005 from 28 kt to 10 kt 2004 or from 12kt to 28kt between 2009 and 2010; so that the model's estimate of the survey variance is relatively high (at the MPD, $\sigma=0.46$).
-As it was in HG, the model estimates that the last large recruitment event was in 2012 and that there is no evidence for large 2013 or 2014 cohorts (Figure \ref{figStoryboardAM2PRD}, Table XX).
-Natural mortality is estimated to be highly uncertain, with trajectories that are a range of decreasing, stable, and increasing (Figure \ref{figStoryboardAM2PRD}).
-The base case estimates that current median (90\% credibility intervals) spawning stock biomass is 29 (16, 51) kt (Figure \ref{figStoryboardAM2PRD}, Table XX) and depletion levels in 2014 than in 2013 (Figure XX), estimated to be 0.46 (0.23, 84) (Table XX).
+Both AM2 and AM1 predict a continued stable trend in spawning biomass, with projected pre-fishery spawning biomass in 2018 similar to 2017 levels (Table \ref{tab:prd-ref-points}), consisting of XX\% (median) age-3 fish and XX\% (median) age-4 and older fish (Table XX).  
+%JC: edits completed
 
 \textbf{Central Coast}
 
