@@ -349,20 +349,38 @@ Further details and results for each of these sensitivity analyses are presented
 \subsubsection{Natural mortality}
 
 The base case for the assessment model assumes that the natural mortality $M$ is time varying where instantaneous natural mortality is assumed equal over all ages but varies over time \citep{fu2004}.
-The annual deviations in time varying M are estimated using a random walk process \citep{haist2006}.  
-For this sensitivity analysis we investigated the effects of estimating a single constant $M$ over ages and time. The main motivation for this sensitivity analysis was to further investigate the impact of using time-varying Natural mortality in the assessment model.  %....JC I remember you telling me about references of Alaska assessments using different constant M values???THink we should add it here?
-The constant natural mortality scenario was applied to all stocks and assessment model versions (\Sexpr{PasteNicely(mNames)}) and the results are shown in Figures \ref{fig:hg-index-surface-fit} to \ref{fig:wcvi-q-m}.
+Estimating annual deviations in time varying $M$ using a random walk process was introduced in 2006 \citep{haist2006}, and with the introduction of \emph{ISCAM} \citep{martell2011} a more parsimonious cubic spline approach was introduced which reduced the number of estimated $M$ parameters to 12, as opposed to estimating 60+ annual deviations.
 
-The model outcomes were influenced by the assumption on the estimation of $M$. 
+For this sensitivity analysis we investigated the effects of estimating a single constant $M$ over ages and time. 
+The main motivation for this sensitivity analysis was to further investigate the impact of using time-varying natural mortality in the assessment model given recent increasing trends in model estimates of $M$ for HG, CC, and WCVI.
+Incidentally, an alternative approach to estimating $M$ is implemented in the assessment of some Pacific Herring stocks in Alaska in which constant $M$ is estimated for pre-specified time blocks defined by changes in the Pacific Decadal Oscillation (PDO).
+We did not consider such a scenario here as undertaking an analysis to determine how to define time-blocks for estimating $M$ was outside of the scope of this assessment.
+
+The constant estimated natural mortality scenario was applied to all major stocks and both parameterizations of the assessment model (\Sexpr{PasteNicely(mNames)}) and compared with time varying $M$ model runs.
+Results are shown in Figures \ref{fig:hg-index-surface-fit} to \ref{fig:wcvi-q-m}.
+
+Model outcomes were influenced by the method used to estimate $M$. 
 The addition of time varying $M$ appears to improve assumed model and empirical fits to the spawn index for both \Sexpr{PasteNicely(mNames)} versions of the assessment model for all stocks (Figures \ref{fig:hg-index-surface-fit} to \ref{fig:wcvi-index-dive-fit}.
-For most stocks the resulting spawning biomass, recruitment deviations and number of age-2s  showed little difference between the models assuming constant $M$ over timevarying $M$ for both \Sexpr{PasteNicely(mNames)} (Figures \ref{fig:hg-biomass-m} to \ref{fig:wcvi-biomass-m}, \ref{fig:hg-recdevs-m} to \ref{fig:wcvi-recdevs-m}, and \ref{fig:hg-nage2-m} to \ref{fig:wcvi-nage2-m}, respectively).
-HG and WCVI stocks did show some trends for the constant $M$ models to overestimate these in some of the years.
-%may want to remove this last sentence as the evidance is sparse
-Recruitment deviations showed similar trends to the spawning biomass with HG and WCVI stocks showing the greatest variation between constant $M$ and timevarying $M$.
-The resulting trends in $q_t$ are similar between stocks with the greatest variations between constant and time varying $M$ models seen in AM1 $q_2$. 
-%Can not see the natural mortality plots yet...
+The biggest difference between estimating time varying $M$ and constant $M$ appears is observed in the recent 5-years of model fits to the spawn index.
+For example, for HG (\ref{fig:hg-index-dive-fit}), for both AM1 and AM2, the constant $M$ sensitivity runs show a significant lack of fit to declining spawn index from 2014 -- 2017.
+For CC, both AM1 and AM2, the constant $M$ sensitivity runs appear to overestimate the magnitude of increase in the survey data (\ref{fig:cc-index-dive-fit}).
+The lack of fit to the declining survey index also carries through to the estimation of spawning biomass, e.g., HG: Figure \ref{fig:hg-biomass-m}.
 
-There is support for inclusion of time varying $M$ as the base case for the assessment in this analysis as well as from the bridging analysis (Appendix \ref{chap:bridge}) based on the reduction in the magnitude of retrospective patterns and improved coherence between assumed and empirical fits to the spawn survey index. 
+When examining estimated spawning biomass between all four model runs (AM1- constant $M$, AM1- time varying $M$, AM2- constant $M$, AM2- time varying $M$), trends in spawning biomass over time were most similar within the AM1 and AM2 categories.
+That is, it does not appear that the method used to estimate $M$ is confounded with the choice of $q$ prior.
+See for example Figure \ref{fig:hg-biomass-m} and \ref{fig:wcvi-biomass-m}.
+
+For most stocks the resulting spawning biomass and recruitment deviations showed little difference between the models assuming constant $M$ over time varying $M$ for both \Sexpr{PasteNicely(mNames)} (Figures \ref{fig:hg-biomass-m} to \ref{fig:wcvi-biomass-m} and \ref{fig:hg-recdevs-m} to \ref{fig:wcvi-recdevs-m}, respectively).
+Recruitment deviations showed similar trends to the spawning biomass with HG and WCVI stocks showing the greatest variation between constant $M$ and time varying $M$ (and not between AM1 and AM2).
+The resulting trends in $q_t$ are similar between stocks with the greatest variations between constant and time varying $M$ models seen in AM1 $q_2$.
+For example, HG (Figure \ref{fig:hg-q-m}) and WCVI (Figure \ref{fig:wcvi-q-m})...
+%SH pls help with q-text here
+
+MCMC trace plots, autocorrelation plots, and pairs plots were very similar between constant $M$ and time varying $M$ model runs for PRD, CC, SOG and WCVI. 
+See time varying $M$, Figure \ref{fig:hg-traces} to \ref{fig:wcvi-pairs}; constant $M$ not shown.
+The exception was for HG where trace plots, pairs plots and autocorrelation plots showed signs of persisitent drift and autocorrelation (Figure X to X).
+
+There is support for continued inclusion of time varying $M$ as the base case for the assessment in this analysis, as well as from the Bridging Analysis (Appendix \ref{chap:bridge}) based on the reduction improved coherence between assumed and empirical fits to the spawn survey index and issues of autocorrelation between parameters and model convergence with constant $M$.
 
 \subsubsection{Variance parameters}
 
