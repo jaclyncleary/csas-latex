@@ -101,3 +101,94 @@ make.recr.mcmc.plot <- function(models,
     panel.letter(ind.letter)
   }
 }
+
+make.recr.retro.mpd.plot <- function(base.model,
+                                     models,
+                                     model.names = NULL,
+                                     ylim,
+                                     offset = 0.1,
+                                     ind.letter = NULL,
+                                     leg = NULL,
+                                     color.brew.class = "Paired",
+                                     ...
+                                     ){
+  ## Plot the recruitment for the mpd case of the models
+  ##
+  ## offset - the amount on the x-axis to offset each point and line for
+  ##  multiple models
+  ## append.base.txt - text to append to the name of the first model
+  ## show.bo.line - show the reference lines 0.2 and 0.4bo
+
+  par(mar = c(5.1, 5.1, 4.1, 3.1))
+
+  rt <- lapply(models,
+                function(x){
+                  x[[1]]$mpd$rt})
+
+  yrs <- lapply(models,
+                function(x){
+                  (x[[1]]$mpd$syr +2):x[[1]]$mpd$nyr})
+  xlim <- lapply(1:length(yrs),
+                 function(x){
+                   c(min(yrs[[x]]), max(yrs[[x]]))})
+  xlim <- do.call(rbind, xlim)
+  xlim <- c(min(xlim), max(xlim))
+
+  if(is.null(dev.list())){
+    ## If layout() is used outside this function,
+    ##  it calls plot.new and will mess up the figures
+    ##  if we call it again
+    plot.new()
+  }
+  plot.window(xlim = xlim,
+              ylim = ylim,
+              xlab = "",
+              ylab = "")
+
+  base.yrs <- (base.model$mpd$syr + 2):base.model$mpd$nyr
+  base.rt <- base.model$mpd$rt
+
+  plot(base.yrs,
+       base.rt,
+       col = 1,
+       lwd = 3,
+       las = 1,
+       lty = 1,
+       xlim = xlim,
+       ylim = ylim,
+       xlab = "",
+       ylab = "",
+       type = "l",
+       ...)
+  cols <- brewer.pal(length(model.names) - 1, color.brew.class)
+  lapply(1:length(yrs),
+         function(x){
+           lines(yrs[[x]],
+                 rt[[x]],
+                 xlab = "",
+                 ylab = "",
+                 col = cols[x],
+                 las = 1,
+                 lwd = 2,
+                 lty = 2,
+                 xlim = xlim,
+                 ylim = ylim,
+                 ...)})
+
+  mtext("Year", 1, line = 3)
+  mtext("Recruitment (millions)", 2, line = 3)
+
+  if(!is.null(model.names) & !is.null(leg)){
+    legend(leg,
+           model.names,
+           bg = "transparent",
+           col = c(1, cols),
+           lty = c(1, rep(2, length(model.names) - 1)),
+           lwd = 2)
+  }
+
+  if(!is.null(ind.letter)){
+    panel.letter(ind.letter)
+  }
+}
+

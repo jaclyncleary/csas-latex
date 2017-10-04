@@ -220,6 +220,7 @@ make.biomass.retro.mpd.plot <- function(base.model,
                                         show.bo.line = FALSE,
                                         ind.letter = NULL,
                                         leg = NULL,
+                                        color.brew.class = "Paired",
                                         ...
                                         ){
   ## Plot the biomass for the mpd case of the models
@@ -272,13 +273,14 @@ make.biomass.retro.mpd.plot <- function(base.model,
        ylab = "",
        type = "l",
        ...)
+  cols <- brewer.pal(length(model.names) - 1, color.brew.class)
   lapply(1:length(yrs),
          function(x){
            lines(yrs[[x]],
                  sbt[[x]],
                  xlab = "",
                  ylab = "",
-                 col = x + 1,
+                 col = cols[x],
                  las = 1,
                  lwd = 2,
                  lty = 2,
@@ -305,7 +307,7 @@ make.biomass.retro.mpd.plot <- function(base.model,
     legend(leg,
            model.names,
            bg = "transparent",
-           col = 1:length(models),
+           col = c(1, cols),
            lty = c(1, rep(2, length(model.names) - 1)),
            lwd = 2)
   }

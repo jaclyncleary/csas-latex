@@ -2086,6 +2086,181 @@ make.biomass.retro.mpd.plot(wcvi.am1,
 \end{figure}
 
 %%------------------------------------------------------------------------------
+%% AM2 retrospective recruitment plots
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg.am2.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
+leg.names <- c("Base",
+               "-1 yr",
+               "-2 yrs",
+               "-3 yrs",
+               "-4 yrs",
+               "-5 yrs",
+               "-6 yrs",
+               "-7 yrs",
+               "-8 yrs",
+               "-9 yrs",
+               "-10 yrs")
+make.recr.retro.mpd.plot(hg.b,
+                         base.retro.models[[1]],
+                         ylim = c(0, 2000),
+                         model.names = leg.names,
+                         leg = "topleft")
+@
+\end{center}
+\caption{Restrospective recruitment for the
+  Haida Gwaii AM2 model.}
+\label{fig:hg-retro-recr}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<prd.am2.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
+make.recr.retro.mpd.plot(pr.b,
+                         base.retro.models[[2]],
+                         ylim = c(0, 2000),
+                         model.names = leg.names,
+                         leg = "topright")
+@
+\end{center}
+\caption{Restrospective recruitment for the
+  Prince Rupert District AM2 model.}
+\label{fig:prd-retro-recr}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<cc.am2.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
+make.recr.retro.mpd.plot(cc.b,
+                         base.retro.models[[3]],
+                         ylim = c(0, 2000),
+                         model.names = leg.names,
+                         leg = "topleft")
+@
+\end{center}
+\caption{Restrospective recruitment for the
+  Central Coast AM2 model.}
+\label{fig:cc-retro-recr}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<sog.am2.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
+make.recr.retro.mpd.plot(sog.b,
+                         base.retro.models[[4]],
+                         ylim = c(0, 6000),
+                         model.names = leg.names,
+                         leg = "topleft")
+@
+\end{center}
+\caption{Restrospective recruitment for the
+  Strait of Georgia AM2 model.}
+\label{fig:sog-retro-recr}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.am2.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
+make.recr.retro.mpd.plot(wcvi.b,
+                         base.retro.models[[5]],
+                         ylim = c(0, 2000),
+                         model.names = leg.names,
+                         leg = "topright")
+@
+\end{center}
+\caption{Restrospective recruitment for the
+  WCVI AM2 model.}
+\label{fig:wcvi-retro-recr}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% AM1 retrospective recruitment plots
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg.am1.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
+make.recr.retro.mpd.plot(hg.am1,
+                         am1.retro.models[[1]],
+                         ylim = c(0, 2000),
+                         model.names = leg.names,
+                         leg = "topright")
+@
+\end{center}
+\caption{Restrospective recruitment for the
+  Haida Gwaii AM1 model.}
+\label{fig:hg-am1-retro-recr}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<prd.am1.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
+make.recr.retro.mpd.plot(pr.am1,
+                         am1.retro.models[[2]],
+                         ylim = c(0, 2000),
+                         model.names = leg.names,
+                         leg = "topright")
+@
+\end{center}
+\caption{Restrospective recruitment for the
+  Prince Rupert District AM1 model.}
+\label{fig:prd-am1-retro-recr}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<cc.am1.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
+make.recr.retro.mpd.plot(cc.am1,
+                         am1.retro.models[[3]],
+                         ylim = c(0, 2000),
+                         model.names = leg.names,
+                         leg = "topleft")
+@
+\end{center}
+\caption{Restrospective recruitment for the
+  Central Coast AM1 model.}
+\label{fig:cc-am1-retro-recr}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<sog.am1.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
+make.recr.retro.mpd.plot(sog.am1,
+                         am1.retro.models[[4]],
+                         ylim = c(0, 6000),
+                         model.names = leg.names,
+                         leg = "topleft")
+@
+\end{center}
+\caption{Restrospective recruitment for the
+  Strait of Georgia AM1 model.}
+\label{fig:sog-am1-retro-recr}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.am1.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
+make.recr.retro.mpd.plot(wcvi.am1,
+                         am1.retro.models[[5]],
+                         ylim = c(0, 2000),
+                         model.names = leg.names,
+                         leg = "topright")
+@
+\end{center}
+\caption{Restrospective recruitment for the
+  WCVI AM1 model.}
+\label{fig:wcvi-am1-retro-recr}
+\end{figure}
+
+%%------------------------------------------------------------------------------
 %% Sensitivity to M MCMC diagnostic plots
 %%------------------------------------------------------------------------------
 %% \begin{figure}[H]
