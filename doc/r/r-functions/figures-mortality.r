@@ -37,7 +37,6 @@ make.natural.mort.mcmc.plot <- function(models,
 
   lapply(1:length(yrs),
          function(x){
-           browser()
            draw.envelope(yrs[[x]],
                          m.quants[[x]],
                          xlab = "",
