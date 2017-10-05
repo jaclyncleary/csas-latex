@@ -387,8 +387,14 @@ There is support for continued inclusion of time varying $M$ as the base case fo
 The key variance parameter in the errors-in-variables approach is the inverse of the total variance $\varphi^-{2}$ (i.e., total precision, varphi). 
 The total variance is partitioned into observation and process error components by the model parameter rho $\rho$, which is the proportion of the total variance that is due to observation error \citep{punt1993, deriso2007}.
 
-In ISCAM, standard deviations in process error (tau, $\tau$) and observation error (sigma, $\sigma$) are related and modelled using the following equations for kappa $\kappa$ and rho $\rho$:
-%MG insert equations from Bridging Analysis (see header Steps 7 and 8)
+In ISCAM, standard deviations in process error (tau, $\tau$) and observation error (sigma, $\sigma$) are related and modelled using the following equations for kappa $\kappa$
+\begin{equation}
+\kappa = \left( \frac{1}{\sqrt{(\sigma^2 + \tau^2)}} \right)^2
+\end{equation}
+and rho $\rho$
+\begin{equation}
+\rho = \sigma^2 \left( \frac{1}{\sqrt{(\sigma^2 + \tau^2)}} \right)^2 \, .
+\end{equation}
 The base case initial values for $\kappa$ and $\rho$ were set equal to MPD estimated values from the 2016 assessment, which resulted in an observation error term ($\sigma=0.58$) and a process error term ($\tau=0.69$).  
 We tested model sensitivity to these initial values $\vartheta^2$ and $\rho$ by varying them, while estimating all leading parameters.
 
