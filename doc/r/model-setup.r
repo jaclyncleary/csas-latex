@@ -437,13 +437,13 @@ load.models.into.parent.env <- function(){
   sens.models.8 <<- lapply(sens.model.dir.name.8,
                            function(x){
                              load.models(model.dir, x)})
-  base.retro.models <<- lapply(retro.names.am1,
+  base.retro.models <<- lapply(retro.names.am2,
                                function(x){
                                  lapply(x,
                                         function(y){
                                           tmp <- load.models(retro.dir, y)
                                         })})
-  am1.retro.models <<- lapply(retro.names.am2,
+  am1.retro.models <<- lapply(retro.names.am1,
                                function(x){
                                  lapply(x,
                                         function(y){
