@@ -166,9 +166,10 @@ In PRD, numeric estimates of spawning biomass (spawn index values) neither incre
 
 INCOMPLETE SECTION
 
-Observed proportions-at-age from Gear 2 biological samples (roe seine, seine test, SOK, where available) by stock area are summarized in Figure \ref{figProportionAge}.
+Estimated proportions-at-age from Gear 2 biological samples (roe seine, seine test, SOK, where available) by stock area are summarized in Figure \ref{figProportionAge}.
 %Trends in proportion-at-age by Gear 1 and Gear 3 are included in Appendix XX.
 Adjustments made in analytical procedures included weighting Area 8 biological samples by their average relative contribution over the past 20 years (7\%), due to concerns that data acquired and used for the Central Coast area resulted from an uncommonly high number of samples (6 of 13) that were collected from Statistical Area 8 (which is historically an unfished area with consistently smaller (age 2) fish), Area 8; and, removing WCVI Statistical Area 24 samples, because it was determined that they were not representative.
+
 
 \subsubsection{Assumed biological parameters}\label{secAssumedBiolPars}
 
@@ -442,7 +443,7 @@ These results confirm that changing maturity to equal selectivity doesn't make t
 
 \subsubsection{Base case models}
 
-%INCOMPLETE SECTION %BRIEF DESCRIPTION, JUSTIFICATION FOR BASE CASE MODEL RUNS (AM2 AND AM1) AND WHY NO CHANGES BASED ON SENSITIIVTY RUNS
+%BRIEF DESCRIPTION, JUSTIFICATION FOR BASE CASE MODEL RUNS (AM2 AND AM1) AND WHY NO CHANGES BASED ON SENSITIIVTY RUNS
 
 The Base Case models for this years \Sexpr{fish.name} assessment were chosen based on the results of the Bridging Analysis (Appendix \ref{chap:bridge}) and the Sensivity Analysis above. 
 Last years assessment used two versions of the base stock assessment model that differ in the treatment of spawn survey catchability parameters ($q_1$ and $q_2$) for the surface survey period (\Sexpr{qYrs$q1}) and dive survey period (\Sexpr{qYrs$q2}), respectively.  
@@ -480,7 +481,6 @@ Marginal posterior distributions for estimated model parameters were constructed
 For each minor assessment area, a systematic sample of 1,000 points were taken from a chain of length 5,000,000, intended to represent a random sample from the joint posterior distribution.
 Prior and posterior probability distributions of estimated parameters are shown in Figures 31 to 35.
 The median, 2.5th percentile and 97.5th percentile posterior parameter estimates, and MPDs are given in Tables 3 to 12. 
-Sensitivity analyses indicated that the choice of mean a posterior estimates of catchability 
 
 %\begin{itemize}
  % \item $q$
