@@ -2364,7 +2364,7 @@ make.recr.retro.mpd.plot(wcvi.am1,
    mortallity. Parameters $q_k$ represent gears where: $k=1$ is the surface
    survey and $k=2$ is the dive survey. The dotted red lines are the MPD
   estimates.}
-\label{fig:hg-constm-priors}
+\label{fig:hg-constm-priors-am1}
  \end{figure}
 
  \begin{figure}[H]
@@ -2381,7 +2381,7 @@ make.recr.retro.mpd.plot(wcvi.am1,
    the dive survey. Parameters $\hat{a}_k$ (selectivity-at-age-50\%), and
    $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
    follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
- \label{fig:hg-constm-traces}
+ \label{fig:hg-constm-traces-am1}
  \end{figure}
 
  \begin{figure}[H]
@@ -2393,7 +2393,7 @@ make.recr.retro.mpd.plot(wcvi.am1,
  \caption{Natural Mortality Sensitivity Case: Pairs plots for MCMC output of estimated parameters in for the Haida
    Gwaii AM1 model with constant natural mortality.
    See Figure~\ref{fig:hg-traces} for parameter descriptions.}
- \label{fig:hg-constm-pairs}
+ \label{fig:hg-constm-pairs-am1}
  \end{figure}
 
 %% %%------------------------------------------------------------------------------
@@ -2409,7 +2409,7 @@ make.recr.retro.mpd.plot(wcvi.am1,
    mortallity. Parameters $q_k$ represent gears where: $k=1$ is the surface
    survey and $k=2$ is the dive survey. The dotted red lines are the MPD
    estimates.}
- \label{fig:hg-tvm-priors}
+ \label{fig:hg-tvm-priors-am1}
  \end{figure}
 
  \begin{figure}[H]
@@ -2426,7 +2426,7 @@ make.recr.retro.mpd.plot(wcvi.am1,
    the dive survey. Parameters $\hat{a}_k$ (selectivity-at-age-50\%), and
    $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
    follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
-\label{fig:hg-tvm-traces}
+\label{fig:hg-tvm-traces-am1}
  \end{figure}
 
  \begin{figure}[H]
@@ -2438,7 +2438,7 @@ make.recr.retro.mpd.plot(wcvi.am1,
  \caption{Natural Mortality Sensitivity Case: Pairs plots for MCMC output of estimated parameters in for the Haida
    Gwaii AM1 model with time-varying natural mortality.
    See Figure~\ref{fig:hg-traces} for parameter descriptions.}
- \label{fig:hg-tvm-pairs}
+ \label{fig:hg-tvm-pairs-am1}
  \end{figure}
 
 %% %%------------------------------------------------------------------------------
