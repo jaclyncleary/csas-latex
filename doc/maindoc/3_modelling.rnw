@@ -372,9 +372,8 @@ See for example Figure \ref{fig:hg-biomass-m} and \ref{fig:wcvi-biomass-m}.
 
 For most stocks the resulting spawning biomass and recruitment deviations showed little difference between the models assuming constant $M$ over time varying $M$ for both \Sexpr{PasteNicely(mNames)} (Figures \ref{fig:hg-biomass-m} to \ref{fig:wcvi-biomass-m} and \ref{fig:hg-recdevs-m} to \ref{fig:wcvi-recdevs-m}, respectively).
 Recruitment deviations showed similar trends to the spawning biomass with HG and WCVI stocks showing the greatest variation between constant $M$ and time varying $M$ (and not between AM1 and AM2).
-The resulting trends in $q_t$ are similar between stocks with the greatest variations between constant and time varying $M$ models seen in AM1 $q_2$.
-For example, HG (Figure \ref{fig:hg-q-m}) and WCVI (Figure \ref{fig:wcvi-q-m})...
-%SH pls help with q-text here
+The resulting trends in $q_t$ are similar between stocks with the greatest variations between constant and time varying $M$ models seen in the $q_2$ estimates for AM1 and AM2.
+For example, HG (Figure \ref{fig:hg-q-m}) and WCVI (Figure \ref{fig:wcvi-q-m}) time-varyinig and constant $M$ AM2 estimates of $q_2$ are predicted to be higher than those predicted by the AM1 models.
 
 MCMC trace plots, autocorrelation plots, and pairs plots were very similar between constant $M$ and time varying $M$ model runs for PRD, CC, SOG and WCVI. 
 See time varying $M$, Figure \ref{fig:hg-traces} to \ref{fig:wcvi-pairs}; constant $M$ not shown.
