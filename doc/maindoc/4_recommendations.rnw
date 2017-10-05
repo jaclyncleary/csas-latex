@@ -4,11 +4,10 @@
 
 \subsection{PROJECTED BIOMASS IN \Sexpr{assess.yr+1}}
 
-Projected pre-harvest spawning biomass estimates (i.e., prior to any harvest in \Sexpr{max(yrRange)+1}), and the relative contribution of fish of age-3 and ages 4-10 are presented in Table XX.
-Advice to managers for \Sexpr{max(yrRange)+1} for each stock area is presented in the stock-specific sections below, as two sets of decision tables, one for each assessment model (\Sexpr{PasteNicely(mNames)}).
+Projected pre-harvest spawning biomass estimates (i.e., prior to any harvest in \Sexpr{max(yrRange)+1}), and the relative contribution of fish aged 3 and aged 4-10 are presented in Tables \ref{tab:hg-ref-points} to \ref{tab:wcvi-ref-points}.
+Advice to managers for \Sexpr{max(yrRange)+1} for each stock area is presented in the stock-specific sections below, as two sets of decision tables, one for each assessment model (\Sexpr{PasteNicely(mNames)}; Tables \ref{tab:hg-am2-decision} to \ref{tab:wcvi-am1-decision}).
 Tables from AM2 provide probabilities of the projected post-harvest spawning biomass in \Sexpr{max(yrRange)+1} ($\mli{SB}_{\Sexpr{max(yrRange)+1}}$) falling below the historically-used stock-specific fixed cut-off levels (calculated as $0.25\mli{SB}_0$ from the 1996 assessment \citep{schweigert1997}, and of the harvest rate exceeding the 20\% and 10\% target rates over a range of constant catch levels.
 Tables from AM1 provide probabilities of the projected post-harvest spawning biomass in \Sexpr{max(yrRange)+1} ($\mli{SB}_{\Sexpr{max(yrRange)+1}}$) falling below the currently-estimated $0.3\mli{SB}_0$ level, and of the harvest rate exceeding the 20\% and 10\% target harvest rates over a range of constant \Sexpr{max(yrRange)+1} catch levels.
-
 
 \subsection{DECISION TABLES}\label{secDecisionTables}
 
