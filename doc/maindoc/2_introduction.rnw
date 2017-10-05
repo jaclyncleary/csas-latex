@@ -182,8 +182,9 @@ While the Framework defines the USR as the boundary between the Cautious and Hea
 The hybrid constant escapement/onstant harvest rate feature of the herring HCR was intended to maintain a minimum escapement level equal to the commercial fishery cut-off.
 In this case, the management procedure has treated the LRP as an operational control point (OCP) where management action is taken.
 In the design of the HCR, this ``ramp-down'' of the harvest rate is intended to avoid commercial fishery closures and encourage stock growth, however the reduction from $0.31\mli{SB}_0$ to $0.25\mli{SB}_0$ is so steep that there is a very limited range of estimated biomass where reduced harvest rates might arrest stock decline before closure of the commercial fisheries.
-The effect of this feature of the HCR is the ``on or of'' behaviour seen in the simulation results of Cox et al. (2015).%
+The effect of this feature of the HCR is the ``on or of'' behaviour seen in the simulation results of Cox et al. (2015),%
 \footnote{Cox, S.P., Benson, A.J., Cleary, J.S., and Taylor, N.G. 2015. Candidate limit reference points as a basis for choosing among alternate harvest control rules for Pacific Herring (Clupea pallasii) in British Columbia. CSAS Working Paper 2013PEL01 (Accepted WP, final revisions stage).}
+and \citet{herring2015}.
 The outcome of which is that for 3 of the stocks, spawning biomass fell below this level far more often than predicted (Section \ref{secMgmtMajorStocks}). 
 
 A comprehensive review of approaches to establishing both limit and target reference points for herring stocks worldwide for clupeids is included in \citet[][Appendix F]{kronlund2017}.

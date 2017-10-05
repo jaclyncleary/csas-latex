@@ -174,7 +174,7 @@ Adjustments made in analytical procedures included weighting Area 8 biological s
 
 INCOMPLETE SECTION (MATT)
 
-The model also requires length-at-age, weight-length, and weight-at-age relationshiops, which were done in previous analyses and are not included here (REFs?).
+The model also requires length-at-age, weight-length, and weight-at-age relationshiops, which were done in previous analyses and are not included here \citep{XX}.
 
 For the assessment, a fixed maturity schedule is used for all herring stocks (Figure/Table \ref{XX}).
 As described in Section \ref{secLifeHist}, indications from histological assessment of developing ovaries suggest that about 25\% of \Sexpr{fish.name} mature at age 2, and at least 90\% mature at age 3 (D. Hay, unpublished data).
@@ -322,7 +322,7 @@ These analytical steps (Bayesian methods) are the same as were applied annually 
 
 The Bayesian estimation procedure integrates over the full range of uncertainty producing a posterior distribution for each parameter estimated in the model.
 Then, these samples are used to construct marginal distributions for derived quantities (e.g., $\mli{SB}_0$).
-Priority areas of research identified during past CSAS meetings (2011--2016) are summarized in Appendix \ref{secFutureResearch}. 
+% Priority areas of research identified during past CSAS meetings (2011--2016) are summarized in Appendix \ref{secFutureResearch}. 
 %JC: edits completed
 
 \subsubsection{Prior probability distributions}
