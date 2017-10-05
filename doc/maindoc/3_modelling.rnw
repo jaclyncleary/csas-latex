@@ -426,18 +426,22 @@ All these increases and decreases are minor and will have little to no impacts o
 
 The base case maturity vector assumes 25\% of age-2 fish are mature, 90\% of age-3 fish are mature, and 100\% maturity for fish ages 4 and older. 
 From these assumptions the age of 50\% maturity is estimated to be approximately 2.3 years. 
-These base case values are fixed for all BC herring stocks at values indicated from histological assessment of developing ovaries \citep{hay1985, hay1999}.  
-In the recent analysis identifying limit reference points for BC \Sexpr{fish.name} stocks, \citet{kronlund2017} discuss the location of the maturity schedule in relation to estimation of $F_\text{MSY}$. 
-Specifically, the positioning of the maturity curve to the left of all the fishery selectivity curves contributed to high estimates of $F_\text{MSY}$ because when age at 50\% maturity is estimated to occur at a much younger age than 50\% selectivity, it essentially guarantees a large component of the population can spawn at least once before becoming vulnerable to any fishery. 
-This infers high sustainable harvest rates, and the estimates of $F_\text{MSY}$ reported in \citet{kronlund2017} and in \citet{herring2015} were among the highest produced for herring species worldwide.
+These base case values are fixed for all BC \Sexpr{fish.name} stocks at values indicated from histological assessment of developing ovaries \citep{hay1985, hay1999}.  
+In the recent analysis identifying limit reference points for BC \Sexpr{fish.name} stocks, \citet{kronlund2017} discuss the location of the maturity and fishery selectivity schedules in relation to estimation of $F_\text{MSY}$.
+Specifically, when the positioning of the maturity curve is to the left of the fishery selectivity curve(s) and thus age at 50\% maturity is estimated to occur at a much younger age than 50\% selectivity, the model interprets the portion of the population that is mature but not yet selected for by the gear as invulnerable to the fishery.
+
+\citet{kronlund2017} suspect this phenomena (the juxtaposition of the maturity and selectivity curves) is contributing to high estimates of $F_\text{MSY}$ coming from ISCAM.
+High $F_\text{MSY}$ values subsequently infer high sustainable harvest rates, and the estimates of $F_\text{MSY}$ reported in \citet{kronlund2017} and in \citet{herring2015} were among the highest produced for Herring species worldwide.
+
 The sensitivity analysis considered here involves setting the maturity at age vector equal to the selectivity of the seine roe fishery (gear 2) and then re-estimating equilibrium reference point $F_\text{MSY}$. 
 \citet{hay1985} identify that age specific maturation varies with latitude and that generally, the warmer the water temperature the earlier the maturation of herring should occur. 
 Thus different stocks of BC \Sexpr{fish.name} may have different maturity schedules as they are distributed throughout different latitudes. 
 In the absence of recent histological studies to provide new estimates of maturity at age, we tested the model sensitivity to the fixed base values by setting the maturity at age vector equal to the selectivity of the seine roe fishery (gear 2; Table \ref{tab:maturity}).
 The selectivity of the seine roe fishery was chosen because the fishery targets pre-spawning aggregations with seine gear that is non size-selective, providing age composition samples from a mature portion of the population.  
 
-The resulting estimates of the leading parameters showed minor differences between the fixed maturity vector model and the sensitivity case where the maturity at age is set to the selectivity at age (results not shown). 
-We further investigated the key MSY reference points, $\mli{SB}_0$ and $\mli{SB}_{2017}$ for the base case and the maturity schedule sensitivity case (Table \ref{tab:maturity}). % Is this the right table? It was hard-coded as 36, which seems wrong.
+%JC HERE 
+The resulting estimates of the leading parameters showed minor differences between the current fixed maturity vector model (base case) and the sensitivity case where the maturity at age is set to the selectivity at age (results not shown).
+We further investigated the key MSY reference points, $\mli{SB}_0$, and $\mli{SB}_{2017}$ for the base case and the maturity schedule sensitivity case (SoG: Tables tab:maturity-sens.am1 and tab:maturity-sens.am2).
 The ratio of ($\mli{SB}_{2017} / \mli{SB}_0$) were also very similar for all stocks and model variations (\Sexpr{PasteNicely(mNames)}). 
 
 These results confirm that changing maturity to equal selectivity doesn't make the $F_\text{MSY}$ estimates reliable in a management procedure, potentially because of their dependence on natural mortality as well, and the LRPs were not substantially different. 
