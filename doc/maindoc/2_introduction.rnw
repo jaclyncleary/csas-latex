@@ -222,7 +222,7 @@ Simulation testing of the consequences of the choice of LRP, USR, and TRP relati
 The management outcomes are related to measurable objectives of avoiding LRPs with high probability and maintaining stocks at TRP levels with the desired probability over a specified time-frame appropriate to life history and current understanding of stock dynamics.
 The DFO has committed to a management strategy evaluation process for \Sexpr{fish.name}, with engagement of managers and resource-users, focusing on evaluation of reference points and management procedures to fully align the \Sexpr{fish.name} management framework with the DFO PA Framework \citep{dfo09}.
 
-\subsection{ASSESSMENT HISTORY}
+\subsection{ASSESSMENT HISTORY}\label{secAssessHist}
 
 Annual stock assessments for the BC Pacific Herring major stocks have been conducted using a catch-age model since the mid-2000s \citep{haist2006}. 
 Since then, the design of the model has undergone re-structuring various model components, as often as every 2-3 years, to address issues identified during peer-review.

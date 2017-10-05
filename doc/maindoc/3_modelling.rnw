@@ -176,7 +176,7 @@ INCOMPLETE SECTION (MATT)
 
 The model also requires length-at-age, weight-length, and weight-at-age relationshiops, which were done in previous analyses and are not included here (REFs?).
 
-For the assessment, a fixed maturity schedule is used for all herring stocks (Figure/Table X).
+For the assessment, a fixed maturity schedule is used for all herring stocks (Figure/Table XX).
 As described in Section \ref{secLifeHist}, indications from histological assessment of developing ovaries suggest that about 25\% of \Sexpr{fish.name} mature at age 2, and at least 90\% mature at age 3 (D. Hay, unpublished data).
 
 \subsubsection{Data summaries for major SARs}
@@ -288,12 +288,12 @@ biological samples used to calculate mean weight-at-age and proportion-at-age da
 \subsection{STATISTICAL CATCH-AT-AGE MODEL}
 
 This assessment reports a base case of a catch-age model that is fitted to three sources of data: commercial catch, spawn survey biomass index, and proportions-at-age.
-Two alternate management procedures are also explored (Section XX).
+Two alternate management procedures are also explored (Section \ref{secAssessHist}).
 The assessment depends primarily upon the spawn survey biomass index (surface: \Sexpr{qYrs$q1}, dive: \Sexpr{qYrs$q2}) for information on the scale of the major herring stocks.
 Fishery and seine test fishery age-composition data (1951-2014) are combined for each of the three gear types, contributing to the assessment model's ability to resolve strong and weak cohorts, and to forecast recruitment. 
 
 The assessment uses Bayesian methods to incorporate prior information and integrate over parameter uncertainty to provide results that can be probabilistically interpreted.
-The exploration of uncertainty is not limited to parameter uncertainty as structural uncertainty is investigated through retrospective analyses (Section XX).
+The exploration of uncertainty is not limited to parameter uncertainty as structural uncertainty is investigated through retrospective analyses (Section \ref{secRetro}).
 %JC: edits completed
 
 \subsubsection{Changes from the 2016 assessment}
@@ -377,7 +377,7 @@ For example, HG (Figure \ref{fig:hg-q-m}) and WCVI (Figure \ref{fig:wcvi-q-m}) t
 
 MCMC trace plots, autocorrelation plots, and pairs plots were very similar between constant $M$ and time varying $M$ model runs for PRD, CC, SOG and WCVI. 
 See time varying $M$, Figure \ref{fig:hg-traces} to \ref{fig:wcvi-pairs}; constant $M$ not shown.
-The exception was for HG where trace plots, pairs plots and autocorrelation plots showed signs of persisitent drift and autocorrelation (Figure X to X).
+The exception was for HG where trace plots, pairs plots and autocorrelation plots showed signs of persisitent drift and autocorrelation (Figures XX to XX).
 
 There is support for continued inclusion of time varying $M$ as the base case for the assessment in this analysis, as well as from the Bridging Analysis (Appendix \ref{chap:bridge}) based on the reduction improved coherence between assumed and empirical fits to the spawn survey index and issues of autocorrelation between parameters and model convergence with constant $M$.
 
@@ -456,7 +456,7 @@ These analyses also found that the estimated model results were highly influence
 Given this observation and because we have no external information to inform the fixing of one of these
 parameters over the other, the base case estimating both parameters was chosen. 
 
-The parameterizations of the base case assessment model are shown in Table 1.
+The parameterizations of the base case assessment model are shown in Table \ref{tab:parameters}.
 
 
 \subsubsection{Model diagnostics}
@@ -517,7 +517,7 @@ Figure \ref{figBevertonHolt} shows the number of age-2 recruits per number of sp
 %Is there evidence of depensation? stock recruit data needs to be more disaggregated into spawn populations to ever really prove it... I didnt find many references to pacific herring examples of potential depensation.
 Although model estimates of current natural mortality remain highly uncertain, there is an increasing trend in the median estimates of natural mortality since 2012 (Figures \ref{figStoryboardAM2HG} \& \ref{figStoryboardAM1HG}).
 
-The projected pre-fishery spawing biomass in 2018 is 3,270 t (AM2) or 6,090 t (AM1), similar to $\mli{SB}_{2017}$ levels, consisting of XX\% (median) age-3 fish and XX\% (median) age-4 and older fish (Table \ref{tab:hg-ref-points} and XX).  
+The projected pre-fishery spawing biomass in 2018 is 3,270 t (AM2) or 6,090 t (AM1), similar to $\mli{SB}_{2017}$ levels, consisting of XX\% (median) age-3 fish and XX\% (median) age-4 and older fish (Tables \ref{tab:hg-ref-points} \& XX).  
 %JC: edits completed
 
 \textbf{Prince Rupert District}
@@ -642,7 +642,7 @@ The only way to develop a management procedure that is robust to the true range 
 Estimation bias is explored through retrospective analyses.
 %JC: edits completed
 
-\subsection{RETROSPECTIVE ANALYSES}
+\subsection{RETROSPECTIVE ANALYSES}\lable{secRetro}
 
 [placeholder]
 
