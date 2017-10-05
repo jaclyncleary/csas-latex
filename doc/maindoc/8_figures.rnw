@@ -2086,95 +2086,360 @@ make.biomass.retro.mpd.plot(wcvi.am1,
 \end{figure}
 
 %%------------------------------------------------------------------------------
+%% AM2 retrospective recruitment plots
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg.am2.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
+leg.names <- c("Base",
+               "-1 yr",
+               "-2 yrs",
+               "-3 yrs",
+               "-4 yrs",
+               "-5 yrs",
+               "-6 yrs",
+               "-7 yrs",
+               "-8 yrs",
+               "-9 yrs",
+               "-10 yrs")
+make.recr.retro.mpd.plot(hg.b,
+                         base.retro.models[[1]],
+                         ylim = c(0, 2000),
+                         model.names = leg.names,
+                         leg = "topleft")
+@
+\end{center}
+\caption{Restrospective recruitment for the
+  Haida Gwaii AM2 model.}
+\label{fig:hg-retro-recr}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<prd.am2.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
+make.recr.retro.mpd.plot(pr.b,
+                         base.retro.models[[2]],
+                         ylim = c(0, 2000),
+                         model.names = leg.names,
+                         leg = "topright")
+@
+\end{center}
+\caption{Restrospective recruitment for the
+  Prince Rupert District AM2 model.}
+\label{fig:prd-retro-recr}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<cc.am2.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
+make.recr.retro.mpd.plot(cc.b,
+                         base.retro.models[[3]],
+                         ylim = c(0, 2000),
+                         model.names = leg.names,
+                         leg = "topleft")
+@
+\end{center}
+\caption{Restrospective recruitment for the
+  Central Coast AM2 model.}
+\label{fig:cc-retro-recr}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<sog.am2.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
+make.recr.retro.mpd.plot(sog.b,
+                         base.retro.models[[4]],
+                         ylim = c(0, 6000),
+                         model.names = leg.names,
+                         leg = "topleft")
+@
+\end{center}
+\caption{Restrospective recruitment for the
+  Strait of Georgia AM2 model.}
+\label{fig:sog-retro-recr}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.am2.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
+make.recr.retro.mpd.plot(wcvi.b,
+                         base.retro.models[[5]],
+                         ylim = c(0, 2000),
+                         model.names = leg.names,
+                         leg = "topright")
+@
+\end{center}
+\caption{Restrospective recruitment for the
+  WCVI AM2 model.}
+\label{fig:wcvi-retro-recr}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+%% AM1 retrospective recruitment plots
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg.am1.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
+make.recr.retro.mpd.plot(hg.am1,
+                         am1.retro.models[[1]],
+                         ylim = c(0, 2000),
+                         model.names = leg.names,
+                         leg = "topright")
+@
+\end{center}
+\caption{Restrospective recruitment for the
+  Haida Gwaii AM1 model.}
+\label{fig:hg-am1-retro-recr}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<prd.am1.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
+make.recr.retro.mpd.plot(pr.am1,
+                         am1.retro.models[[2]],
+                         ylim = c(0, 2000),
+                         model.names = leg.names,
+                         leg = "topright")
+@
+\end{center}
+\caption{Restrospective recruitment for the
+  Prince Rupert District AM1 model.}
+\label{fig:prd-am1-retro-recr}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<cc.am1.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
+make.recr.retro.mpd.plot(cc.am1,
+                         am1.retro.models[[3]],
+                         ylim = c(0, 2000),
+                         model.names = leg.names,
+                         leg = "topleft")
+@
+\end{center}
+\caption{Restrospective recruitment for the
+  Central Coast AM1 model.}
+\label{fig:cc-am1-retro-recr}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<sog.am1.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
+make.recr.retro.mpd.plot(sog.am1,
+                         am1.retro.models[[4]],
+                         ylim = c(0, 6000),
+                         model.names = leg.names,
+                         leg = "topleft")
+@
+\end{center}
+\caption{Restrospective recruitment for the
+  Strait of Georgia AM1 model.}
+\label{fig:sog-am1-retro-recr}
+\end{figure}
+%%------------------------------------------------------------------------------
+
+\begin{figure}[H]
+\begin{center}
+<<wcvi.am1.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
+make.recr.retro.mpd.plot(wcvi.am1,
+                         am1.retro.models[[5]],
+                         ylim = c(0, 2000),
+                         model.names = leg.names,
+                         leg = "topright")
+@
+\end{center}
+\caption{Restrospective recruitment for the
+  WCVI AM1 model.}
+\label{fig:wcvi-am1-retro-recr}
+\end{figure}
+
+%%------------------------------------------------------------------------------
 %% Sensitivity to M MCMC diagnostic plots
 %%------------------------------------------------------------------------------
-%% \begin{figure}[H]
-%% \begin{center}
-%% <<hg.constm.priors>>=
-%% make.priors.posts.plot(hg.am2.constm, priors.only = FALSE)
-%% @
-%% \end{center}
-%% \caption{Prior probability distributions (lines) with comparative posterior
-%%   histograms (bars) used in the Haida Gwaii AM2 model with constant natural
-%%   mortallity. Parameters $q_k$ represent gears where: $k=1$ is the surface
-%%   survey and $k=2$ is the dive survey. The dotted red lines are the MPD
-%%   estimates.}
-%% \label{fig:hg-constm-priors}
-%% \end{figure}
+ \begin{figure}[H]
+ \begin{center}
+ <<hg.constm.priors.2>>=
+ make.priors.posts.plot(hg.am2.constm, priors.only = FALSE)
+ @
+ \end{center}
+ \caption{Natural Mortality Sensitivity Case: Prior probability distributions (lines) with comparative posterior
+   histograms (bars) used in the Haida Gwaii AM2 model with constant natural
+   mortallity. Parameters $q_k$ represent gears where: $k=1$ is the surface
+   survey and $k=2$ is the dive survey. The dotted red lines are the MPD
+  estimates.}
+\label{fig:hg-constm-priors}
+ \end{figure}
 
-%% \begin{figure}[H]
-%% \begin{center}
-%% <<hg.constm.traces, fig.height=8, fig.width=8>>=
-%% make.traces.plot(hg.am2.constm, axis.lab.freq = 200)
-%% @
-%% \end{center}
-%% \caption{Trace plots for MCMC output of estimated parameters for the Haida Gwaii
-%%   AM2 model with constant natural mortality. The MCMC run had chain length
-%%   \Sexpr{mcmc.length}, with
-%%   a sample taken at every \Sexpr{mcmc.samp.freq}th iteration.
-%%   The catchability parameter $q_1$ represents the surface survey and $q_2$
-%%   the dive survey. Parameters $\hat{a}_k$ (selectivity-at-age-50\%), and
-%%   $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
-%%   follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
-%% \label{fig:hg-constm-traces}
-%% \end{figure}
+ \begin{figure}[H]
+ \begin{center}
+ <<hg.constm.traces.2, fig.height=8, fig.width=8>>=
+ make.traces.plot(hg.am2.constm, axis.lab.freq = 200)
+ @
+ \end{center}
+ \caption{Natural Mortality Sensitivity Case: Trace plots for MCMC output of estimated parameters for the Haida Gwaii
+   AM2 model with constant natural mortality. The MCMC run had chain length
+   \Sexpr{mcmc.length}, with
+   a sample taken at every \Sexpr{mcmc.samp.freq}th iteration.
+   The catchability parameter $q_1$ represents the surface survey and $q_2$
+   the dive survey. Parameters $\hat{a}_k$ (selectivity-at-age-50\%), and
+   $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
+   follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
+ \label{fig:hg-constm-traces}
+ \end{figure}
 
-%% \begin{figure}[H]
-%% \begin{center}
-%% <<hg-constm-pairs, fig.height=8, fig.width=8>>=
-%% make.pairs.plot(hg.am2.constm)
-%% @
-%% \end{center}
-%% \caption{Pairs plots for MCMC output of estimated parameters in for the Haida
-%%   Gwaii AM2 model with constant natural mortality.
-%%   See Figure~\ref{fig:hg-traces} for parameter descriptions.}
-%% \label{fig:hg-constm-pairs}
-%% \end{figure}
+ \begin{figure}[H]
+ \begin{center}
+ <<hg-constm-pairs.2, fig.height=8, fig.width=8>>=
+ make.pairs.plot(hg.am2.constm)
+ @
+ \end{center}
+ \caption{Natural Mortality Sensitivity Case: Pairs plots for MCMC output of estimated parameters in for the Haida
+   Gwaii AM2 model with constant natural mortality.
+   See Figure~\ref{fig:hg-traces} for parameter descriptions.}
+ \label{fig:hg-constm-pairs.2}
+ \end{figure}
 
 %% %%------------------------------------------------------------------------------
 
-%% \begin{figure}[H]
-%% \begin{center}
-%% <<hg.tvm.priors>>=
-%% make.priors.posts.plot(hg.am2.tvm, priors.only = FALSE)
-%% @
-%% \end{center}
-%% \caption{Prior probability distributions (lines) with comparative posterior
-%%   histograms (bars) used in the Haida Gwaii AM2 model with time-varying natural
-%%   mortallity. Parameters $q_k$ represent gears where: $k=1$ is the surface
-%%   survey and $k=2$ is the dive survey. The dotted red lines are the MPD
-%%   estimates.}
-%% \label{fig:hg-tvm-priors}
-%% \end{figure}
+ \begin{figure}[H]
+ \begin{center}
+ <<hg.tvm.priors.2>>=
+ make.priors.posts.plot(hg.am2.tvm, priors.only = FALSE)
+ @
+ \end{center}
+ \caption{Natural Mortality Sensitivity Case: Prior probability distributions (lines) with comparative posterior
+   histograms (bars) used in the Haida Gwaii AM2 model with time-varying natural
+   mortallity. Parameters $q_k$ represent gears where: $k=1$ is the surface
+   survey and $k=2$ is the dive survey. The dotted red lines are the MPD
+   estimates.}
+ \label{fig:hg-tvm-priors}
+ \end{figure}
 
-%% \begin{figure}[H]
-%% \begin{center}
-%% <<hg.tvm.traces, fig.height=8, fig.width=8>>=
-%% make.traces.plot(hg.am2.tvm, axis.lab.freq = 200)
-%% @
-%% \end{center}
-%% \caption{Trace plots for MCMC output of estimated parameters for the Haida Gwaii
-%%   AM2 model with time-varying natural mortality. The MCMC run had chain length
-%%   \Sexpr{mcmc.length}, with
-%%   a sample taken at every \Sexpr{mcmc.samp.freq}th iteration.
-%%   The catchability parameter $q_1$ represents the surface survey and $q_2$
-%%   the dive survey. Parameters $\hat{a}_k$ (selectivity-at-age-50\%), and
-%%   $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
-%%   follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
-%% \label{fig:hg-tvm-traces}
-%% \end{figure}
+ \begin{figure}[H]
+ \begin{center}
+ <<hg.tvm.traces.2, fig.height=8, fig.width=8>>=
+ make.traces.plot(hg.am2.tvm, axis.lab.freq = 200)
+ @
+ \end{center}
+ \caption{Natural Mortality Sensitivity Case: Trace plots for MCMC output of estimated parameters for the Haida Gwaii
+   AM2 model with time-varying natural mortality. The MCMC run had chain length
+   \Sexpr{mcmc.length}, with
+   a sample taken at every \Sexpr{mcmc.samp.freq}th iteration.
+   The catchability parameter $q_1$ represents the surface survey and $q_2$
+   the dive survey. Parameters $\hat{a}_k$ (selectivity-at-age-50\%), and
+   $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
+   follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
+\label{fig:hg-tvm-traces}
+ \end{figure}
 
-%% \begin{figure}[H]
-%% \begin{center}
-%% <<hg-tvm-pairs, fig.height=8, fig.width=8>>=
-%% make.pairs.plot(hg.am2.tvm)
-%% @
-%% \end{center}
-%% \caption{Pairs plots for MCMC output of estimated parameters in for the Haida
-%%   Gwaii AM2 model with time-varying natural mortality.
-%%   See Figure~\ref{fig:hg-traces} for parameter descriptions.}
-%% \label{fig:hg-tvm-pairs}
-%% \end{figure}
+ \begin{figure}[H]
+ \begin{center}
+ <<hg-tvm-pairs.2, fig.height=8, fig.width=8>>=
+ make.pairs.plot(hg.am2.tvm)
+ @
+ \end{center}
+ \caption{Natural Mortality Sensitivity Case: Pairs plots for MCMC output of estimated parameters in for the Haida
+   Gwaii AM2 model with time-varying natural mortality.
+   See Figure~\ref{fig:hg-traces} for parameter descriptions.}
+ \label{fig:hg-tvm-pairs-am2}
+ \end{figure}
+ 
+  \begin{figure}[H]
+ \begin{center}
+ 
+ %%%%  AM1  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+ <<hg.constm.priors.1>>=
+ make.priors.posts.plot(hg.am1.constm, priors.only = FALSE)
+ @
+ \end{center}
+ \caption{Natural Mortality Sensitivity Case: Prior probability distributions (lines) with comparative posterior
+   histograms (bars) used in the Haida Gwaii AM1 model with constant natural
+   mortallity. Parameters $q_k$ represent gears where: $k=1$ is the surface
+   survey and $k=2$ is the dive survey. The dotted red lines are the MPD
+  estimates.}
+\label{fig:hg-constm-priors-am1}
+ \end{figure}
+
+ \begin{figure}[H]
+ \begin{center}
+ <<hg.constm.traces.1, fig.height=8, fig.width=8>>=
+ make.traces.plot(hg.am1.constm, axis.lab.freq = 200)
+ @
+ \end{center}
+ \caption{Natural Mortality Sensitivity Case: Trace plots for MCMC output of estimated parameters for the Haida Gwaii
+   AM1 model with constant natural mortality. The MCMC run had chain length
+   \Sexpr{mcmc.length}, with
+   a sample taken at every \Sexpr{mcmc.samp.freq}th iteration.
+   The catchability parameter $q_1$ represents the surface survey and $q_2$
+   the dive survey. Parameters $\hat{a}_k$ (selectivity-at-age-50\%), and
+   $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
+   follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
+ \label{fig:hg-constm-traces-am1}
+ \end{figure}
+
+ \begin{figure}[H]
+ \begin{center}
+ <<hg-constm-pairs.1, fig.height=8, fig.width=8>>=
+ make.pairs.plot(hg.am1.constm)
+ @
+ \end{center}
+ \caption{Natural Mortality Sensitivity Case: Pairs plots for MCMC output of estimated parameters in for the Haida
+   Gwaii AM1 model with constant natural mortality.
+   See Figure~\ref{fig:hg-traces} for parameter descriptions.}
+ \label{fig:hg-constm-pairs-am1}
+ \end{figure}
+
+%% %%------------------------------------------------------------------------------
+
+ \begin{figure}[H]
+ \begin{center}
+ <<hg.tvm.priors.1>>=
+ make.priors.posts.plot(hg.am1.tvm, priors.only = FALSE)
+ @
+ \end{center}
+ \caption{Natural Mortality Sensitivity Case: Prior probability distributions (lines) with comparative posterior
+   histograms (bars) used in the Haida Gwaii AM1 model with time-varying natural
+   mortallity. Parameters $q_k$ represent gears where: $k=1$ is the surface
+   survey and $k=2$ is the dive survey. The dotted red lines are the MPD
+   estimates.}
+ \label{fig:hg-tvm-priors-am1}
+ \end{figure}
+
+ \begin{figure}[H]
+ \begin{center}
+ <<hg.tvm.traces.1, fig.height=8, fig.width=8>>=
+ make.traces.plot(hg.am1.tvm, axis.lab.freq = 200)
+ @
+ \end{center}
+ \caption{Natural Mortality Sensitivity Case: Trace plots for MCMC output of estimated parameters for the Haida Gwaii
+   AM1 model with time-varying natural mortality. The MCMC run had chain length
+   \Sexpr{mcmc.length}, with
+   a sample taken at every \Sexpr{mcmc.samp.freq}th iteration.
+   The catchability parameter $q_1$ represents the surface survey and $q_2$
+   the dive survey. Parameters $\hat{a}_k$ (selectivity-at-age-50\%), and
+   $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
+   follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
+\label{fig:hg-tvm-traces-am1}
+ \end{figure}
+
+ \begin{figure}[H]
+ \begin{center}
+ <<hg-tvm-pairs.1, fig.height=8, fig.width=8>>=
+ make.pairs.plot(hg.am1.tvm)
+ @
+ \end{center}
+ \caption{Natural Mortality Sensitivity Case: Pairs plots for MCMC output of estimated parameters in for the Haida
+   Gwaii AM1 model with time-varying natural mortality.
+   See Figure~\ref{fig:hg-traces} for parameter descriptions.}
+ \label{fig:hg-tvm-pairs-am1}
+ \end{figure}
 
 %% %%------------------------------------------------------------------------------
 %% %%------------------------------------------------------------------------------

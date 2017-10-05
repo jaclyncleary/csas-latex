@@ -21,6 +21,7 @@ install.packages.if.needed("knitr")
 install.packages.if.needed("lubridate")
 install.packages.if.needed("PBSmodelling")
 install.packages.if.needed("xtable")
+install.packages.if.needed("RColorBrewer")
 
 require(coda)
 require(knitr)
@@ -28,6 +29,7 @@ require(lubridate)
 require(PBSmodelling)
 require(xtable)
 require(tidyverse)
+require(RColorBrewer)
 
 ## Code to load the catch/TAC data, making catch figures, and making tables
 ##  for catch/TAC.
