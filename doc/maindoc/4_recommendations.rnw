@@ -4,11 +4,37 @@
 
 \subsection{PROJECTED BIOMASS IN \Sexpr{assess.yr+1}}
 
-[Placeholder]
+Projected pre-harvest spawning biomass estimates (i.e., prior to any harvest in \Sexpr{max(yrRange)+1}), and the relative contribution of fish of age-3 and ages 4-10 are presented in Table X.
+Advice to managers for \Sexpr{max(yrRange)+1} for each stock area is presented in the stock-specific sections below, as two sets of decision tables, one for each assessment model (\Sexpr{PasteNicely(mNames)}).
+Tables from AM2 provide probabilities of the projected post-harvest spawning biomass in \Sexpr{max(yrRange)+1} ($\mli{SB}_{\Sexpr{max(yrRange)+1}}$) falling below the historically-used stock-specific fixed cut-off levels (calculated as $0.25\mli{SB}_0$ from the 1996 assessment \citep{schweigert1997}, and of the harvest rate exceeding the 20\% and 10\% target rates over a range of constant catch levels.
+Tables from AM1 provide probabilities of the projected post-harvest spawning biomass in \Sexpr{max(yrRange)+1} ($\mli{SB}_{\Sexpr{max(yrRange)+1}}$) falling below the currently-estimated $0.3\mli{SB}_0$ level, and of the harvest rate exceeding the 20\% and 10\% target harvest rates over a range of constant \Sexpr{max(yrRange)+1} catch levels.
+
 
 \subsection{DECISION TABLES}\label{secDecisionTables}
 
-[Placeholder]
+Below is an example of how to read the tables for the \Sexpr{length(allRegions$major)} major stock areas (\Sexpr{PasteNicely(allRegions$major)}):
+\begin{quote}
+Under the assumptions of AM2 for HG (Table \ref{tab:hg-am2-decision}, row 5), given a \Sexpr{max(yrRange)+1} catch of \Sexpr{f(2000)}\,t, the estimated probability that the harvest rate ($U'$) exceeds the 20\% target rate is 0.903 (90\%), and the probability that $\mli{SB}_{\Sexpr{max(yrRange)+1}}<$ fixed cut-off (\Sexpr{f(fixedCutoffs$HG*1000)}\,t) is estimated to be 1.000 (100\%).
+Using AM1 (Table \ref{tab:hg-am1-decision}), given the same catch of \Sexpr{f(2000)}\,t from HG, the estimated probability that the harvest rate ($U'$) exceeds the 20\% target rate is 0.649 (65\%), the ratio of $\mli{SB}_{\Sexpr{max(yrRange)+1}}/0.3\mli{SB}_0$ is 0.739, and the probability that $\mli{SB}_{\Sexpr{max(yrRange)+1}} < 0.3\mli{SB}_0$ is estimated to be 0.714 (71\%).
+\end{quote}
+
+\subsubsection{Performance metrics}
+
+Here we explain performance metrics/column headings to interpret the decision tables:
+\begin{resdoclist}
+\item \Sexpr{max(yrRange)+1} TAC indicates a range of total allowable catch values in metric tonnes,
+\item $\text{P}(\mli{SB}_{\Sexpr{max(yrRange)+1}} < \text{LRP} = 0.3\mli{SB}_0)$ is the probability that biomass after harvest is below the LRP, $0.3\mli{SB}_0$ in \Sexpr{max(yrRange)+1},
+\item $\text{Med}(\mli{SB}_{\Sexpr{max(yrRange)+1}} / 0.3\mli{SB}_0)$ is the median ratio of projected post-harvest biomass to $0.3\mli{SB}_0$ in \Sexpr{max(yrRange)+1},
+\item $\text{P}(\mli{SB}_{\Sexpr{max(yrRange)+1}} < \text{[value]})$ is the probability that biomass after harvest is below the 1996 fixed cut-off value in \Sexpr{max(yrRange)+1},
+\item $\text{Med}(\mli{SB}_{\Sexpr{max(yrRange)+1}} / \text{[value]})$ is the median ratio of projected post-harvest biomass to the 1996 fixed cut-off value in \Sexpr{max(yrRange)+1},
+\item $\text{P}(U_{\Sexpr{max(yrRange)+1}} > 20\%)$ is the probability that the removal rate will be greater than the targe harvest rate of 20\% in \Sexpr{max(yrRange)+1},
+\item $\text{P}(U_{\Sexpr{max(yrRange)+1}} > 10\%)$ is the probability that the removal rate will be greater than the targe harvest rate of 10\% in \Sexpr{max(yrRange)+1},
+\item $\text{P}(U_{\Sexpr{max(yrRange)+1}} > 5\%)$ is the probability that the removal rate will be greater than the targe harvest rate of 5\% in \Sexpr{max(yrRange)+1}, and
+\item $\text{Med}(U_{\Sexpr{max(yrRange)+1}})$ is the median removal rate in \Sexpr{max(yrRange)+1}.
+\end{resdoclist}
+There are two things to note in the decision tables.
+First, fixed cut-offs and the 20\% HR are taken from the current harvest control rule.
+Second, fixed cut-offs are only relevant for decision tables from AM2; ignore columns with fixed cut-offs from AM1.
 
 \subsubsection{Reference case}
 
