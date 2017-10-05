@@ -1291,6 +1291,188 @@ make.q.plot(list(wcvi.am1.constm,
 \end{figure}
 
 %%------------------------------------------------------------------------------
+%% Sensitivity to M MCMC diagnostic plots - AM2
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg.constm.priors>>=
+make.priors.posts.plot(hg.am2.constm, priors.only = FALSE)
+@
+\end{center}
+\caption{Prior probability distributions (lines) with comparative posterior
+  histograms (bars) used in the Haida Gwaii AM2 model with constant natural
+  mortallity. Parameters $q_k$ represent gears where: $k=1$ is the surface
+  survey and $k=2$ is the dive survey. The dotted red lines are the MPD
+  estimates.}
+\label{fig:hg-constm-priors}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<hg.constm.traces, fig.height=8, fig.width=8>>=
+make.traces.plot(hg.am2.constm, axis.lab.freq = 200)
+@
+\end{center}
+\caption{Trace plots for MCMC output of estimated parameters for the Haida Gwaii
+  AM2 model with constant natural mortality. The MCMC run had chain length
+  \Sexpr{mcmc.length}, with
+  a sample taken at every \Sexpr{mcmc.samp.freq}th iteration.
+  The catchability parameter $q_1$ represents the surface survey and $q_2$
+  the dive survey. Parameters $\hat{a}_k$ (selectivity-at-age-50\%), and
+  $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
+  follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
+\label{fig:hg-constm-traces}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<hg-constm-pairs, fig.height=8, fig.width=8>>=
+make.pairs.plot(hg.am2.constm)
+@
+\end{center}
+\caption{Pairs plots for MCMC output of estimated parameters in for the Haida
+  Gwaii AM2 model with constant natural mortality.
+  See Figure~\ref{fig:hg-traces} for parameter descriptions.}
+\label{fig:hg-constm-pairs}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+
+%% \begin{figure}[H]
+%% \begin{center}
+%% <<hg.tvm.priors>>=
+%% make.priors.posts.plot(hg.am2.tvm, priors.only = FALSE)
+%% @
+%% \end{center}
+%% \caption{Prior probability distributions (lines) with comparative posterior
+%%   histograms (bars) used in the Haida Gwaii AM2 model with time-varying natural
+%%   mortallity. Parameters $q_k$ represent gears where: $k=1$ is the surface
+%%   survey and $k=2$ is the dive survey. The dotted red lines are the MPD
+%%   estimates.}
+%% \label{fig:hg-tvm-priors}
+%% \end{figure}
+
+%% \begin{figure}[H]
+%% \begin{center}
+%% <<hg.tvm.traces, fig.height=8, fig.width=8>>=
+%% make.traces.plot(hg.am2.tvm, axis.lab.freq = 200)
+%% @
+%% \end{center}
+%% \caption{Trace plots for MCMC output of estimated parameters for the Haida Gwaii
+%%   AM2 model with time-varying natural mortality. The MCMC run had chain length
+%%   \Sexpr{mcmc.length}, with
+%%   a sample taken at every \Sexpr{mcmc.samp.freq}th iteration.
+%%   The catchability parameter $q_1$ represents the surface survey and $q_2$
+%%   the dive survey. Parameters $\hat{a}_k$ (selectivity-at-age-50\%), and
+%%   $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
+%%   follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
+%% \label{fig:hg-tvm-traces}
+%% \end{figure}
+
+%% \begin{figure}[H]
+%% \begin{center}
+%% <<hg-tvm-pairs, fig.height=8, fig.width=8>>=
+%% make.pairs.plot(hg.am2.tvm)
+%% @
+%% \end{center}
+%% \caption{Pairs plots for MCMC output of estimated parameters in for the Haida
+%%   Gwaii AM2 model with time-varying natural mortality.
+%%   See Figure~\ref{fig:hg-traces} for parameter descriptions.}
+%% \label{fig:hg-tvm-pairs}
+%% \end{figure}
+
+%%------------------------------------------------------------------------------
+%% Sensitivity to M MCMC diagnostic plots - AM1
+%%------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg.am1.constm.priors>>=
+make.priors.posts.plot(hg.am1.constm, priors.only = FALSE)
+@
+\end{center}
+\caption{Prior probability distributions (lines) with comparative posterior
+  histograms (bars) used in the Haida Gwaii AM1 model with constant natural
+  mortallity. Parameters $q_k$ represent gears where: $k=1$ is the surface
+  survey and $k=2$ is the dive survey. The dotted red lines are the MPD
+  estimates.}
+\label{fig:hg-am1-constm-priors}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<hg.am1.constm.traces, fig.height=8, fig.width=8>>=
+make.traces.plot(hg.am1.constm, axis.lab.freq = 200)
+@
+\end{center}
+\caption{Trace plots for MCMC output of estimated parameters for the Haida Gwaii
+  AM1 model with constant natural mortality. The MCMC run had chain length
+  \Sexpr{mcmc.length}, with
+  a sample taken at every \Sexpr{mcmc.samp.freq}th iteration.
+  The catchability parameter $q_1$ represents the surface survey and $q_2$
+  the dive survey. Parameters $\hat{a}_k$ (selectivity-at-age-50\%), and
+  $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
+  follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
+\label{fig:hg-am1-constm-traces}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<hg-am1-constm-pairs, fig.height=8, fig.width=8>>=
+make.pairs.plot(hg.am1.constm)
+@
+\end{center}
+\caption{Pairs plots for MCMC output of estimated parameters in for the Haida
+  Gwaii AM1 model with constant natural mortality.
+  See Figure~\ref{fig:hg-traces} for parameter descriptions.}
+\label{fig:hg-ma1-constm-pairs}
+\end{figure}
+
+%%------------------------------------------------------------------------------
+
+%% \begin{figure}[H]
+%% \begin{center}
+%% <<hg.am1.tvm.priors>>=
+%% make.priors.posts.plot(hg.am2.tvm, priors.only = FALSE)
+%% @
+%% \end{center}
+%% \caption{Prior probability distributions (lines) with comparative posterior
+%%   histograms (bars) used in the Haida Gwaii AM1 model with time-varying natural
+%%   mortallity. Parameters $q_k$ represent gears where: $k=1$ is the surface
+%%   survey and $k=2$ is the dive survey. The dotted red lines are the MPD
+%%   estimates.}
+%% \label{fig:hg-am1-tvm-priors}
+%% \end{figure}
+
+%% \begin{figure}[H]
+%% \begin{center}
+%% <<hg.am1.tvm.traces, fig.height=8, fig.width=8>>=
+%% make.traces.plot(hg.am2.tvm, axis.lab.freq = 200)
+%% @
+%% \end{center}
+%% \caption{Trace plots for MCMC output of estimated parameters for the Haida Gwaii
+%%   AM1 model with time-varying natural mortality. The MCMC run had chain length
+%%   \Sexpr{mcmc.length}, with
+%%   a sample taken at every \Sexpr{mcmc.samp.freq}th iteration.
+%%   The catchability parameter $q_1$ represents the surface survey and $q_2$
+%%   the dive survey. Parameters $\hat{a}_k$ (selectivity-at-age-50\%), and
+%%   $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
+%%   follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
+%% \label{fig:hg-am1-tvm-traces}
+%% \end{figure}
+
+%% \begin{figure}[H]
+%% \begin{center}
+%% <<hg-am1-tvm-pairs, fig.height=8, fig.width=8>>=
+%% make.pairs.plot(hg.am2.tvm)
+%% @
+%% \end{center}
+%% \caption{Pairs plots for MCMC output of estimated parameters in for the Haida
+%%   Gwaii AM1 model with time-varying natural mortality.
+%%   See Figure~\ref{fig:hg-traces} for parameter descriptions.}
+%% \label{fig:hg-am1-tvm-pairs}
+%% \end{figure}
+
+%%------------------------------------------------------------------------------
 %% Sensitivity to Q 4-panel plots
 %%------------------------------------------------------------------------------
 \begin{figure}[H]
