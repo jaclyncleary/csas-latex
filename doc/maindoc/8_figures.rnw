@@ -2263,6 +2263,7 @@ make.recr.retro.mpd.plot(wcvi.am1,
 %%------------------------------------------------------------------------------
 %% Sensitivity to M MCMC diagnostic plots
 %%------------------------------------------------------------------------------
+<<<<<<< HEAD
  \begin{figure}[H]
  \begin{center}
  <<hg.constm.priors>>=
@@ -2305,6 +2306,50 @@ make.recr.retro.mpd.plot(wcvi.am1,
    See Figure~\ref{fig:hg-traces} for parameter descriptions.}
  \label{fig:hg-constm-pairs}
  \end{figure}
+=======
+\begin{figure}[H]
+\begin{center}
+<<hg.constm.priors>>=
+make.priors.posts.plot(hg.am2.constm, priors.only = FALSE)
+@
+\end{center}
+\caption{Prior probability distributions (lines) with comparative posterior
+  histograms (bars) used in the Haida Gwaii AM2 model with constant natural
+  mortallity. Parameters $q_k$ represent gears where: $k=1$ is the surface
+  survey and $k=2$ is the dive survey. The dotted red lines are the MPD
+  estimates.}
+\label{fig:hg-constm-priors}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<hg.constm.traces, fig.height=8, fig.width=8>>=
+make.traces.plot(hg.am2.constm, axis.lab.freq = 200)
+@
+\end{center}
+\caption{Trace plots for MCMC output of estimated parameters for the Haida Gwaii
+  AM2 model with constant natural mortality. The MCMC run had chain length
+  \Sexpr{mcmc.length}, with
+  a sample taken at every \Sexpr{mcmc.samp.freq}th iteration.
+  The catchability parameter $q_1$ represents the surface survey and $q_2$
+  the dive survey. Parameters $\hat{a}_k$ (selectivity-at-age-50\%), and
+  $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
+  follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
+\label{fig:hg-constm-traces}
+\end{figure}
+
+\begin{figure}[H]
+\begin{center}
+<<hg-constm-pairs, fig.height=8, fig.width=8>>=
+make.pairs.plot(hg.am2.constm)
+@
+\end{center}
+\caption{Pairs plots for MCMC output of estimated parameters in for the Haida
+  Gwaii AM2 model with constant natural mortality.
+  See Figure~\ref{fig:hg-traces} for parameter descriptions.}
+\label{fig:hg-constm-pairs}
+\end{figure}
+>>>>>>> mgrinnell/herring
 
 %% %%------------------------------------------------------------------------------
 
