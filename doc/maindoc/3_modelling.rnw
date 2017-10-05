@@ -125,7 +125,7 @@ Firstly, using a time series of weight-at-age allows the assessment model to cap
 Second, these data are an important determinant in estimating current biomass because this quantity is given by the sum of the element wise product of numbers-at-age and weight-at-age vectors so that even given fixed numbers-at-age, biomass will change considerably with changes in weight-at-age.
 Finally, changes in mean weight-at-age affect the estimate of the equilibrium unfished biomass, the key reference point for Pacific Herring.
 
-Proportions-at-age and the number of biological samples by year are presented in Figure \ref{figProportionAge} \& \ref{figNumberAged}.
+Proportions-at-age and the number of biological samples by year are presented in Figures \ref{figProportionAge} \& \ref{figNumberAged}.
 
 Measurable declines in weight-at-age are evident for all major herring stocks, from the mid-1980s to 2010 as shown in Figure \ref{figWeightAge}.
 All stocks show a leveling off or increase in the recent most 5-years.
