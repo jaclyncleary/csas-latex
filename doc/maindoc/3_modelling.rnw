@@ -164,11 +164,15 @@ In PRD, numeric estimates of spawning biomass (spawn index values) neither incre
 
 \subsubsection{Proportion-at-age and catch-at-age}
 
-INCOMPLETE SECTION
+%INCOMPLETE SECTION
+%SH: JC I am unclear whatelse to include here as we talk about stock specific trends in the biomass and stock status sections
 
 Estimated proportions-at-age from Gear 2 biological samples (roe seine, seine test, SOK, where available) by stock area are summarized in Figure \ref{figProportionAge}.
 %Trends in proportion-at-age by Gear 1 and Gear 3 are included in Appendix XX.
 Adjustments made in analytical procedures included weighting Area 8 biological samples by their average relative contribution over the past 20 years (7\%), due to concerns that data acquired and used for the Central Coast area resulted from an uncommonly high number of samples (6 of 13) that were collected from Statistical Area 8 (which is historically an unfished area with consistently smaller (age 2) fish), Area 8; and, removing WCVI Statistical Area 24 samples, because it was determined that they were not representative.
+Each gear type has a separate selectivity that is estimated for each of the gear types using a logistic function with age-specific selectivity coefficients.
+
+Stock specific trends are discussed in the sections below.
 
 
 \subsubsection{Assumed biological parameters}\label{secAssumedBiolPars}
