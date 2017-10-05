@@ -6,6 +6,7 @@ load.iscam.files <- function(model.dir,
                              load.proj = TRUE,
                              which.stock = NULL,
                              which.model = NULL,
+                             fixed.cutoffs,
                              verbose = FALSE){
   ## Load all the iscam files for output and input, and return the model object
   ## If MCMC directory is present, load that and perform calculations for mcmc
@@ -65,7 +66,8 @@ load.iscam.files <- function(model.dir,
                                  upper = high,
                                  load.proj = load.proj,
                                  which.stock = which.stock,
-                                 which.model = which.model)
+                                 which.model = which.model,
+                                 fixed.cutoffs = fixed.cutoffs)
     model$mcmc$params <- strip.areas.groups(model$mcmc$params)
     model$mcmc$params <- fix.m(model$mcmc$params)
     model$mcmc$params.est <- get.estimated.params(model$mcmc$params)
@@ -127,6 +129,7 @@ create.rdata.file <- function(models.dir = model.dir,
                               burnin = 1000,
                               which.stock = NULL,
                               which.model = NULL,
+                              fixed.cutoffs,
                               verbose = FALSE){
   ## Create an rdata file to hold the model's data and outputs.
   ## If an RData file exists, and overwrite is FALSE, return immediately.
@@ -180,7 +183,8 @@ create.rdata.file <- function(models.dir = model.dir,
                             load.proj = load.proj,
                             burnin = burnin,
                             which.stock = which.stock,
-                            which.model = which.model)
+                            which.model = which.model,
+                            fixed.cutoffs = fixed.cutoffs)
 
 
   ## Save the model as an RData file
@@ -1122,7 +1126,8 @@ calc.mcmc <- function(model,
                       upper = 0.975,
                       load.proj = TRUE,
                       which.stock = NULL,
-                      which.model = NULL){
+                      which.model = NULL,
+                      fixed.cutoffs){
   ## Do the mcmc calculations, i.e. quantiles for parameters
   ## Returns a list of them all
   ##
@@ -1355,7 +1360,8 @@ calc.mcmc <- function(model,
                                    burnin,
                                    thin,
                                    which.stock = which.stock,
-                                   which.model = which.model)
+                                   which.model = which.model,
+                                   fixed.cutoffs = fixed.cutoffs)
     proj.quants <- apply(model$mcmc$proj,
                          2,
                          quantile,
@@ -1440,7 +1446,8 @@ calc.probabilities <- function(model,
                                burnin,
                                thin,
                                which.stock = NULL,
-                               which.model = NULL){
+                               which.model = NULL,
+                               fixed.cutoffs){
   ## Extract and calculate probabilities from the projection model
   ## Used for decision tables in the document (see make.decision.table())
   ##  in tables-decisions.r
@@ -1477,6 +1484,7 @@ calc.probabilities <- function(model,
   e.yr.1 <- e.yr - 1
   e.yr.2 <- e.yr - 2
 
+  fc <- fixed.cutoffs
   proj.dat <- data.frame()
   for(t in 1:length(tac)){
     d <- proj[proj$TAC == tac[t],]
@@ -1494,7 +1502,7 @@ calc.probabilities <- function(model,
                      latex.mlc(c(paste0("P(SB_{",
                                         e.yr.1,
                                         "}<"),
-                                 "LRP 0.30SB_0"),
+                                 "LRP=0.30SB_0)"),
                                math.bold = TRUE),
                      latex.mlc(c(paste0("Med(SB_{",
                                         e.yr.1,
@@ -1503,97 +1511,26 @@ calc.probabilities <- function(model,
                                math.bold = TRUE))
     }
     if(which.model == 2){
-      if(which.stock == 1){
-        k <- c(k,
-               length(which(d[,paste0("B", e.yr.1)] < 10700)) / n.row,
-               median(d[,paste0("B", e.yr.1)] / 10700))
-        if(t == 1){
-          col.names <- c(col.names,
-                         latex.mlc(c(paste0("P(SB_{",
-                                            e.yr.1,
-                                            "} <"),
-                                     "10,700)"),
-                                   math.bold = TRUE),
-                         latex.mlc(c(paste0("Med(SB_{",
-                                            e.yr.1,
-                                            "} /"),
-                                     "10,700)"),
-                                   math.bold = TRUE))
-        }
-      }else if(which.stock == 2){
-        k <- c(k,
-               length(which(d[,paste0("B", e.yr.1)] < 21200)) / n.row,
-               median(d[,paste0("B", e.yr.1)] / 21200))
-        if(t == 1){
-          col.names <- c(col.names,
-                         latex.mlc(c(paste0("P(U_{",
-                                            e.yr.1,
-                                            "} <"),
-                                     "21,200)"),
-                                   math.bold = TRUE),
-                         latex.mlc(c(paste0("Med(SB_{",
-                                            e.yr.1,
-                                            "} /"),
-                                     "21,200)"),
-                                   math.bold = TRUE))
-        }
-      }else if(which.stock == 3){
-        k <- c(k,
-               length(which(d[,paste0("B", e.yr.1)] < 12100)) / n.row,
-               median(d[,paste0("B", e.yr.1)] / 12100))
-        if(t == 1){
-          col.names <- c(col.names,
-                         latex.mlc(c(paste0("P(U_{",
-                                            e.yr.1,
-                                            "} <"),
-                                     "12,100)"),
-                                   math.bold = TRUE),
-                         latex.mlc(c(paste0("Med(SB_{",
-                                            e.yr.1,
-                                            "} /"),
-                                     "12,100)"),
-                                   math.bold = TRUE))
-        }
-      }else if(which.stock == 4){
-        k <- c(k,
-               length(which(d[,paste0("B", e.yr.1)] < 17600)) / n.row,
-               median(d[,paste0("B", e.yr.1)] / 17600))
-        if(t == 1){
-          col.names <- c(col.names,
-                         latex.mlc(c(paste0("P(U_{",
-                                            e.yr.1,
-                                            "} <"),
-                                     "17,600)"),
-                                   math.bold = TRUE),
-                         latex.mlc(c(paste0("Med(SB_{",
-                                            e.yr.1,
-                                            "} /"),
-                                     "17,600)"),
-                                   math.bold = TRUE))
-        }
-      }else if(which.stock == 5){
-        k <- c(k,
-               length(which(d[,paste0("B", e.yr.1)] < 18800)) / n.row,
-               median(d[,paste0("B", e.yr.1)] / 18800))
-        if(t == 1){
-          col.names <- c(col.names,
-                         latex.mlc(c(paste0("P(U_{",
-                                            e.yr.1,
-                                            "} <"),
-                                     "18,800)"),
-                                   math.bold = TRUE),
-                         latex.mlc(c(paste0("Med(SB_{",
-                                            e.yr.1,
-                                            "} /"),
-                                     "18,800)"),
-                                   math.bold = TRUE))
-        }
-      }else{
-        warning("In calc.probabilities, which.stock must be 1, 2, 3, 4, or 5, not ",
-                which.stock, ". Returning NULL.")
-        return(NULL)
+      k <- c(k,
+             length(which(d[,paste0("B", e.yr.1)] < fc[which.stock])) / n.row,
+             median(d[,paste0("B", e.yr.1)] / fc[which.stock]))
+      if(t == 1){
+        col.names <- c(col.names,
+                       latex.mlc(c(paste0("P(SB_{",
+                                          e.yr.1,
+                                          "} <"),
+                                   f(fc[which.stock] * 1000),
+                                   ")"),
+                                 math.bold = TRUE),
+                       latex.mlc(c(paste0("Med(SB_{",
+                                          e.yr.1,
+                                          "} /"),
+                                   f(fc[which.stock] * 1000),
+                                   ")"),
+                                 math.bold = TRUE))
       }
     }
+
     k <- c(k,
            length(which(d$UT > 0.2)) / n.row,
            length(which(d$UT > 0.1)) / n.row,
