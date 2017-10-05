@@ -177,11 +177,9 @@ Stock specific trends are discussed in the sections below.
 
 \subsubsection{Assumed biological parameters}\label{secAssumedBiolPars}
 
-INCOMPLETE SECTION (MATT)
+The model also requires length-at-age, weight-length, and weight-at-age relationshiops, which were done in previous analyses and are not included here \citep{XX}. %JC
 
-The model also requires length-at-age, weight-length, and weight-at-age relationshiops, which were done in previous analyses and are not included here \citep{XX}.
-
-For the assessment, a fixed maturity schedule is used for all herring stocks (Figure/Table \ref{XX}).
+For the assessment, a fixed maturity schedule is used for all herring stocks: 25\% mature for age-2s, 90\% mature for age-3s, and 100\% mature for ages 4 and older (see description in Section \ref{secMatAge}.
 As described in Section \ref{secLifeHist}, indications from histological assessment of developing ovaries suggest that about 25\% of \Sexpr{fish.name} mature at age 2, and at least 90\% mature at age 3 (D. Hay, unpublished data).
 
 \subsubsection{Data summaries for major SARs}
@@ -435,7 +433,7 @@ These base case values are fixed for all BC \Sexpr{fish.name} stocks at values i
 In the recent analysis identifying limit reference points for BC \Sexpr{fish.name} stocks, \citet{kronlund2017} discuss the location of the maturity and fishery selectivity schedules in relation to estimation of $F_\text{MSY}$.
 Specifically, when the positioning of the maturity curve is to the left of the fishery selectivity curve(s) and thus age at 50\% maturity is estimated to occur at a much younger age than 50\% selectivity, the model interprets the portion of the population that is mature but not yet selected for by the gear as invulnerable to the fishery.
 
-\citet{kronlund2017} suspect this phenomena (the juxtaposition of the maturity and selectivity curves) is contributing to high estimates of $F_\text{MSY}$ coming from ISCAM.
+\citet{kronlund2017} suspect this phenomena (the juxtaposition of the maturity and selectivity curves) is one of the contributing factors to the high estimates of $F_\text{MSY}$ coming from ISCAM.
 High $F_\text{MSY}$ values subsequently infer high sustainable harvest rates, and the estimates of $F_\text{MSY}$ reported in \citet{kronlund2017} and in \citet{herring2015} were among the highest produced for Herring species worldwide.
 
 The sensitivity analysis considered here involves setting the maturity at age vector equal to the selectivity of the seine roe fishery (gear 2) and then re-estimating equilibrium reference point $F_\text{MSY}$. 
