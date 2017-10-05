@@ -447,7 +447,7 @@ These results confirm that changing maturity to equal selectivity doesn't make t
 The Base Case models for this years \Sexpr{fish.name} assessment were chosen based on the results of the Bridging Analysis (Appendix \ref{chap:bridge}) and the Sensivity Analysis above. 
 Last years assessment used two versions of the base stock assessment model that differ in the treatment of spawn survey catchability parameters ($q_1$ and $q_2$) for the surface survey period (\Sexpr{qYrs$q1}) and dive survey period (\Sexpr{qYrs$q2}), respectively.  
 The two models are labelled AM1 ($q_1$ and $q_2$ estimated with prior probability distributions) and AM2 ($q_1$ estimated, $q_2=1$). 
-Both analyses recommended analysing these two base case models again for each of the 5 major herring stocks.
+Both analyses recommended analysing these two base case models again for each of the 5 major herring stocks as we saw only minor changes to the results when the prior standard deviation for both qs was increased and larger differences when mean was changed as shown in the Bridging Analysis.  
 Resolution between AM1 and AM2 parameterization of q will require simulation-evaluation. Sensitivity analyses alone are insufficient for understanding the complex interplay between q and other parameters.
 The sensitivity analyses supported the use of time-varying natural mortality based on the 
 improved coherence between assumed and empirical fits to the spawn survey index and issues
@@ -474,12 +474,18 @@ Figures \ref{figStoryboard\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{
 
 \subsubsection{Parameter estimates}
 
-INCOMPLETE SECTION
+%INCOMPLETE SECTION
+The assessment uses Bayesian methods to incorporate prior information and integrate over parameter uncertainty to provide results that can be probabilistically interpreted.  
+Marginal posterior distributions for estimated model parameters were constructed using the AD Model Builder (Fournier et al. 2012). 
+For each minor assessment area, a systematic sample of 1,000 points were taken from a chain of length 5,000,000, intended to represent a random sample from the joint posterior distribution.
+Prior and posterior probability distributions of estimated parameters are shown in Figures 31 to 35.
+The median, 2.5th percentile and 97.5th percentile posterior parameter estimates, and MPDs are given in Tables 3 to 12. 
+Sensitivity analyses indicated that the choice of mean a posterior estimates of catchability 
 
-\begin{itemize}
-  \item $q$
-  \item $M$
-\end{itemize}
+%\begin{itemize}
+ % \item $q$
+%  \item $M$
+%\end{itemize}
 
 %Here we need to describe prior/ posterior distributions for leading parameters
 
