@@ -492,7 +492,7 @@ AM1 estimates the median spawning biomass in 2017 ($\mli{SB}_{2017}$) at 7,336 t
 Both \Sexpr{PasteNicely(mNames)} models estimate $\mli{SB}_{2017}$ to be below the LRP of $0.30\cdot\mli{SB}_0$ (Figure \ref{figCurrentSSB}) by greater than 50\% probability.
 The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 estimates of $\mli{SB}_{2017}$ and stock status relative to $\mli{SB}_0$ are lower than the AM1 estimates, due largely to differences in model estimates of $q_2$ (Table \ref{tab:q-parameters}).
 
-There is no recruitment entering the spawning population in 2017: 
+There is very little recruitment predicted to be entering the spawning population in 2017: 
 Figure \ref{figBevertonHolt} shows the number of age-2 recruits per number of spawners is near the origin of B-H stock recruit curve and Figure \ref{fig:hg-ageest-gear2} shows a higher proportion of 3-year olds relative to 2-year olds. 
 Although model estimates of current natural mortality remain highly uncertain, there is an increasing trend in the median estimates of natural mortality since 2012 (Figures \ref{figStoryboardAM2HG} \& \ref{figStoryboardAM1HG}).
 
@@ -568,11 +568,12 @@ The projected pre-fishery spawing biomass in 2018 is 18,640 t (AM2) or 33,530 t 
 
 \subsubsection{Recruitment}
 
-Age-2 recruitment is modelled from a Beverton-Holt stock-recruitment relationships (Figure \ref{figBevertonHolt}).
+Recruitment is defined as the number of age-2 fish recruiting into the population at the beginning of each year, defined as July 1st based on ageing conventions.
+This age-2 recruitment is estimated as a free parameter within the model, subject to the constraint that annual estimates vary around a Beverton-Holt stock recruitment relationship with an estimated unknown standard deviation (Figure \ref{figBevertonHolt}).
 For HG, PRD, CC and WCVI stocks, age-2 recruitment is estimated to be average-to-below average in 2017.
 Conversely, age-2 recruitment for the SOG stock is estimated to be above average in 2017.
 
-ANYTHING ELSE?
+%ANYTHING ELSE?
 
 \subsubsection{Effective harvest rates}
 
