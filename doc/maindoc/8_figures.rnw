@@ -2265,7 +2265,7 @@ make.recr.retro.mpd.plot(wcvi.am1,
 %%------------------------------------------------------------------------------
  \begin{figure}[H]
  \begin{center}
- <<hg.constm.priors>>=
+ <<hg.constm.priors.2>>=
  make.priors.posts.plot(hg.am2.constm, priors.only = FALSE)
  @
  \end{center}
@@ -2279,7 +2279,7 @@ make.recr.retro.mpd.plot(wcvi.am1,
 
  \begin{figure}[H]
  \begin{center}
- <<hg.constm.traces, fig.height=8, fig.width=8>>=
+ <<hg.constm.traces.2, fig.height=8, fig.width=8>>=
  make.traces.plot(hg.am2.constm, axis.lab.freq = 200)
  @
  \end{center}
@@ -2296,21 +2296,21 @@ make.recr.retro.mpd.plot(wcvi.am1,
 
  \begin{figure}[H]
  \begin{center}
- <<hg-constm-pairs, fig.height=8, fig.width=8>>=
+ <<hg-constm-pairs.2, fig.height=8, fig.width=8>>=
  make.pairs.plot(hg.am2.constm)
  @
  \end{center}
  \caption{Natural Mortality Sensitivity Case: Pairs plots for MCMC output of estimated parameters in for the Haida
    Gwaii AM2 model with constant natural mortality.
    See Figure~\ref{fig:hg-traces} for parameter descriptions.}
- \label{fig:hg-constm-pairs}
+ \label{fig:hg-constm-pairs.2}
  \end{figure}
 
 %% %%------------------------------------------------------------------------------
 
  \begin{figure}[H]
  \begin{center}
- <<hg.tvm.priors>>=
+ <<hg.tvm.priors.2>>=
  make.priors.posts.plot(hg.am2.tvm, priors.only = FALSE)
  @
  \end{center}
@@ -2324,7 +2324,7 @@ make.recr.retro.mpd.plot(wcvi.am1,
 
  \begin{figure}[H]
  \begin{center}
- <<hg.tvm.traces, fig.height=8, fig.width=8>>=
+ <<hg.tvm.traces.2, fig.height=8, fig.width=8>>=
  make.traces.plot(hg.am2.tvm, axis.lab.freq = 200)
  @
  \end{center}
@@ -2341,21 +2341,21 @@ make.recr.retro.mpd.plot(wcvi.am1,
 
  \begin{figure}[H]
  \begin{center}
- <<hg-tvm-pairs, fig.height=8, fig.width=8>>=
+ <<hg-tvm-pairs.2, fig.height=8, fig.width=8>>=
  make.pairs.plot(hg.am2.tvm)
  @
  \end{center}
  \caption{Natural Mortality Sensitivity Case: Pairs plots for MCMC output of estimated parameters in for the Haida
    Gwaii AM2 model with time-varying natural mortality.
    See Figure~\ref{fig:hg-traces} for parameter descriptions.}
- \label{fig:hg-tvm-pairs}
+ \label{fig:hg-tvm-pairs-am2}
  \end{figure}
  
   \begin{figure}[H]
  \begin{center}
  
  %%%%  AM1  %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
- <<hg.constm.priors>>=
+ <<hg.constm.priors.1>>=
  make.priors.posts.plot(hg.am1.constm, priors.only = FALSE)
  @
  \end{center}
@@ -2369,7 +2369,7 @@ make.recr.retro.mpd.plot(wcvi.am1,
 
  \begin{figure}[H]
  \begin{center}
- <<hg.constm.traces, fig.height=8, fig.width=8>>=
+ <<hg.constm.traces.1, fig.height=8, fig.width=8>>=
  make.traces.plot(hg.am1.constm, axis.lab.freq = 200)
  @
  \end{center}
@@ -2386,7 +2386,7 @@ make.recr.retro.mpd.plot(wcvi.am1,
 
  \begin{figure}[H]
  \begin{center}
- <<hg-constm-pairs, fig.height=8, fig.width=8>>=
+ <<hg-constm-pairs.1, fig.height=8, fig.width=8>>=
  make.pairs.plot(hg.am1.constm)
  @
  \end{center}
@@ -2400,7 +2400,7 @@ make.recr.retro.mpd.plot(wcvi.am1,
 
  \begin{figure}[H]
  \begin{center}
- <<hg.tvm.priors>>=
+ <<hg.tvm.priors.1>>=
  make.priors.posts.plot(hg.am1.tvm, priors.only = FALSE)
  @
  \end{center}
@@ -2414,7 +2414,7 @@ make.recr.retro.mpd.plot(wcvi.am1,
 
  \begin{figure}[H]
  \begin{center}
- <<hg.tvm.traces, fig.height=8, fig.width=8>>=
+ <<hg.tvm.traces.1, fig.height=8, fig.width=8>>=
  make.traces.plot(hg.am1.tvm, axis.lab.freq = 200)
  @
  \end{center}
@@ -2431,7 +2431,7 @@ make.recr.retro.mpd.plot(wcvi.am1,
 
  \begin{figure}[H]
  \begin{center}
- <<hg-tvm-pairs, fig.height=8, fig.width=8>>=
+ <<hg-tvm-pairs.1, fig.height=8, fig.width=8>>=
  make.pairs.plot(hg.am1.tvm)
  @
  \end{center}
