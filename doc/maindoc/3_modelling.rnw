@@ -449,7 +449,14 @@ Last years assessment used two versions of the base stock assessment model that 
 The two models are labelled AM1 ($q_1$ and $q_2$ estimated with prior probability distributions) and AM2 ($q_1$ estimated, $q_2=1$). 
 Both analyses recommended analysing these two base case models again for each of the 5 major herring stocks.
 Resolution between AM1 and AM2 parameterization of q will require simulation-evaluation. Sensitivity analyses alone are insufficient for understanding the complex interplay between q and other parameters.
+The sensitivity analyses supported the use of time-varying natural mortality based on the 
+improved coherence between assumed and empirical fits to the spawn survey index and issues
+of autocorrelation between parameters and model convergence with constant $M$. 
+These analyses also found that the estimated model results were highly influenced by the initial values of $\rho$ and $\kappa$ if one or both of these parameters are estimated. 
+Given this observation and because we have no external information to inform the fixing of one of these
+parameters over the other, the base case estimating both parameters was chosen. 
 
+The parameterizations of the base case assessment model are shown in Table 1.
 
 
 \subsubsection{Model diagnostics}
