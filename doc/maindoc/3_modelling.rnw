@@ -179,9 +179,9 @@ Stock specific trends are discussed in the sections below.
 
 INCOMPLETE SECTION (MATT)
 
-The model also requires length-at-age, weight-length, and weight-at-age relationshiops, which were done in previous analyses and are not included here (REFs?).
+The model also requires length-at-age, weight-length, and weight-at-age relationshiops, which were done in previous analyses and are not included here \citep{XX}.
 
-For the assessment, a fixed maturity schedule is used for all herring stocks (Figure/Table XX).
+For the assessment, a fixed maturity schedule is used for all herring stocks (Figure/Table \ref{XX}).
 As described in Section \ref{secLifeHist}, indications from histological assessment of developing ovaries suggest that about 25\% of \Sexpr{fish.name} mature at age 2, and at least 90\% mature at age 3 (D. Hay, unpublished data).
 
 \subsubsection{Data summaries for major SARs}
@@ -327,7 +327,7 @@ These analytical steps (Bayesian methods) are the same as were applied annually 
 
 The Bayesian estimation procedure integrates over the full range of uncertainty producing a posterior distribution for each parameter estimated in the model.
 Then, these samples are used to construct marginal distributions for derived quantities (e.g., $\mli{SB}_0$).
-Priority areas of research identified during past CSAS meetings (2011--2016) are summarized in Appendix \ref{secFutureResearch}. 
+% Priority areas of research identified during past CSAS meetings (2011--2016) are summarized in Appendix \ref{secFutureResearch}. 
 %JC: edits completed
 
 \subsubsection{Prior probability distributions}
@@ -382,7 +382,7 @@ For example, HG (Figure \ref{fig:hg-q-m}) and WCVI (Figure \ref{fig:wcvi-q-m}) t
 
 MCMC trace plots, autocorrelation plots, and pairs plots were very similar between constant $M$ and time varying $M$ model runs for PRD, CC, SOG and WCVI. 
 See time varying $M$, Figure \ref{fig:hg-traces} to \ref{fig:wcvi-pairs}; constant $M$ not shown.
-The exception was for HG where trace plots, pairs plots and autocorrelation plots showed signs of persisitent drift and autocorrelation (Figures XX to XX).
+The exception was for HG where trace plots, autocorrelation plots, and pairs plots showed signs of persisitent drift and autocorrelation (Figures \ref{fig:hg-traces}, \ref{fig:hg-autocor}, \& \ref{fig:hg-pairs}, respectively).
 
 There is support for continued inclusion of time varying $M$ as the base case for the assessment in this analysis, as well as from the Bridging Analysis (Appendix \ref{chap:bridge}) based on the reduction improved coherence between assumed and empirical fits to the spawn survey index and issues of autocorrelation between parameters and model convergence with constant $M$.
 
@@ -519,7 +519,7 @@ The following section presents posterior distributions characterizing the major 
 Estimated spawning biomass relative to the LRP is presented in Figure \ref{figCurrentSSB}.
 To help readers view and interpret trends in results and uncertainty for each stock major stock area, collective sets of figures showing these four sets of model results across the \Sexpr{paste(range(yrRange), collapse=" to ")} time series are presented by stock area in Figures \ref{figStoryboard\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figStoryboard\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}}.
 Below we also present maximum posterior density (MPD) estimates in order to characterize the major herring stocks in terms of: spawn survey scaling parameter ($q$), age-2 recruits versus spawning biomass relationships, age-specific fishing gear selectivity, and total instantaneous mortality.
-To enable readers to compare model estimates between major stock areas, results for each of the MPD estimates for all major stock areas in the \Sexpr{paste(range(yrRange), collapse=" to ")} times series are shown together in individual figures (Figures 18-27).
+To enable readers to compare model estimates between major stock areas, results for each of the MPD estimates for all major stock areas in the \Sexpr{paste(range(yrRange), collapse=" to ")} times series are shown together in individual figures (Figures \ref{figProductionAM2HG} to \ref{figProductionAM1WCVI}).
 %JC: edits completed
 
 \textbf{Haida Gwaii}
@@ -531,11 +531,11 @@ Both \Sexpr{PasteNicely(mNames)} models estimate $\mli{SB}_{2017}$ to be below t
 The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 estimates of $\mli{SB}_{2017}$ and stock status relative to $\mli{SB}_0$ are lower than the AM1 estimates, due largely to differences in model estimates of $q_2$ (Table \ref{tab:q-parameters}).
 
 There is no apparent recruitment predicted to be entering the spawning population in 2017: 
-Figure \ref{figBevertonHolt} shows the number of age-2 recruits per number of spawners is near the origin of B-H stock recruit curve and Figure \ref{fig:hg-ageest-gear2} shows a higher proportion of 3-year olds relative to 2-year olds. 
+Figure \ref{figBevertonHolt} shows the number of age-2 recruits per number of spawners is near the origin of the Beverton-Holt stock recruit curve and Figure \ref{fig:hg-ageest-gear2} shows a higher proportion of 3-year olds relative to 2-year olds. 
 %Is there evidence of depensation? stock recruit data needs to be more disaggregated into spawn populations to ever really prove it... I didnt find many references to pacific herring examples of potential depensation.
 Although model estimates of current natural mortality remain highly uncertain, there is an increasing trend in the median estimates of natural mortality since 2012 (Figures \ref{figStoryboardAM2HG} \& \ref{figStoryboardAM1HG}).
 
-The projected pre-fishery spawing biomass in 2018 is 3,270 t (AM2) or 6,090 t (AM1), similar to $\mli{SB}_{2017}$ levels, consisting of XX\% (median) age-3 fish and XX\% (median) age-4 and older fish (Tables \ref{tab:hg-ref-points} \& XX).  
+The projected pre-fishery spawing biomass in 2018 is 3,270 t (AM2) or 6,090 t (AM1), similar to $\mli{SB}_{2017}$ levels, consisting of 34\% (median) age-3 fish and 38\% (median) age-4 and older fish (Table \ref{tab:hg-ref-points}).
 %JC: edits completed
 
 \textbf{Prince Rupert District}
@@ -552,7 +552,7 @@ Figure \ref{figBevertonHolt} shows the number of age-2 recruits in 2017 as near 
 Figure \ref{fig:prd-ageest-gear2} shows a higher proportion of 4 and 5-year old fish relative to ages 2 and 3.
 Although model estimates of current natural mortality remain highly uncertain, there is an decreasing trend in the median estimates of natural mortality since 2006 (Figures \ref{figStoryboardAM2PRD} \& \ref{figStoryboardAM1PRD}).
 
-Both AM2 and AM1 predict a continued stable trend in spawning biomass, with projected pre-fishery spawning biomass in 2018 of 21,553 t (AM2) and 22,590 t (AM1, Table \ref{tab:prd-ref-points}), consisting of XX\% (median) age-3 fish and XX\% (median) age-4 and older fish (Table XX).  
+Both AM2 and AM1 predict a continued stable trend in spawning biomass, with projected pre-fishery spawning biomass in 2018 of 21,553 t (AM2) and 22,590 t (AM1, Table \ref{tab:prd-ref-points}), consisting of 23\% (median) age-3 fish and 68\% (median) age-4 and older fish (Table \ref{tab:prd-ref-points}).  
 %JC: edits completed
 
 \textbf{Central Coast}
@@ -570,7 +570,7 @@ There is no apparent recruitment entering the spawning population in 2017 (Figur
 
 Model estimates of current natural mortality are highly uncertain in the the most recent years. Figures \ref{figStoryboardAM2CC} \& \ref{figStoryboardAM1CC} indicate a declining trend in estimated natural mortality since 2008.
 
-The projected pre-fishery spawing biomass in 2018 is 30,078 t (AM2) or 47,900 t (AM1), similar to $\mli{SB}_{2017}$ levels, consisting of XX\% (median) age-3 fish and XX\% (median) age-4 and older fish (Tables \ref{tab:cc-ref-points} \& XX).  
+The projected pre-fishery spawing biomass in 2018 is 30,078 t (AM2) or 47,900 t (AM1), similar to $\mli{SB}_{2017}$ levels, consisting of 25\% (median) age-3 fish and 66\% (median) age-4 and older fish (Table \ref{tab:cc-ref-points}).  
 %JC: edits completed
 
 \textbf{Strait of Georgia}
@@ -586,7 +586,7 @@ The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 
 Figure \ref{figBevertonHolt} shows above-average number of age-2 recruits in 2017 with 3 and 4-year old fish comprising the highest estimated proportion of fish, which is consistent with the previous 5 years (Figure \ref{fig:sog-ageest-gear2}).
 Although model estimates of current natural mortality are highly uncertain, there is an decreasing trend in the median estimates of natural mortality since 2007 (Figures \ref{figStoryboardAM2SoG} \& \ref{figStoryboardAM1SoG}).
 
-The projected pre-fishery spawing biomass in 2018 is 106,415 t (AM2) or 152,700 t (AM1), declining from 2017, consisting of XX\% (median) age-3 fish and XX\% (median) age-4 and older fish (Tables \ref{tab:sog-ref-points} \& XX).  
+The projected pre-fishery spawing biomass in 2018 is 106,415 t (AM2) or 152,700 t (AM1), declining from 2017, consisting of 25\% (median) age-3 fish and 67X\% (median) age-4 and older fish (Table \ref{tab:sog-ref-points}).  
 %JC: edits completed
 
 \textbf{West Coast of Vancouver Island}
@@ -603,7 +603,7 @@ There is no apparent recruitment entering the spawning population in 2017:
 Figure \ref{figBevertonHolt} shows the number of age-2 recruits is below-average and Figure \ref{fig:wcvi-ageest-gear2} shows a higher proportion of 4-year olds relative to ages 2 and 3. 
 Although model estimates of current natural mortality remain highly uncertain, there is an increasing trend in the median estimates of natural mortality since 2014 (Figures \ref{figStoryboardAM2WCVI} \& \ref{figStoryboardAM1WCVI}).
 
-The projected pre-fishery spawing biomass in 2018 is 18,640 t (AM2) or 33,530 t (AM1), similar to $\mli{SB}_{2017}$ levels, consisting of XX\% (median) age-3 fish and XX\% (median) age-4 and older fish (Tables \ref{tab:wcvi-ref-points} \& XX).  
+The projected pre-fishery spawing biomass in 2018 is 18,640 t (AM2) or 33,530 t (AM1), similar to $\mli{SB}_{2017}$ levels, consisting of 32\% (median) age-3 fish and 48\% (median) age-4 and older fish (Table \ref{tab:wcvi-ref-points}).  
 %JC: edits completed
 
 \subsubsection{Recruitment}
@@ -612,6 +612,7 @@ Recruitment is defined as the number of age-2 fish recruiting into the populatio
 This age-2 recruitment is estimated as a free parameter within the model, subject to the constraint that annual estimates vary around a Beverton-Holt stock recruitment relationship with an estimated unknown standard deviation (Figure \ref{figBevertonHolt}).
 For HG, PRD, CC and WCVI stocks, age-2 recruitment is estimated to be average-to-below average in 2017.
 Conversely, age-2 recruitment for the SOG stock is estimated to be above average in 2017.
+Recruitment estimates for the 5 major stocks (AM2 only) are presented in Tables \ref{tab:hg-recruitment} to \ref{tab:wcvi-recruitment}.
 
 
 \subsubsection{Effective harvest rates}
@@ -660,7 +661,7 @@ The only way to develop a management procedure that is robust to the true range 
 Estimation bias is explored through retrospective analyses.
 %JC: edits completed
 
-\subsection{RETROSPECTIVE ANALYSES}\lable{secRetro}
+\subsection{RETROSPECTIVE ANALYSES}\label{secRetro}
 
 [placeholder]
 
