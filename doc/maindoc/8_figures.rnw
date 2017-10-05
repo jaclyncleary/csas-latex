@@ -611,7 +611,7 @@ make.index.fit.plot(list(hg.am1.constm,
 @
 \end{center}
 \caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and inputs
-  (points and bars) for the Haida Gwaii surface survey.}
+  (points) for the Haida Gwaii surface survey.}
 \label{fig:hg-index-surface-fit}
 \end{figure}
 %%------------------------------------------------------------------------------
@@ -632,7 +632,7 @@ make.index.fit.plot(list(hg.am1.constm,
 @
 \end{center}
 \caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and inputs
-  (points and bars) for the Haida Gwaii dive survey.}
+  (points) for the Haida Gwaii dive survey.}
 \label{fig:hg-index-dive-fit}
 \end{figure}
 %%------------------------------------------------------------------------------
@@ -653,7 +653,7 @@ make.index.fit.plot(list(pr.am1.constm,
 @
 \end{center}
 \caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and inputs
-  (points and bars) for the Prince Rupert District
+  (points) for the Prince Rupert District
   surface survey.}
 \label{fig:prd-index-surface-fit}
 \end{figure}
@@ -675,7 +675,7 @@ make.index.fit.plot(list(pr.am1.constm,
 @
 \end{center}
 \caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and inputs
-  (points and bars) for the Prince Rupert District
+  (points) for the Prince Rupert District
   dive survey.}
 \label{fig:prd-index-dive-fit}
 \end{figure}
@@ -697,7 +697,7 @@ make.index.fit.plot(list(cc.am1.constm,
 @
 \end{center}
 \caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and inputs
-  (points and bars) for the Central Coast surface survey.}
+  (points) for the Central Coast surface survey.}
 \label{fig:cc-index-surface-fit}
 \end{figure}
 %%------------------------------------------------------------------------------
@@ -718,7 +718,7 @@ make.index.fit.plot(list(cc.am1.constm,
 @
 \end{center}
 \caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and inputs
-  (points and bars) for the Central Coast
+  (points) for the Central Coast
   dive survey.}
 \label{fig:cc-index-dive-fit}
 \end{figure}
@@ -740,7 +740,7 @@ make.index.fit.plot(list(sog.am1.constm,
 @
 \end{center}
 \caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and inputs
-  (points and bars) for the Strait of Georgia
+  (points) for the Strait of Georgia
   surface survey.}
 \label{fig:sog-index-surface-fit}
 \end{figure}
@@ -762,7 +762,7 @@ make.index.fit.plot(list(sog.am1.constm,
 @
 \end{center}
 \caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and inputs
-  (points and bars) for the Strait of Georgia
+  (points) for the Strait of Georgia
   dive survey.}
 \label{fig:sog-index-dive-fit}
 \end{figure}
@@ -784,7 +784,7 @@ make.index.fit.plot(list(wcvi.am1.constm,
 @
 \end{center}
 \caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and inputs
-  (points and bars) for the WCVI
+  (points) for the WCVI
   surface survey.}
 \label{fig:wcvi-index-surface-fit}
 \end{figure}
@@ -806,7 +806,7 @@ make.index.fit.plot(list(wcvi.am1.constm,
 @
 \end{center}
 \caption{Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and inputs
-  (points and bars) for the WCVI
+  (points) for the WCVI
   dive survey.}
 \label{fig:wcvi-index-dive-fit}
 \end{figure}
@@ -1060,7 +1060,7 @@ make.natural.mort.mcmc.plot(list(cc.am1.constm,
                                  cc.am2.tvm),
                                  model.names = leg.names,
                                  which.gear = 1,
-                                 ylim = c(0,1),
+                                 ylim = c(0,2),
                                  leg = "topright")
 @
 \end{center}
