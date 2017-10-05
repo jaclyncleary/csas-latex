@@ -196,7 +196,6 @@ make.catches.plot <- function(catches,
               })
   ## Remove zero-row gears (e.g. survey gears)
   k <- k[sapply(k, nrow) > 0]
-  browser()
   require(ggplot2)
   ggplot(j, aes(year, gear, value)) + geom_bar(aes(colour=gear))
          
