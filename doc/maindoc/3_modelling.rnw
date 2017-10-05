@@ -410,12 +410,16 @@ Because of this observation and because we have no external information to infor
 There are two versions of the base stock assessment model that differ in the treatment of spawn survey catchability parameters ($q_1$ and $q_2$) for the surface survey period (\Sexpr{qYrs$q1}) and dive survey period (\Sexpr{qYrs$q2}), respectively.  
 The two models are labelled AM1 ($q_1$ and $q_2$ estimated with prior probability distributions) and AM2 ($q_1$ estimated, $q_2=1$).  
 
-There have been concerns that the results from applying the prior probability distributions on $q_1$ and $q_2$ in the AM1 model have been too restricting to the resulting estimations.  
-Based on this concern and the results of the bridging analysis below (Appendix \ref{chap:bridge}) we conducted sensitivity analyses testing the effects of broadening of the prior distribution on $q$ by changing the standard deviation of this prior while keeping the mean constant.
+There have been concerns that the results from applying the prior probability distributions on $q_1$ and $q_2$ in the AM1 model have been too restricting to the resulting estimations.
+A Bayesian prior for the dive survey $q$ was developed from an analysis of field studies in the 1980s and 1990s external to the assessment of Pacific Herring, the details of which are included in Appendix C of \citet{martell2011}.
+Based on this concern and the results of the Bridging Analysis (Appendix \ref{chap:bridge}) we conducted sensitivity analyses testing the effects of broadening of the prior distribution on $q$ by changing the standard deviation of this prior while keeping the mean constant.
 In the base case for AM1 the $q$ prior distributions have the mean set at 0.566 and the standard deviation set to 0.274 for both $q_1$ and $q_2$.
 For the sensitivity scenarios we increased the standard deviation to 0.5, 2.0 and 3.0 for both $q_1$ and $q_2$.  
 
+We did not consider scenarios with alternate prior values because developing a new prior was beyond the scope of this paper. Also, Step 9 in the Bridging Analysis (Appendix \ref{chap:bridge}) clearly shows the direct relationship between decreasing the lower mean prior values and higher values of estimated spawning biomass.
 Model estimates show small increases in spawning biomass, depletion and natural mortality with increasing prior standard deviation on $q$s and minor decreases in the estimates of $q_1$ and $q_2$ for all stock groups (Figures \ref{fig:hg-4panel-qa} to \ref{fig:wcvi-4panel-qc}).
+
+COMPLETE THIS SECTION ONCE TABLE OF q-VALUES IS READY.
 All these increases and decreases are minor and will have little to no impacts on the outcomes of the assessment.
 
 
