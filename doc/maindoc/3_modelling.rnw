@@ -492,8 +492,9 @@ AM1 estimates the median spawning biomass in 2017 ($\mli{SB}_{2017}$) at 7,336 t
 Both \Sexpr{PasteNicely(mNames)} models estimate $\mli{SB}_{2017}$ to be below the LRP of $0.30\cdot\mli{SB}_0$ (Figure \ref{figCurrentSSB}) by greater than 50\% probability.
 The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 estimates of $\mli{SB}_{2017}$ and stock status relative to $\mli{SB}_0$ are lower than the AM1 estimates, due largely to differences in model estimates of $q_2$ (Table \ref{tab:q-parameters}).
 
-There is very little recruitment predicted to be entering the spawning population in 2017: 
+There is no apparent recruitment predicted to be entering the spawning population in 2017: 
 Figure \ref{figBevertonHolt} shows the number of age-2 recruits per number of spawners is near the origin of B-H stock recruit curve and Figure \ref{fig:hg-ageest-gear2} shows a higher proportion of 3-year olds relative to 2-year olds. 
+%Is there evidence of depensation? stock recruit data needs to be more disaggregated into spawn populations to ever really prove it... I didnt find many references to pacific herring examples of potential depensation.
 Although model estimates of current natural mortality remain highly uncertain, there is an increasing trend in the median estimates of natural mortality since 2012 (Figures \ref{figStoryboardAM2HG} \& \ref{figStoryboardAM1HG}).
 
 The projected pre-fishery spawing biomass in 2018 is 3,270 t (AM2) or 6,090 t (AM1), similar to $\mli{SB}_{2017}$ levels, consisting of XX\% (median) age-3 fish and XX\% (median) age-4 and older fish (Table \ref{tab:hg-ref-points} and XX).  
@@ -527,8 +528,9 @@ Based on a comparison of median estimates, both AM2 and AM1 models estimate $\ml
 The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 estimates of $\mli{SB}_{2017}$ and stock status relative to $\mli{SB}_0$ are lower than the AM1 estimates, due largely to differences in model estimates of $q_2$ (Table \ref{tab:q-parameters}).
 
 Figure \ref{figBevertonHolt} shows average-to-below-average number of age-2 recruits in 2017 with 5-year old fish comprising the highest estimated proportion of fish, arising from the 2012 cohort (Figure \ref{fig:cc-ageest-gear2}).
-There is no apparent recruitment entering the spawning population in 2017.
-Model estimates of current natural mortality are highly uncertain in the recent-most years. Figures \ref{figStoryboardAM2CC} \& \ref{figStoryboardAM2CC} indicate a declining trend in estimated natural mortality since 2008.
+There is no apparent recruitment entering the spawning population in 2017 (Figure \ref{figBevertonHolt}).
+
+Model estimates of current natural mortality are highly uncertain in the the most recent years. Figures \ref{figStoryboardAM2CC} \& \ref{figStoryboardAM1CC} indicate a declining trend in estimated natural mortality since 2008.
 
 The projected pre-fishery spawing biomass in 2018 is 30,078 t (AM2) or 47,900 t (AM1), similar to $\mli{SB}_{2017}$ levels, consisting of XX\% (median) age-3 fish and XX\% (median) age-4 and older fish (Tables \ref{tab:cc-ref-points} \& XX).  
 %JC: edits completed
@@ -573,7 +575,6 @@ This age-2 recruitment is estimated as a free parameter within the model, subjec
 For HG, PRD, CC and WCVI stocks, age-2 recruitment is estimated to be average-to-below average in 2017.
 Conversely, age-2 recruitment for the SOG stock is estimated to be above average in 2017.
 
-%ANYTHING ELSE?
 
 \subsubsection{Effective harvest rates}
 
