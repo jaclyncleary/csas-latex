@@ -436,8 +436,10 @@ These results confirm that changing maturity to equal selectivity doesn't make t
 
 %INCOMPLETE SECTION %BRIEF DESCRIPTION, JUSTIFICATION FOR BASE CASE MODEL RUNS (AM2 AND AM1) AND WHY NO CHANGES BASED ON SENSITIIVTY RUNS
 
-The Base Case models for the \Sexpr{fish.name} assessment were chosen based on the results of the Bridging Analysis (Appendix \ref{chap:bridge}) and the Sensivity Analysis above. Last years assessment used two versions of the base stock assessment model that differ in the treatment of spawn survey catchability parameters ($q_1$ and $q_2$) for the surface survey period (\Sexpr{qYrs$q1}) and dive survey period (\Sexpr{qYrs$q2}), respectively.  
-The two models are labelled AM1 ($q_1$ and $q_2$ estimated with prior probability distributions) and AM2 ($q_1$ estimated, $q_2=1$). Both analyses recommended analysing these two base case models again for each of the 5 major herring stocks.
+The Base Case models for the \Sexpr{fish.name} assessment were chosen based on the results of the Bridging Analysis (Appendix \ref{chap:bridge}) and the Sensivity Analysis above. 
+Last years assessment used two versions of the base stock assessment model that differ in the treatment of spawn survey catchability parameters ($q_1$ and $q_2$) for the surface survey period (\Sexpr{qYrs$q1}) and dive survey period (\Sexpr{qYrs$q2}), respectively.  
+The two models are labelled AM1 ($q_1$ and $q_2$ estimated with prior probability distributions) and AM2 ($q_1$ estimated, $q_2=1$). 
+Both analyses recommended analysing these two base case models again for each of the 5 major herring stocks.
 
 
 
