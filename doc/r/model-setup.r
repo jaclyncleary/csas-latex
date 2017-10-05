@@ -10,6 +10,10 @@ model.lst.class <- "model.list"
 ## Values to use in the mcmc calculations along with the median
 confidence.vals <- c(0.05, 0.95)
 
+## Fixed cutoffs for decision tables, corresponsing to the stock order
+## HG, PRD, CC, SOG, WCVI
+fixed.cutoffs <- c(10.7, 12.1, 17.6, 21.2, 18.8)
+
 ## -----------------------------------------------------------------------------
 ## iscam files with names that don't change depending on model
 rep.file <- "iscam.rep"
@@ -433,13 +437,13 @@ load.models.into.parent.env <- function(){
   sens.models.8 <<- lapply(sens.model.dir.name.8,
                            function(x){
                              load.models(model.dir, x)})
-  base.retro.models <<- lapply(retro.names.am1,
+  base.retro.models <<- lapply(retro.names.am2,
                                function(x){
                                  lapply(x,
                                         function(y){
                                           tmp <- load.models(retro.dir, y)
                                         })})
-  am1.retro.models <<- lapply(retro.names.am2,
+  am1.retro.models <<- lapply(retro.names.am1,
                                function(x){
                                  lapply(x,
                                         function(y){
@@ -484,6 +488,7 @@ build <- function(ovwrt.base = FALSE,
                                        burnin = 0,
                                        which.stock = which.stock,
                                        which.model = 2,
+                                       fixed.cutoffs = fixed.cutoffs,
                                        verbose = ss.verbose)}))
 
   ## Sensitivity models need to be unlisted from their groups
@@ -531,6 +536,7 @@ build <- function(ovwrt.base = FALSE,
                        burnin = 0,
                        which.stock = which.stock,
                        which.model = which.model,
+                       fixed.cutoffs = fixed.cutoffs,
                        verbose = ss.verbose)}))
 
   ## Retrospective models

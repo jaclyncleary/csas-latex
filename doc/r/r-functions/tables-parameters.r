@@ -455,15 +455,41 @@ make.ref.points.table <- function(model.am2,
   tab.am2 <- model.am2$mcmccalcs$r.quants
   ## Replace SB projected year with correct values
   tab.am2[5,2:4] <- proj[,2]
-  tab.am2[,-1] <- f(tab.am2[,-1], digits)
+  row.names <- tab.am2[,1]
+  col.names.am2 <- colnames(tab.am2)
+  ## Remove latex rownames
+  tab.am2 <- as.matrix(tab.am2[,-1])
+  tab.am2 <- apply(tab.am2, c(1, 2) , as.numeric)
+  ## Format the non-proportion data to digits
+  tab.am2.non <- tab.am2[-c(6,7), ]
+  tab.am2.non <- f(tab.am2.non, digits)
+  ## Format the proportion-at-age to two digits only
+  tab.am2.prop <- tab.am2[c(6,7), ]
+  tab.am2.prop <- f(tab.am2.prop, 2)
+  tab.am2 <- rbind(tab.am2.non, tab.am2.prop)
 
   proj <- model.am1$mcmccalcs$proj.quants
   tab.am1 <- model.am1$mcmccalcs$r.quants
   ## Replace SB projected year with correct values
   tab.am1[5,2:4] <- proj[,2]
-  ## Remove latex rownames from AM1 model
-  tab.am1 <- tab.am1[,-1]
-  tab <- cbind(tab.am2, tab.am1)
+  row.names <- tab.am1[,1]
+  col.names.am1 <- colnames(tab.am1)
+  ## Remove latex rownames
+  tab.am1 <- as.matrix(tab.am1[,-1])
+  tab.am1 <- apply(tab.am1, c(1, 2) , as.numeric)
+  ## Format the non-proportion data to digits
+  tab.am1.non <- tab.am1[-c(6,7), ]
+  tab.am1.non <- f(tab.am1.non, digits)
+  ## Format the proportion-at-age to two digits only
+  tab.am1.prop <- tab.am1[c(6,7), ]
+  tab.am1.prop <- f(tab.am1.prop, 2)
+  tab.am1 <- rbind(tab.am1.non, tab.am1.prop)
+
+  tab <- cbind(row.names,
+               as.data.frame(tab.am2),
+               as.data.frame(tab.am1))
+
+  colnames(tab) <- c(col.names.am2, col.names.am1[-1])
 
   addtorow <- list()
   addtorow$pos <- list(-1)
