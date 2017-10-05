@@ -517,7 +517,7 @@ Figure \ref{figBevertonHolt} shows the number of age-2 recruits per number of sp
 %Is there evidence of depensation? stock recruit data needs to be more disaggregated into spawn populations to ever really prove it... I didnt find many references to pacific herring examples of potential depensation.
 Although model estimates of current natural mortality remain highly uncertain, there is an increasing trend in the median estimates of natural mortality since 2012 (Figures \ref{figStoryboardAM2HG} \& \ref{figStoryboardAM1HG}).
 
-The projected pre-fishery spawing biomass in 2018 is 3,270 t (AM2) or 6,090 t (AM1), similar to $\mli{SB}_{2017}$ levels, consisting of XX\% (median) age-3 fish and XX\% (median) age-4 and older fish (Table \ref{tab:hg-ref-points}).
+The projected pre-fishery spawing biomass in 2018 is 3,270 t (AM2) or 6,090 t (AM1), similar to $\mli{SB}_{2017}$ levels, consisting of 34\% (median) age-3 fish and 38\% (median) age-4 and older fish (Table \ref{tab:hg-ref-points}).
 %JC: edits completed
 
 \textbf{Prince Rupert District}
@@ -534,7 +534,7 @@ Figure \ref{figBevertonHolt} shows the number of age-2 recruits in 2017 as near 
 Figure \ref{fig:prd-ageest-gear2} shows a higher proportion of 4 and 5-year old fish relative to ages 2 and 3.
 Although model estimates of current natural mortality remain highly uncertain, there is an decreasing trend in the median estimates of natural mortality since 2006 (Figures \ref{figStoryboardAM2PRD} \& \ref{figStoryboardAM1PRD}).
 
-Both AM2 and AM1 predict a continued stable trend in spawning biomass, with projected pre-fishery spawning biomass in 2018 of 21,553 t (AM2) and 22,590 t (AM1, Table \ref{tab:prd-ref-points}), consisting of XX\% (median) age-3 fish and XX\% (median) age-4 and older fish (Table \ref{tab:prd-ref-points}).  
+Both AM2 and AM1 predict a continued stable trend in spawning biomass, with projected pre-fishery spawning biomass in 2018 of 21,553 t (AM2) and 22,590 t (AM1, Table \ref{tab:prd-ref-points}), consisting of 23\% (median) age-3 fish and 68\% (median) age-4 and older fish (Table \ref{tab:prd-ref-points}).  
 %JC: edits completed
 
 \textbf{Central Coast}
@@ -552,7 +552,7 @@ There is no apparent recruitment entering the spawning population in 2017 (Figur
 
 Model estimates of current natural mortality are highly uncertain in the the most recent years. Figures \ref{figStoryboardAM2CC} \& \ref{figStoryboardAM1CC} indicate a declining trend in estimated natural mortality since 2008.
 
-The projected pre-fishery spawing biomass in 2018 is 30,078 t (AM2) or 47,900 t (AM1), similar to $\mli{SB}_{2017}$ levels, consisting of XX\% (median) age-3 fish and XX\% (median) age-4 and older fish (Table \ref{tab:cc-ref-points}).  
+The projected pre-fishery spawing biomass in 2018 is 30,078 t (AM2) or 47,900 t (AM1), similar to $\mli{SB}_{2017}$ levels, consisting of 25\% (median) age-3 fish and 66\% (median) age-4 and older fish (Table \ref{tab:cc-ref-points}).  
 %JC: edits completed
 
 \textbf{Strait of Georgia}
@@ -568,7 +568,7 @@ The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 
 Figure \ref{figBevertonHolt} shows above-average number of age-2 recruits in 2017 with 3 and 4-year old fish comprising the highest estimated proportion of fish, which is consistent with the previous 5 years (Figure \ref{fig:sog-ageest-gear2}).
 Although model estimates of current natural mortality are highly uncertain, there is an decreasing trend in the median estimates of natural mortality since 2007 (Figures \ref{figStoryboardAM2SoG} \& \ref{figStoryboardAM1SoG}).
 
-The projected pre-fishery spawing biomass in 2018 is 106,415 t (AM2) or 152,700 t (AM1), declining from 2017, consisting of XX\% (median) age-3 fish and XX\% (median) age-4 and older fish (Table \ref{tab:sog-ref-points}).  
+The projected pre-fishery spawing biomass in 2018 is 106,415 t (AM2) or 152,700 t (AM1), declining from 2017, consisting of 25\% (median) age-3 fish and 67X\% (median) age-4 and older fish (Table \ref{tab:sog-ref-points}).  
 %JC: edits completed
 
 \textbf{West Coast of Vancouver Island}
@@ -585,7 +585,7 @@ There is no apparent recruitment entering the spawning population in 2017:
 Figure \ref{figBevertonHolt} shows the number of age-2 recruits is below-average and Figure \ref{fig:wcvi-ageest-gear2} shows a higher proportion of 4-year olds relative to ages 2 and 3. 
 Although model estimates of current natural mortality remain highly uncertain, there is an increasing trend in the median estimates of natural mortality since 2014 (Figures \ref{figStoryboardAM2WCVI} \& \ref{figStoryboardAM1WCVI}).
 
-The projected pre-fishery spawing biomass in 2018 is 18,640 t (AM2) or 33,530 t (AM1), similar to $\mli{SB}_{2017}$ levels, consisting of XX\% (median) age-3 fish and XX\% (median) age-4 and older fish (Table \ref{tab:wcvi-ref-points}).  
+The projected pre-fishery spawing biomass in 2018 is 18,640 t (AM2) or 33,530 t (AM1), similar to $\mli{SB}_{2017}$ levels, consisting of 32\% (median) age-3 fish and 48\% (median) age-4 and older fish (Table \ref{tab:wcvi-ref-points}).  
 %JC: edits completed
 
 \subsubsection{Recruitment}
