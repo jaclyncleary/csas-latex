@@ -1094,7 +1094,13 @@ mcmc.thin <- function(mcmc.dat,
                       burnin,
                       thin){
   ## Apply burnin and thinning to the data
-
+  if(is.vector(mcmc.dat)){
+    mcmc.obj <- mcmc(mcmc.dat)
+    mcmc.window <- window(mcmc.obj,
+                          start = burnin + 1,
+                          thin = thin)
+    return(mcmc.window)
+  }
   nm <- names(mcmc.dat)
   mcmc.obj <- apply(mcmc.dat, 2, mcmc)
   mcmc.window <- NULL
@@ -1292,18 +1298,33 @@ calc.mcmc <- function(model,
   f.end <- f.mort.dat[[1]][,ncol(f.mort.dat[[1]])]
   yr.f.end <- f.yrs[length(f.yrs)]
 
+  ## Proportion of age 3 and Proportion of age 4-10
+  ## The values are the same for all TAC values so
+  ##  just use TAC = 0
+  proj <- mc$proj
+  proj <- proj[proj$TAC == 0,]
+  prop3.dat <- proj$PropAge3
+  prop4.dat <- proj$PropAge4to10
+  prop3.dat <- mcmc.thin(prop3.dat, burnin, thin)
+  prop4.dat <- mcmc.thin(prop4.dat, burnin, thin)
+
   r.quants <- NULL
   tryCatch({
     r.dat <- cbind(r.dat,
                    0.3 * r.dat$sbo,
                    sbt.end.1,
                    sbt.end.1 / r.dat$sbo,
-                   sbt.end)
+                   sbt.end,
+                   prop3.dat,
+                   prop4.dat)
+
     names(r.dat) <- c("sbo",
                       paste0("0.3sbo"),
                       paste0("sb", yr.sbt.end.1),
                       paste0("sb", yr.sbt.end.1, "/sbo"),
-                      paste0("sb", yr.sbt.end))
+                      paste0("sb", yr.sbt.end),
+                      "PropAge3",
+                      "PropAge4to10")
   r.quants <- apply(r.dat, 2, quantile, prob = probs)
   }, warning = function(war){
   }, error = function(err){
@@ -1317,7 +1338,9 @@ calc.mcmc <- function(model,
                 paste0("$SB_{", yr.sbt.end.1,
                        "}/",
                        "SB_0$"),
-                paste0("$SB_{", yr.sbt.end, "}$"))
+                paste0("$SB_{", yr.sbt.end, "}$"),
+                "$\\text{Proportion aged 3}$",
+                "$\\text{Proportion aged 4-10}$")
 
   r.quants <- t(r.quants)
   r.quants <- cbind.data.frame(desc.col, r.quants)
