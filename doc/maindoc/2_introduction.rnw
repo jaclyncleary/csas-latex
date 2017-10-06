@@ -44,11 +44,11 @@ In northern BC, \Sexpr{common.name} tend to spawn for the first time at ages 3 a
 It is generally believed that in the Strait of Georgia the young-of-year \Sexpr{common.name} overwinter in their first year before joining the immature and adult populations in the offshore feeding grounds whereas in other areas of the coast young-of-year \Sexpr{common.name} appear to begin migration offshore at the end of their first summer \citep{hourston1980}.
 \Sexpr{Common.name} mature and recruit to the spawning stock predominantly at age 3 within BC but age-at-recruitment tends to increase with latitude within this range.
 
-\Sexpr{Common.name} are iteroparous and return to spawn each year once reaching maturity, until they die naturally or intercepted in fisheries.
+\Sexpr{Common.name} are iteroparous and return to spawn each year once reaching maturity, until they die naturally or are intercepted in fisheries.
 Based on many years of tagging data it is evident that while \Sexpr{common.name} generally return to the same large geographical region each year they do not home to the same spawning beach or bay each year \citep{hay2001, flostrand2009}.
 Each female produces about 20--40,000 eggs and quite consistently about 100 eggs/g of female weight, with larger females producing more eggs than smaller and younger fish \citep{hourston1980, hay1985}.
 
-The age of maturity of \Sexpr{common.name} is difficult to assess since few surveys of maturing fish have been conducted in the offshore areas.
+The age of maturity of \Sexpr{common.name} is difficult to assess since few surveys of maturing fish have been conducted in offshore areas.
 Indications from histological assessment of developing ovaries suggests that about 25\% of \Sexpr{fish.name} mature at age 2, and at least 90\% mature at age 3 (D. Hay, unpublished data).
 This is consistent with observations for southern BC stocks, as described above.
 
@@ -85,7 +85,7 @@ Maps identifying stock boundaries and Statistical Areas for each SAR can be foun
 
 As a forage species, \Sexpr{common.name} play a key role in the marine ecosystem and are a food source for a variety of species \citep{schweigert2010}.
 \Sexpr{Common.name} are an important prey species to many piscivores including Pacific Salmon (Coho and Chinook), Pacific Hake, Pacific Halibut, Arrowtooth Flounder, and Spiny Dogfish.
-They are also believed to be important in the diet of marine mammal predators such as Steller and California sea lions, harbour and northern fur seals, harbour porpoises, Pacific white-sided dolphins, humpback, and grey whales.
+They are also believed to be important in the diet of marine mammal predators such as Steller and California sea lions, harbour and northern fur seals, harbour porpoises, Pacific white-sided dolphins, as well as humpback and grey whales.
 Over the time series depicted in the \Sexpr{fish.name} assessment (1951-2012), population sizes of seals and sea lions and baleen whales, which forage on \Sexpr{common.name}, have increased \citep{sealion2003, seal2010, caretta2011, crawford2011}.
 
 DFO is currently compiling data to develop ecosystem modeling approaches in the hope that this endeavor (along with other ecosystem modeling initiatives at the University of British Columbia) will help explain how environmental and ecological interactions have affected BC \Sexpr{common.name} stocks, and how they are likely to be affected in the future.
@@ -183,8 +183,8 @@ The hybrid constant escapement/instant harvest rate feature of the herring HCR w
 In this case, the management procedure has treated the LRP as an operational control point (OCP) where management action is taken.
 In the design of the HCR, this ``ramp-down'' of the harvest rate is intended to avoid commercial fishery closures and encourage stock growth, however the reduction from $0.31\mli{SB}_0$ to $0.25\mli{SB}_0$ is so steep that there is a very limited range of estimated biomass where reduced harvest rates might arrest stock decline before closure of the commercial fisheries.
 The effect of this feature of the HCR is the ``on or of'' behaviour seen in the simulation results of Cox et al. (2015),%
-\footnote{Cox, S.P., Benson, A.J., Cleary, J.S., and Taylor, N.G. 2015. Candidate limit reference points as a basis for choosing among alternate harvest control rules for Pacific Herring (Clupea pallasii) in British Columbia. CSAS Working Paper 2013PEL01 (Accepted WP, final revisions stage).}
-and \citet{herring2015}.
+\footnote{Cox, S.P., Benson, A.J., Cleary, J.S., and Taylor, N.G. 2015. Candidate limit reference points as a basis for choosing among alternate harvest control rules for Pacific Herring (Clupea pallasii) in British Columbia. CSAS Working Paper 2013PEL01 (Accepted WP, final revisions stage).}%
+; \citet{herring2015}.
 The outcome of which is that for 3 of the stocks, spawning biomass fell below this level far more often than predicted (Section \ref{secMgmtMajorStocks}). 
 
 A comprehensive review of approaches to establishing both limit and target reference points for herring stocks worldwide for clupeids is included in \citet[][Appendix F]{kronlund2017}.
