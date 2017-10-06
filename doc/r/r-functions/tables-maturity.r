@@ -93,11 +93,11 @@ make.maturity.sens.table <- function(mat,
   tab <- cbind(base, sens)
   tab <- tab[,-6]
 
-  tab[,1] <- c(latex.bold("HG"),
-               latex.bold("PRD"),
-               latex.bold("CC"),
-               latex.bold("SOG"),
-               latex.bold("WCVI"))
+  tab[,1] <- c("HG",
+               "PRD",
+               "CC",
+               "SOG",
+               "WCVI")
 
   addtorow <- list()
   addtorow$pos <- list(0)
