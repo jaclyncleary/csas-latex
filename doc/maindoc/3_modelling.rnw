@@ -180,9 +180,8 @@ Stock specific trends are discussed in the sections below.
 
 \subsubsection{Assumed biological parameters}\label{secAssumedBiolPars}
 
-Model inputs of asymptotic growth $L_\infty=27$, alpha and beta for the length-weight allometry ($alpha=4.5e-06$, $beta=3.127$), and Brody growth coefficient ($k=0.48$) were taken from FishBase %(\citep{XX}).
+Model inputs of asymptotic growth $L_\infty=27$, alpha, $\alpha$ and beta, $\beta$ for the length-weight allometry ($\alpha=4.5e-06$, $\beta=3.127$), and Brody growth coefficient ($k=0.48$) were taken from \citet{fishbase}.
 Age at 50\% maturity was estimated at 2.055.
-%MG
 
 As described in Section \ref{secLifeHist}, indications from histological assessment of developing ovaries suggest that about 25\% of \Sexpr{fish.name} mature at age 2, and at least 90\% mature at age 3 (D. Hay, unpublished data).
 For the assessment, a fixed maturity schedule is used for all herring stocks: 25\% mature for age-2s, 90\% mature for age-3s, and 100\% mature for ages 4 and older (see description in Section \ref{secMatAge}.
@@ -384,10 +383,9 @@ Recruitment deviations showed similar trends to the spawning biomass with HG and
 The resulting trends in $q_t$ are similar between stocks with the greatest variations between constant and time varying $M$ models seen in the $q_2$ estimates for AM1 and AM2.
 For example, HG (Figure \ref{fig:hg-q-m}) and WCVI (Figure \ref{fig:wcvi-q-m}) time-varying and constant $M$ AM2 estimates of $q_2$ are predicted to be higher than those predicted by the AM1 models.
 
-MCMC trace plots, autocorrelation plots, and pairs plots were very similar between constant $M$ and time varying $M$ model runs for PRD, CC, SOG and WCVI. 
+MCMC trace plots, autocorrelation plots, and pairs plots were very similar between constant $M$ and time varying $M$ model runs for PRD, CC, SOG and WCVI.
 See time varying $M$, Figure \ref{fig:hg-traces} to \ref{fig:wcvi-pairs}; constant $M$ not shown.
-The exception was for HG AM2 where trace plots, autocorrelation plots, and pairs plots showed signs of persistent drift and autocorrelation (Figures 80, 81 and 82).
-%MG1 (Figures \ref{fig:hg-traces}, \ref{fig:hg-autocor}, \& \ref{fig:hg-pairs}, respectively). %JC: these fig references are not correct.
+The exception was for HG AM2 where trace plots, autocorrelation plots, and pairs plots showed signs of persistent drift and autocorrelation (Figures \ref{fig:hg-constm-priors}, \ref{fig:hg-constm-traces}, \& \ref{fig:hg-constm-pairs}, respectively).
 
 There is support for continued inclusion of time varying $M$ as the base case for the assessment in this analysis, as well as from the Bridging Analysis (Appendix \ref{chap:bridge}) based on the reduction improved coherence between assumed and empirical fits to the spawn survey index and issues of autocorrelation between parameters and model convergence with constant $M$.
 
@@ -397,11 +395,11 @@ The key variance parameter in the errors-in-variables approach is the inverse of
 The total variance is partitioned into observation and process error components by the model parameter rho $\rho$, which is the proportion of the total variance that is due to observation error \citep{punt1993, deriso2007}.
 
 In ISCAM, standard deviations in process error (tau, $\tau$) and observation error (sigma, $\sigma$) are related and modelled using the following equations for kappa $\kappa$
-\begin{equation}
+\begin{equation}\label{eqKappa}
 \kappa = \left( \frac{1}{\sqrt{(\sigma^2 + \tau^2)}} \right)^2
 \end{equation}
 and rho $\rho$
-\begin{equation}
+\begin{equation}\label{eqRho}
 \rho = \sigma^2 \left( \frac{1}{\sqrt{(\sigma^2 + \tau^2)}} \right)^2 \, .
 \end{equation}
 The base case initial values for $\kappa$ and $\rho$ were set equal to MPD estimated values from the 2016 assessment, which resulted in an observation error term ($\sigma=0.58$) and a process error term ($\tau=0.69$).  
@@ -424,7 +422,6 @@ A Bayesian prior for the dive survey $q$ was developed from an analysis of field
 Based on this concern and the results of the Bridging Analysis (Appendix \ref{chap:bridge}) we conducted sensitivity analyses testing the effects of broadening of the prior distribution on $q$ by changing the standard deviation of this prior while keeping the mean constant.
 In the base case for AM1 the $q$ prior distributions have the mean set at 0.566 and the standard deviation set to 0.274 for both $q_1$ and $q_2$.
 For the sensitivity scenarios we increased the standard deviation to 0.5, 2.0 and 3.0 for both $q_1$ and $q_2$.  
-
 We did not consider scenarios with alternate prior values because developing a new prior was beyond the scope of this paper. Also, Step 9 in the Bridging Analysis (Appendix \ref{chap:bridge}) clearly shows the direct relationship between decreasing the lower mean prior values and higher values of estimated spawning biomass.
 Model estimates show small increases in spawning biomass, depletion and natural mortality with increasing prior standard deviation on $q$s and minor decreases in the estimates of $q_1$ and $q_2$ for all stock groups (Figures \ref{fig:hg-4panel-qa} to \ref{fig:wcvi-4panel-qc}).
 
@@ -491,12 +488,11 @@ Autocorrelation was minor for all parameters in the \Sexpr{PasteNicely(mNames)} 
 \subsubsection{Fits to survey and proportions at age data}
 
 Figure (a) in each of Figures \ref{figStoryboard\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figStoryboard\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}} show \Sexpr{PasteNicely(mNames)} model fits to the spawn survey data for each of the \Sexpr{length(allRegionNames$major)} major SARs: \Sexpr{PasteNicely(allRegionNames$major)}. 
-Figures 101 to 115 present model estimated proportions at age for the 5 major SARs.
-%MG2
+Figures \ref{fig:hg-ageest-gear1} to \ref{fig:wcvi-ageest-gear3} present model estimated proportions at age for the 5 major SARs.
 
 \subsubsection{Parameter estimates}
 
-Prior and marginal posterior probability distributions of estimated parameters are shown in Figures 31 to 35. %MG4 - these are correct- needs \ref{}...
+Prior and marginal posterior probability distributions of estimated parameters are shown in Figures \ref{fig:hg-priors} to \ref{fig:wcvi-priors}.
 %JC: prior and posterior distributions are only included for AM2. Add AM1 for final Res Doc.
 The median, 5th percentile and 95th percentile posterior parameter estimates, and MPDs are given in Tables \ref{tab:hg-parameters-posts} to \ref{tab:wcvi-am1-parameters-posts}.
 Choice of prior and prior distribution is described in Appendix \ref{chap:equations}.
@@ -663,7 +659,7 @@ Estimation bias is explored through retrospective analyses.
 
 \subsection{RETROSPECTIVE ANALYSES}\label{secRetro}
 
-Patterns of retrospective bias in spawning biomass and age-2 recruitment for all major stocks (AM1 and AM2) are presented in Figures \ref{fig:hg-am1-retro-biomass} to \ref{fig:wcvi-am1-retro-biomass} and Figures \ref{fig:hg-retro-recr} to \ref{fig:wcvi-am1-retro-recr}, respectively.
+Patterns of retrospective bias in estimates of spawning biomass and age-2 recruitment for all major stocks (AM1 and AM2) were examined by successively removing the last 10-years of data.  Results are presented in Figures \ref{fig:hg-am1-retro-biomass} to \ref{fig:wcvi-am1-retro-biomass} and Figures \ref{fig:hg-retro-recr} to \ref{fig:wcvi-am1-retro-recr}, for AM1 and AM2 respectively.
 
 Two categories of retrospective patterns emerge when examining these figures.
 For HG, CC, and WCVI, the general retrospective patterns are the same between AM1 and AM2 within these stocks. 
