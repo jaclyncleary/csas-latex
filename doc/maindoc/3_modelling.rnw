@@ -172,9 +172,9 @@ Estimated proportions-at-age from Gear 2 biological samples (roe seine, seine te
 The matrix of mean weight-at-age data is calculated from the biological samples presented in Figure \ref{figProportionAge}.
 Tables of numbers-at-age for Gear 1, Gear 2, and Gear 3 are included in Appendix \ref{chap:input}.
 
-An adjustment is made in analytical procedures for compiling the proportions-at-age and weight-at-age data for Central Coast in 20XX and 20XX. %MG3
-Area 08 biological samples are weighted by their average relative contribution over the past 20 years (7\%), because the sampling protocol in 20XX and 20XX involved collecting an uncommonly high number of samples from Statistical Area 08. 
-The downweighting of Area 08 samples was deemed necessary because fish sampled in Area 08 are consistently smaller at age than in Area 06 and Area 07 \citep{herring2014,herring2016}.
+An adjustment is made in analytical procedures for compiling the proportions-at-age and weight-at-age data for Central Coast in 2014 and 2015.
+Area 08 biological samples are weighted by their average relative contribution over the past 20 years (7\%), because the sampling protocol in 2014 and 2015 involved collecting an uncommonly high number of samples from Statistical Area 08. 
+The downweighting of Area 08 samples was deemed necessary because fish sampled in Area 08 are consistently smaller at age than in Area 06 and Area 07 \citep{herring2014, herring2016}.
 
 Stock specific trends are discussed in the sections below.
 
@@ -336,7 +336,7 @@ Then, these samples are used to construct marginal distributions for derived qua
 
 \subsubsection{Prior probability distributions}
 
-Prior probability distributions for leading parameters for each major stock are shown in Tables \ref{tab:parameters} \& \ref{tab:q-parameters}, and Figures \ref{fig:hg-priors} to \ref{fig:wcvi-priors}.
+Prior probability distributions for leading parameters for each major stock are shown in Tables \ref{tab:parameters} \& \ref{tab:q-params}, and Figures \ref{fig:hg-priors} to \ref{fig:wcvi-priors}.
 The form of each distribution remains the same as was implemented in \citet{martell2011} and as has been implemented in each subsequent assessment.
 The initial values for each leading parameter were set equal to the MPD estimates from the 2016 assessment for each stock area.
 Prior values and standard deviations in priors remain the same.
@@ -512,19 +512,18 @@ Choice of prior and prior distribution is described in Appendix \ref{chap:equati
 The following section presents posterior distributions characterizing the major Pacific Herring stocks for the following parameters and derived quantities: model fits to the spawn survey index, age-2 recruitment, instantaneous natural mortality, and spawning biomass reconstructions.
 
 To help readers view and interpret trends in results and uncertainty for each stock major stock area, collective sets of figures showing these four sets of model results across the \Sexpr{paste(range(yrRange), collapse=" to ")} time series are presented by stock area in Figures \ref{figStoryboard\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figStoryboard\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}}.
-We also present maximum posterior density (MPD) estimates for: spawn survey scaling parameter ($q$, Table XX),  %MG5
-age-2 recruits versus spawning biomass relationships (Figure \ref{figBevertonHolt}), and age-specific fishing gear selectivity (Figures \ref{fig:hg-selex} to \ref{fig:wcvi-selex}).
+We also present median posterior estimates for the spawn survey scaling parameter ($q$; Table \ref{tab:q-params}), as well as MPD estimates for age-2 recruits versus spawning biomass relationships (Figure \ref{figBevertonHolt}), and age-specific fishing gear selectivity (Figures \ref{fig:hg-selex} to \ref{fig:wcvi-selex}).
 
 Estimated spawning biomass relative to the LRP is presented in Figure \ref{figCurrentSSB}.
 
-\textbf{Haida Gwaii}
+\textbf{Haida Gwaii}  % TODO: How to prevent page break for cases like these? For 2018.
 
 Models \Sexpr{PasteNicely(mNames)} base case assessments estimate a declining trend in spawning stock biomass since 2013 (Figures \ref{figStoryboardAM2HG} \& \ref{figStoryboardAM1HG}, and Tables \ref{tab:hg-spawn-biomass-am2} \& \ref{tab:hg-spawn-biomass-am1}).
 In most years since 2000, including 2017, the WCVI stock has been in a low productivity low biomass state (Figure \ref{figCurrentSSB}).
 AM2 estimates the median spawning biomass in 2017 ($\mli{SB}_{2017}$) at 3,963 t and 17\% of $\mli{SB}_0$. 
 AM1 estimates the median spawning biomass in 2017 ($\mli{SB}_{2017}$) at 7,336 t and 25\% of $\mli{SB}_0$.
 Both \Sexpr{PasteNicely(mNames)} models estimate $\mli{SB}_{2017}$ to be below the LRP of $0.30\cdot\mli{SB}_0$ (Figure \ref{figCurrentSSB}) by greater than 50\% probability.
-The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 estimates of $\mli{SB}_{2017}$ and stock status relative to $\mli{SB}_0$ are lower than the AM1 estimates, due largely to differences in model estimates of $q_2$ (Table \ref{tab:q-parameters}).
+The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 estimates of $\mli{SB}_{2017}$ and stock status relative to $\mli{SB}_0$ are lower than the AM1 estimates, due largely to differences in model estimates of $q_2$ (Table \ref{tab:q-params}).
 
 There is no apparent recruitment predicted to be entering the spawning population in 2017: 
 Figure \ref{figBevertonHolt} shows the number of age-2 recruits per number of spawners is near the origin of the Beverton-Holt stock recruit curve and Figure \ref{fig:hg-ageest-gear2} shows a higher proportion of 3-year olds relative to 2-year olds. 
@@ -541,7 +540,7 @@ Since the mid-1990s, the PRD stock is characterized by two periods of consistent
 AM2 estimates the median spawning biomass in 2017 ($\mli{SB}_{2017}$) at 21,738 t and 34\% of $\mli{SB}_0$. 
 AM1 estimates the median spawning biomass in 2017 ($\mli{SB}_{2017}$) at 22,820 t and 36\% of $\mli{SB}_0$.
 Based on a comparison of median estimates, both \Sexpr{PasteNicely(mNames)} models estimate $\mli{SB}_{2017}$ to be above the LRP of $0.30\cdot\mli{SB}_0$ by greater than 50\% probability but less than 95\% probability (Figure \ref{figCurrentSSB}).
-Numeric estimates of spawning biomass and stock status are very similar between \Sexpr{PasteNicely(mNames)}, due to similarities in model estimates of $q_1$ and $q_2$ (Table \ref{tab:q-parameters}).
+Numeric estimates of spawning biomass and stock status are very similar between \Sexpr{PasteNicely(mNames)}, due to similarities in model estimates of $q_1$ and $q_2$ (Table \ref{tab:q-params}).
 
 Both AM2 and AM1 estimate a large recruitment of age 2 fish to the population in 2014, relative to the last 10 years, owing largely to the age composition information showing a high proportion of samples consisting of this age class. 
 Figure \ref{figBevertonHolt} shows the number of age-2 recruits in 2017 as near average, just below the B-H stock recruit curve.
@@ -559,7 +558,7 @@ AM2 and AM1 base case assessments estimate an increasing trend in spawning stock
 AM2 estimates the median spawning biomass in 2017 ($\mli{SB}_{2017}$) at 30,474 t and 55\% of $\mli{SB}_0$. 
 AM1 estimates the median spawning biomass in 2017 ($\mli{SB}_{2017}$) at 49,620 t and 80\% of $\mli{SB}_0$.
 Based on a comparison of median estimates, both AM2 and AM1 models estimate $\mli{SB}_{2017}$ to be above the LRP of $0.30\cdot\mli{SB}_0$ by greater than 95\% probability (Figure \ref{figCurrentSSB}).
-The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 estimates of $\mli{SB}_{2017}$ and stock status relative to $\mli{SB}_0$ are lower than the AM1 estimates, due largely to differences in model estimates of $q_2$ (Table \ref{tab:q-parameters}).
+The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 estimates of $\mli{SB}_{2017}$ and stock status relative to $\mli{SB}_0$ are lower than the AM1 estimates, due largely to differences in model estimates of $q_2$ (Table \ref{tab:q-params}).
 
 Figure \ref{figBevertonHolt} shows average-to-below-average number of age-2 recruits in 2017 with 5-year old fish comprising the highest estimated proportion of fish, arising from the 2012 cohort (Figure \ref{fig:cc-ageest-gear2}).
 There is no apparent recruitment entering the spawning population in 2017 (Figure \ref{figBevertonHolt}).
@@ -577,7 +576,7 @@ AM2 and AM1 base case assessments estimate an increasing trend in spawning stock
 AM2 estimates the median spawning biomass in 2017 ($\mli{SB}_{2017}$) at 114,626 t and 81\% of $\mli{SB}_0$. 
 AM1 estimates the median spawning biomass in 2017 ($\mli{SB}_{2017}$) at 175,960 t and 108\% of $\mli{SB}_0$.
 Based on a comparison of median estimates, both AM2 and AM1 models estimate $\mli{SB}_{2017}$ to be above the LRP of $0.30\cdot\mli{SB}_0$ by greater than 95\% probability (Figure \ref{figCurrentSSB}).
-The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 estimates of $\mli{SB}_{2017}$ and stock status relative to $\mli{SB}_0$ are lower than the AM1 estimates, due largely to differences in model estimates of $q_2$ (Table \ref{tab:q-parameters}).
+The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 estimates of $\mli{SB}_{2017}$ and stock status relative to $\mli{SB}_0$ are lower than the AM1 estimates, due largely to differences in model estimates of $q_2$ (Table \ref{tab:q-params}).
 
 Figure \ref{figBevertonHolt} shows above-average number of age-2 recruits in 2017 with 3 and 4-year old fish comprising the highest estimated proportion of fish, which is consistent with the previous 5 years (Figure \ref{fig:sog-ageest-gear2}).
 Although model estimates of current natural mortality are highly uncertain, there is an decreasing trend in the median estimates of natural mortality since 2007 (Figures \ref{figStoryboardAM2SoG} \& \ref{figStoryboardAM1SoG}).
@@ -593,7 +592,7 @@ AM2 and AM1 base case assessments estimate a decline in spawning stock biomass f
 AM2 estimates the median spawning biomass in 2017 ($\mli{SB}_{2017}$) at 17,742 t and 37\% of $\mli{SB}_0$. 
 AM1 estimates the median spawning biomass in 2017 ($\mli{SB}_{2017}$) at 32,810 t and 56\% of $\mli{SB}_0$.
 Based on a comparison of median estimates, both AM2 and AM1 models estimate $\mli{SB}_{2017}$ to be above the LRP of $0.30\cdot\mli{SB}_0$, by greater than 50\% probability but less than 95\% probability (Figure \ref{figCurrentSSB}).
-The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 estimates of $\mli{SB}_{2017}$ and stock status relative to $\mli{SB}_0$ are lower than the AM1 estimates, due largely to differences in model estimates of $q_2$ (Table \ref{tab:q-parameters}).
+The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 estimates of $\mli{SB}_{2017}$ and stock status relative to $\mli{SB}_0$ are lower than the AM1 estimates, due largely to differences in model estimates of $q_2$ (Table \ref{tab:q-params}).
 
 There is no apparent recruitment entering the spawning population in 2017: 
 Figure \ref{figBevertonHolt} shows the number of age-2 recruits is below-average and Figure \ref{fig:wcvi-ageest-gear2} shows a higher proportion of 4-year olds relative to ages 2 and 3. 
