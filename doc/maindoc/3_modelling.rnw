@@ -422,15 +422,14 @@ A Bayesian prior for the dive survey $q$ was developed from an analysis of field
 Based on this concern and the results of the Bridging Analysis (Appendix \ref{chap:bridge}) we conducted sensitivity analyses testing the effects of broadening of the prior distribution on $q$ by changing the standard deviation of this prior while keeping the mean constant.
 In the base case for AM1 the $q$ prior distributions have the mean set at 0.566 and the standard deviation set to 0.274 for both $q_1$ and $q_2$.
 For the sensitivity scenarios we increased the standard deviation to 0.5, 2.0 and 3.0 for both $q_1$ and $q_2$.  
-We did not consider scenarios with alternate prior values because developing a new prior was beyond the scope of this paper. Also, Step 9 in the Bridging Analysis (Appendix \ref{chap:bridge}) clearly shows the direct relationship between decreasing the lower mean prior values and higher values of estimated spawning biomass.
+We did not consider scenarios with alternate mean prior values or distribution type because developing a new prior was beyond the scope of this paper. Also, Step 9 in the Bridging Analysis (Appendix \ref{chap:bridge}) clearly shows the direct relationship between mean prior values and estimated spawning biomass, indicating that with decreasing mean prior values the estimated spawning biomass increases.
 Model estimates show small increases in spawning biomass, depletion and natural mortality with increasing prior standard deviation on $q$s and minor decreases in the estimates of $q_1$ and $q_2$ for all stock groups (Figures \ref{fig:hg-4panel-qa} to \ref{fig:wcvi-4panel-qc}).
 
-Table XX presents MPD estimates of $\mli{SB}_{2017}$, $\mli{SB}_0$, $\mli{SB}_{2017} / \mli{SB}_0$, and both $q$s for AM1 for the base 3 sensitivity cases where the prior on $q$ is broadened.
-
-JC COMPLETE THIS SECTION ONCE TABLE OF q-VALUES IS READY.
-
-%All these increases and decreases are minor and will have little to no impacts on the outcomes of the assessment.
-
+Table \ref{tab:q-params-q-sens} presents median posterior distribution estimates of $\mli{SB}_{2017}$, $\mli{SB}_0$, $\mli{SB}_{2017} / \mli{SB}_0$, and both $q$s for AM1 for the base 3 sensitivity cases where the prior on $q$ is broadened by increasing the standard deviation. These results show that there is no consistent trend in the relationship between the standard deviation on the prior of $q$ and the estimated prior values. 
+For example, for HG and CC, as the standard deviation on the prior is increased, both q1 and q2 estimates decrease resulting in slightly higher estimate of $\mli{SB}_{2017}$. 
+For PRD, SOG and WCVI, $q_2$, as the standard deviation on the prior increases, model estimates of $q_2$ increase. 
+In all cases, overall influence on the estimation of $\mli{SB}_{2017}$, $\mli{SB}_0$, and $\mli{SB}_{2017} / \mli{SB}_0$  is negligible.
+ 
 \subsubsection{Maturity at age} \label{secMatAge}
 
 The base case maturity vector assumes 25\% of age-2 fish are mature, 90\% of age-3 fish are mature, and 100\% maturity for fish ages 4 and older. 
