@@ -1,7 +1,5 @@
 \section{RECOMMENDATIONS AND YIELD OPTIONS}
 
-[Placeholder]
-
 \subsection{PROJECTED BIOMASS IN \Sexpr{assess.yr+1}}
 
 Projected pre-harvest spawning biomass estimates (i.e., prior to any harvest in \Sexpr{max(yrRange)+1}), and the relative contribution of fish aged 3 and aged 4-10 are presented in Tables \ref{tab:hg-ref-points} to \ref{tab:wcvi-ref-points}.

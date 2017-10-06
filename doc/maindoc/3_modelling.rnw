@@ -172,7 +172,7 @@ Estimated proportions-at-age from Gear 2 biological samples (roe seine, seine te
 The matrix of mean weight-at-age data is calculated from the biological samples presented in Figure \ref{figProportionAge}.
 Tables of numbers-at-age for Gear 1, Gear 2, and Gear 3 are included in Appendix \ref{chap:input}.
 
-An adjustment is made in analytical procedures for compiling the proportions-at-age and weight-at-age data for Central Coast in 20XX and 20XX.
+An adjustment is made in analytical procedures for compiling the proportions-at-age and weight-at-age data for Central Coast in 20XX and 20XX. %MG3
 Area 08 biological samples are weighted by their average relative contribution over the past 20 years (7\%), because the sampling protocol in 20XX and 20XX involved collecting an uncommonly high number of samples from Statistical Area 08. 
 The downweighting of Area 08 samples was deemed necessary because fish sampled in Area 08 are consistently smaller at age than in Area 06 and Area 07 \citep{herring2014,herring2016}.
 
@@ -462,8 +462,6 @@ Estimates of $F_\text{MSY}$ under the maturity sensitivity case were still very 
 
 \subsubsection{Base case models}
 
-%BRIEF DESCRIPTION, JUSTIFICATION FOR BASE CASE MODEL RUNS (AM2 AND AM1) AND WHY NO CHANGES BASED ON SENSITIIVTY RUNS
-
 The Base Case models for this years \Sexpr{fish.name} assessment were chosen based on the results of the Bridging Analysis (Appendix \ref{chap:bridge}) and the Sensivity Analysis (Section \ref{secSensitivity}). 
 The 2016 assessment implemented two versions of the base stock assessment model that differ in the treatment of spawn survey catchability parameters ($q_1$ and $q_2$) for the surface survey period (\Sexpr{qYrs$q1}) and dive survey period (\Sexpr{qYrs$q2}), respectively.  
 The two models are labelled AM1 ($q_1$ and $q_2$ estimated with prior probability distributions) and AM2 ($q_1$ estimated, $q_2=1$). 
@@ -484,31 +482,25 @@ Table \ref{tab:parameters} presents parameterization of AM1 and AM2 base case as
 \subsubsection{Model diagnostics}
 
 The joint posterior distribution was numerically approximated using the Markov Chain Monte Carlo (MCMC) routines built into AD Model Builder \citep{fournier2012}.
-For\Sexpr{PasteNicely(mNames)} base cases and all sensitivity cases, posterior samples were drawn systematically every \Sexpr{mcmc.samp.freq} iterations from a chain of length \Sexpr{mcmc.length}, resulting in \Sexpr{mcmc.num.samples} posterior samples (the first \Sexpr{mcmc.burnin} samples were dropped to allow for sufficient burn-in).
+For \Sexpr{PasteNicely(mNames)} base cases and all sensitivity cases, posterior samples were drawn systematically every \Sexpr{mcmc.samp.freq} iterations from a chain of length \Sexpr{mcmc.length}, resulting in \Sexpr{mcmc.num.samples} posterior samples. 
+%(the first \Sexpr{mcmc.burnin} samples were dropped to allow for sufficient burn-in).
 Convergence was diagnosed using visual inspection of the trace plots (Figures \ref{fig:hg-traces} to \ref{fig:wcvi-traces}) and visual examination of autocorrelation in posterior chains (Figures \ref{fig:hg-autocor} to \ref{fig:wcvi-autocor}).
 Autocorrelation was minor for all parameters in the \Sexpr{PasteNicely(mNames)} base model runs and there was no strong evidence for lack of convergence.
 %JC: edits completed
 
-\subsubsection{Fits to data}
+\subsubsection{Fits to survey and proportions at age data}
 
-Figures \ref{figStoryboard\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figStoryboard\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}} show \Sexpr{PasteNicely(mNames)} results for the \Sexpr{length(allRegionNames$major)} major SARs: \Sexpr{PasteNicely(allRegionNames$major)}, respectively.
-%JC: edits completed
+Figure (a) in each of Figures \ref{figStoryboard\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figStoryboard\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}} show \Sexpr{PasteNicely(mNames)} model fits to the spawn survey data for each of the \Sexpr{length(allRegionNames$major)} major SARs: \Sexpr{PasteNicely(allRegionNames$major)}. 
+Figures 101 to 115 present model estimated proportions at age for the 5 major SARs.
+%MG2
 
 \subsubsection{Parameter estimates}
 
-%INCOMPLETE SECTION
-The assessment uses Bayesian methods to incorporate prior information and integrate over parameter uncertainty to provide results that can be probabilistically interpreted.  
-Marginal posterior distributions for estimated model parameters were constructed using the AD Model Builder (Fournier et al. 2012). 
-For each minor assessment area, a systematic sample of 1,000 points were taken from a chain of length 5,000,000, intended to represent a random sample from the joint posterior distribution.
-Prior and posterior probability distributions of estimated parameters are shown in Figures 31 to 35.
-The median, 2.5th percentile and 97.5th percentile posterior parameter estimates, and MPDs are given in Tables 3 to 12. 
-
-%\begin{itemize}
- % \item $q$
-%  \item $M$
-%\end{itemize}
-
-%Here we need to describe prior/ posterior distributions for leading parameters
+Prior and marginal posterior probability distributions of estimated parameters are shown in Figures 31 to 35. %MG4 - these are correct- needs \ref{}...
+%JC: prior and posterior distributions are only included for AM2. Add AM1 for final Res Doc.
+The median, 5th percentile and 95th percentile posterior parameter estimates, and MPDs are given in Tables \ref{tab:hg-parameters-posts} to \ref{tab:wcvi-am1-parameters-posts}.
+Choice of prior and prior distribution is described in Appendix \ref{chap:equations}.
+%add more in 2018
 
 %%\subsubsection{Fishery reference points} %Add in 2018
 
@@ -522,16 +514,18 @@ The median, 2.5th percentile and 97.5th percentile posterior parameter estimates
 
 \subsubsection{Biomass and stock status} \label{secStockStatus}
 
-The following section presents posterior distributions characterizing the major herring stocks for the following parameters and derived quantities: recruitment, instantaneous natural mortality, biomass reconstructions and stock depletion.
-Estimated spawning biomass relative to the LRP is presented in Figure \ref{figCurrentSSB}.
+The following section presents posterior distributions characterizing the major Pacific Herring stocks for the following parameters and derived quantities: model fits to the spawn survey index, age-2 recruitment, instantaneous natural mortality, and spawning biomass reconstructions.
+
 To help readers view and interpret trends in results and uncertainty for each stock major stock area, collective sets of figures showing these four sets of model results across the \Sexpr{paste(range(yrRange), collapse=" to ")} time series are presented by stock area in Figures \ref{figStoryboard\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figStoryboard\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}}.
-Below we also present maximum posterior density (MPD) estimates in order to characterize the major herring stocks in terms of: spawn survey scaling parameter ($q$), age-2 recruits versus spawning biomass relationships, age-specific fishing gear selectivity, and total instantaneous mortality.
-To enable readers to compare model estimates between major stock areas, results for each of the MPD estimates for all major stock areas in the \Sexpr{paste(range(yrRange), collapse=" to ")} times series are shown together in individual figures (Figures \ref{figProductionAM2HG} to \ref{figProductionAM1WCVI}).
-%JC: edits completed
+We also present maximum posterior density (MPD) estimates for: spawn survey scaling parameter ($q$, Table XX),  %MG5
+age-2 recruits versus spawning biomass relationships (Figure \ref{figBevertonHolt}), and age-specific fishing gear selectivity (Figures \ref{fig:hg-selex} to \ref{fig:wcvi-selex}).
+
+Estimated spawning biomass relative to the LRP is presented in Figure \ref{figCurrentSSB}.
 
 \textbf{Haida Gwaii}
 
 Models \Sexpr{PasteNicely(mNames)} base case assessments estimate a declining trend in spawning stock biomass since 2013 (Figures \ref{figStoryboardAM2HG} \& \ref{figStoryboardAM1HG}, and Tables \ref{tab:hg-spawn-biomass-am2} \& \ref{tab:hg-spawn-biomass-am1}).
+In most years since 2000, including 2017, the WCVI stock has been in a low productivity low biomass state (Figure \ref{figCurrentSSB}).
 AM2 estimates the median spawning biomass in 2017 ($\mli{SB}_{2017}$) at 3,963 t and 17\% of $\mli{SB}_0$. 
 AM1 estimates the median spawning biomass in 2017 ($\mli{SB}_{2017}$) at 7,336 t and 25\% of $\mli{SB}_0$.
 Both \Sexpr{PasteNicely(mNames)} models estimate $\mli{SB}_{2017}$ to be below the LRP of $0.30\cdot\mli{SB}_0$ (Figure \ref{figCurrentSSB}) by greater than 50\% probability.
@@ -593,7 +587,7 @@ The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 
 Figure \ref{figBevertonHolt} shows above-average number of age-2 recruits in 2017 with 3 and 4-year old fish comprising the highest estimated proportion of fish, which is consistent with the previous 5 years (Figure \ref{fig:sog-ageest-gear2}).
 Although model estimates of current natural mortality are highly uncertain, there is an decreasing trend in the median estimates of natural mortality since 2007 (Figures \ref{figStoryboardAM2SoG} \& \ref{figStoryboardAM1SoG}).
 
-The projected pre-fishery spawing biomass in 2018 is 106,415 t (AM2) or 152,700 t (AM1), declining from 2017, consisting of 25\% (median) age-3 fish and 67X\% (median) age-4 and older fish (Table \ref{tab:sog-ref-points}).  
+The projected pre-fishery spawing biomass in 2018 is 106,415 t (AM2) or 152,700 t (AM1), declining from 2017, consisting of 25\% (median) age-3 fish and 67\% (median) age-4 and older fish (Table \ref{tab:sog-ref-points}).  
 %JC: edits completed
 
 \textbf{West Coast of Vancouver Island}
@@ -618,14 +612,13 @@ The projected pre-fishery spawing biomass in 2018 is 18,640 t (AM2) or 33,530 t 
 Recruitment is defined as the number of age-2 fish recruiting into the population at the beginning of each year, defined as July 1st based on ageing conventions.
 This age-2 recruitment is estimated as a free parameter within the model, subject to the constraint that annual estimates vary around a Beverton-Holt stock recruitment relationship with an estimated unknown standard deviation (Figure \ref{figBevertonHolt}).
 For HG, PRD, CC and WCVI stocks, age-2 recruitment is estimated to be average-to-below average in 2017.
-Conversely, age-2 recruitment for the SOG stock is estimated to be above average in 2017.
+Age-2 recruitment for the SOG stock is estimated to be above average in 2017.
 Recruitment estimates for the 5 major stocks (AM2 only) are presented in Tables \ref{tab:hg-recruitment} to \ref{tab:wcvi-recruitment}.
-
 
 \subsubsection{Effective harvest rates}
 
-The management of Pacific Herring fisheries since \Sexpr{intendUYrs} has incluced implementing a maximum target harvest rate of \Sexpr{intendU*100}\%. 
-For Pacific Herring in the major stock area, for models \Sexpr{PasteNicely(mNames)}, the effective harvest rate is calculated as:
+The management of Pacific Herring fisheries since \Sexpr{intendUYrs} has included implementing a maximum target harvest rate of \Sexpr{intendU*100}\%. 
+For Pacific Herring in the major stock areas, for models \Sexpr{PasteNicely(mNames)}, the effective harvest rate is calculated as:
 \begin{equation}\label{eq:HR}
 U_t = \frac{C_t} {\mli{SB}_t + C_t}
 \end{equation}
@@ -639,7 +632,7 @@ Figure \ref{figHarvestRate} presents time series estimates of effective harvest 
 
 \subsubsection{Production analysis} \label{secProdAnal}
 
-\citet{kronlund2017} use an analysis of surplus production to evaluate whether the major \Sexpr{fish.name} stocks in British Columbia show stock states consistent with signs of possible serious harm, the result of which identified recent persistent states of low production and low biomass (LP-LB states) for the Central Coast (CC), Haida Gwaii (HG) and West Coast of Vancouver Island (WCVI) management areas.
+\citet{kronlund2017} use an analysis of surplus production to evaluate whether the major \Sexpr{fish.name} stocks in BC show stock states consistent with signs of possible serious harm, the result of which identified recent persistent states of low production and low biomass (LP-LB states) for the Central Coast (CC), Haida Gwaii (HG) and West Coast of Vancouver Island (WCVI) management areas.
 
 The production analysis was updated for the major Pacific Herring stocks with the addition of \Sexpr{assess.yr} catch data and MPD spawning biomass estimates for \Sexpr{PasteNicely(mNames)}.  
 Figures \ref{figProduction\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figProduction\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}} show \Sexpr{PasteNicely(mNames)} production analyses for the \Sexpr{length(allRegionNames$major)} major SARs: \Sexpr{PasteNicely(allRegionNames$major)}, respectively.
@@ -648,12 +641,12 @@ Median posterior distributions of the estimated spawning biomass in \Sexpr{asses
 The following bullets report estimated $\mli{SB}_{2017}$ relative to the LRP ($0.30\cdot\mli{SB}_0$):
 
 \begin{resdoclist}
-\item HG: Spawning biomass production and production rate are negative (\Sexpr{PasteNicely(mNames)}) and the estimated spawning biomass in 2017 is below the LRP of $0.30\cdot\mli{SB}_0$ (\Sexpr{PasteNicely(mNames)})
-\item PRD: Spawning biomass production and production rate are positive (\Sexpr{PasteNicely(mNames)}) and the estimated spawning biomass in 2017 is above the LRP of $0.30\cdot\mli{SB}_0$ (\Sexpr{PasteNicely(mNames)})
-\item CC: Spawning biomass production and production rate are positive (\Sexpr{PasteNicely(mNames)}) and the estimated spawning biomass in 2017 is above the LRP of $0.30\cdot\mli{SB}_0$ (\Sexpr{PasteNicely(mNames)})
-\item SOG:Spawning biomass production and production rate are positive (\Sexpr{PasteNicely(mNames)}) and the estimated spawning biomass in 2017 is above the LRP of $0.30\cdot\mli{SB}_0$ (\Sexpr{PasteNicely(mNames)})
+\item HG: Spawning biomass production and production rate are negative (\Sexpr{PasteNicely(mNames)}) and there is greater than a 50\% probability the estimated spawning biomass in 2017 is below the LRP of $0.30\cdot\mli{SB}_0$ (\Sexpr{PasteNicely(mNames)})
+\item PRD: Spawning biomass production and production rate are positive (\Sexpr{PasteNicely(mNames)}) and there is greater than a 50\% probability the estimated spawning biomass in 2017 is above the LRP of $0.30\cdot\mli{SB}_0$ (\Sexpr{PasteNicely(mNames)})
+\item CC: Spawning biomass production and production rate are positive (\Sexpr{PasteNicely(mNames)}) and there is greater than a 95\% probability the estimated spawning biomass in 2017 is above the LRP of $0.30\cdot\mli{SB}_0$ (\Sexpr{PasteNicely(mNames)})
+\item SOG:Spawning biomass production and production rate are positive (\Sexpr{PasteNicely(mNames)}) and there is greater than a 95\% probability the estimated spawning biomass in 2017 is above the LRP of $0.30\cdot\mli{SB}_0$ (\Sexpr{PasteNicely(mNames)})
 \item WCVI: Spawning biomass production and production rate are negative (\Sexpr{PasteNicely(mNames)}).
-AM1: estimated spawning biomass in 2017 is above the LRP of $0.30\cdot\mli{SB}_0$; AM2: estimated spawning biomass in 2017 is approaching the LRP of $0.30\cdot\mli{SB}_0$.
+AM1: there is 28\% probability estimated spawning biomass in 2017 is above the LRP of $0.30\cdot\mli{SB}_0$; AM2: there is a 43\% probability the estimated spawning biomass in 2017 is below the LRP of $0.30\cdot\mli{SB}_0$.
 \end{resdoclist}
 %JC: edits completed
 
@@ -663,12 +656,19 @@ This assessment uses Bayesian methods to incorporate prior information and integ
 Measures of uncertainty in this assessment underestimate the true uncertainty in current stock status and future projections because they do not account for alternative structural models for Pacific Herring population dynamics (e.g., natural mortality) and fishery processes (e.g., selectivity), the effects of data-weighting schemes, and the scientific basis for prior probability distribution choices.
 The base case assessment models \Sexpr{PasteNicely(mNames)} integrate over the substantial uncertainty associated with several important model parameters including: spawn survey catchability ($q$), the productivity of the stock (via the steepness parameter, $h$, of the stock-recruitment relationship), the rate of natural mortality ($M$), and recruitment deviations. 
 Although the Bayesian results presented include estimation uncertainty, this within-model uncertainty is likely an underestimate of the true uncertainty in current stock status and future projections, since it does not include structural modelling choices, data-weighting uncertainty, assessment errors and scientific uncertainty in selection of prior probability distributions.
-The only way to develop a management procedure that is robust to the true range of uncertainty in current stock status and future projections with rigorous testing using feedback simulations.
+The only way to develop a management procedure that is robust to the true range of uncertainty in current stock status and future projections is with rigorous testing using feedback simulations.
 
 Estimation bias is explored through retrospective analyses.
 %JC: edits completed
 
 \subsection{RETROSPECTIVE ANALYSES}\label{secRetro}
 
-[placeholder]
+Patterns of retrospective bias in spawning biomass and age-2 recruitment for all major stocks (AM1 and AM2) are presented in Figures \ref{fig:hg-am1-retro-biomass} to \ref{fig:wcvi-am1-retro-biomass} and Figures \ref{fig:hg-retro-recr} to \ref{fig:wcvi-am1-retro-recr}, respectively.
+
+Two categories of retrospective patterns emerge when examining these figures.
+For HG, CC, and WCVI, the general retrospective patterns are the same between AM1 and AM2 within these stocks. 
+That is, neither AM1 nor AM2 demonstrates a greater pattern of retrospective bias and for these stocks, ISCAM appears to under- and over-estimate stock biomass with equal frequency.
+
+For PRD and SOG, AM1 and AM2, the overestimation of spawning biomass occurs more frequently than underestimation.
+When comparing between AM1 and AM2 for both PRD and SOG, AM1 appears to overestimate the spawning biomass to a greater degree than the AM2 model.
 
