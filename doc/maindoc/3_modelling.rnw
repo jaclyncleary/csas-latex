@@ -180,8 +180,8 @@ Stock specific trends are discussed in the sections below.
 Model inputs of asymptotic growth (L_infinity=27), alpha and beta for the length-weight allometry (alpha=4.5e-06, beta=3.127), and Brody growth coefficient (k=0.48) were taken from FishBase (\citep{XX}). 
 Age at 50\% maturity was estimated at 2.055.
 
-For the assessment, a fixed maturity schedule is used for all herring stocks: 25\% mature for age-2s, 90\% mature for age-3s, and 100\% mature for ages 4 and older (see description in Section \ref{secMatAge}.
 As described in Section \ref{secLifeHist}, indications from histological assessment of developing ovaries suggest that about 25\% of \Sexpr{fish.name} mature at age 2, and at least 90\% mature at age 3 (D. Hay, unpublished data).
+For the assessment, a fixed maturity schedule is used for all herring stocks: 25\% mature for age-2s, 90\% mature for age-3s, and 100\% mature for ages 4 and older (see description in Section \ref{secMatAge}.
 
 \subsubsection{Data summaries for major SARs}
 
