@@ -517,7 +517,7 @@ We also present median posterior estimates for the spawn survey scaling paramete
 
 Estimated spawning biomass relative to the LRP is presented in Figure \ref{figCurrentSSB}.
 
-\textbf{Haida Gwaii}
+\textbf{Haida Gwaii}  % TODO: How to prevent page break for cases like these? For 2018.
 
 Models \Sexpr{PasteNicely(mNames)} base case assessments estimate a declining trend in spawning stock biomass since 2013 (Figures \ref{figStoryboardAM2HG} \& \ref{figStoryboardAM1HG}, and Tables \ref{tab:hg-spawn-biomass-am2} \& \ref{tab:hg-spawn-biomass-am1}).
 In most years since 2000, including 2017, the WCVI stock has been in a low productivity low biomass state (Figure \ref{figCurrentSSB}).
