@@ -115,8 +115,8 @@ A series of above average year-classes occurred in the early 1970s, rapidly rebu
 The harvest rule for Pacific Herring is described as \citep{martell2011}:
 \begin{equation} \label{eqHarvestRule}
 U'_{T+1} = \begin{cases}
-0 & SB_{T+1} \leq 0.25 \cdot \mli{SB}_0 \\
-\text{min} \left( \frac{SB_{T+1} - 0.25 \cdot \mli{SB}_0}{B_{T+1}}, ~ 0.2 \right) & B_{T+1} > 0.25 \cdot \mli{SB}_0
+0 & \mli{SB}_{T+1} \leq 0.25 \cdot \mli{SB}_0 \\
+\text{min} \left( \frac{\mli{SB}_{T+1} - 0.25 \cdot \mli{SB}_0}{\mli{SB}_{T+1}}, ~ 0.2 \right) & \mli{SB}_{T+1} > 0.25 \cdot \mli{SB}_0
 \end{cases}
 \end{equation}
 where $T$ is the terminal year for the stock assessment, $\mli{SB}_{T+1}$ is the prefishery forecast biomass in year $T+1$, and $\mli{SB}_0$ is the unfished equilibrium spawning stock biomass.

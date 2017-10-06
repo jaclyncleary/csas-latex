@@ -180,9 +180,8 @@ Stock specific trends are discussed in the sections below.
 
 \subsubsection{Assumed biological parameters}\label{secAssumedBiolPars}
 
-Model inputs of asymptotic growth $L_\infty=27$, alpha and beta for the length-weight allometry ($alpha=4.5e-06$, $beta=3.127$), and Brody growth coefficient ($k=0.48$) were taken from FishBase %(\citep{XX}).
+Model inputs of asymptotic growth $L_\infty=27$, alpha, $\alpha$ and beta, $\beta$ for the length-weight allometry ($\alpha=4.5e-06$, $\beta=3.127$), and Brody growth coefficient ($k=0.48$) were taken from \citet{fishbase}.
 Age at 50\% maturity was estimated at 2.055.
-%MG
 
 As described in Section \ref{secLifeHist}, indications from histological assessment of developing ovaries suggest that about 25\% of \Sexpr{fish.name} mature at age 2, and at least 90\% mature at age 3 (D. Hay, unpublished data).
 For the assessment, a fixed maturity schedule is used for all herring stocks: 25\% mature for age-2s, 90\% mature for age-3s, and 100\% mature for ages 4 and older (see description in Section \ref{secMatAge}.
@@ -386,8 +385,7 @@ For example, HG (Figure \ref{fig:hg-q-m}) and WCVI (Figure \ref{fig:wcvi-q-m}) t
 
 MCMC trace plots, autocorrelation plots, and pairs plots were very similar between constant $M$ and time varying $M$ model runs for PRD, CC, SOG and WCVI. 
 See time varying $M$, Figure \ref{fig:hg-traces} to \ref{fig:wcvi-pairs}; constant $M$ not shown.
-The exception was for HG AM2 where trace plots, autocorrelation plots, and pairs plots showed signs of persisitent drift and autocorrelation (Figures 80, 81 and 82).
-%MG1 (Figures \ref{fig:hg-traces}, \ref{fig:hg-autocor}, \& \ref{fig:hg-pairs}, respectively). %JC: these fig references are not correct.
+The exception was for HG AM2 where trace plots, autocorrelation plots, and pairs plots showed signs of persisitent drift and autocorrelation (Figures \ref{fig:hg-constm-priors}, \ref{fig:hg-constm-traces}, \& \ref{fig:hg-constm-pairs}, respectively).
 
 There is support for continued inclusion of time varying $M$ as the base case for the assessment in this analysis, as well as from the Bridging Analysis (Appendix \ref{chap:bridge}) based on the reduction improved coherence between assumed and empirical fits to the spawn survey index and issues of autocorrelation between parameters and model convergence with constant $M$.
 
@@ -397,11 +395,11 @@ The key variance parameter in the errors-in-variables approach is the inverse of
 The total variance is partitioned into observation and process error components by the model parameter rho $\rho$, which is the proportion of the total variance that is due to observation error \citep{punt1993, deriso2007}.
 
 In ISCAM, standard deviations in process error (tau, $\tau$) and observation error (sigma, $\sigma$) are related and modelled using the following equations for kappa $\kappa$
-\begin{equation}
+\begin{equation}\label{eqKappa}
 \kappa = \left( \frac{1}{\sqrt{(\sigma^2 + \tau^2)}} \right)^2
 \end{equation}
 and rho $\rho$
-\begin{equation}
+\begin{equation}\label{eqRho}
 \rho = \sigma^2 \left( \frac{1}{\sqrt{(\sigma^2 + \tau^2)}} \right)^2 \, .
 \end{equation}
 The base case initial values for $\kappa$ and $\rho$ were set equal to MPD estimated values from the 2016 assessment, which resulted in an observation error term ($\sigma=0.58$) and a process error term ($\tau=0.69$).  
@@ -491,12 +489,11 @@ Autocorrelation was minor for all parameters in the \Sexpr{PasteNicely(mNames)} 
 \subsubsection{Fits to survey and proportions at age data}
 
 Figure (a) in each of Figures \ref{figStoryboard\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figStoryboard\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}} show \Sexpr{PasteNicely(mNames)} model fits to the spawn survey data for each of the \Sexpr{length(allRegionNames$major)} major SARs: \Sexpr{PasteNicely(allRegionNames$major)}. 
-Figures 101 to 115 present model estimated proportions at age for the 5 major SARs.
-%MG2
+Figures \ref{fig:hg-ageest-gear1} to \ref{fig:wcvi-ageest-gear3} present model estimated proportions at age for the 5 major SARs.
 
 \subsubsection{Parameter estimates}
 
-Prior and marginal posterior probability distributions of estimated parameters are shown in Figures 31 to 35. %MG4 - these are correct- needs \ref{}...
+Prior and marginal posterior probability distributions of estimated parameters are shown in Figures \ref{fig:hg-priors} to \ref{fig:wcvi-priors}.
 %JC: prior and posterior distributions are only included for AM2. Add AM1 for final Res Doc.
 The median, 5th percentile and 95th percentile posterior parameter estimates, and MPDs are given in Tables \ref{tab:hg-parameters-posts} to \ref{tab:wcvi-am1-parameters-posts}.
 Choice of prior and prior distribution is described in Appendix \ref{chap:equations}.
