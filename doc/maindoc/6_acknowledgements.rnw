@@ -1,8 +1,15 @@
 \section{ACKNOWLEDGEMENTS}
 
-Thanks...
+This Research Document is the first thorough review of ADMB modelling code, equations, data assumptions, and presentation of results, figures and tables since the introduction of ISCAM in 2011.
+
+We would like to express our gratitude to:
 \begin{itemize}
-\item Rob Kronlund for \textbf{R} code to generage production plots.
+\item Kristen Daniel and Matt Thompson for their expertise in managing the collection and storage of survey, catch, and biological data the Pacific Herring assessment program,
+\item The DFO Sclerochronology Lab at the Pacific Biological Station for rapidly providing herring ages,
+\item Those involved in the collection of survey and catch data (HCRS, J.O. Thomas, Tideview Services, and local First Nations involved in survey activities through AFS/ARROM), 
+\item Rob Kronlund for \textbf{R} code to generage production plots and guidance on compliance with the Precautionary Approach,
+\item Robyn Forrest for assistance with the bridging analysis and in particular updates to the estimation of reference points, and,
 \item We would not have been able to produce this document without the \href{https://github.com/andrew-edwards/csas-latex}{\texttt{csas-latex} template} developed by Andy Edwards and Chris Grandin.
 \end{itemize}
 
+Finally, the lead author would like to extend a heart-felt thank you to each co-author.

@@ -605,7 +605,7 @@ make.maturity.table(maturity.vec,
 
 \begin{landscapepage}
 <<variance.results.AM1, results='asis', echo=FALSE>>=
-cap <- paste0("Variance parameter results for AM1, SoG")
+cap <- paste0("Variance parameter sensitivities: leading parameter estimates for AM1, SoG")
 make.variance.table(variance.results,
                     which.model = 1,
                     xcaption = cap,
@@ -616,14 +616,14 @@ make.variance.table(variance.results,
 @
 
 <<variance.results.AM2, results='asis', echo=FALSE>>=
-cap <- paste0("Variance parameter results for AM2, SoG")
+cap <- paste0("Variance parameter sensitivities: leading parameter estimates for AM2, SoG")
 make.variance.table(variance.results,
-                    which.model = 2,
-                    xcaption = cap,
-                    xlabel = "tab:variance-results-AM2",
-                    font.size = 9,
-                    space.size = 10,
-                    placement = "H")
+                   which.model = 2,
+                   xcaption = cap,
+                   xlabel = "tab:variance-results-AM2",
+                   font.size = 9,
+                   space.size = 10,
+                   placement = "H")
 @
 \end{landscapepage}
 

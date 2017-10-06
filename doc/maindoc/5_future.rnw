@@ -1,7 +1,8 @@
 \section{FUTURE RESEARCH AND DATA REQUIREMENTS}
 
 \begin{resdoclist}
-  \item Maturity ogive
+  \item Simulation-testing of management procedures
   \item SOK/SOB: quantify mortality and removed spawn
+  \item Investigate appropriateness of stock-specific maturity ogive
 \end{resdoclist}
 
