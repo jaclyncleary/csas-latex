@@ -9,30 +9,25 @@ Results are summarized as stock reconstructions, status of spawning stock in \Se
 The model estimated stock-recruitment parameters, time-varying natural mortality, catchability coefficients for the survey time series, and selectivity parameters for the commercial fishery and those survey series for which age data are available. 
 Median posterior estimates and 90\% credible intervals of spawning biomass, recruitment, time-varying natural mortality, and unfished equilibrium spawning biomass are presented for AM1 and AM2 model parameterizations.
 Unfished equilibrium spawning biomass ($\mli{SB}_0$) is the main biological reference point used for \Sexpr{fish.name} and it is estimated from a  Beverton-Holt stock-recruitment relationship (parameterized within the assessment model) fitted to longterm average trends in weight at age and natural mortality.
-All calculations were made using the Bayesian Markov Chain Monte Carlo (MCMC) method to quantify the uncertainty associated with parameter estimation.
 One-year projections of spawning biomass \Sexpr{assess.yr+1} were performed for each major stock area over a range of constant catches to estimate probabilities that spawning biomass and harvest rate metrics are below and above control points historically used in the management of \Sexpr{fish.name}, as specified in the herring harvest control rule.
 This assessment also includes presentation of current stock status and projected stock status in \Sexpr{assess.yr+1} relative to a Limit Reference Point of $0.30\cdot\mli{SB}_0$.
+
 Some assessment results by stock area are briefly listed below.
 
-%JSC Update here
-The median estimate of the Haida Gwaii stock biomass is projected to decline in \Sexpr{assess.yr+1} (relative to \Sexpr{assess.yr}), and in the absence of fishing the model estimates that there is a 5\% probability the stock will be below the cut-off of $0.25\cdot\mli{SB}_0$ in \Sexpr{assess.yr+1}.
-With low apparent recruitment entering the spawning population in \Sexpr{assess.yr} and similar natural mortality estimates for recent years, the model estimates the \Sexpr{assess.yr} Haida Gwaii spawning stock biomass to have declined from 2013.
+Haida Gwaii: There is declining trend in spawning stock biomass since 2013 and in most years since 2000, including 2017, the WCVI stock has been in a low productivity low biomass state. Both AM2 and AM1 models estimate $\mli{SB}_{2017}$ to be below the LRP of $0.30\cdot\mli{SB}_0$ with greater than a 50\% probability.
 
-The median estimate of the Prince Rupert District stock biomass is projected to decline in \Sexpr{assess.yr+1} (relative to \Sexpr{assess.yr}), and in the absence of fishing there is a 12\% probability the stock will be below the cut-off of $0.25\cdot\mli{SB}_0$ in \Sexpr{assess.yr+1}.
-With no apparent increase in recruitment entering the spawning population in \Sexpr{assess.yr} and similar natural mortality estimates for recent years, the model estimates the \Sexpr{assess.yr} Prince Rupert District spawning stock biomass to be similar to the 2013 level.
-Recent estimates of natural mortality are highly uncertain.
+Prince Rupert District: Since the mid-1990s, the PRD stock is characterized by two periods of consistent and stable biomass: 1996-2003 and 2006-2017. Based on a comparison of median estimates, both AM2 and AM1 models estimate $\mli{SB}_{2017}$ to be above the LRP of $0.30\cdot\mli{SB}_0$ with greater than a 50\% probability and less than a 95\% probability.
 
-The median estimate of Central Coast stock biomass is projected to increase in \Sexpr{assess.yr+1} (relative to \Sexpr{assess.yr}), and in the absence of fishing there is a 4\% probability the stock will be below the cut-off of $0.25\cdot\mli{SB}_0$ in \Sexpr{assess.yr+1}.
-The \Sexpr{assess.yr} stock assessment estimates an increase in median estimates of Central Coast spawning biomass from 2012 to \Sexpr{assess.yr}, due in part to above average recruitment in 2010, 2012, and \Sexpr{assess.yr}, a high spawn index in 2013 (preceded by seven years with low index values), and apparent decreases in natural mortality.
+Central Coast: The survey index increased from 2012 -- 2016 and declined from 2016 to 2017. AM2 and AM1 base case assessments estimate an increasing trend in spawning stock biomass since 2012. Based on a comparison of median estimates, both AM2 and AM1 models estimate $\mli{SB}_{2017}$ to be above the LRP of $0.30\cdot\mli{SB}_0$ with greater than a 95\% probability.
 
-The median estimate of the Strait of Georgia stock biomass is projected to decline in \Sexpr{assess.yr+1} (relative to \Sexpr{assess.yr}), and in the absence of fishing there is a 0.00\% probability the stock will be below the cut-off of $0.25\cdot\mli{SB}_0$ in \Sexpr{assess.yr+1}.
-The Strait of Georgia median spawning biomass has increased since 2010 due in part to above average recruitment in 2010 and 2011 and apparent decreases in natural mortality.
+Strait of Georgia: The survey index increased from 2013 -- 2016 and declined from 2016 to 2017. 
+AM2 and AM1 base case assessments estimate an increasing trend in spawning stock biomass since 2010.
+Based on a comparison of median estimates, both AM2 and AM1 models estimate $\mli{SB}_{2017}$ to be above the LRP of $0.30\cdot\mli{SB}_0$ by greater than 95\% probability.
 
-The median estimate of west coast of Vancouver Island stock biomass is projected to decline in \Sexpr{assess.yr+1} (relative to \Sexpr{assess.yr}), and in the absence of fishing there is a 1\% probability the stock will be below the cut-off of $0.25\cdot\mli{SB}_0$ in \Sexpr{assess.yr+1}.
-West coast of Vancouver Island median spawning biomass has increased since 2008 from historically low levels due in part to above average recruitment in 2010 and apparent decreases in natural mortality.
+West Coast Vancouver Island: Since 2005 the WCVI stock has been in a prolonged low productivity low biomass state, increasing in 2016 and then declining in 2017. At these low biomass levels, the WCVI stock is characterized by seemingly abrupt differences in year-to-year survey biomass. 
+AM2 and AM1 base case assessments estimate a decline in spawning stock biomass from 2016 to 2017. 
+Based on a comparison of median estimates, both AM2 and AM1 models estimate $\mli{SB}_{2017}$ to be above the LRP of $0.30\cdot\mli{SB}_0$, by greater than 50\% probability but less than 95\% probability.
 
-Area 2W median spawning biomass has declined since 2011 due in part to decreases in the spawn index and apparent increases in natural mortality.
-Area 27 median spawning biomass has remained relatively constant over the past decade while natural mortality may have decreased over the same period.
 
 \frenchabstract{
 French title  % Unicode error with the 

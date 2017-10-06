@@ -1,6 +1,6 @@
 \section{ACKNOWLEDGEMENTS}
 
-This Research Document is the first thorough review of ADMB modelling code, equations, data assumptions, and presentation of results, figures and tables since the introduction of ISCAM in 2011.
+This Research Document is the first thorough review of ADMB model code, equations, data assumptions, and presentation of results, figures and tables since the introduction of ISCAM in 2011.
 
 We would like to express our gratitude to:
 \begin{itemize}
@@ -12,4 +12,4 @@ We would like to express our gratitude to:
 \item We would not have been able to produce this document without the \href{https://github.com/andrew-edwards/csas-latex}{\texttt{csas-latex} template} developed by Andy Edwards and Chris Grandin.
 \end{itemize}
 
-Finally, the lead author would like to extend a heart-felt thank you to each co-author.
+Finally, the lead author would like to extend a heart-felt thank you to each co-author for their expertise and their tireless support.
