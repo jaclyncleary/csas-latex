@@ -344,7 +344,7 @@ Prior values and standard deviations in priors remain the same.
 We explore sensitivity of model estimates to assumptions about standard deviation on the \emph{q} prior in Section \ref{secPriorq}.
 %JC: edits completed
 
-\subsection{SENSITIVITY ANALYSES}
+\subsection{SENSITIVITY ANALYSES} \label{secSensitivity}
 
 We tested the sensitivity of the results from the base case assessment model identified in the bridging analysis in Appendix \ref{chap:bridge} to the following assumptions:
 \begin{resdoclist}
@@ -452,12 +452,11 @@ Thus different stocks of BC \Sexpr{fish.name} may have different maturity schedu
 In the absence of recent histological studies to provide new estimates of maturity at age, we tested the model sensitivity to the fixed base values by setting the maturity at age vector equal to the selectivity of the seine roe fishery (gear 2; Table \ref{tab:maturity}).
 The selectivity of the seine roe fishery was chosen because the fishery targets pre-spawning aggregations with seine gear that is non size-selective, providing age composition samples from a mature portion of the population.  
 
-%JC HERE 
 The resulting estimates of the leading parameters showed minor differences between the current fixed maturity vector model (base case) and the sensitivity case where the maturity at age is set to the selectivity at age (results not shown).
-We further investigated the key MSY reference points, $\mli{SB}_0$, and $\mli{SB}_{2017}$ for the base case and the maturity schedule sensitivity case (SoG: Tables \ref{tab:maturity-sens.am1} and \ref{tab:maturity-sens.am2}).
-The ratio of ($\mli{SB}_{2017} / \mli{SB}_0$) were also very similar for all stocks and model variations (\Sexpr{PasteNicely(mNames)}). 
-
-These results confirm that changing maturity to equal selectivity doesn't make the $F_\text{MSY}$ estimates reliable in a management procedure, potentially because of their dependence on natural mortality as well, and the LRPs were not substantially different. 
+We examined estimates of $\mli{MSY}$, $F_\text{MSY}$, $\mli{SB}_0$, and $\mli{SB}_{2017}$ for the base case and the maturity schedule sensitivity case (SoG: Tables \ref{tab:maturity-sens.am1} and \ref{tab:maturity-sens.am2})
+and in most cases, estimates of $F_\text{MSY}$ was numerically lower for the maturity sensitivity case than the base.
+The exception is HG (AM2) where estimated of $F_\text{MSY}$ increased for the maturity sensitivity case.
+Estimates of $F_\text{MSY}$ under the maturity sensitivity case were still very high and imply that this change alone is insufficient to produced reliable estimates of $F_\text{MSY}$ estimates for use in a management procedure.
 
 \subsection{ASSESSMENT MODEL RESULTS}\label{secModelResults}
 
@@ -465,20 +464,22 @@ These results confirm that changing maturity to equal selectivity doesn't make t
 
 %BRIEF DESCRIPTION, JUSTIFICATION FOR BASE CASE MODEL RUNS (AM2 AND AM1) AND WHY NO CHANGES BASED ON SENSITIIVTY RUNS
 
-The Base Case models for this years \Sexpr{fish.name} assessment were chosen based on the results of the Bridging Analysis (Appendix \ref{chap:bridge}) and the Sensivity Analysis above. 
-Last years assessment used two versions of the base stock assessment model that differ in the treatment of spawn survey catchability parameters ($q_1$ and $q_2$) for the surface survey period (\Sexpr{qYrs$q1}) and dive survey period (\Sexpr{qYrs$q2}), respectively.  
+The Base Case models for this years \Sexpr{fish.name} assessment were chosen based on the results of the Bridging Analysis (Appendix \ref{chap:bridge}) and the Sensivity Analysis (Section \ref{secSensitivity}). 
+The 2016 assessment implemented two versions of the base stock assessment model that differ in the treatment of spawn survey catchability parameters ($q_1$ and $q_2$) for the surface survey period (\Sexpr{qYrs$q1}) and dive survey period (\Sexpr{qYrs$q2}), respectively.  
 The two models are labelled AM1 ($q_1$ and $q_2$ estimated with prior probability distributions) and AM2 ($q_1$ estimated, $q_2=1$). 
-Both analyses recommended analysing these two base case models again for each of the 5 major herring stocks as we saw only minor changes to the results when the prior standard deviation for both qs was increased and larger differences when mean was changed as shown in the Bridging Analysis.  
-Resolution between AM1 and AM2 parameterization of q will require simulation-evaluation. Sensitivity analyses alone are insufficient for understanding the complex interplay between q and other parameters.
-The sensitivity analyses supported the use of time-varying natural mortality based on the 
-improved coherence between assumed and empirical fits to the spawn survey index and issues
-of autocorrelation between parameters and model convergence with constant $M$. 
-These analyses also found that the estimated model results were highly influenced by the initial values of $\rho$ and $\kappa$ if one or both of these parameters are estimated. 
-Given this observation and because we have no external information to inform the fixing of one of these
-parameters over the other, the base case estimating both parameters was chosen. 
+Both the Bridging Analysis (Appendix \ref{chap:bridge}) and the Sensitivity Analyses (Section \ref{secSensitivity}) support continued use of these two base case models  for each of the 5 major herring stocks.
+Sensitivity analyses alone are insufficient for understanding the complex interplay between $q$ and management parameters, and resolution between AM1 and AM2 parameterization of $q$ will require simulation-evaluation. 
+It would however be possible to pursue alternative sources of data for developing stock-specific Bayesian priors for $q$, e.g., based on new analyses or expert opinion.
 
-The parameterizations of the base case assessment model are shown in Table \ref{tab:parameters}.
+The sensitivity analyses supports continued use of time-varying natural mortality based on the 
+improved coherence in empirical fits to the spawn survey index, and issues
+of autocorrelation between parameters and model convergence with constant $M$ scenarios.
 
+Because we found the model estimates of spawning biomass and unfished spawning biomass to be highly influenced by the initial values of $\rho$ and $\kappa$ when either of these parameters is fixed, and because we have no  
+external information to inform the fixing of one of these
+parameters over the other, the base case of estimating both parameters was chosen. 
+
+Table \ref{tab:parameters} presents parameterization of AM1 and AM2 base case assessment models.
 
 \subsubsection{Model diagnostics}
 
