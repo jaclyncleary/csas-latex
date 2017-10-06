@@ -1301,7 +1301,7 @@ make.priors.posts.plot(hg.am2.constm, priors.only = FALSE)
 \end{center}
 \caption{Prior probability distributions (lines) with comparative posterior
   histograms (bars) used in the Haida Gwaii AM2 model with constant natural
-  mortallity. Parameters $q_k$ represent gears where: $k=1$ is the surface
+  mortality. Parameters $q_k$ represent gears where: $k=1$ is the surface
   survey and $k=2$ is the dive survey. The dotted red lines are the MPD
   estimates.}
 \label{fig:hg-constm-priors}
@@ -1392,7 +1392,7 @@ make.priors.posts.plot(hg.am1.constm, priors.only = FALSE)
 \end{center}
 \caption{Prior probability distributions (lines) with comparative posterior
   histograms (bars) used in the Haida Gwaii AM1 model with constant natural
-  mortallity. Parameters $q_k$ represent gears where: $k=1$ is the surface
+  mortality. Parameters $q_k$ represent gears where: $k=1$ is the surface
   survey and $k=2$ is the dive survey. The dotted red lines are the MPD
   estimates.}
 \label{fig:hg-am1-constm-priors}
@@ -2096,7 +2096,7 @@ make.biomass.retro.mpd.plot(hg.b,
                             leg = "topright")
 @
 \end{center}
-\caption{Restrospective spawning biomass for the
+\caption{Retrospective spawning biomass for the
   Haida Gwaii AM2 model.}
 \label{fig:hg-retro-biomass}
 \end{figure}
@@ -2113,7 +2113,7 @@ make.biomass.retro.mpd.plot(pr.b,
                             leg = "topright")
 @
 \end{center}
-\caption{Restrospective spawning biomass for the
+\caption{Retrospective spawning biomass for the
   Prince Rupert District AM2 model.}
 \label{fig:prd-retro-biomass}
 \end{figure}
@@ -2130,7 +2130,7 @@ make.biomass.retro.mpd.plot(cc.b,
                             leg = "topleft")
 @
 \end{center}
-\caption{Restrospective spawning biomass for the
+\caption{Retrospective spawning biomass for the
   Central Coast AM2 model.}
 \label{fig:cc-retro-biomass}
 \end{figure}
@@ -2147,7 +2147,7 @@ make.biomass.retro.mpd.plot(sog.b,
                             leg = "topleft")
 @
 \end{center}
-\caption{Restrospective spawning biomass for the
+\caption{Retrospective spawning biomass for the
   Strait of Georgia AM2 model.}
 \label{fig:sog-retro-biomass}
 \end{figure}
@@ -2164,7 +2164,7 @@ make.biomass.retro.mpd.plot(wcvi.b,
                             leg = "topright")
 @
 \end{center}
-\caption{Restrospective spawning biomass for the
+\caption{Retrospective spawning biomass for the
   WCVI AM2 model.}
 \label{fig:wcvi-retro-biomass}
 \end{figure}
@@ -2194,7 +2194,7 @@ make.biomass.retro.mpd.plot(hg.am1,
                             leg = "topright")
 @
 \end{center}
-\caption{Restrospective spawning biomass for the
+\caption{Retrospective spawning biomass for the
   Haida Gwaii AM1 model.}
 \label{fig:hg-am1-retro-biomass}
 \end{figure}
@@ -2211,7 +2211,7 @@ make.biomass.retro.mpd.plot(pr.am1,
                             leg = "topright")
 @
 \end{center}
-\caption{Restrospective spawning biomass for the
+\caption{Retrospective spawning biomass for the
   Prince Rupert District AM1 model.}
 \label{fig:prd-am1-retro-biomass}
 \end{figure}
@@ -2228,7 +2228,7 @@ make.biomass.retro.mpd.plot(cc.am1,
                             leg = "topleft")
 @
 \end{center}
-\caption{Restrospective spawning biomass for the
+\caption{Retrospective spawning biomass for the
   Central Coast AM1 model.}
 \label{fig:cc-am1-retro-biomass}
 \end{figure}
@@ -2245,7 +2245,7 @@ make.biomass.retro.mpd.plot(sog.am1,
                             leg = "topleft")
 @
 \end{center}
-\caption{Restrospective spawning biomass for the
+\caption{Retrospective spawning biomass for the
   Strait of Georgia AM1 model.}
 \label{fig:sog-am1-retro-biomass}
 \end{figure}
@@ -2262,7 +2262,7 @@ make.biomass.retro.mpd.plot(wcvi.am1,
                             leg = "topright")
 @
 \end{center}
-\caption{Restrospective spawning biomass for the
+\caption{Retrospective spawning biomass for the
   WCVI AM1 model.}
 \label{fig:wcvi-am1-retro-biomass}
 \end{figure}
@@ -2291,7 +2291,7 @@ make.recr.retro.mpd.plot(hg.b,
                          leg = "topleft")
 @
 \end{center}
-\caption{Restrospective recruitment for the
+\caption{Retrospective recruitment for the
   Haida Gwaii AM2 model.}
 \label{fig:hg-retro-recr}
 \end{figure}
@@ -2307,7 +2307,7 @@ make.recr.retro.mpd.plot(pr.b,
                          leg = "topright")
 @
 \end{center}
-\caption{Restrospective recruitment for the
+\caption{Retrospective recruitment for the
   Prince Rupert District AM2 model.}
 \label{fig:prd-retro-recr}
 \end{figure}
@@ -2323,7 +2323,7 @@ make.recr.retro.mpd.plot(cc.b,
                          leg = "topleft")
 @
 \end{center}
-\caption{Restrospective recruitment for the
+\caption{Retrospective recruitment for the
   Central Coast AM2 model.}
 \label{fig:cc-retro-recr}
 \end{figure}
@@ -2339,7 +2339,7 @@ make.recr.retro.mpd.plot(sog.b,
                          leg = "topleft")
 @
 \end{center}
-\caption{Restrospective recruitment for the
+\caption{Retrospective recruitment for the
   Strait of Georgia AM2 model.}
 \label{fig:sog-retro-recr}
 \end{figure}
@@ -2355,7 +2355,7 @@ make.recr.retro.mpd.plot(wcvi.b,
                          leg = "topright")
 @
 \end{center}
-\caption{Restrospective recruitment for the
+\caption{Retrospective recruitment for the
   WCVI AM2 model.}
 \label{fig:wcvi-retro-recr}
 \end{figure}
@@ -2373,7 +2373,7 @@ make.recr.retro.mpd.plot(hg.am1,
                          leg = "topright")
 @
 \end{center}
-\caption{Restrospective recruitment for the
+\caption{Retrospective recruitment for the
   Haida Gwaii AM1 model.}
 \label{fig:hg-am1-retro-recr}
 \end{figure}
@@ -2389,7 +2389,7 @@ make.recr.retro.mpd.plot(pr.am1,
                          leg = "topright")
 @
 \end{center}
-\caption{Restrospective recruitment for the
+\caption{Retrospective recruitment for the
   Prince Rupert District AM1 model.}
 \label{fig:prd-am1-retro-recr}
 \end{figure}
@@ -2405,7 +2405,7 @@ make.recr.retro.mpd.plot(cc.am1,
                          leg = "topleft")
 @
 \end{center}
-\caption{Restrospective recruitment for the
+\caption{Retrospective recruitment for the
   Central Coast AM1 model.}
 \label{fig:cc-am1-retro-recr}
 \end{figure}
@@ -2421,7 +2421,7 @@ make.recr.retro.mpd.plot(sog.am1,
                          leg = "topleft")
 @
 \end{center}
-\caption{Restrospective recruitment for the
+\caption{Retrospective recruitment for the
   Strait of Georgia AM1 model.}
 \label{fig:sog-am1-retro-recr}
 \end{figure}
@@ -2437,7 +2437,7 @@ make.recr.retro.mpd.plot(wcvi.am1,
                          leg = "topright")
 @
 \end{center}
-\caption{Restrospective recruitment for the
+\caption{Retrospective recruitment for the
   WCVI AM1 model.}
 \label{fig:wcvi-am1-retro-recr}
 \end{figure}

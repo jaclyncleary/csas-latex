@@ -2,7 +2,7 @@
 
 This document presents a stock assessment for \Sexpr{fish.name} (\emph{\Sexpr{science.name}}) in \Sexpr{bc} using data current to \Sexpr{assess.yr}.
 Results of the work are intended to serve as advice over the short term to fishery managers and stakeholders on current stock status and likely impacts of different harvest options.
-An updated version of the integrated combined-sex statistical catch-at-age model (ISCAM) was applied independently to each of the  \Sexpr{length(allRegions$major)} major stock areas and tuned to fishery-independent spawn index data, annual estimates of commercial catch since 1951, and age composition data from the commercial fishery and from the test fishery charter program.
+An updated platform of the integrated combined-sex statistical catch-at-age model (ISCAM) was applied independently to each of the  \Sexpr{length(allRegions$major)} major stock areas and tuned to fishery-independent spawn index data, annual estimates of commercial catch since 1951, and age composition data from the commercial fishery and from the test fishery charter program.
 Comprehensive stock assessments were done for five major stock areas: \Sexpr{PasteNicely(allRegionNames$major)}.
 Results are summarized as stock reconstructions, status of spawning stock in \Sexpr{assess.yr}, and projected spawning biomass in \Sexpr{assess.yr+1}.
 

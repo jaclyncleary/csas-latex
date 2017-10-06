@@ -319,7 +319,7 @@ $I_{k,t}$ & & relative abundance index for gear $k$ in year $t$\\
 %$\vec{\gamma}_k$ & & Vector of selectivity parameters for gear $k$ \\
 \multicolumn{3}{l}{\textbf{Estimated parameters}}\\
 $R_o$ & & Age-$\acute{a}$ recruits in unfished conditions\\
-$h$ & & Steepness of the stock-rectruitment relationship\\
+$h$ & & Steepness of the stock-recruitment relationship\\
 $\bar{R}$ & & Average age-$\acute{a}$ recruitment from year $\acute{t}$ to $T$\\
 $\bar{R}_{init}$ & & Average age-$\acute{a}$ recruitment in year $\acute{t}-1$ \\
 $M_s$ & & Instantaneous natural mortality rate \\
