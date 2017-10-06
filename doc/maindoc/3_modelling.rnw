@@ -422,7 +422,6 @@ A Bayesian prior for the dive survey $q$ was developed from an analysis of field
 Based on this concern and the results of the Bridging Analysis (Appendix \ref{chap:bridge}) we conducted sensitivity analyses testing the effects of broadening of the prior distribution on $q$ by changing the standard deviation of this prior while keeping the mean constant.
 In the base case for AM1 the $q$ prior distributions have the mean set at 0.566 and the standard deviation set to 0.274 for both $q_1$ and $q_2$.
 For the sensitivity scenarios we increased the standard deviation to 0.5, 2.0 and 3.0 for both $q_1$ and $q_2$.  
-
 We did not consider scenarios with alternate prior values because developing a new prior was beyond the scope of this paper. Also, Step 9 in the Bridging Analysis (Appendix \ref{chap:bridge}) clearly shows the direct relationship between decreasing the lower mean prior values and higher values of estimated spawning biomass.
 Model estimates show small increases in spawning biomass, depletion and natural mortality with increasing prior standard deviation on $q$s and minor decreases in the estimates of $q_1$ and $q_2$ for all stock groups (Figures \ref{fig:hg-4panel-qa} to \ref{fig:wcvi-4panel-qc}).
 
@@ -660,7 +659,7 @@ Estimation bias is explored through retrospective analyses.
 
 \subsection{RETROSPECTIVE ANALYSES}\label{secRetro}
 
-Patterns of retrospective bias in spawning biomass and age-2 recruitment for all major stocks (AM1 and AM2) are presented in Figures \ref{fig:hg-am1-retro-biomass} to \ref{fig:wcvi-am1-retro-biomass} and Figures \ref{fig:hg-retro-recr} to \ref{fig:wcvi-am1-retro-recr}, respectively.
+Patterns of retrospective bias in estimates of spawning biomass and age-2 recruitment for all major stocks (AM1 and AM2) were examined by successively removing the last 10-years of data.  Results are presented in Figures \ref{fig:hg-am1-retro-biomass} to \ref{fig:wcvi-am1-retro-biomass} and Figures \ref{fig:hg-retro-recr} to \ref{fig:wcvi-am1-retro-recr}, for AM1 and AM2 respectively.
 
 Two categories of retrospective patterns emerge when examining these figures.
 For HG, CC, and WCVI, the general retrospective patterns are the same between AM1 and AM2 within these stocks. 
