@@ -6,7 +6,7 @@ A matrix of average weight-at-age from \Sexpr{paste(range(yrRange), collapse=" t
 Additional biological parameters such as growth parameters and maturity schedules were taken from external analyses and input to the assessment model as fixed parameters that were assumed to remain constant over time (Section \ref{secAssumedBiolPars}).
 
 Reference points based on estimated long-term average unfished equilbrium spawning biomass ($\mli{SB}_0$) and estimates of current stock status relative to estimated unfished spawning biomass ($\mli{SB}_{2017} / \mli{SB}_0$) are presented in Tables \ref{tab:hg-ref-points} to \ref{tab:wcvi-ref-points}. 
-Estimates of $\mli{SB}$ and depletion levels ($\mli{SB} / \mli{SB}_0$) for the recent 10 years are presented for models \Sexpr{PasteNicely(mNames)} in Tables \ref{tab:hg-spawn-biomass-am2} to \ref{tab:wcvi-spawn-biomass-am1}.
+Estimates of $\mli{SB}$ and depletion levels ($\mli{SB}_{2017} / \mli{SB}_0$) for the recent 10 years are presented for models \Sexpr{PasteNicely(mNames)} in Tables \ref{tab:hg-spawn-biomass-am2} to \ref{tab:wcvi-spawn-biomass-am1}.
 
 Maximum Sustainable Yield (MSY) and the annual harvest rate producing MSY ($U_\text{MSY}$), were presented only within the context of the Sensitivity Analysis investigating interactions between maturity-at-age and selectivity-at-age (Section \ref{secMatAge}).
 
@@ -58,7 +58,7 @@ Raw catch data for each stock area from \Sexpr{min(yrRange)} to \Sexpr{assess.yr
 
 \textbf{Haida Gwaii}
 
-Haida Gwaii was closed to commercial roe fisheries from 2002--2013 and commercial spawn-on-kelp (SOK) fisheries from 2004--2013.
+Haida Gwaii was closed to commercial roe fisheries from 2002--2013 and 2015--2017, and commercial spawn-on-kelp (SOK) fisheries from 2004--2013 and 2015--2017.
 Commercial roe and SOK fishing opportunities were available in 2014, however they were not pursued following an agreement between the commercial sector and local First Nations.
 First Nations FSC fisheries operate within traditional territories of individual Nations, harvesting wild SOK and though closed-ponding for SOK.
 
@@ -70,7 +70,8 @@ They are: the Winter fishery - food and bait herring (FB) that operates November
 \textbf{Central Coast}
 
 The Central Coast was closed to commercial roe fisheries and commercial SOK fisheries from 2007-2013.
-Commercial roe and SOK fishing opportunities were available and pursued in 2014.
+Commercial roe and SOK fishing opportunities were available and pursued in 2014--2016.
+Commercial roe and SOK fishing opportunities were available in 2017, though only SOK opportunities were pursued.
 First Nations FSC fisheries operate within traditional territories of individual Nations, fishing spawn-on-boughs (March - April) and SOK (open and closed ponding).
 
 \textbf{Strait of Georgia}
@@ -83,7 +84,7 @@ First Nations FSC fisheries operate within traditional territories of individual
 
 The West Coast Vancouver Island has been closed to commercial roe and spawn-on-kelp (SOK) fisheries since 2006 (with SOK permitted in 2011).
 First Nations FSC fisheries operate within traditional territories of individual Nations, fishing whole herring (year round), spawn-on-boughs (March - April), and SOK (closed and open ponding).
-Commercial fishing opportunities were not permitted in 2013/14 following an interlocutory injunction as a result of a federal court decision.
+Commercial fishing opportunities were not permitted in 2014 following an interlocutory injunction as a result of a federal court decision.
 %JC: completed.
 
 \subsubsection{Biological data}
@@ -158,27 +159,30 @@ Time series of spawn index by major stock area, from \Sexpr{paste(range(yrRange)
 %It is worth noting that since 1988, some early and late season surface surveys have been conducted, representing a small proportion of total spawn survey in a given area (Appendix XX-JC- do we have this? MG:No JC: add in 2018. MG: Roger!
 Surface survey data are processed such that the average width estimates are in a comparable format to those from the dive survey data and these observations are combined with the dive survey estimates into a single survey index.
 
-In 4 of the major stock areas (HG, CC, SOG, WCVI), numeric estimates of spawning biomass (spawn index values) decreased in 2017 over 2016.
+In 4 of the major stock areas (HG, CC, SOG, WCVI), numeric estimates of spawning biomass (spawn index values) declined from 2016 to 2017.
 In PRD, numeric estimates of spawning biomass (spawn index values) neither increased nor decreased from 2016 to 2017.
 %JC: completed.
 
 \subsubsection{Proportion-at-age and catch-at-age}
 
-%INCOMPLETE SECTION
-%SH: JC I am unclear whatelse to include here as we talk about stock specific trends in the biomass and stock status sections
+ISCAM estimates catch-at-age for each of the three gear types using proportions-at-age data.
+The estimation procedure involves fitting a logistic function with age-specific selectivity coefficients to each gear type.
 
-Estimated proportions-at-age from Gear 2 biological samples (roe seine, seine test, SOK, where available) by stock area are summarized in Figure \ref{figProportionAge}.
-%Trends in proportion-at-age by Gear 1 and Gear 3 are included in Appendix XX.
-Adjustments made in analytical procedures included weighting Area 8 biological samples by their average relative contribution over the past 20 years (7\%), due to concerns that data acquired and used for the Central Coast area resulted from an uncommonly high number of samples (6 of 13) that were collected from Statistical Area 8 (which is historically an unfished area with consistently smaller (age 2) fish), Area 8; and, removing WCVI Statistical Area 24 samples, because it was determined that they were not representative.
-Each gear type has a separate selectivity that is estimated for each of the gear types using a logistic function with age-specific selectivity coefficients.
+Estimated proportions-at-age from Gear 2 biological samples (roe seine, seine test, SOK, where available) by stock area are summarized in Figure \ref{figProportionAge}. 
+The matrix of mean weight-at-age data is calculated from the biological samples presented in Figure \ref{figProportionAge}.
+Tables of numbers-at-age for Gear 1, Gear 2, and Gear 3 are included in Appendix \ref{chap:input}.
+
+An adjustment is made in analytical procedures for compiling the proportions-at-age and weight-at-age data for Central Coast in 20XX and 20XX.
+Area 08 biological samples are weighted by their average relative contribution over the past 20 years (7\%), because the sampling protocol in 20XX and 20XX involved collecting an uncommonly high number of samples from Statistical Area 08. 
+The downweighting of Area 08 samples was deemed necessary because fish sampled in Area 08 are consistently smaller at age than in Area 06 and Area 07 \citep{herring2014,herring2016}.
 
 Stock specific trends are discussed in the sections below.
 
-
 \subsubsection{Assumed biological parameters}\label{secAssumedBiolPars}
 
-Model inputs of asymptotic growth (L_infinity=27), alpha and beta for the length-weight allometry (alpha=4.5e-06, beta=3.127), and Brody growth coefficient (k=0.48) were taken from FishBase (\citep{XX}). 
+Model inputs of asymptotic growth $L_\infty=27$, alpha and beta for the length-weight allometry ($alpha=4.5e-06$, $beta=3.127$), and Brody growth coefficient ($k=0.48$) were taken from FishBase %(\citep{XX}).
 Age at 50\% maturity was estimated at 2.055.
+%MG
 
 As described in Section \ref{secLifeHist}, indications from histological assessment of developing ovaries suggest that about 25\% of \Sexpr{fish.name} mature at age 2, and at least 90\% mature at age 3 (D. Hay, unpublished data).
 For the assessment, a fixed maturity schedule is used for all herring stocks: 25\% mature for age-2s, 90\% mature for age-3s, and 100\% mature for ages 4 and older (see description in Section \ref{secMatAge}.
@@ -292,12 +296,13 @@ biological samples used to calculate mean weight-at-age and proportion-at-age da
 \subsection{STATISTICAL CATCH-AT-AGE MODEL}
 
 This assessment reports a base case of a catch-age model that is fitted to three sources of data: commercial catch, spawn survey biomass index, and proportions-at-age.
-Two alternate management procedures are also explored (Section \ref{secAssessHist}).
 The assessment depends primarily upon the spawn survey biomass index (surface: \Sexpr{qYrs$q1}, dive: \Sexpr{qYrs$q2}) for information on the scale of the major herring stocks.
-Fishery and seine test fishery age-composition data (1951-2014) are combined for each of the three gear types, contributing to the assessment model's ability to resolve strong and weak cohorts, and to forecast recruitment. 
 
 The assessment uses Bayesian methods to incorporate prior information and integrate over parameter uncertainty to provide results that can be probabilistically interpreted.
 The exploration of uncertainty is not limited to parameter uncertainty as structural uncertainty is investigated through retrospective analyses (Section \ref{secRetro}).
+
+The assessment includes presentation of two alternate management procedures for each stock and scenario: AM1 and AM2 (Section \ref{secAssessHist}).
+
 %JC: edits completed
 
 \subsubsection{Changes from the 2016 assessment}
@@ -500,9 +505,7 @@ The median, 2.5th percentile and 97.5th percentile posterior parameter estimates
 
 %Here we need to describe prior/ posterior distributions for leading parameters
 
-%%\subsubsection{Fishery reference points}
-
-%JC: I'm not sure we need this section. We discuss LRP and USR in INTRO, and report LRP in Biomass and stock status
+%%\subsubsection{Fishery reference points} %Add in 2018
 
 % 
 % \begin{resdoclist}
