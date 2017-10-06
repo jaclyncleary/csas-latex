@@ -41,15 +41,16 @@ make.parameters.table(hg.b,
                       placement = "H")
 @
 
-<<q.parameters.table, results='asis', echo=FALSE>>=
+<<q.params.table, results='asis', echo=FALSE>>=
 cap <- paste0("Estimated catchability (q) parameters and ",
-              "prior probablilty distributions used in all SAR models.")
+              "prior probablilty distributions used in all SAR models. ",
+              "Estimated values are medians of the MCMC posteriors.")
 make.catchability.parameters.table(sens.models.1,
                                    base.models,
                                    xcaption = cap,
-                                   xlabel = "tab:q-parameters",
-                                   font.size = 10,
-                                   space.size = 11,
+                                   xlabel = "tab:q-params",
+                                   font.size = 8,
+                                   space.size = 9,
                                    placement = "H")
 @
 
@@ -651,6 +652,21 @@ make.maturity.sens.table(maturity.sens,
                          font.size = 11,
                          space.size = 12,
                          placement = "H")
+@
+
+<<q.params.q.sens.table, results='asis', echo=FALSE>>=
+cap <- paste0("Estimated catchability (q) parameters and ",
+              "prior probablilty distributions used in AM1 models ",
+              "investigating the sensitivity to the q parameter.",
+              "Estimated values are medians of the MCMC posteriors.")
+make.catchability.parameters.table.q.sens(sens.models.6,
+                                          sens.models.7,
+                                          sens.models.8,
+                                          xcaption = cap,
+                                          xlabel = "tab:q-params-q-sens",
+                                          font.size = 8,
+                                          space.size = 9,
+                                          placement = "H")
 @
 
 \clearpage

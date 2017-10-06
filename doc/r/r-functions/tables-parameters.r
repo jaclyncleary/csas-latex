@@ -208,14 +208,15 @@ make.parameters.table <- function(model,
 }
 
 make.catchability.parameters.table <- function(am1.lst,
-                                               am2.lst,
+                                               am2.lst = NULL,
+                                               digits = 3,
                                                xcaption = "default",
                                                xlabel   = "default",
                                                font.size = 9,
                                                space.size = 10,
                                                placement = "H"){
-  ## am1.lst and am2.lst aree lists of the models AM1 and AM2
-  ## to write q values for.
+  ## am1.lst and am2.lst are lists of the models AM1 and AM2
+  ## to write q values for. If am2 is NULL, write only AM1 model output.
   ## xcaption - caption to appear in the calling document
   ## digits - number of digits after decimal point
   ## xlabel - the label used to reference the table in latex
@@ -235,8 +236,15 @@ make.catchability.parameters.table <- function(am1.lst,
   lst <- list()
   st <- c("HG", "PRD", "CC", "SOG", "WCVI")
   for(i in 1:5){
+    mdl <- am1.lst[[i]][[1]]
+    mc <- mdl$mcmccalcs
+    p.quants <- as.data.frame(mc$p.quants)
     ## AM1
-    ctl.am1 <- am1.lst[[i]][[1]]$ctl
+    ctl.am1 <- mdl$ctl
+    ## AM1 q estimates
+    q1.est.am1 <- f(p.quants$q1[2], digits)
+    q2.est.am1 <- f(p.quants$q2[2], digits)
+    ## AM1 q priors
     q.am1 <- as.data.frame(t(ctl.am1$surv.q))
     q.am1$priormeanlog <- exp(q.am1$priormeanlog)
     p.vals.am1.s <- paste0("Normal($",
@@ -249,49 +257,100 @@ make.catchability.parameters.table <- function(am1.lst,
                            ", ",
                            f(q.am1$priorsd[2], 3),
                            "$)")
-    ## AM2
-    ctl.am2 <- am2.lst[[i]][[1]]$ctl
-    q.am2 <- as.data.frame(t(ctl.am2$surv.q))
-    q.am2$priormeanlog <- exp(q.am2$priormeanlog)
-    p.vals.am2.s <- paste0("Normal($",
-                           f(q.am2$priormeanlog[1], 3),
-                           ", ",
-                           f(q.am2$priorsd[1], 3),
-                           "$)")
-    p.vals.am2.d <- paste0("Normal($",
-                           f(q.am2$priormeanlog[2], 3),
-                           ", ",
-                           f(q.am2$priorsd[2], 3),
-                           "$)")
+    sb.end.am1 <- f(mc$r.quants[3, 3], digits)
+    sbo.am1 <- f(p.quants$sbo[2], digits)
+    depl.am1 <- f(mc$depl.quants[,ncol(mc$depl.quants) - 1][2], digits)
 
+    if(!is.null(am2.lst)){
+      ## AM2
+      mdl <- am2.lst[[i]][[1]]
+      mc <- mdl$mcmccalcs
+      p.quants <- as.data.frame(mc$p.quants)
+      ctl.am2 <- mdl$ctl
+      ## AM2 q estimates
+      q1.est.am2 <- f(p.quants$q1[2], digits)
+      q2.est.am2 <- f(p.quants$q2[2], digits)
+      ## AM2 q priors
+      q.am2 <- as.data.frame(t(ctl.am2$surv.q))
+      q.am2$priormeanlog <- exp(q.am2$priormeanlog)
+      p.vals.am2.s <- paste0("Normal($",
+                             f(q.am2$priormeanlog[1], 3),
+                             ", ",
+                             f(q.am2$priorsd[1], 3),
+                             "$)")
+      p.vals.am2.d <- paste0("Normal($",
+                             f(q.am2$priormeanlog[2], 3),
+                             ", ",
+                             f(q.am2$priorsd[2], 3),
+                             "$)")
+      sb.end.am2 <- f(mc$r.quants[3, 3], digits)
+      sb.end.yr <- gsub("sb", "", rownames(mc$r.quants)[3])
+      sbo.am2 <- f(p.quants$sbo[2], digits)
+      depl.am2 <- f(mc$depl.quants[,ncol(mc$depl.quants) - 1][2], digits)
+    }
 
     lst[[i]] <- rbind(c(st[i],
                       "AM1",
                       "Surface",
                       "None",
-                      p.vals.am1.s),
+                      q1.est.am1,
+                      q2.est.am1,
+                      p.vals.am1.s,
+                      sb.end.am1,
+                      sbo.am1,
+                      depl.am1),
                     c(st[i],
                       "AM1",
                       "Dive",
                       "None",
-                      p.vals.am1.d),
-                    c(st[i],
-                      "AM2",
-                      "Surface",
-                      "None",
-                      p.vals.am2.s),
-                    c(st[i],
-                      "AM2",
-                      "Dive",
-                      "None",
-                      p.vals.am2.d))
+                      q1.est.am1,
+                      q2.est.am1,
+                      p.vals.am1.d,
+                      sb.end.am1,
+                      sbo.am1,
+                      depl.am1))
+    if(!is.null(am2.lst)){
+      lst[[i]] <- rbind(lst[[i]],
+                        c(st[i],
+                          "AM2",
+                          "Surface",
+                          "None",
+                          q1.est.am2,
+                          q2.est.am2,
+                          p.vals.am2.s,
+                          sb.end.am2,
+                          sbo.am2,
+                          depl.am2),
+                        c(st[i],
+                          "AM2",
+                          "Dive",
+                          "None",
+                          q1.est.am2,
+                          q2.est.am2,
+                          p.vals.am2.d,
+                          sb.end.am2,
+                          sbo.am2,
+                          depl.am2))
+    }
   }
   tab <- do.call(rbind, lst)
   colnames(tab) <- c(latex.bold("SAR"),
                      latex.bold("Model"),
                      latex.bold("Survey"),
                      latex.bold("Bounds"),
-                     latex.bold("Prior (mean, SD)"))
+                     latex.mlc(c("Estimated",
+                                 "q1")),
+                     latex.mlc(c("Estimated",
+                                 "q2")),
+                     latex.bold("Prior (mean, SD)"),
+                     latex.bold(paste0("SB\\subscr{",
+                                       sb.end.yr,
+                                       "}")),
+                     latex.bold("SB\\subscr{0}"),
+                     latex.mlc(c("Depletion",
+                                 paste0("SB\\subscr{",
+                                        sb.end.yr,
+                                        "}/SB\\subscr{0}"))))
 
   addtorow <- list()
   addtorow$pos <- list(4, 8, 12, 16)
@@ -874,5 +933,202 @@ make.variance.table <- function(var,
         size = size.string,
         add.to.row = addtorow,
         table.placement = placement,
+        booktabs = TRUE)
+}
+
+make.catchability.parameters.table.q.sens <- function(qa.lst,
+                                                      qb.lst,
+                                                      qc.lst,
+                                                      digits = 3,
+                                                      xcaption = "default",
+                                                      xlabel   = "default",
+                                                      font.size = 9,
+                                                      space.size = 10,
+                                                      placement = "H"){
+  ## qa.lst, qb.lst, and qc.lst are lists of the AM1 models for q sensitivities
+  ## xcaption - caption to appear in the calling document
+  ## digits - number of digits after decimal point
+  ## xlabel - the label used to reference the table in latex
+  ## font.size - size of the font for the table
+  ## space.size - size of the vertical spaces for the table
+  ## placement - latex code for placement of the table in document
+
+  ## Catchability  parameters
+  ## q is a data frame with 1 column for each survey and 3 rows:
+  ## 1 - prior type:
+  ##      0) Uniformative prior
+  ##      1) normal prior density for log(q)
+  ##      2) random walk in q
+  ## 2 - prior log(mean)
+  ## 3 - prior SD
+
+  lst <- list()
+  st <- c("HG", "PRD", "CC", "SOG", "WCVI")
+  for(i in 1:5){
+    mdl.qa <- qa.lst[[i]][[1]]
+    mdl.qb <- qb.lst[[i]][[1]]
+    mdl.qc <- qc.lst[[i]][[1]]
+    mc.qa <- mdl.qa$mcmccalcs
+    mc.qb <- mdl.qb$mcmccalcs
+    mc.qc <- mdl.qc$mcmccalcs
+    p.quants.qa <- as.data.frame(mc.qa$p.quants)
+    p.quants.qb <- as.data.frame(mc.qb$p.quants)
+    p.quants.qc <- as.data.frame(mc.qc$p.quants)
+    ## AM1
+    ctl.qa <- mdl.qa$ctl
+    ctl.qb <- mdl.qb$ctl
+    ctl.qc <- mdl.qc$ctl
+    ## AM1 q estimates
+    q1.est.qa <- f(p.quants.qa$q1[2], digits)
+    q2.est.qa <- f(p.quants.qa$q2[2], digits)
+    q1.est.qb <- f(p.quants.qb$q1[2], digits)
+    q2.est.qb <- f(p.quants.qb$q2[2], digits)
+    q1.est.qc <- f(p.quants.qc$q1[2], digits)
+    q2.est.qc <- f(p.quants.qc$q2[2], digits)
+    ## AM1 q priors
+    q.qa <- as.data.frame(t(ctl.qa$surv.q))
+    q.qb <- as.data.frame(t(ctl.qb$surv.q))
+    q.qc <- as.data.frame(t(ctl.qc$surv.q))
+    q.qa$priormeanlog <- exp(q.qa$priormeanlog)
+    q.qb$priormeanlog <- exp(q.qb$priormeanlog)
+    q.qc$priormeanlog <- exp(q.qc$priormeanlog)
+    p.vals.s.qa <- paste0("Normal($",
+                           f(q.qa$priormeanlog[1], 3),
+                           ", ",
+                           f(q.qa$priorsd[1], 3),
+                           "$)")
+    p.vals.d.qa <- paste0("Normal($",
+                           f(q.qa$priormeanlog[2], 3),
+                           ", ",
+                           f(q.qa$priorsd[2], 3),
+                           "$)")
+    p.vals.s.qb <- paste0("Normal($",
+                           f(q.qb$priormeanlog[1], 3),
+                           ", ",
+                           f(q.qb$priorsd[1], 3),
+                           "$)")
+    p.vals.d.qb <- paste0("Normal($",
+                           f(q.qb$priormeanlog[2], 3),
+                           ", ",
+                           f(q.qb$priorsd[2], 3),
+                           "$)")
+    p.vals.s.qc <- paste0("Normal($",
+                           f(q.qc$priormeanlog[1], 3),
+                           ", ",
+                           f(q.qc$priorsd[1], 3),
+                           "$)")
+    p.vals.d.qc <- paste0("Normal($",
+                           f(q.qc$priormeanlog[2], 3),
+                           ", ",
+                           f(q.qc$priorsd[2], 3),
+                           "$)")
+    sb.end.qa <- f(mc.qa$r.quants[3, 3], digits)
+    sb.end.qb <- f(mc.qb$r.quants[3, 3], digits)
+    sb.end.qc <- f(mc.qc$r.quants[3, 3], digits)
+    sb.end.yr <- gsub("sb", "", rownames(mc.qa$r.quants)[3])
+    sbo.qa <- f(p.quants.qa$sbo[2], digits)
+    sbo.qb <- f(p.quants.qb$sbo[2], digits)
+    sbo.qc <- f(p.quants.qc$sbo[2], digits)
+    depl.qa <- f(mc.qa$depl.quants[,ncol(mc.qa$depl.quants) - 1][2], digits)
+    depl.qb <- f(mc.qb$depl.quants[,ncol(mc.qb$depl.quants) - 1][2], digits)
+    depl.qc <- f(mc.qc$depl.quants[,ncol(mc.qc$depl.quants) - 1][2], digits)
+
+    lst[[i]] <- rbind(c(st[i],
+                      "AM1",
+                      "Surface",
+                      "None",
+                      q1.est.qa,
+                      q2.est.qa,
+                      p.vals.s.qa,
+                      sb.end.qa,
+                      sbo.qa,
+                      depl.qa),
+                    c(st[i],
+                      "AM1",
+                      "Dive",
+                      "None",
+                      q1.est.qa,
+                      q2.est.qa,
+                      p.vals.d.qa,
+                      sb.end.qa,
+                      sbo.qa,
+                      depl.qa),
+                    c(st[i],
+                      "AM1",
+                      "Surface",
+                      "None",
+                      q1.est.qb,
+                      q2.est.qb,
+                      p.vals.s.qb,
+                      sb.end.qb,
+                      sbo.qb,
+                      depl.qb),
+                    c(st[i],
+                      "AM1",
+                      "Dive",
+                      "None",
+                      q1.est.qb,
+                      q2.est.qb,
+                      p.vals.d.qb,
+                      sb.end.qb,
+                      sbo.qb,
+                      depl.qb),
+                    c(st[i],
+                      "AM1",
+                      "Surface",
+                      "None",
+                      q1.est.qc,
+                      q2.est.qc,
+                      p.vals.s.qc,
+                      sb.end.qc,
+                      sbo.qc,
+                      depl.qc),
+                    c(st[i],
+                      "AM1",
+                      "Dive",
+                      "None",
+                      q1.est.qc,
+                      q2.est.qc,
+                      p.vals.d.qc,
+                      sb.end.qc,
+                      sbo.qc,
+                      depl.qc))
+  }
+  tab <- do.call(rbind, lst)
+  colnames(tab) <- c(latex.bold("SAR"),
+                     latex.bold("Model"),
+                     latex.bold("Survey"),
+                     latex.bold("Bounds"),
+                     latex.mlc(c("Estimated",
+                                 "q1")),
+                     latex.mlc(c("Estimated",
+                                 "q2")),
+                     latex.bold("Prior (mean, SD)"),
+                     latex.bold(paste0("SB\\subscr{",
+                                       sb.end.yr,
+                                       "}")),
+                     latex.bold("SB\\subscr{0}"),
+                     latex.mlc(c("Depletion",
+                                 paste0("SB\\subscr{",
+                                        sb.end.yr,
+                                        "}/SB\\subscr{0}"))))
+
+  addtorow <- list()
+  addtorow$pos <- list(6, 12, 18, 24)
+  addtorow$command <- c("\\midrule ",
+                        "\\midrule ",
+                        "\\midrule ",
+                        "\\midrule ")
+  size.string <- latex.size.str(font.size, space.size)
+  print(xtable(tab,
+               caption = xcaption,
+               label = xlabel,
+               align = get.align(ncol(tab))),
+        caption.placement = "top",
+        include.rownames = FALSE,
+        sanitize.text.function = function(x){x},
+        size = size.string,
+        table.placement = placement,
+        add.to.row = addtorow,
         booktabs = TRUE)
 }
