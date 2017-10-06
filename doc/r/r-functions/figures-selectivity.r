@@ -2,7 +2,8 @@ make.selex.comparison.plot <- function(model,
                                        gear.names,
                                        show.mat = FALSE,
                                        bio = NULL,
-                                       leg = NULL){
+                                       leg = NULL,
+                                       color.brew.class = "Paired"){
   ## Plot the selectivity for selected gear(s) in the model(s)
   ##
   ## gear.names - read in from the csv file in the data directory
@@ -31,7 +32,8 @@ make.selex.comparison.plot <- function(model,
   ## Make matrix for plotting
   sel.mat <- t(do.call(rbind, sel.lst))
 
-  col <- seq(1, ncol(sel.mat))
+  col <- brewer.pal(ncol(sel.mat), color.brew.class)
+
   lty <- rep(1, ncol(sel.mat))
   lwd <- rep(2, ncol(sel.mat))
 
@@ -68,7 +70,7 @@ make.selex.comparison.plot <- function(model,
     lty <- c(lty, 2)
     lwd <- c(lwd, 3)
     curve(1 / (1 + exp(-(x - a50) / sigma_a50)),
-          col = ncol(sel.mat) + 1,
+          col = "black",
           lty = 2,
           lwd = 3,
           add = TRUE)
