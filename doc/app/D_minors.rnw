@@ -3,7 +3,13 @@
 \lfoot{\Sexpr{fish.name}}
 \rfoot{Appendix~\thechapter~-- Assessment of minor stocks}
 
-We do not do formal stock assessments for \Sexpr{fish.name} minor stocks, \Sexpr{PasteNicely(allRegionNames$minor)}.
+The Terms of Reference states: 
+
+\begin{resdoclist}
+\item For the minor stock areas, present stock status updates using available spawn survey data and biological samples.
+\end{resdoclist}
+
+There was insufficient time to conduct a formal analysis of stock trend information for the \Sexpr{fish.name} minor stocks, \Sexpr{PasteNicely(allRegionNames$minor)}, however spawn survey data and biological sampling information is presented in Appendix \ref{chap:input}.
 
 % Dirty hack to maintain correct appendix letters
 \newpage

@@ -152,7 +152,7 @@ Many stocks will show substantial variation in productivity over a long time ser
 Evidence of nonstationarity as well as modelling of three selectivity types due to concurrent harvesting by multiple gear types limits our ability to calculate and evaluate equilibrium reference points such as $B_\text{MSY}$ in the management procedure.
 Previous attempts to estimate $B_\text{MSY}$ for BC Pacific Herring stocks has resulted in unusually high estimates of $F_\text{MSY}$ \citep{martell2011}.
 
-Attempts to estimate $F_\text{MSY}$ using \emph{ISCAM} are presented in \ref{secMatAge} of the Sensitivity Analyses, based on a single gear type (roe seine), in order to investigate whether overlap or lack of overlap in maturity and selectivity curves impacts estimates of  $F_\text{MSY}$.  %SH to check this statement (is single gear correct?)
+Attempts to estimate $F_\text{MSY}$ using ISCAM are presented in \ref{secMatAge} of the Sensitivity Analyses, based on a single gear type (roe seine), in order to investigate whether overlap or lack of overlap in maturity and selectivity curves impacts estimates of  $F_\text{MSY}$.  %SH to check this statement (is single gear correct?)
 
 \subsubsection{Limit Reference Point}
 
@@ -182,11 +182,12 @@ While the Framework defines the USR as the boundary between the Cautious and Hea
 The hybrid constant escapement/onstant harvest rate feature of the herring HCR was intended to maintain a minimum escapement level equal to the commercial fishery cut-off.
 In this case, the management procedure has treated the LRP as an operational control point (OCP) where management action is taken.
 In the design of the HCR, this ``ramp-down'' of the harvest rate is intended to avoid commercial fishery closures and encourage stock growth, however the reduction from $0.31\mli{SB}_0$ to $0.25\mli{SB}_0$ is so steep that there is a very limited range of estimated biomass where reduced harvest rates might arrest stock decline before closure of the commercial fisheries.
-The effect of this feature of the HCR is the ``on or of'' behaviour seen in the simulation results of Cox et al. (2015).%
+The effect of this feature of the HCR is the ``on or of'' behaviour seen in the simulation results of Cox et al. (2015),%
 \footnote{Cox, S.P., Benson, A.J., Cleary, J.S., and Taylor, N.G. 2015. Candidate limit reference points as a basis for choosing among alternate harvest control rules for Pacific Herring (Clupea pallasii) in British Columbia. CSAS Working Paper 2013PEL01 (Accepted WP, final revisions stage).}
+and \citet{herring2015}.
 The outcome of which is that for 3 of the stocks, spawning biomass fell below this level far more often than predicted (Section \ref{secMgmtMajorStocks}). 
 
-A comprehensive review of approaches to establishing both limit and target reference points for herring stocks worldwide for clupeids is included in Appendix F of \citet{kronlund2017}.
+A comprehensive review of approaches to establishing both limit and target reference points for herring stocks worldwide for clupeids is included in \citet[][Appendix F]{kronlund2017}.
 Examples for establishing the USR include:
 \begin{resdoclist}
 \item Interim USRs were defined at biomass levels to which stocks are expected to grow under average recruitment \citep{dfo2005}; recommended for Southern Gulf of St. Lawrence Atlantic Herring,
@@ -213,7 +214,7 @@ Proposed candidate USR for \Sexpr{fish.name} are:
 \begin{resdoclist}
 \item	USR = long-term average spawning biomass $\mli{SB}_\text{avg}$,
 \item	USR = long-term average biomass during a productive period $\mli{SB}_\text{avg-prod}$,
-\item	USR = $2\times$ LRP ($0.60\mli{SB}_0$), and
+\item	USR = $2\times$ LRP (e.g., $0.60\mli{SB}_0$), and
 \item	USR = $\mli{SB}_0$. 
 \end{resdoclist}
 The analysis conducted by \citet{kronlund2017} looked at a variety of $B_\text{MSY}$ proxies and they were rejected as implausible, thus we are not including $B_\text{MSY}$-based candidates at this time. 
@@ -222,7 +223,7 @@ Simulation testing of the consequences of the choice of LRP, USR, and TRP relati
 The management outcomes are related to measurable objectives of avoiding LRPs with high probability and maintaining stocks at TRP levels with the desired probability over a specified time-frame appropriate to life history and current understanding of stock dynamics.
 The DFO has committed to a management strategy evaluation process for \Sexpr{fish.name}, with engagement of managers and resource-users, focusing on evaluation of reference points and management procedures to fully align the \Sexpr{fish.name} management framework with the DFO PA Framework \citep{dfo09}.
 
-\subsection{ASSESSMENT HISTORY}
+\subsection{ASSESSMENT HISTORY}\label{secAssessHist}
 
 Annual stock assessments for the BC Pacific Herring major stocks have been conducted using a catch-age model since the mid-2000s \citep{haist2006}. 
 Since then, the design of the model has undergone re-structuring various model components, as often as every 2-3 years, to address issues identified during peer-review.
@@ -236,7 +237,7 @@ This reflects concerns that the consequences of applying AM1 were not simulation
 Both MPs have been peer reviewed through CSAS and both have been implemented in the provision of science advice for Pacific Herring in previous years. 
 
 To address concerns arising both from previous CSAS processes and from implementation of each approach, the 2016 Science Response \citep{herring2016} includes a table developed by the Herring Technical Working Group (HTWG) that describes the main attributes and limitations of AM1 and AM2, to support short-term decision-making \citep[see][Table A.1]{herring2016}.
-The status of BC herring stocks in 2017 and forecasts for 2018 are provided in the form of dual stock assessment updates, using the AM1 \citep{martell2011} and AM2 (approximation of \citet{cleary2012}) MPs.
+The status of BC herring stocks in 2017 and forecasts for 2018 are provided in the form of dual stock assessment updates, using the AM1 \citep{martell2011} and AM2 \citep[approximation of][]{cleary2012} MPs.
 
 % 0.8$B_\textMSY}$
 % $q_1$

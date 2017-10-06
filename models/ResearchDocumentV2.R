@@ -1465,6 +1465,9 @@ namesNBio <- PrintNBio( dat=nBio )
 ##### LaTeX #####
 #################
 
+# Year for model predictions (i.e., next year)
+nextYr <- max( yrRange ) + 1
+
 # Number of years in the time series
 nYrs <- length( yrRange )
 
