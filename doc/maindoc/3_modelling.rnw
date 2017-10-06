@@ -172,9 +172,9 @@ Estimated proportions-at-age from Gear 2 biological samples (roe seine, seine te
 The matrix of mean weight-at-age data is calculated from the biological samples presented in Figure \ref{figProportionAge}.
 Tables of numbers-at-age for Gear 1, Gear 2, and Gear 3 are included in Appendix \ref{chap:input}.
 
-An adjustment is made in analytical procedures for compiling the proportions-at-age and weight-at-age data for Central Coast in 20XX and 20XX. %MG3
-Area 08 biological samples are weighted by their average relative contribution over the past 20 years (7\%), because the sampling protocol in 20XX and 20XX involved collecting an uncommonly high number of samples from Statistical Area 08. 
-The downweighting of Area 08 samples was deemed necessary because fish sampled in Area 08 are consistently smaller at age than in Area 06 and Area 07 \citep{herring2014,herring2016}.
+An adjustment is made in analytical procedures for compiling the proportions-at-age and weight-at-age data for Central Coast in 2014 and 2015.
+Area 08 biological samples are weighted by their average relative contribution over the past 20 years (7\%), because the sampling protocol in 2014 and 2015 involved collecting an uncommonly high number of samples from Statistical Area 08. 
+The downweighting of Area 08 samples was deemed necessary because fish sampled in Area 08 are consistently smaller at age than in Area 06 and Area 07 \citep{herring2014, herring2016}.
 
 Stock specific trends are discussed in the sections below.
 
@@ -513,8 +513,7 @@ Choice of prior and prior distribution is described in Appendix \ref{chap:equati
 The following section presents posterior distributions characterizing the major Pacific Herring stocks for the following parameters and derived quantities: model fits to the spawn survey index, age-2 recruitment, instantaneous natural mortality, and spawning biomass reconstructions.
 
 To help readers view and interpret trends in results and uncertainty for each stock major stock area, collective sets of figures showing these four sets of model results across the \Sexpr{paste(range(yrRange), collapse=" to ")} time series are presented by stock area in Figures \ref{figStoryboard\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figStoryboard\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}}.
-We also present maximum posterior density (MPD) estimates for: spawn survey scaling parameter ($q$, Table XX),  %MG5
-age-2 recruits versus spawning biomass relationships (Figure \ref{figBevertonHolt}), and age-specific fishing gear selectivity (Figures \ref{fig:hg-selex} to \ref{fig:wcvi-selex}).
+We also present median posterior estimates for the spawn survey scaling parameter ($q$; Table \ref{tab:q-params}), as well as MPD estimates for age-2 recruits versus spawning biomass relationships (Figure \ref{figBevertonHolt}), and age-specific fishing gear selectivity (Figures \ref{fig:hg-selex} to \ref{fig:wcvi-selex}).
 
 Estimated spawning biomass relative to the LRP is presented in Figure \ref{figCurrentSSB}.
 
