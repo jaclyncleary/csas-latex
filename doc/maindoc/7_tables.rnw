@@ -31,7 +31,7 @@
 % \end{table}
 
 <<parameters.table, results='asis', echo=FALSE>>=
-cap <- paste0("Estimated and fixed parameters and prior probablilty ",
+cap <- paste0("Estimated and fixed parameters and prior probability ",
               "distributions used in all SAR models.")
 make.parameters.table(hg.b,
                       xcaption = cap,
@@ -43,7 +43,7 @@ make.parameters.table(hg.b,
 
 <<q.params.table, results='asis', echo=FALSE>>=
 cap <- paste0("Estimated catchability (q) parameters and ",
-              "prior probablilty distributions used in all SAR models. ",
+              "prior probability distributions used in all SAR models. ",
               "Estimated values are medians of the MCMC posteriors.")
 make.catchability.parameters.table(sens.models.1,
                                    base.models,
@@ -211,7 +211,7 @@ make.ref.points.table(hg.b,
 <<prd.ref.points.table, results='asis', echo=FALSE>>=
 cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
               "95\\textsuperscript{th} percentile) of proposed reference ",
-              "points for the Prince Rupert Disctrict models. Biomass ",
+              "points for the Prince Rupert District models. Biomass ",
               "numbers are in thousands of tonnes.")
 make.ref.points.table(pr.b,
                       pr.am1,
@@ -656,7 +656,7 @@ make.maturity.sens.table(maturity.sens,
 
 <<q.params.q.sens.table, results='asis', echo=FALSE>>=
 cap <- paste0("Estimated catchability (q) parameters and ",
-              "prior probablilty distributions used in AM1 models ",
+              "prior probability distributions used in AM1 models ",
               "investigating the sensitivity to the q parameter.",
               "Estimated values are medians of the MCMC posteriors.")
 make.catchability.parameters.table.q.sens(sens.models.6,

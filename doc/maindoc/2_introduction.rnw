@@ -24,7 +24,7 @@ In addition to operational changes in the application of management procedures, 
 As a result, it is difficult to attribute departures from the original predictions of management procedure performance (in terms of probability of fisheries closures, average annual variability of catch) to any single cause.
 
 This year's assessment presents two base cases assessments for each of the 5 major stocks: ``AM1'' denoting the case where surface (\Sexpr{min(yrRange)}--\Sexpr{newSurvYr-1}) and dive (\Sexpr{newSurvYr}--\Sexpr{max(yrRange)}) survey catchability parameters ($q_1$ and $q_2$) are estimated using a prior distribution, and ``AM2'' denoting the case where the surface survey catchability ($q_1$) is estimated and the dive survey catchability is fixed at $q_2 = 1$.
-The ISCAM modelling code used in \Sexpr{assess.yr} has been updated to the new platform, the detailes of which are described in the Bridging Analysis (Appendix \ref{chap:bridge}).
+The ISCAM modelling code used in \Sexpr{assess.yr} has been updated to the new platform, the details of which are described in the Bridging Analysis (Appendix \ref{chap:bridge}).
 
 Sensitivity cases for \Sexpr{PasteNicely(mNames)} investigate:
 \begin{resdoclist}
@@ -56,7 +56,7 @@ The majority of \Sexpr{common.name} in BC appear to occur as large schooling agg
 The main Haida Gwaii (HG) and Prince Rupert District (PRD) stocks feed in Hecate Strait during the summer and fall months, remaining in the offshore areas of Hecate Strait prior to inshore spawning migration in February before spawning in March through May.
 The main Central Coast (CC) stock feeds in southern Hecate Strait and Queen Charlotte Sound during the summer and early fall months, remaining in offshore areas prior to inshore migration in February to the CC before spawning in March and April.
 The main Strait of Georgia (SOG) stock feeds off the west coast of Vancouver Island during the summer and early fall months, reentering the SOG beginning in October before spawning in March and April.
-The main west coast of Vancouver Island (WCVI) stock feeds in offshore areas of southern Vancouver Island during the summer and early fall months (mixing with the migratory SOG stock), returning inshore in late fall before spawning in March and April, with some early spawns occuring January and February.
+The main west coast of Vancouver Island (WCVI) stock feeds in offshore areas of southern Vancouver Island during the summer and early fall months (mixing with the migratory SOG stock), returning inshore in late fall before spawning in March and April, with some early spawns occurring January and February.
 
 \subsection{STOCK STRUCTURE}
 
@@ -115,8 +115,8 @@ A series of above average year-classes occurred in the early 1970s, rapidly rebu
 The harvest rule for Pacific Herring is described as \citep{martell2011}:
 \begin{equation} \label{eqHarvestRule}
 U'_{T+1} = \begin{cases}
-0 & SB_{T+1} \leq 0.25 \cdot \mli{SB}_0 \\
-\text{min} \left( \frac{SB_{T+1} - 0.25 \cdot \mli{SB}_0}{B_{T+1}}, ~ 0.2 \right) & B_{T+1} > 0.25 \cdot \mli{SB}_0
+0 & \mli{SB}_{T+1} \leq 0.25 \cdot \mli{SB}_0 \\
+\text{min} \left( \frac{\mli{SB}_{T+1} - 0.25 \cdot \mli{SB}_0}{\mli{SB}_{T+1}}, ~ 0.2 \right) & \mli{SB}_{T+1} > 0.25 \cdot \mli{SB}_0
 \end{cases}
 \end{equation}
 where $T$ is the terminal year for the stock assessment, $\mli{SB}_{T+1}$ is the prefishery forecast biomass in year $T+1$, and $\mli{SB}_0$ is the unfished equilibrium spawning stock biomass.
@@ -138,18 +138,18 @@ The DMF policy is one component of the Sustainable Fisheries Framework, the Depa
 The 2017 Request for Scientific Information and Advice (RSIA) submitted by Fisheries Management has requested that advice for Pacific Herring be consistent with the DMF policy requirement to characterize uncertainty and risk.
 DFO Pacific Region has committed to Renewal of the Management Framework for \Sexpr{fish.name}, including updated simulation analyses of harvest control rules.
 Although the \Sexpr{common.name} HCR was not originally designed to address the intent of the DMF policy, the form of the rule does meet the requirement to reduce the fishing rate as stock status declines to low levels of abundance, a tactic intended to encourage stock growth towards the target biomass reference point.
-Simulation analyses of HCR will occur within a Management Strategy Evaluation (MSE) process, focussing on establishing Management Procedures compliant with the DMF policy, including avoiding Limit Reference Points (LRP) with high probabiliy and establishing Upper Stock Reference (USR) points or target biomass levels.
+Simulation analyses of HCR will occur within a Management Strategy Evaluation (MSE) process, focussing on establishing Management Procedures compliant with the DMF policy, including avoiding Limit Reference Points (LRP) with high probability and establishing Upper Stock Reference (USR) points or target biomass levels.
 
 \subsection{BIOLOGICAL REFERENCE POINTS}
 
 Unfished equilibrium spawning biomass ($\mli{SB}_0$) has been part of the management procedure for Pacific Herring since 1986 when $0.25\cdot\mli{SB}_0$ was adopted as a commercial fishing threshold (cut-off) in the harvest control rule. 
 Annual science advice includes presentation of estimated stock status relative to the long-term average unfished spawning biomass, and presentation of probabilistic decision tables with projected pre-fishery biomass relative to fractions of $\mli{SB}_0$ (e.g., $0.25\cdot\mli{SB}_0$ and $0.30\cdot\mli{SB}_0$).
 Time series estimates of weight-at-age show significant declines in mean weight-at-age for all major stocks between 1980-2010 as well as increasing and decreasing trends in estimated natural mortality.
-Given these nonstationary dynamics $\mli{SB}_0$ is calculated using on long-term average weight-at-age and average natural mortality and we do not present dynamic estimates of $\mli{SB}_0$, i.e., based on shorter time series or during ``high'' or ``low'' productivivity periods.
+Given these non-stationary dynamics $\mli{SB}_0$ is calculated using on long-term average weight-at-age and average natural mortality and we do not present dynamic estimates of $\mli{SB}_0$, i.e., based on shorter time series or during ``high'' or ``low'' productivity periods.
 Regarding the calculation of reference points, the DFO PA Framework recommends ``as long as a time series as possible should be used in establishing reference points for a stock''.
 Many stocks will show substantial variation in productivity over a long time series, and this variation should be taken into account when setting the reference points." 
 
-Evidence of nonstationarity as well as modelling of three selectivity types due to concurrent harvesting by multiple gear types limits our ability to calculate and evaluate equilibrium reference points such as $B_\text{MSY}$ in the management procedure.
+Evidence of non-stationarity as well as modelling of three selectivity types due to concurrent harvesting by multiple gear types limits our ability to calculate and evaluate equilibrium reference points such as $B_\text{MSY}$ in the management procedure.
 Previous attempts to estimate $B_\text{MSY}$ for BC Pacific Herring stocks has resulted in unusually high estimates of $F_\text{MSY}$ \citep{martell2011}.
 
 Attempts to estimate $F_\text{MSY}$ using ISCAM are presented in \ref{secMatAge} of the Sensitivity Analyses, based on a single gear type (roe seine), in order to investigate whether overlap or lack of overlap in maturity and selectivity curves impacts estimates of  $F_\text{MSY}$.  %SH to check this statement (is single gear correct?)
@@ -179,7 +179,7 @@ The management actions are expressed by a management procedure that includes a c
 
 While the Framework defines the USR as the boundary between the Cautious and Healthy zones, it does not provide guidance on how to identify an appropriate choice of the breakpoint between these zones. 
 
-The hybrid constant escapement/onstant harvest rate feature of the herring HCR was intended to maintain a minimum escapement level equal to the commercial fishery cut-off.
+The hybrid constant escapement/instant harvest rate feature of the herring HCR was intended to maintain a minimum escapement level equal to the commercial fishery cut-off.
 In this case, the management procedure has treated the LRP as an operational control point (OCP) where management action is taken.
 In the design of the HCR, this ``ramp-down'' of the harvest rate is intended to avoid commercial fishery closures and encourage stock growth, however the reduction from $0.31\mli{SB}_0$ to $0.25\mli{SB}_0$ is so steep that there is a very limited range of estimated biomass where reduced harvest rates might arrest stock decline before closure of the commercial fisheries.
 The effect of this feature of the HCR is the ``on or of'' behaviour seen in the simulation results of Cox et al. (2015),%
