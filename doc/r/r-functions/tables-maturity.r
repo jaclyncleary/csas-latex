@@ -33,14 +33,17 @@ make.maturity.table <- function(mat,
                      latex.bold("Model"),
                      latex.bold(age))
   addtorow <- list()
-  addtorow$pos <- list()
-  addtorow$pos[[1]] <- -1
-  addtorow$command <- paste0("\\toprule",
-                             latex.amp(2),
-                             latex.mcol(length(age),
-                                        "c",
-                                        latex.bold("Maturity at age")),
-                             latex.nline)
+  addtorow$pos <- list(-1, 2, 4, 6, 8)
+  addtorow$command <- c(paste0("\\toprule",
+                               latex.amp(2),
+                               latex.mcol(length(age),
+                                          "c",
+                                          latex.bold("Maturity at age")),
+                               latex.nline),
+                        "\\midrule ",
+                        "\\midrule ",
+                        "\\midrule ",
+                        "\\midrule ")
 
   size.string <- latex.size.str(font.size, space.size)
   print(xtable(tab,
