@@ -5,14 +5,14 @@ The model was fit to catch data, two survey indices of relative spawner biomass,
 A matrix of average weight-at-age from \Sexpr{paste(range(yrRange), collapse=" to ")} was also estimated external to the model, using biological samples from the seine caught fish (seine roe, food and bait, seine test).
 Additional biological parameters such as growth parameters and maturity schedules were taken from external analyses and input to the assessment model as fixed parameters that were assumed to remain constant over time (Section \ref{secAssumedBiolPars}).
 
-Reference points based on estimated long-term average unfished equilbrium spawning biomass ($\mli{SB}_0$) and estimates of current stock status relative to estimated unfished spawning biomass ($\mli{SB}_{2017} / \mli{SB}_0$) are presented in Tables \ref{tab:hg-ref-points} to \ref{tab:wcvi-ref-points}. 
+Reference points based on estimated long-term average unfished equilibrium spawning biomass ($\mli{SB}_0$) and estimates of current stock status relative to estimated unfished spawning biomass ($\mli{SB}_{2017} / \mli{SB}_0$) are presented in Tables \ref{tab:hg-ref-points} to \ref{tab:wcvi-ref-points}. 
 Estimates of $\mli{SB}$ and depletion levels ($\mli{SB}_{2017} / \mli{SB}_0$) for the recent 10 years are presented for models \Sexpr{PasteNicely(mNames)} in Tables \ref{tab:hg-spawn-biomass-am2} to \ref{tab:wcvi-spawn-biomass-am1}.
 
 Maximum Sustainable Yield (MSY) and the annual harvest rate producing MSY ($U_\text{MSY}$), were presented only within the context of the Sensitivity Analysis investigating interactions between maturity-at-age and selectivity-at-age (Section \ref{secMatAge}).
 
 Harvest decision tables were created by projecting the assessment model one year into the future, given range of assumed catch levels (Tables \ref{tab:hg-am2-decision} to \ref{tab:wcvi-am1-decision}).
 One year projections of spawning biomass assume recent 5-year average estimates of natural mortality and weight-at-age.
-For each level of catch, decision tables show the probability that projected spawning biomass in 2018 will be less than the LRP ($0.30\cdot\mli{SB}_0$), the fixed cut-off (for AM2), and the probablity that the effective harvest rate for each catch level will be greater than target harvest rates of 5\%, 10\% and 20\% (Section \ref{secDecisionTables}).
+For each level of catch, decision tables show the probability that projected spawning biomass in 2018 will be less than the LRP ($0.30\cdot\mli{SB}_0$), the fixed cut-off (for AM2), and the probability that the effective harvest rate for each catch level will be greater than target harvest rates of 5\%, 10\% and 20\% (Section \ref{secDecisionTables}).
 %JC: completed.
 
 \subsection{INPUT DATA}
@@ -21,7 +21,7 @@ We use both fishery dependent and fishery independent time series data for stock
 Tables of all the data inputs are in Appendix \ref{chap:input}.
 
 This section describes sources of fishery-dependent data: validated catch and biological samples from commercial fisheries, and fishery-independent data: biological samples from the test fishery program and a herring egg deposition survey (aka spawn survey) used to estimate a relative index of spawner biomass  \Sexpr{common.name}.
-Time series of commerical catch, spawn survey data, average weight-at-age data, and proportion-at-age data are used as input for the assessment model.
+Time series of commercial catch, spawn survey data, average weight-at-age data, and proportion-at-age data are used as input for the assessment model.
 Observed trends in the data are presented in this section but key observations are interpreted in association with assessment model results (Section \ref{secModelResults}).
 To help readers view the collective data sets we summarize them by major stock area in Figures \ref{figCatch} to \ref{figSpawnIndex}.
 %JC: completed.
@@ -122,7 +122,7 @@ This protocol has been in place since 1985, recognizing that these summer-fall c
 Herring aged prior to 1985 have been age-adjusted for consistency across all years.
 
 Mean weight-at-age data are important to the assessment in several ways (Figure \ref{figWeightAge}).
-Firstly, using a time series of weight-at-age allows the assessment model to capture the effects of time-varying changes in weight-at-age, which are relevant and significant for Pacific Herring (also referred to as nonstationarity).
+Firstly, using a time series of weight-at-age allows the assessment model to capture the effects of time-varying changes in weight-at-age, which are relevant and significant for Pacific Herring (also referred to as non-stationarity).
 Second, these data are an important determinant in estimating current biomass because this quantity is given by the sum of the element wise product of numbers-at-age and weight-at-age vectors so that even given fixed numbers-at-age, biomass will change considerably with changes in weight-at-age.
 Finally, changes in mean weight-at-age affect the estimate of the equilibrium unfished biomass, the key reference point for Pacific Herring.
 
@@ -349,7 +349,7 @@ We tested the sensitivity of the results from the base case assessment model ide
 \begin{resdoclist}
   \item Assumed time varying natural mortality,
   \item Assumed initial values for variance parameters $\vartheta^2$ and $\rho$,
-  \item The prior probablity on the survey catchability parameters ($q_1$ and $q_2$), and
+  \item The prior probability on the survey catchability parameters ($q_1$ and $q_2$), and
   \item The assumed fixed values for maturity at age.
 \end{resdoclist}
 Further details and results for each of these sensitivity analyses are presented below.
@@ -383,9 +383,9 @@ Recruitment deviations showed similar trends to the spawning biomass with HG and
 The resulting trends in $q_t$ are similar between stocks with the greatest variations between constant and time varying $M$ models seen in the $q_2$ estimates for AM1 and AM2.
 For example, HG (Figure \ref{fig:hg-q-m}) and WCVI (Figure \ref{fig:wcvi-q-m}) time-varying and constant $M$ AM2 estimates of $q_2$ are predicted to be higher than those predicted by the AM1 models.
 
-MCMC trace plots, autocorrelation plots, and pairs plots were very similar between constant $M$ and time varying $M$ model runs for PRD, CC, SOG and WCVI. 
+MCMC trace plots, autocorrelation plots, and pairs plots were very similar between constant $M$ and time varying $M$ model runs for PRD, CC, SOG and WCVI.
 See time varying $M$, Figure \ref{fig:hg-traces} to \ref{fig:wcvi-pairs}; constant $M$ not shown.
-The exception was for HG AM2 where trace plots, autocorrelation plots, and pairs plots showed signs of persisitent drift and autocorrelation (Figures \ref{fig:hg-constm-priors}, \ref{fig:hg-constm-traces}, \& \ref{fig:hg-constm-pairs}, respectively).
+The exception was for HG AM2 where trace plots, autocorrelation plots, and pairs plots showed signs of persistent drift and autocorrelation (Figures \ref{fig:hg-constm-priors}, \ref{fig:hg-constm-traces}, \& \ref{fig:hg-constm-pairs}, respectively).
 
 There is support for continued inclusion of time varying $M$ as the base case for the assessment in this analysis, as well as from the Bridging Analysis (Appendix \ref{chap:bridge}) based on the reduction improved coherence between assumed and empirical fits to the spawn survey index and issues of autocorrelation between parameters and model convergence with constant $M$.
 
@@ -459,7 +459,7 @@ Estimates of $F_\text{MSY}$ under the maturity sensitivity case were still very 
 
 \subsubsection{Base case models}
 
-The Base Case models for this years \Sexpr{fish.name} assessment were chosen based on the results of the Bridging Analysis (Appendix \ref{chap:bridge}) and the Sensivity Analysis (Section \ref{secSensitivity}). 
+The Base Case models for this years \Sexpr{fish.name} assessment were chosen based on the results of the Bridging Analysis (Appendix \ref{chap:bridge}) and the Sensitivity Analysis (Section \ref{secSensitivity}). 
 The 2016 assessment implemented two versions of the base stock assessment model that differ in the treatment of spawn survey catchability parameters ($q_1$ and $q_2$) for the surface survey period (\Sexpr{qYrs$q1}) and dive survey period (\Sexpr{qYrs$q2}), respectively.  
 The two models are labelled AM1 ($q_1$ and $q_2$ estimated with prior probability distributions) and AM2 ($q_1$ estimated, $q_2=1$). 
 Both the Bridging Analysis (Appendix \ref{chap:bridge}) and the Sensitivity Analyses (Section \ref{secSensitivity}) support continued use of these two base case models  for each of the 5 major herring stocks.
@@ -531,7 +531,7 @@ Figure \ref{figBevertonHolt} shows the number of age-2 recruits per number of sp
 %Is there evidence of depensation? stock recruit data needs to be more disaggregated into spawn populations to ever really prove it... I didnt find many references to pacific herring examples of potential depensation.
 Although model estimates of current natural mortality remain highly uncertain, there is an increasing trend in the median estimates of natural mortality since 2012 (Figures \ref{figStoryboardAM2HG} \& \ref{figStoryboardAM1HG}).
 
-The projected pre-fishery spawing biomass in 2018 is 3,270 t (AM2) or 6,090 t (AM1), similar to $\mli{SB}_{2017}$ levels, consisting of 34\% (median) age-3 fish and 38\% (median) age-4 and older fish (Table \ref{tab:hg-ref-points}).
+The projected pre-fishery spawning biomass in 2018 is 3,270 t (AM2) or 6,090 t (AM1), similar to $\mli{SB}_{2017}$ levels, consisting of 34\% (median) age-3 fish and 38\% (median) age-4 and older fish (Table \ref{tab:hg-ref-points}).
 %JC: edits completed
 
 \textbf{Prince Rupert District}
@@ -566,7 +566,7 @@ There is no apparent recruitment entering the spawning population in 2017 (Figur
 
 Model estimates of current natural mortality are highly uncertain in the the most recent years. Figures \ref{figStoryboardAM2CC} \& \ref{figStoryboardAM1CC} indicate a declining trend in estimated natural mortality since 2008.
 
-The projected pre-fishery spawing biomass in 2018 is 30,078 t (AM2) or 47,900 t (AM1), similar to $\mli{SB}_{2017}$ levels, consisting of 25\% (median) age-3 fish and 66\% (median) age-4 and older fish (Table \ref{tab:cc-ref-points}).  
+The projected pre-fishery spawning biomass in 2018 is 30,078 t (AM2) or 47,900 t (AM1), similar to $\mli{SB}_{2017}$ levels, consisting of 25\% (median) age-3 fish and 66\% (median) age-4 and older fish (Table \ref{tab:cc-ref-points}).  
 %JC: edits completed
 
 \textbf{Strait of Georgia}
@@ -582,7 +582,7 @@ The pattern of biomass estimates for AM2 is similar to that of AM1, however AM2 
 Figure \ref{figBevertonHolt} shows above-average number of age-2 recruits in 2017 with 3 and 4-year old fish comprising the highest estimated proportion of fish, which is consistent with the previous 5 years (Figure \ref{fig:sog-ageest-gear2}).
 Although model estimates of current natural mortality are highly uncertain, there is an decreasing trend in the median estimates of natural mortality since 2007 (Figures \ref{figStoryboardAM2SoG} \& \ref{figStoryboardAM1SoG}).
 
-The projected pre-fishery spawing biomass in 2018 is 106,415 t (AM2) or 152,700 t (AM1), declining from 2017, consisting of 25\% (median) age-3 fish and 67\% (median) age-4 and older fish (Table \ref{tab:sog-ref-points}).  
+The projected pre-fishery spawning biomass in 2018 is 106,415 t (AM2) or 152,700 t (AM1), declining from 2017, consisting of 25\% (median) age-3 fish and 67\% (median) age-4 and older fish (Table \ref{tab:sog-ref-points}).  
 %JC: edits completed
 
 \textbf{West Coast of Vancouver Island}
@@ -599,7 +599,7 @@ There is no apparent recruitment entering the spawning population in 2017:
 Figure \ref{figBevertonHolt} shows the number of age-2 recruits is below-average and Figure \ref{fig:wcvi-ageest-gear2} shows a higher proportion of 4-year olds relative to ages 2 and 3. 
 Although model estimates of current natural mortality remain highly uncertain, there is an increasing trend in the median estimates of natural mortality since 2014 (Figures \ref{figStoryboardAM2WCVI} \& \ref{figStoryboardAM1WCVI}).
 
-The projected pre-fishery spawing biomass in 2018 is 18,640 t (AM2) or 33,530 t (AM1), similar to $\mli{SB}_{2017}$ levels, consisting of 32\% (median) age-3 fish and 48\% (median) age-4 and older fish (Table \ref{tab:wcvi-ref-points}).  
+The projected pre-fishery spawning biomass in 2018 is 18,640 t (AM2) or 33,530 t (AM1), similar to $\mli{SB}_{2017}$ levels, consisting of 32\% (median) age-3 fish and 48\% (median) age-4 and older fish (Table \ref{tab:wcvi-ref-points}).  
 %JC: edits completed
 
 \subsubsection{Recruitment}
