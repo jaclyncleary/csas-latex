@@ -256,7 +256,7 @@ and AM2, and we recommend using the new ISCAM platform (V2) with the same assump
 \begin{columns}
   \begin{column}{0.38\textwidth}
     \bi
-      \item Time-varying M (TVM) improves the model
+      \item Time-varying $M$ (TVM) improves the model
       \item TVM improves index fits for both AM1 and AM2
     \ei
   \end{column}
@@ -291,7 +291,8 @@ make.index.fit.plot(list(hg.am1.constm,
 
 % New slide
 \begin{frame}{Variance parameters}
-We tested model sensitivity to the initial values of $\rho$ and $\kappa$ by varying them, while estimating all leading parameters. Results Showed that when both of these parameters are estimated by the model choice of initial values do not influence the model estimates. 
+We tested model sensitivity to the initial values of $\rho$ and $\kappa$ by varying them, while estimating all leading parameters.
+Results Showed that when both of these parameters are estimated by the model choice of initial values do not influence the model estimates. 
 \end{frame}
 
 % New slide
