@@ -147,6 +147,19 @@ We updated to a more flexible and computationally efficient platform of the inte
 
 % New slide
 \begin{frame}
+Steps of the bridging analysis:
+\begin{Bridginglist}
+\item Updated variance structure
+\item 1. Reconstruction of previous assessment with fixed parameters
+\item 2. All parameters estimated with constant $M$
+\item 3. All parameters estimated with time-varying $M$
+\item 4. Investigated the sensitivities of the model to variance parameters
+\item 5. Sensitivity to prior probablity distribution on $q$s
+\end{Bridginglist}
+\end{frame}
+
+% New slide
+\begin{frame}
 Corrected estimation of the variance structure based on reviewer comments on 2011 herring stock assessment (DFO 2012)
 
 In the 2011-2016 version of the assessment model the variance structure is based on standard deviations: 
@@ -158,7 +171,24 @@ To improve estimation and to follow the correct errors-in-variables approach the
 \sigma=\sqrt{\rho}\vartheta, \;  \;  \; \; \tau=\sqrt{(1-\rho)}\vartheta
 \end{equation}
 \end{frame}
+% New slide
+\begin{frame}
+Do we want to include Tables D1 and D2? Comparisons of MPD estimates of leading parameters and unfished biomass,SB0, given changes to the estimation of the variance structure for process and
+observation error (AM1 and AM2)???????
 
+\end{frame}
+% New slide
+\begin{frame}
+
+\end{frame}
+% New slide
+\begin{frame}
+
+We recommend defining two Base cases for each of the 5 major herring stocks: AM1
+and AM2, and we recommend using the new ISCAM platform (V2) with the same assumptions and parameter
+settings as were used in 2016.
+
+\end{frame}
 % New subsection: base
 \subsection{Base case}
 
@@ -167,6 +197,42 @@ To improve estimation and to follow the correct errors-in-variables approach the
 
 % New slide
 \begin{frame}{Natural mortality}
+
+\frame{\frametitle{Index fits for natural mortality sensitivities (HG)}
+\begin{columns}
+  \begin{column}{0.38\textwidth}
+    \bi
+      \item Time-varying M (TVM) improves the model
+      \item TVM improves index fits for both AM1 and AM2
+    \ei
+  \end{column}
+  \begin{column}{0.59\textwidth}
+    \vspace{-15pt}
+    \bc
+<<hg.index.surface.fit>>=
+leg.names <- c("AM1 Constant M",
+               "AM1 Time-varying M",
+               "AM2 Constant M",
+               "AM2 Time-varying M")
+make.index.fit.plot(list(hg.am1.constm,
+                         hg.am1.tvm,
+                         hg.am2.constm,
+                         hg.am2.tvm),
+                    start.yr = 1950,
+                    end.yr = 2016,
+                    ind = 1,
+                    leg = "topright",
+                    model.names = leg.names,
+                    ylim = c(0, 60))
+@
+    \ec
+  \end{column}
+\end{columns}
+}
+\end{frame}
+
+% New slide
+\begin{frame}
 \end{frame}
 
 % New slide
