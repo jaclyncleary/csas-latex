@@ -918,7 +918,7 @@ PlotCatch <- function( SARs, dat ){
       guides( fill=FALSE ) +
       facet_wrap( ~ RegionName, nrow=2, dir="h" ) +
       myTheme +
-      theme( text=element_text(size=15), 
+      theme( text=element_text(size=14), 
           axis.text.x=element_text(angle=45, hjust=1),
           panel.spacing=unit(1, "lines") ) +
       ggsave( filename=file.path("CatchWide.png"), width=figWidth*1.5, 
@@ -979,7 +979,7 @@ PlotSpawn <- function( SARs, dat ){
       expand_limits( y=0 ) +
       facet_wrap( ~ RegionName, nrow=2, dir="h", scales="free_y" ) +
       myTheme +
-      theme( legend.position="top", text=element_text(size=15), 
+      theme( legend.position="top", text=element_text(size=14), 
           axis.text.x=element_text(angle=45, hjust=1),
           panel.spacing=unit(1, "lines") ) +
       ggsave( filename=file.path("SpawnIndexWide.png"), width=figWidth*1.5, 
@@ -1037,7 +1037,7 @@ PlotAge <- function( SARs, dat ) {
           guide=guide_legend(nrow=1) ) +
       facet_wrap( ~ RegionName, nrow=2, dir="h" ) +
       myTheme +
-      theme( legend.position="top", text=element_text(size=15), 
+      theme( legend.position="top", text=element_text(size=14), 
           axis.text.x=element_text(angle=45, hjust=1),
           panel.spacing=unit(1, "lines") ) +
       ggsave( filename=file.path("ProportionAgeWide.png"), width=figWidth*1.5, 
@@ -1099,7 +1099,7 @@ PlotWeight <- function( SARs, dat ){
       coord_cartesian( ylim=wtRange ) +
       facet_wrap( ~ RegionName, nrow=2, dir="h" ) +
       myTheme +
-      theme( legend.position="top", text=element_text(size=15), 
+      theme( legend.position="top", text=element_text(size=14), 
           axis.text.x=element_text(angle=45, hjust=1),
           panel.spacing=unit(1, "lines") ) +
       ggsave( filename=file.path("WeightAgeWide.png"), width=figWidth*1.5, 
