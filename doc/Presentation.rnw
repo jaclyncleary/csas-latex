@@ -1,0 +1,146 @@
+% Document class
+\documentclass{beamer}
+
+% Load packages
+\usepackage{beamerthemesplit}
+\usepackage{graphicx} 
+\usepackage{pdfpages}
+\usepackage{caption}
+\usepackage{natbib}
+
+% Multi-letter identifier (i.e., multi-character variable
+\newcommand{\mli}[1]{\mathit{#1}}
+
+% Choose a theme/style
+\usetheme{Darmstadt}
+
+% Set transparency: complete
+\setbeamercovered{transparent=0}
+
+% Show total number of slides
+\addtobeamertemplate{navigation symbols}{}{%
+    \usebeamerfont{footline}%
+    \usebeamercolor[fg]{footline}%
+    \hspace{1em}%
+    \insertframenumber/\inserttotalframenumber
+}
+
+% Change spacing between output chunk paragraphs
+\renewenvironment{knitrout}{\setlength{\topsep}{0mm}}{}
+
+% Decrease margins globally
+\setbeamersize{text margin left=1.5em, text margin right=1.5em}
+
+% Cover page
+\title[Pacific Herring stock assessment]{Stock Assessment for Pacific Herring (\emph{Clupea pallasi}) in British Columbia in 2017 and forecast for 2018}
+\author[Cleary et al. (2017)]{Jaclyn Cleary \and Sarah Hawkshaw \and Matt Grinnell \and Chris Grandin}
+\institute{CSAP Working paper 2017PEL01\\Pacific Biological Station}
+\date{October 17 \& 18, 2017}
+
+% Let it begin
+\begin{document}
+
+%% This is the initial code chunk where you load your R workspace.
+%% This gives access to all objects in the RData file for the entirety
+%%  of the document. Use \Sexpr{objname} to put values in text.
+<<load-everything, echo=FALSE,  message=FALSE, results='hide', warning=FALSE>>=
+opts_chunk$set(dev = 'png',
+               fig.path = 'knitr-cache/',
+               fig.dpi = 96,
+               fig.width = 7.5,
+               fig.height = 4,
+               dpi = 100,
+               echo = FALSE,
+               results = FALSE,
+               message = FALSE,
+               warning = FALSE,
+               results = 'hide',
+               cache = TRUE,
+               cache.path = 'knitr-cache/')
+
+# Get original working directory
+origWD <- getwd( )
+
+# Set the working directory (temporary)
+setwd("r")
+
+# Load all R code and the package libraries.
+source("all.r")
+
+# If you want to reload all model outputs, set to TRUE
+# The load.models.into.parent.env function is located at bottom of model-setup.r.
+if(TRUE){
+  load.models.into.parent.env()
+}
+# This has to be sourced after loading the models in because it depends on the model output
+source("custom-knitr-variables.r")
+
+# Load required packages
+require( tidyverse )
+
+# Locations of herring-specific R output (trailing separator for latex)
+locOutput <- file.path( "..", "models", .Platform$file.sep )
+
+# Load the herring data
+load( file=file.path("..", locOutput, "Image.RData") )
+
+# TODO: Source the herring data
+# setwd( dir=file.path("..", locOutput) )
+# source( file="ResearchDocumentV2.R" )
+
+# Reset the working directory
+setwd( dir=".." )
+
+@
+
+% More custom variables
+<<variables, child='maindoc/variables.rnw'>>=
+@
+
+% Title page
+\begin{frame}
+\titlepage
+\end{frame}
+
+% Table of contents
+\begin{frame}
+\tableofcontents
+\end{frame}
+
+%%% New section: data
+\section{Data}
+
+% New slide
+\begin{frame}
+This will be an overview of data: catch, biological samples, and spawn index
+\end{frame}
+
+%%% New section: changes from 2016
+\section{Changes from 2016}
+
+% New slide
+\begin{frame}
+Compared to 2016, the 2017 stock assessement has the following changes:
+\begin{itemize}
+\item $M$
+\item $q_1$ and $q_2$
+\end{itemize}
+\end{frame}
+
+%%% New setion: bridging analysis
+\section{Bridging Analysis}
+
+% New slide
+\begin{frame}
+We did an extensive comparison between iSCAM v1 and v2
+This is how to cite \citep{martell2011}
+\end{frame}
+
+%%% New slide: References
+\begin{frame}{References}
+\bibliographystyle{res-doc}
+\bibliography{all}
+\end{frame}
+
+% Fin
+\end{document}
