@@ -1,0 +1,547 @@
+%\documentclass[handout,xcolor=pdftex,dvipsnames,table]{beamer}
+%\documentclass[draft]{beamer}
+%\documentclass[notesonly]{beamer}
+%\documentclass[notes]{beamer}
+\documentclass[aspectratio=169]{beamer}
+\mode<presentation>
+\usetheme{Singapore} %Berkeley, Palo Alto, Singapore, Warsaw
+%\usecolortheme{seagull}  %Beaver, dolphin, dove, lily, orchid, seagull, seahorse
+
+%\usefonttheme{serif}
+% font themes: default, professionalfonts, serif, structurebold, structureitalicserif, structuresmallcapsserif
+
+\usepackage{graphicx}
+\usepackage{pgf}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{booktabs}          %% Used in risk tables
+\usepackage{multirow}          %% Used in decision tables
+%\usepackage{beamerarticle}
+%\usepackage{enumitem}
+%\usepackage{beamerthemesplit}
+\usepackage[T1]{fontenc}  %to use < or > in tables
+
+\newcolumntype{Y}{>{\centering\arraybackslash}X}
+\newcommand{\subscr}[1]{$_{\text{#1}}$}
+\newcommand{\Fforty}{F_{\text{SPR}=40\%}}       % Needs to be done as $\Fforty$
+\newcommand{\Bforty}{B_{\text{SPR}=40\%}}
+
+% pdf is displayed in full screen mode automatically
+%\hypersetup{pdfpagemode=FullScreen}
+
+%\setbeamersize{sidebar width left=0.05in}
+\setbeamersize{text margin left=0.1in}
+\setbeamersize{text margin right=0.1in}
+
+\setbeamertemplate{title page}
+{
+\hfill
+%% \includegraphics[height=0.5in]{../images/DFO.eps}
+
+\vskip0pt plus 1filll
+\begin{center}
+{\usebeamerfont{title}\usebeamercolor[fg]{title}\inserttitle}\\
+\vskip22pt
+\insertauthor
+\vskip22pt
+\insertdate
+\end{center}
+\vskip50pt
+\usebeamerfont{subtitle}\usebeamercolor[fg]{subtitle}\insertsubtitle\par
+\vskip0pt plus 1filll
+}
+
+\definecolor{pageCol}{rgb}{0.5,0.5,1.0}
+
+\setbeamertemplate{footline}
+{
+\begin{beamercolorbox}[wd=.05\paperwidth,ht=0ex,dp=0ex,left]{framenumber in head/foot}%
+\insertframenumber/\inserttotalframenumber
+\end{beamercolorbox}%
+}
+%% \setbeamercolor{footline}{fg=pageCol}
+
+\newcounter{saveenumi}
+
+\newcommand{\bc}{\begin{center}}
+\newcommand{\ec}{\end{center}}
+\newcommand{\bn}{\begin{enumerate}}
+\newcommand{\en}{\end{enumerate}}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+
+%% <<echo=TRUE,  message=TRUE, results='show', warning=TRUE>>=
+%% opts_chunk$set(dev='cairo_ps',fig.path='knitr-cache/', fig.dpi=96, fig.width=7.5,
+%%                fig.height=4, echo=TRUE, results=TRUE, message=TRUE, warning=TRUE,
+%%                results='show', cache=TRUE, cache.path='knitr-cache/')
+<<load-everything, echo=FALSE,  message=FALSE, results='hide', warning=FALSE>>=
+opts_chunk$set(dev = 'cairo_ps',
+               fig.path = 'knitr-cache/',
+               fig.dpi = 96,
+               fig.width = 7.5,
+               fig.height = 4,
+               echo = FALSE,
+               results = FALSE,
+               message = FALSE,
+               warning = FALSE,
+               results = 'hide',
+               cache = TRUE,
+               cache.path = 'knitr-cache/')
+setwd("../../doc/r")
+## Load all R code and the package libraries.
+source("all.r")
+load.models.into.parent.env()
+## This has to be sourced after loading the models in because it depends
+##  on the model output.
+source("custom-knitr-variables.r")
+@
+
+%%------------------------------------------------------------------------------
+\title[Herring Assessment]{\Sexpr{assess.yr} Pacific Herring Stock Assessment Results}
+\author[JTC]{J. Cleary, S. Hawkshaw, M. Grinnell, and C. Grandin}
+%\institute{}
+\date{{\footnotesize October 17, \Sexpr{assess.yr}}}
+\subtitle{\tiny Disclaimer: This information is distributed solely for the purpose
+  of pre-dissemination peer review under applicable information quality guidelines.
+  It does not represent and should not be construed to represent any agency
+  determination or policy}
+
+\begin{document}
+
+\frame[plain]{
+\titlepage
+}
+
+
+%%------------------------------------------------------------------------------
+\section{Introduction}
+\subsection{}
+\frame{\frametitle{Outline}
+\bi
+  \item Review of \Sexpr{last.assess.yr} assessment recommendations
+  \item Model structure and changes from \Sexpr{last.assess.yr}
+  %\item MCMC diagnostics
+  \item Fits to data
+  \item Parameter estimates and predictions
+  \item Summary
+\ei
+}
+
+%%------------------------------------------------------------------------------
+\frame{\frametitle{\Sexpr{last.assess.yr} assessment recommendations}
+\setbeamercovered{dynamic}
+\bi
+  \item {\em Continue with AM2 base model fit to survey series}
+  \bi
+    \item {\bf Response:} The 2017 base model continues to use ...
+    \item {\bf Response:} The 2017 base model includes several updates ...
+    \bn
+      \item Addition of the 1995 survey biomass estimate (point estimate and CV) 
+      \item Update to 1998 survey biomass estimate (point estimate and CV)
+      \item Update to 2015 survey biomass (CV only)
+    \en
+  \ei \pause
+  \item {\em Include a sensitivity with ...}
+  \bi
+    \item {\bf Response:} Done and will be presented
+  \ei \pause
+  \item {\em Continue the evaluation of identified key sensitivity runs}
+  \bi
+    \item {\bf Response:} Done and will be presented
+  \ei
+\ei
+}
+
+%%------------------------------------------------------------------------------
+\section{Changes from \Sexpr{last.assess.yr}}
+\subsection{}
+
+\begin{frame}
+\frametitle{Overview of model structure}
+  \bi
+    \item iScam
+    \item Updated fishery and survey data through \Sexpr{assess.yr}
+    \bi
+      \item Minor changes to past catches
+      \item Addition of ...
+      \item Minor changes to ...
+    \ei
+    \item Added new data from \Sexpr{last.assess.yr}
+    \bi
+      \item Fishery catch and age compositions
+      \item Updated weight-at-age matrix
+    \ei
+  \ei
+\end{frame}
+
+%%------------------------------------------------------------------------------
+\section{MCMC priors/posteriors for Haida Gwaii AM2 model}
+\subsection{}
+ \frame{\frametitle{MCMC priors/posteriors for Haida Gwaii AM2 model}
+   \bc
+<<hg.priors, fig.height=3.5>>=
+make.priors.posts.plot(hg.b, priors.only = FALSE)
+@
+\ec
+
+}
+
+%----------------------------------------------------------
+
+\frame{\frametitle{Bridging to the base model: Summary}
+  \bi
+    \item Updating past fishery data made indistinguishable difference
+    \item Addition of ...  had minor influence on results
+    \item Adding ...
+    \bi \item Fishery data ...
+        \item Impact on large cohorts ...
+        \item Other impacts
+    \ei
+  \ei
+}
+
+%%------------------------------------------------------------------------------
+\frame{\frametitle{Index fits for natural mortality sensitivities (HG)}
+\begin{columns}
+  \begin{column}{0.38\textwidth}
+    \bi
+      \item Time-varying M (TVM) improves the model
+      \item TVM improves index fits for both AM1 and AM2
+    \ei
+  \end{column}
+  \begin{column}{0.59\textwidth}
+    \vspace{-15pt}
+    \bc
+<<hg.index.surface.fit>>=
+leg.names <- c("AM1 Constant M",
+               "AM1 Time-varying M",
+               "AM2 Constant M",
+               "AM2 Time-varying M")
+make.index.fit.plot(list(hg.am1.constm,
+                         hg.am1.tvm,
+                         hg.am2.constm,
+                         hg.am2.tvm),
+                    start.yr = 1950,
+                    end.yr = 2016,
+                    ind = 1,
+                    leg = "topright",
+                    model.names = leg.names,
+                    ylim = c(0, 60))
+@
+    \ec
+  \end{column}
+\end{columns}
+}
+
+
+%% %% \frame{\frametitle{MCMC tests}
+%% %%   \bc
+%% %%     <<main.mcmc.diag.hists, fig.height=4, fig.width=8, out.width='0.95\\columnwidth'>>=
+%% %%       origPath <- base.model$mcmcpath
+%% %%       base.model$mcmcpath <- file.path("..",origPath)
+%% %%       make.mcmc.diag.hists.plot(base.model)
+%% %%       base.model$mcmcpath <- origPath
+%% %%       # oldpar <- par(no.readonly=TRUE)
+%% %%       # par(mar=c(4.1, 4.1, 3.1, 0.1))
+%% %%       # par <- oldpar
+%% %%     @
+%% %%   \ec
+%% %% }
+
+%% %%------------------------------------------------------------------------------
+%% %% \section{Fits to data}
+%% %% \subsection{}
+%% %% \frame{\frametitle{Fit to the acoustic survey index of abundance (MCMC)}
+%% %% \bc
+%% %% <<hg.index.surface.fit>>=
+%% %% leg.names <- c("AM1 Constant M",
+%% %%                "AM1 Time-varying M",
+%% %%                "AM2 Constant M",
+%% %%                "AM2 Time-varying M")
+%% %% make.index.fit.plot(list(hg.am1.constm,
+%% %%                          hg.am1.tvm,
+%% %%                          hg.am2.constm,
+%% %%                          hg.am2.tvm),
+%% %%                     start.yr = 1950,
+%% %%                     end.yr = 2016,
+%% %%                     ind = 1,
+%% %%                     leg = "topright",
+%% %%                     model.names = leg.names,
+%% %%                     ylim = c(0, 60))
+%% %% @
+%% %% \ec
+%% %% }
+
+
+%% %%------------------------------------------------------------------------------
+%% %% \frame{\frametitle{Fit to fishery age comps (MCMC)}
+%% %% \begin{columns}
+%% %%   \begin{column}{0.38\textwidth}
+%% %%     \bi
+%% %%       \item Big 1999 and 2010 cohorts seem to fit particularly well
+%% %%       \item Some over- and under-fitting in 1980 and 1984 cohorts
+%% %%       \item Other recent above-average sized cohorts (2005, 2006, 2008) are often underfit when young
+%% %%     \ei
+%% %%   \end{column}
+%% %%   \begin{column}{0.59\textwidth}
+%% %%     \vspace{-15pt}
+%% %%     \bc
+%% %%       <<mcmc.fishery.age.comp.fits, fig.height=5.2, fig.width=6.5,out.width='1.0\\columnwidth'>>=
+%% %%       make.age.comp.fit.plot(base.model,
+%% %%                              subplot = 1)
+%% %%      @
+%% %%     \ec
+%% %%   \end{column}
+%% %% \end{columns}
+%% %% }
+
+%% %%------------------------------------------------------------------------------
+%% %% \frame{\frametitle{Pearson residual for fit to the acoustic survey age comps (MLE)}
+%% %% \begin{columns}
+%% %%   \begin{column}{0.48\textwidth}
+%% %%     \vspace{-16pt}
+%% %%     \bc
+%% %%       Survey
+%% %%       <<survey.age.comp.pearson, fig.height=8, fig.width=8, out.width='0.85\\columnwidth'>>=
+%% %%         oldpar <- par(mar=c(5,4,1,1),no.readonly = TRUE)
+%% %%         make.fleet.age.comp.pearson.plot(base.model,fleet=2,fleetName="")
+%% %%         par(oldpar)
+%% %%       @
+%% %%     \ec
+%% %%   \end{column}
+%% %%   \begin{column}{0.48\textwidth}
+%% %%     \vspace{-16pt}
+%% %%     \bc
+%% %%       Fishery
+%% %%       <<fishery.age.comp.pearson, fig.height=8, fig.width=8, out.width='0.85\\columnwidth'>>=
+%% %%         oldpar <- par(mar=c(5,4,1,1),no.readonly = TRUE)
+%% %%         make.fleet.age.comp.pearson.plot(base.model,fleet=1,fleetName="")
+%% %%         par(oldpar)
+%% %%       @
+%% %%     \ec
+%% %%   \end{column}
+%% %% \end{columns}
+%% %% \bc {\scriptsize Closed bubbles are positive residuals (observed > expected) and open bubbles are negative residuals (observed < expected)} \ec
+%% %% }
+
+%% %%------------------------------------------------------------------------------
+%% %% \section{Parameters}
+%% %% \subsection{}
+
+%% %% \frame{\frametitle{Key parameters}
+%% %% \begin{columns}
+%% %%   \begin{column}{0.38\textwidth}
+%% %%     \bi
+%% %%       \item Asymmetric shape of steepness and Extra SD posterior makes median and MLE different
+%% %%       \item Additional SD is less than 2015 assessment
+%% %%       \item {\em M} is pushing upper end of prior
+%% %%     \ei
+%% %%   \end{column}
+%% %%   \begin{column}{0.59\textwidth}
+%% %%     \vspace{-15pt}
+%% %%     \bc
+%% %%     <<main.prior.posterior, fig.height=6, fig.width=8,out.width='0.95\\columnwidth'>>=
+%% %%       origPath <- base.model$path
+%% %%       base.model$path <- file.path("..",origPath)
+%% %%       origMcmcPath <- base.model$mcmcpath
+%% %%       base.model$mcmcpath <- file.path("..",origMcmcPath)
+%% %%       make.mcmc.priors.vs.posts.plot(base.model,
+%% %%                                      c("NatM_p_1_Fem_GP_1",
+%% %%                                        "SR_LN",
+%% %%                                        "SR_BH_steep",
+%% %%                                        "Q_extraSD_2_Acoustic_Survey"))
+%% %%       base.model$path <- origPath
+%% %%       base.model$mcmcpath <- origMcmcPath
+%% %%     @
+%% %%     \ec
+%% %%   \end{column}
+%% %% \end{columns}
+%% %% }
+
+%% %%------------------------------------------------------------------------------
+%% %% \frame{\frametitle{Parameter estimates}
+%% %%   \bc
+%% %%   <<main.parameter.estimates, results='asis', echo=FALSE>>=
+%% %%     make.short.parameter.estimates.table(base.model,
+%% %%                                          last.yr.base.model,
+%% %%                                          posterior.regex = key.posteriors,
+%% %%                                          end.yr = end.yr,
+%% %%                                          digits = 3,
+%% %%                                          xcaption = NULL,
+%% %%                                          xlabel = "tab:main-parameter-estimates",
+%% %%                                          font.size = 7,
+%% %%                                          space.size = 8)
+%% %%     @
+%% %%   \ec
+%% %% }
+%% %% %% The posteriorsExtraOutput.sso needs to be changed for the new assessment year
+%% %% \frame{\frametitle{Catchability (\emph{q})}
+%% %%  \bc
+%% %%   <<histQ, fig.height=2.25, fig.width=5.5>>=
+%% %%      # new code that is dynamic
+%% %%      make.mcmc.catchability.plot(base.model)
+%% %%   @
+%% %%   \begin{table}
+%% %%     \begin{tabular}{cccc} \hline
+%% %%       MLE (2017) & Median (2017) & Median (2016) & Median (2015) \\ \hline
+%% %%        \Sexpr{round(base.model$cpue$Calc_Q[1],2)}  & 
+%% %%           \Sexpr{round(median(base.model$extra.mcmc$Q_vector), 2)} & 
+%% %%               1.03 & 0.92         \\ \hline
+%% %%     \end{tabular}
+%% %%   \end{table}
+%% %%  \ec
+%% %% }
+
+%% %%------------------------------------------------------------------------------
+%% %%  \frame{\frametitle{Time-varying selectivity}
+%% %%  \begin{columns}
+%% %%   \begin{column}{0.48\textwidth}
+%% %%     \vspace{-10pt}
+%% %%     \bc
+%% %%     <<main.tv.selex, fig.height=12, fig.width=10,out.width='0.8\\columnwidth'>>=
+%% %%     ## Extract TV selectivity fits by running the calculation function.
+%% %%     tv.selex.start.yr <- 1990
+%% %%     tv.selex.ages <- 1:8
+%% %%     tv.selex <- calc.tv.selex(base.model,
+%% %%                               start.yr = tv.selex.start.yr,
+%% %%                               end.yr = last.data.yr,
+%% %%                               ages = tv.selex.ages,
+%% %%                               probs = c(0.025, 0.975))
+%% %%     make.tv.selex.plot(tv.selex)
+%% %%     @
+%% %%     \ec
+%% %%   \end{column}
+%% %%   \begin{column}{0.48\textwidth}
+%% %%     \vspace{-10pt}
+%% %%     \bc
+%% %%     <<main.tv.selex.uncertainty, fig.height=12, fig.width=10, out.width='0.8\\columnwidth'>>=
+%% %%     ## Extract TV selectivity fits by running the calculation function, once for each year span,
+%% %%     ##  then call the plotting function with them as a list to make a multipanel plot.
+%% %%     tv.selex.left <- calc.tv.selex(base.model,
+%% %%                                    start.yr = tv.selex.start.yr,
+%% %%                                    end.yr = 2001,
+%% %%                                    ages = tv.selex.ages,
+%% %%                                    probs = c(0.025, 0.975))
+%% %%     tv.selex.right <- calc.tv.selex(base.model,
+%% %%                                     start.yr = 2002,
+%% %%                                     end.yr = last.data.yr,
+%% %%                                     ages = tv.selex.ages,
+%% %%                                     probs = c(0.025, 0.975))
+%% %%     make.multiple.tv.selex.uncertainty.plots(list(tv.selex.left, tv.selex.right))
+%% %%     @
+%% %%     \ec
+%% %%   \end{column}
+%% %% \end{columns}
+%% %%  }
+
+%% %%------------------------------------------------------------------------------
+%% %% \frame{\frametitle{Recruitment Deviations}
+%% %%   \vspace{5pt}
+%% %%   \bc
+%% %%   <<main.recruitment.devs, fig.height=4, fig.width=8, out.width='0.95\\columnwidth'>>=
+%% %%     oldpar <- par(mar=c(5,4,1,1),no.readonly = TRUE)
+%% %%     make.recruitment.dev.plot(base.model,
+%% %%                               end.yr = end.yr)
+%% %%     par(oldpar)
+%% %%   @
+%% %%   \ec
+%% %% }
+
+%% %%------------------------------------------------------------------------------
+%% %% \frame{\frametitle{Absolute Recruitment}
+%% %%   \vspace{-5pt}
+%% %%   \bc
+%% %%   <<recruitment, fig.height=4, fig.width=8, out.width='0.95\\columnwidth'>>=
+%% %%     make.recruitment.plot(base.model,
+%% %%                           equil.yr = unfished.eq.yr,
+%% %%                           start.yr = start.yr,
+%% %%                           end.yr = end.yr,
+%% %%                           color = "blue",
+%% %%                           add.mean = TRUE,
+%% %%                           add.r0 = TRUE)
+%% %%   @
+%% %%   \ec
+%% %% }
+
+%% %%------------------------------------------------------------------------------
+%% %% \frame{\frametitle{Numbers-at-Age}
+%% %% \begin{columns}
+%% %%   \begin{column}{0.5\textwidth}
+%% %%   \vspace{-10pt}
+%% %%   \bc
+%% %%   <<main.numbers.at.age, fig.height=12, fig.width=10,out.width='0.8\\columnwidth'>>=
+%% %%     make.numbers.at.age.plot(base.model)
+%% %%   @
+%% %%   \ec
+%% %%   \end{column}
+%% %% \end{columns}
+%% %% }
+
+%% %%------------------------------------------------------------------------------
+%% %% \frame{\frametitle{Spawning Biomass}
+%% %%   \vspace{-5pt}
+%% %%   \bc
+%% %%   <<female.spawning.biomass, fig.height=4, fig.width=8, out.width='0.95\\columnwidth'>>=
+%% %%     make.biomass.plot(base.model,
+%% %%                       equil.yr = unfished.eq.yr,
+%% %%                       start.yr = start.yr,
+%% %%                       end.yr = end.yr,
+%% %%                       color = "blue")
+%% %%   @
+%% %%   \ec
+%% %% }
+
+%% %%------------------------------------------------------------------------------
+%% %% \frame{\frametitle{Relative Spawning Biomass}
+%% %%   \vspace{-5pt}
+%% %%   \bc
+%% %%   <<relative.spawning.biomass, fig.height=4, fig.width=8, out.width='0.95\\columnwidth'>>=
+%% %%     make.depletion.plot(base.model,
+%% %%                         start.yr = start.yr,
+%% %%                         end.yr = end.yr,
+%% %%                         color = "blue")
+%% %%   @
+%% %%   \ec
+%% %% }
+
+%% %%------------------------------------------------------------------------------
+%% %% \frame{\frametitle{Fishing Intensity and Exploitation Rate}
+%% %%   \vspace{-5pt}
+%% %%   \bc
+%% %%   <<fishing.intensity, fig.height=4, fig.width=8, out.width='0.45\\columnwidth'>>=
+%% %%     make.fishing.intensity.plot(base.model,
+%% %%                                 start.yr = start.yr,
+%% %%                                 end.yr = end.yr-1,
+%% %%                                 color = "blue")
+%% %%   @
+%% %%   <<exploitation, fig.height=4, fig.width=8, out.width='0.45\\columnwidth'>>=
+%% %%     make.exploitation.fraction.plot(base.model,
+%% %%                                     start.yr = start.yr,
+%% %%                                     end.yr = end.yr-1,
+%% %%                                     color = "blue")
+%% %%   @
+%% %%   \ec
+%% %% }
+
+
+%% %% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% %% \section{Summary}
+%% %% \subsection{}
+
+%% %% \frame{\frametitle{Summary}
+%% %%   \bi
+%% %%   \item The spawning stock is estimated to be near its highest biomass level since 1990 as a result of
+%% %%     estimated large 2010 and 2014 cohorts. The 2014 cohort has not yet been observed by the
+%% %%     survey and only twice by the commercial fishery, thus its absolute size is highly uncertain.
+%% %%   \item The median estimate of \Sexpr{end.yr} relative spawning biomass is
+%% %%     \Sexpr{curr.depl.median}\% but is highly uncertain (with 95\% interval from \Sexpr{curr.depl.lower}\% to
+%% %%     \Sexpr{curr.depl.upper}\%).
+%% %%   \item The median estimate of \Sexpr{end.yr} female spawning biomass is \Sexpr{curr.bio.median}
+%% %%     million~t (with 95\% interval from \Sexpr{curr.bio.lower} to \Sexpr{curr.bio.upper} million~t).
+%% %%   \item The spawning biomass in \Sexpr{end.yr} is estimated to have increased from \Sexpr{end.yr-1} due to the estimate of the 2014 year-class being well above average size.  The 2010 year-class remains prevalent, making up the 2nd largest proportion-by-age (numbers of fish) in the stock. % Manual to do.
+%% %%   \ei
+%% %% }
+
+
+\end{document}
+
