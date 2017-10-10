@@ -123,7 +123,7 @@ setwd( dir=".." )
 \subsection{Biological reference points}
 
 %%% New section: Data
-\section{Input data}
+\section[Data]{Input data}
 
 % New slide
 \begin{frame}{Overview}
@@ -174,7 +174,7 @@ setwd( dir=".." )
 \end{frame}
 
 %%% New section: Stock assessment modeling
-\section{Stock assessment modeling}
+\section[Modeling]{Stock assessment modeling}
 
 
 % New subsection: bridge
@@ -189,14 +189,14 @@ We updated to a more flexible and computationally efficient platform of the inte
 % New slide
 \begin{frame}
 Steps of the bridging analysis:
-\begin{itemize}
+\begin{enumerate}
 \item Updated variance structure
-\item 1. Reconstruction of previous assessment with fixed parameters
-\item 2. All parameters estimated with constant $M$
-\item 3. All parameters estimated with time-varying $M$
-\item 4. Investigated the sensitivities of the model to variance parameters
-\item 5. Sensitivity to prior probablity distribution on $q$s
-\end{itemize}
+\item Reconstruction of previous assessment with fixed parameters
+\item All parameters estimated with constant $M$
+\item All parameters estimated with time-varying $M$
+\item Investigated the sensitivities of the model to variance parameters
+\item Sensitivity to prior probablity distribution on $q$s
+\end{enumerate}
 \end{frame}
 
 % New slide
@@ -292,7 +292,7 @@ make.index.fit.plot(list(hg.am1.constm,
 \section{Summary of results}
 
 %%% New section: recommendations
-\section{Recommendations and future research}
+\section[Recommendations]{Recommendations and future research}
 
 %%% New slide: References
 \begin{frame}[allowframebreaks]{References}
