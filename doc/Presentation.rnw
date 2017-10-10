@@ -37,6 +37,9 @@
 \institute{CSAP Working paper 2017PEL01\\Pacific Biological Station}
 \date{October 17 \& 18, 2017}
 
+% Hide the bibliography
+% \renewcommand\bibsection{\section[]{\refname}
+
 % Let it begin
 \begin{document}
 
@@ -107,34 +110,66 @@ setwd( dir=".." )
 \tableofcontents
 \end{frame}
 
-%%% New section: data
-\section{Data}
+% %%% New section: Introduction
+% \section{Introduction}
+% 
+% \subsection{Context for the \Sexpr{max(yrRange)} assessment}
+% 
+% \subsection{Biological reference points}
+
+%%% New section: Data
+\section{Input data}
 
 % New slide
 \begin{frame}
-This will be an overview of data: catch, biological samples, and spawn index
-\end{frame}
-
-%%% New section: changes from 2016
-\section{Changes from 2016}
-
-% New slide
-\begin{frame}
-Compared to 2016, the 2017 stock assessement has the following changes:
 \begin{itemize}
-\item $M$
-\item $q_1$ and $q_2$
+\item We use three timeseries of data from \Sexpr{min(yrRange)} to \Sexpr{max(yrRange)}: catch, biological data, and abundance index
+\item The `spawn index' has two distinct periods defined by the dominant survey type:
 \end{itemize}
+\begin{description}
+\item[Surface] from \Sexpr{min(yrRange)} to \Sexpr{newSurvYr-1} ($q_1$)
+\item[Dive] from \Sexpr{newSurvYr} to \Sexpr{max(yrRange)}  ($q_2$)
+\end{description}
 \end{frame}
 
-%%% New setion: bridging analysis
-\section{Bridging Analysis}
+%%% New section: Stock assessment modeling
+\section{Stock assessment modeling}
 
 % New slide
 \begin{frame}
-We did an extensive comparison between iSCAM v1 and v2
-This is how to cite \citep{martell2011}
+We used an updated ISCAM platform \citep{martell2011}
 \end{frame}
+
+% New subsection: bridge
+\subsection{Bridging analysis}
+
+% New subsection: base
+\subsection{Base case}
+
+% New subsection: 
+\subsection{Sensitivity analyses}
+
+% New slide
+\begin{frame}{Natural mortality}
+\end{frame}
+
+% New slide
+\begin{frame}{Variance parameters}
+\end{frame}
+
+% New slide
+\begin{frame}{Prior probability on $q$}
+\end{frame}
+
+% New slide
+\begin{frame}{Maturity at age}
+\end{frame}
+
+%%% New section: results
+\section{Summary of results}
+
+%%% New section: recommendations
+\section{Recommendations and future research}
 
 %%% New slide: References
 \begin{frame}{References}
