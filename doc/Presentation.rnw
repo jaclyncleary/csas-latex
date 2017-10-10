@@ -141,9 +141,23 @@ setwd( dir=".." )
 
 % New slide
 \begin{frame}
-We updated to a more flexible and computationally efficient platform of the integrated combined-sex statistical catch-at-age model (ISCAM) currently in use for other stock assessments within DFo
+We updated to a more flexible and computationally efficient platform of the integrated combined-sex statistical catch-at-age model (ISCAM) currently in use for other stock assessments within DFO
+
 \end{frame}
 
+% New slide
+\begin{frame}
+Corrected estimation of the variance structure based on reviewer comments on 2011 herring stock assessment (DFO 2012)
+
+In the 2011-2016 version of the assessment model the variance structure is based on standard deviations: 
+\begin{equation}
+\sigma=\rho/\vartheta, \;  \;  \; \; \tau=(1-\rho)/\vartheta
+\end{equation}
+To improve estimation and to follow the correct errors-in-variables approach the variance structure was updated to be based on total precision instead:
+\begin{equation}
+\sigma=\sqrt{\rho}\vartheta, \;  \;  \; \; \tau=\sqrt{(1-\rho)}\vartheta
+\end{equation}
+\end{frame}
 
 % New subsection: base
 \subsection{Base case}
