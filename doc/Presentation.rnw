@@ -182,7 +182,7 @@ setwd( dir=".." )
 
 % New slide
 \begin{frame}
-We updated to a more flexible and computationally efficient platform of the integrated combined-sex statistical catch-at-age model (ISCAM) currently in use for other stock assessments within DFO
+We updated to a more flexible and computationally efficient platform of the integrated combined-sex statistical catch-at-age model (ISCAM) currently in use for other stock assessments within DFO.  A bridging analysis was used to identify any inconsistancies in the estimation methods used in the new version compared to the 2016 version.
 
 \end{frame}
 
@@ -201,7 +201,7 @@ Steps of the bridging analysis:
 
 % New slide
 \begin{frame}
-Corrected estimation of the variance structure based on reviewer comments on 2011 herring stock assessment (DFO 2012)
+We corrected the estimation of the variance structure based on reviewer comments on 2011 herring stock assessment (DFO 2012)
 
 In the 2011-2016 version of the assessment model the variance structure is based on standard deviations: 
 \begin{equation}
@@ -216,26 +216,39 @@ To improve estimation and to follow the correct errors-in-variables approach the
 \begin{frame}
 Do we want to include Tables D1 and D2? Comparisons of MPD estimates of leading parameters and unfished biomass,SB0, given changes to the estimation of the variance structure for process and
 observation error (AM1 and AM2)???????
-
 \end{frame}
+
 % New slide
 \begin{frame}
-
+Summary:
+\begin{Resultslist}
+\item 1. Resulting estimates from the new ISCAM version differed from the 2016 estimates due the updated variance structure used in the new platform.  
+\item 2. With the updated variance stucture the parameter estimates and biomass trajectories compared between V1 and V2 were nearly identical, supporting the adoption of V2 model code for the 2017 herring assessment.
+\item 3. The sensitivity analyses on $M$ and the variance parameters suggested the continued use of 2016 parameterizations for AM1 and AM2 models.
+Resolution between
+\item 4. The sensitivity analysis on $q$ suggested that the AM1 and AM2 parameterization of q will require simulation-evaluation in order to justify any changes to these parameterizations. 
+\end{Resultslist}
 \end{frame}
-% New slide
-\begin{frame}
 
-We recommend defining two Base cases for each of the 5 major herring stocks: AM1
-and AM2, and we recommend using the new ISCAM platform (V2) with the same assumptions and parameter
-settings as were used in 2016.
-
-\end{frame}
 % New subsection: base
 \subsection{Base case}
+% New slide
+\begin{frame}
+Based on the results of the bridging analysis we recommended defining two Base cases for each of the 5 major herring stocks: AM1
+and AM2, and we recommend using the new ISCAM platform (V2) with the same assumptions and parameter settings as were used in 2016.
+\end{frame}
 
 % New subsection: 
 \subsection{Sensitivity analyses}
+\begin{frame}
+\begin{Sensitivitylist}
+  \item Assumed time varying natural mortality,
+  \item Assumed initial values for variance parameters $\vartheta^2$ and $\rho$,
+  \item The prior probability on the survey catchability parameters ($q_1$ and $q_2$), and
+  \item The assumed fixed values for maturity at age.
+\end{Sensitivitylist}
 
+\end{frame}
 % New slide
 \begin{frame}{Natural mortality}
 
@@ -278,6 +291,7 @@ make.index.fit.plot(list(hg.am1.constm,
 
 % New slide
 \begin{frame}{Variance parameters}
+We tested model sensitivity to the initial values of $\rho$ and $\kappa$ by varying them, while estimating all leading parameters. Results Showed that when both of these parameters are estimated by the model choice of initial values do not influence the model estimates. 
 \end{frame}
 
 % New slide
