@@ -135,13 +135,15 @@ setwd( dir=".." )
 %%% New section: Stock assessment modeling
 \section{Stock assessment modeling}
 
-% New slide
-\begin{frame}
-We used an updated ISCAM platform \citep{martell2011}
-\end{frame}
 
 % New subsection: bridge
 \subsection{Bridging analysis}
+
+% New slide
+\begin{frame}
+We updated to a more flexible and computationally efficient platform of the integrated combined-sex statistical catch-at-age model (ISCAM) currently in use for other stock assessments within DFo
+\end{frame}
+
 
 % New subsection: base
 \subsection{Base case}
