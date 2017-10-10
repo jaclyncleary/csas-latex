@@ -101,7 +101,7 @@ setwd( dir=".." )
 
 % Variables for the cover page
 \title[Pacific Herring: assessment in \Sexpr{max(yrRange)} and forecast for \Sexpr{nextYr}]{Stock Assessment for Pacific Herring (\emph{Clupea pallasi}) in British Columbia in \Sexpr{max(yrRange)} and forecast for \Sexpr{nextYr}}
-\author[Cleary \emph{et al.} (2017)]{Jaclyn Cleary \and Sarah Hawkshaw \and Matt Grinnell \and Chris Grandin}
+\author[Cleary \emph{et al.} (\Sexpr{max(yrRange)})]{Jaclyn Cleary \and Sarah Hawkshaw \and Matt Grinnell \and Chris Grandin}
 \institute{CSAP Working paper 2017PEL01\\Pacific Biological Station}
 \date{October 17 \& 18, 2017}
 
@@ -171,6 +171,7 @@ setwd( dir=".." )
 % New slide
 \begin{frame}
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SpawnIndexWide.png}
+% TODO: Add 'Year' for x-axis
 \end{frame}
 
 %%% New section: Stock assessment modeling
@@ -182,8 +183,8 @@ setwd( dir=".." )
 
 % New slide
 \begin{frame}
-We updated to a more flexible and computationally efficient platform of the integrated combined-sex statistical catch-at-age model (ISCAM) currently in use for other stock assessments within DFO.  A bridging analysis was used to identify any inconsistancies in the estimation methods used in the new version compared to the 2016 version.
-
+We updated to a more flexible and computationally efficient platform of the integrated combined-sex statistical catch-at-age model (ISCAM) currently in use for other stock assessments within DFO.
+A bridging analysis was used to identify any inconsistancies in the estimation methods used in the new version compared to the 2016 version.
 \end{frame}
 
 % New slide
@@ -214,8 +215,7 @@ To improve estimation and to follow the correct errors-in-variables approach the
 \end{frame}
 % New slide
 \begin{frame}
-Do we want to include Tables D1 and D2? Comparisons of MPD estimates of leading parameters and unfished biomass,SB0, given changes to the estimation of the variance structure for process and
-observation error (AM1 and AM2)???????
+Do we want to include Tables D1 and D2? Comparisons of MPD estimates of leading parameters and unfished biomass, $\mli{SB}_0$, given changes to the estimation of the variance structure for process and observation error (AM1 and AM2)???????
 \end{frame}
 
 % New slide
@@ -226,7 +226,7 @@ Summary:
 \item With the updated variance stucture the parameter estimates and biomass trajectories compared between V1 and V2 were nearly identical, supporting the adoption of V2 model code for the 2017 herring assessment.
 \item The sensitivity analyses on $M$ and the variance parameters suggested the continued use of 2016 parameterizations for AM1 and AM2 models.
 Resolution between
-\item The sensitivity analysis on $q$ suggested that the AM1 and AM2 parameterization of q will require simulation-evaluation in order to justify any changes to these parameterizations. 
+\item The sensitivity analysis on $q$ suggested that the AM1 and AM2 parameterization of $q$ will require simulation-evaluation in order to justify any changes to these parameterizations. 
 \end{enumerate}
 \end{frame}
 
@@ -234,8 +234,8 @@ Resolution between
 \subsection{Base case}
 % New slide
 \begin{frame}
-Based on the results of the bridging analysis we recommended defining two Base cases for each of the 5 major herring stocks: AM1
-and AM2, and we recommend using the new ISCAM platform (V2) with the same assumptions and parameter settings as were used in 2016.
+Based on the results of the bridging analysis we recommended defining two Base cases for each of the 5 major herring stocks:
+\Sexpr{PasteNicely(mNames)}, and we recommend using the new ISCAM platform (V2) with the same assumptions and parameter settings as were used in 2016.
 \end{frame}
 
 % New subsection: 
