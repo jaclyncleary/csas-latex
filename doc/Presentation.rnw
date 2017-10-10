@@ -1,5 +1,5 @@
 % Document class
-\documentclass{beamer}
+\documentclass{beamer}  % [aspectratio=169]
 
 % Load packages
 \usepackage{beamerthemesplit}
@@ -12,7 +12,7 @@
 \newcommand{\mli}[1]{\mathit{#1}}
 
 % Choose a theme/style
-\usetheme{Darmstadt}
+\usetheme{Darmstadt}  % http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
 
 % Set transparency: complete
 \setbeamercovered{transparent=0}
@@ -30,12 +30,6 @@
 
 % Decrease margins globally
 \setbeamersize{text margin left=1.5em, text margin right=1.5em}
-
-% Cover page
-\title[Pacific Herring stock assessment]{Stock Assessment for Pacific Herring (\emph{Clupea pallasi}) in British Columbia in 2017 and forecast for 2018}
-\author[Cleary et al. (2017)]{Jaclyn Cleary \and Sarah Hawkshaw \and Matt Grinnell \and Chris Grandin}
-\institute{CSAP Working paper 2017PEL01\\Pacific Biological Station}
-\date{October 17 \& 18, 2017}
 
 % Hide the bibliography
 % \renewcommand\bibsection{\section[]{\refname}
@@ -100,6 +94,12 @@ setwd( dir=".." )
 <<variables, child='maindoc/variables.rnw'>>=
 @
 
+% Variables for the cover page
+\title[Pacific Herring: assessment in \Sexpr{max(yrRange)} and forecast for \Sexpr{nextYr}]{Stock Assessment for Pacific Herring (\emph{Clupea pallasi}) in British Columbia in \Sexpr{max(yrRange)} and forecast for \Sexpr{nextYr}}
+\author[Cleary \emph{et al.} (2017)]{Jaclyn Cleary \and Sarah Hawkshaw \and Matthew Grinnell \and Chris Grandin}
+\institute{CSAP Working paper 2017PEL01\\Pacific Biological Station}
+\date{October 17 \& 18, 2017}
+
 % Title page
 \begin{frame}
 \titlepage
@@ -121,15 +121,44 @@ setwd( dir=".." )
 \section{Input data}
 
 % New slide
-\begin{frame}
+\begin{frame}{Overview}
 \begin{itemize}
-\item We use three timeseries of data from \Sexpr{min(yrRange)} to \Sexpr{max(yrRange)}: catch, biological data, and abundance index
+\item Timeseries from \Sexpr{min(yrRange)} to \Sexpr{max(yrRange)}: catch, biological data, and spawn index
 \item The `spawn index' has two distinct periods defined by the dominant survey type:
 \end{itemize}
 \begin{description}
-\item[Surface] from \Sexpr{min(yrRange)} to \Sexpr{newSurvYr-1} ($q_1$)
-\item[Dive] from \Sexpr{newSurvYr} to \Sexpr{max(yrRange)}  ($q_2$)
+\item[Surface]From \Sexpr{min(yrRange)} to \Sexpr{newSurvYr-1} ($q_1$)
+\item[Dive] From \Sexpr{newSurvYr} to \Sexpr{max(yrRange)}  ($q_2$)
 \end{description}
+\end{frame}
+
+% New subsection: catch
+\subsection{Catch}
+
+% New slide
+\begin{frame}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CatchWide.png}
+\end{frame}
+
+% New subsection: biosamples
+\subsection{Biological data}
+
+% New slide
+\begin{frame}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}ProportionAgeWide.png}
+\end{frame}
+
+% New slide
+\begin{frame}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WeightAgeWide.png}
+\end{frame}
+
+% New subsection: abundance
+\subsection{Spawn index}
+
+% New slide
+\begin{frame}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SpawnIndexWide.png}
 \end{frame}
 
 %%% New section: Stock assessment modeling
@@ -254,7 +283,7 @@ make.index.fit.plot(list(hg.am1.constm,
 \section{Recommendations and future research}
 
 %%% New slide: References
-\begin{frame}{References}
+\begin{frame}[allowframebreaks]{References}
 \bibliographystyle{res-doc}
 \bibliography{all}
 \end{frame}

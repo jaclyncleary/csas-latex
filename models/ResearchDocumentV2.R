@@ -907,6 +907,22 @@ PlotCatch <- function( SARs, dat ){
       facet_wrap( ~ RegionName, ncol=2, dir="v" ) +
       myTheme +
       ggsave( filename=file.path("Catch.png"), width=figWidth, height=figWidth )
+  # Plot all the regions together (wide version)
+  catchPlotAll <- ggplot( data=datMajor, aes(x=Year, y=Catch) ) + 
+      geom_bar( aes(fill=Year==max(yrRange)), stat="identity", 
+          position="stack" ) +
+      labs( y=expression(paste("Catch (t"%*%10^3, ")", sep="")) )  +
+      scale_fill_grey( start=0.5, end=0 ) + 
+      scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
+      scale_y_continuous( labels=comma ) +
+      guides( fill=FALSE ) +
+      facet_wrap( ~ RegionName, nrow=2, dir="h" ) +
+      myTheme +
+      theme( text=element_text(size=15), 
+          axis.text.x=element_text(angle=45, hjust=1),
+          panel.spacing=unit(1, "lines") ) +
+      ggsave( filename=file.path("CatchWide.png"), width=figWidth*1.5, 
+          height=figWidth )
 }  # End PlotCatch function
 
 # Plot catch (major and minor SARs)
@@ -952,6 +968,22 @@ PlotSpawn <- function( SARs, dat ){
       theme( legend.position="top" ) +
       ggsave( filename=file.path("SpawnIndex.png"), width=figWidth, 
           height=figWidth+0.5 )
+  # The plot (wide version)
+  spawnIndexPlotAll <- ggplot( data=datMajor, aes(x=Year, y=Spawn) ) +
+      geom_point( aes(shape=Survey) ) + 
+      geom_line( aes(group=Survey) ) +
+      labs( x=NULL, y=expression(paste("Spawn index (t"%*%10^3, ")", sep="")) )  +
+      scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
+      scale_y_continuous( labels=comma ) +
+      scale_shape_manual( values=c(1, 2) ) +
+      expand_limits( y=0 ) +
+      facet_wrap( ~ RegionName, nrow=2, dir="h", scales="free_y" ) +
+      myTheme +
+      theme( legend.position="top", text=element_text(size=15), 
+          axis.text.x=element_text(angle=45, hjust=1),
+          panel.spacing=unit(1, "lines") ) +
+      ggsave( filename=file.path("SpawnIndexWide.png"), width=figWidth*1.5, 
+          height=figWidth )
 }  # End PlotSpawn function
 
 # Plot spawn index (major and minor SARs)
@@ -994,6 +1026,21 @@ PlotAge <- function( SARs, dat ) {
       myTheme +
       theme( legend.position="top" ) +
       ggsave( filename=file.path("ProportionAge.png"), width=figWidth, 
+          height=figWidth )
+  # The plot (wide version)
+  propPlot <- ggplot( data=datMajor, aes(x=Year, y=Proportion, group=Age) ) +
+      geom_bar( aes(fill=Age), stat="identity" ) +
+      scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
+      expand_limits( y=0 ) +
+      labs( y="Proportion-at-age" ) +
+      scale_fill_brewer( type="qual", palette="Set1", 
+          guide=guide_legend(nrow=1) ) +
+      facet_wrap( ~ RegionName, nrow=2, dir="h" ) +
+      myTheme +
+      theme( legend.position="top", text=element_text(size=15), 
+          axis.text.x=element_text(angle=45, hjust=1),
+          panel.spacing=unit(1, "lines") ) +
+      ggsave( filename=file.path("ProportionAgeWide.png"), width=figWidth*1.5, 
           height=figWidth )
 }  # End PlotAge function
 
@@ -1039,6 +1086,23 @@ PlotWeight <- function( SARs, dat ){
       facet_wrap( ~ RegionName, ncol=2, dir="v" ) +
       myTheme +
       ggsave( filename=file.path("WeightAge.png"), width=figWidth, 
+          height=figWidth )
+  # Plot all the regions together (wide version)
+  weightAgePlotAll <- ggplot( data=datMajor ) + 
+      geom_line( aes(x=Year, y=muWeight, group=Age) ) +
+      geom_point( data=filter(.data=datMajor, Age == ageShow), 
+          aes(x=Year, y=Weight), shape=1, size=1 ) +
+      geom_line( data=filter(.data=datMajor, Age == ageShow), 
+          aes(x=Year, y=muWeight), size=1 ) +
+      labs( y="Weight-at-age (kg)" ) +
+      scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
+      coord_cartesian( ylim=wtRange ) +
+      facet_wrap( ~ RegionName, nrow=2, dir="h" ) +
+      myTheme +
+      theme( legend.position="top", text=element_text(size=15), 
+          axis.text.x=element_text(angle=45, hjust=1),
+          panel.spacing=unit(1, "lines") ) +
+      ggsave( filename=file.path("WeightAgeWide.png"), width=figWidth*1.5, 
           height=figWidth )
 }  # End PlotWeight function
 
