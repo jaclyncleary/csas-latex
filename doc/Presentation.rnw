@@ -280,8 +280,10 @@ DFO's decision-making framework incorporating the precautionary approach:
 
 % New slide
 \begin{frame}
-We updated to a more flexible and computationally efficient platform of the integrated combined-sex statistical catch-at-age model (ISCAM) currently in use for other stock assessments within DFO.
-A bridging analysis was used to identify any inconsistancies in the estimation methods used in the new version compared to the 2016 version.
+\begin{itemize}
+\item We updated to a more flexible and computationally efficient platform of the integrated combined-sex statistical catch-at-age model (ISCAM) currently in use for other stock assessments within DFO.
+\item A bridging analysis was used to identify any inconsistancies in the estimation methods used in the new version (V2) compared to the 2016 version (V1).
+\end{itemize}
 \end{frame}
 
 % New slide
@@ -290,41 +292,41 @@ Steps of the bridging analysis:
 \begin{enumerate}
 \item Updated variance structure
 \item Reconstruction of previous assessment with fixed parameters
-\item All parameters estimated with constant $M$
-\item All parameters estimated with time-varying $M$
-\item Investigated the sensitivities of the model to variance parameters
-\item Sensitivity to prior probablity distribution on $q$s
+\item Compared parameter estimates from V1 and V2 under constant $M$ and time-varying $M$
+\item Investigated the sensitivities of the V2 to variance parameters and prior probablity distribution on $q$s
 \end{enumerate}
 \end{frame}
 
 % New slide
 \begin{frame}
-We corrected the estimation of the variance structure based on reviewer comments on 2011 herring stock assessment (DFO 2012)
-
-In the 2011-2016 version of the assessment model the variance structure is based on standard deviations: 
+\begin{itemize}
+\item We corrected the estimation of the variance structure based on reviewer comments on 2011 herring stock assessment (DFO 2012)
+\item In the 2011-2016 version of the assessment model the variance structure is based on standard deviations: 
 \begin{equation}
 \sigma=\rho/\vartheta, \;  \;  \; \; \tau=(1-\rho)/\vartheta
 \end{equation}
-To improve estimation and to follow the correct errors-in-variables approach the variance structure was updated to be based on total precision instead:
+\item To improve estimation and to follow the correct errors-in-variables approach the variance structure was updated to be based on total precision instead:
 \begin{equation}
 \sigma=\sqrt{\rho}\vartheta, \;  \;  \; \; \tau=\sqrt{(1-\rho)}\vartheta
 \end{equation}
+\end{itemize}
 \end{frame}
+
 % New slide
 \begin{frame}
-Do we want to include Tables D1 and D2? Comparisons of MPD estimates of leading parameters and unfished biomass, $\mli{SB}_0$, given changes to the estimation of the variance structure for process and observation error (AM1 and AM2)???????
+Matt how do we add in these Tables??? Tables D1 and D2? Comparisons of MPD estimates of leading parameters and unfished biomass, $\mli{SB}_0$, given changes to the estimation of the variance structure for process and observation error (AM1 and AM2)???????
 \end{frame}
 
 % New slide
 \begin{frame}
 Summary:
-\begin{enumerate}
-\item Resulting estimates from the new ISCAM version differed from the 2016 estimates due the updated variance structure used in the new platform.  
+\begin{itemize}
+\item Resulting estimates from the V2 only differed from the V1 estimates before the updated variance structure used in the new platform (V0).  
 \item With the updated variance stucture the parameter estimates and biomass trajectories compared between V1 and V2 were nearly identical, supporting the adoption of V2 model code for the 2017 herring assessment.
 \item The sensitivity analyses on $M$ and the variance parameters suggested the continued use of 2016 parameterizations for AM1 and AM2 models.
 Resolution between
 \item The sensitivity analysis on $q$ suggested that the AM1 and AM2 parameterization of $q$ will require simulation-evaluation in order to justify any changes to these parameterizations. 
-\end{enumerate}
+\end{itemize}
 \end{frame}
 
 % New subsection: base
@@ -340,12 +342,12 @@ Based on the results of the bridging analysis we recommended defining two Base c
 \subsection{Sensitivity analyses}
 
 \begin{frame}
-\begin{itemize}
-  \item Assumed time varying natural mortality,
-  \item Assumed initial values for variance parameters $\vartheta^2$ and $\rho$,
+\begin{enumerate}
+  \item Time varying natural mortality,
+  \item Initial values for variance parameters $\vartheta^2$ and $\rho$,
   \item The prior probability on the survey catchability parameters ($q_1$ and $q_2$), and
-  \item The assumed fixed values for maturity at age.
-\end{itemize}
+  \item Fixed values for maturity at age.
+\end{enumerate}
 \end{frame}
 
 % New slide
@@ -386,17 +388,26 @@ make.index.fit.plot(list(hg.am1.constm,
 
 % New slide
 \begin{frame}{Variance parameters}
-We tested model sensitivity to the initial values of $\rho$ and $\kappa$ by varying them, while estimating all leading parameters. Results Showed that when both of these parameters are estimated by the model choice of initial values do not influence the model estimates. 
+\begin{itemize}
+\item We tested model sensitivity to the initial values of $\rho$ and $\kappa$ by varying them, while estimating all leading parameters. 
+\item Results Showed that when both parameters are estimated by the model the initial values do not influence the model estimates.
+\end{itemize}
 \end{frame}
 
 % New slide
 \begin{frame}{Prior probability on $q$}
-We focused this analysis on the potential effects of broadening the prior on the q parameters by increasing the standard deviation of the distribution.  Results showed only minor changes in model out puts.
+\begin{itemize}
+\item We focused this analysis on the potential effects of broadening the priors on $q$s by increasing the standard deviation of the distribution for AM1.  
+\item Results showed only minor changes in model estimates.
+\end{itemize}
 \end{frame}
 
 % New slide
 \begin{frame}{Maturity at age}
-We tested the impacts of setting the fixed maturity at age vector equal to the selectivity of the seine roe fishery.  Results showed only minor differences between this and the base case. 
+\begin{itemize}
+\item We tested the impacts of setting the fixed maturity at age vector equal to the selectivity of the seine roe fishery.
+\item Results showed only minor differences from the base case. 
+\end{itemize}
 \end{frame}
 
 %%% New section: Results %%%
