@@ -336,6 +336,7 @@ Based on the the bridging analysis we recommended:
 \end{enumerate}
 \end{frame}
 
+
 % New slide
 \begin{frame}{Natural mortality}
 \frame{\frametitle{Index fits for natural mortality sensitivities (HG)}
@@ -347,7 +348,7 @@ Based on the the bridging analysis we recommended:
     \ei
   \end{column}
   \begin{column}{0.59\textwidth}
-    \vspace{-15pt}
+    \vspace{-25pt}
     \bc
 <<hg.index.surface.fit>>=
 leg.names <- c("AM1 Constant M",
