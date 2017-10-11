@@ -958,7 +958,7 @@ PlotSpawn <- function( SARs, dat ){
   spawnIndexPlotAll <- ggplot( data=datMajor, aes(x=Year, y=Spawn) ) +
       geom_point( aes(shape=Survey) ) + 
       geom_line( aes(group=Survey) ) +
-      labs( x=NULL, y=expression(paste("Spawn index (t"%*%10^3, ")", sep="")) )  +
+      labs( y=expression(paste("Spawn index (t"%*%10^3, ")", sep="")) )  +
       scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
       scale_y_continuous( labels=comma ) +
       scale_shape_manual( values=c(1, 2) ) +
@@ -972,7 +972,7 @@ PlotSpawn <- function( SARs, dat ){
   spawnIndexPlotAll <- ggplot( data=datMajor, aes(x=Year, y=Spawn) ) +
       geom_point( aes(shape=Survey) ) + 
       geom_line( aes(group=Survey) ) +
-      labs( x=NULL, y=expression(paste("Spawn index (t"%*%10^3, ")", sep="")) )  +
+      labs( y=expression(paste("Spawn index (t"%*%10^3, ")", sep="")) )  +
       scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
       scale_y_continuous( labels=comma ) +
       scale_shape_manual( values=c(1, 2) ) +
@@ -980,8 +980,7 @@ PlotSpawn <- function( SARs, dat ){
       facet_wrap( ~ RegionName, nrow=2, dir="h", scales="free_y" ) +
       myTheme +
       theme( legend.position="top", text=element_text(size=14), 
-          axis.text.x=element_text(angle=45, hjust=1),
-          panel.spacing=unit(1, "lines") ) +
+          axis.text.x=element_text(angle=45, hjust=1) ) +
       ggsave( filename=file.path("SpawnIndexWide.png"), width=figWidth*1.5, 
           height=figWidth )
 }  # End PlotSpawn function
