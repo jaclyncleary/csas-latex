@@ -1,5 +1,5 @@
 % Document class
-\documentclass[aspectratio=149]{beamer}  % 169, 1610, 149, 54, 43, or 32
+\documentclass[aspectratio=169]{beamer}  % 169, 1610, 149, 54, 43, or 32
 
 % Load packages
 \usepackage{beamerthemesplit}
@@ -43,6 +43,10 @@
 
 % Second order enumerate: a, b, ...
 % \setenumerate[2]{label={[\arabic*]}}
+% \renewcommand{\theenumi}{\Alph{enumi}}
+% \renewcommand{\theenumi}{\alph{enumii}}
+% \renewcommand{\theenumi}{\theenumi.\arabic{enumii}.}
+% \renewcommand\labelenumii{\theenumi.\arabic{enumii}.}
 
 % Change spacing between output chunk paragraphs
 \renewenvironment{knitrout}{\setlength{\topsep}{0mm}}{}
@@ -122,7 +126,7 @@ setwd( dir=".." )
 \end{frame}
 
 %%% Table of contents %%%
-\begin{frame}  % [allowframebreaks]
+\begin{frame}{Outline}  % [allowframebreaks]
 \begin{multicols}{2}
 \tableofcontents
 \end{multicols}
@@ -163,24 +167,38 @@ Investigate comparisons between old and new model code using a bridging analysis
 
 % New slide
 \begin{frame}{Precautionary approach}
-DFO's decision-making framework incorporating the precautionary approach:%
-\footnote{http://www.dfo-mpo.gc.ca/reports-rapports/regs/sff-cpd/precaution-eng.htm}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+DFO's decision-making framework incorporating the precautionary approach:
 \begin{itemize}
-\item Reference points should be established using as long as a time series as possible
-\item Biological reference points:
+\item Reference points should be established using as long a time series as possible:
 \begin{description}
 \item[LRP] Should be positioned before a state of serious harm occurs, and must be avoided with high probability
 \item[USR] The boundary between the Cautious and Healthy zones
 \end{description}
 \end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA.png}
+\end{column}
+\end{columns}
 \end{frame}
 
 % New slide
-\begin{frame}{Biological reference points}
+\begin{frame}{Reference points}
 \begin{columns}
 \begin{column}{0.5\textwidth}
+\citet{kronlund2017}:
 \begin{itemize}
-\item \citet{kronlund2017} suggest $\text{LRP} = 0.3 \cdot \mli{SB}_0$ for \Sexpr{fish.name}
+\item Recommend $\text{LRP} = 0.3\mli{SB}_0$
+\item Suggest candicate USRs:
+\begin{itemize}
+\item Long-term average spawning biomass ($\mli{SB}_\text{avg}$)
+\item Long-term average biomass during a productive period ($\mli{SB}_\text{avg_prod}$)
+% \item $2 \times \text{LRP}$ (i.e., $0.6\mli{SB}_0$)
+\item $\mli{SB}_0$
+\end{itemize}
+\item Reject MSY-based reference points (implausible)
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
@@ -191,7 +209,7 @@ DFO's decision-making framework incorporating the precautionary approach:%
 
 % Show table of contents at each section
 \AtBeginSection[]{
-\begin{frame}<beamer>
+\begin{frame}<beamer>{Outline}
 \begin{multicols}{2}
 \tableofcontents[currentsection]
 \end{multicols}
@@ -395,17 +413,87 @@ We tested the impacts of setting the fixed maturity at age vector equal to the s
 % New subsection: Haida Gwaii
 \subsection{Haida Gwaii}
 
+% New slide
+\begin{frame}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}HG/ProductionAM2.png}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}HG/StoryboardAM2.png}
+\end{column}
+\end{columns}
+\end{frame}
+
 % New subsection: Prince Rupert District
 \subsection{Prince Rupert District}
+
+% New slide
+\begin{frame}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}PRD/ProductionAM2.png}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
+\end{column}
+\end{columns}
+\end{frame}
 
 % New subsection: Central Coast
 \subsection{Central Coast}
 
+% New slide
+\begin{frame}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}CC/ProductionAM2.png}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}CC/StoryboardAM2.png}
+\end{column}
+\end{columns}
+\end{frame}
+
 % New subsection: Strait of Georgia
 \subsection{Strait of Georgia}
 
+% New slide
+\begin{frame}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}SoG/ProductionAM2.png}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
+\end{column}
+\end{columns}
+\end{frame}
+
 % New subsection: West Coast of Vancouver Island
 \subsection{West Coast of Vancouver Island}
+
+% New slide
+\begin{frame}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}WCVI/ProductionAM2.png}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
+\end{column}
+\end{columns}
+\end{frame}
 
 %%% New section: recommendations %%%
 \section[Recommendations]{Recommendations and future research}
