@@ -403,6 +403,8 @@ make.index.fit.plot(list(hg.am1.constm,
 \item We tested model sensitivity to the initial values of $\rho$ and $\kappa$ by varying them, while estimating all leading parameters. 
 \item Results showed that when both parameters are estimated by the model the initial values do not influence the model estimates.
 \end{itemize}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Table44.png}
 \end{frame}
 
 % New slide
