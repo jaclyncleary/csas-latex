@@ -264,7 +264,7 @@ DFO's decision-making framework incorporating the precautionary approach:%
 \begin{frame}
 \begin{itemize}
 \item We updated to a more flexible and computationally efficient platform of the integrated combined-sex statistical catch-at-age model (ISCAM) currently in use for other stock assessments within DFO.
-\item A bridging analysis was used to identify any inconsistancies in the estimation methods used in the new version (V2) compared to the 2016 version (V1).
+\item A bridging analysis was used to identify any inconsistancies in the estimation methods used in the new version (V2) compared to the 2016 version (V0).
 \end{itemize}
 \end{frame}
 
@@ -272,8 +272,8 @@ DFO's decision-making framework incorporating the precautionary approach:%
 \begin{frame}
 Steps of the bridging analysis:
 \begin{enumerate}
-\item Updated variance structure
-\item Reconstruction of previous assessment with fixed parameters
+\item Updated variance structure (V0 - V1)
+\item Reconstructed previous assessment results with fixed parameters
 \item Compared parameter estimates from V1 and V2 under constant $M$ and time-varying $M$
 \item Investigated the sensitivities of the V2 to variance parameters and prior probablity distribution on $q$s
 \end{enumerate}
@@ -281,8 +281,8 @@ Steps of the bridging analysis:
 
 % New slide
 \begin{frame}
+We corrected the estimation of the variance structure based on reviewer comments on 2011 herring stock assessment (DFO 2012)
 \begin{itemize}
-\item We corrected the estimation of the variance structure based on reviewer comments on 2011 herring stock assessment (DFO 2012)
 \item In the 2011-2016 version of the assessment model the variance structure is based on standard deviations: 
 \begin{equation}
 \sigma=\rho/\vartheta, \;  \;  \; \; \tau=(1-\rho)/\vartheta
@@ -316,8 +316,12 @@ Resolution between
 
 % New slide
 \begin{frame}
-Based on the results of the bridging analysis we recommended defining two Base cases for each of the 5 major herring stocks:
-\Sexpr{PasteNicely(mNames)}, and we recommend using the new ISCAM platform (V2) with the same assumptions and parameter settings as were used in 2016.
+
+Based on the the bridging analysis we recommended:
+\begin{itemize}
+\item Continuing to define two Base cases for each of the 5 major herring stocks: \Sexpr{PasteNicely(mNames)}, and
+\item Implementing the new ISCAM platform (V2) with the same assumptions and parameter settings as were used in 2016.
+\end{itemize}
 \end{frame}
 
 % New subsection: 
@@ -326,7 +330,7 @@ Based on the results of the bridging analysis we recommended defining two Base c
 \begin{frame}
 \begin{enumerate}
   \item Time varying natural mortality,
-  \item Initial values for variance parameters $\vartheta^2$ and $\rho$,
+  \item Initial values for variance parameters $\rho$ and $\kappa$,
   \item The prior probability on the survey catchability parameters ($q_1$ and $q_2$), and
   \item Fixed values for maturity at age.
 \end{enumerate}
@@ -372,7 +376,7 @@ make.index.fit.plot(list(hg.am1.constm,
 \begin{frame}{Variance parameters}
 \begin{itemize}
 \item We tested model sensitivity to the initial values of $\rho$ and $\kappa$ by varying them, while estimating all leading parameters. 
-\item Results Showed that when both parameters are estimated by the model the initial values do not influence the model estimates.
+\item Results showed that when both parameters are estimated by the model the initial values do not influence the model estimates.
 \end{itemize}
 \end{frame}
 
