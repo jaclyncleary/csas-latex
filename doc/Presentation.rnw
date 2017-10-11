@@ -8,7 +8,7 @@
 \usepackage{caption}
 \usepackage{natbib}
 \usepackage{multicol}
-\usepackage{enumitem}
+% \usepackage{enumitem}
 
 % Multi-letter identifier (i.e., multi-character variable
 \newcommand{\mli}[1]{\mathit{#1}}
@@ -134,7 +134,7 @@ setwd( dir=".." )
 \subsection{Background}
 
 % New slide
-\begin{frame}[allowframebreaks]{Terms of reference}
+\begin{frame}[allowframebreaks]{Objectives}
 \begin{enumerate}
 \item Present data and assessment model updates:
 \begin{enumerate}
