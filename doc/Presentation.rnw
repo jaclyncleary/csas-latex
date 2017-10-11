@@ -314,7 +314,7 @@ We corrected the estimation of the variance structure based on reviewer comments
 
 % New slide
 \begin{frame}
-Matt how do we add in these Tables??? Tables D1 and D2? Comparisons of MPD estimates of leading parameters and unfished biomass, $\mli{SB}_0$, given changes to the estimation of the variance structure for process and observation error (AM1 and AM2)???????
+Tables D1 and D2: Comparisons of MPD estimates of leading parameters and unfished biomass, $\mli{SB}_0$, given changes to the estimation of the variance structure for process and observation error (AM1 and AM2)
 \end{frame}
 
 % New slide
@@ -356,8 +356,8 @@ Based on the the bridging analysis we recommended:
 
 % New subsection: 
 \subsection{Sensitivity analyses}
-We further tested the sensivity of the model estimates to:
 \begin{frame}
+We further tested the sensivity of the V2 model estimates to:
 \begin{enumerate}
   \item Time varying natural mortality,
   \item Initial values for variance parameters $\rho$ and $\kappa$,
