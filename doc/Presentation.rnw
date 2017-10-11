@@ -344,7 +344,7 @@ Based on the the bridging analysis we recommended:
 
 % New subsection: 
 \subsection{Sensitivity analyses}
-
+We further tested the sensivity of the model estimates to:
 \begin{frame}
 \begin{enumerate}
   \item Time varying natural mortality,
