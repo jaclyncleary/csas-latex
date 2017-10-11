@@ -9,14 +9,6 @@
 \usepackage{natbib}
 \usepackage{multicol}
 % \usepackage{enumitem}
-\usepackage{pgf}
-\usepackage{array}
-\usepackage{tabularx}
-\usepackage{booktabs}          %% Used in risk tables
-\usepackage{multirow}          %% Used in decision tables
-%\usepackage{beamerarticle}
-%\usepackage{beamerthemesplit}
-\usepackage[T1]{fontenc}  %to use < or > in tables
 
 % Multi-letter identifier (i.e., multi-character variable
 \newcommand{\mli}[1]{\mathit{#1}}
@@ -94,6 +86,7 @@ source("all.r")
 
 # If you want to reload all model outputs, set to TRUE
 # The load.models.into.parent.env function is located at bottom of model-setup.r.
+
 load.models.into.parent.env()
 
 # This has to be sourced after loading the models in because it depends on the model output
@@ -145,7 +138,7 @@ setwd( dir=".." )
 \subsection{Background}
 
 % New slide
-\begin{frame}{Objectives I}
+\begin{frame}{Terms of Reference}
 \begin{enumerate}[<+->]
 \item Present data and assessment model updates:
 \begin{enumerate}
@@ -159,13 +152,20 @@ Investigate comparisons between old and new model code using a bridging analysis
 \end{frame}
 
 % New slide (continued manually: can't use overlays and frame breaks in the same slide)
-\begin{frame}{Objectives II}
+\begin{frame}{Terms of Reference}
 \begin{enumerate}[<+->]
 \setcounter{enumi}{2}
 \item Present trends in Pacific Herring biomass, depletion, and recruitment for each major stock; including trends in biomass for each major stock relative to the LRP.
 \item \textcolor{gray}{For the minor stock areas, present stock status updates using available spawn survey data and biological samples.}
 \item Evaluate the consequences (including potential risk of exceeding harvest rates prescribed by both modelling approaches) of different total allowable catch levels for 2018 against probabilistic metrics to accommodate uncertainty in the advice.
 \end{enumerate}
+\end{frame}
+
+% New slide
+\begin{frame}{Terms of Reference}
+\begin{itemize}
+\item Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.
+\end{itemize}
 \end{frame}
 
 % New slide
@@ -592,6 +592,7 @@ Let's do a slide or two of AM1 vs AM2 - emphasizing the differences- this will n
 #                     space.size = dec.table.font.space,
 #                     placement = "H")
 @
+
 \end{frame}
 
 % New subsection: future research
