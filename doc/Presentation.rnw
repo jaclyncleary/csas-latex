@@ -191,14 +191,14 @@ DFO's decision-making framework incorporating the precautionary approach:
 \citet{kronlund2017}:
 \begin{itemize}
 \item Recommend $\text{LRP} = 0.3\mli{SB}_0$
-\item Suggest candicate USRs:
-\begin{itemize}
-\item Long-term average spawning biomass ($\mli{SB}_\text{avg}$)
-\item Long-term average biomass during a productive period ($\mli{SB}_\text{avg_prod}$)
-% \item $2 \times \text{LRP}$ (i.e., $0.6\mli{SB}_0$)
+\item Propose candidate USRs:
+\begin{enumerate}
+\item Long-term average spawning biomass, $\mli{SB}_\text{avg}$
+\item Long-term average spawning biomass during a productive period, $\mli{SB}_\text{avg-prod}$
+\item $2 \times \text{LRP}$ (i.e., $0.6\mli{SB}_0$)
 \item $\mli{SB}_0$
-\end{itemize}
-\item Reject MSY-based reference points (implausible)
+\end{enumerate}
+\item Reject MSY-based reference points (e.g., $\mli{SB}_\text{MSY}$): implausible
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
@@ -420,9 +420,14 @@ make.index.fit.plot(list(hg.am1.constm,
 
 % New slide
 \begin{frame}
+Let's do a slide or two of AM1 vs AM2 - emphasizing the differences- this will need to include prior-posterior histograms for q1 and q2, and then show only AM2 plots for storyboard and LRP production plots
+\end{frame}
+
+% New slide
+\begin{frame}
 \begin{itemize}
 \item Introduce Storyboard figures
-\item Introduce Production figures
+\item Introduce Production figures (include description of vertical lines)
 \end{itemize}
 \end{frame}
 
@@ -434,11 +439,11 @@ make.index.fit.plot(list(hg.am1.constm,
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth]{\Sexpr{locOutput}HG/ProductionAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/ProductionAM2.png}
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth]{\Sexpr{locOutput}HG/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -451,11 +456,11 @@ make.index.fit.plot(list(hg.am1.constm,
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth]{\Sexpr{locOutput}PRD/ProductionAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}PRD/ProductionAM2.png}
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -468,11 +473,11 @@ make.index.fit.plot(list(hg.am1.constm,
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth]{\Sexpr{locOutput}CC/ProductionAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CC/ProductionAM2.png}
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth]{\Sexpr{locOutput}CC/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -485,11 +490,11 @@ make.index.fit.plot(list(hg.am1.constm,
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth]{\Sexpr{locOutput}SoG/ProductionAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SoG/ProductionAM2.png}
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -502,23 +507,56 @@ make.index.fit.plot(list(hg.am1.constm,
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth]{\Sexpr{locOutput}WCVI/ProductionAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WCVI/ProductionAM2.png}
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
 \end{column}
 \end{columns}
+\end{frame}
+
+% New subsection: status
+\subsection{Current status}
+
+% New slide
+\begin{frame}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}/CurrentSSBWide.png}
 \end{frame}
 
 %%% New section: recommendations %%%
 \section[Recommendations]{Recommendations and future research}
 
+% New subsection: recommendations
+\subsection{Recommendations}
+
+% New slide
+\begin{frame}{Projected biomass in \Sexpr{nextYr}}
+\end{frame}
+
+% New slide
+\begin{frame}{Decision tables}
+\end{frame}
+
+% New subsection: future research
+\subsection{Future research}
+
+% New slide
+\begin{frame}{Future research and data requirements}
+\pause
+\begin{enumerate}[<+->]
+\item Simulation-testing of management procedures
+\item SOK/SOB: quantify mortality and removed spawn
+\item Investigate appropriateness of stock-specific maturity ogive
+\end{enumerate}
+\end{frame}
+
 % %%% New section: References %%%
 % \section{References}
 
 % New slide: References
-\begin{frame}[allowframebreaks]{References}
+\begin{frame}[allowframebreaks]%{References}
 \bibliographystyle{res-doc}
 \bibliography{all}
 \end{frame}

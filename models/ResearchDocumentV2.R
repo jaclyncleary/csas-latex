@@ -1276,7 +1276,8 @@ PlotCurrentSSB <- function( SARs, models, SSB, SB0, probs=ciLevel ) {
   up <- 1 - lo
   # Update SSB
   SSB <- SSB %>%
-      mutate( Region=factor(Region, levels=regions$Region), 
+      mutate( Region=factor(Region, levels=regions$Region),
+          RegionName=factor(RegionName, levels=regions$RegionName),
           Model=factor(Model, levels=mNames) )
   # Calculate LRP
   LRP <- SB0 %>%
@@ -1309,6 +1310,31 @@ PlotCurrentSSB <- function( SARs, models, SSB, SB0, probs=ciLevel ) {
       labs( x=expression(paste("SB"[2017]," (t"%*%10^3, ")")), y="Density" ) +
       myTheme +
       ggsave( filename=file.path("CurrentSSB.png"), width=figWidth, 
+          height=figWidth )
+  # Subset data: SSB
+  subSSB <- SSB %>%
+      filter( Model == "AM2" ) %>%
+      mutate( RegionName=factor(RegionName, levels=regions$RegionName) )
+  # Subset data: SSB
+  subLRP <- LRP %>%
+      filter( Model == "AM2" )
+  # Subset data: SSB
+  subQuantSSB <- quantSSB %>%
+      filter( Model == "AM2" )
+  # The plot (wide)
+  plotSSB <- ggplot( data=subSSB ) + 
+      geom_density( aes(x=Value), fill="grey" ) + 
+      geom_vline( data=subLRP, aes(xintercept=Median), colour="red" ) +
+      geom_rect( data=subLRP, aes(xmin=Lower, xmax=Upper, ymin=-Inf, ymax=Inf),
+          colour="transparent", fill="red", alpha=0.3 ) + 
+      geom_vline( data=subQuantSSB, aes(xintercept=Lower), linetype="dashed" ) +
+      geom_vline( data=subQuantSSB, aes(xintercept=Median) ) +
+      geom_vline( data=subQuantSSB, aes(xintercept=Upper), linetype="dashed" ) +
+      facet_wrap( ~ RegionName, scales="free", nrow=2, dir="h" ) +
+      labs( x=expression(paste("SB"[2017]," (t"%*%10^3, ")")), y="Density" ) +
+      myTheme +
+      theme( text=element_text(size=14) ) +
+      ggsave( filename=file.path("CurrentSSBWide.png"), width=figWidth*1.5, 
           height=figWidth )
 }  # End PlotCurrentSSB function
 
