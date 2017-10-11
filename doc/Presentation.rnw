@@ -254,8 +254,10 @@ Investigate comparisons between old and new model code using a bridging analysis
 
 % New slide
 \begin{frame}
-We updated to a more flexible and computationally efficient platform of the integrated combined-sex statistical catch-at-age model (ISCAM) currently in use for other stock assessments within DFO.
-A bridging analysis was used to identify any inconsistancies in the estimation methods used in the new version compared to the 2016 version.
+\begin{itemize}
+\item We updated to a more flexible and computationally efficient platform of the integrated combined-sex statistical catch-at-age model (ISCAM) currently in use for other stock assessments within DFO.
+\item A bridging analysis was used to identify any inconsistancies in the estimation methods used in the new version (V2) compared to the 2016 version (V1).
+\end{itemize}
 \end{frame}
 
 % New slide
@@ -264,10 +266,8 @@ Steps of the bridging analysis:
 \begin{enumerate}
 \item Updated variance structure
 \item Reconstruction of previous assessment with fixed parameters
-\item All parameters estimated with constant $M$
-\item All parameters estimated with time-varying $M$
-\item Investigated the sensitivities of the model to variance parameters
-\item Sensitivity to prior probablity distribution on $q$s
+\item Compared parameter estimates from V1 and V2 under constant $M$ and time-varying $M$
+\item Investigated the sensitivities of the V2 to variance parameters and prior probablity distribution on $q$s
 \end{enumerate}
 \end{frame}
 
