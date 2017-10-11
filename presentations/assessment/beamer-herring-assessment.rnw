@@ -233,6 +233,20 @@ make.index.fit.plot(list(hg.am1.constm,
 \end{columns}
 }
 
+% New slide
+\frame{\frametitle{Decision table for HG AM2}
+<<hg.decision.table, results='asis', echo=FALSE>>=
+dec.table.font.size <- 12
+dec.table.font.space <- 13
+cap <- paste0("Probabilistic decision table for Haida Gwaii, AM2 model.")
+make.decision.table(hg.b,
+                    xcaption = cap,
+                    xlabel = "tab:hg-am2-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+}
 
 %% %% \frame{\frametitle{MCMC tests}
 %% %%   \bc
