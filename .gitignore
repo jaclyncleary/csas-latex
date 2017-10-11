@@ -12,6 +12,8 @@
 *.toc
 *.out
 *.vrb
+*.nav
+*.snm
 res-doc.pdf
 res-doc.lof
 res-doc.lot
@@ -38,6 +40,4 @@ doc/eso-pic.sty
 doc/pdfpages.sty
 retrospectives/
 Presentation.pdf
-Presentation.nav
-Presentation.snm
 Presentation.tex
