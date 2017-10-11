@@ -399,7 +399,7 @@ make.index.fit.plot(list(hg.am1.constm,
 % New slide
 \begin{frame}{Variance parameters}
 \begin{itemize}
-\item We tested model sensitivity to the initial values of $\rho$ and $\kappa$ by varying them, while estimating all leading parameters. 
+\item Analyzed model sensitivity to the initial values of $\rho$ and $\kappa$ by varying them, while estimating all leading parameters. 
 \item Results showed that when both parameters are estimated by the model the initial values do not influence the model estimates.
 \end{itemize}
 \centering
@@ -411,7 +411,7 @@ make.index.fit.plot(list(hg.am1.constm,
 \begin{columns}
 \begin{column}{0.4\textwidth}
 \bi
-\item We focused this analysis on the potential effects of broadening the priors on $q$s by increasing the standard deviation of the distribution for AM1
+\item Examined the potential effects of broadening the priors on $q$s by increasing the standard deviation of the distribution for AM1
 \item Results showed only minor changes in model estimates of $q$
 \ei
 \end{column}
@@ -427,7 +427,7 @@ make.index.fit.plot(list(hg.am1.constm,
 \begin{columns}
 \begin{column}{0.4\textwidth}
 \bi
-\item We tested the impacts of setting the fixed maturity at age vector equal to the selectivity of the seine roe fishery.
+\item Examined the impacts of setting the fixed maturity at age vector equal to the selectivity of the seine roe fishery.
 \item Parameter estimates showed only minor differences from the base case.
 \item Estimates of $F_\text{MSY}$ were unreliable for comparison
 \ei
