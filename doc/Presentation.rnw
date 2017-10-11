@@ -346,7 +346,6 @@ Resolution between
 
 % New slide
 \begin{frame}
-
 Based on the the bridging analysis we recommended:
 \begin{itemize}
 \item Continuing to define two Base cases for each of the 5 major herring stocks: \Sexpr{PasteNicely(mNames)}, and
@@ -366,20 +365,17 @@ We further tested the sensivity of the V2 model estimates to:
 \end{enumerate}
 \end{frame}
 
-
-% New slide: FIXME: Figure on a slide by itself
-\begin{frame}{Natural mortality}
-\frame{\frametitle{Index fits for natural mortality sensitivities (HG)}
+% New slide
+\begin{frame}{Index fits for natural mortality sensitivities (HG)}
 \begin{columns}
-  \begin{column}{0.38\textwidth}
-    \bi
-      \item Time-varying $M$ (TVM) improves the model
-      \item TVM improves index fits for both AM1 and AM2
-    \ei
-  \end{column}
-  \begin{column}{0.59\textwidth}
-    \vspace{-25pt}
-    \bc
+\begin{column}{0.4\textwidth}
+\bi
+\item Time-varying $M$ (TVM) improves the model
+\item TVM improves index fits for both AM1 and AM2
+\ei
+\end{column}
+\begin{column}{0.6\textwidth}
+\centering
 <<hg.index.surface.fit>>=
 leg.names <- c("AM1 Constant M",
                "AM1 Time-varying M",
@@ -396,10 +392,8 @@ make.index.fit.plot(list(hg.am1.constm,
                     model.names = leg.names,
                     ylim = c(0, 60))
 @
-    \ec
-  \end{column}
+\end{column}
 \end{columns}
-}
 \end{frame}
 
 
