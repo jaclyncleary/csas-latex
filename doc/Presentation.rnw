@@ -415,19 +415,37 @@ make.index.fit.plot(list(hg.am1.constm,
 
 % New slide
 \begin{frame}{Prior probability on $q$}
-\begin{itemize}
-\item We focused this analysis on the potential effects of broadening the priors on $q$s by increasing the standard deviation of the distribution for AM1.  
-\item Results showed only minor changes in model estimates.
-\end{itemize}
+\begin{columns}
+\begin{column}{0.4\textwidth}
+\bi
+\item We focused this analysis on the potential effects of broadening the priors on $q$s by increasing the standard deviation of the distribution for AM1
+\item Results showed only minor changes in model estimates of $q$
+\ei
+\end{column}
+\begin{column}{0.6\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Table48.png}
+\end{column}
+\end{columns}
 \end{frame}
 
 % New slide
 \begin{frame}{Maturity at age}
-\begin{itemize}
+\begin{columns}
+\begin{column}{0.4\textwidth}
+\bi
 \item We tested the impacts of setting the fixed maturity at age vector equal to the selectivity of the seine roe fishery.
-\item Results showed only minor differences from the base case. 
-\end{itemize}
+\item Parameter estimates showed only minor differences from the base case.
+\item Estimates of $F_\text{MSY}$ were unreliable for comparison
+\ei
+\end{column}
+\begin{column}{0.6\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Table47.png}
+\end{column}
+\end{columns}
 \end{frame}
+
 
 %%% New section: Results %%%
 \section[Results]{Summary of results}
