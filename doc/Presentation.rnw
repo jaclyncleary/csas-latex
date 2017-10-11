@@ -94,9 +94,9 @@ source("all.r")
 
 # If you want to reload all model outputs, set to TRUE
 # The load.models.into.parent.env function is located at bottom of model-setup.r.
-  load.models.into.parent.env()
+load.models.into.parent.env()
 
-  # This has to be sourced after loading the models in because it depends on the model output
+# This has to be sourced after loading the models in because it depends on the model output
 source("custom-knitr-variables.r")
 
 # Load required packages
@@ -567,9 +567,10 @@ Let's do a slide or two of AM1 vs AM2 - emphasizing the differences- this will n
 \begin{frame}{Projected biomass in \Sexpr{nextYr}}
 \end{frame}
 
-% % New slide
-% \begin{frame}{Decision tables}
+% New slide
+\begin{frame}[fragile]{Decision table: Haida Gwaii AM2}
 % <<hg.decision.table, results='asis', echo=FALSE>>=
+% require(xtable)
 % dec.table.font.size <- 12
 % dec.table.font.space <- 13
 % cap <- paste0("Probabilistic decision table for Haida Gwaii, AM2 model.")
@@ -580,7 +581,7 @@ Let's do a slide or two of AM1 vs AM2 - emphasizing the differences- this will n
 %                     space.size = dec.table.font.space,
 %                     placement = "H")
 % @
-% \end{frame}
+\end{frame}
 
 % New subsection: future research
 \subsection{Future research}
