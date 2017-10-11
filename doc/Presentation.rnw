@@ -289,7 +289,7 @@ DFO's decision-making framework incorporating the precautionary approach:
 % New slide
 \begin{frame}
 Steps of the bridging analysis:
-\begin{enumerate}[<+->]
+\begin{enumerate}
 \item Updated variance structure (V0 - V1)
 \item Reconstructed previous assessment results with fixed parameters
 \item Compared parameter estimates from V1 and V2 under constant $M$ and time-varying $M$
@@ -299,7 +299,7 @@ Steps of the bridging analysis:
 
 % New slide
 \begin{frame}
-We corrected the estimation of the variance structure based on reviewer comments on 2011 herring stock assessment \citep{herring2012}
+Corrected the estimation of the variance structure based on reviewer comments on 2011 herring stock assessment \citep{herring2012}
 \begin{itemize}
 \item In the 2011-2016 version of the assessment model the variance structure is based on standard deviations: 
 \begin{equation}
@@ -314,20 +314,30 @@ We corrected the estimation of the variance structure based on reviewer comments
 
 % New slide
 \begin{frame}
-Tables D1 and D2: Comparisons of MPD estimates of leading parameters and unfished biomass, $\mli{SB}_0$, given changes to the estimation of the variance structure for process and observation error (AM1 and AM2)
-\end{frame}
-
-% New slide
-\begin{frame}
+\begin{columns}
+\begin{column}{0.4\textwidth}
+Tables D.1. Comparison of MPD estimates of leading parameters and unfished biomass, $\mli{SB}_0$, given changes to the estimation of the variance structure for process and observation error (AM1)
+\end{column}
+\begin{column}{0.6\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/TableD1.png}
+\end{column}
+\end{columns}
 \end{frame}
 
 % New slide
 \begin{frame}
+\begin{columns}
+\begin{column}{0.4\textwidth}
+Tables D.2. Comparison of MPD estimates of leading parameters and unfished biomass, $\mli{SB}_0$, given changes to the estimation of the variance structure for process and observation error (AM2)
+\end{column}
+\begin{column}{0.6\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/TableD2.png}
+\end{column}
+\end{columns}
 \end{frame}
+
 
 % New slide
 \begin{frame}
