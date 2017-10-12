@@ -117,7 +117,7 @@ setwd( dir=".." )
 % Variables for the cover page
 \title[Pacific Herring: Assessment in \Sexpr{max(yrRange)} and forecast for \Sexpr{nextYr}]{Stock Assessment for Pacific Herring (\emph{Clupea pallasi}) in British Columbia in \Sexpr{max(yrRange)} and forecast for \Sexpr{nextYr}}
 \author[Cleary \emph{et al.} (\Sexpr{max(yrRange)})]{Jaclyn Cleary \and Sarah Hawkshaw \and Matthew Grinnell \and Chris Grandin}
-\institute{Regional Peer Review Process\\Pacific Region\\CSAP Working paper 2017PEL01}
+\institute{CSAP Working paper 2017PEL01\\Pacific Biological Station}
 \date{October 17 \& 18, 2017}
 
 %%% Title page %%%
@@ -297,10 +297,7 @@ DFO's decision-making framework incorporating the precautionary approach:
 \begin{frame}
 Steps of the bridging analysis:
 \begin{enumerate}
-\item Updated variance structure (V0 - V1)
-\item Reconstructed previous assessment results with fixed parameters
-\item Compared parameter estimates from V1 and V2 under constant $M$ and time-varying $M$
-\item Investigated the sensitivities of the V2 to variance parameters and prior probablity distribution on $q$s
+\item Updated variance structure (V0 to V1)
 \end{enumerate}
 \end{frame}
 
@@ -345,13 +342,23 @@ Tables D.2. Comparison of MPD estimates of leading parameters and unfished bioma
 \end{columns}
 \end{frame}
 
+% New slide
+\begin{frame}
+Steps of the bridging analysis:
+\begin{enumerate}
+\item Updated variance structure (V0 to V1)
+\item Reconstructed previous assessment results with fixed parameters
+\item Compared parameter estimates from V1 and V2 under constant $M$ and time-varying $M$
+\item Investigated the sensitivities of V2 to variance parameters and prior probablity distribution on $q$s
+\end{enumerate}
+\end{frame}
 
 % New slide
 \begin{frame}
 Summary:
 \begin{itemize}
-\item Resulting estimates from the V2 only differed from the V1 estimates before the updated variance structure used in the new platform (V0).  
-\item With the updated variance stucture the parameter estimates and biomass trajectories compared between V1 and V2 were nearly identical, supporting the adoption of V2 model code for the 2017 herring assessment.
+\item Once V0 was updated to V1 the resulting estimates from V2 did not differed.  
+\item Parameter estimates and biomass trajectories compared between V1 and V2 were nearly identical, supporting the adoption of V2 model code for the 2017 herring assessment.
 \item The sensitivity analyses on $M$ and the variance parameters suggested the continued use of 2016 parameterizations for AM1 and AM2 models.
 Resolution between
 \item The sensitivity analysis on $q$ suggested that the AM1 and AM2 parameterization of $q$ will require simulation-evaluation in order to justify any changes to these parameterizations. 
@@ -470,7 +477,6 @@ Let's do a slide or two of AM1 vs AM2 - emphasizing the differences- this will n
 \begin{itemize}
 \item Introduce Storyboard figures
 \item Introduce Production figures (include description of vertical lines)
-\item Combination of low production and low biomass (LP-LB) state
 \end{itemize}
 \end{frame}
 
@@ -605,7 +611,6 @@ Let's do a slide or two of AM1 vs AM2 - emphasizing the differences- this will n
 \item Simulation-testing of management procedures
 \item SOK/SOB: quantify mortality and removed spawn
 \item Investigate appropriateness of stock-specific maturity ogive
-\item Quantify fecundity?
 \end{enumerate}
 \end{frame}
 
