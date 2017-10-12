@@ -405,7 +405,7 @@ We further tested the sensivity of the V2 model estimates to:
 \end{frame}
 
 % New slide
-\begin{frame}{Index fits for natural mortality sensitivities (HG)}
+\begin{frame}{Natural mortality}
 \begin{itemize}
 \item Time-varying $M$ (TVM) improves the model
 \item TVM improves index fits for both AM1 and AM2
@@ -495,6 +495,35 @@ make.index.fit.plot(list(hg.am1.constm,
 % New slide
 \begin{frame}
 Let's do a slide or two of AM1 vs AM2 - emphasizing the differences- this will need to include prior-posterior histograms for q1 and q2, and then show only AM2 plots for storyboard and LRP production plots
+\end{frame}
+
+% New slide
+\begin{frame}{AM1 vs AM2}
+Figure 10A. Sensitivity to prior on MEAN q...
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Fig10Ab.png}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Fig10Ac.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+% New slide
+\begin{frame}{AM1 vs AM2}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Fig10Af.png}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Fig10Ag.png}
+\end{column}
+\end{columns}
 \end{frame}
 
 % New slide
