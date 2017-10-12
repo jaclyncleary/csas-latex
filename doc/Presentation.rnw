@@ -515,7 +515,7 @@ Prior-posterior plots
 
 % New slide
 \begin{frame}{AM1 vs AM2}
-Figure 10A. Sensitivity to prior on MEAN q
+Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \centering
@@ -530,6 +530,7 @@ Figure 10A. Sensitivity to prior on MEAN q
 
 % New slide
 \begin{frame}{AM1 vs AM2}
+Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \centering
