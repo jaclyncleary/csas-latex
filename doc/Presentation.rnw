@@ -650,6 +650,9 @@ Figure 10A. Sensitivity to prior on MEAN q
 % New subsection: recommendations
 \subsection{Recommendations}
 
+% New slide
+\begin{frame}{Projected biomass in \Sexpr{nextYr}}
+\end{frame}
 
 % New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
 \begin{frame}{Decision table: Haida Gwaii AM2}
