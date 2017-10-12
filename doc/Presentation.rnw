@@ -650,9 +650,6 @@ Figure 10A. Sensitivity to prior on MEAN q
 % New subsection: recommendations
 \subsection{Recommendations}
 
-% New slide
-\begin{frame}{Projected biomass in \Sexpr{nextYr}}
-\end{frame}
 
 % New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
 \begin{frame}{Decision table: Haida Gwaii AM2}
@@ -748,6 +745,71 @@ make.decision.table(cc.am1,
 @
 
 \end{frame}
+
+% New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
+\begin{frame}{Decision table: Strait of Georgia AM2}
+<<sog.decision.table, results='asis', echo=FALSE>>=
+dec.table.font.size <- 6
+dec.table.font.space <- 7
+cap <- paste0("Probabilistic decision table for Strait of Georgia, AM2 model.")
+make.decision.table(sog.b,
+                    xcaption = cap,
+                    xlabel = "tab:sog-am2-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+
+\end{frame}
+
+% New slide -- DOES NOT WORK
+\begin{frame}{Decision table: Strait of Georgia AM1}
+<<sog.decision.table.am1, results='asis', echo=FALSE>>=
+dec.table.font.size <- 6
+dec.table.font.space <- 7
+cap <- paste0("Probabilistic decision table for Strait of Georgia, AM1 model.")
+make.decision.table(sog.am1,
+                    xcaption = cap,
+                    xlabel = "tab:sog-am1-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+
+\end{frame}
+
+% New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
+\begin{frame}{Decision table: West Coast Vancouver Island AM2}
+<<wcvi.decision.table, results='asis', echo=FALSE>>=
+dec.table.font.size <- 6
+dec.table.font.space <- 7
+cap <- paste0("Probabilistic decision table for West Coast Vancouver Island, AM2 model.")
+make.decision.table(wcvi.b,
+                    xcaption = cap,
+                    xlabel = "tab:wcvi-am2-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+
+\end{frame}
+
+% New slide -- DOES NOT WORK
+\begin{frame}{Decision table: West Coast Vancouver Island AM1}
+<<wcvi.decision.table.am1, results='asis', echo=FALSE>>=
+dec.table.font.size <- 6
+dec.table.font.space <- 7
+cap <- paste0("Probabilistic decision table for West Coast Vancouver Island, AM1 model.")
+make.decision.table(wcvi.am1,
+                    xcaption = cap,
+                    xlabel = "tab:wcvi-am1-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+
+\end{frame}
+
 
 % New subsection: future research
 \subsection{Future research}
