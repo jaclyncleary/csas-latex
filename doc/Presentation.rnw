@@ -548,6 +548,7 @@ Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 \begin{itemize}
 \item The following figures present posterior distributions characterizing: model fits to spawn survvey index, age-2 recruitment, instantanteous natural mortality, and spawning biomass reconstructions.
 \item Introduce production figures (include description of vertical lines)
+\item -show updated plots and explain vertical lines... compare SB2017 with LRP
 \end{itemize}
 \end{frame}
 
@@ -655,6 +656,18 @@ Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 \begin{frame}{Projected biomass in \Sexpr{nextYr}}
 \end{frame}
 
+% New slide
+\begin{frame}{Summary}
+\begin{itemize}
+\item HG: Both AM2 and AM1 models estimated $\mli{SB}_{2017}$ to be BELOW the LRP of $\Sexpr{propB0}\cdot\mli{SB}_0$ with greater than a 50\% probability 
+\item PRD: Both AM2 and AM1 models estimated $\mli{SB}_{2017}$ to be ABOVE the LRP of $\Sexpr{propB0}\cdot\mli{SB}_0$ with greater than a 50\% probability and less than a 95\% probability
+\item CC: Both AM2 and AM1 models estimated $\mli{SB}_{2017}$ to be ABOVE the LRP of $\Sexpr{propB0}\cdot\mli{SB}_0$ with greater than a 95\% probability
+\item SOG: Both AM2 and AM1 models estimated $\mli{SB}_{2017}$ to be ABOVE the LRP of $\Sexpr{propB0}\cdot\mli{SB}_0$ by greater than 95\% probability
+\item WCVI: Both AM2 and AM1 models estimated $\mli{SB}_{2017}$ to be ABOVE the LRP of $\Sexpr{propB0}\cdot\mli{SB}_0$, by greater than 50\% probability but less than 95\% probability
+\end{itemize}
+\end{frame}
+
+
 % New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
 \begin{frame}{Decision table: Haida Gwaii AM2}
 <<hg.decision.table, results='asis', echo=FALSE>>=
@@ -671,20 +684,7 @@ make.decision.table(hg.b,
 
 \end{frame}
 
-% New slide -- DOES NOT WORK
-\begin{frame}{Decision table: Haida Gwaii AM1}
-<<hg.decision.table.am1, results='asis', echo=FALSE>>=
-dec.table.font.size <- 6
-dec.table.font.space <- 7
-cap <- paste0("Probabilistic decision table for Haida Gwaii, AM1 model.")
-make.decision.table(hg.am1,
-                    xcaption = cap,
-                    xlabel = "tab:hg-am1-decision",
-                    font.size = dec.table.font.size,
-                    space.size = dec.table.font.space,
-                    placement = "H")
-@
-\end{frame}
+
 
 % New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
 \begin{frame}{Decision table: Prince Rupert District AM2}
