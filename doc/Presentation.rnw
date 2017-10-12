@@ -357,9 +357,9 @@ Steps of the bridging analysis:
 \begin{frame}
 Summary:
 \begin{itemize}
-\item Once V0 was updated to V1 the resulting estimates from V2 did not differed.  
-\item Parameter estimates and biomass trajectories compared between V1 and V2 were nearly identical, supporting the adoption of V2 model code for the 2017 herring assessment.
-\item The sensitivity analyses on $M$ and the variance parameters suggested the continued use of 2016 parameterizations for AM1 and AM2 models.
+\item Once V0 was updated to V1 the resulting estimates from V2 did not differed  
+\item Parameter estimates and biomass trajectories compared between V1 and V2 were nearly identical
+\item The sensitivity analyses on $M$ and the variance parameters suggested the continued use of 2016 parameterizations for AM1 and AM2 models
 Resolution between
 \item The sensitivity analysis on $q$ suggested that the AM1 and AM2 parameterization of $q$ will require simulation-evaluation in order to justify any changes to these parameterizations. 
 \end{itemize}
