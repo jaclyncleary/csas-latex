@@ -407,8 +407,9 @@ We further tested the sensivity of the V2 model estimates to:
 % New slide
 \begin{frame}{Natural mortality}
 \begin{itemize}
-\item Time-varying $M$ (TVM) improves the model
-\item TVM improves index fits for both AM1 and AM2
+\item Model outcomes were influenced by the method used to estimate $M$
+\item Method used to estimate $M$ does not appear to be confounded by choice of $q$ prior
+\item Time-varying $M$ appeared to provide a better fit to data, supporting it use as the base case
 \end{itemize}
 \end{frame}
 
