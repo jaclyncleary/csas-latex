@@ -169,7 +169,7 @@ Investigate comparisons between old and new model code using a bridging analysis
 \end{enumerate}
 \end{frame}
 
-% New slide
+% New slide  Things we did not complete
 \begin{frame}{Terms of Reference}
 \begin{itemize}
 \item Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.
@@ -272,6 +272,12 @@ DFO's decision-making framework incorporating the precautionary approach:
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}ProportionAgeWide.png}
 \end{frame}
 
+% New slide ADD IN EXAMPLE BUBBLE PLOTS FOR COMPARISON
+\begin{frame}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}ProportionAgeWide.png}
+\end{frame}
+
 % New slide
 \begin{frame}
 \centering
@@ -368,7 +374,6 @@ Summary:
 \item Once V0 was updated to V1 the resulting estimates from V2 did not differed  
 \item Parameter estimates and biomass trajectories compared between V1 and V2 were nearly identical
 \item The sensitivity analyses on $M$ and the variance parameters suggested the continued use of 2016 parameterizations for AM1 and AM2 models
-Resolution between
 \item The sensitivity analysis on $q$ suggested that the AM1 and AM2 parameterization of $q$ will require simulation-evaluation in order to justify any changes to these parameterizations. 
 \end{itemize}
 \end{frame}
@@ -380,7 +385,7 @@ Resolution between
 \begin{frame}
 Based on the the bridging analysis we recommended:
 \begin{itemize}
-\item Continuing to define two Base cases for each of the 5 major herring stocks: \Sexpr{PasteNicely(mNames)}, and
+\item Continuing to define two base cases for each of the 5 major herring stocks: \Sexpr{PasteNicely(mNames)}, and
 \item Implementing the new ISCAM platform (V2) with the same assumptions and parameter settings as were used in 2016.
 \end{itemize}
 \end{frame}
@@ -401,6 +406,22 @@ We further tested the sensivity of the V2 model estimates to:
 
 % New slide
 \begin{frame}{Index fits for natural mortality sensitivities (HG)}
+\begin{itemize}
+\item Time-varying $M$ (TVM) improves the model
+\item TVM improves index fits for both AM1 and AM2
+\end{itemize}
+\end{frame}
+
+% New slide
+\begin{frame}{Natural mortality}
+\begin{columns}
+\begin{column}{0.4\textwidth}
+\bi
+\item Figure 56. Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and
+inputs (points) for the Haida Gwaii surface survey.
+\ei
+\end{column}
+\begin{column}{0.6\textwidth}
 \centering
 <<hg.index.surface.fit>>=
 leg.names <- c("AM1 Constant M",
@@ -418,15 +439,11 @@ make.index.fit.plot(list(hg.am1.constm,
                     model.names = leg.names,
                     ylim = c(0, 60))
 @
+\end{column}
+\end{columns}
 \end{frame}
 
-% New slide
-\begin{frame}{Index fits for natural mortality sensitivities (HG)}
-\begin{itemize}
-\item Time-varying $M$ (TVM) improves the model
-\item TVM improves index fits for both AM1 and AM2
-\end{itemize}
-\end{frame}
+
 
 % New slide
 \begin{frame}{Variance parameters}
