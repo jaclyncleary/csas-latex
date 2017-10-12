@@ -6,11 +6,15 @@ del *.dvi
 del *.log
 del *.lot
 del *.lof
-del res-doc.pdf
 del *.ps
 del *.toc
 del *.txt
 del *.out
+del *.snm
+del *.nav
 del *-concordance.tex
 del *.synctex.gz*
 del res-doc.tex
+del res-doc.pdf
+del Presentation.tex
+del Presentation.pdf
