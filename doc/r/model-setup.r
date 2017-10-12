@@ -443,11 +443,22 @@ load.models.into.parent.env <- function(){
                                         function(y){
                                           tmp <- load.models(retro.dir, y)
                                         })})
+  ## Special case, PRD replace retro 10 with 15
+  base.retro.models[[2]][[10]] <<- load.models(retro.dir,
+                                              gsub("10",
+                                                   "15",
+                                                   retro.names.am2[[2]][[10]]))
+
   am1.retro.models <<- lapply(retro.names.am1,
                                function(x){
                                  lapply(x,
                                         function(y){
                                           load.models(retro.dir, y)})})
+  ## Special case, PRD replace retro 10 with 15
+  am1.retro.models[[2]][[10]] <<- load.models(retro.dir,
+                                             gsub("10",
+                                                  "15",
+                                                  retro.names.am1[[2]][[10]]))
 }
 
 build <- function(ovwrt.base = FALSE,
@@ -569,7 +580,14 @@ build <- function(ovwrt.base = FALSE,
       create.rdata.file.retro(
         model.dir = file.path(retro.dir,
                               stock.dir[i],
-                              retro.string[j],
+                              ## Special case, PRD replace retro -10 with -15
+                              ## Check the load.models.into.parent.env()
+                              ##  function for this special case, and the leg
+                              ##  values in 8_figures.rnw
+                              ifelse(which.stock == 2 &
+                                     j == length(stock.dir),
+                                     "15",
+                                     retro.string[j]),
                               stock.dir[i],
                               "AM1"),
         ovwrt.rdata = ovwrt.retro,
@@ -582,7 +600,14 @@ build <- function(ovwrt.base = FALSE,
       create.rdata.file.retro(
         model.dir = file.path(retro.dir,
                               stock.dir[i],
-                              retro.string[j],
+                              ## Special case, PRD replace retro -10 with -15
+                              ## Check the load.models.into.parent.env()
+                              ##  function for this special case, and the leg
+                              ##  values in 8_figures.rnw
+                              ifelse(which.stock == 2 &
+                                     j == length(stock.dir),
+                                     "15",
+                                     retro.string[j]),
                               stock.dir[i],
                               "AM2"),
         ovwrt.rdata = ovwrt.retro,

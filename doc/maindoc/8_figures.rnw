@@ -2105,6 +2105,18 @@ make.biomass.retro.mpd.plot(hg.b,
 \begin{figure}[H]
 \begin{center}
 <<prd.am2.retro.biomass, results='asis', echo=FALSE, fig.height=6.5>>=
+## Special case for PRD - show 15 yr retro instead of 10
+leg.names <- c("Base",
+               "-1 yr",
+               "-2 yrs",
+               "-3 yrs",
+               "-4 yrs",
+               "-5 yrs",
+               "-6 yrs",
+               "-7 yrs",
+               "-8 yrs",
+               "-9 yrs",
+               "-15 yrs")
 make.biomass.retro.mpd.plot(pr.b,
                             base.retro.models[[2]],
                             ylim = c(0, 100),
@@ -2122,6 +2134,17 @@ make.biomass.retro.mpd.plot(pr.b,
 \begin{figure}[H]
 \begin{center}
 <<cc.am2.retro.biomass, results='asis', echo=FALSE, fig.height=6.5>>=
+leg.names <- c("Base",
+               "-1 yr",
+               "-2 yrs",
+               "-3 yrs",
+               "-4 yrs",
+               "-5 yrs",
+               "-6 yrs",
+               "-7 yrs",
+               "-8 yrs",
+               "-9 yrs",
+               "-10 yrs")
 make.biomass.retro.mpd.plot(cc.b,
                             base.retro.models[[3]],
                             ylim = c(0, 90),
@@ -2203,6 +2226,17 @@ make.biomass.retro.mpd.plot(hg.am1,
 \begin{figure}[H]
 \begin{center}
 <<prd.am1.retro.biomass, results='asis', echo=FALSE, fig.height=6.5>>=
+leg.names <- c("Base",
+               "-1 yr",
+               "-2 yrs",
+               "-3 yrs",
+               "-4 yrs",
+               "-5 yrs",
+               "-6 yrs",
+               "-7 yrs",
+               "-8 yrs",
+               "-9 yrs",
+               "-15 yrs")
 make.biomass.retro.mpd.plot(pr.am1,
                             am1.retro.models[[2]],
                             ylim = c(0, 100),
@@ -2220,6 +2254,17 @@ make.biomass.retro.mpd.plot(pr.am1,
 \begin{figure}[H]
 \begin{center}
 <<cc.am1.retro.biomass, results='asis', echo=FALSE, fig.height=6.5>>=
+leg.names <- c("Base",
+               "-1 yr",
+               "-2 yrs",
+               "-3 yrs",
+               "-4 yrs",
+               "-5 yrs",
+               "-6 yrs",
+               "-7 yrs",
+               "-8 yrs",
+               "-9 yrs",
+               "-10 yrs")
 make.biomass.retro.mpd.plot(cc.am1,
                             am1.retro.models[[3]],
                             ylim = c(0, 90),
@@ -2300,6 +2345,17 @@ make.recr.retro.mpd.plot(hg.b,
 \begin{figure}[H]
 \begin{center}
 <<prd.am2.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
+leg.names <- c("Base",
+               "-1 yr",
+               "-2 yrs",
+               "-3 yrs",
+               "-4 yrs",
+               "-5 yrs",
+               "-6 yrs",
+               "-7 yrs",
+               "-8 yrs",
+               "-9 yrs",
+               "-15 yrs")
 make.recr.retro.mpd.plot(pr.b,
                          base.retro.models[[2]],
                          ylim = c(0, 2000),
@@ -2316,6 +2372,17 @@ make.recr.retro.mpd.plot(pr.b,
 \begin{figure}[H]
 \begin{center}
 <<cc.am2.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
+leg.names <- c("Base",
+               "-1 yr",
+               "-2 yrs",
+               "-3 yrs",
+               "-4 yrs",
+               "-5 yrs",
+               "-6 yrs",
+               "-7 yrs",
+               "-8 yrs",
+               "-9 yrs",
+               "-10 yrs")
 make.recr.retro.mpd.plot(cc.b,
                          base.retro.models[[3]],
                          ylim = c(0, 2000),
@@ -2382,6 +2449,17 @@ make.recr.retro.mpd.plot(hg.am1,
 \begin{figure}[H]
 \begin{center}
 <<prd.am1.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
+leg.names <- c("Base",
+               "-1 yr",
+               "-2 yrs",
+               "-3 yrs",
+               "-4 yrs",
+               "-5 yrs",
+               "-6 yrs",
+               "-7 yrs",
+               "-8 yrs",
+               "-9 yrs",
+               "-15 yrs")
 make.recr.retro.mpd.plot(pr.am1,
                          am1.retro.models[[2]],
                          ylim = c(0, 2000),
@@ -2398,6 +2476,17 @@ make.recr.retro.mpd.plot(pr.am1,
 \begin{figure}[H]
 \begin{center}
 <<cc.am1.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
+leg.names <- c("Base",
+               "-1 yr",
+               "-2 yrs",
+               "-3 yrs",
+               "-4 yrs",
+               "-5 yrs",
+               "-6 yrs",
+               "-7 yrs",
+               "-8 yrs",
+               "-9 yrs",
+               "-10 yrs")
 make.recr.retro.mpd.plot(cc.am1,
                          am1.retro.models[[3]],
                          ylim = c(0, 2000),
