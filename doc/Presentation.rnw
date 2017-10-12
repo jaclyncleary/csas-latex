@@ -171,6 +171,7 @@ Investigate comparisons between old and new model code using a bridging analysis
 
 % New slide  Things we did not complete
 \begin{frame}{Terms of Reference}
+Unable to include the following in this years assessment:
 \begin{itemize}
 \item Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.
 \end{itemize}
@@ -178,6 +179,7 @@ Investigate comparisons between old and new model code using a bridging analysis
 
 % New slide
 \begin{frame}{Context for the \Sexpr{max(yrRange)} assessment}
+Herring Renewal update 
 \end{frame}
 
 % New slide
@@ -684,7 +686,21 @@ make.decision.table(hg.b,
 
 \end{frame}
 
+% New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
+\begin{frame}{Decision table: Haida Gwaii AM1}
+<<hg.decision.table.am1, results='asis', echo=FALSE>>=
+dec.table.font.size <- 6
+dec.table.font.space <- 7
+cap <- paste0("Probabilistic decision table for Haida Gwaii, AM1 model.")
+make.decision.table(hg.am1,
+                    xcaption = cap,
+                    xlabel = "tab:hg-am1-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
 
+\end{frame}
 
 % New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
 \begin{frame}{Decision table: Prince Rupert District AM2}
