@@ -407,8 +407,9 @@ We further tested the sensivity of the V2 model estimates to:
 % New slide
 \begin{frame}{Natural mortality}
 \begin{itemize}
-\item Time-varying $M$ (TVM) improves the model
-\item TVM improves index fits for both AM1 and AM2
+\item Model outcomes were influenced by the method used to estimate $M$
+\item Method used to estimate $M$ does not appear to be confounded by choice of $q$ prior
+\item Time-varying $M$ appeared to provide a better fit to data, supporting it use as the base case
 \end{itemize}
 \end{frame}
 
@@ -514,7 +515,7 @@ Prior-posterior plots
 
 % New slide
 \begin{frame}{AM1 vs AM2}
-Figure 10A. Sensitivity to prior on MEAN q
+Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \centering
@@ -529,6 +530,7 @@ Figure 10A. Sensitivity to prior on MEAN q
 
 % New slide
 \begin{frame}{AM1 vs AM2}
+Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \centering
@@ -544,8 +546,8 @@ Figure 10A. Sensitivity to prior on MEAN q
 % New slide
 \begin{frame}
 \begin{itemize}
-\item Introduce Storyboard figures
-\item Introduce Production figures (include description of vertical lines)
+\item The following figures present posterior distributions characterizing: model fits to spawn survvey index, age-2 recruitment, instantanteous natural mortality, and spawning biomass reconstructions.
+\item Introduce production figures (include description of vertical lines)
 \end{itemize}
 \end{frame}
 
@@ -682,15 +684,142 @@ make.decision.table(hg.am1,
                     space.size = dec.table.font.space,
                     placement = "H")
 @
+\end{frame}
+
+% New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
+\begin{frame}{Decision table: Prince Rupert District AM2}
+<<prd.decision.table, results='asis', echo=FALSE>>=
+dec.table.font.size <- 6
+dec.table.font.space <- 7
+cap <- paste0("Probabilistic decision table for Prince Rupert District, AM2 model.")
+make.decision.table(pr.b,
+                    xcaption = cap,
+                    xlabel = "tab:prd-am2-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
 
 \end{frame}
+
+% New slide -- DOES NOT WORK
+\begin{frame}{Decision table: Prince Rupert District AM1}
+<<prd.decision.table.am1, results='asis', echo=FALSE>>=
+dec.table.font.size <- 6
+dec.table.font.space <- 7
+cap <- paste0("Probabilistic decision table for Prince Rupert District, AM1 model.")
+make.decision.table(pr.am1,
+                    xcaption = cap,
+                    xlabel = "tab:prd-am1-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+
+\end{frame}
+
+% New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
+\begin{frame}{Decision table: Central Coast AM2}
+<<cc.decision.table, results='asis', echo=FALSE>>=
+dec.table.font.size <- 6
+dec.table.font.space <- 7
+cap <- paste0("Probabilistic decision table for Central Coast, AM2 model.")
+make.decision.table(cc.b,
+                    xcaption = cap,
+                    xlabel = "tab:cc-am2-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+
+\end{frame}
+
+% New slide -- DOES NOT WORK
+\begin{frame}{Decision table: Central Coast AM1}
+<<cc.decision.table.am1, results='asis', echo=FALSE>>=
+dec.table.font.size <- 6
+dec.table.font.space <- 7
+cap <- paste0("Probabilistic decision table for Central Coast, AM1 model.")
+make.decision.table(cc.am1,
+                    xcaption = cap,
+                    xlabel = "tab:cc-am1-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+
+\end{frame}
+
+% New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
+\begin{frame}{Decision table: Strait of Georgia AM2}
+<<sog.decision.table, results='asis', echo=FALSE>>=
+dec.table.font.size <- 6
+dec.table.font.space <- 7
+cap <- paste0("Probabilistic decision table for Strait of Georgia, AM2 model.")
+make.decision.table(sog.b,
+                    xcaption = cap,
+                    xlabel = "tab:sog-am2-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+
+\end{frame}
+
+% New slide -- DOES NOT WORK
+\begin{frame}{Decision table: Strait of Georgia AM1}
+<<sog.decision.table.am1, results='asis', echo=FALSE>>=
+dec.table.font.size <- 6
+dec.table.font.space <- 7
+cap <- paste0("Probabilistic decision table for Strait of Georgia, AM1 model.")
+make.decision.table(sog.am1,
+                    xcaption = cap,
+                    xlabel = "tab:sog-am1-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+
+\end{frame}
+
+% New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
+\begin{frame}{Decision table: West Coast Vancouver Island AM2}
+<<wcvi.decision.table, results='asis', echo=FALSE>>=
+dec.table.font.size <- 6
+dec.table.font.space <- 7
+cap <- paste0("Probabilistic decision table for West Coast Vancouver Island, AM2 model.")
+make.decision.table(wcvi.b,
+                    xcaption = cap,
+                    xlabel = "tab:wcvi-am2-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+
+\end{frame}
+
+% New slide -- DOES NOT WORK
+\begin{frame}{Decision table: West Coast Vancouver Island AM1}
+<<wcvi.decision.table.am1, results='asis', echo=FALSE>>=
+dec.table.font.size <- 6
+dec.table.font.space <- 7
+cap <- paste0("Probabilistic decision table for West Coast Vancouver Island, AM1 model.")
+make.decision.table(wcvi.am1,
+                    xcaption = cap,
+                    xlabel = "tab:wcvi-am1-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+
+\end{frame}
+
 
 % New subsection: future research
 \subsection{Future research}
 
 % New slide
 \begin{frame}{Future research and data requirements}
-\pause
 \begin{enumerate}[<+->]
 \item Simulation-testing of management procedures
 \item SOK/SOB: quantify mortality and removed spawn
