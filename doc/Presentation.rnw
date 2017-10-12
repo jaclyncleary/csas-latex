@@ -272,7 +272,7 @@ DFO's decision-making framework incorporating the precautionary approach:
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}ProportionAgeWide.png}
 \end{frame}
 
-% New slide ADD IN EXAMPLE BUBBLE PLOTS FOR COMPARISON
+% New slide ADD IN EXAMPLE Seine BUBBLE PLOTS FOR COMPARISON
 \begin{frame}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}ProportionAgeWide.png}
@@ -499,7 +499,22 @@ Let's do a slide or two of AM1 vs AM2 - emphasizing the differences- this will n
 
 % New slide
 \begin{frame}{AM1 vs AM2}
-Figure 10A. Sensitivity to prior on MEAN q...
+Prior-posterior plots
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/HGAM1.png}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Figure31HGAM2.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+% New slide
+\begin{frame}{AM1 vs AM2}
+Figure 10A. Sensitivity to prior on MEAN q
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \centering
