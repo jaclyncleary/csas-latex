@@ -219,7 +219,7 @@ make.biomass.retro.mpd.plot <- function(base.model,
                                         offset = 0.1,
                                         show.bo.line = FALSE,
                                         ind.letter = NULL,
-                                        leg = NULL,
+                                        leg = TRUE,
                                         color.brew.class = "Paired",
                                         ...
                                         ){
@@ -261,6 +261,22 @@ make.biomass.retro.mpd.plot <- function(base.model,
 
   base.yrs <- base.model$mpd$syr:(base.model$mpd$nyr + 1)
   base.sbt <- base.model$mpd$sbt
+
+  cols <- colorRampPalette(c("red", "blue", "green"))(length(model.names))
+
+  if(leg){
+    layout(1:2, heights = c(1, 5))
+    par(mar = rep(0, 4))
+    plot(0, 0, type="n", ann=FALSE, axes=FALSE)
+    legend("center",
+           model.names,
+           bg = "transparent",
+           ncol = 6,
+           col = c(1, cols),
+           lty = c(1, rep(2, length(model.names) - 1)),
+           lwd = 2)
+    par(mar=c(5,4,0,2))
+  }
   plot(base.yrs,
        base.sbt,
        col = 1,
@@ -273,7 +289,6 @@ make.biomass.retro.mpd.plot <- function(base.model,
        ylab = "",
        type = "l",
        ...)
-  cols <- colorRampPalette(c("red", "blue", "green"))(length(model.names))
   lapply(1:length(yrs),
          function(x){
            lines(yrs[[x]],
@@ -302,15 +317,6 @@ make.biomass.retro.mpd.plot <- function(base.model,
 
   mtext("Year", 1, line = 3)
   mtext("Biomass (1000 mt)", 2, line = 3)
-
-  if(!is.null(model.names) & !is.null(leg)){
-    legend(leg,
-           model.names,
-           bg = "transparent",
-           col = c(1, cols),
-           lty = c(1, rep(2, length(model.names) - 1)),
-           lwd = 2)
-  }
 
   if(!is.null(ind.letter)){
     panel.letter(ind.letter)

@@ -693,7 +693,7 @@ make.biomass.depletion.table <- function(model,
                              latex.amp(),
                              latex.mcol(4,
                                         "c",
-                                        latex.bold("Depletion (sbt/sbo)")),
+                                        latex.bold("Depletion (SB\\subscr{t}/SB\\subscr{0})")),
                              latex.nline)
 
   size.string <- latex.size.str(font.size, space.size)
