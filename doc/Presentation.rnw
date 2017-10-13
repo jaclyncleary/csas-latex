@@ -531,8 +531,8 @@ We further tested the sensivity of the V2 model estimates to:
 \begin{columns}
 \begin{column}{0.4\textwidth}
 \bi
-\item Figure 57. Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and
-inputs (points) for the Haida Gwaii dive survey.
+\item Figure 57.
+Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and inputs (points) for the Haida Gwaii dive survey.
 \ei
 \end{column}
 \begin{column}{0.6\textwidth}
@@ -562,8 +562,8 @@ make.index.fit.plot(list(hg.am1.constm,
 \begin{columns}
 \begin{column}{0.4\textwidth}
 \bi
-\item Figure 61. Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and
-inputs (points) for the Central Coast dive survey.
+\item Figure 61.
+Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and inputs (points) for the Central Coast dive survey.
 \ei
 \end{column}
 \begin{column}{0.6\textwidth}
@@ -608,6 +608,7 @@ make.index.fit.plot(list(cc.am1.constm,
 
 % New slide
 \begin{frame}{Variance parameter sensitivities: SoG AM1}
+Table 44.
 \begin{itemize}
 \item Analyzed model sensitivity to the initial values of $\rho$ and $\kappa$ by varying them, while estimating all leading parameters. 
 \item Results showed that when both parameters are estimated by the model the initial values do not influence the model estimates.
@@ -631,10 +632,11 @@ Then segue to this sensitivity analysis with broadening the prior using larger s
 \end{frame}
 
 
-% New slide (Table 48)
+% New slide
 \begin{frame}{Prior probability on $q$: AM1}
 \begin{columns}
 \begin{column}{0.3\textwidth}
+Table 48.
 \bi
 \item Examined the potential effects of broadening the priors on $q$s by increasing the standard deviation of the distribution for AM1
 \item Results showed only minor changes in model estimates of $q$
@@ -663,10 +665,11 @@ make.catchability.parameters.table.q.sens(sens.models.6,
 \end{itemize}
 \end{frame}
 
-% New slide (Table 47)
+% New slide
 \begin{frame}{Maturity at age: SoG AM2}
 \begin{columns}
-\begin{column}{0.4\textwidth}
+\begin{column}{0.5\textwidth}
+Table 47.
 \bi
 \item Examined the impacts of setting the fixed maturity at age vector equal to the selectivity of the seine roe fishery.
 \item Parameter estimates showed only minor differences from the base case.
@@ -675,7 +678,7 @@ make.catchability.parameters.table.q.sens(sens.models.6,
 \item Continue to recommend non-use of MSY-based reference points
 \ei
 \end{column}
-\begin{column}{0.6\textwidth}
+\begin{column}{0.5\textwidth}
 \centering
 <<maturity.sens.AM2, results='asis', echo=FALSE>>=
 make.maturity.sens.table(maturity.sens,
@@ -711,7 +714,7 @@ The dotted red lines are the MPD estimates.
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \centering
-AM2
+AM2 (Figure 31.)
 <<hg.priors2>>=
 make.priors.posts.plot(hg.b, priors.only=FALSE)
 @
