@@ -746,15 +746,31 @@ Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.5\textwidth}
-\centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/ProductionAM2.png}
-\end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.8\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
 \end{column}
 \end{columns}
+\end{frame}
+
+% New slide
+\begin{frame}
+\begin{columns}
+\begin{column}{0.8\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/ProductionAM2.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+% New slide
+\begin{frame}
+Production analysis
+\begin{itemize}
+\item measures whether stock is replacing itself or not.
+\item equation (from LRP paper):
+\item why 0.30SB0...
+\end{itemize}
 \end{frame}
 
 % New subsection: Prince Rupert District
@@ -763,13 +779,19 @@ Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.5\textwidth}
-\centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}PRD/ProductionAM2.png}
-\end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.8\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+% New slide
+\begin{frame}
+\begin{columns}
+\begin{column}{0.8\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}PRD/ProductionAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -780,11 +802,7 @@ Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.5\textwidth}
-\centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CC/ProductionAM2.png}
-\end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.8\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
 \end{column}
@@ -797,13 +815,9 @@ Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.8\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SoG/ProductionAM2.png}
-\end{column}
-\begin{column}{0.5\textwidth}
-\centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -814,11 +828,7 @@ Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.5\textwidth}
-\centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WCVI/ProductionAM2.png}
-\end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.8\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
 \end{column}
@@ -829,9 +839,19 @@ Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 \subsection{Current status}
 
 % New slide
+%\begin{frame}
+%\centering
+%\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}/CurrentSSBWide.png}
+%\end{frame}
+
+% New slide WE WANT THIS WHOLE FIGURE????
 \begin{frame}
+\begin{columns}
+\begin{column}{0.8\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}/CurrentSSBWide.png}
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}/CurrentSSB.png}
+\end{column}
+\end{columns}
 \end{frame}
 
 % New slide
