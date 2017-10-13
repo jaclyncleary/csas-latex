@@ -215,13 +215,13 @@ DFO's decision-making framework incorporating the precautionary approach:
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \citet{kronlund2017}:
-\begin{itemize}
+\begin{itemize} 
 \item Recommend $\text{LRP} = 0.3\mli{SB}_0$
 \item Propose candidate USRs:
 \begin{enumerate}
 \item Long-term average spawning biomass, $\mli{SB}_\text{avg}$
 \item Long-term average spawning biomass during a productive period, $\mli{SB}_\text{avg-prod}$
-\item $2 \times \text{LRP}$ (i.e., $0.6\mli{SB}_0$)
+\item $2 \times \text{LRP}$ (i.e., $0.6\mli{SB}_0$) 
 \item $\mli{SB}_0$
 \end{enumerate}
 \item Reject MSY-based reference points (e.g., $\mli{SB}_\text{MSY}$): implausible
