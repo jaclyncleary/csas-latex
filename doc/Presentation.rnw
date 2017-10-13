@@ -1,12 +1,11 @@
 % Document class
 \documentclass[aspectratio=169]{beamer}  % 169, 1610, 149, 54, 43, or 32
 
-% Use the style file in the csas-style repository:
-% It provides some macros necessary for tables such as mlc (multi-line-cell)
-%% Allow newline breaks in a table cell = Multi-Line-Cell = mlc
-%%  syntax is \mlc{first line\\second line\\more if necessary..}
-%% Don't change the name of this, as it is embedded in R xtable code.
+% Multi-line cell (table column names)
 \newcommand{\mlc}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+% For subscripts in text mode (table column names)
+\newcommand{\subscr}[1]{$_{\text{#1}}$}
 
 % Load packages
 \usepackage{booktabs}
@@ -61,6 +60,9 @@
 
 % Decrease margins globally
 \setbeamersize{text margin left=1.5em, text margin right=1.5em}
+
+% Reduce space between table columns
+\setlength{\tabcolsep}{1pt}
 
 % Let it begin
 \begin{document}
@@ -469,33 +471,50 @@ make.index.fit.plot(list(hg.am1.constm,
 \end{columns}
 \end{frame}
 
-
-
 % New slide
-\begin{frame}{Variance parameters}
+\begin{frame}{Variance parameter sensitivities: SoG AM1}
 \begin{itemize}
 \item Analyzed model sensitivity to the initial values of $\rho$ and $\kappa$ by varying them, while estimating all leading parameters. 
 \item Results showed that when both parameters are estimated by the model the initial values do not influence the model estimates.
 \end{itemize}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Table44.png}
+<<variance.results.AM1, results='asis', echo=FALSE>>=
+make.variance.table(variance.results,
+                    which.model = 1,
+                    xcaption = NULL,
+                    xlabel = "tab:variance-results-AM1",
+                    font.size = 7,
+                    space.size = 1,
+                    placement = "H")
+@
 \end{frame}
 
-% New slide
-\begin{frame}{Prior probability on $q$}
+% New slide (Table 48)
+\begin{frame}{Prior probability on $q$: AM1}
 \begin{columns}
-\begin{column}{0.4\textwidth}
+\begin{column}{0.3\textwidth}
 \bi
 \item Examined the potential effects of broadening the priors on $q$s by increasing the standard deviation of the distribution for AM1
 \item Results showed only minor changes in model estimates of $q$
 \ei
 \end{column}
-\begin{column}{0.6\textwidth}
+\begin{column}{0.7\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Table48.png}
+<<q.params.q.sens.table, results='asis', echo=FALSE>>=
+make.catchability.parameters.table.q.sens(sens.models.6,
+                                          sens.models.7,
+                                          sens.models.8,
+                                          xcaption = NULL,
+                                          xlabel = "tab:q-params-q-sens",
+                                          font.size =  7,
+                                          space.size = 1,
+                                          placement = "H")
+@
 \end{column}
 \end{columns}
 \end{frame}
+
+
 
 % New slide
 \begin{frame}{Maturity at age}
