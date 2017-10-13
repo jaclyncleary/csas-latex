@@ -149,12 +149,12 @@ setwd( dir=".." )
 \begin{frame}{Terms of Reference}
 \begin{enumerate}[<+->]
 \item Present data and assessment model updates:
-\begin{itemize}
+\begin{enumerate}[(a)]
 \item Present modifications and updates to integrated statistical catch-age model equations and its AD Model Builder code.
 Investigate comparisons between old and new model code using a bridging analysis.
 \item Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.
 \item Present parameterization of maturity and fishery selectivity ogives and investigate interactions between these and other model-estimated parameters.
-\end{itemize}
+\end{enumerate}
 \item Assess the current status of Pacific Herring for the five major stocks using the integrated statistical catch-age model.
 \end{enumerate}
 \end{frame}
@@ -278,6 +278,12 @@ DFO's decision-making framework incorporating the precautionary approach:
 \begin{frame}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/HGbubbleplots.png}
+\end{frame}
+
+% New slide ADD IN EXAMPLE Seine BUBBLE PLOTS FOR COMPARISON
+\begin{frame}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/SOGbubbleplots.png}
 \end{frame}
 
 % New slide
