@@ -273,7 +273,7 @@ make.biomass.retro.mpd.plot <- function(base.model,
        ylab = "",
        type = "l",
        ...)
-  cols <- brewer.pal(length(model.names) - 1, color.brew.class)
+  cols <- colorRampPalette(c("red", "blue", "green"))(length(model.names))
   lapply(1:length(yrs),
          function(x){
            lines(yrs[[x]],

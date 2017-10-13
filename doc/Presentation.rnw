@@ -1,12 +1,11 @@
 % Document class
 \documentclass[aspectratio=169]{beamer}  % 169, 1610, 149, 54, 43, or 32
 
-% Use the style file in the csas-style repository:
-% It provides some macros necessary for tables such as mlc (multi-line-cell)
-%% Allow newline breaks in a table cell = Multi-Line-Cell = mlc
-%%  syntax is \mlc{first line\\second line\\more if necessary..}
-%% Don't change the name of this, as it is embedded in R xtable code.
+% Multi-line cell (table column names)
 \newcommand{\mlc}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+% For subscripts in text mode (table column names)
+\newcommand{\subscr}[1]{$_{\text{#1}}$}
 
 % Load packages
 \usepackage{booktabs}
@@ -61,6 +60,9 @@
 
 % Decrease margins globally
 \setbeamersize{text margin left=1.5em, text margin right=1.5em}
+
+% Reduce space between table columns
+\setlength{\tabcolsep}{1pt}
 
 % Let it begin
 \begin{document}
@@ -217,7 +219,7 @@ DFO's decision-making framework incorporating the precautionary approach:
 \begin{column}{0.5\textwidth}
 LRP
 \begin{itemize} 
-\item Incorporate LRP of $0.3\mli{SB}_0$ into advice \citet{kronlund2017}
+\item Incorporate LRP of $0.3\mli{SB}_0$ into advice \citep{kronlund2017}
 \end{itemize} 
 USR
 \begin{itemize} 
@@ -242,7 +244,7 @@ USR
 \begin{column}{0.5\textwidth}
 MSY-based reference points
 \begin{itemize}
-\item Kronlund et al. found MSY statistics were not plausible for Pacific Herring in BC
+\item \citet{kronlund2017} found MSY statistics were not plausible for Pacific Herring in BC
 \item Analysis here supports continued non-use of MSY-based reference points
 \end{itemize}
 
@@ -252,6 +254,7 @@ MSY-based reference points
 \end{column}
 \end{columns}
 \end{frame}
+
 % Show table of contents at each section
 \AtBeginSection[]{
 \begin{frame}<beamer>{Outline}
@@ -579,13 +582,21 @@ make.index.fit.plot(list(cc.am1.constm,
 \end{frame}
 
 % New slide
-\begin{frame}{Variance parameters}
+\begin{frame}{Variance parameter sensitivities: SoG AM1}
 \begin{itemize}
 \item Analyzed model sensitivity to the initial values of $\rho$ and $\kappa$ by varying them, while estimating all leading parameters. 
 \item Results showed that when both parameters are estimated by the model the initial values do not influence the model estimates.
 \end{itemize}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Table44.png}
+<<variance.results.AM1, results='asis', echo=FALSE>>=
+make.variance.table(variance.results,
+                    which.model = 1,
+                    xcaption = NULL,
+                    xlabel = "tab:variance-results-AM1",
+                    font.size = 7,
+                    space.size = 1,
+                    placement = "H")
+@
 \end{frame}
 
 % New slide
@@ -594,19 +605,28 @@ Explain sensitivity runs we did in the bridging analysis and outcome. Use figure
 Then segue to this sensitivity analysis with broadening the prior using larger sd
 \end{frame}
 
-% New slide
-\begin{frame}{Prior probability on $q$}
+
+% New slide (Table 48)
+\begin{frame}{Prior probability on $q$: AM1}
 \begin{columns}
-\begin{column}{0.4\textwidth}
+\begin{column}{0.3\textwidth}
 \bi
 \item Examined the potential effects of broadening the priors on $q$s by increasing the standard deviation of the distribution for AM1
 \item Results showed only minor changes in model estimates of $q$
-\item FIX TABLE
 \ei
 \end{column}
-\begin{column}{0.6\textwidth}
+\begin{column}{0.7\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Table48.png}
+<<q.params.q.sens.table, results='asis', echo=FALSE>>=
+make.catchability.parameters.table.q.sens(sens.models.6,
+                                          sens.models.7,
+                                          sens.models.8,
+                                          xcaption = NULL,
+                                          xlabel = "tab:q-params-q-sens",
+                                          font.size =  7,
+                                          space.size = 1,
+                                          placement = "H")
+@
 \end{column}
 \end{columns}
 \end{frame}
@@ -618,8 +638,8 @@ Then segue to this sensitivity analysis with broadening the prior using larger s
 \end{itemize}
 \end{frame}
 
-% New slide
-\begin{frame}{Maturity at age}
+% New slide (Table 47)
+\begin{frame}{Maturity at age: SoG AM2}
 \begin{columns}
 \begin{column}{0.4\textwidth}
 \bi
@@ -632,11 +652,19 @@ Then segue to this sensitivity analysis with broadening the prior using larger s
 \end{column}
 \begin{column}{0.6\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Table47.png}
+<<maturity.sens.AM2, results='asis', echo=FALSE>>=
+make.maturity.sens.table(maturity.sens,
+                         which.model = 2,
+                         end.yr = end.yr + 1,
+                         xcaption = NULL,
+                         xlabel = "tab:maturity-sens.am2",
+                         font.size = 8,
+                         space.size = 1,
+                         placement = "H")
+@
 \end{column}
 \end{columns}
 \end{frame}
-
 
 %%% New section: Results %%%
 \section[Results]{Summary of results}
@@ -828,166 +856,61 @@ Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 \begin{frame}{Projected biomass in \Sexpr{nextYr}}
 \end{frame}
 
-% New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
-\begin{frame}{Decision table: Haida Gwaii AM2}
-<<hg.decision.table, results='asis', echo=FALSE>>=
-dec.table.font.size <- 6
-dec.table.font.space <- 7
-cap <- paste0("Probabilistic decision table for Haida Gwaii, AM2 model.")
-make.decision.table(hg.b,
-                    xcaption = cap,
-                    xlabel = "tab:hg-am2-decision",
-                    font.size = dec.table.font.size,
-                    space.size = dec.table.font.space,
-                    placement = "H")
-@
-
-\end{frame}
-
-% New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
-\begin{frame}{Decision table: Haida Gwaii AM1}
-<<hg.decision.table.am1, results='asis', echo=FALSE>>=
-dec.table.font.size <- 6
-dec.table.font.space <- 7
-cap <- paste0("Probabilistic decision table for Haida Gwaii, AM1 model.")
-make.decision.table(hg.am1,
-                    xcaption = cap,
-                    xlabel = "tab:hg-am1-decision",
-                    font.size = dec.table.font.size,
-                    space.size = dec.table.font.space,
-                    placement = "H")
-@
-
-\end{frame}
-
-% New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
+% New slide
 \begin{frame}{Decision table: Prince Rupert District AM2}
 <<prd.decision.table, results='asis', echo=FALSE>>=
 dec.table.font.size <- 6
 dec.table.font.space <- 7
-cap <- paste0("Probabilistic decision table for Prince Rupert District, AM2 model.")
 make.decision.table(pr.b,
-                    xcaption = cap,
+                    xcaption = NULL,
                     xlabel = "tab:prd-am2-decision",
                     font.size = dec.table.font.size,
                     space.size = dec.table.font.space,
                     placement = "H")
 @
-
 \end{frame}
 
-% New slide -- DOES NOT WORK
-\begin{frame}{Decision table: Prince Rupert District AM1}
-<<prd.decision.table.am1, results='asis', echo=FALSE>>=
-dec.table.font.size <- 6
-dec.table.font.space <- 7
-cap <- paste0("Probabilistic decision table for Prince Rupert District, AM1 model.")
-make.decision.table(pr.am1,
-                    xcaption = cap,
-                    xlabel = "tab:prd-am1-decision",
-                    font.size = dec.table.font.size,
-                    space.size = dec.table.font.space,
-                    placement = "H")
-@
-
-\end{frame}
-
-% New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
+% New slide
 \begin{frame}{Decision table: Central Coast AM2}
 <<cc.decision.table, results='asis', echo=FALSE>>=
 dec.table.font.size <- 6
 dec.table.font.space <- 7
-cap <- paste0("Probabilistic decision table for Central Coast, AM2 model.")
 make.decision.table(cc.b,
-                    xcaption = cap,
+                    xcaption = NULL,
                     xlabel = "tab:cc-am2-decision",
                     font.size = dec.table.font.size,
                     space.size = dec.table.font.space,
                     placement = "H")
 @
-
 \end{frame}
 
-% New slide -- DOES NOT WORK
-\begin{frame}{Decision table: Central Coast AM1}
-<<cc.decision.table.am1, results='asis', echo=FALSE>>=
-dec.table.font.size <- 6
-dec.table.font.space <- 7
-cap <- paste0("Probabilistic decision table for Central Coast, AM1 model.")
-make.decision.table(cc.am1,
-                    xcaption = cap,
-                    xlabel = "tab:cc-am1-decision",
-                    font.size = dec.table.font.size,
-                    space.size = dec.table.font.space,
-                    placement = "H")
-@
-
-\end{frame}
-
-% New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
+% New slide
 \begin{frame}{Decision table: Strait of Georgia AM2}
 <<sog.decision.table, results='asis', echo=FALSE>>=
 dec.table.font.size <- 6
 dec.table.font.space <- 7
-cap <- paste0("Probabilistic decision table for Strait of Georgia, AM2 model.")
 make.decision.table(sog.b,
-                    xcaption = cap,
+                    xcaption = NULL,
                     xlabel = "tab:sog-am2-decision",
                     font.size = dec.table.font.size,
                     space.size = dec.table.font.space,
                     placement = "H")
 @
-
 \end{frame}
 
-% New slide -- DOES NOT WORK
-\begin{frame}{Decision table: Strait of Georgia AM1}
-<<sog.decision.table.am1, results='asis', echo=FALSE>>=
-dec.table.font.size <- 6
-dec.table.font.space <- 7
-cap <- paste0("Probabilistic decision table for Strait of Georgia, AM1 model.")
-make.decision.table(sog.am1,
-                    xcaption = cap,
-                    xlabel = "tab:sog-am1-decision",
-                    font.size = dec.table.font.size,
-                    space.size = dec.table.font.space,
-                    placement = "H")
-@
-
-\end{frame}
-
-% New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
+% New slide
 \begin{frame}{Decision table: West Coast Vancouver Island AM2}
 <<wcvi.decision.table, results='asis', echo=FALSE>>=
 dec.table.font.size <- 6
 dec.table.font.space <- 7
-cap <- paste0("Probabilistic decision table for West Coast Vancouver Island, AM2 model.")
 make.decision.table(wcvi.b,
-                    xcaption = cap,
+                    xcaption = NULL,
                     xlabel = "tab:wcvi-am2-decision",
                     font.size = dec.table.font.size,
                     space.size = dec.table.font.space,
                     placement = "H")
 @
-
 \end{frame}
-
-% New slide -- DOES NOT WORK
-\begin{frame}{Decision table: West Coast Vancouver Island AM1}
-<<wcvi.decision.table.am1, results='asis', echo=FALSE>>=
-dec.table.font.size <- 6
-dec.table.font.space <- 7
-cap <- paste0("Probabilistic decision table for West Coast Vancouver Island, AM1 model.")
-make.decision.table(wcvi.am1,
-                    xcaption = cap,
-                    xlabel = "tab:wcvi-am1-decision",
-                    font.size = dec.table.font.size,
-                    space.size = dec.table.font.space,
-                    placement = "H")
-@
-
-\end{frame}
-
 
 % New subsection: future research
 \subsection{Future research}
@@ -1002,13 +925,115 @@ make.decision.table(wcvi.am1,
 \end{enumerate}
 \end{frame}
 
-% %%% New section: References %%%
-% \section{References}
+% New subsection: References %%%
+\subsection{References}
 
 % New slide: References
 \begin{frame}[allowframebreaks]%{References}
 \bibliographystyle{res-doc}
 \bibliography{all}
+\end{frame}
+
+%%% Start the appendix (bonus slides) %%%
+\appendix
+
+% New slide
+\begin{frame}{Decision table: Haida Gwaii AM2}
+<<hg.decision.table, results='asis', echo=FALSE>>=
+dec.table.font.size <- 6
+dec.table.font.space <- 7
+make.decision.table(hg.b,
+                    xcaption = NULL,
+                    xlabel = "tab:hg-am2-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+\end{frame}
+
+% New slide
+\begin{frame}{Decision table: Haida Gwaii AM1}
+<<hg.decision.table.am1, results='asis', echo=FALSE>>=
+dec.table.font.size <- 6
+dec.table.font.space <- 7
+make.decision.table(hg.am1,
+                    xcaption = NULL,
+                    xlabel = "tab:hg-am1-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+\end{frame}
+
+% New slide
+\begin{frame}{Decision table: Prince Rupert District AM1}
+<<prd.decision.table.am1, results='asis', echo=FALSE>>=
+dec.table.font.size <- 6
+dec.table.font.space <- 7
+make.decision.table(pr.am1,
+                    xcaption = NULL,
+                    xlabel = "tab:prd-am1-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+\end{frame}
+
+% New slide
+\begin{frame}{Decision table: Central Coast AM1}
+<<cc.decision.table.am1, results='asis', echo=FALSE>>=
+dec.table.font.size <- 6
+dec.table.font.space <- 7
+make.decision.table(cc.am1,
+                    xcaption = NULL,
+                    xlabel = "tab:cc-am1-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+\end{frame}
+
+% New slide
+\begin{frame}{Decision table: Strait of Georgia AM1}
+<<sog.decision.table.am1, results='asis', echo=FALSE>>=
+dec.table.font.size <- 6
+dec.table.font.space <- 7
+make.decision.table(sog.am1,
+                    xcaption = NULL,
+                    xlabel = "tab:sog-am1-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+\end{frame}
+
+% New slide
+\begin{frame}{Decision table: West Coast Vancouver Island AM1}
+<<wcvi.decision.table.am1, results='asis', echo=FALSE>>=
+dec.table.font.size <- 6
+dec.table.font.space <- 7
+make.decision.table(wcvi.am1,
+                    xcaption = NULL,
+                    xlabel = "tab:wcvi-am1-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+\end{frame}
+
+% New slide
+\begin{frame}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item Since \Sexpr{intendUYrs}, the intended harvest rate $U$ has been \Sexpr{intendU*100}\%
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HarvestRate.png}
+\end{column}
+\end{columns}
 \end{frame}
 
 % Fin

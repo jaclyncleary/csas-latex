@@ -218,8 +218,9 @@ create.rdata.file.retro <- function(model.dir,
   ## which.stock and which.model are passed to load.iscam.files
 
   if(!dir.exists(model.dir)){
-    stop("Error - the directory ", model.dir,
-         " does not exist. Fix the problem and try again.\n")
+    warning("Warning - the directory ", model.dir,
+            " does not exist. Skipping...\n")
+    return(NULL)
   }
   ## The RData file will have the same name as the directory it is in
   ## If the model.dir has a slash in it, remove the slash and
@@ -275,6 +276,9 @@ load.models <- function(models.dir,
 
   out <- lapply(1:length(rdata.files),
                 function(x){
+                  if(!file.exists(rdata.files[[x]])){
+                    return(invisible())
+                  }
                   load(rdata.files[[x]])
                   if(class(model) != model.class){
                     model <- list(model)
