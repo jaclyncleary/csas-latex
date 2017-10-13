@@ -927,9 +927,18 @@ make.decision.table(wcvi.am1,
 \end{frame}
 
 % New slide
-\begin{frame}{Harvest rate}
+\begin{frame}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item Since \Sexpr{intendUYrs}, the intended harvest rate $U$ has been \Sexpr{intendU*100}\%
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HarvestRate.png}
+\end{column}
+\end{columns}
 \end{frame}
 
 % Fin
