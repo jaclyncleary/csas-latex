@@ -69,14 +69,14 @@ make.priors.posts.plot <- function(model,
                       mle <- NULL
                       p.name <- post.names[x]
                       if(p.name == "log_m1" | p.name == "log_m"){
-                        mle <- mpd$m[1]
+                        mle <- log(mpd$m[1])
                       }else if(p.name == "log_m2"){
-                        mle <- mpd$m[2]
+                        mle <- log(mpd$m[2])
                       }else if(p.name == "h"){
                         mle <- mpd$steepness
                       }else if(length(grep(q.pattern, p.name)) > 0){
                         num <- as.numeric(sub(q.pattern, "\\1", p.name))
-                        mle <- mpd$q[num]
+                        mle <- log(mpd$q[num])
                       }else{
                         mle <- as.numeric(mpd[post.names[x]])
                       }
