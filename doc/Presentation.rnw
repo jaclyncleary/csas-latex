@@ -288,15 +288,24 @@ DFO's decision-making framework incorporating the precautionary approach:
 Estimated proportion-at-age versus time for Gear 2 (roe seine), for Haida Gwaii.
 The area of each circle reflects the proportion-at-age, each column sums to 1, zeros are not shown.
 Plus group is age-10.
-<<hg.ageest.gear, out.width='80%', fig.align='center'>>=
+<<hg.ageest.gear2, out.width='80%', fig.align='center'>>=
 make.age.comp.estimates.plot(hg.b, 2)
 @
 \end{frame}
 
-% New slide ADD IN EXAMPLE Seine BUBBLE PLOTS FOR COMPARISON
+% % New slide ADD IN EXAMPLE Seine BUBBLE PLOTS FOR COMPARISON
+% \begin{frame}
+% \centering
+% \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/SOGbubbleplots.png}
+% \end{frame}
+
 \begin{frame}
-\centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/SOGbubbleplots.png}
+Estimated proportion-at-age versus time for Gear 2 (roe seine), for the Strait of Georgia.
+The area of each circle reflects the proportion-at-age, each column sums to 1, zeros are not shown.
+Plus group is age-10.}
+<<sog.ageest.gear2, out.width='80%', fig.align='center'>>=
+make.age.comp.estimates.plot(sog.b, 2)
+@
 \end{frame}
 
 % New slide
