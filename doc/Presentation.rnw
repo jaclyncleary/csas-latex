@@ -661,7 +661,7 @@ make.catchability.parameters.table.q.sens(sens.models.6,
 % New slide
 \begin{frame}{Maturity at age}
 \begin{itemize}
-\item Background info on why this sensitivity run (Kronlund et al)
+\item Background info on why this sensitivity run \citep{kronlund2017}
 \end{itemize}
 \end{frame}
 
