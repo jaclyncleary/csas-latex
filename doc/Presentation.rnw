@@ -171,15 +171,13 @@ Investigate comparisons between old and new model code using a bridging analysis
 
 % New slide  Things we did not complete
 \begin{frame}{Terms of Reference}
-\begin{enumerate}
-\item (b) Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.
-\end{enumerate}
+1(b) Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.
 \begin{itemize}
 \item SOK fishery based on removal of eggs on kelp (not whole herring)
 \item On-going challenge to include SOK data (ie. fitting catch-age model to sporatic data)
 \item Steps to date:
-\item Data are included in Appendix B
   \begin{itemize}
+  \item Data are included in Appendix B
   \item Updates to survey index show: 
         A2W... A27...
  \end{itemize}       
