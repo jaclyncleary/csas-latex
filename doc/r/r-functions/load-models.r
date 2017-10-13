@@ -1523,14 +1523,14 @@ calc.probabilities <- function(model,
                        latex.mlc(c(paste0("P(SB_{",
                                           e.yr.1,
                                           "} <"),
-                                   f(fc[which.stock] * 1000),
-                                   ")"),
+                                   paste0(f(fc[which.stock] * 1000),
+                                          ")")),
                                  math.bold = TRUE),
                        latex.mlc(c(paste0("Med(SB_{",
                                           e.yr.1,
                                           "} /"),
-                                   f(fc[which.stock] * 1000),
-                                   ")"),
+                                   paste0(f(fc[which.stock] * 1000),
+                                          ")")),
                                  math.bold = TRUE))
       }
     }
