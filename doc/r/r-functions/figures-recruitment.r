@@ -108,7 +108,7 @@ make.recr.retro.mpd.plot <- function(base.model,
                                      ylim,
                                      offset = 0.1,
                                      ind.letter = NULL,
-                                     leg = NULL,
+                                     leg = TRUE,
                                      color.brew.class = "Paired",
                                      ...
                                      ){
@@ -148,6 +148,22 @@ make.recr.retro.mpd.plot <- function(base.model,
   base.yrs <- (base.model$mpd$syr + 2):base.model$mpd$nyr
   base.rt <- base.model$mpd$rt
 
+  cols <- colorRampPalette(c("red", "blue", "green"))(length(model.names))
+
+  if(leg){
+    layout(1:2, heights = c(1, 5))
+    par(mar = rep(0, 4))
+    plot(0, 0, type="n", ann=FALSE, axes=FALSE)
+    legend("center",
+           model.names,
+           bg = "transparent",
+           ncol = 6,
+           col = c(1, cols),
+           lty = c(1, rep(2, length(model.names) - 1)),
+           lwd = 2)
+    par(mar=c(5,4,0,2))
+  }
+
   plot(base.yrs,
        base.rt,
        col = 1,
@@ -160,7 +176,7 @@ make.recr.retro.mpd.plot <- function(base.model,
        ylab = "",
        type = "l",
        ...)
-  cols <- brewer.pal(length(model.names) - 1, color.brew.class)
+
   lapply(1:length(yrs),
          function(x){
            lines(yrs[[x]],
@@ -177,15 +193,6 @@ make.recr.retro.mpd.plot <- function(base.model,
 
   mtext("Year", 1, line = 3)
   mtext("Recruitment (millions)", 2, line = 3)
-
-  if(!is.null(model.names) & !is.null(leg)){
-    legend(leg,
-           model.names,
-           bg = "transparent",
-           col = c(1, cols),
-           lty = c(1, rep(2, length(model.names) - 1)),
-           lwd = 2)
-  }
 
   if(!is.null(ind.letter)){
     panel.letter(ind.letter)

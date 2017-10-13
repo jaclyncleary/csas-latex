@@ -2090,10 +2090,9 @@ leg.names <- c("Base",
                "-10 yrs")
 make.biomass.retro.mpd.plot(hg.b,
                             base.retro.models[[1]],
-                            ylim = c(0, 90),
+                            ylim = c(0, 70),
                             show.bo.line = TRUE,
-                            model.names = leg.names,
-                            leg = "topright")
+                            model.names = leg.names)
 @
 \end{center}
 \caption{Retrospective spawning biomass for the
@@ -2126,8 +2125,7 @@ make.biomass.retro.mpd.plot(pr.b,
                             base.retro.models[[2]],
                             ylim = c(0, 100),
                             show.bo.line = TRUE,
-                            model.names = leg.names,
-                            leg = "topright")
+                            model.names = leg.names)
 @
 \end{center}
 \caption{Retrospective spawning biomass for the
@@ -2152,10 +2150,9 @@ leg.names <- c("Base",
                "-10 yrs")
 make.biomass.retro.mpd.plot(cc.b,
                             base.retro.models[[3]],
-                            ylim = c(0, 90),
+                            ylim = c(0, 80),
                             show.bo.line = TRUE,
-                            model.names = leg.names,
-                            leg = "topleft")
+                            model.names = leg.names)
 @
 \end{center}
 \caption{Retrospective spawning biomass for the
@@ -2169,10 +2166,9 @@ make.biomass.retro.mpd.plot(cc.b,
 <<sog.am2.retro.biomass, results='asis', echo=FALSE, fig.height=6.5>>=
 make.biomass.retro.mpd.plot(sog.b,
                             base.retro.models[[4]],
-                            ylim = c(0, 350),
+                            ylim = c(0, 200),
                             show.bo.line = TRUE,
-                            model.names = leg.names,
-                            leg = "topleft")
+                            model.names = leg.names)
 @
 \end{center}
 \caption{Retrospective spawning biomass for the
@@ -2188,8 +2184,7 @@ make.biomass.retro.mpd.plot(wcvi.b,
                             base.retro.models[[5]],
                             ylim = c(0, 100),
                             show.bo.line = TRUE,
-                            model.names = leg.names,
-                            leg = "topright")
+                            model.names = leg.names)
 @
 \end{center}
 \caption{Retrospective spawning biomass for the
@@ -2218,8 +2213,7 @@ make.biomass.retro.mpd.plot(hg.am1,
                             am1.retro.models[[1]],
                             ylim = c(0, 90),
                             show.bo.line = TRUE,
-                            model.names = leg.names,
-                            leg = "topright")
+                            model.names = leg.names)
 @
 \end{center}
 \caption{Retrospective spawning biomass for the
@@ -2251,8 +2245,7 @@ make.biomass.retro.mpd.plot(pr.am1,
                             am1.retro.models[[2]],
                             ylim = c(0, 100),
                             show.bo.line = TRUE,
-                            model.names = leg.names,
-                            leg = "topright")
+                            model.names = leg.names)
 @
 \end{center}
 \caption{Retrospective spawning biomass for the
@@ -2279,8 +2272,7 @@ make.biomass.retro.mpd.plot(cc.am1,
                             am1.retro.models[[3]],
                             ylim = c(0, 90),
                             show.bo.line = TRUE,
-                            model.names = leg.names,
-                            leg = "topleft")
+                            model.names = leg.names)
 @
 \end{center}
 \caption{Retrospective spawning biomass for the
@@ -2294,10 +2286,9 @@ make.biomass.retro.mpd.plot(cc.am1,
 <<sog.am1.retro.biomass, results='asis', echo=FALSE, fig.height=6.5>>=
 make.biomass.retro.mpd.plot(sog.am1,
                             am1.retro.models[[4]],
-                            ylim = c(0, 350),
+                            ylim = c(0, 250),
                             show.bo.line = TRUE,
-                            model.names = leg.names,
-                            leg = "topleft")
+                            model.names = leg.names)
 @
 \end{center}
 \caption{Retrospective spawning biomass for the
@@ -2313,8 +2304,7 @@ make.biomass.retro.mpd.plot(wcvi.am1,
                             am1.retro.models[[5]],
                             ylim = c(0, 100),
                             show.bo.line = TRUE,
-                            model.names = leg.names,
-                            leg = "topright")
+                            model.names = leg.names)
 @
 \end{center}
 \caption{Retrospective spawning biomass for the
@@ -2341,9 +2331,8 @@ leg.names <- c("Base",
                "-10 yrs")
 make.recr.retro.mpd.plot(hg.b,
                          base.retro.models[[1]],
-                         ylim = c(0, 2000),
-                         model.names = leg.names,
-                         leg = "topleft")
+                         ylim = c(0, 1500),
+                         model.names = leg.names)
 @
 \end{center}
 \caption{Retrospective recruitment for the
@@ -2373,9 +2362,8 @@ leg.names <- c("Base",
                "-15 yrs")
 make.recr.retro.mpd.plot(pr.b,
                          base.retro.models[[2]],
-                         ylim = c(0, 2000),
-                         model.names = leg.names,
-                         leg = "topright")
+                         ylim = c(0, 1500),
+                         model.names = leg.names)
 @
 \end{center}
 \caption{Retrospective recruitment for the
@@ -2400,9 +2388,8 @@ leg.names <- c("Base",
                "-10 yrs")
 make.recr.retro.mpd.plot(cc.b,
                          base.retro.models[[3]],
-                         ylim = c(0, 2000),
-                         model.names = leg.names,
-                         leg = "topleft")
+                         ylim = c(0, 1600),
+                         model.names = leg.names)
 @
 \end{center}
 \caption{Retrospective recruitment for the
@@ -2416,9 +2403,8 @@ make.recr.retro.mpd.plot(cc.b,
 <<sog.am2.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
 make.recr.retro.mpd.plot(sog.b,
                          base.retro.models[[4]],
-                         ylim = c(0, 6000),
-                         model.names = leg.names,
-                         leg = "topleft")
+                         ylim = c(0, 3000),
+                         model.names = leg.names)
 @
 \end{center}
 \caption{Retrospective recruitment for the
@@ -2432,9 +2418,8 @@ make.recr.retro.mpd.plot(sog.b,
 <<wcvi.am2.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
 make.recr.retro.mpd.plot(wcvi.b,
                          base.retro.models[[5]],
-                         ylim = c(0, 2000),
-                         model.names = leg.names,
-                         leg = "topright")
+                         ylim = c(0, 1600),
+                         model.names = leg.names)
 @
 \end{center}
 \caption{Retrospective recruitment for the
@@ -2450,9 +2435,8 @@ make.recr.retro.mpd.plot(wcvi.b,
 <<hg.am1.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
 make.recr.retro.mpd.plot(hg.am1,
                          am1.retro.models[[1]],
-                         ylim = c(0, 2000),
-                         model.names = leg.names,
-                         leg = "topright")
+                         ylim = c(0, 1800),
+                         model.names = leg.names)
 @
 \end{center}
 \caption{Retrospective recruitment for the
@@ -2482,9 +2466,8 @@ leg.names <- c("Base",
                "-15 yrs")
 make.recr.retro.mpd.plot(pr.am1,
                          am1.retro.models[[2]],
-                         ylim = c(0, 2000),
-                         model.names = leg.names,
-                         leg = "topright")
+                         ylim = c(0, 2200),
+                         model.names = leg.names)
 @
 \end{center}
 \caption{Retrospective recruitment for the
@@ -2509,9 +2492,8 @@ leg.names <- c("Base",
                "-10 yrs")
 make.recr.retro.mpd.plot(cc.am1,
                          am1.retro.models[[3]],
-                         ylim = c(0, 2000),
-                         model.names = leg.names,
-                         leg = "topleft")
+                         ylim = c(0, 1800),
+                         model.names = leg.names)
 @
 \end{center}
 \caption{Retrospective recruitment for the
@@ -2526,8 +2508,7 @@ make.recr.retro.mpd.plot(cc.am1,
 make.recr.retro.mpd.plot(sog.am1,
                          am1.retro.models[[4]],
                          ylim = c(0, 6000),
-                         model.names = leg.names,
-                         leg = "topleft")
+                         model.names = leg.names)
 @
 \end{center}
 \caption{Retrospective recruitment for the
@@ -2541,9 +2522,8 @@ make.recr.retro.mpd.plot(sog.am1,
 <<wcvi.am1.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
 make.recr.retro.mpd.plot(wcvi.am1,
                          am1.retro.models[[5]],
-                         ylim = c(0, 2000),
-                         model.names = leg.names,
-                         leg = "topright")
+                         ylim = c(0, 2200),
+                         model.names = leg.names)
 @
 \end{center}
 \caption{Retrospective recruitment for the
