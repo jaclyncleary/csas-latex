@@ -219,7 +219,7 @@ DFO's decision-making framework incorporating the precautionary approach:
 \begin{column}{0.5\textwidth}
 LRP
 \begin{itemize} 
-\item Incorporate LRP of $0.3\mli{SB}_0$ into advice \citet{kronlund2017}
+\item Incorporate LRP of $0.3\mli{SB}_0$ into advice \citep{kronlund2017}
 \end{itemize} 
 USR
 \begin{itemize} 
@@ -244,7 +244,7 @@ USR
 \begin{column}{0.5\textwidth}
 MSY-based reference points
 \begin{itemize}
-\item Kronlund et al. found MSY statistics were not plausible for Pacific Herring in BC
+\item \citet{kronlund2017} found MSY statistics were not plausible for Pacific Herring in BC
 \item Analysis here supports continued non-use of MSY-based reference points
 \end{itemize}
 
@@ -254,6 +254,7 @@ MSY-based reference points
 \end{column}
 \end{columns}
 \end{frame}
+
 % Show table of contents at each section
 \AtBeginSection[]{
 \begin{frame}<beamer>{Outline}
