@@ -183,7 +183,7 @@ Investigate comparisons between old and new model code using a bridging analysis
   \item Data are included in Appendix B
   \item Updates to survey index show: 
         A2W... A27...
-  % \item Tech Report in progress (J. Schweigert)
+  % \item SOK/SOB Technical Report in progress (J. Schweigert)
  \end{itemize}       
 \end{itemize}
 \end{frame}
@@ -293,7 +293,8 @@ MSY-based reference points
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.4\textwidth}
+\begin{column}{0.3\textwidth}
+Figure 3.
 \begin{itemize} 
 \item Catch data used in assessment:
 \begin{itemize}
@@ -304,7 +305,7 @@ MSY-based reference points
 \item SOK catch currently not used in assessment
 \end{itemize} 
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.7\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CatchWide.png}
 \end{column}
@@ -316,13 +317,20 @@ MSY-based reference points
 
 % New slide
 \begin{frame}
+\begin{columns}
+\begin{column}{0.2\textwidth}
+Figure 5.
+\end{column}
+\begin{column}{0.8\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}ProportionAgeWide.png}
+\end{column}
+\end{columns}
 \end{frame}
 
 % New slide
 \begin{frame}
-Estimated proportion-at-age versus time for Gear 2 (roe seine), for Haida Gwaii.
+Figure 102. Estimated proportion-at-age versus time for Gear 2 (roe seine), for Haida Gwaii.
 The area of each circle reflects the proportion-at-age, each column sums to 1, zeros are not shown.
 Plus group is age-10.
 <<hg.ageest.gear2, out.width='80%', fig.align='center'>>=
@@ -332,7 +340,7 @@ make.age.comp.estimates.plot(hg.b, 2)
 
 % New slide
 \begin{frame}
-Estimated proportion-at-age versus time for Gear 2 (roe seine), for the Strait of Georgia.
+Figure 111. Estimated proportion-at-age versus time for Gear 2 (roe seine), for the Strait of Georgia.
 The area of each circle reflects the proportion-at-age, each column sums to 1, zeros are not shown.
 Plus group is age-10.
 <<sog.ageest.gear2, out.width='80%', fig.align='center'>>=
@@ -342,8 +350,15 @@ make.age.comp.estimates.plot(sog.b, 2)
 
 % New slide
 \begin{frame}
+\begin{columns}
+\begin{column}{0.2\textwidth}
+Figure 4.
+\end{column}
+\begin{column}{0.8\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WeightAgeWide.png}
+\end{column}
+\end{columns}
 \end{frame}
 
 % New subsection: abundance
@@ -351,8 +366,15 @@ make.age.comp.estimates.plot(sog.b, 2)
 
 % New slide
 \begin{frame}
+\begin{columns}
+\begin{column}{0.2\textwidth}
+Figure 7.
+\end{column}
+\begin{column}{0.8\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SpawnIndexWide.png}
+\end{column}
+\end{columns}
 \end{frame}
 
 %%% New section: Stock assessment modeling %%%
