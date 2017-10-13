@@ -149,12 +149,12 @@ setwd( dir=".." )
 \begin{frame}{Terms of Reference}
 \begin{enumerate}[<+->]
 \item Present data and assessment model updates:
-\begin{itemize}
+\begin{enumerate}[(a)]
 \item Present modifications and updates to integrated statistical catch-age model equations and its AD Model Builder code.
 Investigate comparisons between old and new model code using a bridging analysis.
 \item Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.
 \item Present parameterization of maturity and fishery selectivity ogives and investigate interactions between these and other model-estimated parameters.
-\end{itemize}
+\end{enumerate}
 \item Assess the current status of Pacific Herring for the five major stocks using the integrated statistical catch-age model.
 \end{enumerate}
 \end{frame}
@@ -171,9 +171,18 @@ Investigate comparisons between old and new model code using a bridging analysis
 
 % New slide  Things we did not complete
 \begin{frame}{Terms of Reference}
-Unable to include the following in this years assessment:
+\begin{enumerate}
+\item (b) Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.
+\end{enumerate}
 \begin{itemize}
-\item Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.
+\item SOK fishery based on removal of eggs on kelp (not whole herring)
+\item On-going challenge to include SOK data (ie. fitting catch-age model to sporatic data)
+\item Steps to date:
+\item Data are included in Appendix B
+  \begin{itemize}
+  \item Updates to survey index show: 
+        A2W... A27...
+ \end{itemize}       
 \end{itemize}
 \end{frame}
 
@@ -284,6 +293,12 @@ make.age.comp.estimates.plot(hg.b, 2)
 @
 \end{frame}
 
+% New slide ADD IN EXAMPLE Seine BUBBLE PLOTS FOR COMPARISON
+\begin{frame}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/SOGbubbleplots.png}
+\end{frame}
+
 % New slide
 \begin{frame}
 \centering
@@ -306,7 +321,7 @@ make.age.comp.estimates.plot(hg.b, 2)
 \subsection{Bridging analysis}
 
 % New slide
-\begin{frame}
+\begin{frame}{Modeling approach}
 \begin{itemize}
 \item We updated to a more flexible and computationally efficient platform of the integrated combined-sex statistical catch-at-age model (ISCAM) currently in use for other stock assessments within DFO.
 \item A bridging analysis was used to identify any inconsistancies in the estimation methods used in the new version (V2) compared to the 2016 version (V0).
