@@ -149,12 +149,12 @@ setwd( dir=".." )
 \begin{frame}{Terms of Reference}
 \begin{enumerate}[<+->]
 \item Present data and assessment model updates:
-\begin{enumerate}
+\begin{itemize}
 \item Present modifications and updates to integrated statistical catch-age model equations and its AD Model Builder code.
 Investigate comparisons between old and new model code using a bridging analysis.
-\item \textcolor{gray}{Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.}
+\item Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.
 \item Present parameterization of maturity and fishery selectivity ogives and investigate interactions between these and other model-estimated parameters.
-\end{enumerate}
+\end{itemize}
 \item Assess the current status of Pacific Herring for the five major stocks using the integrated statistical catch-age model.
 \end{enumerate}
 \end{frame}
@@ -164,13 +164,14 @@ Investigate comparisons between old and new model code using a bridging analysis
 \begin{enumerate}[<+->]
 \setcounter{enumi}{2}
 \item Present trends in Pacific Herring biomass, depletion, and recruitment for each major stock; including trends in biomass for each major stock relative to the LRP.
-\item \textcolor{gray}{For the minor stock areas, present stock status updates using available spawn survey data and biological samples.}
+\item For the minor stock areas, present stock status updates using available spawn survey data and biological samples.
 \item Evaluate the consequences (including potential risk of exceeding harvest rates prescribed by both modelling approaches) of different total allowable catch levels for 2018 against probabilistic metrics to accommodate uncertainty in the advice.
 \end{enumerate}
 \end{frame}
 
 % New slide  Things we did not complete
 \begin{frame}{Terms of Reference}
+Unable to include the following in this years assessment:
 \begin{itemize}
 \item Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.
 \end{itemize}
@@ -178,6 +179,7 @@ Investigate comparisons between old and new model code using a bridging analysis
 
 % New slide
 \begin{frame}{Context for the \Sexpr{max(yrRange)} assessment}
+Herring Renewal update 
 \end{frame}
 
 % New slide
@@ -275,7 +277,7 @@ DFO's decision-making framework incorporating the precautionary approach:
 % New slide ADD IN EXAMPLE Seine BUBBLE PLOTS FOR COMPARISON
 \begin{frame}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}ProportionAgeWide.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/HGbubbleplots.png}
 \end{frame}
 
 % New slide
@@ -548,6 +550,7 @@ Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 \begin{itemize}
 \item The following figures present posterior distributions characterizing: model fits to spawn survvey index, age-2 recruitment, instantanteous natural mortality, and spawning biomass reconstructions.
 \item Introduce production figures (include description of vertical lines)
+\item -show updated plots and explain vertical lines... compare SB2017 with LRP
 \end{itemize}
 \end{frame}
 
@@ -645,6 +648,18 @@ Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}/CurrentSSBWide.png}
 \end{frame}
 
+% New slide
+\begin{frame}{Summary}
+\begin{itemize}
+\item HG: Both AM2 and AM1 models estimated $\mli{SB}_{2017}$ to be BELOW the LRP of $\Sexpr{propB0}\cdot\mli{SB}_0$ with greater than a 50\% probability 
+\item PRD: Both AM2 and AM1 models estimated $\mli{SB}_{2017}$ to be ABOVE the LRP of $\Sexpr{propB0}\cdot\mli{SB}_0$ with greater than a 50\% probability and less than a 95\% probability
+\item CC: Both AM2 and AM1 models estimated $\mli{SB}_{2017}$ to be ABOVE the LRP of $\Sexpr{propB0}\cdot\mli{SB}_0$ with greater than a 95\% probability
+\item SOG: Both AM2 and AM1 models estimated $\mli{SB}_{2017}$ to be ABOVE the LRP of $\Sexpr{propB0}\cdot\mli{SB}_0$ by greater than 95\% probability
+\item WCVI: Both AM2 and AM1 models estimated $\mli{SB}_{2017}$ to be ABOVE the LRP of $\Sexpr{propB0}\cdot\mli{SB}_0$, by greater than 50\% probability but less than 95\% probability
+\end{itemize}
+\end{frame}
+
+
 %%% New section: recommendations %%%
 \section[Recommendations]{Recommendations and future research}
 
@@ -671,7 +686,7 @@ make.decision.table(hg.b,
 
 \end{frame}
 
-% New slide -- DOES NOT WORK
+% New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
 \begin{frame}{Decision table: Haida Gwaii AM1}
 <<hg.decision.table.am1, results='asis', echo=FALSE>>=
 dec.table.font.size <- 6
@@ -684,6 +699,7 @@ make.decision.table(hg.am1,
                     space.size = dec.table.font.space,
                     placement = "H")
 @
+
 \end{frame}
 
 % New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
