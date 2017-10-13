@@ -143,16 +143,17 @@ setwd( dir=".." )
 %%% New section: Introduction %%%
 \section{Introduction}
 
+% New subsection: background
 \subsection{Background}
 
 % New slide
 \begin{frame}{Terms of Reference}
 \begin{enumerate}[<+->]
-\item Present data and assessment model updates:
-\begin{enumerate}[(a)]
+\item Present data and assessment model updates:\label{TOR:data}
+\begin{enumerate}[a]
 \item Present modifications and updates to integrated statistical catch-age model equations and its AD Model Builder code.
 Investigate comparisons between old and new model code using a bridging analysis.
-\item Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.
+\item Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.\label{TOR:SOK}
 \item Present parameterization of maturity and fishery selectivity ogives and investigate interactions between these and other model-estimated parameters.
 \end{enumerate}
 \item Assess the current status of Pacific Herring for the five major stocks using the integrated statistical catch-age model.
@@ -171,7 +172,7 @@ Investigate comparisons between old and new model code using a bridging analysis
 
 % New slide  Things we did not complete
 \begin{frame}{Terms of Reference}
-1(b) Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.
+\ref{TOR:data}\ref{TOR:SOK}: Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.
 \begin{itemize}
 \item SOK fishery based on removal of eggs on kelp (not whole herring)
 \item On-going challenge to include SOK data (ie. fitting catch-age model to sporatic data)
@@ -180,6 +181,7 @@ Investigate comparisons between old and new model code using a bridging analysis
   \item Data are included in Appendix B
   \item Updates to survey index show: 
         A2W... A27...
+  % \item Tech Report in progress (J. Schweigert)
  \end{itemize}       
 \end{itemize}
 \end{frame}
@@ -300,16 +302,24 @@ MSY-based reference points
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}ProportionAgeWide.png}
 \end{frame}
 
-% New slide ADD IN EXAMPLE Seine BUBBLE PLOTS FOR COMPARISON
+% New slide
 \begin{frame}
-\centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/HGbubbleplots.png}
+Estimated proportion-at-age versus time for Gear 2 (roe seine), for Haida Gwaii.
+The area of each circle reflects the proportion-at-age, each column sums to 1, zeros are not shown.
+Plus group is age-10.
+<<hg.ageest.gear2, out.width='80%', fig.align='center'>>=
+make.age.comp.estimates.plot(hg.b, 2)
+@
 \end{frame}
 
-% New slide ADD IN EXAMPLE Seine BUBBLE PLOTS FOR COMPARISON
+% New slide
 \begin{frame}
-\centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/SOGbubbleplots.png}
+Estimated proportion-at-age versus time for Gear 2 (roe seine), for the Strait of Georgia.
+The area of each circle reflects the proportion-at-age, each column sums to 1, zeros are not shown.
+Plus group is age-10.
+<<sog.ageest.gear2, out.width='80%', fig.align='center'>>=
+make.age.comp.estimates.plot(sog.b, 2)
+@
 \end{frame}
 
 % New slide
@@ -533,16 +543,24 @@ Let's do a slide or two of AM1 vs AM2 - emphasizing the differences- this will n
 \end{frame}
 
 % New slide
-\begin{frame}{AM1 vs AM2}
-Prior-posterior plots
+\begin{frame}{Prior-posterior plots for HG: AM2 vs. AM1}
+Prior probability distributions (lines) with comparative posterior histograms (bars) used in the Haida Gwaii models AM2 and AM1.
+Parameters $q_k$ represent gears where: $k=1$ is the surface survey and $k=2$ is the dive survey.
+The dotted red lines are the MPD estimates.
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/HGAM1.png}
+AM2
+<<hg.priors2>>=
+make.priors.posts.plot(hg.b, priors.only=FALSE)
+@
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Figure31HGAM2.png}
+AM1
+<<hg.priors1>>=
+make.priors.posts.plot(hg.am1, priors.only=FALSE)
+@
 \end{column}
 \end{columns}
 \end{frame}
@@ -872,6 +890,7 @@ make.decision.table(wcvi.am1,
 \item Simulation-testing of management procedures
 \item SOK/SOB: quantify mortality and removed spawn
 \item Investigate appropriateness of stock-specific maturity ogive
+% \item Quantify uncertainty in the spawn index
 \end{enumerate}
 \end{frame}
 
