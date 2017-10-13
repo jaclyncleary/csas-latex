@@ -274,10 +274,14 @@ DFO's decision-making framework incorporating the precautionary approach:
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}ProportionAgeWide.png}
 \end{frame}
 
-% New slide ADD IN EXAMPLE Seine BUBBLE PLOTS FOR COMPARISON
+% New slide
 \begin{frame}
-\centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/HGbubbleplots.png}
+Estimated proportion-at-age versus time for Gear 2 (roe seine), for Haida Gwaii.
+The area of each circle reflects the proportion-at-age, each column sums to 1, zeros are not shown.
+Plus group is age-10.
+<<hg.ageest.gear, out.width='80%', fig.align='center'>>=
+make.age.comp.estimates.plot(hg.b, 2)
+@
 \end{frame}
 
 % New slide
