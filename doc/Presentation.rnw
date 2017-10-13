@@ -208,21 +208,24 @@ DFO's decision-making framework incorporating the precautionary approach:
 \end{columns}
 \end{frame}
 
+
 % New slide
-\begin{frame}{Reference points}
+\begin{frame}{Reference points for Pacific Herring}
 \begin{columns}
 \begin{column}{0.5\textwidth}
-\citet{kronlund2017}:
+LRP
 \begin{itemize} 
-\item Recommend $\text{LRP} = 0.3\mli{SB}_0$
-\item Propose candidate USRs:
+\item Incorporate LRP of $0.3\mli{SB}_0$ into advice \citet{kronlund2017}
+\end{itemize} 
+USR
+\begin{itemize} 
+\item Proposed candidate USRs:
 \begin{enumerate}
 \item Long-term average spawning biomass, $\mli{SB}_\text{avg}$
 \item Long-term average spawning biomass during a productive period, $\mli{SB}_\text{avg-prod}$
 \item $2 \times \text{LRP}$ (i.e., $0.6\mli{SB}_0$) 
 \item $\mli{SB}_0$
 \end{enumerate}
-\item Reject MSY-based reference points (e.g., $\mli{SB}_\text{MSY}$): implausible
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
@@ -231,6 +234,22 @@ DFO's decision-making framework incorporating the precautionary approach:
 \end{columns}
 \end{frame}
 
+% New slide
+\begin{frame}{Reference points for Pacific Herring}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+MSY-based reference points
+\begin{itemize}
+\item Kronlund et al. found MSY statistics were not plausible for Pacific Herring in BC
+\item Analysis here supports continued non-use of MSY-based reference points
+\end{itemize}
+
+\end{column}
+\begin{column}{0.5\textwidth}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA.png}
+\end{column}
+\end{columns}
+\end{frame}
 % Show table of contents at each section
 \AtBeginSection[]{
 \begin{frame}<beamer>{Outline}
