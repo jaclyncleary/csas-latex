@@ -171,9 +171,18 @@ Investigate comparisons between old and new model code using a bridging analysis
 
 % New slide  Things we did not complete
 \begin{frame}{Terms of Reference}
-Unable to include the following in this years assessment:
+\begin{enumerate}
+\item (b) Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.
+\end{enumerate}
 \begin{itemize}
-\item Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.
+\item SOK fishery based on removal of eggs on kelp (not whole herring)
+\item On-going challenge to include SOK data (ie. fitting catch-age model to sporatic data)
+\item Steps to date:
+\item Data are included in Appendix B
+  \begin{itemize}
+  \item Updates to survey index show: 
+        A2W... A27...
+ \end{itemize}       
 \end{itemize}
 \end{frame}
 
@@ -308,7 +317,7 @@ DFO's decision-making framework incorporating the precautionary approach:
 \subsection{Bridging analysis}
 
 % New slide
-\begin{frame}
+\begin{frame}{Modeling approach}
 \begin{itemize}
 \item We updated to a more flexible and computationally efficient platform of the integrated combined-sex statistical catch-at-age model (ISCAM) currently in use for other stock assessments within DFO.
 \item A bridging analysis was used to identify any inconsistancies in the estimation methods used in the new version (V2) compared to the 2016 version (V0).
