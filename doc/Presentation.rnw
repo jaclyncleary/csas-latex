@@ -765,9 +765,14 @@ Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 % New slide
 \begin{frame}
 \begin{itemize}
-\item The following figures present posterior distributions characterizing: model fits to spawn survvey index, age-2 recruitment, instantanteous natural mortality, and spawning biomass reconstructions.
+\item The following figures presents posterior distributions characterizing: 
+\begin{itemize}
+\item model fits to spawn survey index, 
+\item age-2 recruitment, 
+\item instantanteous natural mortality, and 
+\item spawning biomass reconstructions.
+\end{itemize}
 \item Introduce production figures (include description of vertical lines)
-\item -show updated plots and explain vertical lines... compare SB2017 with LRP
 \end{itemize}
 \end{frame}
 
@@ -775,9 +780,19 @@ Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 \subsection{Haida Gwaii}
 
 % New slide
+% New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.8\textwidth}
+\begin{column}{0.3\textwidth}
+Posterior distributions characterizing:
+  \begin{itemize}
+\item model fits to spawn survey index, 
+\item age-2 recruitment, 
+\item instantanteous natural mortality, and 
+\item spawning biomass reconstructions.
+\end{itemize}
+\end{column}
+\begin{column}{0.7\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
 \end{column}
@@ -787,7 +802,15 @@ Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.8\textwidth}
+\begin{column}{0.3\textwidth}
+Production analysis:
+\begin{itemize}
+\item This measures whether stock is replacing itself or not.
+\item equation (from LRP paper):
+\item why 0.30SB0...
+\end{itemize}
+\end{column}
+\begin{column}{0.7\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/ProductionAM2.png}
 \end{column}
@@ -798,7 +821,7 @@ Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 \begin{frame}
 Production analysis
 \begin{itemize}
-\item measures whether stock is replacing itself or not.
+\item This measures whether stock is replacing itself or not.
 \item equation (from LRP paper):
 \item why 0.30SB0...
 \end{itemize}
@@ -868,19 +891,15 @@ Production analysis
 
 % New subsection: status
 \subsection{Current status}
-
 % New slide
-%\begin{frame}
-%\centering
-%\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}/CurrentSSBWide.png}
-%\end{frame}
-
-% New slide WE WANT THIS WHOLE FIGURE????
 \begin{frame}
 \begin{columns}
+\begin{column}{0.3\textwidth}
+Figure 29. Estimated spawning biomass in \Sexpr{max(yrRange)}, $\mli{SB}_{\Sexpr{max(yrRange)}}$ in thousands of tonnes, t for \Sexpr{fish.name} in the major stock assessment regions (SARs) for models \Sexpr{PasteNicely(mNames)}.
+\end{column}
 \begin{column}{0.8\textwidth}
 \centering
-\includegraphics[width=\linewidth]{\Sexpr{locOutput}/CurrentSSB.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}/CurrentSSB.png}
 \end{column}
 \end{columns}
 \end{frame}
