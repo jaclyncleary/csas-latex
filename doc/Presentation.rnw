@@ -290,7 +290,7 @@ MSY-based reference points
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.4\textwidth}
+\begin{column}{0.35\textwidth}
 \begin{itemize} 
 \item Catch data used in assessment:
 \begin{itemize}
@@ -301,7 +301,7 @@ MSY-based reference points
 \item SOK catch currently not used in assessment
 \end{itemize} 
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.65\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CatchWide.png}
 \end{column}
@@ -371,6 +371,22 @@ make.age.comp.estimates.plot(sog.b, 2)
 Steps of the bridging analysis:
 \begin{enumerate}
 \item Updated variance structure (V0 to V1)
+\item Reconstructed previous assessment results with fixed parameters
+\item Compared parameter estimates from V1 and V2 under constant $M$ and time-varying $M$
+\item Investigated the sensitivities of V2 to variance parameters and prior probablity distribution on $q$s
+\end{enumerate}
+\end{frame}
+
+% New slide
+\begin{frame}
+Steps of the bridging analysis:
+\begin{enumerate}
+\item Updated variance structure (V0 to V1)
+\begin{itemize}
+\item ISCAM uses the errors-in-variables approach 
+\item Partitioning of the total variance, $varphi$ into observation ($\sigma$) and process error $\tau$)
+\item Observation ($\sigma$) and process error $\tau$ are estimated by the model
+\end{itemize}
 \end{enumerate}
 \end{frame}
 
@@ -466,6 +482,16 @@ We further tested the sensivity of the V2 model estimates to:
 % New slide
 \begin{frame}{Natural mortality}
 \begin{itemize}
+\item Estimating time-varying $M$ for Pacific Herring was first introduced in 2006 \citep{haist2006}
+\item It was incorporated into the ISCAM model and has been used since. 
+\item Recent concerns have been raised about interactions between estimating $q$ and $M$
+\item We began investigating this interaction by comparing constant $M$ and time-varying $M$
+\end{itemize}
+\end{frame}
+
+% New slide
+\begin{frame}{Natural mortality}
+\begin{itemize}
 \item Model outcomes were influenced by the method used to estimate $M$
 \item Method used to estimate $M$ does not appear to be confounded by choice of $q$ prior
 \item Time-varying $M$ appeared to provide a better fit to data, supporting it use as the base case
@@ -473,17 +499,17 @@ We further tested the sensivity of the V2 model estimates to:
 \end{frame}
 
 % New slide
-\begin{frame}{Natural mortality}
+\begin{frame}{Model outcomes were infuenced by the method used to estimate $M$}
 \begin{columns}
 \begin{column}{0.4\textwidth}
 \bi
-\item Figure 56. Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and
-inputs (points) for the Haida Gwaii surface survey.
+\item Figure 57. Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and
+inputs (points) for the Haida Gwaii dive survey.
 \ei
 \end{column}
 \begin{column}{0.6\textwidth}
 \centering
-<<hg.index.surface.fit>>=
+<<hg.index.dive.fit>>=
 leg.names <- c("AM1 Constant M",
                "AM1 Time-varying M",
                "AM2 Constant M",
@@ -494,7 +520,7 @@ make.index.fit.plot(list(hg.am1.constm,
                          hg.am2.tvm),
                     start.yr = 1950,
                     end.yr = 2016,
-                    ind = 1,
+                    ind = 2,
                     leg = "topright",
                     model.names = leg.names,
                     ylim = c(0, 60))
@@ -503,7 +529,54 @@ make.index.fit.plot(list(hg.am1.constm,
 \end{columns}
 \end{frame}
 
+% New slide
+\begin{frame}{Model outcomes were infuenced by the method used to estimate $M$}
+\begin{columns}
+\begin{column}{0.4\textwidth}
+\bi
+\item Figure 61. Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and
+inputs (points) for the Central Coast dive survey.
+\ei
+\end{column}
+\begin{column}{0.6\textwidth}
+\centering
+<<cc.index.dive.fit>>=
+leg.names <- c("AM1 Constant M",
+               "AM1 Time-varying M",
+               "AM2 Constant M",
+               "AM2 Time-varying M")
+make.index.fit.plot(list(cc.am1.constm,
+                         cc.am1.tvm,
+                         cc.am2.constm,
+                         cc.am2.tvm),
+                    start.yr = 1950,
+                    end.yr = 2016,
+                    ind = 2,
+                    leg = "topleft",
+                    model.names = leg.names,
+                    ylim = c(0, 60))
+@
+\end{column}
+\end{columns}
+\end{frame}
 
+% New slide
+\begin{frame}{Summary: Estimating constant vs. time varying M}
+\begin{itemize}
+\item When examining estimated spawning biomass between all four model runs (AM1- constant M, AM1- time varying M, AM2- constant M, AM2- time varying M), trends in spawning biomass over time were most similar within the AM1 and AM2 categories. That is, it does not appear that the method used to estimate M is confounded with the choice of q prior.
+\item support for continued inclusion of time varying M as the base case for the assessment in this analysis, as well as from the Bridging Analysis (Appendix D) based on  improved coherence between assumed and empirical fits to the spawn survey index and issues of autocorrelation between parameters and model convergence with constant M
+\end{itemize}
+
+\end{frame}
+
+% New slide
+\begin{frame}{Variance parameters}
+\begin{itemize}
+\item  Intro statement/ reminder about errors-in-variables (and rho and kappa)...
+\item 
+\end{itemize}
+
+\end{frame}
 
 % New slide
 \begin{frame}{Variance parameters}
@@ -517,11 +590,18 @@ make.index.fit.plot(list(hg.am1.constm,
 
 % New slide
 \begin{frame}{Prior probability on $q$}
+Explain sensitivity runs we did in the bridging analysis and outcome. Use figures.
+Then segue to this sensitivity analysis with broadening the prior using larger sd
+\end{frame}
+
+% New slide
+\begin{frame}{Prior probability on $q$}
 \begin{columns}
 \begin{column}{0.4\textwidth}
 \bi
 \item Examined the potential effects of broadening the priors on $q$s by increasing the standard deviation of the distribution for AM1
 \item Results showed only minor changes in model estimates of $q$
+\item FIX TABLE
 \ei
 \end{column}
 \begin{column}{0.6\textwidth}
@@ -533,12 +613,21 @@ make.index.fit.plot(list(hg.am1.constm,
 
 % New slide
 \begin{frame}{Maturity at age}
+\begin{itemize}
+\item Background info on why this sensitivity run (Kronlund et al)
+\end{itemize}
+\end{frame}
+
+% New slide
+\begin{frame}{Maturity at age}
 \begin{columns}
 \begin{column}{0.4\textwidth}
 \bi
 \item Examined the impacts of setting the fixed maturity at age vector equal to the selectivity of the seine roe fishery.
 \item Parameter estimates showed only minor differences from the base case.
-\item Estimates of $F_\text{MSY}$ were unreliable for comparison
+\item Estimates of $F_\text{MSY}$ did decline when mat-age = sel-age but the estimates are still unusually high (compared with literature).
+\item Something about time varying M...
+\item Continue to recommend non-use of MSY-based reference points
 \ei
 \end{column}
 \begin{column}{0.6\textwidth}
@@ -555,6 +644,10 @@ make.index.fit.plot(list(hg.am1.constm,
 % New slide
 \begin{frame}
 Let's do a slide or two of AM1 vs AM2 - emphasizing the differences- this will need to include prior-posterior histograms for q1 and q2, and then show only AM2 plots for storyboard and LRP production plots
+\begin{itemize}
+\item info from SR
+\item retro plots
+\end{itemize}
 \end{frame}
 
 % New slide
