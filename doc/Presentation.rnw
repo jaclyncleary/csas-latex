@@ -58,6 +58,9 @@
 % Change spacing between output chunk paragraphs
 \renewenvironment{knitrout}{\setlength{\topsep}{0mm}}{}
 
+% Small font for references
+\renewcommand*{\bibfont}{\scriptsize}
+
 % Decrease margins globally
 \setbeamersize{text margin left=1.5em, text margin right=1.5em}
 
