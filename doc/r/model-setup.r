@@ -350,19 +350,19 @@ if(verbose){
 ## -----------------------------------------------------------------------------
 ## Retrospectives
 ## -----------------------------------------------------------------------------
+RETRO.STRING <- c(paste0("0", 1:9), 10:15)
 stock.dir[[1]] <- "HG"
 stock.dir[[2]] <- "PRD"
 stock.dir[[3]] <- "CC"
 stock.dir[[4]] <- "SOG"
 stock.dir[[5]] <- "WCVI"
-retro.string <- c(paste0("0", 1:9), 10)
 retro.names.am1 <- list()
 retro.names.am2 <- list()
 retro.yr <- list()
 for(i in 1:length(stock.dir)){
   retro.names.am1[[i]] <- list()
   retro.names.am2[[i]] <- list()
-  for(j in 1:length(retro.string)){
+  for(j in 1:length(RETRO.STRING)){
     if(stock.dir[i] == "HG"){
       which.stock <- 1
     }else if(stock.dir[i] == "PRD"){
@@ -378,11 +378,11 @@ for(i in 1:length(stock.dir)){
     }
     ## Create lists of the names of the retrospectives for AM1 and AM2
     retro.names.am1[[i]][[j]] <- file.path(stock.dir[i],
-                                           retro.string[j],
+                                           RETRO.STRING[j],
                                            stock.dir[i],
                                            "AM1")
     retro.names.am2[[i]][[j]] <- file.path(stock.dir[i],
-                                           retro.string[j],
+                                           RETRO.STRING[j],
                                            stock.dir[i],
                                            "AM2")
   }
@@ -437,28 +437,44 @@ load.models.into.parent.env <- function(){
   sens.models.8 <<- lapply(sens.model.dir.name.8,
                            function(x){
                              load.models(model.dir, x)})
+
   base.retro.models <<- lapply(retro.names.am2,
                                function(x){
                                  lapply(x,
                                         function(y){
                                           tmp <- load.models(retro.dir, y)
                                         })})
-  ## Special case, PRD replace retro 10 with 15
-  base.retro.models[[2]][[10]] <<- load.models(retro.dir,
-                                              gsub("10",
-                                                   "15",
-                                                   retro.names.am2[[2]][[10]]))
 
   am1.retro.models <<- lapply(retro.names.am1,
-                               function(x){
-                                 lapply(x,
-                                        function(y){
-                                          load.models(retro.dir, y)})})
-  ## Special case, PRD replace retro 10 with 15
-  am1.retro.models[[2]][[10]] <<- load.models(retro.dir,
-                                             gsub("10",
-                                                  "15",
-                                                  retro.names.am1[[2]][[10]]))
+                              function(x){
+                                lapply(x,
+                                       function(y){
+                                         tmp <- load.models(retro.dir, y)
+                                       })})
+
+  ## Remove NULL entries in retrospective lists. This allows for
+  ##  each stock to have a different length retrospective period
+  ## A helper function that tests whether an object is either NULL
+  ##  or a list of NULLs
+  is.null.elem <- function(x){
+    is.null(x) | all(sapply(x, is.null))
+  }
+
+  ## Recursively step down into list, removing all such objects
+  remove.null.elems <- function(x){
+    x <- Filter(Negate(is.null.elem), x)
+    lapply(x,
+           function(x){
+             if(is.list(x)){
+               remove.null.elems(x)
+             }else{
+               x
+             }})
+  }
+
+  base.retro.models <<- remove.null.elems(base.retro.models)
+  am1.retro.models <<- remove.null.elems(am1.retro.models)
+
 }
 
 build <- function(ovwrt.base = FALSE,
@@ -556,14 +572,13 @@ build <- function(ovwrt.base = FALSE,
   stock.dir[[3]] <- "CC"
   stock.dir[[4]] <- "SOG"
   stock.dir[[5]] <- "WCVI"
-  retro.string <- c(paste0("0", 1:9), 10)
   retro.dirs.am1 <- list()
   retro.dirs.am2 <- list()
   retro.yr <- list()
   for(i in 1:length(stock.dir)){
     retro.dirs.am1[[i]] <- list()
     retro.dirs.am2[[i]] <- list()
-    for(j in 1:length(retro.string)){
+    for(j in 1:length(RETRO.STRING)){
       if(stock.dir[i] == "HG"){
         which.stock <- 1
       }else if(stock.dir[i] == "PRD"){
@@ -580,14 +595,7 @@ build <- function(ovwrt.base = FALSE,
       create.rdata.file.retro(
         model.dir = file.path(retro.dir,
                               stock.dir[i],
-                              ## Special case, PRD replace retro -10 with -15
-                              ## Check the load.models.into.parent.env()
-                              ##  function for this special case, and the leg
-                              ##  values in 8_figures.rnw
-                              ifelse(which.stock == 2 &
-                                     j == length(stock.dir),
-                                     "15",
-                                     retro.string[j]),
+                              RETRO.STRING[j],
                               stock.dir[i],
                               "AM1"),
         ovwrt.rdata = ovwrt.retro,
@@ -600,14 +608,7 @@ build <- function(ovwrt.base = FALSE,
       create.rdata.file.retro(
         model.dir = file.path(retro.dir,
                               stock.dir[i],
-                              ## Special case, PRD replace retro -10 with -15
-                              ## Check the load.models.into.parent.env()
-                              ##  function for this special case, and the leg
-                              ##  values in 8_figures.rnw
-                              ifelse(which.stock == 2 &
-                                     j == length(stock.dir),
-                                     "15",
-                                     retro.string[j]),
+                              RETRO.STRING[j],
                               stock.dir[i],
                               "AM2"),
         ovwrt.rdata = ovwrt.retro,
