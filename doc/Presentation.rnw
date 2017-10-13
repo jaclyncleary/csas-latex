@@ -212,7 +212,6 @@ DFO's decision-making framework incorporating the precautionary approach:
 \end{columns}
 \end{frame}
 
-
 % New slide
 \begin{frame}{Reference points for Pacific Herring}
 \begin{columns}
@@ -330,7 +329,8 @@ Figure 5.
 
 % New slide
 \begin{frame}
-Figure 102. Estimated proportion-at-age versus time for Gear 2 (roe seine), for Haida Gwaii.
+Figure 102.
+Estimated proportion-at-age versus time for Gear 2 (roe seine), for Haida Gwaii.
 The area of each circle reflects the proportion-at-age, each column sums to 1, zeros are not shown.
 Plus group is age-10.
 <<hg.ageest.gear2, out.width='80%', fig.align='center'>>=
@@ -340,7 +340,8 @@ make.age.comp.estimates.plot(hg.b, 2)
 
 % New slide
 \begin{frame}
-Figure 111. Estimated proportion-at-age versus time for Gear 2 (roe seine), for the Strait of Georgia.
+Figure 111.
+Estimated proportion-at-age versus time for Gear 2 (roe seine), for the Strait of Georgia.
 The area of each circle reflects the proportion-at-age, each column sums to 1, zeros are not shown.
 Plus group is age-10.
 <<sog.ageest.gear2, out.width='80%', fig.align='center'>>=
@@ -434,7 +435,8 @@ Corrected the estimation of the variance structure based on reviewer comments on
 \begin{frame}
 \begin{columns}
 \begin{column}{0.4\textwidth}
-Tables D.1. Comparison of MPD estimates of leading parameters and unfished biomass, $\mli{SB}_0$, given changes to the estimation of the variance structure for process and observation error (AM1)
+Table D.1.
+Comparison of MPD estimates of leading parameters and unfished biomass, $\mli{SB}_0$, given changes to the estimation of the variance structure for process and observation error (AM1)
 \end{column}
 \begin{column}{0.6\textwidth}
 \centering
@@ -447,7 +449,8 @@ Tables D.1. Comparison of MPD estimates of leading parameters and unfished bioma
 \begin{frame}
 \begin{columns}
 \begin{column}{0.4\textwidth}
-Tables D.2. Comparison of MPD estimates of leading parameters and unfished biomass, $\mli{SB}_0$, given changes to the estimation of the variance structure for process and observation error (AM2)
+Table D.2.
+Comparison of MPD estimates of leading parameters and unfished biomass, $\mli{SB}_0$, given changes to the estimation of the variance structure for process and observation error (AM2)
 \end{column}
 \begin{column}{0.6\textwidth}
 \centering
