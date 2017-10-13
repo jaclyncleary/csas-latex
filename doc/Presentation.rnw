@@ -289,8 +289,23 @@ MSY-based reference points
 
 % New slide
 \begin{frame}
+\begin{columns}
+\begin{column}{0.4\textwidth}
+\begin{itemize} 
+\item Catch data used in assessment:
+\begin{itemize}
+\item Gear 1: Other fisheries
+\item Gear 2: Roe seine 
+\item Gear 3: Roe gillnet
+\end{itemize}
+\item SOK catch currently not used in assessment
+\end{itemize} 
+\end{column}
+\begin{column}{0.5\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CatchWide.png}
+\end{column}
+\end{columns}
 \end{frame}
 
 % New subsection: biosamples
