@@ -410,8 +410,8 @@ Steps of the bridging analysis:
 \item Updated variance structure (V0 to V1)
 \begin{itemize}
 \item ISCAM uses the errors-in-variables approach 
-\item Partitioning of the total variance, $varphi$ into observation ($\sigma$) and process error $\tau$)
-\item Observation ($\sigma$) and process error $\tau$ are estimated by the model
+\item Partitioning of the total variance, $varphi$ into observation ($\sigma$) and process error ($\tau$)
+\item Observation ($\sigma$) and process error ($\tau$) are estimated by the model
 \end{itemize}
 \end{enumerate}
 \end{frame}
@@ -511,7 +511,7 @@ We further tested the sensivity of the V2 model estimates to:
 \begin{frame}{Natural mortality}
 \begin{itemize}
 \item Estimating time-varying $M$ for Pacific Herring was first introduced in 2006 \citep{haist2006}
-\item It was incorporated into the ISCAM model and has been used since. 
+\item It was incorporated into the ISCAM model and has been used since (2011-2016). 
 \item Recent concerns have been raised about interactions between estimating $q$ and $M$
 \item We began investigating this interaction by comparing constant $M$ and time-varying $M$
 \end{itemize}
@@ -520,9 +520,10 @@ We further tested the sensivity of the V2 model estimates to:
 % New slide
 \begin{frame}{Natural mortality}
 \begin{itemize}
-\item Model outcomes were influenced by the method used to estimate $M$
-\item Method used to estimate $M$ does not appear to be confounded by choice of $q$ prior
-\item Time-varying $M$ appeared to provide a better fit to data, supporting it use as the base case
+\item We found that model outcomes were influenced by the method used to estimate $M$
+\item Time-varying $M$ appeared to provide a better fit to data
+\item The spawning biomass over time was most similar within the AM1 and AM2 for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior
+\item This sensitivity analysis and the bridging analysis support the continued use of time-vrying $M$ as the base case for the assessment
 \end{itemize}
 \end{frame}
 
@@ -588,14 +589,6 @@ make.index.fit.plot(list(cc.am1.constm,
 \end{columns}
 \end{frame}
 
-% New slide
-\begin{frame}{Summary: Estimating constant vs. time varying M}
-\begin{itemize}
-\item When examining estimated spawning biomass between all four model runs (AM1- constant M, AM1- time varying M, AM2- constant M, AM2- time varying M), trends in spawning biomass over time were most similar within the AM1 and AM2 categories. That is, it does not appear that the method used to estimate M is confounded with the choice of q prior.
-\item support for continued inclusion of time varying M as the base case for the assessment in this analysis, as well as from the Bridging Analysis (Appendix D) based on  improved coherence between assumed and empirical fits to the spawn survey index and issues of autocorrelation between parameters and model convergence with constant M
-\end{itemize}
-
-\end{frame}
 
 % New slide
 \begin{frame}{Variance parameters}
