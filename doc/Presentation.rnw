@@ -413,8 +413,8 @@ Steps of the bridging analysis:
 \item Updated variance structure (V0 to V1)
 \begin{itemize}
 \item ISCAM uses the errors-in-variables approach 
-\item Partitioning of the total variance, $varphi$ into observation ($\sigma$) and process error $\tau$)
-\item Observation ($\sigma$) and process error $\tau$ are estimated by the model
+\item Partitioning of the total variance, $varphi$ into observation ($\sigma$) and process error ($\tau$)
+\item Observation ($\sigma$) and process error ($\tau$) are estimated by the model
 \end{itemize}
 \end{enumerate}
 \end{frame}
@@ -514,7 +514,7 @@ We further tested the sensivity of the V2 model estimates to:
 \begin{frame}{Natural mortality}
 \begin{itemize}
 \item Estimating time-varying $M$ for Pacific Herring was first introduced in 2006 \citep{haist2006}
-\item It was incorporated into the ISCAM model and has been used since. 
+\item It was incorporated into the ISCAM model and has been used since (2011-2016). 
 \item Recent concerns have been raised about interactions between estimating $q$ and $M$
 \item We began investigating this interaction by comparing constant $M$ and time-varying $M$
 \end{itemize}
@@ -523,9 +523,10 @@ We further tested the sensivity of the V2 model estimates to:
 % New slide
 \begin{frame}{Natural mortality}
 \begin{itemize}
-\item Model outcomes were influenced by the method used to estimate $M$
-\item Method used to estimate $M$ does not appear to be confounded by choice of $q$ prior
-\item Time-varying $M$ appeared to provide a better fit to data, supporting it use as the base case
+\item We found that model outcomes were influenced by the method used to estimate $M$
+\item Time-varying $M$ appeared to provide a better fit to data
+\item The spawning biomass over time was most similar within the AM1 and AM2 for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior
+\item This sensitivity analysis and the bridging analysis support the continued use of time-varying $M$ as the base case for the assessment
 \end{itemize}
 \end{frame}
 
@@ -591,30 +592,28 @@ make.index.fit.plot(list(cc.am1.constm,
 \end{columns}
 \end{frame}
 
-% New slide
-\begin{frame}{Summary: Estimating constant vs. time varying M}
-\begin{itemize}
-\item When examining estimated spawning biomass between all four model runs (AM1- constant M, AM1- time varying M, AM2- constant M, AM2- time varying M), trends in spawning biomass over time were most similar within the AM1 and AM2 categories. That is, it does not appear that the method used to estimate M is confounded with the choice of q prior.
-\item support for continued inclusion of time varying M as the base case for the assessment in this analysis, as well as from the Bridging Analysis (Appendix D) based on  improved coherence between assumed and empirical fits to the spawn survey index and issues of autocorrelation between parameters and model convergence with constant M
-\end{itemize}
-
-\end{frame}
 
 % New slide
 \begin{frame}{Variance parameters}
 \begin{itemize}
-\item  Intro statement/ reminder about errors-in-variables (and rho and kappa)...
-\item 
+\item Used the errors-in-variables approach to estimating process error (tau, $\tau$) and observation error (sigma, $\sigma$)
+\item In ISCAM, the standard deviations in process error (tau, $\tau$) and observation error (sigma, $\sigma$) are related and modeled using the following equations:
+\begin{equation}\label{eqKappa}
+\kappa = \left( \frac{1}{\sqrt{(\sigma^2 + \tau^2)}} \right)^2
+\end{equation}
+\begin{equation}\label{eqRho}
+\rho = \sigma^2 \left( \frac{1}{\sqrt{(\sigma^2 + \tau^2)}} \right)^2 \,
+\end{equation}
+\item For the sensitivity analysis we analyzed model sensitivity to the initial values of $\rho$ and $\kappa$ by varying them, while estimating all leading parameters.
 \end{itemize}
-
 \end{frame}
 
 % New slide
 \begin{frame}{Variance parameter sensitivities: SoG AM1}
 Table 44.
 \begin{itemize}
-\item Analyzed model sensitivity to the initial values of $\rho$ and $\kappa$ by varying them, while estimating all leading parameters. 
-\item Results showed that when both parameters are estimated by the model the initial values do not influence the model estimates.
+ 
+\item Results showed that when both $\rho$ and $\kappa$ are estimated by the model the initial values do not influence the model estimates.
 \end{itemize}
 \centering
 <<variance.results.AM1, results='asis', echo=FALSE>>=
@@ -630,9 +629,54 @@ make.variance.table(variance.results,
 
 % New slide
 \begin{frame}{Prior probability on $q$}
-Explain sensitivity runs we did in the bridging analysis and outcome. Use figures.
-Then segue to this sensitivity analysis with broadening the prior using larger sd
+\begin{itemize}
+\item In the bridging analysis we investigated the use of different $q$ prior for $q_1$ and $q_2$ by varying:
+\begin{itemize}
+\item distribution type (informative or uninformative),
+\item mean values, and 
+\item standard deviations
+\end{itemize}
+\end{itemize}
 \end{frame}
+
+% New slide
+\begin{frame}
+Figure 10A. Sensitivity to $q$ prior for Strait of Georgia
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Fig10Ab.png}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Fig10Ac.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+% New slide
+\begin{frame}
+Figure 10A. Sensitivity to $q$ prior for Strait of Georgia
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Fig10Af.png}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Fig10Ag.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+% New slide
+\begin{frame}{Prior probability on $q$}
+\begin{itemize}
+\item There have been concerns that the results from applying the prior probability distributions on $q_1$ and $q_2$ in the AM1 model have been too restricting to the resulting estimations.
+\item To begin to address this concern we expanded on the bridging analysis by increasing the standard deviations on the AM1 $q$ priors while the mean was held constant (0.566).
+\end{itemize}
+\end{frame}
+
 
 
 % New slide
@@ -641,7 +685,7 @@ Then segue to this sensitivity analysis with broadening the prior using larger s
 \begin{column}{0.3\textwidth}
 Table 48.
 \bi
-\item Examined the potential effects of broadening the priors on $q$s by increasing the standard deviation of the distribution for AM1
+\item UPDATED Table 2. Estimated catchability (q) parameters and prior probability distributions used in all SAR models.
 \item Results showed only minor changes in model estimates of $q$
 \ei
 \end{column}
@@ -664,7 +708,23 @@ make.catchability.parameters.table.q.sens(sens.models.6,
 % New slide
 \begin{frame}{Maturity at age}
 \begin{itemize}
-\item Background info on why this sensitivity run \citep{kronlund2017}
+\item The base case maturity vector values are based on a histological assessment of developing ovaries \citep{hay1985, hay1999}:
+\begin{itemize}
+\item 25\% of age-2 fish, 90\% of age-3 fish, and 100\% ages-4 and older fish are mature, and
+\item 50\% maturity is estimated to be approximately 2.3 years 
+\end{itemize}
+\item In Kronlund et al. (2017) it was identified that When the positioning of the maturity curve is to the left of the fishery selectivity curve(s) and thus age at 50\% maturity is estimated to occur at a much younger age than 50\% selectivity, the model interprets the portion of the population
+that is mature but not yet selected for by the gear as invulnerable to the fishery.
+\item It is suspected that this phenomena is one of the contributing factors to the high estimates of FMSY coming from ISCAM.
+
+\end{itemize}
+\end{frame}
+
+% New slide
+\begin{frame}{Maturity at age}
+\begin{itemize}
+\item It is suspected that this phenomena is one of the contributing factors to the high estimates of FMSY coming from ISCAM.
+\item We began to investigate this by setting the fixed maturity at age vector equal to the selectivity of the seine roe fishery.
 \end{itemize}
 \end{frame}
 
@@ -672,14 +732,11 @@ make.catchability.parameters.table.q.sens(sens.models.6,
 \begin{frame}{Maturity at age: SoG AM2}
 \begin{columns}
 \begin{column}{0.5\textwidth}
-Table 47.
-\bi
-\item Examined the impacts of setting the fixed maturity at age vector equal to the selectivity of the seine roe fishery.
-\item Parameter estimates showed only minor differences from the base case.
-\item Estimates of $F_\text{MSY}$ did decline when mat-age = sel-age but the estimates are still unusually high (compared with literature).
-\item Something about time varying M...
-\item Continue to recommend non-use of MSY-based reference points
-\ei
+\begin{itemize}
+\item Results indicated that there were only minor differences in the parameters estimates from the sensitivity scenario compared to the base case.
+\item Estimates of $F_\text{MSY}$ did decline when maturity-at-age was equal to selectivity-at-age but the estimates are still unusually high (compared with literature).
+\item Table 47. Maturity sensitivity reference points for the Strait of Georgia AM2 model.
+\end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
@@ -734,7 +791,7 @@ make.priors.posts.plot(hg.am1, priors.only=FALSE)
 
 % New slide
 \begin{frame}{AM1 vs AM2}
-Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
+Figure 10A. Sensitivity to $q$ prior for Strait of Georgia
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \centering
@@ -749,7 +806,7 @@ Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 
 % New slide
 \begin{frame}{AM1 vs AM2}
-Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
+Figure 10A. Sensitivity to $q$ prior for Strait of Georgia
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \centering
@@ -762,19 +819,6 @@ Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 \end{columns}
 \end{frame}
 
-% New slide
-\begin{frame}
-\begin{itemize}
-\item The following figures presents posterior distributions characterizing: 
-\begin{itemize}
-\item model fits to spawn survey index, 
-\item age-2 recruitment, 
-\item instantanteous natural mortality, and 
-\item spawning biomass reconstructions.
-\end{itemize}
-\item Introduce production figures (include description of vertical lines)
-\end{itemize}
-\end{frame}
 
 % New subsection: Haida Gwaii
 \subsection{Haida Gwaii}
@@ -791,6 +835,7 @@ Posterior distributions characterizing:
 \item instantanteous natural mortality, and 
 \item spawning biomass reconstructions.
 \end{itemize}
+Figures 8-17
 \end{column}
 \begin{column}{0.7\textwidth}
 \centering
@@ -809,6 +854,7 @@ Production analysis:
 \item equation (from LRP paper):
 \item why 0.30SB0...
 \end{itemize}
+Figures 18-27
 \end{column}
 \begin{column}{0.7\textwidth}
 \centering
@@ -817,15 +863,6 @@ Production analysis:
 \end{columns}
 \end{frame}
 
-% New slide
-\begin{frame}
-Production analysis
-\begin{itemize}
-\item This measures whether stock is replacing itself or not.
-\item equation (from LRP paper):
-\item why 0.30SB0...
-\end{itemize}
-\end{frame}
 
 % New subsection: Prince Rupert District
 \subsection{Prince Rupert District}
@@ -897,7 +934,7 @@ Production analysis
 \begin{column}{0.3\textwidth}
 Figure 29. Estimated spawning biomass in \Sexpr{max(yrRange)}, $\mli{SB}_{\Sexpr{max(yrRange)}}$ in thousands of tonnes, t for \Sexpr{fish.name} in the major stock assessment regions (SARs) for models \Sexpr{PasteNicely(mNames)}.
 \end{column}
-\begin{column}{0.8\textwidth}
+\begin{column}{0.7\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}/CurrentSSB.png}
 \end{column}
@@ -991,6 +1028,7 @@ make.decision.table(wcvi.b,
 \item Simulation-testing of management procedures
 \item SOK/SOB: quantify mortality and removed spawn
 \item Investigate appropriateness of stock-specific maturity ogive
+\item Potential for stock-specific prior distribution on $q$
 % \item Quantify uncertainty in the spawn index
 \end{enumerate}
 \end{frame}
