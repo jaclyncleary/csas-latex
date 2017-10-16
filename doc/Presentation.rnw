@@ -184,85 +184,27 @@ Investigate comparisons between old and new model code using a bridging analysis
 \end{frame}
 
 % New slide: Things we did not complete
-\begin{frame}{Terms of Reference}
-\ref{TOR:data}\ref{TOR:SOK}: Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.
-\begin{itemize}
-\item SOK fishery based on removal of eggs on kelp (not whole herring)
-\item On-going challenge to include SOK data (ie. fitting catch-age model to sporatic data)
-\item Steps to date:
-  \begin{itemize}
-  \item Data are included in Appendix B
-  \item Updates to survey index show: 
-        A2W... A27...
+%\begin{frame}{Terms of Reference}
+%\ref{TOR:data}\ref{TOR:SOK}: Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.
+%\begin{itemize}
+%\item SOK fishery based on removal of eggs on kelp (not whole herring)
+%\item On-going challenge to include SOK data (ie. fitting catch-age model to sporatic data)
+%\item Steps to date:
+  %\begin{itemize}
+  %\item Data are included in Appendix B
+  %\item Updates to survey index show: 
+        %A2W... A27...
   % \item SOK/SOB Technical Report in progress (J. Schweigert)
- \end{itemize}       
-\end{itemize}
-\end{frame}
+ %\end{itemize}       
+%\end{itemize}
+%\end{frame}
 
 % New slide
 \begin{frame}{Context for the \Sexpr{max(yrRange)} assessment}
-Herring Renewal update 
+Herring Renewal update JC will send material
 \end{frame}
 
-% New slide
-\begin{frame}{Precautionary approach}
-\begin{columns}
-\begin{column}{0.5\textwidth}
-DFO's decision-making framework incorporating the precautionary approach:
-\begin{itemize}
-\item Reference points should be established using as long a time series as possible:
-\begin{description}
-\item[LRP] Should be positioned before a state of serious harm occurs, and must be avoided with high probability
-\item[USR] The boundary between the Cautious and Healthy zones
-\end{description}
-\end{itemize}
-\end{column}
-\begin{column}{0.5\textwidth}
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA.png}
-\end{column}
-\end{columns}
-\end{frame}
 
-% New slide
-\begin{frame}{Reference points for Pacific Herring}
-\begin{columns}
-\begin{column}{0.5\textwidth}
-LRP
-\begin{itemize} 
-\item Incorporate LRP of $0.3\mli{SB}_0$ into advice \citep{kronlund2017}
-\end{itemize} 
-USR
-\begin{itemize} 
-\item Proposed candidate USRs:
-\begin{enumerate}
-\item Long-term average spawning biomass, $\mli{SB}_\text{avg}$
-\item Long-term average spawning biomass during a productive period, $\mli{SB}_\text{avg-prod}$
-\item $2 \times \text{LRP}$ (i.e., $0.6\mli{SB}_0$) 
-\item $\mli{SB}_0$
-\end{enumerate}
-\end{itemize}
-\end{column}
-\begin{column}{0.5\textwidth}
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA.png}
-\end{column}
-\end{columns}
-\end{frame}
-
-% New slide
-\begin{frame}{Reference points for Pacific Herring}
-\begin{columns}
-\begin{column}{0.5\textwidth}
-MSY-based reference points
-\begin{itemize}
-\item \citet{kronlund2017} found MSY statistics were not plausible for Pacific Herring in BC
-\item Analysis here supports continued non-use of MSY-based reference points
-\end{itemize}
-\end{column}
-\begin{column}{0.5\textwidth}
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA.png}
-\end{column}
-\end{columns}
-\end{frame}
 
 % Show table of contents at each section
 \AtBeginSection[]{
@@ -426,12 +368,7 @@ Figure 7. Time series of spawn index in thousands of metric tonnes ($\text{t} \t
 \begin{frame}{Modeling approach}
 \begin{itemize}
 \item We updated to a more flexible and computationally efficient platform of the integrated combined-sex statistical catch-at-age model (ISCAM) currently in use for other stock assessments within DFO.
-\item A bridging analysis was used to identify any inconsistancies in the estimation methods used in the new version (V2) compared to the 2016 version (V0). Based on:
-\begin{itemize}
-\item consistency of estimation results compared to V1,
-\item increased speed of model, and 
-\item increased flexibility
-\end{itemize}
+\item A bridging analysis was used to identify any inconsistancies in the estimation methods used in the new version (V2) compared to the 2016 version (V0).
 \end{itemize}
 \end{frame}
 
@@ -509,7 +446,13 @@ Steps of the bridging analysis:
 \item Updated variance structure (V0 to V1)
 \item Reconstructed previous assessment results with fixed parameters
 \item Compared parameter estimates from V1 and V2 under constant $M$ and time-varying $M$
+\begin{itemize}
+\item Analysis carried through to the sensitivity analysis
+\end{itemize}
 \item Investigated the sensitivities of V2 to variance parameters and prior probablity distribution on $q$s
+\begin{itemize}
+\item Analysis carried through to the sensitivity analysis
+\end{itemize}
 \end{enumerate}
 \end{frame}
 
@@ -536,10 +479,70 @@ Based on the the bridging analysis we recommended:
 \end{itemize}
 \end{frame}
 
+% New slide
+\begin{frame}{Precautionary approach}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+DFO's decision-making framework incorporating the precautionary approach:
+\begin{itemize}
+\item Reference points should be established using as long a time series as possible:
+\begin{description}
+\item[LRP] Should be positioned before a state of serious harm occurs, and must be avoided with high probability
+\item[USR] The boundary between the Cautious and Healthy zones
+\end{description}
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+% New slide
+\begin{frame}{Reference points for Pacific Herring}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+LRP
+\begin{itemize} 
+\item Steps to incorporate LRP of $0.3\mli{SB}_0$ into advice \citep{kronlund2017}
+\end{itemize} 
+USR
+\begin{itemize} 
+\item Proposed candidate USRs:
+\begin{enumerate}
+\item Long-term average spawning biomass, $\mli{SB}_\text{avg}$
+\item Long-term average spawning biomass during a productive period, $\mli{SB}_\text{avg-prod}$
+\item $2 \times \text{LRP}$ (i.e., $0.6\mli{SB}_0$) 
+\item $\mli{SB}_0$
+\end{enumerate}
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+% New slide
+\begin{frame}{Reference points for Pacific Herring}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+MSY-based reference points
+\begin{itemize}
+\item \citet{kronlund2017} found MSY statistics were not plausible for Pacific Herring in BC
+\item Analysis here supports continued non-use of MSY-based reference points based on estimates confounding with maturity at age and time-varying $M$
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA.png}
+\end{column}
+\end{columns}
+\end{frame}
+
 % New subsection: 
 \subsection{Sensitivity analyses}
 
-% New slidd
+% New slide
 \begin{frame}
 We further tested the sensivity of the V2 model estimates to:
 \begin{enumerate}
@@ -564,9 +567,6 @@ We further tested the sensivity of the V2 model estimates to:
 \begin{frame}{Natural mortality}
 \begin{itemize}
 \item We found that model outcomes were influenced by the method used to estimate $M$
-\item Time-varying $M$ appeared to provide a better fit to data
-\item The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior
-\item This sensitivity analysis and the bridging analysis support the continued use of time-varying $M$ as the base case for the assessment
 \end{itemize}
 \end{frame}
 
@@ -632,12 +632,49 @@ make.index.fit.plot(list(cc.am1.constm,
 \end{columns}
 \end{frame}
 
+% New slide
+\begin{frame}{Natural mortality}
+\begin{itemize}
+\item We found that model outcomes were influenced by the method used to estimate $M$ %grey
+\item Time-varying $M$ appeared to provide a better fit to data
+\item The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior
+\end{itemize}
+\end{frame}
+
+% New slide
+\begin{frame}{Natural mortality}
+\begin{itemize}
+\item likelihood tables
+\end{itemize}
+\end{frame}
+
+
+% New slide
+\begin{frame}{Natural mortality}
+\begin{itemize}
+\item We found that model outcomes were influenced by the method used to estimate $M$ %grey
+\item Time-varying $M$ appeared to provide a better fit to data %grey
+\item The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior %grey
+\item Likelihood tables showed...
+\end{itemize}
+\end{frame}
+
+% New slide
+\begin{frame}{Natural mortality}
+\begin{itemize}
+\item We found that model outcomes were influenced by the method used to estimate $M$ %grey
+\item Time-varying $M$ appeared to provide a better fit to data %grey
+\item The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior %grey
+\item Likelihood tables showed...%grey
+\item This sensitivity analysis and the bridging analysis support the continued use of time-varying $M$ as the base case for the assessment
+\end{itemize}
+\end{frame}
 
 % New slide
 \begin{frame}{Variance parameters}
 \begin{itemize}
 \item Used the errors-in-variables approach to estimating process error (tau, $\tau$) and observation error (sigma, $\sigma$)
-\item In ISCAM, the standard deviations in process error (tau, $\tau$) and observation error (sigma, $\sigma$) are related and modeled using the following equations:
+\item In ISCAM, the standard deviations in process error (tau, $\tau$) and observation error (sigma, $\sigma$) are related and modeled using the following equations: %Can we change the eq numbers???
 \begin{equation}\label{eqKappa}
 \kappa = \left( \frac{1}{\sqrt{(\sigma^2 + \tau^2)}} \right)^2
 \end{equation}
@@ -681,7 +718,7 @@ make.variance.table(variance.results,
 
 % New slide
 \begin{frame}
-Figure 10A. Sensitivity to $q$ prior for Strait of Georgia
+Bridging analysis: Figure 10A. Sensitivity to $q$ prior for Strait of Georgia
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \centering
@@ -696,7 +733,7 @@ Figure 10A. Sensitivity to $q$ prior for Strait of Georgia
 
 % New slide
 \begin{frame}
-Figure 10A. Sensitivity to $q$ prior for Strait of Georgia
+Bridging analysis: Figure 10A. Sensitivity to $q$ prior for Strait of Georgia
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \centering
@@ -744,6 +781,16 @@ make.catchability.parameters.table.q.sens(sens.models.6,
 \end{column}
 \end{columns}
 \end{frame}
+
+\begin{frame}{Prior probability on $q$: Summary}
+\begin{itemize}
+\item The bridging analysis indicated that as the prior mean increased the spawning biomass increased for AM1
+\item The sensitivity analysis showed that relaxing bounds on prior for q in AM1 caused:
+\begin{itemize}
+\item the estimates of both $q_1$ and $q_2$ to decrease for HG and CC  
+\item the estimates of 
+prd/ prior on q2 increases.
+\end{itemize}
 
 % New slide
 \begin{frame}{Maturity at age}
