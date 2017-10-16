@@ -332,7 +332,7 @@ Figure 3.
 We assume that females account for 50\% of spawners, and we use the following egg conversion factor, $\mli{ECF}$ to convert eggs to tonnes, t of spawners
 \begin{equation*}
 \mli{ECF} = \mli{fecundity} \cdot \mli{pFemale} \cdot \frac{10^{3}~\text{kg}} {\text{t}}
-\end{equation}
+\end{equation*}
 where $\mli{fecundity}$ is the number of eggs per kilogram of total female body weight in $\text{eggs} \cdot \text{kg}^{-1}$, $\mli{pFemale}$ is the proportion of spawners that are female, and $\mli{ECF}$ is in $\text{eggs} \cdot \text{t}^{-1}$.
 Thus, we convert eggs to the spawn index in tonnes by dividing the number of eggs by $\mli{ECF} = \text{eggs} \cdot 10^{8} \cdot \text{t}^{-1}$.
 \end{frame}
@@ -347,7 +347,7 @@ Thus, we convert eggs to the spawn index in tonnes by dividing the number of egg
 We estimate spawning biomass removed from the population by the SOK fishery as
 \begin{equation*}
 \mli{SB} = \frac{\mli{SOK} \cdot eggKelpProp \cdot \mli{eggBrineProp}}{\mli{eggWt} \cdot \mli{ECF}}
-\end{equation}
+\end{equation*}
 where $\mli{SOK}$ is the weight in kg of SOK harvest, $\mli{eggKelpProp}$ is the proportion of the SOK product that is eggs, not kelp (0.88), $\mli{eggBrineProp}$ is the proportion of SOK product that is eggs after brining (0.87), $\mli{eggWt}$ is the average weight in kilograms of a fertilized egg ($\text{kg} \cdot \text{egg}^{-1}$), and $\mli{SB}$ is the estimated spawning biomass in tonnes.
 \end{frame}
 
@@ -521,11 +521,11 @@ Corrected the estimation of the variance structure based on reviewer comments on
 \item In the 2011 to 2016 version of the assessment model the variance structure is based on standard deviations: 
 \begin{equation*}
 \sigma=\rho/\vartheta, \;  \;  \; \; \tau=(1-\rho)/\vartheta
-\end{equation}
+\end{equation*}
 \item To improve estimation and to follow the correct errors-in-variables approach the variance structure was updated to be based on total precision instead:
 \begin{equation*}
 \sigma=\sqrt{\rho}\vartheta, \;  \;  \; \; \tau=\sqrt{(1-\rho)}\vartheta
-\end{equation}
+\end{equation*}
 \end{itemize}
 \end{frame}
 
@@ -694,10 +694,10 @@ make.index.fit.plot(list(cc.am1.constm,
 \item In ISCAM, the standard deviations in process error (tau, $\tau$) and observation error (sigma, $\sigma$) are related and modeled using the following equations:
 \begin{equation*}
 \kappa = \left( \frac{1}{\sqrt{(\sigma^2 + \tau^2)}} \right)^2
-\end{equation}
+\end{equation*}
 \begin{equation*}
 \rho = \sigma^2 \left( \frac{1}{\sqrt{(\sigma^2 + \tau^2)}} \right)^2 \,
-\end{equation}
+\end{equation*}
 \item For the sensitivity analysis we analyzed model sensitivity to the initial values of $\rho$ and $\kappa$ by varying them, while estimating all leading parameters.
 \end{itemize}
 \end{frame}
