@@ -29,7 +29,6 @@ models-arrowtooth
 *.synctex.gz
 .DS_Store
 doc/knitr-cache/
-models/
 models-backup/
 models-mwe/
 Grandin-Arrowtooth-CSAS-ResDoc-July-2017-WebAccessible.pdf
