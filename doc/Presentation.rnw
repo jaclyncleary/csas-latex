@@ -686,7 +686,7 @@ make.index.fit.plot(list(cc.am1.constm,
 % New slide
 \begin{frame}{Natural mortality}
 \begin{itemize}
-\item We found that model outcomes were influenced by the method used to estimate $M$ %grey
+\item \color{gray}{We found that model outcomes were influenced by the method used to estimate $M$}
 \item Time-varying $M$ appeared to provide a better fit to data
 \item The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior
 \end{itemize}
@@ -702,9 +702,9 @@ make.index.fit.plot(list(cc.am1.constm,
 % New slide
 \begin{frame}{Natural mortality}
 \begin{itemize}
-\item We found that model outcomes were influenced by the method used to estimate $M$ %grey
-\item Time-varying $M$ appeared to provide a better fit to data %grey
-\item The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior %grey
+\item \color{gray}{We found that model outcomes were influenced by the method used to estimate $M$}
+\item \color{gray}{Time-varying $M$ appeared to provide a better fit to data}
+\item \color{gray}{The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior}
 \item Likelihood tables showed...
 \end{itemize}
 \end{frame}
@@ -712,10 +712,10 @@ make.index.fit.plot(list(cc.am1.constm,
 % New slide
 \begin{frame}{Natural mortality}
 \begin{itemize}
-\item We found that model outcomes were influenced by the method used to estimate $M$ %grey
-\item Time-varying $M$ appeared to provide a better fit to data %grey
-\item The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior %grey
-\item Likelihood tables showed...%grey
+\item \color{gray}{We found that model outcomes were influenced by the method used to estimate $M$}
+\item \color{gray}{Time-varying $M$ appeared to provide a better fit to data}
+\item \color{gray}{The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior}
+\item \color{gray}{Likelihood tables showed...}
 \item This sensitivity analysis and the bridging analysis support the continued use of time-varying $M$ as the base case for the assessment
 \end{itemize}
 \end{frame}
