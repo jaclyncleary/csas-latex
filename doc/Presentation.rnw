@@ -1048,6 +1048,8 @@ Figure 29. Estimated spawning biomass in \Sexpr{max(yrRange)}, $\mli{SB}_{\Sexpr
 
 % New slide
 \begin{frame}{Projected biomass in \Sexpr{nextYr}}
+Projected pre-fishery spawning biomass estimates (i.e., prior to any harvest in 2018), and the
+relative contribution of fish aged 3 and aged 4-10 were calculated for each stock.
 \end{frame}
 
 % New slide
