@@ -330,7 +330,7 @@ Figure 3.
 \item Female \Sexpr{fish.name} produce an average of approximately $200,000$ eggs per kilogram, kg of total body weight \citep{hay1985, hay1988}.
 \end{itemize}
 We assume that females account for 50\% of spawners, and we use the following egg conversion factor, $\mli{ECF}$ to convert eggs to tonnes, t of spawners
-\begin{equation}\label{eqFecundity}
+\begin{equation*}
 \mli{ECF} = \mli{fecundity} \cdot \mli{pFemale} \cdot \frac{10^{3}~\text{kg}} {\text{t}}
 \end{equation}
 where $\mli{fecundity}$ is the number of eggs per kilogram of total female body weight in $\text{eggs} \cdot \text{kg}^{-1}$, $\mli{pFemale}$ is the proportion of spawners that are female, and $\mli{ECF}$ is in $\text{eggs} \cdot \text{t}^{-1}$.
@@ -345,7 +345,7 @@ Thus, we convert eggs to the spawn index in tonnes by dividing the number of egg
 \item The mean fertilized egg weight is $2.38 \cdot 10^{-6}\,\text{kg}$ \citep{hay1982}
 \end{itemize}
 We estimate spawning biomass removed from the population by the SOK fishery as
-\begin{equation}\label{eqSOK}
+\begin{equation*}
 \mli{SB} = \frac{\mli{SOK} \cdot eggKelpProp \cdot \mli{eggBrineProp}}{\mli{eggWt} \cdot \mli{ECF}}
 \end{equation}
 where $\mli{SOK}$ is the weight in kg of SOK harvest, $\mli{eggKelpProp}$ is the proportion of the SOK product that is eggs, not kelp (0.88), $\mli{eggBrineProp}$ is the proportion of SOK product that is eggs after brining (0.87), $\mli{eggWt}$ is the average weight in kilograms of a fertilized egg ($\text{kg} \cdot \text{egg}^{-1}$), and $\mli{SB}$ is the estimated spawning biomass in tonnes.
@@ -357,7 +357,6 @@ where $\mli{SOK}$ is the weight in kg of SOK harvest, $\mli{eggKelpProp}$ is the
 \begin{column}{0.4\textwidth}
 \begin{itemize}
 \item SOK harvest and estimated spawning biomass in recent years
-\item Estimated spawning biomass via Equation \ref{eqSOK}
 \end{itemize}
 \end{column}
 \begin{column}{0.3\textwidth}
@@ -386,10 +385,16 @@ where $\mli{SOK}$ is the weight in kg of SOK harvest, $\mli{eggKelpProp}$ is the
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.2\textwidth}
-`Gear4' is estimated spawning biomass removed by SOK harvest
+\begin{column}{0.25\textwidth}
+Legend:
+\begin{itemize}
+\item Gear1: Other fisheries
+\item Gear2: Roe seine 
+\item Gear3: Roe gillnet
+\item Gear4: SOK
+\end{itemize}
 \end{column}
-\begin{column}{0.8\textwidth}
+\begin{column}{0.75\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CatchSOKWide.png}
 \end{column}
@@ -494,11 +499,13 @@ Steps of the bridging analysis:
 \end{enumerate}
 \end{frame}
 
+% TODO: Nuke eqns
+
 % New slide
 \begin{frame}
 Steps of the bridging analysis:
 \begin{enumerate}
-\item Updated variance structure (V0 to V1)
+\item \color{gray} Updated variance structure (V0 to V1)
 \begin{itemize}
 \item ISCAM uses the errors-in-variables approach 
 \item Partitioning of the total variance, $varphi$ into observation ($\sigma$) and process error ($\tau$)
@@ -512,11 +519,11 @@ Steps of the bridging analysis:
 Corrected the estimation of the variance structure based on reviewer comments on 2011 herring stock assessment \citep{herring2012}
 \begin{itemize}
 \item In the 2011 to 2016 version of the assessment model the variance structure is based on standard deviations: 
-\begin{equation}
+\begin{equation*}
 \sigma=\rho/\vartheta, \;  \;  \; \; \tau=(1-\rho)/\vartheta
 \end{equation}
 \item To improve estimation and to follow the correct errors-in-variables approach the variance structure was updated to be based on total precision instead:
-\begin{equation}
+\begin{equation*}
 \sigma=\sqrt{\rho}\vartheta, \;  \;  \; \; \tau=\sqrt{(1-\rho)}\vartheta
 \end{equation}
 \end{itemize}
@@ -680,16 +687,15 @@ make.index.fit.plot(list(cc.am1.constm,
 \end{columns}
 \end{frame}
 
-
 % New slide
 \begin{frame}{Variance parameters}
 \begin{itemize}
 \item Used the errors-in-variables approach to estimating process error (tau, $\tau$) and observation error (sigma, $\sigma$)
 \item In ISCAM, the standard deviations in process error (tau, $\tau$) and observation error (sigma, $\sigma$) are related and modeled using the following equations:
-\begin{equation}\label{eqKappa}
+\begin{equation*}
 \kappa = \left( \frac{1}{\sqrt{(\sigma^2 + \tau^2)}} \right)^2
 \end{equation}
-\begin{equation}\label{eqRho}
+\begin{equation*}
 \rho = \sigma^2 \left( \frac{1}{\sqrt{(\sigma^2 + \tau^2)}} \right)^2 \,
 \end{equation}
 \item For the sensitivity analysis we analyzed model sensitivity to the initial values of $\rho$ and $\kappa$ by varying them, while estimating all leading parameters.
@@ -697,10 +703,10 @@ make.index.fit.plot(list(cc.am1.constm,
 \end{frame}
 
 % New slide
+% TODO: Highlight rows: last 4
 \begin{frame}{Variance parameter sensitivities: SoG AM1}
 Table 44.
 \begin{itemize}
- 
 \item Results showed that when both $\rho$ and $\kappa$ are estimated by the model the initial values do not influence the model estimates.
 \end{itemize}
 \centering
@@ -822,6 +828,7 @@ that is mature but not yet selected for by the gear as invulnerable to the fishe
 \begin{itemize}
 \item Results indicated that there were only minor differences in the parameters estimates from the sensitivity scenario compared to the base case.
 \item Estimates of $F_\text{MSY}$ did decline when maturity-at-age was equal to selectivity-at-age but the estimates are still unusually high (compared with literature).
+% TODO: Expand vertically
 \item Table 47. Maturity sensitivity reference points for the Strait of Georgia AM2 model.
 \end{itemize}
 \end{column}
