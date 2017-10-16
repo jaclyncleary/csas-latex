@@ -328,7 +328,8 @@ Figure 3.
 \begin{frame}
 \begin{columns}
 \begin{column}{0.2\textwidth}
-Figure 5.
+Figure 5. Time series of proportion-at-age for Pacific Herring from 1951 to 2017 in the major stock
+assessment regions (SARs).
 \end{column}
 \begin{column}{0.8\textwidth}
 \centering
