@@ -782,16 +782,17 @@ make.catchability.parameters.table.q.sens(sens.models.6,
 \end{columns}
 \end{frame}
 
+% New slide
 \begin{frame}{Prior probability on $q$: Summary}
 \begin{itemize}
 \item The bridging analysis indicated that as the prior mean increased the spawning biomass increased for AM1
 \item The sensitivity analysis showed that relaxing bounds on prior for q in AM1 caused:
 \begin{itemize}
-\item the estimates of both $q_1$ and $q_2$ to decrease for HG and CC  
-\item the estimates of 
-prd/ prior on q2 increases.
+\item the estimates of both $q_1$ and $q_2$ decreased for HG and CC as the mean increased.
+\item the estimates of $q_2$ increased for PRD, SOG and WCVI as the mean increased.
 \end{itemize}
-
+\end{itemize}
+\end{frame}
 % New slide
 \begin{frame}{Maturity at age}
 \begin{itemize}
@@ -800,9 +801,7 @@ prd/ prior on q2 increases.
 \item 25\% of age-2 fish, 90\% of age-3 fish, and 100\% ages-4 and older fish are mature, and
 \item 50\% maturity is estimated to be approximately 2.3 years 
 \end{itemize}
-\item In \citet{kronlund2017} it was identified that when the positioning of the maturity curve is to the left of the fishery selectivity curve(s) and thus age at 50\% maturity is estimated to occur at a much younger age than 50\% selectivity, the model interprets the portion of the population
-that is mature but not yet selected for by the gear as invulnerable to the fishery.
-\item It is suspected that this phenomena is one of the contributing factors to the high estimates of FMSY coming from ISCAM.
+\item In \citet{kronlund2017} it was identified that when the positioning of the maturity curve is to the left of the fishery selectivity curve(s) and thus age at 50\% maturity is estimated to occur at a much younger age than 50\% selectivity, the model interprets the portion of the population that is mature but not yet selected for by the gear as invulnerable to the fishery.
 \end{itemize}
 \end{frame}
 
@@ -819,12 +818,13 @@ that is mature but not yet selected for by the gear as invulnerable to the fishe
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \begin{itemize}
-\item Results indicated that there were only minor differences in the parameters estimates from the sensitivity scenario compared to the base case.
 \item Estimates of $F_\text{MSY}$ did decline when maturity-at-age was equal to selectivity-at-age but the estimates are still unusually high (compared with literature).
-\item Table 47. Maturity sensitivity reference points for the Strait of Georgia AM2 model.
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
+
+Table 47. Maturity sensitivity reference points for the Strait of Georgia AM2 model.
+
 \centering
 <<maturity.sens.AM2, results='asis', echo=FALSE>>=
 make.maturity.sens.table(maturity.sens,
@@ -842,6 +842,14 @@ make.maturity.sens.table(maturity.sens,
 
 %%% New section: Results %%%
 \section[Results]{Summary of results}
+
+% New slide
+\begin{frame}{AM2 vs. AM1}
+\begin{itemize}
+\item info from SR
+\item
+\end{itemize}
+\end{frame}
 
 % New slide
 \begin{frame}
