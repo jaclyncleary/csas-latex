@@ -7,6 +7,9 @@
 % For subscripts in text mode (table column names)
 \newcommand{\subscr}[1]{$_{\text{#1}}$}
 
+% Better treatment of input (no extra trailing space)
+\newcommand{\inputsp}[1]{\input{#1}\unskip}
+
 % Load packages
 \usepackage{booktabs}
 \usepackage{beamerthemesplit}
@@ -19,9 +22,6 @@
 
 % Multi-letter identifier (i.e., multi-character variable
 \newcommand{\mli}[1]{\mathit{#1}}
-
-% Better treatment of input (no extra trailing space)
-\newcommand{\inputsp}[1]{\input{#1}\unskip}
 
 % Shortcuts
 \newcommand{\bc}{\begin{center}}
@@ -264,82 +264,82 @@ Figure 3.
 \end{columns}
 \end{frame}
 
-% New slide
-\begin{frame}{Spawn on kelp (SOK)}
-\begin{itemize}
-\item Female \Sexpr{fish.name} produce an average of approximately $200,000$ eggs per kilogram, kg of total body weight \citep{hay1985, hay1988}.
-\end{itemize}
-We assume that females account for 50\% of spawners, and we use the following egg conversion factor, $\mli{ECF}$ to convert eggs to tonnes, t of spawners
-\begin{equation*}
-\mli{ECF} = \mli{fecundity} \cdot \mli{pFemale} \cdot \frac{10^{3}~\text{kg}} {\text{t}}
-\end{equation*}
-where $\mli{fecundity}$ is the number of eggs per kilogram of total female body weight in $\text{eggs} \cdot \text{kg}^{-1}$, $\mli{pFemale}$ is the proportion of spawners that are female, and $\mli{ECF}$ is in $\text{eggs} \cdot \text{t}^{-1}$.
-Thus, we convert eggs to the spawn index in tonnes by dividing the number of eggs by $\mli{ECF} = \text{eggs} \cdot 10^{8} \cdot \text{t}^{-1}$.
-\end{frame}
+% % New slide
+% \begin{frame}{Spawn on kelp (SOK)}
+% \begin{itemize}
+% \item Female \Sexpr{fish.name} produce an average of approximately $200,000$ eggs per kilogram, kg of total body weight \citep{hay1985, hay1988}.
+% \end{itemize}
+% We assume that females account for 50\% of spawners, and we use the following egg conversion factor, $\mli{ECF}$ to convert eggs to tonnes, t of spawners
+% \begin{equation*}
+% \mli{ECF} = \mli{fecundity} \cdot \mli{pFemale} \cdot \frac{10^{3}~\text{kg}} {\text{t}}
+% \end{equation*}
+% where $\mli{fecundity}$ is the number of eggs per kilogram of total female body weight in $\text{eggs} \cdot \text{kg}^{-1}$, $\mli{pFemale}$ is the proportion of spawners that are female, and $\mli{ECF}$ is in $\text{eggs} \cdot \text{t}^{-1}$.
+% Thus, we convert eggs to the spawn index in tonnes by dividing the number of eggs by $\mli{ECF} = \text{eggs} \cdot 10^{8} \cdot \text{t}^{-1}$.
+% \end{frame}
 
-% New slide
-\begin{frame}{Spawn on kelp (SOK)}
-\begin{itemize}
-\item About 12\% of SOK product weight is kelp \citep{shields1985}
-\item Salt uptake increases the wet product weight by about 13\% \citep{whyte1977}
-\item The mean fertilized egg weight is $2.38 \cdot 10^{-6}\,\text{kg}$ \citep{hay1982}
-\end{itemize}
-We estimate spawning biomass removed from the population by the SOK fishery as
-\begin{equation*}
-\mli{SB} = \frac{\mli{SOK} \cdot eggKelpProp \cdot \mli{eggBrineProp}}{\mli{eggWt} \cdot \mli{ECF}}
-\end{equation*}
-where $\mli{SOK}$ is the weight in kg of SOK harvest, $\mli{eggKelpProp}$ is the proportion of the SOK product that is eggs, not kelp (0.88), $\mli{eggBrineProp}$ is the proportion of SOK product that is eggs after brining (0.87), $\mli{eggWt}$ is the average weight in kilograms of a fertilized egg ($\text{kg} \cdot \text{egg}^{-1}$), and $\mli{SB}$ is the estimated spawning biomass in tonnes.
-\end{frame}
+% % New slide
+% \begin{frame}{Spawn on kelp (SOK)}
+% \begin{itemize}
+% \item About 12\% of SOK product weight is kelp \citep{shields1985}
+% \item Salt uptake increases the wet product weight by about 13\% \citep{whyte1977}
+% \item The mean fertilized egg weight is $2.38 \cdot 10^{-6}\,\text{kg}$ \citep{hay1982}
+% \end{itemize}
+% We estimate spawning biomass removed from the population by the SOK fishery as
+% \begin{equation*}
+% \mli{SB} = \frac{\mli{SOK} \cdot eggKelpProp \cdot \mli{eggBrineProp}}{\mli{eggWt} \cdot \mli{ECF}}
+% \end{equation*}
+% where $\mli{SOK}$ is the weight in kg of SOK harvest, $\mli{eggKelpProp}$ is the proportion of the SOK product that is eggs, not kelp (0.88), $\mli{eggBrineProp}$ is the proportion of SOK product that is eggs after brining (0.87), $\mli{eggWt}$ is the average weight in kilograms of a fertilized egg ($\text{kg} \cdot \text{egg}^{-1}$), and $\mli{SB}$ is the estimated spawning biomass in tonnes.
+% \end{frame}
 
-% New slide
-\begin{frame}{Spawn on kelp (SOK)}
-\begin{columns}
-\begin{column}{0.4\textwidth}
-\begin{itemize}
-\item SOK harvest and estimated spawning biomass in recent years
-\end{itemize}
-\end{column}
-\begin{column}{0.3\textwidth}
-\centering
-\scriptsize
-\begin{tabular}{lrrrrr}
-\toprule
-& \multicolumn{5}{c}{Harvest (kg)}\\
-\cmidrule{2-6}
-\inputsp{\Sexpr{noquote(locOutput)}HarvSOK.tex}
-\end{tabular}
-\end{column}
-\begin{column}{0.3\textwidth}
-\centering
-\scriptsize
-\begin{tabular}{lrrrrr}
-\toprule
-& \multicolumn{5}{c}{Biomass (t)}\\
-\cmidrule{2-6}
-\inputsp{\Sexpr{noquote(locOutput)}BioSOK.tex}
-\end{tabular}
-\end{column}
-\end{columns}
-\end{frame}
+% % New slide
+% \begin{frame}{Spawn on kelp (SOK)}
+% \begin{columns}
+% \begin{column}{0.4\textwidth}
+% \begin{itemize}
+% \item SOK harvest and estimated spawning biomass in recent years
+% \end{itemize}
+% \end{column}
+% \begin{column}{0.3\textwidth}
+% \centering
+% \scriptsize
+% \begin{tabular}{lrrrrr}
+% \toprule
+% & \multicolumn{5}{c}{Harvest (kg)}\\
+% \cmidrule{2-6}
+% \inputsp{\Sexpr{noquote(locOutput)}HarvSOK.tex}
+% \end{tabular}
+% \end{column}
+% \begin{column}{0.3\textwidth}
+% \centering
+% \scriptsize
+% \begin{tabular}{lrrrrr}
+% \toprule
+% & \multicolumn{5}{c}{Biomass (t)}\\
+% \cmidrule{2-6}
+% \inputsp{\Sexpr{noquote(locOutput)}BioSOK.tex}
+% \end{tabular}
+% \end{column}
+% \end{columns}
+% \end{frame}
 
-% New slide
-\begin{frame}
-\begin{columns}
-\begin{column}{0.25\textwidth}
-Legend:
-\begin{itemize}
-\item Gear1: Other fisheries
-\item Gear2: Roe seine 
-\item Gear3: Roe gillnet
-\item Gear4: SOK
-\end{itemize}
-\end{column}
-\begin{column}{0.75\textwidth}
-\centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CatchSOKWide.png}
-\end{column}
-\end{columns}
-\end{frame}
+% % New slide
+% \begin{frame}
+% \begin{columns}
+% \begin{column}{0.25\textwidth}
+% Legend:
+% \begin{itemize}
+% \item Gear1: Other fisheries
+% \item Gear2: Roe seine 
+% \item Gear3: Roe gillnet
+% \item Gear4: SOK
+% \end{itemize}
+% \end{column}
+% \begin{column}{0.75\textwidth}
+% \centering
+% \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CatchSOKWide.png}
+% \end{column}
+% \end{columns}
+% \end{frame}
 
 % New subsection: biosamples
 \subsection{Biological data}
@@ -433,8 +433,6 @@ Steps of the bridging analysis:
 \item Investigated the sensitivities of V2 to variance parameters and prior probablity distribution on $q$s
 \end{enumerate}
 \end{frame}
-
-% TODO: Nuke eqns
 
 % New slide
 \begin{frame}
@@ -831,15 +829,16 @@ make.catchability.parameters.table.q.sens(sens.models.6,
 \end{column}
 \end{columns}
 \end{frame}
- 
+
+% New slide
 \begin{frame}{Prior probability on $q$: Summary}
 \begin{itemize}
 \item The bridging analysis indicated that as the prior mean increased the spawning biomass increased for AM1
 \item The sensitivity analysis showed that relaxing bounds on prior for q in AM1 caused:
-  \begin{itemize}
-  \item the estimates of both $q_1$ and $q_2$ to decrease for HG and CC
-  \item the estimates of prd/ prior on q2 increases.
-  \end{itemize}
+\begin{itemize}
+\item the estimates of both $q_1$ and $q_2$ decreased for HG and CC as the standard deviation increased.
+\item the estimates of $q_2$ increased for PRD, SOG and WCVI as the standard deviation increased.
+\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -851,9 +850,7 @@ make.catchability.parameters.table.q.sens(sens.models.6,
 \item 25\% of age-2 fish, 90\% of age-3 fish, and 100\% ages-4 and older fish are mature, and
 \item 50\% maturity is estimated to be approximately 2.3 years 
 \end{itemize}
-\item In \citet{kronlund2017} it was identified that when the positioning of the maturity curve is to the left of the fishery selectivity curve(s) and thus age at 50\% maturity is estimated to occur at a much younger age than 50\% selectivity, the model interprets the portion of the population
-that is mature but not yet selected for by the gear as invulnerable to the fishery.
-\item It is suspected that this phenomena is one of the contributing factors to the high estimates of FMSY coming from ISCAM.
+\item In \citet{kronlund2017} it was identified that when the positioning of the maturity curve is to the left of the fishery selectivity curve(s) and thus age at 50\% maturity is estimated to occur at a much younger age than 50\% selectivity, the model interprets the portion of the population that is mature but not yet selected for by the gear as invulnerable to the fishery.
 \end{itemize}
 \end{frame}
 
@@ -870,13 +867,11 @@ that is mature but not yet selected for by the gear as invulnerable to the fishe
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \begin{itemize}
-\item Results indicated that there were only minor differences in the parameters estimates from the sensitivity scenario compared to the base case.
 \item Estimates of $F_\text{MSY}$ did decline when maturity-at-age was equal to selectivity-at-age but the estimates are still unusually high (compared with literature).
-% TODO: Expand vertically
-\item Table 47. Maturity sensitivity reference points for the Strait of Georgia AM2 model.
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
+Table 47. Maturity sensitivity reference points for the Strait of Georgia AM2 model.
 \centering
 <<maturity.sens.AM2, results='asis', echo=FALSE>>=
 make.maturity.sens.table(maturity.sens,
@@ -896,13 +891,41 @@ make.maturity.sens.table(maturity.sens,
 \section[Results]{Summary of results}
 
 % New slide
-\begin{frame}
-Let's do a slide or two of AM1 vs AM2 - emphasizing the differences- this will need to include prior-posterior histograms for $q_1$ and $q_2$, and then show only AM2 plots for storyboard and LRP production plots
+\begin{frame}{AM2 vs. AM1}
 \begin{itemize}
 \item info from SR
-\item retro plots
+% \item 
 \end{itemize}
 \end{frame}
+
+% New slide
+\begin{frame}{Retrospective biomass estimates: AM2 vs. AM1}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+Retrospective spawning biomass for the Strait of Georgia AM1 model.
+\centering
+<<sog.am1.retro.biomass, results='asis', echo=FALSE>>=
+make.biomass.retro.mpd.plot(sog.am1,
+                            am1.retro.models[[4]],
+                            ylim = c(0, 250),
+                            show.bo.line = TRUE,
+                            model.names = leg.names)
+@
+\end{column}
+\begin{column}{0.5\textwidth}
+Retrospective spawning biomass for the Strait of Georgia AM2 model.
+\centering
+<<sog.am2.retro.biomass, results='asis', echo=FALSE>>=
+make.biomass.retro.mpd.plot(sog.b,
+                            base.retro.models[[4]],
+                            ylim = c(0, 200),
+                            show.bo.line = TRUE,
+                            model.names = leg.names)
+@
+\end{column}
+\end{columns}
+\end{frame}
+
 
 % New slide
 \begin{frame}{Prior-posterior plots for HG: AM2 vs. AM1}
@@ -957,11 +980,9 @@ Figure 10A. Sensitivity to $q$ prior for Strait of Georgia
 \end{columns}
 \end{frame}
 
-
 % New subsection: Haida Gwaii
 \subsection{Haida Gwaii}
 
-% New slide
 % New slide
 \begin{frame}
 \begin{columns}
@@ -1000,7 +1021,6 @@ Figures 18 to 27
 \end{column}
 \end{columns}
 \end{frame}
-
 
 % New subsection: Prince Rupert District
 \subsection{Prince Rupert District}
