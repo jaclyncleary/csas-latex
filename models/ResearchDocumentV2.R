@@ -144,7 +144,7 @@ agePlusProp <- 6
 # Age of recruitment
 ageRec <- 2
 
-# Number of years to calculate running mean
+# Number of years to calculate running/rolling mean
 nRoll <- 5
 
 # Spawn survey method changed from surface (1951--1987) to dive (1988--present)

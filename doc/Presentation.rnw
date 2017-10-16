@@ -67,7 +67,7 @@
 \renewenvironment{knitrout}{\setlength{\topsep}{0mm}}{}
 
 % Small font for references
-\renewcommand*{\bibfont}{\scriptsize}
+% \renewcommand*{\bibfont}{\scriptsize}
 
 % Decrease margins globally
 \setbeamersize{text margin left=1.5em, text margin right=1.5em}
@@ -319,6 +319,33 @@ Figure 3.
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CatchWide.png}
 \end{column}
 \end{columns}
+\end{frame}
+
+% New slide
+\begin{frame}{Spawn on kelp (SOK)}
+\begin{itemize}
+\item Female \Sexpr{fish.name} produce an average of approximately $200,000$ eggs per kilogram, kg of total body weight \citep{hay1985, hay1988}.
+\end{itemize}
+We assume that females account for 50\% of spawners, and we use the following egg conversion factor, $\mli{ECF}$ to convert eggs to tonnes, t of spawners
+\begin{equation}\label{eqFecundity}
+\mli{ECF} = \mli{fecundity} \cdot \mli{pFemale} \cdot \frac{10^{3}~\text{kg}} {\text{t}}
+\end{equation}
+where $\mli{fecundity}$ is the number of eggs per kilogram of total female body weight in $\text{eggs} \cdot \text{kg}^{-1}$, $\mli{pFemale}$ is the proportion of spawners that are female, and $\mli{ECF}$ is in $\text{eggs} \cdot \text{t}^{-1}$.
+Thus, we convert eggs to the spawn index in tonnes by dividing the number of eggs by $\mli{ECF} = \text{eggs} \cdot 10^{8} \cdot \text{t}^{-1}$.
+\end{frame}
+
+% New slide
+\begin{frame}{Spawn on kelp (SOK)}
+\begin{itemize}
+\item About 12\% of SOK product weight is kelp \citep{shields1985}
+\item Salt uptake increases the wet product weight by about 13\% \citep{whyte1977}
+\item The mean fertilized egg weight is $2.38 \cdot 10^{-6}\,\text{kg}$ \citep{hay1982}
+\end{itemize}
+We estimate spawning biomass removed from the population by the SOK fishery as
+\begin{equation}\label{eqSOK}
+\mli{SB} = \frac{\mli{SOK} \cdot eggKelpProp \cdot \mli{eggBrineProp}}{\mli{eggWt} \cdot \mli{ECF}}
+\end{equation}
+where $\mli{SOK}$ is the weight in kg of SOK harvest, $\mli{eggKelpProp}$ is the proportion of the SOK product that is eggs, not kelp (0.88), $\mli{eggBrineProp}$ is the proportion of SOK product that is eggs after brining (0.87), $\mli{eggWt}$ is the average weight in kilograms of a fertilized egg ($\text{kg} \cdot \text{egg}^{-1}$), and $\mli{SB}$ is the estimated spawning biomass in tonnes.
 \end{frame}
 
 % New subsection: biosamples
