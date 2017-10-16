@@ -355,8 +355,7 @@ where $\mli{SOK}$ is the weight in kg of SOK harvest, $\mli{eggKelpProp}$ is the
 \begin{frame}
 \begin{columns}
 \begin{column}{0.2\textwidth}
-Figure 5. Time series of proportion-at-age for Pacific Herring from 1951 to 2017 in the major stock
-assessment regions (SARs).
+Figure 5. Time series of proportion-at-age for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the major stock assessment regions (SARs).
 \end{column}
 \begin{column}{0.8\textwidth}
 \centering
@@ -391,7 +390,8 @@ make.age.comp.estimates.plot(sog.b, 2)
 \begin{frame}
 \begin{columns}
 \begin{column}{0.2\textwidth}
-Figure 4.
+Figure 4. Time series of weight-at-age in kilograms (kg) for age-3 (circles) and 5-year running mean
+weight-at-age (lines) for Pacific Herring from 1951 to 2017 in the major stock assessment regions (SARs).
 \end{column}
 \begin{column}{0.8\textwidth}
 \centering
@@ -407,7 +407,7 @@ Figure 4.
 \begin{frame}
 \begin{columns}
 \begin{column}{0.2\textwidth}
-Figure 7.
+Figure 7. Time series of spawn index in thousands of metric tonnes ($\text{t} \times 10^{3}$) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the major stock assessment regions (SARs).
 \end{column}
 \begin{column}{0.8\textwidth}
 \centering
@@ -426,7 +426,12 @@ Figure 7.
 \begin{frame}{Modeling approach}
 \begin{itemize}
 \item We updated to a more flexible and computationally efficient platform of the integrated combined-sex statistical catch-at-age model (ISCAM) currently in use for other stock assessments within DFO.
-\item A bridging analysis was used to identify any inconsistancies in the estimation methods used in the new version (V2) compared to the 2016 version (V0).
+\item A bridging analysis was used to identify any inconsistancies in the estimation methods used in the new version (V2) compared to the 2016 version (V0). Based on:
+\begin{itemize}
+\item consistency of estimation results compared to V1,
+\item increased speed of model, and 
+\item increased flexibility
+\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -665,7 +670,7 @@ make.variance.table(variance.results,
 % New slide
 \begin{frame}{Prior probability on $q$}
 \begin{itemize}
-\item In the bridging analysis we investigated the use of different $q$ prior for $q_1$ and $q_2$ by varying:
+\item In the bridging analysis we investigated the use of different $q$ priors for $q_1$ and $q_2$ by varying:
 \begin{itemize}
 \item distribution type (informative or uninformative),
 \item mean values, and 
