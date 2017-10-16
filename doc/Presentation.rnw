@@ -880,7 +880,7 @@ make.maturity.sens.table(maturity.sens,
                          xcaption = NULL,
                          xlabel = "tab:maturity-sens.am2",
                          font.size = 8,
-                         space.size = 1,
+                         space.size = 8,
                          placement = "H")
 @
 \end{column}
