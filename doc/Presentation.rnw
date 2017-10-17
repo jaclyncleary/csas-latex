@@ -438,7 +438,7 @@ Steps of the bridging analysis:
 \begin{frame}
 Steps of the bridging analysis:
 \begin{enumerate}
-\item \color{gray}{Updated variance structure (V0 to V1)}
+\item Updated variance structure (V0 to V1)
 \begin{itemize}
 \item ISCAM uses the errors-in-variables approach 
 \item Partitioning of the total variance, $varphi$ into observation ($\sigma$) and process error ($\tau$)
@@ -494,7 +494,7 @@ Comparison of MPD estimates of leading parameters and unfished biomass, $\mli{SB
 \begin{frame}
 Steps of the bridging analysis:
 \begin{enumerate}
-\item Updated variance structure (V0 to V1)
+\item \color{gray}{Updated variance structure (V0 to V1)}
 \item Reconstructed previous assessment results with fixed parameters
 \item Compared parameter estimates from V1 and V2 under constant $M$ and time-varying $M$
 \begin{itemize}
@@ -513,8 +513,8 @@ Summary:
 \begin{itemize}
 \item Once V0 was updated to V1 the resulting estimates from V2 did not differed  
 \item Parameter estimates and biomass trajectories compared between V1 and V2 were nearly identical
-\item The sensitivity analyses on $M$ and the variance parameters suggested the continued use of 2016 parameterizations for \Sexpr{PasteNicely(mNames)} models
-\item The sensitivity analysis on $q$ suggested that the \Sexpr{PasteNicely(mNames)} parameterization of $q$ will require simulation-evaluation in order to justify any changes to these parameterizations. 
+\item \color{gray}{The sensitivity analyses on $M$ and the variance parameters suggested the continued use of 2016 parameterizations for \Sexpr{PasteNicely(mNames)} models}
+\item \color{gray}{The sensitivity analysis on $q$ suggested that the \Sexpr{PasteNicely(mNames)} parameterization of $q$ will require simulation-evaluation in order to justify any changes to these parameterizations.} 
 \end{itemize}
 \end{frame}
 
@@ -967,7 +967,7 @@ Figure 10A. Sensitivity to $q$ prior for Strait of Georgia
 \end{frame}
 
 % New subsection: Haida Gwaii
-\subsection{Haida Gwaii}
+\subsection{Haida Gwaii: AM2}
 
 % New slide
 \begin{frame}
