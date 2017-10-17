@@ -954,8 +954,6 @@ AM1: The estimate of q2 is similar to the prior value of ~0.5 for all areas, ran
 AM2: The q2=1.0 assumption assumes the survey observes all spawn, and that no eggs are lost to predation
 %bullet
 AM2: The herring spawn index is considered a minimum estimate of spawning abundance.
-\item 
-
 \end{itemize}
 \end{frame}
 
