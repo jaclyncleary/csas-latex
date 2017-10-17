@@ -356,10 +356,10 @@ Figure 3.
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.2\textwidth}
+\begin{column}{0.3\textwidth}
 Figure 5. Time series of proportion-at-age for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the major stock assessment regions (SARs).
 \end{column}
-\begin{column}{0.8\textwidth}
+\begin{column}{0.7\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}ProportionAgeWide.png}
 \end{column}
@@ -391,11 +391,11 @@ make.age.comp.estimates.plot(sog.b, 2)
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.2\textwidth}
+\begin{column}{0.3\textwidth}
 Figure 4. Time series of weight-at-age in kilograms (kg) for age-3 (circles) and 5-year running mean
 weight-at-age (lines) for Pacific Herring from 1951 to 2017 in the major stock assessment regions (SARs).
 \end{column}
-\begin{column}{0.8\textwidth}
+\begin{column}{0.7\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WeightAgeWide.png}
 \end{column}
@@ -408,10 +408,10 @@ weight-at-age (lines) for Pacific Herring from 1951 to 2017 in the major stock a
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.2\textwidth}
+\begin{column}{0.3\textwidth}
 Figure 7. Time series of spawn index in thousands of metric tonnes ($\text{t} \times 10^{3}$) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the major stock assessment regions (SARs).
 \end{column}
-\begin{column}{0.8\textwidth}
+\begin{column}{0.7\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SpawnIndexWide.png}
 \end{column}
@@ -584,22 +584,21 @@ DFO's decision-making framework incorporating the precautionary approach:
 \end{columns}
 \end{frame}
 
-
 % New slide
 \begin{frame}{Reference points for Pacific Herring}
-
-%MG: add round bullets for these three statements
-The DFO decision-making framework defines an example where HCR control points are coupled with biological reference points.
-
-The DFO DMF and Kronlund et al. (2017) describe the LRP as a state to be avoided with high probability, emphasizing the need to decouple biological reference points and control points of the HCR.
-
-We continue with this language, differentiating between control points and reference points.
-
-%MG: insert figure "decoupling HCR from reference points"
-insert figure: decoupling HCR from reference points
+\begin{columns}
+\begin{column}{0.5\linewidth}
+\begin{itemize}
+\item The DFO decision-making framework (DMF) defines an example where HCR control points are coupled with biological reference points
+\item The DFO DMF and \citet{kronlund2017} describe the LRP as a state to be avoided with high probability, emphasizing the need to decouple biological reference points and control points of the HCR
+\item We continue with this language, differentiating between control points and reference points
+\end{itemize}
+\end{column}
+\begin{column}{0.5\linewidth}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA2.png}
+\end{column}
+\end{columns}
 \end{frame}
-
-%JC stopped here. (remove DFO fig next slide)
 
 % New slide
 \begin{frame}{Reference points for Pacific Herring}
@@ -621,7 +620,7 @@ USR
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -637,7 +636,7 @@ MSY-based reference points
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA2.png}
 \end{column}
 \end{columns}
 \end{frame}
