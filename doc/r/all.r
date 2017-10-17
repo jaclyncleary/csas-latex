@@ -49,6 +49,7 @@ source(file.path(func.dir, "mcmc-diagnostics.r"))
 source(file.path(func.dir, "tables-activities-management.r"))
 source(file.path(func.dir, "tables-parameters.r"))
 
+source(file.path(func.dir, "tables-likelihood.r"))
 source(file.path(func.dir, "tables-decisions.r"))
 source(file.path(func.dir, "tables-maturity.r"))
 source(file.path(func.dir, "figures-nage2.r"))
