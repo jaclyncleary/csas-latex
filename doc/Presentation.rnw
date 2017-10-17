@@ -564,8 +564,15 @@ Based on the the bridging analysis we recommended:
 
 % New slide
 \begin{frame}{Reference points for Pacific Herring}
+\begin{columns}
+\begin{column}{0.5\linewidth}
 Current harvest control rule for Pacific herring
-%MG: insert figure "herringHCR"
+\end{column}
+\begin{column}{0.5\linewidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/HCR.png}
+\end{column}
+\end{columns}
 \end{frame}
 
 % New slide
@@ -582,6 +589,7 @@ DFO's decision-making framework incorporating the precautionary approach:
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
+\centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA.png}
 \end{column}
 \end{columns}
@@ -598,6 +606,7 @@ DFO's decision-making framework incorporating the precautionary approach:
 \end{itemize}
 \end{column}
 \begin{column}{0.5\linewidth}
+\centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA2.png}
 \end{column}
 \end{columns}
@@ -623,6 +632,7 @@ USR
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
+\centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA2.png}
 \end{column}
 \end{columns}
@@ -639,6 +649,7 @@ MSY-based reference points
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
+\centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA2.png}
 \end{column}
 \end{columns}
