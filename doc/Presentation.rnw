@@ -570,7 +570,7 @@ Current harvest control rule for Pacific herring
 \end{column}
 \begin{column}{0.5\linewidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/HCR.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/HerringHCR.png}
 \end{column}
 \end{columns}
 \end{frame}
