@@ -204,7 +204,16 @@ Investigate comparisons between old and new model code using a bridging analysis
 
 % New slide
 \begin{frame}{Context for the \Sexpr{max(yrRange)} assessment}
-Herring Renewal update JC will send material
+Herring Renewal, 3 Key Elements:
+\begin{enumerate}
+\item Updating the management framework for Pacific herring, including management goals and objectives, reference points (LRPs/USRs) consistent with the PA Framework, updated management procedure (MP) (data, assessment model, decision rules) 
+\item Fisheries Management Reform
+\item Stock Assessment and Survey Program: Options to improve the cost-effectiveness and affordability of the current program 
+\end{enumerate}
+
+DFO Pacific Region is undertaking a Management Strategy Evaluation (MSE) process to address Elements (1) and (3).
+
+DFO Science continues to address improvements to data inputs, assumptions for stock assessment, etc., within the annual assessment process, while operating models are developed to support MSE.
 \end{frame}
 
 % Show table of contents at each section
@@ -531,7 +540,16 @@ Based on the the bridging analysis we recommended:
 \end{frame}
 
 % New slide
-\begin{frame}{Precautionary approach}
+\begin{frame}{Reference points for Pacific Herring}
+
+Define biological reference points
+
+Define herring HCR (and control points)
+
+\end{frame}
+
+% New slide
+\begin{frame}{Reference points for Pacific Herring}
 \begin{columns}
 \begin{column}{0.5\textwidth}
 DFO's decision-making framework incorporating the precautionary approach:
@@ -548,6 +566,23 @@ DFO's decision-making framework incorporating the precautionary approach:
 \end{column}
 \end{columns}
 \end{frame}
+
+
+% New slide
+\begin{frame}{Reference points for Pacific Herring}
+
+%MG: add round bullets for these three statements
+The DFO decision-making framework defines an example where HCR control points are coupled with biological reference points.
+
+The DFO DMF and Kronlund et al. (2017) describe the LRP as a state to be avoided with high probability, emphasizing the need to decouple biological reference points and control points of the HCR.
+
+We continue with this language, differentiating between control points and reference points.
+
+%MG: insert figure "decoupling HCR from reference points"
+insert figure: decoupling HCR from reference points
+\end{frame}
+
+%JC stopped here. (remove DFO fig next slide)
 
 % New slide
 \begin{frame}{Reference points for Pacific Herring}
