@@ -7,6 +7,9 @@
 % For subscripts in text mode (table column names)
 \newcommand{\subscr}[1]{$_{\text{#1}}$}
 
+% Better treatment of input (no extra trailing space)
+\newcommand{\inputsp}[1]{\input{#1}\unskip}
+
 % Load packages
 \usepackage{booktabs}
 \usepackage{beamerthemesplit}
@@ -40,12 +43,20 @@
 % No navigation symbols
 \setbeamertemplate{navigation symbols}{}
 
-% Show total number of slides
-\addtobeamertemplate{navigation symbols}{}{%
-    \usebeamerfont{footline}%
-    \usebeamercolor[fg]{footline}%
-    \hspace{1em}%
-    \insertframenumber/\inserttotalframenumber
+% Generate a footer: short title, short author, and slide number/total
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[colsep=1.5pt]{upper separation line foot}
+  \end{beamercolorbox}
+  \begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
+    leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \leavevmode{\usebeamerfont{title in head/foot}\insertshorttitle}%
+    \hfill%
+    {\usebeamerfont{author in head/foot}\usebeamercolor[fg]{author in head/foot}\insertshortauthor}%
+    \hfill%
+    {\usebeamerfont{author in head/foot}\usebeamercolor[fg]{author in head/foot}\insertframenumber~/~\inserttotalframenumber}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[colsep=1.5pt]{lower separation line foot}
+  \end{beamercolorbox}
 }
 
 % Second order enumerate: a, b, ...
@@ -57,6 +68,9 @@
 
 % Change spacing between output chunk paragraphs
 \renewenvironment{knitrout}{\setlength{\topsep}{0mm}}{}
+
+% Small font for references
+\renewcommand*{\bibfont}{\scriptsize}
 
 % Decrease margins globally
 \setbeamersize{text margin left=1.5em, text margin right=1.5em}
@@ -126,7 +140,7 @@ setwd( dir=".." )
 
 % Variables for the cover page
 \title[Pacific Herring: Assessment in \Sexpr{max(yrRange)} and forecast for \Sexpr{nextYr}]{Stock Assessment for Pacific Herring (\emph{Clupea pallasi}) in British Columbia in \Sexpr{max(yrRange)} and forecast for \Sexpr{nextYr}}
-\author[Cleary \emph{et al.} (\Sexpr{max(yrRange)})]{Jaclyn Cleary \and Sarah Hawkshaw \and Matthew Grinnell \and Chris Grandin}
+\author[Cleary \emph{et al}. (\Sexpr{max(yrRange)})]{Jaclyn Cleary \and Sarah Hawkshaw \and Matthew Grinnell \and Chris Grandin}
 \institute{CSAP Working paper 2017PEL01\\Pacific Biological Station}
 \date{October 17 \& 18, 2017}
 
@@ -172,87 +186,34 @@ Investigate comparisons between old and new model code using a bridging analysis
 \end{enumerate}
 \end{frame}
 
-% New slide  Things we did not complete
-\begin{frame}{Terms of Reference}
-\ref{TOR:data}\ref{TOR:SOK}: Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.
-\begin{itemize}
-\item SOK fishery based on removal of eggs on kelp (not whole herring)
-\item On-going challenge to include SOK data (ie. fitting catch-age model to sporatic data)
-\item Steps to date:
-  \begin{itemize}
-  \item Data are included in Appendix B
-  \item Updates to survey index show: 
-        A2W... A27...
-  % \item Tech Report in progress (J. Schweigert)
- \end{itemize}       
-\end{itemize}
-\end{frame}
+% New slide: Things we did not complete
+%\begin{frame}{Terms of Reference}
+%\ref{TOR:data}\ref{TOR:SOK}: Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.
+%\begin{itemize}
+%\item SOK fishery based on removal of eggs on kelp (not whole herring)
+%\item On-going challenge to include SOK data (ie. fitting catch-age model to sporatic data)
+%\item Steps to date:
+  %\begin{itemize}
+  %\item Data are included in Appendix B
+  %\item Updates to survey index show: 
+        %A2W... A27...
+  % \item SOK/SOB Technical Report in progress (J. Schweigert)
+ %\end{itemize}       
+%\end{itemize}
+%\end{frame}
 
 % New slide
 \begin{frame}{Context for the \Sexpr{max(yrRange)} assessment}
-Herring Renewal update 
-\end{frame}
-
-% New slide
-\begin{frame}{Precautionary approach}
-\begin{columns}
-\begin{column}{0.5\textwidth}
-DFO's decision-making framework incorporating the precautionary approach:
-\begin{itemize}
-\item Reference points should be established using as long a time series as possible:
-\begin{description}
-\item[LRP] Should be positioned before a state of serious harm occurs, and must be avoided with high probability
-\item[USR] The boundary between the Cautious and Healthy zones
-\end{description}
-\end{itemize}
-\end{column}
-\begin{column}{0.5\textwidth}
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA.png}
-\end{column}
-\end{columns}
-\end{frame}
-
-
-% New slide
-\begin{frame}{Reference points for Pacific Herring}
-\begin{columns}
-\begin{column}{0.5\textwidth}
-LRP
-\begin{itemize} 
-\item Incorporate LRP of $0.3\mli{SB}_0$ into advice \citep{kronlund2017}
-\end{itemize} 
-USR
-\begin{itemize} 
-\item Proposed candidate USRs:
+Herring Renewal, 3 Key Elements:
 \begin{enumerate}
-\item Long-term average spawning biomass, $\mli{SB}_\text{avg}$
-\item Long-term average spawning biomass during a productive period, $\mli{SB}_\text{avg-prod}$
-\item $2 \times \text{LRP}$ (i.e., $0.6\mli{SB}_0$) 
-\item $\mli{SB}_0$
+\item Updating the management framework for Pacific herring, including management goals and objectives, reference points (LRPs/USRs) consistent with the PA Framework, updated management procedure (MP) (data, assessment model, decision rules) 
+\item Fisheries Management Reform
+\item Stock Assessment and Survey Program: Options to improve the cost-effectiveness and affordability of the current program 
 \end{enumerate}
-\end{itemize}
-\end{column}
-\begin{column}{0.5\textwidth}
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA.png}
-\end{column}
-\end{columns}
-\end{frame}
 
-% New slide
-\begin{frame}{Reference points for Pacific Herring}
-\begin{columns}
-\begin{column}{0.5\textwidth}
-MSY-based reference points
-\begin{itemize}
-\item \citet{kronlund2017} found MSY statistics were not plausible for Pacific Herring in BC
-\item Analysis here supports continued non-use of MSY-based reference points
-\end{itemize}
+DFO Pacific Region is undertaking a Management Strategy Evaluation (MSE) process to address Elements (1) and (3).
 
-\end{column}
-\begin{column}{0.5\textwidth}
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA.png}
-\end{column}
-\end{columns}
+DFO Science continues to address improvements to data inputs, assumptions for stock assessment, etc., within the annual assessment process, while operating models are developed to support MSE.
 \end{frame}
 
 % Show table of contents at each section
@@ -293,7 +254,8 @@ MSY-based reference points
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.4\textwidth}
+\begin{column}{0.3\textwidth}
+Figure 3.
 \begin{itemize} 
 \item Catch data used in assessment:
 \begin{itemize}
@@ -304,24 +266,109 @@ MSY-based reference points
 \item SOK catch currently not used in assessment
 \end{itemize} 
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.7\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CatchWide.png}
 \end{column}
 \end{columns}
 \end{frame}
 
+% % New slide
+% \begin{frame}{Spawn on kelp (SOK)}
+% \begin{itemize}
+% \item Female \Sexpr{fish.name} produce an average of approximately $200,000$ eggs per kilogram, kg of total body weight \citep{hay1985, hay1988}.
+% \end{itemize}
+% We assume that females account for 50\% of spawners, and we use the following egg conversion factor, $\mli{ECF}$ to convert eggs to tonnes, t of spawners
+% \begin{equation*}
+% \mli{ECF} = \mli{fecundity} \cdot \mli{pFemale} \cdot \frac{10^{3}~\text{kg}} {\text{t}}
+% \end{equation*}
+% where $\mli{fecundity}$ is the number of eggs per kilogram of total female body weight in $\text{eggs} \cdot \text{kg}^{-1}$, $\mli{pFemale}$ is the proportion of spawners that are female, and $\mli{ECF}$ is in $\text{eggs} \cdot \text{t}^{-1}$.
+% Thus, we convert eggs to the spawn index in tonnes by dividing the number of eggs by $\mli{ECF} = \text{eggs} \cdot 10^{8} \cdot \text{t}^{-1}$.
+% \end{frame}
+
+% % New slide
+% \begin{frame}{Spawn on kelp (SOK)}
+% \begin{itemize}
+% \item About 12\% of SOK product weight is kelp \citep{shields1985}
+% \item Salt uptake increases the wet product weight by about 13\% \citep{whyte1977}
+% \item The mean fertilized egg weight is $2.38 \cdot 10^{-6}\,\text{kg}$ \citep{hay1982}
+% \end{itemize}
+% We estimate spawning biomass removed from the population by the SOK fishery as
+% \begin{equation*}
+% \mli{SB} = \frac{\mli{SOK} \cdot eggKelpProp \cdot \mli{eggBrineProp}}{\mli{eggWt} \cdot \mli{ECF}}
+% \end{equation*}
+% where $\mli{SOK}$ is the weight in kg of SOK harvest, $\mli{eggKelpProp}$ is the proportion of the SOK product that is eggs, not kelp (0.88), $\mli{eggBrineProp}$ is the proportion of SOK product that is eggs after brining (0.87), $\mli{eggWt}$ is the average weight in kilograms of a fertilized egg ($\text{kg} \cdot \text{egg}^{-1}$), and $\mli{SB}$ is the estimated spawning biomass in tonnes.
+% \end{frame}
+
+% % New slide
+% \begin{frame}{Spawn on kelp (SOK)}
+% \begin{columns}
+% \begin{column}{0.4\textwidth}
+% \begin{itemize}
+% \item SOK harvest and estimated spawning biomass in recent years
+% \end{itemize}
+% \end{column}
+% \begin{column}{0.3\textwidth}
+% \centering
+% \scriptsize
+% \begin{tabular}{lrrrrr}
+% \toprule
+% & \multicolumn{5}{c}{Harvest (kg)}\\
+% \cmidrule{2-6}
+% \inputsp{\Sexpr{noquote(locOutput)}HarvSOK.tex}
+% \end{tabular}
+% \end{column}
+% \begin{column}{0.3\textwidth}
+% \centering
+% \scriptsize
+% \begin{tabular}{lrrrrr}
+% \toprule
+% & \multicolumn{5}{c}{Biomass (t)}\\
+% \cmidrule{2-6}
+% \inputsp{\Sexpr{noquote(locOutput)}BioSOK.tex}
+% \end{tabular}
+% \end{column}
+% \end{columns}
+% \end{frame}
+
+% % New slide
+% \begin{frame}
+% \begin{columns}
+% \begin{column}{0.25\textwidth}
+% Legend:
+% \begin{itemize}
+% \item Gear1: Other fisheries
+% \item Gear2: Roe seine 
+% \item Gear3: Roe gillnet
+% \item Gear4: SOK
+% \end{itemize}
+% \end{column}
+% \begin{column}{0.75\textwidth}
+% \centering
+% \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CatchSOKWide.png}
+% \end{column}
+% \end{columns}
+% \end{frame}
+
 % New subsection: biosamples
 \subsection{Biological data}
 
 % New slide
 \begin{frame}
+\begin{columns}
+\begin{column}{0.2\textwidth}
+Figure 5. Time series of proportion-at-age for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the major stock assessment regions (SARs).
+\end{column}
+\begin{column}{0.8\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}ProportionAgeWide.png}
+\end{column}
+\end{columns}
 \end{frame}
 
 % New slide
 \begin{frame}
+Figure 102.
 Estimated proportion-at-age versus time for Gear 2 (roe seine), for Haida Gwaii.
 The area of each circle reflects the proportion-at-age, each column sums to 1, zeros are not shown.
 Plus group is age-10.
@@ -332,6 +379,7 @@ make.age.comp.estimates.plot(hg.b, 2)
 
 % New slide
 \begin{frame}
+Figure 111.
 Estimated proportion-at-age versus time for Gear 2 (roe seine), for the Strait of Georgia.
 The area of each circle reflects the proportion-at-age, each column sums to 1, zeros are not shown.
 Plus group is age-10.
@@ -342,8 +390,16 @@ make.age.comp.estimates.plot(sog.b, 2)
 
 % New slide
 \begin{frame}
+\begin{columns}
+\begin{column}{0.2\textwidth}
+Figure 4. Time series of weight-at-age in kilograms (kg) for age-3 (circles) and 5-year running mean
+weight-at-age (lines) for Pacific Herring from 1951 to 2017 in the major stock assessment regions (SARs).
+\end{column}
+\begin{column}{0.8\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WeightAgeWide.png}
+\end{column}
+\end{columns}
 \end{frame}
 
 % New subsection: abundance
@@ -351,8 +407,15 @@ make.age.comp.estimates.plot(sog.b, 2)
 
 % New slide
 \begin{frame}
+\begin{columns}
+\begin{column}{0.2\textwidth}
+Figure 7. Time series of spawn index in thousands of metric tonnes ($\text{t} \times 10^{3}$) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the major stock assessment regions (SARs).
+\end{column}
+\begin{column}{0.8\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SpawnIndexWide.png}
+\end{column}
+\end{columns}
 \end{frame}
 
 %%% New section: Stock assessment modeling %%%
@@ -374,6 +437,22 @@ make.age.comp.estimates.plot(sog.b, 2)
 Steps of the bridging analysis:
 \begin{enumerate}
 \item Updated variance structure (V0 to V1)
+\item Reconstructed previous assessment results with fixed parameters
+\item Compared parameter estimates from V1 and V2 under constant $M$ and time-varying $M$
+\item Investigated the sensitivities of V2 to variance parameters and prior probablity distribution on $q$s
+\end{enumerate}
+\end{frame}
+
+% New slide
+\begin{frame}
+Steps of the bridging analysis:
+\begin{enumerate}
+\item \color{gray}{Updated variance structure (V0 to V1)}
+\begin{itemize}
+\item ISCAM uses the errors-in-variables approach 
+\item Partitioning of the total variance, $varphi$ into observation ($\sigma$) and process error ($\tau$)
+\item Observation ($\sigma$) and process error ($\tau$) are estimated by the model
+\end{itemize}
 \end{enumerate}
 \end{frame}
 
@@ -381,14 +460,14 @@ Steps of the bridging analysis:
 \begin{frame}
 Corrected the estimation of the variance structure based on reviewer comments on 2011 herring stock assessment \citep{herring2012}
 \begin{itemize}
-\item In the 2011-2016 version of the assessment model the variance structure is based on standard deviations: 
-\begin{equation}
+\item In the 2011 to 2016 version of the assessment model the variance structure is based on standard deviations: 
+\begin{equation*}
 \sigma=\rho/\vartheta, \;  \;  \; \; \tau=(1-\rho)/\vartheta
-\end{equation}
+\end{equation*}
 \item To improve estimation and to follow the correct errors-in-variables approach the variance structure was updated to be based on total precision instead:
-\begin{equation}
+\begin{equation*}
 \sigma=\sqrt{\rho}\vartheta, \;  \;  \; \; \tau=\sqrt{(1-\rho)}\vartheta
-\end{equation}
+\end{equation*}
 \end{itemize}
 \end{frame}
 
@@ -396,7 +475,8 @@ Corrected the estimation of the variance structure based on reviewer comments on
 \begin{frame}
 \begin{columns}
 \begin{column}{0.4\textwidth}
-Tables D.1. Comparison of MPD estimates of leading parameters and unfished biomass, $\mli{SB}_0$, given changes to the estimation of the variance structure for process and observation error (AM1)
+Table D.1.
+Comparison of MPD estimates of leading parameters and unfished biomass, $\mli{SB}_0$, given changes to the estimation of the variance structure for process and observation error (AM1)
 \end{column}
 \begin{column}{0.6\textwidth}
 \centering
@@ -409,7 +489,8 @@ Tables D.1. Comparison of MPD estimates of leading parameters and unfished bioma
 \begin{frame}
 \begin{columns}
 \begin{column}{0.4\textwidth}
-Tables D.2. Comparison of MPD estimates of leading parameters and unfished biomass, $\mli{SB}_0$, given changes to the estimation of the variance structure for process and observation error (AM2)
+Table D.2.
+Comparison of MPD estimates of leading parameters and unfished biomass, $\mli{SB}_0$, given changes to the estimation of the variance structure for process and observation error (AM2)
 \end{column}
 \begin{column}{0.6\textwidth}
 \centering
@@ -425,7 +506,13 @@ Steps of the bridging analysis:
 \item Updated variance structure (V0 to V1)
 \item Reconstructed previous assessment results with fixed parameters
 \item Compared parameter estimates from V1 and V2 under constant $M$ and time-varying $M$
+\begin{itemize}
+\item Analysis carried through to the sensitivity analysis
+\end{itemize}
 \item Investigated the sensitivities of V2 to variance parameters and prior probablity distribution on $q$s
+\begin{itemize}
+\item Analysis carried through to the sensitivity analysis
+\end{itemize}
 \end{enumerate}
 \end{frame}
 
@@ -435,8 +522,8 @@ Summary:
 \begin{itemize}
 \item Once V0 was updated to V1 the resulting estimates from V2 did not differed  
 \item Parameter estimates and biomass trajectories compared between V1 and V2 were nearly identical
-\item The sensitivity analyses on $M$ and the variance parameters suggested the continued use of 2016 parameterizations for AM1 and AM2 models
-\item The sensitivity analysis on $q$ suggested that the AM1 and AM2 parameterization of $q$ will require simulation-evaluation in order to justify any changes to these parameterizations. 
+\item The sensitivity analyses on $M$ and the variance parameters suggested the continued use of 2016 parameterizations for \Sexpr{PasteNicely(mNames)} models
+\item The sensitivity analysis on $q$ suggested that the \Sexpr{PasteNicely(mNames)} parameterization of $q$ will require simulation-evaluation in order to justify any changes to these parameterizations. 
 \end{itemize}
 \end{frame}
 
@@ -452,10 +539,96 @@ Based on the the bridging analysis we recommended:
 \end{itemize}
 \end{frame}
 
+% New slide
+\begin{frame}{Reference points for Pacific Herring}
+
+Define biological reference points
+
+Define herring HCR (and control points)
+
+\end{frame}
+
+% New slide
+\begin{frame}{Reference points for Pacific Herring}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+DFO's decision-making framework incorporating the precautionary approach:
+\begin{itemize}
+\item Reference points should be established using as long a time series as possible:
+\begin{description}
+\item[LRP] Should be positioned before a state of serious harm occurs, and must be avoided with high probability
+\item[USR] The boundary between the Cautious and Healthy zones
+\end{description}
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+
+% New slide
+\begin{frame}{Reference points for Pacific Herring}
+
+%MG: add round bullets for these three statements
+The DFO decision-making framework defines an example where HCR control points are coupled with biological reference points.
+
+The DFO DMF and Kronlund et al. (2017) describe the LRP as a state to be avoided with high probability, emphasizing the need to decouple biological reference points and control points of the HCR.
+
+We continue with this language, differentiating between control points and reference points.
+
+%MG: insert figure "decoupling HCR from reference points"
+insert figure: decoupling HCR from reference points
+\end{frame}
+
+%JC stopped here. (remove DFO fig next slide)
+
+% New slide
+\begin{frame}{Reference points for Pacific Herring}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+LRP
+\begin{itemize} 
+\item Steps to incorporate LRP of $0.3\mli{SB}_0$ into advice \citep{kronlund2017}
+\end{itemize} 
+USR
+\begin{itemize} 
+\item Proposed candidate USRs:
+\begin{enumerate}
+\item Long-term average spawning biomass, $\mli{SB}_\text{avg}$
+\item Long-term average spawning biomass during a productive period, $\mli{SB}_\text{avg-prod}$
+\item $2 \times \text{LRP}$ (i.e., $0.6\mli{SB}_0$) 
+\item $\mli{SB}_0$
+\end{enumerate}
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+% New slide
+\begin{frame}{Reference points for Pacific Herring}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+MSY-based reference points
+\begin{itemize}
+\item \citet{kronlund2017} found MSY statistics were not plausible for Pacific Herring in BC
+\item Analysis here supports continued non-use of MSY-based reference points based on estimates confounding with maturity at age and time-varying $M$
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA.png}
+\end{column}
+\end{columns}
+\end{frame}
+
 % New subsection: 
 \subsection{Sensitivity analyses}
 
-% New slidd
+% New slide
 \begin{frame}
 We further tested the sensivity of the V2 model estimates to:
 \begin{enumerate}
@@ -469,24 +642,32 @@ We further tested the sensivity of the V2 model estimates to:
 % New slide
 \begin{frame}{Natural mortality}
 \begin{itemize}
-\item Model outcomes were influenced by the method used to estimate $M$
-\item Method used to estimate $M$ does not appear to be confounded by choice of $q$ prior
-\item Time-varying $M$ appeared to provide a better fit to data, supporting it use as the base case
+\item Estimating time-varying $M$ for Pacific Herring was first introduced in 2006 \citep{haist2006}
+\item It was incorporated into the ISCAM model and has been used since (2011-2016). 
+\item Recent concerns have been raised about interactions between estimating $q$ and $M$
+\item We began investigating this interaction by comparing constant $M$ and time-varying $M$
 \end{itemize}
 \end{frame}
 
 % New slide
 \begin{frame}{Natural mortality}
+\begin{itemize}
+\item We found that model outcomes were influenced by the method used to estimate $M$
+\end{itemize}
+\end{frame}
+
+% New slide
+\begin{frame}{Model outcomes were infuenced by the method used to estimate $M$}
 \begin{columns}
 \begin{column}{0.4\textwidth}
 \bi
-\item Figure 56. Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and
-inputs (points) for the Haida Gwaii surface survey.
+\item Figure 57.
+Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and inputs (points) for the Haida Gwaii dive survey.
 \ei
 \end{column}
 \begin{column}{0.6\textwidth}
 \centering
-<<hg.index.surface.fit>>=
+<<hg.index.dive.fit>>=
 leg.names <- c("AM1 Constant M",
                "AM1 Time-varying M",
                "AM2 Constant M",
@@ -497,7 +678,7 @@ make.index.fit.plot(list(hg.am1.constm,
                          hg.am2.tvm),
                     start.yr = 1950,
                     end.yr = 2016,
-                    ind = 1,
+                    ind = 2,
                     leg = "topright",
                     model.names = leg.names,
                     ylim = c(0, 60))
@@ -507,10 +688,94 @@ make.index.fit.plot(list(hg.am1.constm,
 \end{frame}
 
 % New slide
-\begin{frame}{Variance parameter sensitivities: SoG AM1}
+\begin{frame}{Model outcomes were infuenced by the method used to estimate $M$}
+\begin{columns}
+\begin{column}{0.4\textwidth}
+\bi
+\item Figure 61.
+Natural Mortality Sensitivity Case: Natural mortality sensitivity model index fits (lines) and inputs (points) for the Central Coast dive survey.
+\ei
+\end{column}
+\begin{column}{0.6\textwidth}
+\centering
+<<cc.index.dive.fit>>=
+leg.names <- c("AM1 Constant M",
+               "AM1 Time-varying M",
+               "AM2 Constant M",
+               "AM2 Time-varying M")
+make.index.fit.plot(list(cc.am1.constm,
+                         cc.am1.tvm,
+                         cc.am2.constm,
+                         cc.am2.tvm),
+                    start.yr = 1950,
+                    end.yr = 2016,
+                    ind = 2,
+                    leg = "topleft",
+                    model.names = leg.names,
+                    ylim = c(0, 60))
+@
+\end{column}
+\end{columns}
+\end{frame}
+
+% New slide
+\begin{frame}{Natural mortality}
 \begin{itemize}
-\item Analyzed model sensitivity to the initial values of $\rho$ and $\kappa$ by varying them, while estimating all leading parameters. 
-\item Results showed that when both parameters are estimated by the model the initial values do not influence the model estimates.
+\item \color{gray}{We found that model outcomes were influenced by the method used to estimate $M$}
+\item Time-varying $M$ appeared to provide a better fit to data
+\item The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior
+\end{itemize}
+\end{frame}
+
+% New slide
+\begin{frame}{Natural mortality}
+\begin{itemize}
+\item likelihood tables
+\end{itemize}
+\end{frame}
+
+% New slide
+\begin{frame}{Natural mortality}
+\begin{itemize}
+\item \color{gray}{We found that model outcomes were influenced by the method used to estimate $M$}
+\item \color{gray}{Time-varying $M$ appeared to provide a better fit to data}
+\item \color{gray}{The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior}
+\item Likelihood tables showed...
+\end{itemize}
+\end{frame}
+
+% New slide
+\begin{frame}{Natural mortality}
+\begin{itemize}
+\item \color{gray}{We found that model outcomes were influenced by the method used to estimate $M$}
+\item \color{gray}{Time-varying $M$ appeared to provide a better fit to data}
+\item \color{gray}{The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior}
+\item \color{gray}{Likelihood tables showed...}
+\item This sensitivity analysis and the bridging analysis support the continued use of time-varying $M$ as the base case for the assessment
+\end{itemize}
+\end{frame}
+
+% New slide
+\begin{frame}{Variance parameters}
+\begin{itemize}
+\item Used the errors-in-variables approach to estimating process error (tau, $\tau$) and observation error (sigma, $\sigma$)
+\item In ISCAM, the standard deviations in process error (tau, $\tau$) and observation error (sigma, $\sigma$) are related and modeled using the following equations:
+\begin{equation*}
+\kappa = \left( \frac{1}{\sqrt{(\sigma^2 + \tau^2)}} \right)^2
+\end{equation*}
+\begin{equation*}
+\rho = \sigma^2 \left( \frac{1}{\sqrt{(\sigma^2 + \tau^2)}} \right)^2 \,
+\end{equation*}
+\item For the sensitivity analysis we analyzed model sensitivity to the initial values of $\rho$ and $\kappa$ by varying them, while estimating all leading parameters.
+\end{itemize}
+\end{frame}
+
+% New slide
+% TODO: Highlight rows: last 4
+\begin{frame}{Variance parameter sensitivities: SoG AM1}
+Table 44.
+\begin{itemize}
+\item Results showed that when both $\rho$ and $\kappa$ are estimated by the model the initial values do not influence the model estimates.
 \end{itemize}
 \centering
 <<variance.results.AM1, results='asis', echo=FALSE>>=
@@ -524,12 +789,63 @@ make.variance.table(variance.results,
 @
 \end{frame}
 
-% New slide (Table 48)
+% New slide
+\begin{frame}{Prior probability on $q$}
+\begin{itemize}
+\item In the bridging analysis we investigated the use of different $q$ priors for $q_1$ and $q_2$ by varying:
+\begin{itemize}
+\item distribution type (informative or uninformative),
+\item mean values, and 
+\item standard deviations
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+% New slide
+\begin{frame}
+Bridging analysis: Figure 10A. Sensitivity to $q$ prior for Strait of Georgia
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Fig10Ab.png}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Fig10Ac.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+% New slide
+\begin{frame}
+Bridging analysis: Figure 10A. Sensitivity to $q$ prior for Strait of Georgia
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Fig10Af.png}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Fig10Ag.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+% New slide
+\begin{frame}{Prior probability on $q$}
+\begin{itemize}
+\item There have been concerns that the results from applying the prior probability distributions on $q_1$ and $q_2$ in the AM1 model have been too restricting to the resulting estimations.
+\item To begin to address this concern we expanded on the bridging analysis by increasing the standard deviations on the AM1 $q$ priors while the mean was held constant (0.566).
+\end{itemize}
+\end{frame}
+
+% New slide
 \begin{frame}{Prior probability on $q$: AM1}
 \begin{columns}
 \begin{column}{0.3\textwidth}
+Table 48.
 \bi
-\item Examined the potential effects of broadening the priors on $q$s by increasing the standard deviation of the distribution for AM1
+\item UPDATED Table 2. Estimated catchability (q) parameters and prior probability distributions used in all SAR models.
 \item Results showed only minor changes in model estimates of $q$
 \ei
 \end{column}
@@ -549,17 +865,48 @@ make.catchability.parameters.table.q.sens(sens.models.6,
 \end{columns}
 \end{frame}
 
-% New slide (Table 47)
+% New slide
+\begin{frame}{Prior probability on $q$: Summary}
+\begin{itemize}
+\item The bridging analysis indicated that as the prior mean increased the spawning biomass increased for AM1
+\item The sensitivity analysis showed that relaxing bounds on prior for q in AM1 caused:
+\begin{itemize}
+\item the estimates of both $q_1$ and $q_2$ decreased for HG and CC as the standard deviation increased.
+\item the estimates of $q_2$ increased for PRD, SOG and WCVI as the standard deviation increased.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+% New slide
+\begin{frame}{Maturity at age}
+\begin{itemize}
+\item The base case maturity vector values are based on a histological assessment of developing ovaries \citep{hay1985, hay1999}:
+\begin{itemize}
+\item 25\% of age-2 fish, 90\% of age-3 fish, and 100\% ages-4 and older fish are mature, and
+\item 50\% maturity is estimated to be approximately 2.3 years 
+\end{itemize}
+\item In \citet{kronlund2017} it was identified that when the positioning of the maturity curve is to the left of the fishery selectivity curve(s) and thus age at 50\% maturity is estimated to occur at a much younger age than 50\% selectivity, the model interprets the portion of the population that is mature but not yet selected for by the gear as invulnerable to the fishery.
+\end{itemize}
+\end{frame}
+
+% New slide
+\begin{frame}{Maturity at age}
+\begin{itemize}
+\item It is suspected that this phenomena is one of the contributing factors to the high estimates of FMSY coming from ISCAM.
+\item We began to investigate this by setting the fixed maturity at age vector equal to the selectivity of the seine roe fishery.
+\end{itemize}
+\end{frame}
+
+% New slide
 \begin{frame}{Maturity at age: SoG AM2}
 \begin{columns}
-\begin{column}{0.4\textwidth}
-\bi
-\item Examined the impacts of setting the fixed maturity at age vector equal to the selectivity of the seine roe fishery.
-\item Parameter estimates showed only minor differences from the base case.
-\item Estimates of $F_\text{MSY}$ were unreliable for comparison
-\ei
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item Estimates of $F_\text{MSY}$ did decline when maturity-at-age was equal to selectivity-at-age but the estimates are still unusually high (compared with literature).
+\end{itemize}
 \end{column}
-\begin{column}{0.6\textwidth}
+\begin{column}{0.5\textwidth}
+Table 47. Maturity sensitivity reference points for the Strait of Georgia AM2 model.
 \centering
 <<maturity.sens.AM2, results='asis', echo=FALSE>>=
 make.maturity.sens.table(maturity.sens,
@@ -579,19 +926,51 @@ make.maturity.sens.table(maturity.sens,
 \section[Results]{Summary of results}
 
 % New slide
-\begin{frame}
-Let's do a slide or two of AM1 vs AM2 - emphasizing the differences- this will need to include prior-posterior histograms for q1 and q2, and then show only AM2 plots for storyboard and LRP production plots
+\begin{frame}{AM2 vs. AM1}
+\begin{itemize}
+\item info from SR
+% \item 
+\end{itemize}
 \end{frame}
 
 % New slide
+\begin{frame}{Retrospective biomass estimates: AM2 vs. AM1}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+Retrospective spawning biomass for the Strait of Georgia AM1 model.
+\centering
+<<sog.am1.retro.biomass, results='asis', echo=FALSE>>=
+make.biomass.retro.mpd.plot(sog.am1,
+                            am1.retro.models[[4]],
+                            ylim = c(0, 250),
+                            show.bo.line = TRUE,
+                            model.names = leg.names)
+@
+\end{column}
+\begin{column}{0.5\textwidth}
+Retrospective spawning biomass for the Strait of Georgia AM2 model.
+\centering
+<<sog.am2.retro.biomass, results='asis', echo=FALSE>>=
+make.biomass.retro.mpd.plot(sog.b,
+                            base.retro.models[[4]],
+                            ylim = c(0, 200),
+                            show.bo.line = TRUE,
+                            model.names = leg.names)
+@
+\end{column}
+\end{columns}
+\end{frame}
+
+
+% New slide
 \begin{frame}{Prior-posterior plots for HG: AM2 vs. AM1}
-Prior probability distributions (lines) with comparative posterior histograms (bars) used in the Haida Gwaii models AM2 and AM1.
+Prior probability distributions (lines) with comparative posterior histograms (bars) used in the Haida Gwaii models \Sexpr{PasteNicely(mNames)}.
 Parameters $q_k$ represent gears where: $k=1$ is the surface survey and $k=2$ is the dive survey.
 The dotted red lines are the MPD estimates.
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \centering
-AM2
+AM2 (Figure 31.)
 <<hg.priors2>>=
 make.priors.posts.plot(hg.b, priors.only=FALSE)
 @
@@ -608,7 +987,7 @@ make.priors.posts.plot(hg.am1, priors.only=FALSE)
 
 % New slide
 \begin{frame}{AM1 vs AM2}
-Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
+Figure 10A. Sensitivity to $q$ prior for Strait of Georgia
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \centering
@@ -623,7 +1002,7 @@ Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 
 % New slide
 \begin{frame}{AM1 vs AM2}
-Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
+Figure 10A. Sensitivity to $q$ prior for Strait of Georgia
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \centering
@@ -636,28 +1015,44 @@ Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 \end{columns}
 \end{frame}
 
-% New slide
-\begin{frame}
-\begin{itemize}
-\item The following figures present posterior distributions characterizing: model fits to spawn survvey index, age-2 recruitment, instantanteous natural mortality, and spawning biomass reconstructions.
-\item Introduce production figures (include description of vertical lines)
-\item -show updated plots and explain vertical lines... compare SB2017 with LRP
-\end{itemize}
-\end{frame}
-
 % New subsection: Haida Gwaii
 \subsection{Haida Gwaii}
 
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.5\textwidth}
-\centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/ProductionAM2.png}
+\begin{column}{0.3\textwidth}
+Posterior distributions characterizing:
+  \begin{itemize}
+\item model fits to spawn survey index, 
+\item age-2 recruitment, 
+\item instantanteous natural mortality, and 
+\item spawning biomass reconstructions.
+\end{itemize}
+Figures 8 to 17
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.7\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+% New slide
+\begin{frame}
+\begin{columns}
+\begin{column}{0.3\textwidth}
+Production analysis:
+\begin{itemize}
+\item This measures whether stock is replacing itself or not.
+\item equation (from LRP paper):
+\item why $0.30\mli{SB}_0$...
+\end{itemize}
+Figures 18 to 27
+\end{column}
+\begin{column}{0.7\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/ProductionAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -668,13 +1063,19 @@ Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.5\textwidth}
-\centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}PRD/ProductionAM2.png}
-\end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.8\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+% New slide
+\begin{frame}
+\begin{columns}
+\begin{column}{0.8\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}PRD/ProductionAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -685,11 +1086,7 @@ Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.5\textwidth}
-\centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CC/ProductionAM2.png}
-\end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.8\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
 \end{column}
@@ -702,13 +1099,9 @@ Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.8\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SoG/ProductionAM2.png}
-\end{column}
-\begin{column}{0.5\textwidth}
-\centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -719,11 +1112,7 @@ Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.5\textwidth}
-\centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WCVI/ProductionAM2.png}
-\end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.8\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
 \end{column}
@@ -732,11 +1121,17 @@ Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 
 % New subsection: status
 \subsection{Current status}
-
 % New slide
 \begin{frame}
+\begin{columns}
+\begin{column}{0.3\textwidth}
+Figure 29. Estimated spawning biomass in \Sexpr{max(yrRange)}, $\mli{SB}_{\Sexpr{max(yrRange)}}$ in thousands of tonnes, t for \Sexpr{fish.name} in the major stock assessment regions (SARs) for models \Sexpr{PasteNicely(mNames)}.
+\end{column}
+\begin{column}{0.7\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}/CurrentSSBWide.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}/CurrentSSB.png}
+\end{column}
+\end{columns}
 \end{frame}
 
 % New slide
@@ -759,168 +1154,65 @@ Figure 10A. Sensitivity to prior on MEAN q for Strait of Georgia
 
 % New slide
 \begin{frame}{Projected biomass in \Sexpr{nextYr}}
+Projected pre-fishery spawning biomass estimates (i.e., prior to any harvest in 2018), and the
+relative contribution of fish aged 3 and aged 4-10 were calculated for each stock.
 \end{frame}
 
-% New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
-\begin{frame}{Decision table: Haida Gwaii AM2}
-<<hg.decision.table, results='asis', echo=FALSE>>=
-dec.table.font.size <- 6
-dec.table.font.space <- 7
-cap <- paste0("Probabilistic decision table for Haida Gwaii, AM2 model.")
-make.decision.table(hg.b,
-                    xcaption = cap,
-                    xlabel = "tab:hg-am2-decision",
-                    font.size = dec.table.font.size,
-                    space.size = dec.table.font.space,
-                    placement = "H")
-@
-
-\end{frame}
-
-% New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
-\begin{frame}{Decision table: Haida Gwaii AM1}
-<<hg.decision.table.am1, results='asis', echo=FALSE>>=
-dec.table.font.size <- 6
-dec.table.font.space <- 7
-cap <- paste0("Probabilistic decision table for Haida Gwaii, AM1 model.")
-make.decision.table(hg.am1,
-                    xcaption = cap,
-                    xlabel = "tab:hg-am1-decision",
-                    font.size = dec.table.font.size,
-                    space.size = dec.table.font.space,
-                    placement = "H")
-@
-
-\end{frame}
-
-% New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
+% New slide
 \begin{frame}{Decision table: Prince Rupert District AM2}
 <<prd.decision.table, results='asis', echo=FALSE>>=
 dec.table.font.size <- 6
 dec.table.font.space <- 7
-cap <- paste0("Probabilistic decision table for Prince Rupert District, AM2 model.")
 make.decision.table(pr.b,
-                    xcaption = cap,
+                    xcaption = NULL,
                     xlabel = "tab:prd-am2-decision",
                     font.size = dec.table.font.size,
                     space.size = dec.table.font.space,
                     placement = "H")
 @
-
 \end{frame}
 
-% New slide -- DOES NOT WORK
-\begin{frame}{Decision table: Prince Rupert District AM1}
-<<prd.decision.table.am1, results='asis', echo=FALSE>>=
-dec.table.font.size <- 6
-dec.table.font.space <- 7
-cap <- paste0("Probabilistic decision table for Prince Rupert District, AM1 model.")
-make.decision.table(pr.am1,
-                    xcaption = cap,
-                    xlabel = "tab:prd-am1-decision",
-                    font.size = dec.table.font.size,
-                    space.size = dec.table.font.space,
-                    placement = "H")
-@
-
-\end{frame}
-
-% New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
+% New slide
 \begin{frame}{Decision table: Central Coast AM2}
 <<cc.decision.table, results='asis', echo=FALSE>>=
 dec.table.font.size <- 6
 dec.table.font.space <- 7
-cap <- paste0("Probabilistic decision table for Central Coast, AM2 model.")
 make.decision.table(cc.b,
-                    xcaption = cap,
+                    xcaption = NULL,
                     xlabel = "tab:cc-am2-decision",
                     font.size = dec.table.font.size,
                     space.size = dec.table.font.space,
                     placement = "H")
 @
-
 \end{frame}
 
-% New slide -- DOES NOT WORK
-\begin{frame}{Decision table: Central Coast AM1}
-<<cc.decision.table.am1, results='asis', echo=FALSE>>=
-dec.table.font.size <- 6
-dec.table.font.space <- 7
-cap <- paste0("Probabilistic decision table for Central Coast, AM1 model.")
-make.decision.table(cc.am1,
-                    xcaption = cap,
-                    xlabel = "tab:cc-am1-decision",
-                    font.size = dec.table.font.size,
-                    space.size = dec.table.font.space,
-                    placement = "H")
-@
-
-\end{frame}
-
-% New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
+% New slide
 \begin{frame}{Decision table: Strait of Georgia AM2}
 <<sog.decision.table, results='asis', echo=FALSE>>=
 dec.table.font.size <- 6
 dec.table.font.space <- 7
-cap <- paste0("Probabilistic decision table for Strait of Georgia, AM2 model.")
 make.decision.table(sog.b,
-                    xcaption = cap,
+                    xcaption = NULL,
                     xlabel = "tab:sog-am2-decision",
                     font.size = dec.table.font.size,
                     space.size = dec.table.font.space,
                     placement = "H")
 @
-
 \end{frame}
 
-% New slide -- DOES NOT WORK
-\begin{frame}{Decision table: Strait of Georgia AM1}
-<<sog.decision.table.am1, results='asis', echo=FALSE>>=
-dec.table.font.size <- 6
-dec.table.font.space <- 7
-cap <- paste0("Probabilistic decision table for Strait of Georgia, AM1 model.")
-make.decision.table(sog.am1,
-                    xcaption = cap,
-                    xlabel = "tab:sog-am1-decision",
-                    font.size = dec.table.font.size,
-                    space.size = dec.table.font.space,
-                    placement = "H")
-@
-
-\end{frame}
-
-% New slide -- DOES NOT WORK SH: These are not working correctly for me but they arent in the resdoc either...
+% New slide
 \begin{frame}{Decision table: West Coast Vancouver Island AM2}
 <<wcvi.decision.table, results='asis', echo=FALSE>>=
 dec.table.font.size <- 6
 dec.table.font.space <- 7
-cap <- paste0("Probabilistic decision table for West Coast Vancouver Island, AM2 model.")
 make.decision.table(wcvi.b,
-                    xcaption = cap,
+                    xcaption = NULL,
                     xlabel = "tab:wcvi-am2-decision",
                     font.size = dec.table.font.size,
                     space.size = dec.table.font.space,
                     placement = "H")
 @
-
 \end{frame}
-
-% New slide -- DOES NOT WORK
-\begin{frame}{Decision table: West Coast Vancouver Island AM1}
-<<wcvi.decision.table.am1, results='asis', echo=FALSE>>=
-dec.table.font.size <- 6
-dec.table.font.space <- 7
-cap <- paste0("Probabilistic decision table for West Coast Vancouver Island, AM1 model.")
-make.decision.table(wcvi.am1,
-                    xcaption = cap,
-                    xlabel = "tab:wcvi-am1-decision",
-                    font.size = dec.table.font.size,
-                    space.size = dec.table.font.space,
-                    placement = "H")
-@
-
-\end{frame}
-
 
 % New subsection: future research
 \subsection{Future research}
@@ -931,17 +1223,120 @@ make.decision.table(wcvi.am1,
 \item Simulation-testing of management procedures
 \item SOK/SOB: quantify mortality and removed spawn
 \item Investigate appropriateness of stock-specific maturity ogive
+\item Potential for stock-specific prior distribution on $q$
 % \item Quantify uncertainty in the spawn index
 \end{enumerate}
 \end{frame}
 
-% %%% New section: References %%%
-% \section{References}
+% New subsection: References %%%
+\subsection{References}
 
 % New slide: References
 \begin{frame}[allowframebreaks]%{References}
 \bibliographystyle{res-doc}
 \bibliography{all}
+\end{frame}
+
+%%% Start the appendix (bonus slides) %%%
+\appendix
+
+% New slide
+\begin{frame}{Decision table: Haida Gwaii AM2}
+<<hg.decision.table, results='asis', echo=FALSE>>=
+dec.table.font.size <- 6
+dec.table.font.space <- 7
+make.decision.table(hg.b,
+                    xcaption = NULL,
+                    xlabel = "tab:hg-am2-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+\end{frame}
+
+% New slide
+\begin{frame}{Decision table: Haida Gwaii AM1}
+<<hg.decision.table.am1, results='asis', echo=FALSE>>=
+dec.table.font.size <- 6
+dec.table.font.space <- 7
+make.decision.table(hg.am1,
+                    xcaption = NULL,
+                    xlabel = "tab:hg-am1-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+\end{frame}
+
+% New slide
+\begin{frame}{Decision table: Prince Rupert District AM1}
+<<prd.decision.table.am1, results='asis', echo=FALSE>>=
+dec.table.font.size <- 6
+dec.table.font.space <- 7
+make.decision.table(pr.am1,
+                    xcaption = NULL,
+                    xlabel = "tab:prd-am1-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+\end{frame}
+
+% New slide
+\begin{frame}{Decision table: Central Coast AM1}
+<<cc.decision.table.am1, results='asis', echo=FALSE>>=
+dec.table.font.size <- 6
+dec.table.font.space <- 7
+make.decision.table(cc.am1,
+                    xcaption = NULL,
+                    xlabel = "tab:cc-am1-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+\end{frame}
+
+% New slide
+\begin{frame}{Decision table: Strait of Georgia AM1}
+<<sog.decision.table.am1, results='asis', echo=FALSE>>=
+dec.table.font.size <- 6
+dec.table.font.space <- 7
+make.decision.table(sog.am1,
+                    xcaption = NULL,
+                    xlabel = "tab:sog-am1-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+\end{frame}
+
+% New slide
+\begin{frame}{Decision table: West Coast Vancouver Island AM1}
+<<wcvi.decision.table.am1, results='asis', echo=FALSE>>=
+dec.table.font.size <- 6
+dec.table.font.space <- 7
+make.decision.table(wcvi.am1,
+                    xcaption = NULL,
+                    xlabel = "tab:wcvi-am1-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+\end{frame}
+
+% New slide
+\begin{frame}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item Since \Sexpr{intendUYrs}, the intended harvest rate $U$ has been \Sexpr{intendU*100}\%
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HarvestRate.png}
+\end{column}
+\end{columns}
 \end{frame}
 
 % Fin

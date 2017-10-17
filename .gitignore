@@ -21,6 +21,7 @@ doc/figure
 doc/res-doc.tex
 doc/knitr-cache
 res-doc.synctex(busy)
+Presentation.synctex(busy)
 models-backup
 models-mwe
 models-arrowtooth
@@ -28,7 +29,6 @@ models-arrowtooth
 *.synctex.gz
 .DS_Store
 doc/knitr-cache/
-models/
 models-backup/
 models-mwe/
 Grandin-Arrowtooth-CSAS-ResDoc-July-2017-WebAccessible.pdf
