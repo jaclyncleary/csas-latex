@@ -1281,7 +1281,7 @@ make.ref.points.table(sog.b,
 \end{frame}
 
 % New slide
-\begin{frame}{Strait of Georgia}
+\begin{frame}{WCVI}
 <<wcvi.ref.points.table, results='asis', echo=FALSE>>=
 cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
               "95\\textsuperscript{th} percentile) of proposed reference ",
