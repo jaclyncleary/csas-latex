@@ -541,10 +541,27 @@ Based on the the bridging analysis we recommended:
 
 % New slide
 \begin{frame}{Reference points for Pacific Herring}
+\begin{itemize}
+\item Biological reference points
+%MG - these next 3 statements need to be sub-bullets of Biological reference points
+Reference points are outcomes related to objectives for a stock and fishery
+Biological Reference Points (BRPs) define the biological criteria that a harvest policy must satisfy to be “acceptable”
+Classed as “limits” (LRPs) - e.g., minimum biomass levels that avoid compromising stock productivity
+and Classed as “targets” (TRPs) - e.g., biomass that provides for sustainable harvest opportunity
+\item Operational control points and the herring HCR
+%MG - these next 2 statments are sub-bullets
+Operational control points define where management takes action 
+Most commonly these are the inflection points of a HCR. 
+%MG- this last statement is a sub-bullet of the previous
+For herring, this is the commercial fishery cut-off.
+\end{itemize}
+\end{frame}
 
-Define biological reference points
+% New slide
+\begin{frame}{Reference points for Pacific Herring}
 
-Define herring HCR (and control points)
+Current harvest control rule for Pacific herring
+%MG: insert figure "herringHCR"
 
 \end{frame}
 
