@@ -204,7 +204,7 @@ Investigate comparisons between old and new model code using a bridging analysis
 
 % New slide
 \begin{frame}{Context for the \Sexpr{max(yrRange)} assessment}
-Herring Renewal, 3 Key Elements:
+\Sexpr{fish.name} Renewal, 3 Key Elements:
 \begin{enumerate}
 \item Updating the management framework for \Sexpr{fish.name}, including management goals and objectives, reference points (LRPs/USRs) consistent with the PA Framework, updated management procedure (MP) (data, assessment model, decision rules) 
 \item Fisheries Management Reform
@@ -458,7 +458,7 @@ Steps of the bridging analysis:
 
 % New slide
 \begin{frame}
-Corrected the estimation of the variance structure based on reviewer comments on 2011 herring stock assessment \citep{herring2012}
+Corrected the estimation of the variance structure based on reviewer comments on 2011 \Sexpr{fish.name} stock assessment \citep{herring2012}
 \begin{itemize}
 \item In the 2011 to 2016 version of the assessment model the variance structure is based on standard deviations: 
 \begin{equation*}
@@ -534,7 +534,7 @@ Summary:
 \begin{frame}
 Based on the the bridging analysis we recommended:
 \begin{itemize}
-\item Continuing to define two base cases for each of the 5 major herring stocks: \Sexpr{PasteNicely(mNames)}, and
+\item Continuing to define two base cases for each of the 5 major \Sexpr{fish.name} stocks: \Sexpr{PasteNicely(mNames)}, and
 \item Implementing the new ISCAM platform (V2) with the same assumptions and parameter settings as were used in 2016.
 \end{itemize}
 \end{frame}
@@ -551,12 +551,12 @@ Based on the the bridging analysis we recommended:
 \item Classed as `targets' (TRPs) - e.g., biomass that provides for sustainable harvest opportunity
 \end{itemize}
 \end{itemize}
-\item Operational control points and the herring HCR
+\item Operational control points and the \Sexpr{fish.name} HCR
 \begin{itemize}
 \item Operational control points define where management takes action 
 \item Most commonly these are the inflection points of a HCR
 \begin{itemize}
-\item For herring, this is the commercial fishery cut-off
+\item For \Sexpr{fish.name}, this is the commercial fishery cut-off
 \end{itemize}
 \end{itemize}
 \end{itemize}
@@ -1032,10 +1032,10 @@ Production analysis:
 \begin{itemize}
 \item This measures whether stock is replacing itself or not.
 \item Production equation:
-\begin{equation}
+\begin{equation*}
 \mli{P}_t = \mli{B}_{t+1} - \mli{B}_t + \mli{C}_{t+1}
-\end{equation}
-\item Krunlund et al. recommended $0.30\mli{SB}_0$
+\end{equation*}
+\item \citet{kronlund2017} recommended $0.30\mli{SB}_0$
 \end{itemize}
 Figures 18 to 27
 \end{column}
