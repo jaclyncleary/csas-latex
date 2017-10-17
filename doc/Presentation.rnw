@@ -954,8 +954,6 @@ AM1: The estimate of q2 is similar to the prior value of ~0.5 for all areas, ran
 AM2: The q2=1.0 assumption assumes the survey observes all spawn, and that no eggs are lost to predation
 %bullet
 AM2: The herring spawn index is considered a minimum estimate of spawning abundance.
-\item 
-
 \end{itemize}
 \end{frame}
 
@@ -1199,7 +1197,6 @@ Figure 29. Estimated spawning biomass in \Sexpr{max(yrRange)}, $\mli{SB}_{\Sexpr
 \end{itemize}
 \end{frame}
 
-
 %%% New section: recommendations %%%
 \section[Recommendations]{Recommendations and future research}
 
@@ -1346,6 +1343,7 @@ Investigate comparisons between old and new model code using a bridging analysis
 
 %%% Start the appendix (bonus slides) %%%
 \appendix
+
 % New slide
 \begin{frame}{Decision table: Prince Rupert District AM2}
 <<prd.decision.table, results='asis', echo=FALSE>>=
@@ -1402,55 +1400,6 @@ make.decision.table(wcvi.b,
 @
 \end{frame}
 
-% New subsection: future research
-\subsection{Future research}
-
-% New slide
-\begin{frame}{Future research and data requirements}
-\begin{enumerate}[<+->]
-\item Simulation-testing of management procedures
-\item SOK/SOB: quantify mortality and removed spawn
-\item Investigate appropriateness of stock-specific maturity ogive
-\item Potential for stock-specific prior distribution on $q$
-% \item Quantify uncertainty in the spawn index
-\end{enumerate}
-\end{frame}
-
-% New slide
-\begin{frame}{Terms of Reference}
-\begin{enumerate}
-\item Present data and assessment model updates:
-\begin{enumerate}[a]
-\item Present modifications and updates to integrated statistical catch-age model equations and its AD Model Builder code.
-Investigate comparisons between old and new model code using a bridging analysis.
-\item Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.
-\item Present parameterization of maturity and fishery selectivity ogives and investigate interactions between these and other model-estimated parameters.
-\end{enumerate}
-\item Assess the current status of \Sexpr{fish.name} for the five major stocks using the integrated statistical catch-age model.
-\end{enumerate}
-\end{frame}
-
-% New slide
-\begin{frame}{Terms of Reference}
-\begin{enumerate}
-\setcounter{enumi}{2}
-\item Present trends in \Sexpr{fish.name} biomass, depletion, and recruitment for each major stock; including trends in biomass for each major stock relative to the LRP.
-\item For the minor stock areas, present stock status updates using available spawn survey data and biological samples.
-\item Evaluate the consequences (including potential risk of exceeding harvest rates prescribed by both modelling approaches) of different total allowable catch levels for 2018 against probabilistic metrics to accommodate uncertainty in the advice.
-\end{enumerate}
-\end{frame}
-
-% New subsection: References %%%
-\subsection{References}
-
-% New slide: References
-\begin{frame}[allowframebreaks]%{References}
-\bibliographystyle{res-doc}
-\bibliography{all}
-\end{frame}
-
-%%% Start the appendix (bonus slides) %%%
-\appendix
 
 % New slide
 \begin{frame}{Decision table: Haida Gwaii AM2}
