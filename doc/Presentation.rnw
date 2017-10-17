@@ -600,8 +600,8 @@ DFO's decision-making framework incorporating the precautionary approach:
 \begin{columns}
 \begin{column}{0.5\linewidth}
 \begin{itemize}
-\item The DFO decision-making framework (DMF) defines an example where HCR control points are coupled with biological reference points
-\item The DFO DMF and \citet{kronlund2017} describe the LRP as a state to be avoided with high probability, emphasizing the need to decouple biological reference points and control points of the HCR
+\item The DFO decision-making framework (DMF) defines an example where operational control points (in the HCR) are coupled with biological reference points
+\item The DFO DMF and \citet{kronlund2017} describe the LRP as a state to be avoided with high probability, emphasizing the need to decouple biological reference points and operational control points
 \item We continue with this language, differentiating between control points and reference points
 \end{itemize}
 \end{column}
@@ -749,20 +749,20 @@ make.index.fit.plot(list(cc.am1.constm,
 \end{frame}
 
 % New slide
-\begin{frame}{Natural mortality}
-\begin{itemize}
-\item We found that model outcomes were influenced by the method used to estimate $M$
-\item Time-varying $M$ appeared to provide a better fit to data
-\item The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior
-\end{itemize}
-\end{frame}
+%\begin{frame}{Natural mortality}
+%\begin{itemize}
+%\item We found that model outcomes were influenced by the method used to estimate $M$
+%\item Time-varying $M$ appears to provide a better fit to spawn index
+%\item The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior
+%\end{itemize}
+%\end{frame}
 
 
 % New slide
 \begin{frame}{Natural mortality}
 \begin{itemize}
 \item We found that model outcomes were influenced by the method used to estimate $M$
-\item Time-varying $M$ appeared to provide a better fit to data
+\item Time-varying $M$ appears to provide a better fit to spawn index
 \item The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior
 \item This sensitivity analysis and the bridging analysis support the continued use of time-varying $M$ as the base case for the assessment
 \end{itemize}
