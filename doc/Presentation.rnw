@@ -139,7 +139,7 @@ setwd( dir=".." )
 @
 
 % Variables for the cover page
-\title[Pacific Herring: Assessment in \Sexpr{max(yrRange)} and forecast for \Sexpr{nextYr}]{Stock Assessment for Pacific Herring (\emph{Clupea pallasi}) in British Columbia in \Sexpr{max(yrRange)} and forecast for \Sexpr{nextYr}}
+\title[\Sexpr{fish.name}: Assessment in \Sexpr{max(yrRange)} and forecast for \Sexpr{nextYr}]{Stock Assessment for \Sexpr{fish.name} (\emph{Clupea pallasi}) in British Columbia in \Sexpr{max(yrRange)} and forecast for \Sexpr{nextYr}}
 \author[Cleary \emph{et al}. (\Sexpr{max(yrRange)})]{Jaclyn Cleary \and Sarah Hawkshaw \and Matthew Grinnell \and Chris Grandin}
 \institute{CSAP Working paper 2017PEL01\\Pacific Biological Station}
 \date{October 17 \& 18, 2017}
@@ -172,7 +172,7 @@ Investigate comparisons between old and new model code using a bridging analysis
 \item Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.\label{TOR:SOK}
 \item Present parameterization of maturity and fishery selectivity ogives and investigate interactions between these and other model-estimated parameters.
 \end{enumerate}
-\item Assess the current status of Pacific Herring for the five major stocks using the integrated statistical catch-age model.
+\item Assess the current status of \Sexpr{fish.name} for the five major stocks using the integrated statistical catch-age model.
 \end{enumerate}
 \end{frame}
 
@@ -180,7 +180,7 @@ Investigate comparisons between old and new model code using a bridging analysis
 \begin{frame}{Terms of Reference}
 \begin{enumerate}[<+->]
 \setcounter{enumi}{2}
-\item Present trends in Pacific Herring biomass, depletion, and recruitment for each major stock; including trends in biomass for each major stock relative to the LRP.
+\item Present trends in \Sexpr{fish.name} biomass, depletion, and recruitment for each major stock; including trends in biomass for each major stock relative to the LRP.
 \item For the minor stock areas, present stock status updates using available spawn survey data and biological samples.
 \item Evaluate the consequences (including potential risk of exceeding harvest rates prescribed by both modelling approaches) of different total allowable catch levels for 2018 against probabilistic metrics to accommodate uncertainty in the advice.
 \end{enumerate}
@@ -204,9 +204,9 @@ Investigate comparisons between old and new model code using a bridging analysis
 
 % New slide
 \begin{frame}{Context for the \Sexpr{max(yrRange)} assessment}
-Herring Renewal, 3 Key Elements:
+\Sexpr{fish.name} Renewal, 3 Key Elements:
 \begin{enumerate}
-\item Updating the management framework for Pacific herring, including management goals and objectives, reference points (LRPs/USRs) consistent with the PA Framework, updated management procedure (MP) (data, assessment model, decision rules) 
+\item Updating the management framework for \Sexpr{fish.name}, including management goals and objectives, reference points (LRPs/USRs) consistent with the PA Framework, updated management procedure (MP) (data, assessment model, decision rules) 
 \item Fisheries Management Reform
 \item Stock Assessment and Survey Program: Options to improve the cost-effectiveness and affordability of the current program 
 \end{enumerate}
@@ -393,7 +393,7 @@ make.age.comp.estimates.plot(sog.b, 2)
 \begin{columns}
 \begin{column}{0.3\textwidth}
 Figure 4. Time series of weight-at-age in kilograms (kg) for age-3 (circles) and 5-year running mean
-weight-at-age (lines) for Pacific Herring from 1951 to 2017 in the major stock assessment regions (SARs).
+weight-at-age (lines) for \Sexpr{fish.name} from 1951 to 2017 in the major stock assessment regions (SARs).
 \end{column}
 \begin{column}{0.7\textwidth}
 \centering
@@ -458,7 +458,7 @@ Steps of the bridging analysis:
 
 % New slide
 \begin{frame}
-Corrected the estimation of the variance structure based on reviewer comments on 2011 herring stock assessment \citep{herring2012}
+Corrected the estimation of the variance structure based on reviewer comments on 2011 \Sexpr{fish.name} stock assessment \citep{herring2012}
 \begin{itemize}
 \item In the 2011 to 2016 version of the assessment model the variance structure is based on standard deviations: 
 \begin{equation*}
@@ -534,13 +534,13 @@ Summary:
 \begin{frame}
 Based on the the bridging analysis we recommended:
 \begin{itemize}
-\item Continuing to define two base cases for each of the 5 major herring stocks: \Sexpr{PasteNicely(mNames)}, and
+\item Continuing to define two base cases for each of the 5 major \Sexpr{fish.name} stocks: \Sexpr{PasteNicely(mNames)}, and
 \item Implementing the new ISCAM platform (V2) with the same assumptions and parameter settings as were used in 2016.
 \end{itemize}
 \end{frame}
 
 % New slide
-\begin{frame}{Reference points for Pacific Herring}
+\begin{frame}{Reference points for \Sexpr{fish.name}}
 \begin{itemize}
 \item Biological reference points
 \begin{itemize}
@@ -551,22 +551,22 @@ Based on the the bridging analysis we recommended:
 \item Classed as `targets' (TRPs) - e.g., biomass that provides for sustainable harvest opportunity
 \end{itemize}
 \end{itemize}
-\item Operational control points and the herring HCR
+\item Operational control points and the \Sexpr{fish.name} HCR
 \begin{itemize}
 \item Operational control points define where management takes action 
 \item Most commonly these are the inflection points of a HCR
 \begin{itemize}
-\item For herring, this is the commercial fishery cut-off
+\item For \Sexpr{fish.name}, this is the commercial fishery cut-off
 \end{itemize}
 \end{itemize}
 \end{itemize}
 \end{frame}
 
 % New slide
-\begin{frame}{Reference points for Pacific Herring}
+\begin{frame}{Reference points for \Sexpr{fish.name}}
 \begin{columns}
 \begin{column}{0.5\linewidth}
-Current harvest control rule for Pacific herring
+Current harvest control rule for \Sexpr{fish.name}
 \end{column}
 \begin{column}{0.5\linewidth}
 \centering
@@ -576,7 +576,7 @@ Current harvest control rule for Pacific herring
 \end{frame}
 
 % New slide
-\begin{frame}{Reference points for Pacific Herring}
+\begin{frame}{Reference points for \Sexpr{fish.name}}
 \begin{columns}
 \begin{column}{0.5\textwidth}
 DFO's decision-making framework incorporating the precautionary approach:
@@ -596,7 +596,7 @@ DFO's decision-making framework incorporating the precautionary approach:
 \end{frame}
 
 % New slide
-\begin{frame}{Reference points for Pacific Herring}
+\begin{frame}{Reference points for \Sexpr{fish.name}}
 \begin{columns}
 \begin{column}{0.5\linewidth}
 \begin{itemize}
@@ -613,7 +613,7 @@ DFO's decision-making framework incorporating the precautionary approach:
 \end{frame}
 
 % New slide
-\begin{frame}{Reference points for Pacific Herring}
+\begin{frame}{Reference points for \Sexpr{fish.name}}
 \begin{columns}
 \begin{column}{0.5\textwidth}
 LRP
@@ -639,12 +639,12 @@ USR
 \end{frame}
 
 % New slide
-\begin{frame}{Reference points for Pacific Herring}
+\begin{frame}{Reference points for \Sexpr{fish.name}}
 \begin{columns}
 \begin{column}{0.5\textwidth}
 MSY-based reference points
 \begin{itemize}
-\item \citet{kronlund2017} found MSY statistics were not plausible for Pacific Herring in BC
+\item \citet{kronlund2017} found MSY statistics were not plausible for \Sexpr{fish.name} in BC
 \item Analysis here supports continued non-use of MSY-based reference points based on estimates confounding with maturity at age and time-varying $M$
 \end{itemize}
 \end{column}
@@ -672,8 +672,8 @@ We further tested the sensivity of the V2 model estimates to:
 % New slide
 \begin{frame}{Natural mortality}
 \begin{itemize}
-\item Estimating time-varying $M$ for Pacific Herring was first introduced in 2006 \citep{haist2006}
-\item It was incorporated into the ISCAM model and has been used since (2011-2016). 
+\item Estimating time-varying $M$ for \Sexpr{fish.name} was first introduced in 2006 \citep{haist2006}
+\item It was incorporated into the ISCAM model and has been used since (2011-2016)
 \item Recent concerns have been raised about interactions between estimating $q$ and $M$
 \item We began investigating this interaction by comparing constant $M$ and time-varying $M$
 \end{itemize}
@@ -942,18 +942,14 @@ make.maturity.sens.table(maturity.sens,
 \begin{frame}{AM2 vs. AM1}
 The 2016 Science Response for Pacific herring included Table A.1. History and identified limitations of AM1 and AM2 modelling approaches for BC herring stocks
 \begin{itemize}
-\item Spawn survey scaling parameter, q: 
-%MG add 3 sub-bullets:
-%bullet
-q1 and q2 are estimated independently for each area as part of the model fitting process, using a prior based on: assumptions about non-detection of spawn, independent studies on egg loss prior to spawn surveys, days between spawn deposition and survey, and bias in mean egg density (Martell et al. 2012)
-%bullet
-AM1: The same survey prior is used for both q1 and q2 in all stock areas
-%bullet
-AM1: The estimate of q2 is similar to the prior value of ~0.5 for all areas, ranging from 0.547-0.640 (except PRD) 
-%bullet
-AM2: The q2=1.0 assumption assumes the survey observes all spawn, and that no eggs are lost to predation
-%bullet
-AM2: The herring spawn index is considered a minimum estimate of spawning abundance.
+\item Spawn survey scaling parameter, $q$:
+\begin{itemize}
+\item $q_1$ and $q_2$ are estimated independently for each area as part of the model fitting process, using a prior based on: assumptions about non-detection of spawn, independent studies on egg loss prior to spawn surveys, days between spawn deposition and survey, and bias in mean egg density \citep{martell2011}
+\item AM1: The same survey prior is used for both $q_1$ and $q_2$ in all stock areas
+\item AM1: The estimate of $q_2$ is similar to the prior value of ~0.5 for all areas, ranging from 0.547 to 0.640 (except PRD)
+\item AM2: The $q_2=1.0$ assumption assumes the survey observes all spawn, and that no eggs are lost to predation
+\item AM2: The herring spawn index is considered a minimum estimate of spawning abundance
+\end{itemize}
 \end{itemize}
 \end{frame}
 
@@ -1098,7 +1094,7 @@ Production analysis:
 \begin{equation*}
 \mli{P}_t = \mli{B}_{t+1} - \mli{B}_t + \mli{C}_{t+1}
 \end{equation*}
-\item Krunlund et al. recommended $0.30\mli{SB}_0$
+\item \citet{kronlund2017} recommended $0.30\mli{SB}_0$
 \end{itemize}
 Figures 18 to 27
 \end{column}
@@ -1176,10 +1172,10 @@ Figures 18 to 27
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.3\textwidth}
+\begin{column}{0.5\textwidth}
 Figure 29. Estimated spawning biomass in \Sexpr{max(yrRange)}, $\mli{SB}_{\Sexpr{max(yrRange)}}$ in thousands of tonnes, t for \Sexpr{fish.name} in the major stock assessment regions (SARs) for models \Sexpr{PasteNicely(mNames)}.
 \end{column}
-\begin{column}{0.7\textwidth}
+\begin{column}{0.5\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}/CurrentSSB.png}
 \end{column}
@@ -1196,7 +1192,6 @@ Figure 29. Estimated spawning biomass in \Sexpr{max(yrRange)}, $\mli{SB}_{\Sexpr
 \item WCVI: Both AM2 and AM1 models estimated $\mli{SB}_{2017}$ to be ABOVE the LRP of $\Sexpr{propB0}\cdot\mli{SB}_0$, by greater than 50\% probability but less than 95\% probability
 \end{itemize}
 \end{frame}
-
 
 %%% New section: recommendations %%%
 \section[Recommendations]{Recommendations and future research}
@@ -1344,6 +1339,7 @@ Investigate comparisons between old and new model code using a bridging analysis
 
 %%% Start the appendix (bonus slides) %%%
 \appendix
+
 % New slide
 \begin{frame}{Decision table: Prince Rupert District AM2}
 <<prd.decision.table, results='asis', echo=FALSE>>=
@@ -1399,6 +1395,7 @@ make.decision.table(wcvi.b,
                     placement = "H")
 @
 \end{frame}
+
 
 % New slide
 \begin{frame}{Decision table: Haida Gwaii AM2}
@@ -1520,7 +1517,6 @@ make.likelihood.table(list(list(hg.am2.tvm, hg.am2.constm),
                       placement = "H")
 @
 \end{frame}
-
 
 % Fin
 \end{document}
