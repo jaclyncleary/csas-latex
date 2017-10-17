@@ -1,0 +1,220 @@
+% Document setup
+\documentclass[11pt]{book}
+
+% Use the style file in the csas-style repository:
+\usepackage{../../csas-style/res-doc}
+
+% Multi-letter identifier (i.e., multi-character variable
+\newcommand{\mli}[1]{\mathit{#1}}
+% Better treatment of input (no extra trailing space)
+\newcommand{\inputsp}[1]{\input{#1}\unskip}
+% To do 'for' loops in latex
+\usepackage{pgffor}
+% For float barriers
+\usepackage{placeins}
+% Include PDFs (i.e., whole page)
+\usepackage{pdfpages}
+
+% Custom commands used in the agecompweighting appendix
+\newcommand{\sQuote}[1]{`#1'}
+\newcommand{\dQuote}[1]{``#1''}
+\newcommand{\eqn}[1]{\begin{equation}#1\end{equation}}
+\newcommand{\gfrac}[2]{\genfrac{}{}{}{0}{#1}{#2}}
+
+% eor - Show two things with a vertical bar between them. e.g. A|B
+\newcommand{\eor}[2]{{#1$\Vert$#2}}
+
+% bM - makes equations larger
+\newcommand{\bM}[1]{\mathlarger{\mathlarger{#1}}}
+
+% Headers and footers
+% \lhead{Draft working paper -- Do not cite or circulate}
+% \lhead{}
+% \rhead{}
+% \rfoot{DRAFT - DO NOT CITE}
+
+% Get rid of annoying warnings -- we can remove this later when the document is running smoother
+\setlength{\headheight}{13.6pt}
+
+% Let it begin
+\begin{document}
+
+%% This is the initial code chunk where you load your R workspace.
+%% This gives access to all objects in the RData file for the entirety
+%%  of the document. Use \Sexpr{objname} to put values in text.
+<<load-everything, echo=FALSE,  message=FALSE, results='hide', warning=FALSE>>=
+opts_chunk$set(dev = 'png',
+               fig.path = 'knitr-cache/',
+               fig.dpi = 96,
+               fig.width = 7.5,
+               fig.height = 4,
+               dpi = 100,
+               echo = FALSE,
+               results = FALSE,
+               message = FALSE,
+               warning = FALSE,
+               results = 'hide',
+               cache = TRUE,
+               cache.path = 'knitr-cache/')
+
+# Get original working directory
+origWD <- getwd( )
+
+# Set the working directory (temporary)
+setwd("r")
+
+# Load all R code and the package libraries.
+source("all.r")
+
+# If you want to reload all model outputs, set to TRUE
+# The load.models.into.parent.env function is located at bottom of model-setup.r.
+if(TRUE){
+  load.models.into.parent.env()
+}
+# This has to be sourced after loading the models in because it depends on the model output
+source("custom-knitr-variables.r")
+
+# Load required packages
+require( tidyverse )
+
+# Locations of herring-specific R output (trailing separator for latex)
+locOutput <- file.path( "..", "models", .Platform$file.sep )
+
+# Load the herring data
+load( file=file.path("..", locOutput, "Image.RData") )
+
+# TODO: Source the herring data
+# setwd( dir=file.path("..", locOutput) )
+# source( file="ResearchDocumentV2.R" )
+
+# Reset the working directory
+setwd( dir=".." )
+
+@
+
+% More custom variables
+<<variables, child='maindoc/variables.rnw'>>=
+@
+
+\textbf{Updated decision tables for}:
+
+Cleary, J.S., Hawkshaw, S., Grinnell, M.H., and Grandin, C.
+Stock Assessment for \Sexpr{fish.name} (\emph{\Sexpr{science.name}}) in British Columbia in \Sexpr{assess.yr} and forecast for \Sexpr{assess.yr+1}.
+CSAP Working Paper 2017PEL01.
+
+% Main body
+\Main
+
+% The next two lines are required to start off numbering
+\pagenumbering{arabic}
+\setcounter{page}{1}
+
+\setcounter{table}{32}
+
+\begin{landscapepage}
+<<hg.decision.table, results='asis', echo=FALSE>>=
+dec.table.font.size <- 12
+dec.table.font.space <- 13
+cap <- paste0("Probabilistic decision table for Haida Gwaii, AM2 model.")
+make.decision.table(hg.b,
+                    xcaption = cap,
+                    xlabel = "tab:hg-am2-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+cap <- paste0("Probabilistic decision table for Haida Gwaii, AM1 model.")
+make.decision.table(hg.am1,
+                    xcaption = cap,
+                    xlabel = "tab:hg-am1-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+\end{landscapepage}
+
+\begin{landscapepage}
+<<prd.decision.table, results='asis', echo=FALSE>>=
+cap <- paste0("Probabilistic decision table for the Prince Rupert District, ",
+              "AM2 model.")
+make.decision.table(pr.b,
+                    xcaption = cap,
+                    xlabel = "tab:prd-am2-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+cap <- paste0("Probabilistic decision table for the Prince Rupert District, ",
+              "AM1 model.")
+make.decision.table(pr.am1,
+                    xcaption = cap,
+                    xlabel = "tab:prd-am1-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+\end{landscapepage}
+
+\begin{landscapepage}
+<<cc.decision.table, results='asis', echo=FALSE>>=
+cap <- paste0("Probabilistic decision table for the Central Coast, ",
+              "AM2 model.")
+make.decision.table(cc.b,
+                    xcaption = cap,
+                    xlabel = "tab:cc-am2-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+cap <- paste0("Probabilistic decision table for the Central Coast, ",
+              "AM1 model.")
+make.decision.table(cc.am1,
+                    xcaption = cap,
+                    xlabel = "tab:cc-am1-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+\end{landscapepage}
+
+\begin{landscapepage}
+<<sog.decision.table, results='asis', echo=FALSE>>=
+cap <- paste0("Probabilistic decision table for the Strait of Georgia, ",
+              "AM2 model.")
+make.decision.table(sog.b,
+                    xcaption = cap,
+                    xlabel = "tab:sog-am2-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+cap <- paste0("Probabilistic decision table for the Strait of Georgia, ",
+              "AM1 model.")
+make.decision.table(sog.am1,
+                    xcaption = cap,
+                    xlabel = "tab:sog-am1-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+\end{landscapepage}
+
+\begin{landscapepage}
+<<wcvi.decision.table, results='asis', echo=FALSE>>=
+cap <- paste0("Probabilistic decision table for the WCVI, ",
+              "AM2 model.")
+make.decision.table(wcvi.b,
+                    xcaption = cap,
+                    xlabel = "tab:wcvi-am2-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+cap <- paste0("Probabilistic decision table for the WCVI, ",
+              "AM1 model.")
+make.decision.table(wcvi.am1,
+                    xcaption = cap,
+                    xlabel = "tab:wcvi-am1-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+\end{landscapepage}
+
+% Fin
+\end{document}

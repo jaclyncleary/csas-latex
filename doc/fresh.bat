@@ -19,5 +19,7 @@ del res-doc.tex
 del res-doc.pdf
 del Presentation.tex
 del Presentation.pdf
+del HandOut.tex
+del HandOut.pdf
 rmdir out-csv /S /Q
 rmdir /S /Q knitr-cache
