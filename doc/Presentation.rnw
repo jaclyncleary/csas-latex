@@ -572,7 +572,7 @@ DFO's decision-making framework incorporating the precautionary approach:
 \begin{frame}{Reference points for Pacific Herring}
 
 %MG: add round bullets for these three statements
-The DFO decision-making framework includes an example where HCR control points are coupled with biological reference points.
+The DFO decision-making framework defines an example where HCR control points are coupled with biological reference points.
 
 The DFO DMF and Kronlund et al. (2017) describe the LRP as a state to be avoided with high probability, emphasizing the need to decouple biological reference points and control points of the HCR.
 
