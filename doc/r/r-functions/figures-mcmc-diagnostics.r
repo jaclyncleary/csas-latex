@@ -44,6 +44,8 @@ make.priors.posts.plot <- function(model,
   ## Remove upper and lower bound, and phase information, but keep initial
   ##  value
   prior.specs <- prior.specs[, -c(2:4)]
+  ## Remove kappa
+  prior.specs <- prior.specs[rownames(prior.specs) != "kappa",]
   prior.names <- rownames(prior.specs)
 
   ## Add the q parameters to the prior specs table
@@ -98,6 +100,7 @@ make.priors.posts.plot <- function(model,
                fn = prior.fn,
                nm = post.names[i],
                mle = as.numeric(mpd.param.vals[i]))
+
     xx$nm <- get.latex.name(xx$nm)
 
     if(priors.only){

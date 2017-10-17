@@ -356,10 +356,10 @@ Figure 3.
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.2\textwidth}
+\begin{column}{0.3\textwidth}
 Figure 5. Time series of proportion-at-age for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the major stock assessment regions (SARs).
 \end{column}
-\begin{column}{0.8\textwidth}
+\begin{column}{0.7\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}ProportionAgeWide.png}
 \end{column}
@@ -391,11 +391,11 @@ make.age.comp.estimates.plot(sog.b, 2)
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.2\textwidth}
+\begin{column}{0.3\textwidth}
 Figure 4. Time series of weight-at-age in kilograms (kg) for age-3 (circles) and 5-year running mean
 weight-at-age (lines) for Pacific Herring from 1951 to 2017 in the major stock assessment regions (SARs).
 \end{column}
-\begin{column}{0.8\textwidth}
+\begin{column}{0.7\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WeightAgeWide.png}
 \end{column}
@@ -408,10 +408,10 @@ weight-at-age (lines) for Pacific Herring from 1951 to 2017 in the major stock a
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.2\textwidth}
+\begin{column}{0.3\textwidth}
 Figure 7. Time series of spawn index in thousands of metric tonnes ($\text{t} \times 10^{3}$) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the major stock assessment regions (SARs).
 \end{column}
-\begin{column}{0.8\textwidth}
+\begin{column}{0.7\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SpawnIndexWide.png}
 \end{column}
@@ -447,7 +447,7 @@ Steps of the bridging analysis:
 \begin{frame}
 Steps of the bridging analysis:
 \begin{enumerate}
-\item \color{gray}{Updated variance structure (V0 to V1)}
+\item Updated variance structure (V0 to V1)
 \begin{itemize}
 \item ISCAM uses the errors-in-variables approach 
 \item Partitioning of the total variance, $varphi$ into observation ($\sigma$) and process error ($\tau$)
@@ -503,7 +503,7 @@ Comparison of MPD estimates of leading parameters and unfished biomass, $\mli{SB
 \begin{frame}
 Steps of the bridging analysis:
 \begin{enumerate}
-\item Updated variance structure (V0 to V1)
+\item \color{gray}{Updated variance structure (V0 to V1)}
 \item Reconstructed previous assessment results with fixed parameters
 \item Compared parameter estimates from V1 and V2 under constant $M$ and time-varying $M$
 \begin{itemize}
@@ -522,8 +522,8 @@ Summary:
 \begin{itemize}
 \item Once V0 was updated to V1 the resulting estimates from V2 did not differed  
 \item Parameter estimates and biomass trajectories compared between V1 and V2 were nearly identical
-\item The sensitivity analyses on $M$ and the variance parameters suggested the continued use of 2016 parameterizations for \Sexpr{PasteNicely(mNames)} models
-\item The sensitivity analysis on $q$ suggested that the \Sexpr{PasteNicely(mNames)} parameterization of $q$ will require simulation-evaluation in order to justify any changes to these parameterizations. 
+\item \color{gray}{The sensitivity analyses on $M$ and the variance parameters suggested the continued use of 2016 parameterizations for \Sexpr{PasteNicely(mNames)} models}
+\item \color{gray}{The sensitivity analysis on $q$ suggested that the \Sexpr{PasteNicely(mNames)} parameterization of $q$ will require simulation-evaluation in order to justify any changes to these parameterizations.} 
 \end{itemize}
 \end{frame}
 
@@ -584,22 +584,21 @@ DFO's decision-making framework incorporating the precautionary approach:
 \end{columns}
 \end{frame}
 
-
 % New slide
 \begin{frame}{Reference points for Pacific Herring}
-
-%MG: add round bullets for these three statements
-The DFO decision-making framework defines an example where HCR control points are coupled with biological reference points.
-
-The DFO DMF and Kronlund et al. (2017) describe the LRP as a state to be avoided with high probability, emphasizing the need to decouple biological reference points and control points of the HCR.
-
-We continue with this language, differentiating between control points and reference points.
-
-%MG: insert figure "decoupling HCR from reference points"
-insert figure: decoupling HCR from reference points
+\begin{columns}
+\begin{column}{0.5\linewidth}
+\begin{itemize}
+\item The DFO decision-making framework (DMF) defines an example where HCR control points are coupled with biological reference points
+\item The DFO DMF and \citet{kronlund2017} describe the LRP as a state to be avoided with high probability, emphasizing the need to decouple biological reference points and control points of the HCR
+\item We continue with this language, differentiating between control points and reference points
+\end{itemize}
+\end{column}
+\begin{column}{0.5\linewidth}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA2.png}
+\end{column}
+\end{columns}
 \end{frame}
-
-%JC stopped here. (remove DFO fig next slide)
 
 % New slide
 \begin{frame}{Reference points for Pacific Herring}
@@ -621,7 +620,7 @@ USR
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -637,7 +636,7 @@ MSY-based reference points
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -932,7 +931,7 @@ make.maturity.sens.table(maturity.sens,
                          xcaption = NULL,
                          xlabel = "tab:maturity-sens.am2",
                          font.size = 8,
-                         space.size = 1,
+                         space.size = 8,
                          placement = "H")
 @
 \end{column}
@@ -955,25 +954,11 @@ make.maturity.sens.table(maturity.sens,
 \begin{columns}
 \begin{column}{0.5\textwidth}
 Retrospective spawning biomass for the Strait of Georgia AM1 model.
-\centering
-<<sog.am1.retro.biomass, results='asis', echo=FALSE>>=
-make.biomass.retro.mpd.plot(sog.am1,
-                            am1.retro.models[[4]],
-                            ylim = c(0, 250),
-                            show.bo.line = TRUE,
-                            model.names = leg.names)
-@
+
 \end{column}
 \begin{column}{0.5\textwidth}
 Retrospective spawning biomass for the Strait of Georgia AM2 model.
-\centering
-<<sog.am2.retro.biomass, results='asis', echo=FALSE>>=
-make.biomass.retro.mpd.plot(sog.b,
-                            base.retro.models[[4]],
-                            ylim = c(0, 200),
-                            show.bo.line = TRUE,
-                            model.names = leg.names)
-@
+
 \end{column}
 \end{columns}
 \end{frame}
@@ -1002,38 +987,8 @@ make.priors.posts.plot(hg.am1, priors.only=FALSE)
 \end{columns}
 \end{frame}
 
-% New slide
-\begin{frame}{AM1 vs AM2}
-Figure 10A. Sensitivity to $q$ prior for Strait of Georgia
-\begin{columns}
-\begin{column}{0.5\textwidth}
-\centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Fig10Ab.png}
-\end{column}
-\begin{column}{0.5\textwidth}
-\centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Fig10Ac.png}
-\end{column}
-\end{columns}
-\end{frame}
-
-% New slide
-\begin{frame}{AM1 vs AM2}
-Figure 10A. Sensitivity to $q$ prior for Strait of Georgia
-\begin{columns}
-\begin{column}{0.5\textwidth}
-\centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Fig10Af.png}
-\end{column}
-\begin{column}{0.5\textwidth}
-\centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/Fig10Ag.png}
-\end{column}
-\end{columns}
-\end{frame}
-
 % New subsection: Haida Gwaii
-\subsection{Haida Gwaii}
+\subsection{Haida Gwaii: AM2}
 
 % New slide
 \begin{frame}
@@ -1062,8 +1017,11 @@ Figures 8 to 17
 Production analysis:
 \begin{itemize}
 \item This measures whether stock is replacing itself or not.
-\item equation (from LRP paper):
-\item why $0.30\mli{SB}_0$...
+\item Production equation:
+\begin{equation}
+\mli{P}_t = \mli{B}_{t+1} - \mli{B}_t + \mli{C}_{t+1}
+\end{equation}
+\item Krunlund et al. recommended $0.30\mli{SB}_0$
 \end{itemize}
 Figures 18 to 27
 \end{column}
@@ -1242,6 +1200,30 @@ make.decision.table(wcvi.b,
 \item Investigate appropriateness of stock-specific maturity ogive
 \item Potential for stock-specific prior distribution on $q$
 % \item Quantify uncertainty in the spawn index
+\end{enumerate}
+\end{frame}
+
+% New slide
+\begin{frame}{Terms of Reference}
+\begin{enumerate}
+\item Present data and assessment model updates:\label{TOR:data}
+\begin{enumerate}[a]
+\item Present modifications and updates to integrated statistical catch-age model equations and its AD Model Builder code.
+Investigate comparisons between old and new model code using a bridging analysis.
+\item Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.\label{TOR:SOK}
+\item Present parameterization of maturity and fishery selectivity ogives and investigate interactions between these and other model-estimated parameters.
+\end{enumerate}
+\item Assess the current status of Pacific Herring for the five major stocks using the integrated statistical catch-age model.
+\end{enumerate}
+\end{frame}
+
+% New slide
+\begin{frame}{Terms of Reference}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item Present trends in Pacific Herring biomass, depletion, and recruitment for each major stock; including trends in biomass for each major stock relative to the LRP.
+\item For the minor stock areas, present stock status updates using available spawn survey data and biological samples.
+\item Evaluate the consequences (including potential risk of exceeding harvest rates prescribed by both modelling approaches) of different total allowable catch levels for 2018 against probabilistic metrics to accommodate uncertainty in the advice.
 \end{enumerate}
 \end{frame}
 
