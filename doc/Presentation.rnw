@@ -940,9 +940,23 @@ make.maturity.sens.table(maturity.sens,
 
 % New slide
 \begin{frame}{AM2 vs. AM1}
+The 2016 Science Response for Pacific herring included Table A.1. History and identified limitations of AM1 and AM2 modelling approaches for BC herring stocks
 \begin{itemize}
-\item info from SR
-% \item
+\item Spawn survey scaling parameter, q: 
+%MG add 3 sub-bullets:
+%bullet
+q1 and q2 are estimated independently for each area as part of the model fitting process, using a prior based on: assumptions about non-detection of spawn, independent studies on egg loss prior to spawn surveys, days between spawn deposition and survey, and bias in mean egg density (Martell et al. 2012)
+%bullet
+AM1: The same survey prior is used for both q1 and q2 in all stock areas
+%bullet
+AM1: The estimate of q2 is similar to the prior value of ~0.5 for all areas, ranging from 0.547-0.640 (except PRD) 
+%bullet
+AM2: The q2=1.0 assumption assumes the survey observes all spawn, and that no eggs are lost to predation
+%bullet
+AM2: The herring spawn index is considered a minimum estimate of spawning abundance.
+\item 
+
+% \item 
 \end{itemize}
 \end{frame}
 
@@ -1202,15 +1216,87 @@ relative contribution of fish aged 3 and aged 4-10 were calculated for each stoc
 % New slide
 \begin{frame}{Haida Gwaii}
 <<hg.ref.points.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) of proposed reference ",
+              "points for the Haida Gwaii models. Biomass numbers are in ",
+              "thousands of tonnes.")
 make.ref.points.table(hg.b,
                       hg.am1,
+                      xcaption = cap,
                       xlabel = "tab:hg-ref-points",
-                      font.size = 7,
-                      space.size = 1,
+                      font.size = 11,
+                      space.size = 12,
                       placement = "H")
 @
 \end{frame}
 
+% New slide
+\begin{frame}{Prince Rupert District}
+<<prd.ref.points.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) of proposed reference ",
+              "points for the Prince Rupert District models. Biomass ",
+              "numbers are in thousands of tonnes.")
+make.ref.points.table(pr.b,
+                      pr.am1,
+                      xcaption = cap,
+                      xlabel = "tab:prd-ref-points",
+                      font.size = 11,
+                      space.size = 12,
+                      placement = "H")
+@
+\end{frame}
+
+% New slide
+\begin{frame}{Central Coast}
+<<cc.ref.points.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) of proposed reference ",
+              "points for the Central Coast models. Biomass numbers are in ",
+              "thousands of tonnes.")
+make.ref.points.table(cc.b,
+                      cc.am1,
+                      xcaption = cap,
+                      xlabel = "tab:cc-ref-points",
+                      font.size = 11,
+                      space.size = 12,
+                      placement = "H")
+@
+\end{frame}
+
+% New slide
+\begin{frame}{Strait of Georgia}
+<<sog.ref.points.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) of proposed reference ",
+              "points for the Strait of Georgia models. Biomass numbers are ",
+              "in thousands of tonnes.")
+make.ref.points.table(sog.b,
+                      sog.am1,
+                      xcaption = cap,
+                      xlabel = "tab:sog-ref-points",
+                      font.size = 11,
+                      space.size = 12,
+                      placement = "H")
+@
+\end{frame}
+
+% New slide
+\begin{frame}{Strait of Georgia}
+<<wcvi.ref.points.table, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) of proposed reference ",
+              "points for the WCVI models. Biomass numbers are in ",
+              "thousands of tonnes.")
+make.ref.points.table(wcvi.b,
+                      wcvi.am1,
+                      xcaption = cap,
+                      xlabel = "tab:wcvi-ref-points",
+                      font.size = 11,
+                      space.size = 12,
+                      placement = "H")
+@
+\end{frame}
 
 % New subsection: future research
 \subsection{Future research}
