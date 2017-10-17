@@ -23,6 +23,9 @@
 % Multi-letter identifier (i.e., multi-character variable
 \newcommand{\mli}[1]{\mathit{#1}}
 
+% Better treatment of input (no extra trailing space)
+\newcommand{\inputsp}[1]{\input{#1}\unskip}
+
 % Shortcuts
 \newcommand{\bc}{\begin{center}}
 \newcommand{\ec}{\end{center}}
@@ -340,6 +343,51 @@ Figure 3.
 % \end{column}
 % \end{columns}
 % \end{frame}
+
+% New slide
+\begin{frame}{Spawn on kelp (SOK)}
+\begin{columns}
+\begin{column}{0.4\textwidth}
+\begin{itemize}
+\item SOK harvest and estimated spawning biomass in recent years
+\item Estimated spawning biomass via Equation \ref{eqSOK}
+\end{itemize}
+\end{column}
+\begin{column}{0.3\textwidth}
+\centering
+\scriptsize
+\begin{tabular}{lrrrrr}
+\toprule
+& \multicolumn{5}{c}{Harvest (kg)}\\
+\cmidrule{2-6}
+\inputsp{\Sexpr{noquote(locOutput)}HarvSOK.tex}
+\end{tabular}
+\end{column}
+\begin{column}{0.3\textwidth}
+\centering
+\scriptsize
+\begin{tabular}{lrrrrr}
+\toprule
+& \multicolumn{5}{c}{Biomass (t)}\\
+\cmidrule{2-6}
+\inputsp{\Sexpr{noquote(locOutput)}BioSOK.tex}
+\end{tabular}
+\end{column}
+\end{columns}
+\end{frame}
+
+% New slide
+\begin{frame}
+\begin{columns}
+\begin{column}{0.2\textwidth}
+`Gear4' is estimated spawning biomass removed by SOK harvest
+\end{column}
+\begin{column}{0.8\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CatchSOKWide.png}
+\end{column}
+\end{columns}
+\end{frame}
 
 % New subsection: biosamples
 \subsection{Biological data}
@@ -836,12 +884,11 @@ make.catchability.parameters.table.q.sens(sens.models.6,
 \item The bridging analysis indicated that as the prior mean increased the spawning biomass increased for AM1
 \item The sensitivity analysis showed that relaxing bounds on prior for q in AM1 caused:
 \begin{itemize}
-\item the estimates of both $q_1$ and $q_2$ decreased for HG and CC as the standard deviation increased.
-\item the estimates of $q_2$ increased for PRD, SOG and WCVI as the standard deviation increased.
+\item the estimates of both $q_1$ and $q_2$ decreased for HG and CC as the mean increased.
+\item the estimates of $q_2$ increased for PRD, SOG and WCVI as the mean increased.
 \end{itemize}
 \end{itemize}
 \end{frame}
-
 % New slide
 \begin{frame}{Maturity at age}
 \begin{itemize}
@@ -903,51 +950,14 @@ make.maturity.sens.table(maturity.sens,
 \begin{columns}
 \begin{column}{0.5\textwidth}
 Retrospective spawning biomass for the Prince Rupert District AM1 model.
-\centering
-<<prd.am1.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
-leg.names <- c("Base",
-               "-1 yr",
-               "-2 yrs",
-               "-3 yrs",
-               "-4 yrs",
-               "-5 yrs",
-               "-6 yrs",
-               "-7 yrs",
-               "-8 yrs",
-               "-9 yrs",
-               "-15 yrs")
-make.recr.retro.mpd.plot(pr.am1,
-                         am1.retro.models[[2]],
-                         ylim = c(0, 2000),
-                         model.names = leg.names,
-                         leg = "topright")
-@
+
 \end{column}
 \begin{column}{0.5\textwidth}
 Retrospective spawning biomass for the Prince Rupert District AM2 model.
-\centering
-<<prd.am2.retro.recr, results='asis', echo=FALSE, fig.height=6.5>>=
-leg.names <- c("Base",
-               "-1 yr",
-               "-2 yrs",
-               "-3 yrs",
-               "-4 yrs",
-               "-5 yrs",
-               "-6 yrs",
-               "-7 yrs",
-               "-8 yrs",
-               "-9 yrs",
-               "-15 yrs")
-make.recr.retro.mpd.plot(pr.b,
-                         base.retro.models[[2]],
-                         ylim = c(0, 2000),
-                         model.names = leg.names,
-                         leg = "topright")
-@
+
 \end{column}
 \end{columns}
 \end{frame}
-
 
 % New slide
 \begin{frame}{Prior-posterior plots for HG: AM2 vs. AM1}
