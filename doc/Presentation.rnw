@@ -7,6 +7,9 @@
 % For subscripts in text mode (table column names)
 \newcommand{\subscr}[1]{$_{\text{#1}}$}
 
+% Better treatment of input (no extra trailing space)
+\newcommand{\inputsp}[1]{\input{#1}\unskip}
+
 % Load packages
 \usepackage{booktabs}
 \usepackage{beamerthemesplit}
@@ -204,8 +207,6 @@ Investigate comparisons between old and new model code using a bridging analysis
 Herring Renewal update JC will send material
 \end{frame}
 
-
-
 % Show table of contents at each section
 \AtBeginSection[]{
 \begin{frame}<beamer>{Outline}
@@ -263,32 +264,82 @@ Figure 3.
 \end{columns}
 \end{frame}
 
-% New slide
-\begin{frame}{Spawn on kelp (SOK)}
-\begin{itemize}
-\item Female \Sexpr{fish.name} produce an average of approximately $200,000$ eggs per kilogram, kg of total body weight \citep{hay1985, hay1988}.
-\end{itemize}
-We assume that females account for 50\% of spawners, and we use the following egg conversion factor, $\mli{ECF}$ to convert eggs to tonnes, t of spawners
-\begin{equation}\label{eqFecundity}
-\mli{ECF} = \mli{fecundity} \cdot \mli{pFemale} \cdot \frac{10^{3}~\text{kg}} {\text{t}}
-\end{equation}
-where $\mli{fecundity}$ is the number of eggs per kilogram of total female body weight in $\text{eggs} \cdot \text{kg}^{-1}$, $\mli{pFemale}$ is the proportion of spawners that are female, and $\mli{ECF}$ is in $\text{eggs} \cdot \text{t}^{-1}$.
-Thus, we convert eggs to the spawn index in tonnes by dividing the number of eggs by $\mli{ECF} = \text{eggs} \cdot 10^{8} \cdot \text{t}^{-1}$.
-\end{frame}
+% % New slide
+% \begin{frame}{Spawn on kelp (SOK)}
+% \begin{itemize}
+% \item Female \Sexpr{fish.name} produce an average of approximately $200,000$ eggs per kilogram, kg of total body weight \citep{hay1985, hay1988}.
+% \end{itemize}
+% We assume that females account for 50\% of spawners, and we use the following egg conversion factor, $\mli{ECF}$ to convert eggs to tonnes, t of spawners
+% \begin{equation*}
+% \mli{ECF} = \mli{fecundity} \cdot \mli{pFemale} \cdot \frac{10^{3}~\text{kg}} {\text{t}}
+% \end{equation*}
+% where $\mli{fecundity}$ is the number of eggs per kilogram of total female body weight in $\text{eggs} \cdot \text{kg}^{-1}$, $\mli{pFemale}$ is the proportion of spawners that are female, and $\mli{ECF}$ is in $\text{eggs} \cdot \text{t}^{-1}$.
+% Thus, we convert eggs to the spawn index in tonnes by dividing the number of eggs by $\mli{ECF} = \text{eggs} \cdot 10^{8} \cdot \text{t}^{-1}$.
+% \end{frame}
 
-% New slide
-\begin{frame}{Spawn on kelp (SOK)}
-\begin{itemize}
-\item About 12\% of SOK product weight is kelp \citep{shields1985}
-\item Salt uptake increases the wet product weight by about 13\% \citep{whyte1977}
-\item The mean fertilized egg weight is $2.38 \cdot 10^{-6}\,\text{kg}$ \citep{hay1982}
-\end{itemize}
-We estimate spawning biomass removed from the population by the SOK fishery as
-\begin{equation}\label{eqSOK}
-\mli{SB} = \frac{\mli{SOK} \cdot eggKelpProp \cdot \mli{eggBrineProp}}{\mli{eggWt} \cdot \mli{ECF}}
-\end{equation}
-where $\mli{SOK}$ is the weight in kg of SOK harvest, $\mli{eggKelpProp}$ is the proportion of the SOK product that is eggs, not kelp (0.88), $\mli{eggBrineProp}$ is the proportion of SOK product that is eggs after brining (0.87), $\mli{eggWt}$ is the average weight in kilograms of a fertilized egg ($\text{kg} \cdot \text{egg}^{-1}$), and $\mli{SB}$ is the estimated spawning biomass in tonnes.
-\end{frame}
+% % New slide
+% \begin{frame}{Spawn on kelp (SOK)}
+% \begin{itemize}
+% \item About 12\% of SOK product weight is kelp \citep{shields1985}
+% \item Salt uptake increases the wet product weight by about 13\% \citep{whyte1977}
+% \item The mean fertilized egg weight is $2.38 \cdot 10^{-6}\,\text{kg}$ \citep{hay1982}
+% \end{itemize}
+% We estimate spawning biomass removed from the population by the SOK fishery as
+% \begin{equation*}
+% \mli{SB} = \frac{\mli{SOK} \cdot eggKelpProp \cdot \mli{eggBrineProp}}{\mli{eggWt} \cdot \mli{ECF}}
+% \end{equation*}
+% where $\mli{SOK}$ is the weight in kg of SOK harvest, $\mli{eggKelpProp}$ is the proportion of the SOK product that is eggs, not kelp (0.88), $\mli{eggBrineProp}$ is the proportion of SOK product that is eggs after brining (0.87), $\mli{eggWt}$ is the average weight in kilograms of a fertilized egg ($\text{kg} \cdot \text{egg}^{-1}$), and $\mli{SB}$ is the estimated spawning biomass in tonnes.
+% \end{frame}
+
+% % New slide
+% \begin{frame}{Spawn on kelp (SOK)}
+% \begin{columns}
+% \begin{column}{0.4\textwidth}
+% \begin{itemize}
+% \item SOK harvest and estimated spawning biomass in recent years
+% \end{itemize}
+% \end{column}
+% \begin{column}{0.3\textwidth}
+% \centering
+% \scriptsize
+% \begin{tabular}{lrrrrr}
+% \toprule
+% & \multicolumn{5}{c}{Harvest (kg)}\\
+% \cmidrule{2-6}
+% \inputsp{\Sexpr{noquote(locOutput)}HarvSOK.tex}
+% \end{tabular}
+% \end{column}
+% \begin{column}{0.3\textwidth}
+% \centering
+% \scriptsize
+% \begin{tabular}{lrrrrr}
+% \toprule
+% & \multicolumn{5}{c}{Biomass (t)}\\
+% \cmidrule{2-6}
+% \inputsp{\Sexpr{noquote(locOutput)}BioSOK.tex}
+% \end{tabular}
+% \end{column}
+% \end{columns}
+% \end{frame}
+
+% % New slide
+% \begin{frame}
+% \begin{columns}
+% \begin{column}{0.25\textwidth}
+% Legend:
+% \begin{itemize}
+% \item Gear1: Other fisheries
+% \item Gear2: Roe seine 
+% \item Gear3: Roe gillnet
+% \item Gear4: SOK
+% \end{itemize}
+% \end{column}
+% \begin{column}{0.75\textwidth}
+% \centering
+% \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CatchSOKWide.png}
+% \end{column}
+% \end{columns}
+% \end{frame}
 
 % New subsection: biosamples
 \subsection{Biological data}
@@ -387,7 +438,7 @@ Steps of the bridging analysis:
 \begin{frame}
 Steps of the bridging analysis:
 \begin{enumerate}
-\item Updated variance structure (V0 to V1)
+\item \color{gray}{Updated variance structure (V0 to V1)}
 \begin{itemize}
 \item ISCAM uses the errors-in-variables approach 
 \item Partitioning of the total variance, $varphi$ into observation ($\sigma$) and process error ($\tau$)
@@ -401,13 +452,13 @@ Steps of the bridging analysis:
 Corrected the estimation of the variance structure based on reviewer comments on 2011 herring stock assessment \citep{herring2012}
 \begin{itemize}
 \item In the 2011 to 2016 version of the assessment model the variance structure is based on standard deviations: 
-\begin{equation}
+\begin{equation*}
 \sigma=\rho/\vartheta, \;  \;  \; \; \tau=(1-\rho)/\vartheta
-\end{equation}
+\end{equation*}
 \item To improve estimation and to follow the correct errors-in-variables approach the variance structure was updated to be based on total precision instead:
-\begin{equation}
+\begin{equation*}
 \sigma=\sqrt{\rho}\vartheta, \;  \;  \; \; \tau=\sqrt{(1-\rho)}\vartheta
-\end{equation}
+\end{equation*}
 \end{itemize}
 \end{frame}
 
@@ -635,7 +686,7 @@ make.index.fit.plot(list(cc.am1.constm,
 % New slide
 \begin{frame}{Natural mortality}
 \begin{itemize}
-\item We found that model outcomes were influenced by the method used to estimate $M$ %grey
+\item \color{gray}{We found that model outcomes were influenced by the method used to estimate $M$}
 \item Time-varying $M$ appeared to provide a better fit to data
 \item The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior
 \end{itemize}
@@ -648,13 +699,12 @@ make.index.fit.plot(list(cc.am1.constm,
 \end{itemize}
 \end{frame}
 
-
 % New slide
 \begin{frame}{Natural mortality}
 \begin{itemize}
-\item We found that model outcomes were influenced by the method used to estimate $M$ %grey
-\item Time-varying $M$ appeared to provide a better fit to data %grey
-\item The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior %grey
+\item \color{gray}{We found that model outcomes were influenced by the method used to estimate $M$}
+\item \color{gray}{Time-varying $M$ appeared to provide a better fit to data}
+\item \color{gray}{The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior}
 \item Likelihood tables showed...
 \end{itemize}
 \end{frame}
@@ -662,10 +712,10 @@ make.index.fit.plot(list(cc.am1.constm,
 % New slide
 \begin{frame}{Natural mortality}
 \begin{itemize}
-\item We found that model outcomes were influenced by the method used to estimate $M$ %grey
-\item Time-varying $M$ appeared to provide a better fit to data %grey
-\item The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior %grey
-\item Likelihood tables showed...%grey
+\item \color{gray}{We found that model outcomes were influenced by the method used to estimate $M$}
+\item \color{gray}{Time-varying $M$ appeared to provide a better fit to data}
+\item \color{gray}{The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior}
+\item \color{gray}{Likelihood tables showed...}
 \item This sensitivity analysis and the bridging analysis support the continued use of time-varying $M$ as the base case for the assessment
 \end{itemize}
 \end{frame}
@@ -674,22 +724,22 @@ make.index.fit.plot(list(cc.am1.constm,
 \begin{frame}{Variance parameters}
 \begin{itemize}
 \item Used the errors-in-variables approach to estimating process error (tau, $\tau$) and observation error (sigma, $\sigma$)
-\item In ISCAM, the standard deviations in process error (tau, $\tau$) and observation error (sigma, $\sigma$) are related and modeled using the following equations: %Can we change the eq numbers???
-\begin{equation}\label{eqKappa}
+\item In ISCAM, the standard deviations in process error (tau, $\tau$) and observation error (sigma, $\sigma$) are related and modeled using the following equations:
+\begin{equation*}
 \kappa = \left( \frac{1}{\sqrt{(\sigma^2 + \tau^2)}} \right)^2
-\end{equation}
-\begin{equation}\label{eqRho}
+\end{equation*}
+\begin{equation*}
 \rho = \sigma^2 \left( \frac{1}{\sqrt{(\sigma^2 + \tau^2)}} \right)^2 \,
-\end{equation}
+\end{equation*}
 \item For the sensitivity analysis we analyzed model sensitivity to the initial values of $\rho$ and $\kappa$ by varying them, while estimating all leading parameters.
 \end{itemize}
 \end{frame}
 
 % New slide
+% TODO: Highlight rows: last 4
 \begin{frame}{Variance parameter sensitivities: SoG AM1}
 Table 44.
 \begin{itemize}
- 
 \item Results showed that when both $\rho$ and $\kappa$ are estimated by the model the initial values do not influence the model estimates.
 \end{itemize}
 \centering
@@ -753,8 +803,6 @@ Bridging analysis: Figure 10A. Sensitivity to $q$ prior for Strait of Georgia
 \item To begin to address this concern we expanded on the bridging analysis by increasing the standard deviations on the AM1 $q$ priors while the mean was held constant (0.566).
 \end{itemize}
 \end{frame}
-
-
 
 % New slide
 \begin{frame}{Prior probability on $q$: AM1}
@@ -823,9 +871,7 @@ make.catchability.parameters.table.q.sens(sens.models.6,
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
-
 Table 47. Maturity sensitivity reference points for the Strait of Georgia AM2 model.
-
 \centering
 <<maturity.sens.AM2, results='asis', echo=FALSE>>=
 make.maturity.sens.table(maturity.sens,
@@ -834,7 +880,7 @@ make.maturity.sens.table(maturity.sens,
                          xcaption = NULL,
                          xlabel = "tab:maturity-sens.am2",
                          font.size = 8,
-                         space.size = 1,
+                         space.size = 8,
                          placement = "H")
 @
 \end{column}
@@ -848,7 +894,7 @@ make.maturity.sens.table(maturity.sens,
 \begin{frame}{AM2 vs. AM1}
 \begin{itemize}
 \item info from SR
-\item
+% \item 
 \end{itemize}
 \end{frame}
 
@@ -930,7 +976,6 @@ make.priors.posts.plot(hg.am1, priors.only=FALSE)
 \subsection{Haida Gwaii}
 
 % New slide
-% New slide
 \begin{frame}
 \begin{columns}
 \begin{column}{0.3\textwidth}
@@ -971,7 +1016,6 @@ Figures 18 to 27
 \end{column}
 \end{columns}
 \end{frame}
-
 
 % New subsection: Prince Rupert District
 \subsection{Prince Rupert District}
