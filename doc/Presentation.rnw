@@ -543,26 +543,36 @@ Based on the the bridging analysis we recommended:
 \begin{frame}{Reference points for Pacific Herring}
 \begin{itemize}
 \item Biological reference points
-%MG - these next 3 statements need to be sub-bullets of Biological reference points
-Reference points are outcomes related to objectives for a stock and fishery
-Biological Reference Points (BRPs) define the biological criteria that a harvest policy must satisfy to be “acceptable”
-Classed as “limits” (LRPs) - e.g., minimum biomass levels that avoid compromising stock productivity
-and Classed as “targets” (TRPs) - e.g., biomass that provides for sustainable harvest opportunity
+\begin{itemize}
+\item Reference points are outcomes related to objectives for a stock and fishery
+\item Biological Reference Points (BRPs) define the biological criteria that a harvest policy must satisfy to be `acceptable'
+\begin{itemize}
+\item Classed as `limits' (LRPs) - e.g., minimum biomass levels that avoid compromising stock productivity, and
+\item Classed as `targets' (TRPs) - e.g., biomass that provides for sustainable harvest opportunity
+\end{itemize}
+\end{itemize}
 \item Operational control points and the herring HCR
-%MG - these next 2 statments are sub-bullets
-Operational control points define where management takes action 
-Most commonly these are the inflection points of a HCR. 
-%MG- this last statement is a sub-bullet of the previous
-For herring, this is the commercial fishery cut-off.
+\begin{itemize}
+\item Operational control points define where management takes action 
+\item Most commonly these are the inflection points of a HCR
+\begin{itemize}
+\item For herring, this is the commercial fishery cut-off
+\end{itemize}
+\end{itemize}
 \end{itemize}
 \end{frame}
 
 % New slide
 \begin{frame}{Reference points for Pacific Herring}
-
+\begin{columns}
+\begin{column}{0.5\linewidth}
 Current harvest control rule for Pacific herring
-%MG: insert figure "herringHCR"
-
+\end{column}
+\begin{column}{0.5\linewidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/HerringHCR.png}
+\end{column}
+\end{columns}
 \end{frame}
 
 % New slide
@@ -579,6 +589,7 @@ DFO's decision-making framework incorporating the precautionary approach:
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
+\centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA.png}
 \end{column}
 \end{columns}
@@ -595,6 +606,7 @@ DFO's decision-making framework incorporating the precautionary approach:
 \end{itemize}
 \end{column}
 \begin{column}{0.5\linewidth}
+\centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA2.png}
 \end{column}
 \end{columns}
@@ -620,6 +632,7 @@ USR
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
+\centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA2.png}
 \end{column}
 \end{columns}
@@ -636,6 +649,7 @@ MSY-based reference points
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
+\centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA2.png}
 \end{column}
 \end{columns}
