@@ -956,7 +956,6 @@ AM2: The q2=1.0 assumption assumes the survey observes all spawn, and that no eg
 AM2: The herring spawn index is considered a minimum estimate of spawning abundance.
 \item 
 
-% \item 
 \end{itemize}
 \end{frame}
 
@@ -964,11 +963,80 @@ AM2: The herring spawn index is considered a minimum estimate of spawning abunda
 \begin{frame}{Retrospective biomass estimates: AM2 vs. AM1}
 \begin{columns}
 \begin{column}{0.5\textwidth}
+<<sog.retro.biomass.am1, results='asis', echo=FALSE, fig.height=5.5>>=
+leg.names <- c("Base",
+               "-1 yr",
+               "-2 yrs",
+               "-3 yrs",
+               "-4 yrs",
+               "-5 yrs",
+               "-6 yrs",
+               "-7 yrs",
+               "-8 yrs",
+               "-9 yrs",
+               "-10 yrs")
+make.biomass.retro.mpd.plot(sog.am1,
+                            am1.retro.models[[4]],
+                            ylim = c(0, 200),
+                            show.bo.line = TRUE,
+                            model.names = leg.names)
+@
 Retrospective spawning biomass for the Strait of Georgia AM1 model.
 
 \end{column}
 \begin{column}{0.5\textwidth}
+<<sog.retro.biomass.am2, results='asis', echo=FALSE, fig.height=5.5>>=
+make.biomass.retro.mpd.plot(sog.b,
+                            base.retro.models[[4]],
+                            ylim = c(0, 200),
+                            show.bo.line = TRUE,
+                            model.names = leg.names)
+@
 Retrospective spawning biomass for the Strait of Georgia AM2 model.
+
+\end{column}
+\end{columns}
+\end{frame}
+
+% New slide
+\begin{frame}{Retrospective biomass estimates: AM2 vs. AM1}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+<<prd.retro.biomass.am1, results='asis', echo=FALSE, fig.height=5.5>>=
+leg.names <- c("Base",
+               "-1 yr",
+               "-2 yrs",
+               "-3 yrs",
+               "-4 yrs",
+               "-5 yrs",
+               "-6 yrs",
+               "-7 yrs",
+               "-8 yrs",
+               "-9 yrs",
+               "-10 yr",
+               "-11 yrs",
+               "-12 yrs",
+               "-13 yrs",
+               "-14 yrs",
+               "-15 yrs")
+make.biomass.retro.mpd.plot(pr.am1,
+                            am1.retro.models[[2]],
+                            ylim = c(0, 100),
+                            show.bo.line = TRUE,
+                            model.names = leg.names)
+@
+Retrospective spawning biomass for the Prince Rupert District AM1 model.
+
+\end{column}
+\begin{column}{0.5\textwidth}
+<<prd.retro.biomass.am2, results='asis', echo=FALSE, fig.height=5.5>>=
+make.biomass.retro.mpd.plot(pr.b,
+                            base.retro.models[[2]],
+                            ylim = c(0, 100),
+                            show.bo.line = TRUE,
+                            model.names = leg.names)
+@
+Retrospective spawning biomass for the Prince Rupert District AM2 model.
 
 \end{column}
 \end{columns}
