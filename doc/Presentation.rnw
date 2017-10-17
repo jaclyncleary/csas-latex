@@ -673,7 +673,7 @@ We further tested the sensivity of the V2 model estimates to:
 \begin{frame}{Natural mortality}
 \begin{itemize}
 \item Estimating time-varying $M$ for \Sexpr{fish.name} was first introduced in 2006 \citep{haist2006}
-\item It was incorporated into the ISCAM model and has been used since (2011-2016). 
+\item It was incorporated into the ISCAM model and has been used since (2011-2016)
 \item Recent concerns have been raised about interactions between estimating $q$ and $M$
 \item We began investigating this interaction by comparing constant $M$ and time-varying $M$
 \end{itemize}
@@ -1265,11 +1265,11 @@ make.decision.table(wcvi.b,
 % New slide
 \begin{frame}{Terms of Reference}
 \begin{enumerate}
-\item Present data and assessment model updates:\label{TOR:data}
+\item Present data and assessment model updates:
 \begin{enumerate}[a]
 \item Present modifications and updates to integrated statistical catch-age model equations and its AD Model Builder code.
 Investigate comparisons between old and new model code using a bridging analysis.
-\item Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.\label{TOR:SOK}
+\item Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.
 \item Present parameterization of maturity and fishery selectivity ogives and investigate interactions between these and other model-estimated parameters.
 \end{enumerate}
 \item Assess the current status of \Sexpr{fish.name} for the five major stocks using the integrated statistical catch-age model.
@@ -1418,7 +1418,6 @@ make.likelihood.table(list(list(hg.am2.tvm, hg.am2.constm),
                       placement = "H")
 @
 \end{frame}
-
 
 % Fin
 \end{document}
