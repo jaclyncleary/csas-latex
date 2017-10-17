@@ -942,18 +942,14 @@ make.maturity.sens.table(maturity.sens,
 \begin{frame}{AM2 vs. AM1}
 The 2016 Science Response for Pacific herring included Table A.1. History and identified limitations of AM1 and AM2 modelling approaches for BC herring stocks
 \begin{itemize}
-\item Spawn survey scaling parameter, q: 
-%MG add 3 sub-bullets:
-%bullet
-q1 and q2 are estimated independently for each area as part of the model fitting process, using a prior based on: assumptions about non-detection of spawn, independent studies on egg loss prior to spawn surveys, days between spawn deposition and survey, and bias in mean egg density (Martell et al. 2012)
-%bullet
-AM1: The same survey prior is used for both q1 and q2 in all stock areas
-%bullet
-AM1: The estimate of q2 is similar to the prior value of ~0.5 for all areas, ranging from 0.547-0.640 (except PRD) 
-%bullet
-AM2: The q2=1.0 assumption assumes the survey observes all spawn, and that no eggs are lost to predation
-%bullet
-AM2: The herring spawn index is considered a minimum estimate of spawning abundance.
+\item Spawn survey scaling parameter, $q$:
+\begin{itemize}
+\item $q_1$ and $q_2$ are estimated independently for each area as part of the model fitting process, using a prior based on: assumptions about non-detection of spawn, independent studies on egg loss prior to spawn surveys, days between spawn deposition and survey, and bias in mean egg density \citep{martell2011}
+\item AM1: The same survey prior is used for both $q_1$ and $q_2$ in all stock areas
+\item AM1: The estimate of $q_2$ is similar to the prior value of ~0.5 for all areas, ranging from 0.547 to 0.640 (except PRD)
+\item AM2: The $q_2=1.0$ assumption assumes the survey observes all spawn, and that no eggs are lost to predation
+\item AM2: The herring spawn index is considered a minimum estimate of spawning abundance
+\end{itemize}
 \end{itemize}
 \end{frame}
 
