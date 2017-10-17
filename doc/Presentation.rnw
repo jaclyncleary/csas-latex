@@ -738,7 +738,7 @@ make.index.fit.plot(list(cc.am1.constm,
 % New slide
 \begin{frame}{Natural mortality}
 \begin{itemize}
-\item \color{gray}{We found that model outcomes were influenced by the method used to estimate $M$}
+\item We found that model outcomes were influenced by the method used to estimate $M$
 \item Time-varying $M$ appeared to provide a better fit to data
 \item The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior
 \end{itemize}
