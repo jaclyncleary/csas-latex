@@ -967,12 +967,9 @@ Production analysis:
 \begin{itemize}
 \item This measures whether stock is replacing itself or not.
 \item Production equation:
-%\begin{itemize}
 \begin{equation}
 \mli{P}_t = \mli{B}_{t+1} - \mli{B}_t + \mli{C}_{t+1}
 \end{equation}
-%\item P_t = B_{t+1} - B_t + C_{t+1} 
-%\end{itemize}
 \item Krunlund et al. recommended $0.30\mli{SB}_0$
 \end{itemize}
 Figures 18 to 27
