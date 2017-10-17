@@ -757,30 +757,13 @@ make.index.fit.plot(list(cc.am1.constm,
 \end{itemize}
 \end{frame}
 
-% New slide
-\begin{frame}{Natural mortality}
-\begin{itemize}
-\item likelihood tables
-\end{itemize}
-\end{frame}
 
 % New slide
 \begin{frame}{Natural mortality}
 \begin{itemize}
-\item \color{gray}{We found that model outcomes were influenced by the method used to estimate $M$}
-\item \color{gray}{Time-varying $M$ appeared to provide a better fit to data}
-\item \color{gray}{The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior}
-\item Likelihood tables showed...
-\end{itemize}
-\end{frame}
-
-% New slide
-\begin{frame}{Natural mortality}
-\begin{itemize}
-\item \color{gray}{We found that model outcomes were influenced by the method used to estimate $M$}
-\item \color{gray}{Time-varying $M$ appeared to provide a better fit to data}
-\item \color{gray}{The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior}
-\item \color{gray}{Likelihood tables showed...}
+\item We found that model outcomes were influenced by the method used to estimate $M$
+\item Time-varying $M$ appeared to provide a better fit to data
+\item The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior
 \item This sensitivity analysis and the bridging analysis support the continued use of time-varying $M$ as the base case for the assessment
 \end{itemize}
 \end{frame}
@@ -1148,6 +1131,68 @@ relative contribution of fish aged 3 and aged 4-10 were calculated for each stoc
 \end{frame}
 
 % New slide
+\begin{frame}{Haida Gwaii}
+<<hg.ref.points.table, results='asis', echo=FALSE>>=
+make.ref.points.table(hg.b,
+                      hg.am1,
+                      xlabel = "tab:hg-ref-points",
+                      font.size = 7,
+                      space.size = 1,
+                      placement = "H")
+@
+\end{frame}
+
+
+% New subsection: future research
+\subsection{Future research}
+
+% New slide
+\begin{frame}{Future research and data requirements}
+\begin{enumerate}[<+->]
+\item Simulation-testing of management procedures
+\item SOK/SOB: quantify mortality and removed spawn
+\item Investigate appropriateness of stock-specific maturity ogive
+\item Potential for stock-specific prior distribution on $q$
+% \item Quantify uncertainty in the spawn index
+\end{enumerate}
+\end{frame}
+
+% New slide
+\begin{frame}{Terms of Reference}
+\begin{enumerate}
+\item Present data and assessment model updates:\label{TOR:data}
+\begin{enumerate}[a]
+\item Present modifications and updates to integrated statistical catch-age model equations and its AD Model Builder code.
+Investigate comparisons between old and new model code using a bridging analysis.
+\item Present herring spawn-on-kelp (SOK) fishery data and methods for including SOK data as input data for each stock area.\label{TOR:SOK}
+\item Present parameterization of maturity and fishery selectivity ogives and investigate interactions between these and other model-estimated parameters.
+\end{enumerate}
+\item Assess the current status of Pacific Herring for the five major stocks using the integrated statistical catch-age model.
+\end{enumerate}
+\end{frame}
+
+% New slide
+\begin{frame}{Terms of Reference}
+\begin{enumerate}
+\setcounter{enumi}{2}
+\item Present trends in Pacific Herring biomass, depletion, and recruitment for each major stock; including trends in biomass for each major stock relative to the LRP.
+\item For the minor stock areas, present stock status updates using available spawn survey data and biological samples.
+\item Evaluate the consequences (including potential risk of exceeding harvest rates prescribed by both modelling approaches) of different total allowable catch levels for 2018 against probabilistic metrics to accommodate uncertainty in the advice.
+\end{enumerate}
+\end{frame}
+
+% New subsection: References %%%
+\subsection{References}
+
+% New slide: References
+\begin{frame}[allowframebreaks]%{References}
+\bibliographystyle{res-doc}
+\bibliography{all}
+\end{frame}
+
+%%% Start the appendix (bonus slides) %%%
+\appendix
+% New slide
 \begin{frame}{Decision table: Prince Rupert District AM2}
 <<prd.decision.table, results='asis', echo=FALSE>>=
 dec.table.font.size <- 6
@@ -1351,6 +1396,29 @@ make.decision.table(wcvi.am1,
 \end{column}
 \end{columns}
 \end{frame}
+
+% New slide
+\begin{frame}{Natural mortality}
+\centering
+<<likelihood.table, results='asis', echo=FALSE>>=
+cap <- paste0("Likelihood and AIC for models testing the sensitivity to M.")
+make.likelihood.table(list(list(hg.am2.tvm, hg.am2.constm),
+                           list(pr.am2.tvm, pr.am2.constm),
+                           list(cc.am2.tvm, cc.am2.constm),
+                           list(wcvi.am2.tvm, sog.am2.constm),
+                           list(wcvi.am2.tvm, wcvi.am2.constm),
+                           list(hg.am1.tvm, hg.am1.constm),
+                           list(pr.am1.tvm, pr.am1.constm),
+                           list(cc.am1.tvm, cc.am1.constm),
+                           list(wcvi.am1.tvm, sog.am1.constm),
+                           list(wcvi.am1.tvm, wcvi.am1.constm)),
+                      xcaption = cap,
+                      font.size = 5,
+                      space.size = 1,
+                      placement = "H")
+@
+\end{frame}
+
 
 % Fin
 \end{document}
