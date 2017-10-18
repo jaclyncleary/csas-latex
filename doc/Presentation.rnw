@@ -1511,36 +1511,36 @@ We estimate spawning biomass removed from the population by the SOK fishery as
 where $\mli{SOK}$ is the weight in kg of SOK harvest, $\mli{eggKelpProp}$ is the proportion of the SOK product that is eggs, not kelp (0.88), $\mli{eggBrineProp}$ is the proportion of SOK product that is eggs after brining (0.87), $\mli{eggWt}$ is the average weight in kilograms of a fertilized egg ($\text{kg} \cdot \text{egg}^{-1}$), and $\mli{SB}$ is the estimated spawning biomass in tonnes.
 \end{frame}
 
-% New slide
-\begin{frame}{Spawn on kelp (SOK)}
-\begin{columns}
-\begin{column}{0.4\textwidth}
-\begin{itemize}
-\item SOK harvest and estimated spawning biomass in recent years
-\end{itemize}
-\end{column}
-\begin{column}{0.3\textwidth}
-\centering
-\scriptsize
-\begin{tabular}{lrrrrr}
-\toprule
-& \multicolumn{5}{c}{Harvest (kg)}\\
-\cmidrule{2-6}
-\inputsp{\Sexpr{noquote(locOutput)}HarvSOK.tex}
-\end{tabular}
-\end{column}
-\begin{column}{0.3\textwidth}
-\centering
-\scriptsize
-\begin{tabular}{lrrrrr}
-\toprule
-& \multicolumn{5}{c}{Biomass (t)}\\
-\cmidrule{2-6}
-\inputsp{\Sexpr{noquote(locOutput)}BioSOK.tex}
-\end{tabular}
-\end{column}
-\end{columns}
-\end{frame}
+% % New slide
+% \begin{frame}{Spawn on kelp (SOK)}
+% \begin{columns}
+% \begin{column}{0.4\textwidth}
+% \begin{itemize}
+% \item SOK harvest and estimated spawning biomass in recent years
+% \end{itemize}
+% \end{column}
+% \begin{column}{0.3\textwidth}
+% \centering
+% \scriptsize
+% \begin{tabular}{lrrrrr}
+% \toprule
+% & \multicolumn{5}{c}{Harvest (kg)}\\
+% \cmidrule{2-6}
+% \inputsp{\Sexpr{noquote(locOutput)}HarvSOK.tex}
+% \end{tabular}
+% \end{column}
+% \begin{column}{0.3\textwidth}
+% \centering
+% \scriptsize
+% \begin{tabular}{lrrrrr}
+% \toprule
+% & \multicolumn{5}{c}{Biomass (t)}\\
+% \cmidrule{2-6}
+% \inputsp{\Sexpr{noquote(locOutput)}BioSOK.tex}
+% \end{tabular}
+% \end{column}
+% \end{columns}
+% \end{frame}
 
 % % New slide
 % \begin{frame}

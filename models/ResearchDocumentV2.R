@@ -383,38 +383,38 @@ LoadNBio <- function( SARs ) {
 # Load the number of biosamples
 nBio <- LoadNBio( SARs=unlist(allRegions, use.names=FALSE) )
 
-# Load SOK harvest
-LoadSOK <- function( SARs ) {
-  # Progress message
-  cat( "Loading SOK... " )
-  # Start a loop over regions
-  for( k in 1:length(SARs) ) {
-    # Get the region
-    SAR <- SARs[k]
-    # Get the number of biosamples
-    sok <- fread( input=paste("allHarvSOK", SAR, ".csv", sep=""), 
-        verbose=FALSE)
-    # If it's the first region
-    if( k == 1 ) {
-      # Start data frame
-      dat <- sok
-    } else {  # End if it's the first region, otherwise
-      # Append to the data frame
-      dat <- bind_rows( dat, sok )
-    }  # End if it's not the first region
-  }  # End k loop over regions
-  # Wrangle
-  res <- dat %>%
-      as_tibble( ) %>%
-      filter( Year %in% yrRange )
-  # Update the progress message
-  cat( "done\n" )
-  # Return the list
-  return( res )
-}  # End LoadSOK function
-
-# Load SOK harvest
-SOK <- LoadSOK( SARs=unlist(allRegions, use.names=FALSE) )
+# # Load SOK harvest
+# LoadSOK <- function( SARs ) {
+#   # Progress message
+#   cat( "Loading SOK... " )
+#   # Start a loop over regions
+#   for( k in 1:length(SARs) ) {
+#     # Get the region
+#     SAR <- SARs[k]
+#     # Get the number of biosamples
+#     sok <- fread( input=paste("allHarvSOK", SAR, ".csv", sep=""), 
+#         verbose=FALSE)
+#     # If it's the first region
+#     if( k == 1 ) {
+#       # Start data frame
+#       dat <- sok
+#     } else {  # End if it's the first region, otherwise
+#       # Append to the data frame
+#       dat <- bind_rows( dat, sok )
+#     }  # End if it's not the first region
+#   }  # End k loop over regions
+#   # Wrangle
+#   res <- dat %>%
+#       as_tibble( ) %>%
+#       filter( Year %in% yrRange )
+#   # Update the progress message
+#   cat( "done\n" )
+#   # Return the list
+#   return( res )
+# }  # End LoadSOK function
+# 
+# # Load SOK harvest
+# SOK <- LoadSOK( SARs=unlist(allRegions, use.names=FALSE) )
 
 # Arrange the ADMB output files
 ArrangeOutput <- function( SARs, models ) {
@@ -807,19 +807,19 @@ catch <- inputData$catch %>%
         Gear=paste("Gear", Gear, sep="") ) %>%
     rename( Period=Gear )
 
-# Format SOK for plotting
-SOK <- SOK %>%
-    left_join( y=regions, by="Region" ) %>%
-    mutate( RegionName=factor(RegionName, levels=regions$RegionName) )
-
-# Wrangle SOK to merge with catch
-newSOK <- SOK %>%
-    select( -Harvest ) %>%
-    mutate( Period="Gear4", Biomass=Biomass/1000 ) %>%
-    rename( Catch=Biomass )
-
-# Combine catch with SOK
-catchSOK <- bind_rows( catch, newSOK )
+# # Format SOK for plotting
+# SOK <- SOK %>%
+#     left_join( y=regions, by="Region" ) %>%
+#     mutate( RegionName=factor(RegionName, levels=regions$RegionName) )
+# 
+# # Wrangle SOK to merge with catch
+# newSOK <- SOK %>%
+#     select( -Harvest ) %>%
+#     mutate( Period="Gear4", Biomass=Biomass/1000 ) %>%
+#     rename( Catch=Biomass )
+# 
+# # Combine catch with SOK
+# catchSOK <- bind_rows( catch, newSOK )
 
 # Format spawn index data for plotting
 spawn <- inputData$spawn %>%
@@ -976,21 +976,21 @@ PlotCatch <- function( SARs, dat ){
 # Plot catch (major and minor SARs)
 PlotCatch( SARs=regions$Region, dat=catch )
 
-# Plot catch and SOK (major SARs)
-catchSOKPlotAll <- ggplot( data=filter(catchSOK, Region%in%allRegions$major), 
-        aes(x=Year, y=Catch, fill=Period) ) + 
-    geom_bar( stat="identity", position="stack" ) +
-    labs( y=expression(paste("Catch (t"%*%10^3, ")", sep="")) )  +
-    scale_fill_brewer( type="qual", palette=3 ) +
-    scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
-    scale_y_continuous( labels=comma ) +
-    facet_wrap( ~ RegionName, nrow=2, dir="h" ) +
-    myTheme +
-    theme( text=element_text(size=14), 
-        axis.text.x=element_text(angle=45, hjust=1), 
-        panel.spacing=unit(1, "lines") ) +
-    ggsave( filename=file.path("CatchSOKWide.png"), width=figWidth*1.5, 
-        height=figWidth )
+# # Plot catch and SOK (major SARs)
+# catchSOKPlotAll <- ggplot( data=filter(catchSOK, Region%in%allRegions$major), 
+#         aes(x=Year, y=Catch, fill=Period) ) + 
+#     geom_bar( stat="identity", position="stack" ) +
+#     labs( y=expression(paste("Catch (t"%*%10^3, ")", sep="")) )  +
+#     scale_fill_brewer( type="qual", palette=3 ) +
+#     scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
+#     scale_y_continuous( labels=comma ) +
+#     facet_wrap( ~ RegionName, nrow=2, dir="h" ) +
+#     myTheme +
+#     theme( text=element_text(size=14), 
+#         axis.text.x=element_text(angle=45, hjust=1), 
+#         panel.spacing=unit(1, "lines") ) +
+#     ggsave( filename=file.path("CatchSOKWide.png"), width=figWidth*1.5, 
+#         height=figWidth )
 
 # Plot total spawn index by year
 PlotSpawn <- function( SARs, dat ){ 
@@ -1541,35 +1541,35 @@ PrintCatch <- function( SARs, dat ) {
 namesCatch <- PrintCatch( SARs=unlist(allRegions, use.names=FALSE), 
     dat=inputData$catch )
 
-# Format SOK harvest
-xHarvSOK <- SOK %>%
-    select( Year, Region, Harvest ) %>%
-    filter( Region %in% allRegions$major ) %>%
-    mutate( Harvest=format(Harvest, digits=0, nsmall=0, big.mark=",", 
-            scientific=FALSE) ) %>%
-    spread( key=Region, value=Harvest, fill=0 ) %>%
-    tail( n=16 ) %>%
-    xtable( )
-
-# Write SOK harvest to disc
-print( x=xHarvSOK, file="HarvSOK.tex", include.rownames=FALSE, booktabs=TRUE, 
-    only.contents=TRUE, NA.string=NA, sanitize.text.function=identity, 
-    sanitize.colnames.function=identity )
-
-# Format SOK harvest
-xBioSOK <- SOK %>%
-    select( Year, Region, Biomass ) %>%
-    filter( Region %in% allRegions$major ) %>%
-    mutate( Biomass=format(Biomass, digits=0, nsmall=0, big.mark=",", 
-            scientific=FALSE) ) %>%
-    spread( key=Region, value=Biomass, fill=0 ) %>%
-    tail( n=16 ) %>%
-    xtable( )
-
-# Write SOK harvest to disc
-print( x=xBioSOK, file="BioSOK.tex", include.rownames=FALSE, booktabs=TRUE, 
-    only.contents=TRUE, NA.string=NA, sanitize.text.function=identity, 
-    sanitize.colnames.function=identity )
+# # Format SOK harvest
+# xHarvSOK <- SOK %>%
+#     select( Year, Region, Harvest ) %>%
+#     filter( Region %in% allRegions$major ) %>%
+#     mutate( Harvest=format(Harvest, digits=0, nsmall=0, big.mark=",", 
+#             scientific=FALSE) ) %>%
+#     spread( key=Region, value=Harvest, fill=0 ) %>%
+#     tail( n=16 ) %>%
+#     xtable( )
+#
+# # Write SOK harvest to disc
+# print( x=xHarvSOK, file="HarvSOK.tex", include.rownames=FALSE, booktabs=TRUE, 
+#     only.contents=TRUE, NA.string=NA, sanitize.text.function=identity, 
+#     sanitize.colnames.function=identity )
+#
+# # Format SOK harvest
+# xBioSOK <- SOK %>%
+#     select( Year, Region, Biomass ) %>%
+#     filter( Region %in% allRegions$major ) %>%
+#     mutate( Biomass=format(Biomass, digits=0, nsmall=0, big.mark=",", 
+#             scientific=FALSE) ) %>%
+#     spread( key=Region, value=Biomass, fill=0 ) %>%
+#     tail( n=16 ) %>%
+#     xtable( )
+# 
+# # Write SOK harvest to disc
+# print( x=xBioSOK, file="BioSOK.tex", include.rownames=FALSE, booktabs=TRUE, 
+#     only.contents=TRUE, NA.string=NA, sanitize.text.function=identity, 
+#     sanitize.colnames.function=identity )
 
 # Print spawn index
 PrintSpawn <- function( SARs, dat ) {
