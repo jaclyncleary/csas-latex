@@ -288,7 +288,7 @@ plotSAR <- function( dat, repFileList, stockName,
   Blow        <- c( 0.1, 0.25, 0.3 ) * sbo
   
   # Plot total and spawning biomass vs. year.
-  yLim  <- c( 0, max(SSBt,Ct,na.rm=TRUE) )
+  yLim  <- c( 0, max(SSBt,Ct,sbo, na.rm=TRUE) )
   
   par( oma=c(1.5,0.5,3,1), mar=c(2,4,2,0.5), mfcol=c(2,2) )
   
@@ -312,11 +312,11 @@ plotSAR <- function( dat, repFileList, stockName,
   points( year, SSBt, cex=cexSize, bg="white", col="black", pch=21 )
   
   # Indicate SSB values less than specified quantile.
-  xQuant <- quantile( SSBt, probs=quantSSB )
-  idx <- SSBt <= xQuant
+#  xQuant <- quantile( SSBt, probs=quantSSB )
+#  idx <- SSBt <= xQuant
   #cat( "\nModel States\n" )
   #print( cbind( year, SSBt, idx ) )
-  points( year[idx], SSBt[idx], cex=cexSize, bg="lightgray", col="black", pch=21 )
+#  points( year[idx], SSBt[idx], cex=cexSize, bg="lightgray", col="black", pch=21 )
   
   axis( side=1 )
   axis( side=2, las=2 )

@@ -23,7 +23,8 @@ Units: kilometres (km).}
 \begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{\Sexpr{locOutput}Catch.png}
-\caption{Time series of total landed catch in thousands of metric tonnes ($\text{t} \times 10^{3}$) of \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the major stock assessment regions (SARs).}
+\caption{Time series of total landed catch in thousands of metric tonnes ($\text{t} \times 10^{3}$) of \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the major stock assessment regions (SARs).
+\legendPeriod{}}
 \label{figCatch}
 \end{figure}
 
@@ -103,7 +104,7 @@ Time series of vertical lines indicates commercial catch, excluding spawn on kel
 \includegraphics[width=\linewidth]{\Sexpr{locOutput}\x/Production\y.png}
 \caption{Production analysis for \Sexpr{fish.name} in the \x{} major stock assessment region (SAR) for \y.
 Panel (a): time series of estimated spawning biomass (circles) and catch (vertical bars).
-The lower \Sexpr{quantSSB*100}\% of spawning biomass estimates are shaded grey.
+% The lower \Sexpr{quantSSB*100}\% of spawning biomass estimates are shaded grey.
 Reference lines are shown at estimates of $0.1B_0$, (red dashed line) $0.25B_0$ (blue dashed line), $0.3B_0$ (green dashed line), the 1996 fixed cutoff value (thick blue long dashed line), and unfished spawning biomass (solid blue line).
 Panel (b): time series of estimated natural mortality.
 Panels (c \& d): phase plots of spawning biomass production and spawning biomass production rate against spawning biomass, respectively, for the Dive survey period, from \Sexpr{newSurvYr} (black circle) to \Sexpr{max(yrRange)-1} (black diamond).
