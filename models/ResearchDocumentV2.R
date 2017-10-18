@@ -1048,7 +1048,7 @@ PlotSpawn <- function( SARs, dat ){
       myTheme +
       theme( legend.position="top" ) +
       ggsave( filename=file.path("SpawnIndexMinor.png"), width=figWidth, 
-          height=figWidth*0.67 )
+          height=figWidth*0.5 )
   # The plot (wide version)
   spawnIndexPlotAll <- ggplot( data=datMajor, aes(x=Year, y=Spawn) ) +
       geom_point( aes(shape=Survey) ) + 

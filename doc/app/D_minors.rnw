@@ -9,7 +9,23 @@ The Terms of Reference states:
 \item For the minor stock areas, present stock status updates using available spawn survey data and biological samples.
 \end{resdoclist}
 
-There was insufficient time to conduct a formal analysis of stock trend information for the \Sexpr{fish.name} minor stocks, \Sexpr{PasteNicely(allRegionNames$minor)}, however spawn survey data and biological sampling information is presented in Appendix \ref{chap:input}.
+There was insufficient time to conduct a formal analysis of stock trend information for the \Sexpr{fish.name} minor stocks, \Sexpr{PasteNicely(allRegionNames$minor)}.
+However, catch data, spawn index data, and biological sampling information is presented in Appendix \ref{chap:input}.
+In addition, we show a timeseries of the spawn index in Figure \ref{figSpawnIndexMinor}.
+
+\clearpage
+
+\appsection{FIGURES}
+
+% Spawn index
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}SpawnIndexMinor.png}
+\caption{Time series of spawn index in thousands of metric tonnes ($\text{t} \times 10^{3}$) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the minor stock assessment regions (SARs).
+\qPeriods{}
+\spawnIndex{}}
+\label{figSpawnIndexMinor}
+\end{figure}
 
 % Dirty hack to maintain correct appendix letters
 \newpage
