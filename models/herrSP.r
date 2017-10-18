@@ -290,7 +290,7 @@ plotSAR <- function( dat, repFileList, stockName,
   # Plot total and spawning biomass vs. year.
   yLim  <- c( 0, max(SSBt,Ct,sbo, na.rm=TRUE) )
   
-  par( oma=c(1.5,0.5,3,1), mar=c(2,4,2,0.5), mfcol=c(2,2) )
+  par( oma=c(1.5,0.5,3,1), mar=c(2,4,2,0.5), mfrow=c(1,2) )
   
   # Plot spawning biomass trajectory.
   plot( year, SSBt, type="n", axes=FALSE, xlab="", ylab="", ylim=yLim )
@@ -335,19 +335,19 @@ plotSAR <- function( dat, repFileList, stockName,
   mtext( side=2, cex=1.1, line=2.5, "Spawning biomass, Catch (000 t)" )
   #mtext( side=4, cex.axis=1.2, line=3, "Depletion" )  
   
-  # Plot estimated natural mortality.
-  plot( year, Mtot, type="n", axes=FALSE, xlab="", ylab="", ylim=c(0,max(Mtot)) )
-  lines( year, Mtot, lwd=2 )
-  
-  axis( side=1 )
-  axis( side=2, las=2 )
-  axis( side=3, labels=FALSE )
-  axis( side=4, labels=FALSE )
-  panLab( 0.05, 0.9, cex=1.2, "(b)" ) 
-  box()
-  
+  # # Plot estimated natural mortality.
+  # plot( year, Mtot, type="n", axes=FALSE, xlab="", ylab="", ylim=c(0,max(Mtot)) )
+  # lines( year, Mtot, lwd=2 )
+  # 
+  # axis( side=1 )
+  # axis( side=2, las=2 )
+  # axis( side=3, labels=FALSE )
+  # axis( side=4, labels=FALSE )
+  # panLab( 0.05, 0.9, cex=1.2, "(b)" ) 
+  # box()
+  # 
   mtext( side=1, cex=1.1, line=2, "Year" )
-  mtext( side=2, cex=1.1, line=2.5, "Natural mortality" )
+  # mtext( side=2, cex=1.1, line=2.5, "Natural mortality" )
   
   # Plotting variables for phase plots is Dive only.
   
@@ -401,7 +401,7 @@ plotSAR <- function( dat, repFileList, stockName,
   #axis( side=3, labels=FALSE )
   axis( side=4, labels=FALSE )
   
-  panLab( 0.05, 0.9, cex=1.2, "(c)" )
+  panLab( 0.05, 0.9, cex=1.2, "(b)" )
   
   par( new="TRUE" )
   plot( xLim/sbo, yLim1, type="n", axes=FALSE, xlab="", ylab="" )
@@ -419,49 +419,49 @@ plotSAR <- function( dat, repFileList, stockName,
   
   # Phase plot production rate versus biomass.
   yLim <- range( prodRate, na.rm=TRUE )
-  plot( b,SPrate, type="n", axes=FALSE, xlab="", xlim=xLim, ylab="", ylim=yLim2 )
-  
-  ## Draw arrows from point to point, not sure why "21", would have thought
-  
-  lineCols <- rep( "black", length(b) )
-  s <- seq( length(b)-1 )
-  arrows( b[s], SPrate[s], b[s+1], SPrate[s+1], length=0.05, col=lineCols )
-  
-  # Lay down heat colors for order of points.
-  #colVec <- rev( heat.colors( n ) )
-  points( b,    SPrate,    cex=cexSize, pch=21, bg=colVec )
-  points( b[1], SPrate[1], cex=cexSize, pch=19, col="black" )
-  points( b[n-1], SPrate[n-1], cex=cexSize, pch=23, bg="black"  )
-  
-  text( b, SPrate, labels=yr, adj=1, cex=0.7, pos=3 )
-  
-  abline( h=0 )
-  
-  axis( side=1 ) 
-  axis( side=2, las=2 )
-  #axis( side=3, labels=FALSE )
-  axis( side=4, labels=FALSE )
-  
-  panLab( 0.05, 0.9, cex=1.2, "(d)" )
-  
-  par( new="TRUE" )
-  plot( xLim/sbo, yLim2, type="n", axes=FALSE, xlab="", ylab="" )
-  axis( side=3 )
-  
-  box()
-  
-  #if ( mfg[2]==1 )
-  mtext( side=2, cex=1.1, line=2.5, yLab2 )
-  
+  # plot( b,SPrate, type="n", axes=FALSE, xlab="", xlim=xLim, ylab="", ylim=yLim2 )
+  # 
+  # ## Draw arrows from point to point, not sure why "21", would have thought
+  # 
+  # lineCols <- rep( "black", length(b) )
+  # s <- seq( length(b)-1 )
+  # arrows( b[s], SPrate[s], b[s+1], SPrate[s+1], length=0.05, col=lineCols )
+  # 
+  # # Lay down heat colors for order of points.
+  # #colVec <- rev( heat.colors( n ) )
+  # points( b,    SPrate,    cex=cexSize, pch=21, bg=colVec )
+  # points( b[1], SPrate[1], cex=cexSize, pch=19, col="black" )
+  # points( b[n-1], SPrate[n-1], cex=cexSize, pch=23, bg="black"  )
+  # 
+  # text( b, SPrate, labels=yr, adj=1, cex=0.7, pos=3 )
+  # 
+  # abline( h=0 )
+  # 
+  # axis( side=1 ) 
+  # axis( side=2, las=2 )
+  # #axis( side=3, labels=FALSE )
+  # axis( side=4, labels=FALSE )
+  # 
+  # panLab( 0.05, 0.9, cex=1.2, "(d)" )
+  # 
+  # par( new="TRUE" )
+  # plot( xLim/sbo, yLim2, type="n", axes=FALSE, xlab="", ylab="" )
+  # axis( side=3 )
+  # 
+  # box()
+  # 
+  # #if ( mfg[2]==1 )
+  # mtext( side=2, cex=1.1, line=2.5, yLab2 )
+  # 
   mtext( side=1, cex=1.1, line=2, xLab )
-  
-  if ( stockName=="CC8" ) 
-    stockName <- "CC"
-  
+  # 
+  # if ( stockName=="CC8" ) 
+  #   stockName <- "CC"
+  # 
   mtext( side=3, cex=1.25, line=1,   outer=TRUE,
-      paste( stockName,": ",modType, sep="" ) ) 
+      paste( stockName,": ",modType, sep="" ) )
   #paste( stockName,": AM",modType,"(",qList[2],")", sep="" ) )
-  
+
   par( mfrow=c(1,1) )
   return( invisible() )
 }     # END function plotSAR
@@ -519,7 +519,7 @@ for( m in 1:length(mNames) ) {
     # Figures for SAR.
     fName <- file.path( stockNames[i], 
         paste( "Production",caseFld,".png", sep="" ) )
-    png( file=fName, height=yHeight, width=xWidth, pointsize=ptSize )
+    png( file=fName, height=yHeight/2, width=xWidth, pointsize=ptSize )
     plotSAR( result[[i]], repList[[i]], stockName=stockNames[i],
         modType=caseFld, prodType=prodType, byGroup=byGrp, xyScale=xyScale )
     

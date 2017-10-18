@@ -106,12 +106,12 @@ Time series of vertical lines indicates commercial catch, excluding spawn on kel
 Panel (a): time series of estimated spawning biomass (circles) and catch (vertical bars).
 % The lower \Sexpr{quantSSB*100}\% of spawning biomass estimates are shaded grey.
 Reference lines are shown at estimates of $0.1B_0$, (red dashed line) $0.25B_0$ (blue dashed line), $0.3B_0$ (green dashed line), the 1996 fixed cutoff value (thick blue long dashed line), and unfished spawning biomass (solid blue line).
-Panel (b): time series of estimated natural mortality.
-Panels (c \& d): phase plots of spawning biomass production and spawning biomass production rate against spawning biomass, respectively, for the Dive survey period, from \Sexpr{newSurvYr} (black circle) to \Sexpr{max(yrRange)-1} (black diamond).
+% Panel (b): time series of estimated natural mortality.
+Panel (b): phase plot of spawning biomass production against spawning biomass for the Dive survey period, from \Sexpr{newSurvYr} (black circle) to \Sexpr{max(yrRange)-1} (black diamond).
 Grey shading of the circles becomes darker in chronological order.
 Calendar years are indicated above each symbol.
-The axis scales at the top of panels (c \& d) are in units of spawning biomass depletion (i.e., spawn biomass divided by the estimated unfished spawning biomass from the assessment model).
-Reference lines in panel (c) are the same as those in panel (a).
+The axis scale is in units of spawning biomass depletion (i.e., spawn biomass divided by the estimated unfished spawning biomass from the assessment model).
+Reference lines in panel (b) are the same as those in panel (a).
 All estimates quantities are based on maximum likelihood estimates (DFO 2016).}
 \label{figProduction\y\x}
 \end{figure}
