@@ -165,8 +165,8 @@ smLine <- "loess"
 # Level of confidence interval
 ciLevel <- 0.9
 
-# SSB quantile for production plots (grey points)
-quantSSB <- 0.2
+## SSB quantile for production plots (grey points)
+#quantSSB <- 0.2
 
 # Get ylimits (e.g., weight in kg) for the weight-at-age plot
 wtRange <- c( 35, 130 ) / 1000
@@ -392,7 +392,7 @@ LoadSOK <- function( SARs ) {
     # Get the region
     SAR <- SARs[k]
     # Get the number of biosamples
-    sok <- fread( input=paste("allHarvSOK", SAR, ".csv", sep=""), 
+    sok <- fread( input=paste("allHarvSOK", SAR, ".csv", sep=""),
         verbose=FALSE)
     # If it's the first region
     if( k == 1 ) {
@@ -947,22 +947,23 @@ PlotCatch <- function( SARs, dat ){
       filter( Region%in%allRegions$major )
   # Plot all the regions together
   catchPlotAll <- ggplot( data=datMajor, aes(x=Year, y=Catch) ) + 
-      geom_bar( stat="identity", position="stack" ) +
+      geom_bar( stat="identity", position="stack", aes(fill=Period) ) +
       labs( y=expression(paste("Catch (t"%*%10^3, ")", sep="")) )  +
       scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
       scale_y_continuous( labels=comma ) +
+      scale_fill_grey( start=0, end=0.8 ) +
       facet_wrap( ~ RegionName, ncol=2, dir="v" ) +
       myTheme +
-      ggsave( filename=file.path("Catch.png"), width=figWidth, height=figWidth )
+      theme( legend.position="top" ) +
+      ggsave( filename=file.path("Catch.png"), width=figWidth, 
+          height=figWidth*1.25 )
   # Plot all the regions together (wide version)
   catchPlotAll <- ggplot( data=datMajor, aes(x=Year, y=Catch) ) + 
-      geom_bar( aes(fill=Year==max(yrRange)), stat="identity", 
-          position="stack" ) +
+      geom_bar( aes(fill=Period), stat="identity", position="stack" ) +
       labs( y=expression(paste("Catch (t"%*%10^3, ")", sep="")) )  +
-      scale_fill_grey( start=0.5, end=0 ) + 
-      scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
+       scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
       scale_y_continuous( labels=comma ) +
-      guides( fill=FALSE ) +
+      scale_fill_grey( start=0, end=0.8 ) +
       facet_wrap( ~ RegionName, nrow=2, dir="h" ) +
       myTheme +
       theme( text=element_text(size=14), 
@@ -976,8 +977,8 @@ PlotCatch <- function( SARs, dat ){
 PlotCatch( SARs=regions$Region, dat=catch )
 
 # Plot catch and SOK (major SARs)
-catchSOKPlotAll <- ggplot( data=filter(catchSOK, Region%in%allRegions$major), 
-        aes(x=Year, y=Catch, fill=Period) ) + 
+catchSOKPlotAll <- ggplot( data=filter(catchSOK, Region%in%allRegions$major),
+        aes(x=Year, y=Catch, fill=Period) ) +
     geom_bar( stat="identity", position="stack" ) +
     labs( y=expression(paste("Catch (t"%*%10^3, ")", sep="")) )  +
     scale_fill_brewer( type="qual", palette=3 ) +
@@ -985,10 +986,10 @@ catchSOKPlotAll <- ggplot( data=filter(catchSOK, Region%in%allRegions$major),
     scale_y_continuous( labels=comma ) +
     facet_wrap( ~ RegionName, nrow=2, dir="h" ) +
     myTheme +
-    theme( text=element_text(size=14), 
-        axis.text.x=element_text(angle=45, hjust=1), 
+    theme( text=element_text(size=14),
+        axis.text.x=element_text(angle=45, hjust=1),
         panel.spacing=unit(1, "lines") ) +
-    ggsave( filename=file.path("CatchSOKWide.png"), width=figWidth*1.5, 
+    ggsave( filename=file.path("CatchSOKWide.png"), width=figWidth*1.5,
         height=figWidth )
 
 # Plot total spawn index by year
@@ -1031,6 +1032,23 @@ PlotSpawn <- function( SARs, dat ){
       theme( legend.position="top" ) +
       ggsave( filename=file.path("SpawnIndex.png"), width=figWidth, 
           height=figWidth+0.5 )
+  # Get minor stocks
+  datMinor <- dat %>%
+      filter( Region%in%allRegions$minor )
+  # The plot
+  spawnIndexPlotAll <- ggplot( data=datMinor, aes(x=Year, y=Spawn) ) +
+      geom_point( aes(shape=Survey) ) + 
+      geom_line( aes(group=Survey) ) +
+      labs( y=expression(paste("Spawn index (t"%*%10^3, ")", sep="")) )  +
+      scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
+      scale_y_continuous( labels=comma ) +
+      scale_shape_manual( values=c(1, 2) ) +
+      expand_limits( y=0 ) +
+      facet_wrap( ~ RegionName, ncol=2, dir="v", scales="free_y" ) +
+      myTheme +
+      theme( legend.position="top" ) +
+      ggsave( filename=file.path("SpawnIndexMinor.png"), width=figWidth, 
+          height=figWidth*0.67 )
   # The plot (wide version)
   spawnIndexPlotAll <- ggplot( data=datMajor, aes(x=Year, y=Spawn) ) +
       geom_point( aes(shape=Survey) ) + 
@@ -1439,16 +1457,16 @@ PlotBevertonHolt <- function( bh, bhPred, SARs, models ) {
       mutate( ro2=ro*exp(-0.5*tau^2) )
   # The plot
   plotBH <- ggplot( data=bhSub, aes(x=Abundance, y=Recruitment) ) + 
-      geom_point( aes(colour=Year==max(yrRange)) ) +
-      geom_point( data=bhPredSub, aes(x=sbo, y=ro), shape=17 ) +
+      geom_point( aes(colour=Year, shape=Year==max(yrRange)) ) +
+      geom_point( data=bhPredSub, aes(x=sbo, y=ro), shape=4 ) +
       geom_line( data=bhPredSub ) + 
-      scale_colour_grey( start=0.5, end=0 ) +
+      scale_colour_gradient( low="grey", high="black" ) +
       facet_wrap( ~ RegionName, ncol=2, scales="free", dir="v" ) +
       labs( x=expression(paste("Spawning biomass (t"%*%10^3, ")")), 
           y=paste("Number of age-", ageRec, " recruits (millions)", sep="") ) +
       scale_y_continuous( label=comma ) +
       expand_limits( x=0, y=0 ) +
-      guides( colour=FALSE ) +
+      guides( colour=FALSE, shape=FALSE ) +
       myTheme +
       ggsave( filename=file.path("BevertonHolt.png"), width=figWidth, 
           height=figWidth )
@@ -1527,30 +1545,30 @@ namesCatch <- PrintCatch( SARs=unlist(allRegions, use.names=FALSE),
 xHarvSOK <- SOK %>%
     select( Year, Region, Harvest ) %>%
     filter( Region %in% allRegions$major ) %>%
-    mutate( Harvest=format(Harvest, digits=0, nsmall=0, big.mark=",", 
+    mutate( Harvest=format(Harvest, digits=0, nsmall=0, big.mark=",",
             scientific=FALSE) ) %>%
     spread( key=Region, value=Harvest, fill=0 ) %>%
     tail( n=16 ) %>%
     xtable( )
 
 # Write SOK harvest to disc
-print( x=xHarvSOK, file="HarvSOK.tex", include.rownames=FALSE, booktabs=TRUE, 
-    only.contents=TRUE, NA.string=NA, sanitize.text.function=identity, 
+print( x=xHarvSOK, file="HarvSOK.tex", include.rownames=FALSE, booktabs=TRUE,
+    only.contents=TRUE, NA.string=NA, sanitize.text.function=identity,
     sanitize.colnames.function=identity )
 
 # Format SOK harvest
 xBioSOK <- SOK %>%
     select( Year, Region, Biomass ) %>%
     filter( Region %in% allRegions$major ) %>%
-    mutate( Biomass=format(Biomass, digits=0, nsmall=0, big.mark=",", 
+    mutate( Biomass=format(Biomass, digits=0, nsmall=0, big.mark=",",
             scientific=FALSE) ) %>%
     spread( key=Region, value=Biomass, fill=0 ) %>%
     tail( n=16 ) %>%
     xtable( )
 
 # Write SOK harvest to disc
-print( x=xBioSOK, file="BioSOK.tex", include.rownames=FALSE, booktabs=TRUE, 
-    only.contents=TRUE, NA.string=NA, sanitize.text.function=identity, 
+print( x=xBioSOK, file="BioSOK.tex", include.rownames=FALSE, booktabs=TRUE,
+    only.contents=TRUE, NA.string=NA, sanitize.text.function=identity,
     sanitize.colnames.function=identity )
 
 # Print spawn index
