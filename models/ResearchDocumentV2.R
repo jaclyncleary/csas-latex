@@ -102,19 +102,19 @@ mNames <- c( "AM2", "AM1" )
 
 # Possible regions by type
 allRegions <- list(major=c("HG", "PRD", "CC", "SoG", "WCVI"),
-                   minor=c("A27", "A2W"))
+    minor=c("A27", "A2W"))
 
 # Sensitivity runs
 sens <- c("HG-natural-mortality",
-          "PRD-natural-mortality",
-          "CC-natural-mortality",
-          "SOG-natural-mortality",
-          "WCVI-natural-mortality",
-          "HG-q-priors",
-          "PRD-q-priors",
-          "CC-q-priors",
-          "SOG-q-priors",
-          "WCVI-q-priors")
+    "PRD-natural-mortality",
+    "CC-natural-mortality",
+    "SOG-natural-mortality",
+    "WCVI-natural-mortality",
+    "HG-q-priors",
+    "PRD-q-priors",
+    "CC-q-priors",
+    "SOG-q-priors",
+    "WCVI-q-priors")
 
 # Region names
 allRegionNames <- list( 
@@ -611,10 +611,10 @@ GetVals <- function( fn, SARs, models=mNames, varName, yr ) {
       colnames( raw ) <- yrNames
       # Grab the recent year data
       raw <- raw %>% 
-          select( which(colnames(raw)==max(yrRange)) )
+          select( which(colnames(raw)==yr) )
       # Calculate the median of model runs for each year
       out <- tibble( Region=SAR, Model=model, Parameter=varName, 
-          Value=raw[[1]] )
+          Value=raw[[1]], Year=yr )
       # If it's the first region and model
       if( k == 1 & i == 1 ) {
         # Start a data frame
@@ -632,8 +632,12 @@ GetVals <- function( fn, SARs, models=mNames, varName, yr ) {
 }  # End GetVals function
 
 # Get current year raw spawning biomass (thousands of tonnes, major SARs only)
-spBioVals <- GetVals( fn="iscam_sbt_mcmc.csv", SARs=allRegions$major, 
+spBioVals2017 <- GetVals( fn="iscam_sbt_mcmc.csv", SARs=allRegions$major, 
     varName="Abundance", yr=2017 )
+
+# Get projected year raw spawning biomass (thousands of tonnes, major SARs only)
+spBioVals2018 <- GetVals( fn="iscam_sbt_mcmc.csv", SARs=allRegions$major, 
+    varName="Abundance", yr=2018 )
 
 # Assemble model projections
 GetProjected <- function( fn, SARs, models=mNames, probs=ciLevel ) {
@@ -867,7 +871,13 @@ bPars <- mPars %>%
     select( Region, Model, Parameter, Lower, Median, Upper, Year )
 
 # Format current spawning biomass for plotting
-spBioVals <- spBioVals %>%
+spBioVals2017 <- spBioVals2017 %>%
+    left_join( y=regions, by="Region" ) %>%
+    mutate( RegionName=factor(RegionName, levels=regions$RegionName),
+        Model=factor(Model, levels=mNames) )
+
+# Format forecast spawning biomass for plotting
+spBioVals2018 <- spBioVals2018 %>%
     left_join( y=regions, by="Region" ) %>%
     mutate( RegionName=factor(RegionName, levels=regions$RegionName),
         Model=factor(Model, levels=mNames) )
@@ -880,7 +890,7 @@ BevHolt <- abundMPD %>%
     mutate( RegionName=factor(RegionName, levels=regions$RegionName),
         Model=factor(Model, levels=mNames),
         Region=factor(Region, levels=regions$Region) )
-    
+
 # Get data for the effective harvest rate
 harvRate <- catch %>%
     group_by( Region, Year ) %>%
@@ -947,7 +957,7 @@ PlotCatch <- function( SARs, dat ){
       filter( Region%in%allRegions$major )
   # Plot all the regions together
   catchPlotAll <- ggplot( data=datMajor, aes(x=Year, y=Catch) ) + 
-      geom_bar( stat="identity", position="stack", aes(fill=Period) ) +
+      geom_bar( stat="identity", position="stack", aes(fill=Period), width=1 ) +
       labs( y=expression(paste("Catch (t"%*%10^3, ")", sep="")) )  +
       scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
       scale_y_continuous( labels=comma ) +
@@ -956,12 +966,12 @@ PlotCatch <- function( SARs, dat ){
       myTheme +
       theme( legend.position="top" ) +
       ggsave( filename=file.path("Catch.png"), width=figWidth, 
-          height=figWidth*1.25 )
+          height=figWidth+0.5 )
   # Plot all the regions together (wide version)
   catchPlotAll <- ggplot( data=datMajor, aes(x=Year, y=Catch) ) + 
-      geom_bar( aes(fill=Period), stat="identity", position="stack" ) +
+      geom_bar( aes(fill=Period), stat="identity", position="stack", width=1 ) +
       labs( y=expression(paste("Catch (t"%*%10^3, ")", sep="")) )  +
-       scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
+      scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
       scale_y_continuous( labels=comma ) +
       scale_fill_grey( start=0, end=0.8 ) +
       facet_wrap( ~ RegionName, nrow=2, dir="h" ) +
@@ -979,7 +989,7 @@ PlotCatch( SARs=regions$Region, dat=catch )
 # Plot catch and SOK (major SARs)
 catchSOKPlotAll <- ggplot( data=filter(catchSOK, Region%in%allRegions$major),
         aes(x=Year, y=Catch, fill=Period) ) +
-    geom_bar( stat="identity", position="stack" ) +
+    geom_bar( stat="identity", position="stack", width=1 ) +
     labs( y=expression(paste("Catch (t"%*%10^3, ")", sep="")) )  +
     scale_fill_brewer( type="qual", palette=3 ) +
     scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
@@ -1106,7 +1116,7 @@ PlotAge <- function( SARs, dat ) {
       myTheme +
       theme( legend.position="top" ) +
       ggsave( filename=file.path("ProportionAge.png"), width=figWidth, 
-          height=figWidth )
+          height=figWidth+0.5 )
   # The plot (wide version)
   propPlot <- ggplot( data=datMajor, aes(x=Year, y=Proportion, group=Age) ) +
       geom_bar( aes(fill=Age), stat="identity" ) +
@@ -1212,7 +1222,7 @@ PlotNumber <- function( SARs, dat ){
       filter( Region%in%allRegions$major )
   # Plot all the regions together
   numberAgePlotAll <- ggplot( data=datMajor, aes(x=Year, y=Number, group=Year) ) + 
-      geom_bar( stat="identity" ) +
+      geom_bar( stat="identity", width=1 ) +
       scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
       scale_y_continuous( labels=comma ) + 
       facet_wrap( ~ RegionName, ncol=2, dir="v" ) +
@@ -1349,12 +1359,18 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
 PlotStoryboard( SARs=allRegions$major, models=mNames, si=spawn, qp=qPars, 
     rec=recruits, M=natMort, SSB=spBio, C=catch, bp=bPars )
 
-# Plot distribution of spawning biomass in current year, and the LRP
-PlotCurrentSSB <- function( SARs, models, SSB, SB0, probs=ciLevel ) {
+# Plot distribution of spawning biomass, and the LRP
+PlotSSB <- function( SARs, models, SSB, SB0, probs=ciLevel ) {
+  # Get the year
+  yr <- unique( SSB$Year )
   # Get lower CI level
   lo <- (1 - probs) / 2
   # Get upper CI level
   up <- 1 - lo
+  # Fixed cut-offs (1996; only apply to AM2)
+  cutOffs <- tibble( Model="AM2", Region=names(fixedCutoffs), 
+          Cutoff=unlist(fixedCutoffs) ) %>%
+      complete( Model=mNames, Region=names(fixedCutoffs) )
   # Update SSB
   SSB <- SSB %>%
       mutate( Region=factor(Region, levels=regions$Region),
@@ -1383,14 +1399,17 @@ PlotCurrentSSB <- function( SARs, models, SSB, SB0, probs=ciLevel ) {
           colour="transparent", fill="red", alpha=0.3 ) + 
 #      geom_vline( data=LRP, aes(xintercept=Upper), colour="red", 
 #          linetype="dashed" ) +
+      geom_vline( data=cutOffs, aes(xintercept=Cutoff), colour="blue" ) +
       geom_vline( data=quantSSB, aes(xintercept=Lower), linetype="dashed" ) +
       geom_vline( data=quantSSB, aes(xintercept=Median) ) +
       geom_vline( data=quantSSB, aes(xintercept=Upper), linetype="dashed" ) +
       facet_wrap( Model ~ Region, scales="free", ncol=2, dir="v", 
           labeller=label_wrap_gen(multi_line=FALSE) ) +
-      labs( x=expression(paste("SB"[2017]," (t"%*%10^3, ")")), y="Density" ) +
+      # TODO: Why isn't this putting the year in??
+      labs( x=expression(paste("SB"[yr]," (t"%*%10^3, ")")), 
+          y="Density" ) +
       myTheme +
-      ggsave( filename=file.path("CurrentSSB.png"), width=figWidth, 
+      ggsave( filename=paste("SSB", yr, ".png", sep=""), width=figWidth, 
           height=figWidth )
   # Subset data: SSB
   subSSB <- SSB %>%
@@ -1412,15 +1431,20 @@ PlotCurrentSSB <- function( SARs, models, SSB, SB0, probs=ciLevel ) {
       geom_vline( data=subQuantSSB, aes(xintercept=Median) ) +
       geom_vline( data=subQuantSSB, aes(xintercept=Upper), linetype="dashed" ) +
       facet_wrap( ~ RegionName, scales="free", nrow=2, dir="h" ) +
-      labs( x=expression(paste("SB"[2017]," (t"%*%10^3, ")")), y="Density" ) +
+      labs( x=expression(paste("SB"[yr]," (t"%*%10^3, ")")), 
+          y="Density" ) +
       myTheme +
       theme( text=element_text(size=14) ) +
-      ggsave( filename=file.path("CurrentSSBWide.png"), width=figWidth*1.5, 
+      ggsave( filename=paste("SSB", yr, "Wide.png", sep=""), width=figWidth*1.5, 
           height=figWidth )
-}  # End PlotCurrentSSB function
+}  # End PlotSSB function
 
 # Show current SSB
-PlotCurrentSSB( SARs=allRegions$major, models=mNames, SSB=spBioVals, 
+PlotSSB( SARs=allRegions$major, models=mNames, SSB=spBioVals2017, 
+    SB0=filter(bPars, Parameter=="SB0") )
+
+# Show forecast SSB
+PlotSSB( SARs=allRegions$major, models=mNames, SSB=spBioVals2018, 
     SB0=filter(bPars, Parameter=="SB0") )
 
 # Plot effective harvest rate

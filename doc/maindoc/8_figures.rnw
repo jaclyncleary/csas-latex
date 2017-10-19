@@ -130,12 +130,24 @@ Horizontal dashed lines indicate $U_\text{t} = \Sexpr{intendU}$.}
 % Current biomass and LRP
 \begin{figure}[H]
 \centering
-\includegraphics[width=\linewidth]{\Sexpr{locOutput}/CurrentSSB.png}
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}/SSB\Sexpr{max(yrRange)}.png}
 \caption{Estimated spawning biomass in \Sexpr{max(yrRange)}, $\mli{SB}_{\Sexpr{max(yrRange)}}$ in thousands of tonnes, t for \Sexpr{fish.name} in the major stock assessment regions (SARs) for models \Sexpr{PasteNicely(mNames)}.
 Vertical black lines indicate medians (solid) and \Sexpr{ciLevel*100}\% confidence intervals (dashed) for $\mli{SB}_{\Sexpr{max(yrRange)}}$.
-Vertical red lines indicate medians, and shaded red rectangles indicate \Sexpr{ciLevel*100}\% confidence intervals for the limit reference point (LRP), $0.3\mli{SB}_0$, where $\mli{SB}_0$ is estimated unfished biomass.}
+Vertical red lines indicate medians, and shaded red rectangles indicate \Sexpr{ciLevel*100}\% confidence intervals for the limit reference point (LRP), $0.3\mli{SB}_0$, where $\mli{SB}_0$ is estimated unfished biomass.
+Vertical blue lines indicate 1996 fixed cutoffs.}
 \label{figCurrentSSB}
 \end{figure}
+
+% % Forecast biomass and LRP
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=\linewidth]{\Sexpr{locOutput}/SSB\Sexpr{nextYr}.png}
+% \caption{Forecast spawning biomass in \Sexpr{nextYr}, $\mli{SB}_{\Sexpr{nextYr}}$ in thousands of tonnes, t for \Sexpr{fish.name} in the major stock assessment regions (SARs) for models \Sexpr{PasteNicely(mNames)}.
+% Vertical black lines indicate medians (solid) and \Sexpr{ciLevel*100}\% confidence intervals (dashed) for $\mli{SB}_{\Sexpr{max(yrRange)}}$.
+% Vertical red lines indicate medians, and shaded red rectangles indicate \Sexpr{ciLevel*100}\% confidence intervals for the limit reference point (LRP), $0.3\mli{SB}_0$, where $\mli{SB}_0$ is estimated unfished biomass.
+% Vertical blue lines indicate 1996 fixed cutoffs.}
+% \label{figForecastSSB}
+% \end{figure}
 
 % Beverton-Holt stock-recruitment relationsip
 \begin{figure}[H]
