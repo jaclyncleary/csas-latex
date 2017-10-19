@@ -53,7 +53,7 @@ UsePackages <- function( pkgs, locn="https://cran.rstudio.com/" ) {
 # Make packages available
 UsePackages( pkgs=c("tidyverse", "zoo", "Hmisc", "scales", "sp", "cowplot",
         "maptools", "rgdal", "rgeos", "raster", "xtable", "grid", 
-        "colorRamps", "RColorBrewer", "stringr", "data.table") ) 
+        "colorRamps", "RColorBrewer", "stringr", "data.table", "ggrepel") ) 
 
 
 #################### 
@@ -1234,7 +1234,8 @@ PlotNumber <- function( SARs, dat ){
 # Plot number aged (major and minor SARs)
 PlotNumber( SARs=unlist(allRegions, use.names=FALSE), dat=numAgedYear )
 
-# Story-board plot: 4 panels (abundance, recruitment, M, and SSB with catch)
+# Story-board plot: 6 panels (abundance, recruitment, M, SSB with catch,
+# production, and production rate)
 PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
   # Loop over regions
   for( k in 1:length(SARs) ) {
@@ -1273,6 +1274,30 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
       # Data wrangling: catch
       CSub <- C %>%
           filter( Catch > 0, Region==SARs[k] )
+      # Wrangle catch for production
+      pCatch <- CSub %>%
+          group_by( Year ) %>%
+          summarise( Catch=SumNA(Catch) ) %>%
+          ungroup( ) %>%
+          complete( Year=yrRange, fill=list(Catch=0) )
+      # Wrangle spawning biomass for production
+      pSSB <- SSBSub %>%
+          filter( Year %in% yrRange ) %>%
+          select( Region, Model, Year, Median, Survey ) %>%
+          rename( SSB=Median )
+      # Combine spawning biomass and catch, and calculate production
+      pDat <- full_join( x=pSSB, y=pCatch, by="Year" ) %>%
+          mutate( 
+              # Next year's SSB
+              SSBNextYr=lead(SSB, n=1),
+              # Next year's Catch
+              CatchNextYr=lead(Catch, n=1),
+              # Surplus production
+              Production=SSBNextYr-SSB+CatchNextYr,
+              # Surplus production rate
+              ProdRate=Production/SSB ) %>%
+          na.omit( ) %>%
+          filter( Survey == "Dive" )
       # Data wrangling: SB_0
       SB0Sub <- bp %>%
           filter( Model==model, Parameter=="SB0", Region==SARs[k] )
@@ -1295,8 +1320,19 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
               hjust=-0.1, size=2.5 ) +
           myTheme2 +
           theme( axis.text.x=element_blank() )
-      # Plot b: recruitment
-      plotB <- ggplot( data=recSub, aes(x=Year, y=Median) ) +
+      # Plot b: natural mortality
+      plotB <- ggplot( data=MSub, aes(x=Year, y=Median) ) + 
+          geom_ribbon( aes(ymin=Lower, ymax=Upper), alpha=0.5 ) +
+          geom_line( size=lSize ) + 
+          expand_limits( x=rangeX, y=0 ) +
+          labs( x=NULL, y="Instantaneous natural mortality" ) +
+          scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
+          annotate( geom="text", x=-Inf, y=Inf, label="(b)", vjust=1.3, 
+              hjust=-0.1, size=2.5 ) +
+          myTheme2 +
+          theme( axis.text.x=element_blank() )
+      # Plot c: recruitment
+      plotC <- ggplot( data=recSub, aes(x=Year, y=Median) ) +
           geom_point( size=pSize ) +
           geom_errorbar( aes(ymin=Lower, ymax=Upper), size=lSize/2, width=0 ) +
           expand_limits( x=rangeX, y=0 ) +
@@ -1304,20 +1340,9 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
                   sep="") ) +
           scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
           scale_y_continuous( labels=comma ) +
-          annotate( geom="text", x=-Inf, y=Inf, label="(b)", vjust=1.3, 
-              hjust=-0.1, size=2.5 ) +
-          myTheme2
-      # Plot c: natural mortality
-      plotC <- ggplot( data=MSub, aes(x=Year, y=Median) ) + 
-          geom_ribbon( aes(ymin=Lower, ymax=Upper), alpha=0.5 ) +
-          geom_line( size=lSize ) + 
-          expand_limits( x=rangeX, y=0 ) +
-          labs( x=NULL, y="Instantaneous natural mortality" ) +
-          scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
           annotate( geom="text", x=-Inf, y=Inf, label="(c)", vjust=1.3, 
               hjust=-0.1, size=2.5 ) +
-          myTheme2 +
-          theme( axis.text.x=element_blank() )
+          myTheme2
       # Plot d: spawning biomass and catch
       plotD <- ggplot( data=SSBSub, aes(x=Year, y=Median) ) +
           geom_bar( data=CSub, aes(x=Year, y=Catch), stat="identity", 
@@ -1339,18 +1364,59 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
           annotate( geom="text", x=-Inf, y=Inf, label="(d)", vjust=1.3, 
               hjust=-0.1, size=2.5 ) +
           myTheme2
+      # Plot e: surplus production
+      plotE <- ggplot( data=pDat, aes(x=SSB, y=Production) ) +
+          geom_point( aes(shape=Year==max(yrRange)-1, colour=Year), size=3 ) +
+#          geom_text_repel( aes(label=Year), segment.colour="grey" ) +
+          geom_path( ) +
+          geom_hline( yintercept=0, linetype="dashed" ) +
+#          geom_vline( xintercept=B0, colour="black", linetype="dashed" ) +
+#          geom_vline( xintercept=B0*pB0[1], colour="red", linetype="dashed" ) +
+#          geom_vline( xintercept=B0*pB0[2], colour="blue", linetype="dashed" ) +
+#          expand_limits( x=0, y=c(-10, 40)*1000 ) +
+          scale_colour_gradient( low="grey", high="black" ) +
+          labs( x=expression(paste("Spawning biomass (t"%*%10^3, ")", sep="")), 
+              y=expression(paste("Production (t"%*%10^3, ")", 
+                      sep="")) ) +
+          guides( colour=FALSE, shape=FALSE ) +
+          scale_y_continuous( labels=comma ) +
+          scale_x_continuous( labels=comma ) +
+          annotate( geom="text", x=-Inf, y=Inf, label="(e)", vjust=1.3, 
+              hjust=-0.1, size=2.5 ) +
+          myTheme2 #+
+#          theme( axis.text.x=element_blank() )
+      # Plot f: surplus production rate
+      plotF <- ggplot( data=pDat, aes(x=SSB, y=ProdRate) ) +
+          geom_point( aes(shape=Year==max(pDat$Year)-1, colour=Year), size=3 ) +
+#          geom_text_repel( aes(label=Year), segment.colour="grey" ) +
+          geom_path( ) +
+          geom_hline( yintercept=0, linetype="dashed" ) +
+#          geom_vline( xintercept=B0, colour="black", linetype="dashed" ) +
+#          geom_vline( xintercept=B0*pB0[1], colour="red", linetype="dashed" ) +
+#          geom_vline( xintercept=B0*pB0[2], colour="blue", linetype="dashed" ) +
+#          expand_limits( x=0, y=c(-1, 3) ) +
+          scale_colour_gradient( low="grey", high="black" ) +
+          labs( x=expression(paste("Spawning biomass (t"%*%10^3, ")", sep="")), 
+              y="Production rate" ) +
+          guides( colour=FALSE, shape=FALSE ) +
+          scale_y_continuous( labels=comma ) +
+          scale_x_continuous( labels=comma ) +
+          annotate( geom="text", x=-Inf, y=Inf, label="(f)", vjust=1.3, 
+              hjust=-0.1, size=2.5 ) +
+          myTheme2
+      
       # Make a title
       # pTitle <- ggdraw( ) + 
       #   draw_label( label=paste(unique(areas$RegionName), " (", model, ")", 
       #                           sep=""), size=8 )
       # Combine the plots
-      storyboard <- plot_grid( plotA, plotC, plotB, plotD, align="v", ncol=2, 
-              nrow=2, rel_heights=c(1.0, 1.1) ) +
+      storyboard <- plot_grid( plotA, plotB, plotC, plotD, plotE, plotF, 
+              align="v", ncol=2, nrow=3, rel_heights=c(1.0, 1.1, 1.2) ) +
           # Add the title and write to disc
 #          pStory <- plot_grid( pTitle, storyboard, ncol=1, 
 #              rel_heights=c(0.1, 1.8) ) +
           ggsave( filename=file.path(SAR, paste("Storyboard", model, ".png", 
-                      sep="")), width=figWidth, height=0.7*figWidth )
+                      sep="")), width=figWidth, height=figWidth )
     }  # End i loop over models
   }  # End k loop over regions
 }  # End PlotStoryboard function
