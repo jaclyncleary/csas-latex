@@ -19,6 +19,24 @@ make.likelihood.table <- function(models,
   for(i in 1:length(models)){
     ## For each of the stocks 1 through 5
     ## Assume the first model is the base
+    like.components <- lapply(models[[i]],
+                              function(x){
+                                nlvec <- x$mpd$nlvec
+                                nl.cat <- nlvec[1, 1]
+                                nl.surv1 <- nlvec[2, 1]
+                                nl.surv2 <- nlvec[2, 2]
+                                nl.age1 <- nlvec[3, 1]
+                                nl.age2 <- nlvec[3, 2]
+                                nl.age3 <- nlvec[3, 3]
+                                nl.sr <- nlvec[4, 1]
+                                list(nl.cat,
+                                     nl.surv1,
+                                     nl.surv2,
+                                     nl.age1,
+                                     nl.age2,
+                                     nl.age3,
+                                     nl.sr)})
+
     like <- lapply(models[[i]],
                    function(x){
                      nlvec <- as.vector(x$mpd$nlvec)
@@ -113,10 +131,20 @@ make.likelihood.table <- function(models,
                   function(x){
                     2 * num.params[[x]] - 2 * like[[x]]
                   })
-    tab[[i]] <- as.data.frame(do.call(cbind, list(unlist(like),
+
+    like.comps <- sapply(like.components, unlist)
+    tab[[i]] <- as.data.frame(do.call(cbind, list(-like.comps[1,],
+                                                  -like.comps[2,],
+                                                  -like.comps[3,],
+                                                  -like.comps[4,],
+                                                  -like.comps[5,],
+                                                  -like.comps[6,],
+                                                  -like.comps[7,],
+                                                  unlist(like),
                                                   unlist(diffs),
                                                   unlist(num.params),
                                                   unlist(aic))))
+
     tab[[i]][, 1] <- f(tab[[i]][, 1], 2)
     tab[[i]][, 2] <- f(tab[[i]][, 2], 2)
     tab[[i]][, 4] <- f(tab[[i]][, 4], 2)
@@ -172,13 +200,41 @@ make.likelihood.table <- function(models,
 
   colnames(tab) <- c(latex.bold("Area"),
                      latex.mlc(c("Model",
-                                 "parameterization")),
+                                 "paramet-",
+                                 "erization")),
                      latex.mlc(c("Model",
                                  "sensitivity")),
-                     latex.bold("Likelihood"),
-                     latex.mlc(c("Difference in",
-                                 "likelihood from",
-                                 "AM2")),
+                     latex.mlc(c("Catch",
+                                 "data",
+                                 "likelihood")),
+                     latex.mlc(c("Survey",
+                                 "index 1",
+                                 "likelihood")),
+                     latex.mlc(c("Survey",
+                                 "index 2",
+                                 "likelihood")),
+                     latex.mlc(c("Age comp",
+                                 "data",
+                                 "gear 1",
+                                 "likelihood")),
+                     latex.mlc(c("Age comp",
+                                 "data",
+                                 "gear 2",
+                                 "likelihood")),
+                     latex.mlc(c("Age comp",
+                                 "data",
+                                 "gear 3",
+                                 "likelihood")),
+                     latex.mlc(c("S-R relation",
+                                 "likelihood")),
+                     latex.mlc(c("Total",
+                                 "likelihood")),
+                     latex.mlc(c("Difference",
+                                 "in",
+                                 "total",
+                                 "likelihood",
+                                 "from",
+                                 "AM2 TVM")),
                      latex.mlc(c("Number of",
                                  "estimated",
                                  "parameters")),
