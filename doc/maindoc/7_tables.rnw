@@ -669,8 +669,9 @@ make.catchability.parameters.table.q.sens(sens.models.6,
                                           placement = "H")
 @
 
+\begin{landscapepage}
 <<likelihood.table, results='asis', echo=FALSE>>=
-cap <- paste0("Likelihood and AIC for models testing the sensitivity to M.")
+cap <- paste0("Log-likelihood components, totals, and AIC for models testing the sensitivity to M.")
 make.likelihood.table(list(list(hg.am2.tvm, hg.am2.constm),
                            list(pr.am2.tvm, pr.am2.constm),
                            list(cc.am2.tvm, cc.am2.constm),
@@ -681,8 +682,11 @@ make.likelihood.table(list(list(hg.am2.tvm, hg.am2.constm),
                            list(cc.am1.tvm, cc.am1.constm),
                            list(wcvi.am1.tvm, sog.am1.constm),
                            list(wcvi.am1.tvm, wcvi.am1.constm)),
-                      xcaption = cap)
+                      xcaption = cap,
+                      font.size = 7,
+                      space.size = 8)
 @
+\end{landscapepage}
 
 \clearpage
 
