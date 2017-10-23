@@ -1366,7 +1366,8 @@ calc.mcmc <- function(model,
                                    which.stock = which.stock,
                                    which.model = which.model,
                                    fixed.cutoffs = fixed.cutoffs)
-    proj.quants <- apply(model$mcmc$proj,
+
+    proj.quants <- apply(model$mcmc$proj[model$mcmc$proj$TAC == 0,],
                          2,
                          quantile,
                          prob = probs,
