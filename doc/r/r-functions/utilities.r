@@ -837,7 +837,13 @@ calc.sig.tau <- function(rho, vartheta){
 get.rows.cols <- function(num){
   ## Returns a vector of length 2 representing the number of rows and columns
   ##  to use to pack a plot in a grid.
-  if(num <= 49 && num > 36){
+  if(num <= 64 && num > 49){
+    if(num <= 56){
+      nside <- c(8,7)
+    }else{
+      nside <- c(8,8)
+    }
+  }else if(num <= 49 && num > 36){
     if(num <= 42){
       nside <- c(7,6)
     }else{

@@ -60,7 +60,6 @@ make.age.comp.fit.plot <- function(model,
   ages <- s.age:n.age
   n.ages <- length(s.age:n.age)
 
-
   ## resid.dat has unlabelled rows, which need to be extracted
   ##  correctly based on the values in the comp.dat data.frame
   which.rows <- which(comp.dat[,2] == which.gear)
