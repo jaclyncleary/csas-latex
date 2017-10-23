@@ -81,40 +81,27 @@ Panel (a): model fit to time series of scaled spawn survey data in thousands of 
 \qPeriods{}
 The spawn survey data (i.e., spawn index) is scaled to abundance via the spawn survey scaling parameter $q$.
 %: surface survey spawn index scaling parameter $q_{1} = \Sexpr{qVals$q1$AM2}$; and dive survey spawn index scaling parameter $q_{2} = \Sexpr{qVals$q2$AM2}$.
-Panel (b): reconstructed number of age-\Sexpr{ageRec} recruits in millions.
-Circles with vertical lines indicate medians and \Sexpr{ciLevel*100}\% credible intervals, respectively.
-Panel (c): posterior estimates of instantaneous natural mortality.
+Panel (b): posterior estimates of instantaneous natural mortality.
 Line and shaded area indicate the median and \Sexpr{ciLevel*100}\% credible interval, respectively.
+Panel (c): reconstructed number of age-\Sexpr{ageRec} recruits in millions.
+Circles with vertical lines indicate medians and \Sexpr{ciLevel*100}\% credible intervals, respectively.
 Panel (d): posterior estimate of spawning biomass ($\mli{SB}_{t}$) for each year $t$ in thousands of metric tonnes ($\text{t} \times 10^{3}$).
 Line and shaded area indicate median and \Sexpr{ciLevel*100}\% credible interval, respectively.
 %unfished biomass ($\mli{SB}_0$) at far left, and
 Also shown is projected spawning biomass assuming no fishing ($\mli{SB}_{\Sexpr{max(yrRange)+1}}$) at the far right: the circle and vertical line indicates the median and \Sexpr{ciLevel*100}\% credible interval, respectively.
-Time series of vertical lines indicates commercial catch, excluding spawn on kelp (SOK).}
+Time series of vertical lines indicates commercial catch, excluding spawn on kelp (SOK).
+Panels (e \& f): phase plots of spawning biomass production and spawning biomass production rate against spawning biomass, respectively, for the dive survey period (MPD).
+The black triangle indicates \Sexpr{max(yrRange)-1}.
+\greyShading{}
+Calendar years are indicated beside symbols.
+The axis scale at the top of panels (e \& f) is in units of spawning biomass depletion, $\mli{SB}/\mli{SB}_0$.
+Panels (a, d, e, \& f): red lines indicate medians, and shaded red rectangles indicate \Sexpr{ciLevel*100}\% confidence intervals for the limit reference point (LRP), $0.3\mli{SB}_0$, where $\mli{SB}_0$ is estimated unfished biomass;
+if present, blue lines indicate 1996 fixed cutoffs.
+Note that scales are different between \Sexpr{PasteNicely(mNames)} (show in separate figures).}
 \label{figStoryboard\y\x}
 \end{figure}
 } % End loop over models for storyboard
 } % End loop over stocks for storyboard
-
-% Start a loop over stocks for production
-\foreach \x in {\Sexpr{paste(allRegions$major, sep=",")}} {
-% Start a loop over models for production
-\foreach \y in {\Sexpr{paste(mNames, sep=",")}} {
-\begin{figure}[H]
-\centering
-\includegraphics[width=\linewidth]{\Sexpr{locOutput}\x/Production\y.png}
-\caption{Production analysis for \Sexpr{fish.name} in the \x{} major stock assessment region (SAR) for \y.
-Panel (a): time series of estimated spawning biomass (circles) and catch (vertical bars).
-Reference lines are shown at estimates of $0.1B_0$, (red dashed line) $0.25B_0$ (blue dashed line), $0.3B_0$ (green dashed line), the 1996 fixed cutoff value (thick blue long dashed line), and unfished spawning biomass (solid blue line).
-Panel (b): phase plot of spawning biomass production against spawning biomass for the Dive survey period, from \Sexpr{newSurvYr} (black circle) to \Sexpr{max(yrRange)-1} (black diamond).
-Grey shading of the circles becomes darker in chronological order.
-Calendar years are indicated above each symbol.
-The axis scale at the top of the panel is in units of spawning biomass depletion (i.e., spawn biomass divided by the estimated unfished spawning biomass from the assessment model).
-Reference lines are the same as those in panel (a).
-All estimates quantities are based on maximum likelihood estimates (DFO 2016).}
-\label{figProduction\y\x}
-\end{figure}
-} % End loop over models for production
-} % End loop over stocks for production
 
 % Effective harvest rate
 \begin{figure}[H]
@@ -130,12 +117,24 @@ Horizontal dashed lines indicate $U_\text{t} = \Sexpr{intendU}$.}
 % Current biomass and LRP
 \begin{figure}[H]
 \centering
-\includegraphics[width=\linewidth]{\Sexpr{locOutput}/CurrentSSB.png}
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}/SSB\Sexpr{max(yrRange)}.png}
 \caption{Estimated spawning biomass in \Sexpr{max(yrRange)}, $\mli{SB}_{\Sexpr{max(yrRange)}}$ in thousands of tonnes, t for \Sexpr{fish.name} in the major stock assessment regions (SARs) for models \Sexpr{PasteNicely(mNames)}.
 Vertical black lines indicate medians (solid) and \Sexpr{ciLevel*100}\% confidence intervals (dashed) for $\mli{SB}_{\Sexpr{max(yrRange)}}$.
-Vertical red lines indicate medians, and shaded red rectangles indicate \Sexpr{ciLevel*100}\% confidence intervals for the limit reference point (LRP), $0.3\mli{SB}_0$, where $\mli{SB}_0$ is estimated unfished biomass.}
+Vertical red lines indicate medians, and shaded red rectangles indicate \Sexpr{ciLevel*100}\% confidence intervals for the limit reference point (LRP), $0.3\mli{SB}_0$, where $\mli{SB}_0$ is estimated unfished biomass.
+Vertical blue lines indicate 1996 fixed cutoffs.}
 \label{figCurrentSSB}
 \end{figure}
+
+% % Forecast biomass and LRP
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=\linewidth]{\Sexpr{locOutput}/SSB\Sexpr{nextYr}.png}
+% \caption{Forecast spawning biomass in \Sexpr{nextYr}, $\mli{SB}_{\Sexpr{nextYr}}$ in thousands of tonnes, t for \Sexpr{fish.name} in the major stock assessment regions (SARs) for models \Sexpr{PasteNicely(mNames)}.
+% Vertical black lines indicate medians (solid) and \Sexpr{ciLevel*100}\% confidence intervals (dashed) for $\mli{SB}_{\Sexpr{max(yrRange)}}$.
+% Vertical red lines indicate medians, and shaded red rectangles indicate \Sexpr{ciLevel*100}\% confidence intervals for the limit reference point (LRP), $0.3\mli{SB}_0$, where $\mli{SB}_0$ is estimated unfished biomass.
+% Vertical blue lines indicate 1996 fixed cutoffs.}
+% \label{figForecastSSB}
+% \end{figure}
 
 % Beverton-Holt stock-recruitment relationsip
 \begin{figure}[H]

@@ -523,8 +523,8 @@ DFO's decision-making framework incorporating the precautionary approach:
 \begin{columns}
 \begin{column}{0.5\linewidth}
 \begin{itemize}
-\item The DFO decision-making framework (DMF) defines an example where HCR control points are coupled with biological reference points
-\item The DFO DMF and \citet{kronlund2017} describe the LRP as a state to be avoided with high probability, emphasizing the need to decouple biological reference points and control points of the HCR
+\item The DFO decision-making framework (DMF) defines an example where operational control points (in the HCR) are coupled with biological reference points
+\item The DFO DMF and \citet{kronlund2017} describe the LRP as a state to be avoided with high probability, emphasizing the need to decouple biological reference points and operational control points
 \item We continue with this language, differentiating between control points and reference points
 \end{itemize}
 \end{column}
@@ -672,20 +672,20 @@ make.index.fit.plot(list(cc.am1.constm,
 \end{frame}
 
 % New slide
-\begin{frame}{Natural mortality}
-\begin{itemize}
-\item We found that model outcomes were influenced by the method used to estimate $M$
-\item Time-varying $M$ appeared to provide a better fit to data
-\item The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior
-\end{itemize}
-\end{frame}
+%\begin{frame}{Natural mortality}
+%\begin{itemize}
+%\item We found that model outcomes were influenced by the method used to estimate $M$
+%\item Time-varying $M$ appears to provide a better fit to spawn index
+%\item The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior
+%\end{itemize}
+%\end{frame}
 
 
 % New slide
 \begin{frame}{Natural mortality}
 \begin{itemize}
 \item We found that model outcomes were influenced by the method used to estimate $M$
-\item Time-varying $M$ appeared to provide a better fit to data
+\item Time-varying $M$ appears to provide a better fit to spawn index
 \item The spawning biomass over time was most similar within the \Sexpr{PasteNicely(mNames)} for both constant and time-varying $M$, indicating that the method used to estimate $M$ does not appear to be confounded by choice of $q$ prior
 \item This sensitivity analysis and the bridging analysis support the continued use of time-varying $M$ as the base case for the assessment
 \end{itemize}
@@ -877,6 +877,16 @@ The 2016 Science Response for Pacific herring included Table A.1. History and id
 \end{frame}
 
 % New slide
+\begin{frame}{AM2 vs. AM1}
+\begin{itemize}
+\item The results presented in this assessment highlight additional concerns with both AM2 and AM1 parameterizations of $q$, however results were not conclusive in accepting or rejecting one of these management procedures over the other.
+\item Examining retrospective biomass estimates reveal additional concerns with AM1 (shown next)
+\item Comparing prior values for $q2$ and median posterior estimates confirms the prior is 'highly informative' for all stocks except PRD. Table 2 shows estimates of $q_2$ are similar to the prior value of ~0.5 for all areas (except PRD), ranging from 0.547 to 0.640.
+\item Neither AM2 nor AM1 is ideal, nor is presenting two bases cases models, however we feel presenting both is the best option until simulation-testing of these management procedures is completed.
+\end{itemize}
+\end{frame}
+
+% New slide
 \begin{frame}{Retrospective biomass estimates: AM2 vs. AM1}
 \begin{columns}
 \begin{column}{0.5\textwidth}
@@ -961,27 +971,28 @@ Retrospective spawning biomass for the Prince Rupert District AM2 model.
 
 
 % New slide
-\begin{frame}{Prior-posterior plots for HG: AM2 vs. AM1}
-Prior probability distributions (lines) with comparative posterior histograms (bars) used in the Haida Gwaii models \Sexpr{PasteNicely(mNames)}.
-Parameters $q_k$ represent gears where: $k=1$ is the surface survey and $k=2$ is the dive survey.
-The dotted red lines are the MPD estimates.
-\begin{columns}
-\begin{column}{0.5\textwidth}
-\centering
-AM2 (Figure 31.)
-<<hg.priors2>>=
-make.priors.posts.plot(hg.b, priors.only=FALSE)
-@
-\end{column}
-\begin{column}{0.5\textwidth}
-\centering
-AM1
-<<hg.priors1>>=
-make.priors.posts.plot(hg.am1, priors.only=FALSE)
-@
-\end{column}
-\end{columns}
-\end{frame}
+%\begin{frame}{Prior-posterior plots for HG: AM2 vs. AM1}
+%Prior probability distributions (lines) with comparative posterior histograms (bars) used in the Haida Gwaii models \Sexpr{PasteNicely(mNames)}.
+%Parameters $q_k$ represent gears where: $k=1$ is the surface survey and $k=2$ is the dive survey.
+%The dotted red lines are the MPD estimates.
+%\begin{columns}
+%\begin{column}{0.5\textwidth}
+%\centering
+%AM2 (Figure 31.)
+%<<hg.priors2>>=
+%make.priors.posts.plot(hg.b, priors.only=FALSE)
+%@
+%\end{column}
+%\begin{column}{0.5\textwidth}
+%\centering
+%AM1
+%<<hg.priors1>>=
+%make.priors.posts.plot(hg.am1, priors.only=FALSE)
+%@
+%\end{column}
+%\end{columns}
+%\end{frame}
+
 
 % New subsection: Haida Gwaii
 \subsection{Haida Gwaii: AM2}
@@ -1029,7 +1040,7 @@ Figures 18 to 27
 \end{frame}
 
 % New subsection: Prince Rupert District
-\subsection{Prince Rupert District}
+\subsection{Prince Rupert District: AM2}
 
 % New slide
 \begin{frame}
@@ -1052,7 +1063,7 @@ Figures 18 to 27
 \end{frame}
 
 % New subsection: Central Coast
-\subsection{Central Coast}
+\subsection{Central Coast: AM2}
 
 % New slide
 \begin{frame}
@@ -1064,8 +1075,29 @@ Figures 18 to 27
 \end{columns}
 \end{frame}
 
+% New slide
+\begin{frame}
+\begin{columns}
+\begin{column}{0.8\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CC/ProductionAM2.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+
 % New subsection: Strait of Georgia
-\subsection{Strait of Georgia}
+\subsection{Strait of Georgia: AM2}
+
+% New slide
+\begin{frame}
+\begin{columns}
+\begin{column}{0.8\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
+\end{column}
+\end{columns}
+\end{frame}
 
 % New slide
 \begin{frame}
@@ -1078,7 +1110,7 @@ Figures 18 to 27
 \end{frame}
 
 % New subsection: West Coast of Vancouver Island
-\subsection{West Coast of Vancouver Island}
+\subsection{West Coast of Vancouver Island: AM2}
 
 % New slide
 \begin{frame}
@@ -1090,6 +1122,17 @@ Figures 18 to 27
 \end{columns}
 \end{frame}
 
+% New slide
+\begin{frame}
+\begin{columns}
+\begin{column}{0.8\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WCVI/ProductionAM2.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+
 % New subsection: status
 \subsection{Current status}
 % New slide
@@ -1100,7 +1143,7 @@ Figure 29. Estimated spawning biomass in \Sexpr{max(yrRange)}, $\mli{SB}_{\Sexpr
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}/CurrentSSB.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}/SSB\Sexpr{max(yrRange)}.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -1223,7 +1266,7 @@ make.ref.points.table(wcvi.b,
 \item SOK/SOB: quantify mortality and removed spawn
 \item Investigate appropriateness of stock-specific maturity ogive
 \item Potential for stock-specific prior distribution on $q$
-% \item Quantify uncertainty in the spawn index
+\item Quantify uncertainty in the spawn index (annual estimates of variance)
 \end{enumerate}
 \end{frame}
 

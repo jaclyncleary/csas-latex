@@ -53,7 +53,7 @@ UsePackages <- function( pkgs, locn="https://cran.rstudio.com/" ) {
 # Make packages available
 UsePackages( pkgs=c("tidyverse", "zoo", "Hmisc", "scales", "sp", "cowplot",
         "maptools", "rgdal", "rgeos", "raster", "xtable", "grid", 
-        "colorRamps", "RColorBrewer", "stringr", "data.table") ) 
+        "colorRamps", "RColorBrewer", "stringr", "data.table", "ggrepel") ) 
 
 
 #################### 
@@ -102,19 +102,19 @@ mNames <- c( "AM2", "AM1" )
 
 # Possible regions by type
 allRegions <- list(major=c("HG", "PRD", "CC", "SoG", "WCVI"),
-                   minor=c("A27", "A2W"))
+    minor=c("A27", "A2W"))
 
 # Sensitivity runs
 sens <- c("HG-natural-mortality",
-          "PRD-natural-mortality",
-          "CC-natural-mortality",
-          "SOG-natural-mortality",
-          "WCVI-natural-mortality",
-          "HG-q-priors",
-          "PRD-q-priors",
-          "CC-q-priors",
-          "SOG-q-priors",
-          "WCVI-q-priors")
+    "PRD-natural-mortality",
+    "CC-natural-mortality",
+    "SOG-natural-mortality",
+    "WCVI-natural-mortality",
+    "HG-q-priors",
+    "PRD-q-priors",
+    "CC-q-priors",
+    "SOG-q-priors",
+    "WCVI-q-priors")
 
 # Region names
 allRegionNames <- list( 
@@ -555,10 +555,15 @@ GetPars <- function( fn, SARs, models=mNames, varName, probs=ciLevel ) {
       # Grab the years from the header names
       yrNames <- str_sub( string=names(raw), start=-4, end=-1 )
       # Calculate the median of model runs for each year
-      out <- tibble( Region=SAR, Model=model, Year=as.numeric(yrNames), Parameter=varName, 
-          Lower=apply(X=raw, MARGIN=2, FUN=function(x)  quantile(x, probs=lo)),
-          Median=apply(X=raw, MARGIN=2, FUN=function(x)  quantile(x, probs=0.5)),
-          Upper=apply(X=raw, MARGIN=2, FUN=function(x)  quantile(x, probs=up)) )
+      out <- tibble( Region=SAR, Model=model, Year=as.numeric(yrNames), 
+              Parameter=varName, 
+              Lower=apply(X=raw, MARGIN=2, FUN=function(x)  
+                    quantile(x, probs=lo)),
+              Median=apply(X=raw, MARGIN=2, FUN=function(x)  
+                    quantile(x, probs=0.5)),
+              Upper=apply(X=raw, MARGIN=2, FUN=function(x)  
+                    quantile(x, probs=up)) ) %>%
+          filter( Year %in% yrRange )
       # If it's the first region and model
       if( k == 1 & i == 1 ) {
         # Start a data frame
@@ -591,7 +596,7 @@ spBio <- GetPars( fn="iscam_sbt_mcmc.csv", SARs=allRegions$major,
 # Assemble model values (raw)
 GetVals <- function( fn, SARs, models=mNames, varName, yr ) {
   # Progress message
-  cat( "Loading raw",  varName, "data... " )
+  cat( "Loading raw", varName, yr, "data... " )
   # Loop over regions
   for( k in 1:length(SARs) ) {
     # Get the region
@@ -611,10 +616,10 @@ GetVals <- function( fn, SARs, models=mNames, varName, yr ) {
       colnames( raw ) <- yrNames
       # Grab the recent year data
       raw <- raw %>% 
-          select( which(colnames(raw)==max(yrRange)) )
+          select( which(colnames(raw)==yr) )
       # Calculate the median of model runs for each year
       out <- tibble( Region=SAR, Model=model, Parameter=varName, 
-          Value=raw[[1]] )
+          Value=raw[[1]], Year=yr )
       # If it's the first region and model
       if( k == 1 & i == 1 ) {
         # Start a data frame
@@ -632,7 +637,7 @@ GetVals <- function( fn, SARs, models=mNames, varName, yr ) {
 }  # End GetVals function
 
 # Get current year raw spawning biomass (thousands of tonnes, major SARs only)
-spBioVals <- GetVals( fn="iscam_sbt_mcmc.csv", SARs=allRegions$major, 
+spBioVals2017 <- GetVals( fn="iscam_sbt_mcmc.csv", SARs=allRegions$major, 
     varName="Abundance", yr=2017 )
 
 # Assemble model projections
@@ -688,6 +693,45 @@ GetProjected <- function( fn, SARs, models=mNames, probs=ciLevel ) {
 
 # Get projected spawning biomass (major SARs only)
 pPars <- GetProjected( fn="iscammcmc_proj_Gear1.csv", SARs=allRegions$major )
+
+# Get projected raw values 
+GetProjVals <- function( fn, SARs, models=mNames, varName, cName, tac ) {
+  # Progress message
+  cat( "Loading raw projected", varName, "data... " )
+  # Loop over regions
+  for( k in 1:length(SARs) ) {
+    # Get the region
+    SAR <- SARs[k]
+    # Loop over models
+    for( i in 1:length(models) ) {
+      # Get the model
+      model <- models[i]
+      # Grab the data
+      raw <- fread( input=file.path(SAR, model, "mcmc", fn), verbose=FALSE ) %>%
+          as_tibble( ) %>%
+          mutate( Region=SAR, Model=model, Parameter=varName, Year=2018 ) %>%
+          filter( TAC==tac ) %>%
+          rename_( "Value"=cName ) %>%
+          select( Region, Model, Parameter, Value, Year )
+      # If it's the first region and model
+      if( k==1 & i == 1 ) {
+        # Start a data frame
+        res <- raw
+      } else {  # End if it's the first region and model, otherwise
+        # Append to the data frame
+        res <- bind_rows( res, raw )
+      }  # End if it's not the first region and model
+    }  # End i loop over models
+  }  # End k loop ove regions
+  # Update progress message
+  cat( "done\n" )
+  # Return the model output as a data frame
+  return( res )
+}  # End GetProjected function
+
+# Get projected year raw spawning biomass (thousands of tonnes, major SARs only)
+spBioVals2018 <- GetProjVals( fn="iscammcmc_proj_Gear1.csv", 
+    SARs=allRegions$major, varName="Abundance", cName="B2018", tac=0 )
 
 # Get MPD from rep file
 GetMPD <- function( fn, SARs, models=mNames[1], flag, varName ) {
@@ -867,9 +911,17 @@ bPars <- mPars %>%
     select( Region, Model, Parameter, Lower, Median, Upper, Year )
 
 # Format current spawning biomass for plotting
-spBioVals <- spBioVals %>%
+spBioVals2017 <- spBioVals2017 %>%
     left_join( y=regions, by="Region" ) %>%
-    mutate( RegionName=factor(RegionName, levels=regions$RegionName),
+    mutate( Region=factor(Region, levels=regions$Region), 
+        RegionName=factor(RegionName, levels=regions$RegionName),
+        Model=factor(Model, levels=mNames) )
+
+# Format forecast spawning biomass for plotting
+spBioVals2018 <- spBioVals2018 %>%
+    left_join( y=regions, by="Region" ) %>%
+    mutate( Region=factor(Region, levels=regions$Region),
+        RegionName=factor(RegionName, levels=regions$RegionName),
         Model=factor(Model, levels=mNames) )
 
 # Get data for the Beverton-Holt
@@ -880,7 +932,7 @@ BevHolt <- abundMPD %>%
     mutate( RegionName=factor(RegionName, levels=regions$RegionName),
         Model=factor(Model, levels=mNames),
         Region=factor(Region, levels=regions$Region) )
-    
+
 # Get data for the effective harvest rate
 harvRate <- catch %>%
     group_by( Region, Year ) %>%
@@ -918,6 +970,9 @@ predBH <- bhPars %>%
 ##### Figures #####
 ###################
 
+# TODO: All figures: remove plots that aren't used (i.e., single stock catch
+# plots)
+
 # Message
 cat( "Printing figures... " )
 
@@ -947,7 +1002,7 @@ PlotCatch <- function( SARs, dat ){
       filter( Region%in%allRegions$major )
   # Plot all the regions together
   catchPlotAll <- ggplot( data=datMajor, aes(x=Year, y=Catch) ) + 
-      geom_bar( stat="identity", position="stack", aes(fill=Period) ) +
+      geom_bar( stat="identity", position="stack", aes(fill=Period), width=1 ) +
       labs( y=expression(paste("Catch (t"%*%10^3, ")", sep="")) )  +
       scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
       scale_y_continuous( labels=comma ) +
@@ -956,12 +1011,12 @@ PlotCatch <- function( SARs, dat ){
       myTheme +
       theme( legend.position="top" ) +
       ggsave( filename=file.path("Catch.png"), width=figWidth, 
-          height=figWidth*1.25 )
+          height=figWidth+0.5 )
   # Plot all the regions together (wide version)
   catchPlotAll <- ggplot( data=datMajor, aes(x=Year, y=Catch) ) + 
-      geom_bar( aes(fill=Period), stat="identity", position="stack" ) +
+      geom_bar( aes(fill=Period), stat="identity", position="stack", width=1 ) +
       labs( y=expression(paste("Catch (t"%*%10^3, ")", sep="")) )  +
-       scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
+      scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
       scale_y_continuous( labels=comma ) +
       scale_fill_grey( start=0, end=0.8 ) +
       facet_wrap( ~ RegionName, nrow=2, dir="h" ) +
@@ -976,21 +1031,21 @@ PlotCatch <- function( SARs, dat ){
 # Plot catch (major and minor SARs)
 PlotCatch( SARs=regions$Region, dat=catch )
 
-# Plot catch and SOK (major SARs)
-catchSOKPlotAll <- ggplot( data=filter(catchSOK, Region%in%allRegions$major),
-        aes(x=Year, y=Catch, fill=Period) ) +
-    geom_bar( stat="identity", position="stack" ) +
-    labs( y=expression(paste("Catch (t"%*%10^3, ")", sep="")) )  +
-    scale_fill_brewer( type="qual", palette=3 ) +
-    scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
-    scale_y_continuous( labels=comma ) +
-    facet_wrap( ~ RegionName, nrow=2, dir="h" ) +
-    myTheme +
-    theme( text=element_text(size=14),
-        axis.text.x=element_text(angle=45, hjust=1),
-        panel.spacing=unit(1, "lines") ) +
-    ggsave( filename=file.path("CatchSOKWide.png"), width=figWidth*1.5,
-        height=figWidth )
+## Plot catch and SOK (major SARs)
+#catchSOKPlotAll <- ggplot( data=filter(catchSOK, Region%in%allRegions$major),
+#        aes(x=Year, y=Catch, fill=Period) ) +
+#    geom_bar( stat="identity", position="stack", width=1 ) +
+#    labs( y=expression(paste("Catch (t"%*%10^3, ")", sep="")) )  +
+#    scale_fill_brewer( type="qual", palette=3 ) +
+#    scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
+#    scale_y_continuous( labels=comma ) +
+#    facet_wrap( ~ RegionName, nrow=2, dir="h" ) +
+#    myTheme +
+#    theme( text=element_text(size=14),
+#        axis.text.x=element_text(angle=45, hjust=1),
+#        panel.spacing=unit(1, "lines") ) +
+#    ggsave( filename=file.path("CatchSOKWide.png"), width=figWidth*1.5,
+#        height=figWidth )
 
 # Plot total spawn index by year
 PlotSpawn <- function( SARs, dat ){ 
@@ -1106,7 +1161,7 @@ PlotAge <- function( SARs, dat ) {
       myTheme +
       theme( legend.position="top" ) +
       ggsave( filename=file.path("ProportionAge.png"), width=figWidth, 
-          height=figWidth )
+          height=figWidth+0.5 )
   # The plot (wide version)
   propPlot <- ggplot( data=datMajor, aes(x=Year, y=Proportion, group=Age) ) +
       geom_bar( aes(fill=Age), stat="identity" ) +
@@ -1212,7 +1267,7 @@ PlotNumber <- function( SARs, dat ){
       filter( Region%in%allRegions$major )
   # Plot all the regions together
   numberAgePlotAll <- ggplot( data=datMajor, aes(x=Year, y=Number, group=Year) ) + 
-      geom_bar( stat="identity" ) +
+      geom_bar( stat="identity", width=1 ) +
       scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
       scale_y_continuous( labels=comma ) + 
       facet_wrap( ~ RegionName, ncol=2, dir="v" ) +
@@ -1224,8 +1279,13 @@ PlotNumber <- function( SARs, dat ){
 # Plot number aged (major and minor SARs)
 PlotNumber( SARs=unlist(allRegions, use.names=FALSE), dat=numAgedYear )
 
-# Story-board plot: 4 panels (abundance, recruitment, M, and SSB with catch)
+# Story-board plot: 6 panels (abundance, recruitment, M, SSB with catch,
+# production, and production rate)
 PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
+  # Fixed cut-offs (1996; only apply to AM2)
+  cutOffs <- tibble( Model="AM2", Region=names(fixedCutoffs), 
+          Cutoff=unlist(fixedCutoffs) ) %>%
+      complete( Model=mNames, Region=names(fixedCutoffs) )
   # Loop over regions
   for( k in 1:length(SARs) ) {
     # Loop over models
@@ -1263,14 +1323,47 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
       # Data wrangling: catch
       CSub <- C %>%
           filter( Catch > 0, Region==SARs[k] )
-      # Data wrangling: SB_0
-      SB0Sub <- bp %>%
-          filter( Model==model, Parameter=="SB0", Region==SARs[k] )
+      # Wrangle catch for production
+      pCatch <- CSub %>%
+          group_by( Year ) %>%
+          summarise( Catch=SumNA(Catch) ) %>%
+          ungroup( ) %>%
+          complete( Year=yrRange, fill=list(Catch=0) )
+      # Wrangle spawning biomass for production
+      pSSB <- SSBSub %>%
+          filter( Year %in% yrRange ) %>%
+          select( Region, Model, Year, Median, Survey ) %>%
+          rename( SSB=Median )
+      # Combine spawning biomass and catch, and calculate production
+      pDat <- full_join( x=pSSB, y=pCatch, by="Year" ) %>%
+          mutate( 
+              # Next year's SSB
+              SSBNextYr=lead(SSB, n=1),
+              # Next year's Catch
+              CatchNextYr=lead(Catch, n=1),
+              # Surplus production
+              Production=SSBNextYr-SSB+CatchNextYr,
+              # Surplus production rate
+              ProdRate=Production/SSB ) %>%
+          na.omit( ) %>%
+          filter( Survey == "Dive" )
+      # Data wrangling: LRP = SB_0 * propB0
+      LRP <- bp %>%
+          filter( Model==model, Parameter=="SB0", Region==SARs[k] ) %>%
+          mutate( Estimate=Median, Lower=Lower*propB0, Median=Median*propB0, 
+              Upper=Upper*propB0 )
       # Data wrangling: SB_projected
       SBProjSub <- bp %>%
           filter( Model==model, Parameter=="SBProj", Region==SARs[k] )
+      # Data wranging: cutoffs
+      coSub <- cutOffs %>%
+          filter( Model==model, Region==SARs[k] )
       # Plot a: abundance
       plotA <- ggplot( data=siSub, aes(x=Year, y=Abundance) ) +
+          geom_hline( yintercept=LRP$Median, colour="red" ) +
+          annotate( geom="rect", xmin=-Inf, xmax=Inf, ymin=LRP$Lower, 
+              ymax=LRP$Upper, colour="transparent", fill="red", alpha=0.3 ) +
+          geom_hline( yintercept=coSub$Cutoff, colour="blue" ) +
           geom_point( aes(shape=Survey), size=pSize ) + 
           geom_line( data=SSBSub, aes(x=Year, y=Median, group=Survey), 
               size=lSize ) +
@@ -1285,8 +1378,19 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
               hjust=-0.1, size=2.5 ) +
           myTheme2 +
           theme( axis.text.x=element_blank() )
-      # Plot b: recruitment
-      plotB <- ggplot( data=recSub, aes(x=Year, y=Median) ) +
+      # Plot b: natural mortality
+      plotB <- ggplot( data=MSub, aes(x=Year, y=Median) ) + 
+          geom_ribbon( aes(ymin=Lower, ymax=Upper), alpha=0.5 ) +
+          geom_line( size=lSize ) + 
+          expand_limits( x=rangeX, y=0 ) +
+          labs( x=NULL, y="Instantaneous natural mortality" ) +
+          scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
+          annotate( geom="text", x=-Inf, y=Inf, label="(b)", vjust=1.3, 
+              hjust=-0.1, size=2.5 ) +
+          myTheme2 +
+          theme( axis.text.x=element_blank() )
+      # Plot c: recruitment
+      plotC <- ggplot( data=recSub, aes(x=Year, y=Median) ) +
           geom_point( size=pSize ) +
           geom_errorbar( aes(ymin=Lower, ymax=Upper), size=lSize/2, width=0 ) +
           expand_limits( x=rangeX, y=0 ) +
@@ -1294,22 +1398,15 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
                   sep="") ) +
           scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
           scale_y_continuous( labels=comma ) +
-          annotate( geom="text", x=-Inf, y=Inf, label="(b)", vjust=1.3, 
-              hjust=-0.1, size=2.5 ) +
-          myTheme2
-      # Plot c: natural mortality
-      plotC <- ggplot( data=MSub, aes(x=Year, y=Median) ) + 
-          geom_ribbon( aes(ymin=Lower, ymax=Upper), alpha=0.5 ) +
-          geom_line( size=lSize ) + 
-          expand_limits( x=rangeX, y=0 ) +
-          labs( x=NULL, y="Instantaneous natural mortality" ) +
-          scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
           annotate( geom="text", x=-Inf, y=Inf, label="(c)", vjust=1.3, 
               hjust=-0.1, size=2.5 ) +
-          myTheme2 +
-          theme( axis.text.x=element_blank() )
+          myTheme2
       # Plot d: spawning biomass and catch
       plotD <- ggplot( data=SSBSub, aes(x=Year, y=Median) ) +
+          geom_hline( yintercept=LRP$Median, colour="red" ) +
+          annotate( geom="rect", xmin=-Inf, xmax=Inf, ymin=LRP$Lower, 
+              ymax=LRP$Upper, colour="transparent", fill="red", alpha=0.3 ) +
+          geom_hline( yintercept=coSub$Cutoff, colour="blue" ) +
           geom_bar( data=CSub, aes(x=Year, y=Catch), stat="identity", 
               width=lSize, fill="black" ) +
           geom_ribbon( aes(ymin=Lower, ymax=Upper), alpha=0.5 ) +
@@ -1329,18 +1426,69 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
           annotate( geom="text", x=-Inf, y=Inf, label="(d)", vjust=1.3, 
               hjust=-0.1, size=2.5 ) +
           myTheme2
+      # Plot e: surplus production
+      plotE <- ggplot( data=pDat, aes(x=SSB, y=Production) ) +
+          geom_vline( xintercept=LRP$Median, colour="red" ) +
+          annotate( geom="rect", xmin=LRP$Lower, xmax=LRP$Upper, ymin=-Inf,
+              ymax=Inf, colour="transparent", fill="red", alpha=0.3 ) +
+          geom_vline( xintercept=coSub$Cutoff, colour="blue" ) +
+          geom_point( aes(shape=Year==max(yrRange)-1, colour=Year), size=3 ) +
+          geom_text_repel( aes(label=Year), segment.colour="grey", size=2 ) +
+          geom_path( ) +
+          geom_hline( yintercept=0, linetype="dashed" ) + 
+#          geom_vline( xintercept=B0, colour="black", linetype="dashed" ) +
+#          geom_vline( xintercept=B0*pB0[1], colour="red", linetype="dashed" ) +
+#          geom_vline( xintercept=B0*pB0[2], colour="blue", linetype="dashed" ) +
+          expand_limits( x=0 ) +
+          scale_colour_gradient( low="grey", high="black" ) +
+          labs( x=expression(paste("Spawning biomass (t"%*%10^3, ")", sep="")), 
+              y=expression(paste("Spawning biomass production (t"%*%10^3, ")", 
+                      sep="")) ) +
+          guides( colour=FALSE, shape=FALSE ) +
+          scale_y_continuous( labels=comma ) +
+          scale_x_continuous( labels=comma, 
+              sec.axis=sec_axis(~./LRP$Estimate) ) +
+          annotate( geom="text", x=-Inf, y=Inf, label="(e)", vjust=1.3, 
+              hjust=-0.1, size=2.5 ) +
+          myTheme2 #+
+#          theme( axis.text.x=element_blank() )
+      # Plot f: surplus production rate
+      plotF <- ggplot( data=pDat, aes(x=SSB, y=ProdRate) ) +
+          geom_vline( xintercept=LRP$Median, colour="red" ) +
+          annotate( geom="rect", xmin=LRP$Lower, xmax=LRP$Upper, ymin=-Inf,
+              ymax=Inf, colour="transparent", fill="red", alpha=0.3 ) +
+          geom_vline( xintercept=coSub$Cutoff, colour="blue" ) +
+          geom_point( aes(shape=Year==max(yrRange)-1, colour=Year), size=3 ) +
+          geom_text_repel( aes(label=Year), segment.colour="grey", size=2 ) +
+          geom_path( ) +
+          geom_hline( yintercept=0, linetype="dashed" ) +
+#          geom_vline( xintercept=B0, colour="black", linetype="dashed" ) +
+#          geom_vline( xintercept=B0*pB0[1], colour="red", linetype="dashed" ) +
+#          geom_vline( xintercept=B0*pB0[2], colour="blue", linetype="dashed" ) +
+          expand_limits( x=0 ) +
+          scale_colour_gradient( low="grey", high="black" ) +
+          labs( x=expression(paste("Spawning biomass (t"%*%10^3, ")", sep="")), 
+              y="Spawning biomass production rate" ) +
+          guides( colour=FALSE, shape=FALSE ) +
+          scale_y_continuous( labels=comma ) +
+          scale_x_continuous( labels=comma, 
+              sec.axis=sec_axis(~./LRP$Estimate) ) +
+          annotate( geom="text", x=-Inf, y=Inf, label="(f)", vjust=1.3, 
+              hjust=-0.1, size=2.5 ) +
+          myTheme2
+      
       # Make a title
       # pTitle <- ggdraw( ) + 
       #   draw_label( label=paste(unique(areas$RegionName), " (", model, ")", 
       #                           sep=""), size=8 )
       # Combine the plots
-      storyboard <- plot_grid( plotA, plotC, plotB, plotD, align="v", ncol=2, 
-              nrow=2, rel_heights=c(1.0, 1.1) ) +
+      storyboard <- plot_grid( plotA, plotB, plotC, plotD, plotE, plotF, 
+              align="v", ncol=2, nrow=3, rel_heights=c(1.0, 1.1, 1.3) ) +
           # Add the title and write to disc
 #          pStory <- plot_grid( pTitle, storyboard, ncol=1, 
 #              rel_heights=c(0.1, 1.8) ) +
           ggsave( filename=file.path(SAR, paste("Storyboard", model, ".png", 
-                      sep="")), width=figWidth, height=0.7*figWidth )
+                      sep="")), width=figWidth, height=figWidth )
     }  # End i loop over models
   }  # End k loop over regions
 }  # End PlotStoryboard function
@@ -1349,12 +1497,18 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
 PlotStoryboard( SARs=allRegions$major, models=mNames, si=spawn, qp=qPars, 
     rec=recruits, M=natMort, SSB=spBio, C=catch, bp=bPars )
 
-# Plot distribution of spawning biomass in current year, and the LRP
-PlotCurrentSSB <- function( SARs, models, SSB, SB0, probs=ciLevel ) {
+# Plot distribution of spawning biomass, and the LRP
+PlotSSB <- function( SARs, models, SSB, SB0, probs=ciLevel ) {
+  # Get the year
+  yr <- unique( SSB$Year )
   # Get lower CI level
   lo <- (1 - probs) / 2
   # Get upper CI level
   up <- 1 - lo
+  # Fixed cut-offs (1996; only apply to AM2)
+  cutOffs <- tibble( Model="AM2", Region=names(fixedCutoffs), 
+          Cutoff=unlist(fixedCutoffs) ) %>%
+      complete( Model=mNames, Region=names(fixedCutoffs) )
   # Update SSB
   SSB <- SSB %>%
       mutate( Region=factor(Region, levels=regions$Region),
@@ -1383,14 +1537,15 @@ PlotCurrentSSB <- function( SARs, models, SSB, SB0, probs=ciLevel ) {
           colour="transparent", fill="red", alpha=0.3 ) + 
 #      geom_vline( data=LRP, aes(xintercept=Upper), colour="red", 
 #          linetype="dashed" ) +
+      geom_vline( data=cutOffs, aes(xintercept=Cutoff), colour="blue" ) +
       geom_vline( data=quantSSB, aes(xintercept=Lower), linetype="dashed" ) +
       geom_vline( data=quantSSB, aes(xintercept=Median) ) +
       geom_vline( data=quantSSB, aes(xintercept=Upper), linetype="dashed" ) +
       facet_wrap( Model ~ Region, scales="free", ncol=2, dir="v", 
           labeller=label_wrap_gen(multi_line=FALSE) ) +
-      labs( x=expression(paste("SB"[2017]," (t"%*%10^3, ")")), y="Density" ) +
+      labs( x=bquote("SB"[.(yr)]~" (t"%*%10^3*")"), y="Density" ) +
       myTheme +
-      ggsave( filename=file.path("CurrentSSB.png"), width=figWidth, 
+      ggsave( filename=paste("SSB", yr, ".png", sep=""), width=figWidth, 
           height=figWidth )
   # Subset data: SSB
   subSSB <- SSB %>%
@@ -1412,15 +1567,20 @@ PlotCurrentSSB <- function( SARs, models, SSB, SB0, probs=ciLevel ) {
       geom_vline( data=subQuantSSB, aes(xintercept=Median) ) +
       geom_vline( data=subQuantSSB, aes(xintercept=Upper), linetype="dashed" ) +
       facet_wrap( ~ RegionName, scales="free", nrow=2, dir="h" ) +
-      labs( x=expression(paste("SB"[2017]," (t"%*%10^3, ")")), y="Density" ) +
+      labs( x=expression(paste("SB"[yr]," (t"%*%10^3, ")")), 
+          y="Density" ) +
       myTheme +
       theme( text=element_text(size=14) ) +
-      ggsave( filename=file.path("CurrentSSBWide.png"), width=figWidth*1.5, 
+      ggsave( filename=paste("SSB", yr, "Wide.png", sep=""), width=figWidth*1.5, 
           height=figWidth )
-}  # End PlotCurrentSSB function
+}  # End PlotSSB function
 
 # Show current SSB
-PlotCurrentSSB( SARs=allRegions$major, models=mNames, SSB=spBioVals, 
+PlotSSB( SARs=allRegions$major, models=mNames, SSB=spBioVals2017, 
+    SB0=filter(bPars, Parameter=="SB0") )
+
+# Show forecast SSB
+PlotSSB( SARs=allRegions$major, models=mNames, SSB=spBioVals2018, 
     SB0=filter(bPars, Parameter=="SB0") )
 
 # Plot effective harvest rate
