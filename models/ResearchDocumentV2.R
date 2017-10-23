@@ -663,7 +663,7 @@ GetProjected <- function( fn, SARs, models=mNames, probs=ciLevel ) {
           as_tibble( ) %>%
           rename_( "SBProj"=sbNextYr ) %>%
           mutate( Region=SAR, Model=model ) %>%
-          select( Region, Model, TAC, SBProj )
+          select( Region, Model, TAC, SBProj )  # PropAge3, PropAge4to10
       # Reshare to long
       rLong <- raw %>%
           gather( -Region, -Model, -TAC, key="Parameter", value="Value" )
@@ -747,7 +747,7 @@ GetMPD <- function( fn, SARs, models=mNames[1], flag, varName ) {
       model <- models[i]
       # Read the file (big blob)
       obj <- read.rep( file.path(SAR, model, fn) )
-      # Grab the data (transposed)
+      # Grab the data
       raw <- obj[names(obj) == flag]
       # If Abundance
       if( varName == "Abundance" ) {
@@ -1508,7 +1508,9 @@ PlotSSB <- function( SARs, models, SSB, SB0, probs=ciLevel ) {
   # Fixed cut-offs (1996; only apply to AM2)
   cutOffs <- tibble( Model="AM2", Region=names(fixedCutoffs), 
           Cutoff=unlist(fixedCutoffs) ) %>%
-      complete( Model=mNames, Region=names(fixedCutoffs) )
+      complete( Model=mNames, Region=names(fixedCutoffs) ) %>%
+      mutate( Region=factor(Region, levels=regions$Region),
+          Model=factor(Model, levels=mNames) )
   # Update SSB
   SSB <- SSB %>%
       mutate( Region=factor(Region, levels=regions$Region),
@@ -1886,8 +1888,8 @@ finalYrNBio <- nBio %>%
 ##### Production (ARK) #####
 ############################
 
-# Source Rob's production analysis
-source( file="herrSP.r" )
+## Source Rob's production analysis
+#source( file="herrSP.r" )
 
 
 ##################
