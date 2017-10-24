@@ -2068,6 +2068,334 @@ make.age.comp.estimates.plot(wcvi.b, 3)
   each column sums to 1, zeros are not shown. Plus group is age-10.}
 \label{fig:wcvi-ageest-gear3}
 \end{figure}
+% ------------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
+% Age comp residuals
+\begin{figure}[H]
+\begin{center}
+<<hg.gear1.age.resid>>=
+ make.age.comp.residuals.plot(hg.b, 1)
+
+@
+\end{center}
+\caption{HG - gear 1 age fit residuals.}
+\label{fig:hg-gear1-resids}
+\end{figure}
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg.gear2.age.resid>>=
+ make.age.comp.residuals.plot(hg.b, 2)
+
+@
+\end{center}
+\caption{HG - gear 2 age fit residuals.}
+\label{fig:hg-gear2-resids}
+\end{figure}
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg.gear3.age.resid>>=
+ make.age.comp.residuals.plot(hg.b, 3)
+
+@
+\end{center}
+\caption{HG - gear 3 age fit residuals.}
+\label{fig:hg-gear3-resids}
+\end{figure}
+% ------------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<prd.gear1.age.resid>>=
+ make.age.comp.residuals.plot(pr.b, 1)
+
+@
+\end{center}
+\caption{PRD - gear 1 age fit residuals.}
+\label{fig:prd-gear1-resids}
+\end{figure}
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<prd.gear2.age.resid>>=
+ make.age.comp.residuals.plot(pr.b, 2)
+
+@
+\end{center}
+\caption{PRD - gear 2 age fit residuals.}
+\label{fig:prd-gear2-resids}
+\end{figure}
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<prd.gear3.age.resid>>=
+ make.age.comp.residuals.plot(pr.b, 3)
+
+@
+\end{center}
+\caption{PRD - gear 3 age fit residuals.}
+\label{fig:prd-gear3-resids}
+\end{figure}
+% ------------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<cc.gear1.age.resid>>=
+ make.age.comp.residuals.plot(cc.b, 1)
+
+@
+\end{center}
+\caption{CC - gear 1 age fit residuals.}
+\label{fig:cc-gear1-resids}
+\end{figure}
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<cc.gear2.age.resid>>=
+ make.age.comp.residuals.plot(cc.b, 2)
+
+@
+\end{center}
+\caption{CC - gear 2 age fit residuals.}
+\label{fig:cc-gear2-resids}
+\end{figure}
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<cc.gear3.age.resid>>=
+ make.age.comp.residuals.plot(cc.b, 3)
+
+@
+\end{center}
+\caption{CC - gear 3 age fit residuals.}
+\label{fig:cc-gear3-resids}
+\end{figure}
+% ------------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<sog.gear1.age.resid>>=
+ make.age.comp.residuals.plot(sog.b, 1)
+
+@
+\end{center}
+\caption{SOG - gear 1 age fit residuals.}
+\label{fig:sog-gear1-resids}
+\end{figure}
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<sog.gear2.age.resid>>=
+ make.age.comp.residuals.plot(sog.b, 2)
+
+@
+\end{center}
+\caption{SOG - gear 2 age fit residuals.}
+\label{fig:sog-gear2-resids}
+\end{figure}
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<sog.gear3.age.resid>>=
+ make.age.comp.residuals.plot(sog.b, 3)
+
+@
+\end{center}
+\caption{SOG - gear 3 age fit residuals.}
+\label{fig:sog-gear3-resids}
+\end{figure}
+% ------------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<wcvi.gear1.age.resid>>=
+ make.age.comp.residuals.plot(wcvi.b, 1)
+
+@
+\end{center}
+\caption{WCVI - gear 1 age fit residuals.}
+\label{fig:wcvi-gear1-resids}
+\end{figure}
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<wcvi.gear2.age.resid>>=
+ make.age.comp.residuals.plot(wcvi.b, 2)
+
+@
+\end{center}
+\caption{WCVI - gear 2 age fit residuals.}
+\label{fig:wcvi-gear2-resids}
+\end{figure}
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<wcvi.gear3.age.resid>>=
+ make.age.comp.residuals.plot(wcvi.b, 3)
+
+@
+\end{center}
+\caption{WCVI - gear 3 age fit residuals.}
+\label{fig:wcvi-gear3-resids}
+\end{figure}
+% ------------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
+% Age comp fits
+\begin{figure}[H]
+\begin{center}
+<<hg.gear1.age.fit>>=
+ make.age.comp.fit.plot(hg.b, 1)
+@
+\end{center}
+\caption{HG - gear 1 age fits.}
+\label{fig:hg-gear1-fit}
+\end{figure}
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg.gear2.age.fit, fig.height=6.5>>=
+ make.age.comp.fit.plot(hg.b, 2)
+@
+\end{center}
+\caption{HG - gear 2 age fits.}
+\label{fig:hg-gear2-fit}
+\end{figure}
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<hg.gear3.age.fit>>=
+ make.age.comp.fit.plot(hg.b, 3)
+@
+\end{center}
+\caption{HG - gear 3 age fits.}
+\label{fig:hg-gear3-fit}
+\end{figure}
+% ------------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<prd.gear1.age.fit, fig.height=6.5>>=
+ make.age.comp.fit.plot(pr.b, 1)
+@
+\end{center}
+\caption{PRD - gear 1 age fits.}
+\label{fig:prd-gear1-fit}
+\end{figure}
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<prd.gear2.age.fit, fig.height=6.5>>=
+ make.age.comp.fit.plot(pr.b, 2)
+@
+\end{center}
+\caption{PRD - gear 2 age fits.}
+\label{fig:prd-gear2-fit}
+\end{figure}
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<prd.gear3.age.fit, fig.height=6.5>>=
+ make.age.comp.fit.plot(pr.b, 3)
+@
+\end{center}
+\caption{PRD - gear 3 age fits.}
+\label{fig:prd-gear3-fit}
+\end{figure}
+% ------------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<cc.gear1.age.fit>>=
+ make.age.comp.fit.plot(cc.b, 1)
+@
+\end{center}
+\caption{CC - gear 1 age fits.}
+\label{fig:cc-gear1-fit}
+\end{figure}
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<cc.gear2.age.fit, fig.height=6.5>>=
+ make.age.comp.fit.plot(cc.b, 2)
+@
+\end{center}
+\caption{CC - gear 2 age fits.}
+\label{fig:cc-gear2-fit}
+\end{figure}
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<cc.gear3.age.fit, fig.height=6.5>>=
+ make.age.comp.fit.plot(cc.b, 3)
+@
+\end{center}
+\caption{CC - gear 3 age fits.}
+\label{fig:cc-gear3-fit}
+\end{figure}
+% ------------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<sog.gear1.age.fit, fig.height=7.5>>=
+ make.age.comp.fit.plot(sog.b, 1)
+@
+\end{center}
+\caption{SOG - gear 1 age fits.}
+\label{fig:sog-gear1-fit}
+\end{figure}
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<sog.gear2.age.fit, fig.height=6.5>>=
+ make.age.comp.fit.plot(sog.b, 2)
+@
+\end{center}
+\caption{SOG - gear 2 age fits.}
+\label{fig:sog-gear2-fit}
+\end{figure}
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<sog.gear3.age.fit, fig.height=6.5>>=
+ make.age.comp.fit.plot(sog.b, 3)
+@
+\end{center}
+\caption{SOG - gear 3 age fits.}
+\label{fig:sog-gear3-fit}
+\end{figure}
+% ------------------------------------------------------------------------------
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<wcvi.gear1.age.fit>>=
+ make.age.comp.fit.plot(wcvi.b, 1)
+@
+\end{center}
+\caption{WCVI - gear 1 age fits.}
+\label{fig:wcvi-gear1-fit}
+\end{figure}
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<wcvi.gear2.age.fit, fig.height=6.5>>=
+ make.age.comp.fit.plot(wcvi.b, 2)
+@
+\end{center}
+\caption{WCVI - gear 2 age fits.}
+\label{fig:wcvi-gear2-fit}
+\end{figure}
+% ------------------------------------------------------------------------------
+\begin{figure}[H]
+\begin{center}
+<<wcvi.gear3.age.fit, fig.height=6.5>>=
+ make.age.comp.fit.plot(wcvi.b, 3)
+@
+\end{center}
+\caption{WCVI - gear 3 age fits.}
+\label{fig:wcvi-gear3-fit}
+\end{figure}
+% ------------------------------------------------------------------------------
 
 %%------------------------------------------------------------------------------
 %% AM2 retrospective biomass plots
