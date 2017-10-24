@@ -548,9 +548,9 @@ build <- function(ovwrt.base = FALSE,
                        stop("The directory ", sm, " does not contain the known stock names.")
                      }
                      if(length(grep("AM1", sm))){
-                       which.model = 2
-                     }else if(length(grep("AM2", sm))){
                        which.model = 1
+                     }else if(length(grep("AM2", sm))){
+                       which.model = 2
                      }else{
                        stop("The directory ", sm, " does not contain the known model names AM1 or AM2.")
                      }
