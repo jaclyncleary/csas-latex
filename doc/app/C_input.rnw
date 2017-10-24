@@ -11,6 +11,8 @@ Tables \ref{tabNumAged\Sexpr{regions$Region[1]}} to \ref{tabNumAged\Sexpr{region
 Tables \ref{tabWeight\Sexpr{regions$Region[1]}} to \ref{tabWeight\Sexpr{regions$Region[length(regions$Region)]}} have time series of weight-at-age for the aforementioned SARs, respectively.
 Table \ref{tabNBio} has the number of biological samples by year and SAR.
 
+% TODO: Combine these tables (i.e., for the spawn index, put all the stocks in the same table) -- might have to use landscape
+
 % Start a loop over stocks for catch
 \foreach \x in {\Sexpr{paste(regions$Region, sep=",")}} {
 \FloatBarrier

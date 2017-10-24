@@ -76,6 +76,7 @@ Missing weight-at-age values (i.e., years where there are no biological samples)
 \begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{\Sexpr{locOutput}\x/Storyboard\y.png}
+% \ifnum\x=1
 \caption{Model output for \Sexpr{fish.name} in the \x{} major stock assessment region (SAR) for \y.
 Panel (a): model fit to time series of scaled spawn survey data in thousands of metric tonnes ($\text{t} \times 10^{3})$.
 \qPeriods{}
@@ -98,6 +99,9 @@ The axis scale at the top of panels (e \& f) is in units of spawning biomass dep
 Panels (a, d, e, \& f): red lines indicate medians, and shaded red rectangles indicate \Sexpr{ciLevel*100}\% confidence intervals for the limit reference point (LRP), $0.3\mli{SB}_0$, where $\mli{SB}_0$ is estimated unfished biomass;
 if present, blue lines indicate 1996 fixed cutoffs.
 Note that scales are different between \Sexpr{PasteNicely(mNames)} (show in separate figures).}
+% \else
+% \caption{This is a short caption}
+% \fi
 \label{figStoryboard\y\x}
 \end{figure}
 } % End loop over models for storyboard
