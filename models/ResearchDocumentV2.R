@@ -1620,9 +1620,12 @@ PlotBevertonHolt <- function( bh, bhPred, SARs, models ) {
   # The plot
   plotBH <- ggplot( data=bhSub, aes(x=Abundance, y=Recruitment) ) + 
       geom_point( aes(colour=Year, shape=Year==max(yrRange)) ) +
-      geom_point( data=bhPredSub, aes(x=sbo, y=ro), shape=4 ) +
+      geom_point( data=filter(bhSub, Year==max(yrRange)), shape=24,
+          colour="black", fill="white") +
+      geom_point( data=bhPredSub, aes(x=sbo, y=ro), shape=8 ) +
       geom_line( data=bhPredSub ) + 
       scale_colour_gradient( low="grey", high="black" ) +
+      scale_shape_manual( values=c(16, 24) ) +
       facet_wrap( ~ RegionName, ncol=2, scales="free", dir="v" ) +
       labs( x=expression(paste("Spawning biomass (t"%*%10^3, ")")), 
           y=paste("Number of age-", ageRec, " recruits (millions)", sep="") ) +

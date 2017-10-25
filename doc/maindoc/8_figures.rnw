@@ -145,9 +145,10 @@ Vertical blue lines indicate 1996 fixed cutoffs.}
 \centering
 \includegraphics[width=\linewidth]{\Sexpr{locOutput}/BevertonHolt.png}
 \caption{Beverton-Holt stock-recruitment relationship using MPD estimates for \Sexpr{fish.name} in the major stock assessment regions (SARs) for model \Sexpr{mNames[1]}.
-\darkThisYr{}
 Lines indicate MPD Beverton-Holt stock-recruitment relationships.
-Triangles indicate MPD estimates of unfished spawning biomass, $\mli{SB}_0$, and unfished age-\Sexpr{ageRec} recruitment, $R_0$.
+Stars indicate MPD estimates of unfished spawning biomass, $\mli{SB}_0$, and unfished age-\Sexpr{ageRec} recruitment, $R_0$.
+\greyShading{}
+Triangles indicate the current year, \Sexpr{max(yrRange)}.
 Legend: tonnes (t).}
 \label{figBevertonHolt}
 \end{figure}
