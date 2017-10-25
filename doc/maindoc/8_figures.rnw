@@ -92,8 +92,8 @@ Line and shaded area indicate median and \Sexpr{ciLevel*100}\% credible interval
 Also shown is projected spawning biomass assuming no fishing ($\mli{SB}_{\Sexpr{max(yrRange)+1}}$) at the far right: the circle and vertical line indicates the median and \Sexpr{ciLevel*100}\% credible interval, respectively.
 Time series of vertical lines indicates commercial catch, excluding spawn on kelp (SOK).
 Panels (e \& f): phase plots of spawning biomass production and spawning biomass production rate against spawning biomass, respectively, for the dive survey period (MPD).
-The black triangle indicates \Sexpr{max(yrRange)-1}.
 \greyShading{}
+The triangle indicates \Sexpr{max(yrRange)-1}.
 Calendar years are indicated beside symbols.
 The axis scale at the top of panels (e \& f) is in units of spawning biomass depletion, $\mli{SB}/\mli{SB}_0$.
 Panels (a, d, e, \& f): red lines indicate medians, and shaded red rectangles indicate \Sexpr{ciLevel*100}\% confidence intervals for the limit reference point (LRP), $0.3\mli{SB}_0$, where $\mli{SB}_0$ is estimated unfished biomass;

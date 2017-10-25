@@ -1433,14 +1433,16 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
               ymax=Inf, colour="transparent", fill="red", alpha=0.3 ) +
           geom_vline( xintercept=coSub$Cutoff, colour="blue" ) +
           geom_point( aes(shape=Year==max(yrRange)-1, colour=Year), size=3 ) +
+          geom_point( data=filter(pDat, Year==max(yrRange)-1), shape=24,
+              colour="black", fill="white") +
           geom_text_repel( aes(label=Year), segment.colour="grey", size=2 ) +
-          geom_path( ) +
+          geom_path( size=0.4 ) +
           geom_hline( yintercept=0, linetype="dashed" ) + 
 #          geom_vline( xintercept=B0, colour="black", linetype="dashed" ) +
 #          geom_vline( xintercept=B0*pB0[1], colour="red", linetype="dashed" ) +
 #          geom_vline( xintercept=B0*pB0[2], colour="blue", linetype="dashed" ) +
           expand_limits( x=0 ) +
-          scale_colour_gradient( low="grey", high="black" ) +
+          scale_colour_gradient( low="lightgrey", high="black" ) +
           labs( x=expression(paste("Spawning biomass (t"%*%10^3, ")", sep="")), 
               y=expression(paste("Spawning biomass production (t"%*%10^3, ")", 
                       sep="")) ) +
@@ -1459,14 +1461,16 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
               ymax=Inf, colour="transparent", fill="red", alpha=0.3 ) +
           geom_vline( xintercept=coSub$Cutoff, colour="blue" ) +
           geom_point( aes(shape=Year==max(yrRange)-1, colour=Year), size=3 ) +
+          geom_point( data=filter(pDat, Year==max(yrRange)-1), shape=24,
+              colour="black", fill="white") +
           geom_text_repel( aes(label=Year), segment.colour="grey", size=2 ) +
-          geom_path( ) +
+          geom_path( size=0.4 ) +
           geom_hline( yintercept=0, linetype="dashed" ) +
 #          geom_vline( xintercept=B0, colour="black", linetype="dashed" ) +
 #          geom_vline( xintercept=B0*pB0[1], colour="red", linetype="dashed" ) +
 #          geom_vline( xintercept=B0*pB0[2], colour="blue", linetype="dashed" ) +
           expand_limits( x=0 ) +
-          scale_colour_gradient( low="grey", high="black" ) +
+          scale_colour_gradient( low="lightgrey", high="black" ) +
           labs( x=expression(paste("Spawning biomass (t"%*%10^3, ")", sep="")), 
               y="Spawning biomass production rate" ) +
           guides( colour=FALSE, shape=FALSE ) +
@@ -1624,8 +1628,7 @@ PlotBevertonHolt <- function( bh, bhPred, SARs, models ) {
           colour="black", fill="white") +
       geom_point( data=bhPredSub, aes(x=sbo, y=ro), shape=8 ) +
       geom_line( data=bhPredSub ) + 
-      scale_colour_gradient( low="grey", high="black" ) +
-      scale_shape_manual( values=c(16, 24) ) +
+      scale_colour_gradient( low="lightgrey", high="black" ) +
       facet_wrap( ~ RegionName, ncol=2, scales="free", dir="v" ) +
       labs( x=expression(paste("Spawning biomass (t"%*%10^3, ")")), 
           y=paste("Number of age-", ageRec, " recruits (millions)", sep="") ) +
