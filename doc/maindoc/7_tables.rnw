@@ -491,21 +491,19 @@ make.value.table(wcvi.b,
 
 \begin{landscapepage}
 <<hg.decision.table, results='asis', echo=FALSE>>=
-dec.table.font.size <- 12
-dec.table.font.space <- 13
 cap <- paste0("Probabilistic decision table for Haida Gwaii, AM2 model.")
 make.decision.table(hg.b,
                     xcaption = cap,
                     xlabel = "tab:hg-am2-decision",
-                    font.size = dec.table.font.size,
-                    space.size = dec.table.font.space,
+                    # font.size = dec.table.font.size,
+                    # space.size = dec.table.font.space,
                     placement = "H")
 cap <- paste0("Probabilistic decision table for Haida Gwaii, AM1 model.")
 make.decision.table(hg.am1,
                     xcaption = cap,
                     xlabel = "tab:hg-am1-decision",
-                    font.size = dec.table.font.size,
-                    space.size = dec.table.font.space,
+                    # font.size = dec.table.font.size,
+                    # space.size = dec.table.font.space,
                     placement = "H")
 @
 \end{landscapepage}
@@ -517,16 +515,16 @@ cap <- paste0("Probabilistic decision table for the Prince Rupert District, ",
 make.decision.table(pr.b,
                     xcaption = cap,
                     xlabel = "tab:prd-am2-decision",
-                    font.size = dec.table.font.size,
-                    space.size = dec.table.font.space,
+                    # font.size = dec.table.font.size,
+                    # space.size = dec.table.font.space,
                     placement = "H")
 cap <- paste0("Probabilistic decision table for the Prince Rupert District, ",
               "AM1 model.")
 make.decision.table(pr.am1,
                     xcaption = cap,
                     xlabel = "tab:prd-am1-decision",
-                    font.size = dec.table.font.size,
-                    space.size = dec.table.font.space,
+                    # font.size = dec.table.font.size,
+                    # space.size = dec.table.font.space,
                     placement = "H")
 @
 \end{landscapepage}
@@ -538,16 +536,16 @@ cap <- paste0("Probabilistic decision table for the Central Coast, ",
 make.decision.table(cc.b,
                     xcaption = cap,
                     xlabel = "tab:cc-am2-decision",
-                    font.size = dec.table.font.size,
-                    space.size = dec.table.font.space,
+                    # font.size = dec.table.font.size,
+                    # space.size = dec.table.font.space,
                     placement = "H")
 cap <- paste0("Probabilistic decision table for the Central Coast, ",
               "AM1 model.")
 make.decision.table(cc.am1,
                     xcaption = cap,
                     xlabel = "tab:cc-am1-decision",
-                    font.size = dec.table.font.size,
-                    space.size = dec.table.font.space,
+                    # font.size = dec.table.font.size,
+                    # space.size = dec.table.font.space,
                     placement = "H")
 @
 \end{landscapepage}
@@ -559,16 +557,16 @@ cap <- paste0("Probabilistic decision table for the Strait of Georgia, ",
 make.decision.table(sog.b,
                     xcaption = cap,
                     xlabel = "tab:sog-am2-decision",
-                    font.size = dec.table.font.size,
-                    space.size = dec.table.font.space,
+                    # font.size = dec.table.font.size,
+                    # space.size = dec.table.font.space,
                     placement = "H")
 cap <- paste0("Probabilistic decision table for the Strait of Georgia, ",
               "AM1 model.")
 make.decision.table(sog.am1,
                     xcaption = cap,
                     xlabel = "tab:sog-am1-decision",
-                    font.size = dec.table.font.size,
-                    space.size = dec.table.font.space,
+                    # font.size = dec.table.font.size,
+                    # space.size = dec.table.font.space,
                     placement = "H")
 @
 \end{landscapepage}
@@ -580,16 +578,16 @@ cap <- paste0("Probabilistic decision table for the WCVI, ",
 make.decision.table(wcvi.b,
                     xcaption = cap,
                     xlabel = "tab:wcvi-am2-decision",
-                    font.size = dec.table.font.size,
-                    space.size = dec.table.font.space,
+                    # font.size = dec.table.font.size,
+                    # space.size = dec.table.font.space,
                     placement = "H")
 cap <- paste0("Probabilistic decision table for the WCVI, ",
               "AM1 model.")
 make.decision.table(wcvi.am1,
                     xcaption = cap,
                     xlabel = "tab:wcvi-am1-decision",
-                    font.size = dec.table.font.size,
-                    space.size = dec.table.font.space,
+                    # font.size = dec.table.font.size,
+                    # space.size = dec.table.font.space,
                     placement = "H")
 @
 \end{landscapepage}
