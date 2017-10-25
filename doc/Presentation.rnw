@@ -1030,7 +1030,7 @@ Production analysis:
 \end{equation*}
 \item \citet{kronlund2017} recommended $0.30\mli{SB}_0$
 \end{itemize}
-Figures 18 to 27
+% Figures 18 to 27
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
