@@ -75,7 +75,7 @@ Missing weight-at-age values (i.e., years where there are no biological samples)
 \foreach \y in {\Sexpr{paste(mNames, sep=",")}} {
 \begin{figure}[H]
 \centering
-\includegraphics[width=\linewidth]{\Sexpr{locOutput}\x/Storyboard\y.png}
+\includegraphics[width=0.95\linewidth]{\Sexpr{locOutput}\x/Storyboard\y.png}
 % \ifnum\x=1
 \caption{Model output for \Sexpr{fish.name} in the \x{} major stock assessment region (SAR) for \y.
 Panel (a): model fit to time series of scaled spawn survey data in thousands of metric tonnes ($\text{t} \times 10^{3})$.
@@ -86,19 +86,18 @@ Panel (b): posterior estimates of instantaneous natural mortality.
 Line and shaded area indicate the median and \Sexpr{ciLevel*100}\% credible interval, respectively.
 Panel (c): reconstructed number of age-\Sexpr{ageRec} recruits in millions.
 Circles with vertical lines indicate medians and \Sexpr{ciLevel*100}\% credible intervals, respectively.
-Panel (d): posterior estimate of spawning biomass ($\mli{SB}_{t}$) for each year $t$ in thousands of metric tonnes ($\text{t} \times 10^{3}$).
-Line and shaded area indicate median and \Sexpr{ciLevel*100}\% credible interval, respectively.
+Panel (d): posterior estimate of spawning biomass ($\mli{SB}_{t}$) for each year $t$ in thousands of metric tonnes.
+Line and shaded area indicates the median and \Sexpr{ciLevel*100}\% credible interval, respectively.
 %unfished biomass ($\mli{SB}_0$) at far left, and
-Also shown is projected spawning biomass assuming no fishing ($\mli{SB}_{\Sexpr{max(yrRange)+1}}$) at the far right: the circle and vertical line indicates the median and \Sexpr{ciLevel*100}\% credible interval, respectively.
-Time series of vertical lines indicates commercial catch, excluding spawn on kelp (SOK).
-Panels (e \& f): phase plots of spawning biomass production and spawning biomass production rate against spawning biomass, respectively, for the dive survey period (MPD).
+Also shown is projected spawning biomass assuming no fishing ($\mli{SB}_{\Sexpr{max(yrRange)+1}}$): circle and vertical line indicates the median and \Sexpr{ciLevel*100}\% credible interval, respectively.
+Vertical bars indicate commercial catch, excluding spawn on kelp (SOK).
+Panels (e \& f): phase plots of spawning biomass production and spawning biomass production rate against spawning biomass, respectively, for the dive survey period (MPD estimates).
 \greyShading{}
 The triangle indicates \Sexpr{max(yrRange)-1}.
-Calendar years are indicated beside symbols.
-The axis scale at the top of panels (e \& f) is in units of spawning biomass depletion, $\mli{SB}/\mli{SB}_0$.
-Panels (a, d, e, \& f): red lines indicate medians, and shaded red rectangles indicate \Sexpr{ciLevel*100}\% confidence intervals for the limit reference point (LRP), $0.3\mli{SB}_0$, where $\mli{SB}_0$ is estimated unfished biomass;
-if present, blue lines indicate 1996 fixed cutoffs.
-Note that scales are different between \Sexpr{PasteNicely(mNames)} (show in separate figures).}
+The axis scale at the top of panels (e \& f) is spawning biomass depletion, $\mli{SB}/\mli{SB}_0$.
+Panels (a, d, e, \& f): red lines indicate medians, and red shading indicate \Sexpr{ciLevel*100}\% confidence intervals for the limit reference point (LRP), $0.3\mli{SB}_0$, where $\mli{SB}_0$ is estimated unfished biomass;
+if present, the blue line indicates the 1996 fixed cutoff.
+Scales are different between \Sexpr{PasteNicely(mNames)} (show in separate figures).}
 % \else
 % \caption{This is a short caption}
 % \fi
