@@ -29,9 +29,5 @@ Here we explain performance metrics/column headings to interpret the decision ta
 \item $\text{P}(U_{\Sexpr{max(yrRange)+1}} > 5\%)$ is the probability that the removal rate will be greater than the targe harvest rate of 5\% in \Sexpr{max(yrRange)+1}, and
 \item $\text{Med}(U_{\Sexpr{max(yrRange)+1}})$ is the median removal rate in \Sexpr{max(yrRange)+1}.
 \end{resdoclist}
-There are two things to note in the decision tables.
-First, fixed cut-offs and the 20\% HR are taken from the current harvest control rule.
-Second, fixed cut-offs are only relevant for decision tables from AM2; ignore columns with fixed cut-offs from AM1.
 
-
-
+Note that in the decision tables the fixed cut-offs and the 20\% HR are taken from the current harvest control rule.
