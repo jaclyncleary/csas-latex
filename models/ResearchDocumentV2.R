@@ -1326,7 +1326,7 @@ PlotStoryboard( SARs=allRegions$major, models=mNames, si=spawn, qp=qPars,
     rec=recruits, M=natMort, SSB=spBio, C=catch, bp=bPars )
 
 # Plot distribution of spawning biomass, and the LRP
-PlotSSB <- function( SARs, models, SSB, SB0, probs=ciLevel ) {
+PlotSSB <- function( SARs, models, SSB, SB0, probs=ciLevel, m="" ) {
   # Get the year
   yr <- unique( SSB$Year )
   # Get lower CI level
@@ -1338,25 +1338,29 @@ PlotSSB <- function( SARs, models, SSB, SB0, probs=ciLevel ) {
           Cutoff=unlist(fixedCutoffs) ) %>%
       complete( Model=mNames, Region=names(fixedCutoffs) ) %>%
       mutate( Region=factor(Region, levels=regions$Region),
-          Model=factor(Model, levels=mNames) )
+          Model=factor(Model, levels=mNames) ) %>%
+      filter( Region %in% SARs, Model %in% models )
   # Update SSB
   SSB <- SSB %>%
       mutate( Region=factor(Region, levels=regions$Region),
           RegionName=factor(RegionName, levels=regions$RegionName),
-          Model=factor(Model, levels=mNames) )
+          Model=factor(Model, levels=mNames) ) %>%
+      filter( Region %in% SARs, Model %in% models )
   # Calculate LRP
   LRP <- SB0 %>%
       mutate( Lower=Lower*propB0, Median=Median*propB0, Upper=Upper*propB0 ) %>%
       left_join( y=regions, by="Region" ) %>%
       mutate( Region=factor(Region, levels=regions$Region),
-          Model=factor(Model, levels=mNames) )
+          Model=factor(Model, levels=mNames) ) %>%
+      filter( Region %in% SARs, Model %in% models )
   # SSB quantiles
   quantSSB <- SSB %>%
       group_by( RegionName, Region, Model ) %>%
       summarise( Lower=quantile(Value, probs=lo),
           Median=quantile(Value, probs=0.5),
           Upper=quantile(Value, probs=up) ) %>%
-      ungroup( )
+      ungroup( ) %>%
+      filter( Region %in% SARs, Model %in% models )
   # The plot
   plotSSB <- ggplot( data=SSB ) + 
       geom_density( aes(x=Value), fill="grey" ) + 
@@ -1375,33 +1379,7 @@ PlotSSB <- function( SARs, models, SSB, SB0, probs=ciLevel ) {
           labeller=label_wrap_gen(multi_line=FALSE) ) +
       labs( x=bquote("SB"[.(yr)]~" (t"%*%10^3*")"), y="Density" ) +
       myTheme +
-      ggsave( filename=paste("SSB", yr, ".png", sep=""), width=figWidth, 
-          height=figWidth )
-  # Subset data: SSB
-  subSSB <- SSB %>%
-      filter( Model == "AM2" ) %>%
-      mutate( RegionName=factor(RegionName, levels=regions$RegionName) )
-  # Subset data: SSB
-  subLRP <- LRP %>%
-      filter( Model == "AM2" )
-  # Subset data: SSB
-  subQuantSSB <- quantSSB %>%
-      filter( Model == "AM2" )
-  # The plot (wide)
-  plotSSB <- ggplot( data=subSSB ) + 
-      geom_density( aes(x=Value), fill="grey" ) + 
-      geom_vline( data=subLRP, aes(xintercept=Median), colour="red" ) +
-      geom_rect( data=subLRP, aes(xmin=Lower, xmax=Upper, ymin=-Inf, ymax=Inf),
-          colour="transparent", fill="red", alpha=0.3 ) + 
-      geom_vline( data=subQuantSSB, aes(xintercept=Lower), linetype="dashed" ) +
-      geom_vline( data=subQuantSSB, aes(xintercept=Median) ) +
-      geom_vline( data=subQuantSSB, aes(xintercept=Upper), linetype="dashed" ) +
-      facet_wrap( ~ RegionName, scales="free", nrow=2, dir="h" ) +
-      labs( x=expression(paste("SB"[yr]," (t"%*%10^3, ")")), 
-          y="Density" ) +
-      myTheme +
-      theme( text=element_text(size=14) ) +
-      ggsave( filename=paste("SSB", yr, "Wide.png", sep=""), width=figWidth*1.5, 
+      ggsave( filename=paste("SSB", yr, m, ".png", sep=""), width=figWidth, 
           height=figWidth )
 }  # End PlotSSB function
 
@@ -1413,8 +1391,12 @@ PlotSSB( SARs=allRegions$major, models=mNames, SSB=spBioVals2017,
 PlotSSB( SARs=allRegions$major, models=mNames, SSB=spBioVals2018, 
     SB0=filter(bPars, Parameter=="SB0") )
 
+# Show forecast SSB
+PlotSSB( SARs=allRegions$major, models=mNames[1], SSB=spBioVals2018, 
+    SB0=filter(bPars, Parameter=="SB0"), m=mNames[1] )
+
 # Plot effective harvest rate
-PlotHarvestRate <- function( hr, SARs, models ) {
+PlotHarvestRate <- function( hr, SARs, models, fn ) {
   # Filter for desired regions and areas
   hrSub <- hr %>%
       filter( Region %in% SARs, Model %in% models )
@@ -1424,16 +1406,22 @@ PlotHarvestRate <- function( hr, SARs, models ) {
       geom_line( aes(y=MedianHR) ) +
       annotate( geom="segment", x=intendUYrs, y=intendU, xend=max(yrRange), 
           yend=intendU, linetype="dashed" ) +
-      facet_grid( Region ~ Model ) +
+      facet_wrap( Model ~ Region, scales="free", ncol=2, dir="v", 
+          labeller=label_wrap_gen(multi_line=FALSE) ) +
       labs( y="Effective harvest rate" ) +
       expand_limits( y=c(0, 1) ) +
       myTheme +
-      ggsave( filename=file.path("HarvestRate.png"), width=figWidth, 
+      ggsave( filename=paste(fn, ".png", sep=""), width=figWidth, 
           height=figWidth )
 }  # End PlotHarvestRate function
 
-# Plot harvest rate
-PlotHarvestRate( hr=harvRate, SARs=allRegions$major, models=mNames )
+# Plot harvest rate: all models
+PlotHarvestRate( hr=harvRate, SARs=allRegions$major, models=mNames, 
+    fn="HarvestRate" )
+
+# Plot harvest rate: AM2
+PlotHarvestRate( hr=harvRate, SARs=allRegions$major, models=mNames[1], 
+    fn=paste("HarvestRate", mNames[1], sep="") )
 
 # Plot Beverton-Holt stock-recruitment relationship
 PlotBevertonHolt <- function( bh, bhPred, SARs, models ) {
