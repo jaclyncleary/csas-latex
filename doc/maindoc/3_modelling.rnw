@@ -23,7 +23,7 @@ Tables of all the data inputs are in Appendix \ref{chap:input}.
 This section describes sources of fishery-dependent data: validated catch and biological samples from commercial fisheries, and fishery-independent data: biological samples from the test fishery program and a herring egg deposition survey (aka spawn survey) used to estimate a relative index of spawner biomass  \Sexpr{common.name}.
 Time series of commercial catch, spawn survey data, average weight-at-age data, and proportion-at-age data are used as input for the assessment model.
 Observed trends in the data are presented in this section but key observations are interpreted in association with assessment model results (Section \ref{secModelResults}).
-To help readers view the collective data sets we summarize them by major stock area in Figures \ref{figCatch} to \ref{figSpawnIndex}.
+To help readers view the collective data sets we summarize them by major stock area in Figures \ref{figCatch} to \ref{figSpawnIndexMajor}.
 %JC: completed.
 
 \subsubsection{Catch data}
@@ -155,7 +155,7 @@ For the purposes of stock assessment, spawn survey data are represented as two i
 (1) surface survey index from \Sexpr{qYrs$q1}, and
 (2) dive survey index from \Sexpr{qYrs$q2}.
 Spawn indices are an output of the Herring Stock Assessment Database, in units of metric tonnes of herring spawning biomass.
-Time series of spawn index by major stock area, from \Sexpr{paste(range(yrRange), collapse=" to ")} for \Sexpr{qYrs$q1} (surface observations) and \Sexpr{qYrs$q2} (dive observations) are summarized in Figure \ref{figSpawnIndex}.
+Time series of spawn index by major stock area, from \Sexpr{paste(range(yrRange), collapse=" to ")} for \Sexpr{qYrs$q1} (surface observations) and \Sexpr{qYrs$q2} (dive observations) are summarized in Figure \ref{figSpawnIndexMajor}.
 %It is worth noting that since 1988, some early and late season surface surveys have been conducted, representing a small proportion of total spawn survey in a given area (Appendix XX-JC- do we have this? MG:No JC: add in 2018. MG: Roger!
 Surface survey data are processed such that the average width estimates are in a comparable format to those from the dive survey data and these observations are combined with the dive survey estimates into a single survey index.
 
@@ -197,12 +197,12 @@ We provide tables of these timeseries in Appendix \ref{chap:input}.
 
 There were no commercial fisheries in \Sexpr{max(yrRange)} (Figure \ref{figCatch}).
 The spawn index
-\Sexpr{dirSpawn %>% filter( Region == "HG" ) %>% select( Direction )}
+\Sexpr{directionSpawn %>% filter( Region == "HG" ) %>% select( Direction )}
 from
 \Sexpr{prevYrSpawn %>% filter( Region == "HG" ) %>% select( Spawn )}
 tonnes in \Sexpr{max(yrRange)-1} to
 \Sexpr{finalYrSpawn %>% filter( Region == "HG" ) %>% select( Spawn )}
-tonnes in \Sexpr{max(yrRange)} (Figure \ref{figSpawnIndex}).
+tonnes in \Sexpr{max(yrRange)} (Figure \ref{figSpawnIndexMajor}).
 Generally, mean weight-at-age for age-\Sexpr{min(ageRange)} to -\Sexpr{max(ageRange)}+ has been stable or increasing since 2010 (Figure \ref{figWeightAge}).
 In \Sexpr{max(yrRange)}, proportion-at-age was dominated by age-3 fish, and older age classes (i.e., age-\Sexpr{agePlusProp}+) contributed
 \Sexpr{finalYrPropAge %>% filter( Region == "HG", Age == 6 ) %>% select( Percent )}\%
@@ -218,12 +218,12 @@ The total commercial catch in \Sexpr{max(yrRange)} was
 \Sexpr{finalYrCatch %>% filter( Region == "PRD") %>% select( Catch )}
 tonnes (Figure \ref{figCatch}).
 The spawn index
-\Sexpr{dirSpawn %>% filter( Region == "PRD" ) %>% select( Direction )}
+\Sexpr{directionSpawn %>% filter( Region == "PRD" ) %>% select( Direction )}
 from
 \Sexpr{prevYrSpawn %>% filter( Region == "PRD" ) %>% select( Spawn )}
 tonnes in \Sexpr{max(yrRange)-1} to
 \Sexpr{finalYrSpawn %>% filter( Region == "PRD" ) %>% select( Spawn )}
-tonnes in \Sexpr{max(yrRange)} (Figure \ref{figSpawnIndex}).
+tonnes in \Sexpr{max(yrRange)} (Figure \ref{figSpawnIndexMajor}).
 Generally, mean weight-at-age for age-\Sexpr{min(ageRange)} to -\Sexpr{max(ageRange)}+ has been stable or increasing since 2010 (Figure \ref{figWeightAge}).
 In \Sexpr{max(yrRange)}, proportion-at-age was dominated by age-5 fish, and older age classes (i.e., age-\Sexpr{agePlusProp}+) contributed
 \Sexpr{finalYrPropAge %>% filter( Region == "PRD", Age == 6 ) %>% select( Percent )}\%
@@ -237,12 +237,12 @@ biological samples used to calculate mean weight-at-age and proportion-at-age da
 
 There were no commercial roe fisheries in \Sexpr{max(yrRange)} (Figure \ref{figCatch}), thus the catch input for 2017 is zero.
 The spawn index
-\Sexpr{dirSpawn %>% filter( Region == "CC" ) %>% select( Direction )}
+\Sexpr{directionSpawn %>% filter( Region == "CC" ) %>% select( Direction )}
 from
 \Sexpr{prevYrSpawn %>% filter( Region == "CC" ) %>% select( Spawn )}
 tonnes in \Sexpr{max(yrRange)-1} to
 \Sexpr{finalYrSpawn %>% filter( Region == "CC" ) %>% select( Spawn )}
-tonnes in \Sexpr{max(yrRange)} (Figure \ref{figSpawnIndex}).
+tonnes in \Sexpr{max(yrRange)} (Figure \ref{figSpawnIndexMajor}).
 Generally, mean weight-at-age for age-\Sexpr{min(ageRange)} to -\Sexpr{max(ageRange)}+ has been stable or increasing since 2010 (Figure \ref{figWeightAge}).
 In \Sexpr{max(yrRange)}, proportion-at-age was dominated by age-5 fish, and older age classes (i.e., age-\Sexpr{agePlusProp}+) contributed
 \Sexpr{finalYrPropAge %>% filter( Region == "CC", Age == 6 ) %>% select( Percent )}\%
@@ -258,12 +258,12 @@ The total commercial catch in \Sexpr{max(yrRange)} was
 \Sexpr{finalYrCatch %>% filter( Region == "SoG") %>% select( Catch )}
 tonnes (Figure \ref{figCatch}).
 The spawn index
-\Sexpr{dirSpawn %>% filter( Region == "SoG" ) %>% select( Direction )}
+\Sexpr{directionSpawn %>% filter( Region == "SoG" ) %>% select( Direction )}
 from
 \Sexpr{prevYrSpawn %>% filter( Region == "SoG" ) %>% select( Spawn )}
 tonnes in \Sexpr{max(yrRange)-1} to
 \Sexpr{finalYrSpawn %>% filter( Region == "SoG" ) %>% select( Spawn )}
-tonnes in \Sexpr{max(yrRange)} (Figure \ref{figSpawnIndex}).
+tonnes in \Sexpr{max(yrRange)} (Figure \ref{figSpawnIndexMajor}).
 Generally, mean weight-at-age for age-\Sexpr{min(ageRange)} to -\Sexpr{max(ageRange)}+ has been stable or increasing since 2010 (Figure \ref{figWeightAge}).
 In \Sexpr{max(yrRange)}, proportion-at-age was relatively even among age-3 to -5 fish, and older age classes (i.e., age-\Sexpr{agePlusProp}+) contributed
 \Sexpr{finalYrPropAge %>% filter( Region == "SoG", Age == 6 ) %>% select( Percent )}\%
@@ -277,12 +277,12 @@ biological samples used to calculate mean weight-at-age and proportion-at-age da
 
 There were no commercial fisheries in \Sexpr{max(yrRange)} (Figure \ref{figCatch}).
 The spawn index
-\Sexpr{dirSpawn %>% filter( Region == "WCVI" ) %>% select( Direction )}
+\Sexpr{directionSpawn %>% filter( Region == "WCVI" ) %>% select( Direction )}
 from
 \Sexpr{prevYrSpawn %>% filter( Region == "WCVI" ) %>% select( Spawn )}
 tonnes in \Sexpr{max(yrRange)-1} to
 \Sexpr{finalYrSpawn %>% filter( Region == "WCVI" ) %>% select( Spawn )}
-tonnes in \Sexpr{max(yrRange)} (Figure \ref{figSpawnIndex}).
+tonnes in \Sexpr{max(yrRange)} (Figure \ref{figSpawnIndexMajor}).
 Generally, mean weight-at-age for age-\Sexpr{min(ageRange)} to -\Sexpr{max(ageRange)}+ has been stable or increasing since 2010 (Figure \ref{figWeightAge}).
 In \Sexpr{max(yrRange)}, proportion-at-age was dominated by age-4 fish, and older age classes (i.e., age-\Sexpr{agePlusProp}+) contributed
 \Sexpr{finalYrPropAge %>% filter( Region == "WCVI", Age == 6 ) %>% select( Percent )}\%
