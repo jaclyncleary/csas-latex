@@ -12,6 +12,7 @@ del *.txt
 del *.out
 del *.snm
 del *.nav
+del *.upa
 del *.vrb
 del *-concordance.tex
 del *.synctex.gz*

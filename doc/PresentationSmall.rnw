@@ -144,8 +144,8 @@ setwd( dir=".." )
 \end{multicols}
 \end{frame}
 
-%%% New section: Data %%%
-\section[Data]{Input data}
+%%% New section: data %%%
+\section{Input data}
 
 % New slide
 \begin{frame}
@@ -256,7 +256,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{
 }
 
 %%% New section: stock assessment results %%%
-\section[Results]{Stock assessment results}
+\section{Stock assessment results}
 
 % New slide
 \begin{frame}
@@ -492,6 +492,9 @@ make.decision.table(wcvi.b,
                     placement = "H")
 @
 \end{frame}
+
+%%% New section: summary results %%%
+\section{Summary results}
 
 % New subsection: prediction
 \subsection{Prediction for \Sexpr{nextYr}}
