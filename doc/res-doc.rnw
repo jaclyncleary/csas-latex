@@ -89,7 +89,7 @@ J.S. Cleary\textsuperscript{1}, S. Hawkshaw\textsuperscript{2}, M. Grinnell\text
 Fisheries and Oceans Canada, 3190 Hammond Bay Road,\\
 Nanaimo, British Columbia, V9T 6N7, Canada.
 
-\textsuperscript{1}Institute of Ocean Science,\\
+\textsuperscript{2}Institute of Ocean Science,\\
 9860 W Saanich Rd, Sidney, BC V8L 5T5, Canada.
 
 \end{center}
@@ -216,12 +216,12 @@ setwd( dir=".." )
 % TOC
 \TableOfContents
 
-\Citation{
-Cleary, J.S., Hawkshaw, S., Grinnell, M.H., and Grandin, C.
-Stock Assessment for \Sexpr{fish.name} (\emph{\Sexpr{science.name}}) in British Columbia in \Sexpr{assess.yr} and forecast for \Sexpr{assess.yr+1}.
-CSAP Working Paper 2017PEL01.
-%DFO Can. Sci. Advis. Sec. Res. Doc. 2017/xxx. xii + XX p.
-}
+%% \Citation{
+%% Cleary, J.S., Hawkshaw, S., Grinnell, M.H., and Grandin, C.
+%% Stock Assessment for \Sexpr{fish.name} (\emph{\Sexpr{science.name}}) in British Columbia in \Sexpr{assess.yr} and forecast for \Sexpr{assess.yr+1}.
+%% CSAP Working Paper 2017PEL01.
+%% %DFO Can. Sci. Advis. Sec. Res. Doc. 2017/xxx. xii + XX p.
+%% }
 
 % Main body
 \Main
