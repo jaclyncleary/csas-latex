@@ -309,22 +309,24 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{
 
 % New slide
 \begin{frame}[allowframebreaks]{Summary of results}
-Stock characterization and data
+Data
 \begin{itemize}
-\item All herring spawning from Cumshewa Inlet in the north to Louscoone Inlet in the south are assumed to be part of the Haida Gwaii major stock.
-\item Haida Gwaii was closed to commercial roe fisheries from 2002-2013 and 2015-2017, and commercial spawn-on-kelp (SOK) fisheries from 2004-2013 and 2015-2017. Commercial roe and SOK fishing opportunities were available in 2014, however they were not pursued following an agreement between the commercial sector and local First Nations.
-\item The spawn index decreased from 6,888 t in 2016 to 3,016 t in \Sexpr{max(yrRange)}. Biological samples (seine caught) in \Sexpr{max(yrRange)} contained 14\% age-2 fish, 32\% age-3 fish, and 54\% age-4 and older.
+%\item All herring spawning from Cumshewa Inlet in the north to Louscoone Inlet in the south are assumed to be part of the Haida Gwaii major stock.
+\item Closed to commercial roe fisheries from 2002-2013 and 2015-2017, and commercial spawn-on-kelp (SOK) fisheries from 2004-2013 and 2015-2017. 
+\item Fishing opportunities were available in 2014 for commercial roe and SOK fishing -- not pursued due to an agreement between the commercial sector and local First Nations.
+\item The spawn index decreased from 6,888 t in 2016 to 3,016 t in \Sexpr{max(yrRange)}. 
+\item Biological samples (seine caught) in \Sexpr{max(yrRange)} contained 14\% age-2 fish, 32\% age-3 fish, and 54\% age-4 and older.
 \end{itemize}
 Stock productivity and recruitment
 \begin{itemize}
-\item Both AM2 and AM1 estimated a declining trend in spawning stock biomass since 2013. The spawning biomass has remained low in most years since 2000, including 2017.
-\item In most years since 2000, including the most recent estimate for 2016, the HG stock has been in a low productivity low biomass state, indicating negative stock growth.
+\item AM2 and AM1 estimated a declining trend in $SB$ since 2013. $SB$ has remained low in most years since 2000, including 2017.
+\item HG stock has been in a low productivity low biomass state in most years since 2000, indicating negative stock growth.
 \item Age-2 recruitment in \Sexpr{max(yrRange)} is low, as expected given the current low biomass state.
 \item Although model estimates of natural mortality remain highly uncertain, there is an increasing trend in the median estimates of natural mortality since 2012.
 \end{itemize}
 Estimated stock status and status relative to biological reference points
 \begin{itemize}
-\item AM2 estimates the median spawning biomass in \Sexpr{max(yrRange)}, $\mli{SB}_{\Sexpr{max(yrRange)}}$, at 3,963 t (equal to 17\% of $\mli{SB}_0$). AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 7,336 t (25\% of $\mli{SB}_0$).
+\item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 3,963 t (equal to 17\% of $\mli{SB}_0$) and AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 7,336 t (25\% of $\mli{SB}_0$).
 \item Based on a comparison of median estimates, both AM2 and AM1 models estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be below the LRP of $0.3\mli{SB}_0$ with greater than a 50\% probability.
 \end{itemize}
 Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics
