@@ -405,7 +405,7 @@ make.decision.table(hg.b,
 \subsection{Prince Rupert District}
 
 % New slide
-\begin{frame}[allowframebreaks]{Summary of results}
+\begin{frame}{Summary of results}
 Data
 \begin{itemize}
 %\item All herring spawning in Statistical Areas 3 to 5 are assumed to belong to the Prince Rupert District major stock.
@@ -414,6 +414,9 @@ Data
 \item The spawn index increased from 18,985 t in 2016 to 19,235 t in \Sexpr{max(yrRange)}. 
 \item Biological samples (seine-caught) in \Sexpr{max(yrRange)} contained ~1\% age-2 fish, 16\% age-3 fish, and 8\% age-4 and older.
 \end{itemize}
+\end{frame}
+
+\begin{frame}{Summary of results}
 Stock productivity and recruitment
 \begin{itemize}
 \item Since the mid-1990s, the PRD stock is characterized by two periods of consistent and stable spawning biomass: 1996-2003 and 2006-2017. 
