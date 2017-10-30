@@ -128,8 +128,8 @@ load( file=file.path("..", locOutput, "Image.RData") )
 setwd( dir=".." )
 
 # Font size for decision tables
-dec.table.font.size <- 9
-dec.table.font.space <- 10
+dec.table.font.size <- 8
+dec.table.font.space <- 9
 
 @
 
