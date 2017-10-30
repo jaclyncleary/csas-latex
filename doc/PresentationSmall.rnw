@@ -127,6 +127,10 @@ load( file=file.path("..", locOutput, "Image.RData") )
 # Reset the working directory
 setwd( dir=".." )
 
+# Font size for decision tables
+dec.table.font.size <- 8
+dec.table.font.space <- 9
+
 @
 
 % More custom variables
@@ -320,7 +324,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{
 
 \emph{Stock productivity and recruitment}
 \begin{itemize}
-\item AM2 and AM1 estimated a declining trend in $SB$ since 2013. $SB$ has remained low in most years since 2000, including 2017.
+\item AM2 and AM1 estimated a declining trend in $\mli{SB}$ since 2013. $\mli{SB}$ has remained low in most years since 2000, including 2017.
 \item HG stock has been in a low productivity low biomass state in most years since 2000, indicating negative stock growth.
 \item Age-2 recruitment in \Sexpr{max(yrRange)} is low, as expected given the current low biomass state.
 \item Although model estimates of natural mortality remain highly uncertain, there is an increasing trend in the median estimates of natural mortality since 2012.
