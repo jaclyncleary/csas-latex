@@ -329,7 +329,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{
 \item Age-2 recruitment in \Sexpr{max(yrRange)} is low, as expected given the current low biomass state.
 \item Although model estimates of natural mortality remain highly uncertain, there is an increasing trend in the median estimates of natural mortality since 2012.
 \end{itemize}
-
+\framebreak
 \emph{Estimated stock status and status relative to biological reference points}
 \begin{itemize}
 \item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 3,963 t (equal to 17\% of $\mli{SB}_0$) and AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 7,336 t (25\% of $\mli{SB}_0$).
