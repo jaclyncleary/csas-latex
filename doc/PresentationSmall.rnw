@@ -276,8 +276,10 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{
 
 % New slide
 \begin{frame}{Overview of results}
+\begin{columns}
+\begin{column}{0.8\textwidth}
 \begin{itemize}
-\item Here we show results for the major regions: \Sexpr{PasteNicely(allRegions$major)}
+\item Here we show results for the major SARs: \Sexpr{PasteNicely(allRegions$major)}
 \item Production analysis:
 \begin{itemize}
 \item Measures whether or not the stock is replacing itself
@@ -289,6 +291,17 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{
 \item Red: LRP ($\Sexpr{propB0}\mli{SB}_0$)
 \item Blue: 1996 fixed cut-offs
 \end{itemize}
+\end{column}
+\begin{column}{0.2\textwidth}
+\begin{table}
+\centering
+\begin{tabular}{lr}
+\toprule
+\inputsp{\Sexpr{locOutput}Cutoffs.tex}
+\end{tabular}
+\end{table}
+\end{column}
+\end{columns}
 \end{frame}
 
 % New subsection: summary
@@ -654,7 +667,7 @@ make.decision.table(wcvi.b,
 \end{frame}
 
 % New subsection: references
-\subsection{References}
+\subsection*{References}
 
 % New slide
 \begin{frame}[allowframebreaks]%{References}
