@@ -435,9 +435,9 @@ make.decision.table(hg.b,
 
 \emph{Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics}
 \begin{itemize}
-\item Both AM2 and AM1 predict a continued stable trend in spawning biomass, with projected pre-fishery spawning biomass in \Sexpr{nextYr}, $\mli{SB}_{\Sexpr{nextYr}}$, of 23,924 t (AM2; median) and 24,903 t (AM1), consisting of 23\% (median, AM2) age-3 fish and 68\% age-4 and older fish (AM2).
+\item Both AM2 and AM1 predict a continued stable trend in spawning biomass, with projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ of 23,924 t (AM2; median) and 24,903 t (AM1), consisting of 23\% (median, AM2) age-3 fish and 68\% age-4 and older fish (AM2).
 \item In \Sexpr{nextYr}, there is a 27\% (AM2) and 26\% (AM1) probability the stock will be below the LRP of $0.3\mli{SB}_0$ in the absence of fishing.
-\item Under AM2, the projected pre-fishery spawning biomass in \Sexpr{nextYr}, $\mli{SB}_{\Sexpr{nextYr}}$, has a 3\% chance of being below the 1996 fixed cutoff (12,100 t).
+\item Under AM2, the projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ has a 3\% chance of being below the 1996 fixed cutoff (12,100 t).
 \end{itemize}
 \end{frame}
 
@@ -475,16 +475,16 @@ make.decision.table(pr.b,
 \begin{frame}[allowframebreaks]{Summary of results}
 \emph{Data}
 \begin{itemize}
-\item All herring spawning in Kitasu Bay (a portion of Statistical Area 6), Statistical Area 7, and part of Statistical Area 8 (Kwakshua Channel and Fitzhugh Sound) are assumed to be part of the Central Coast major stock.
+%\item All herring spawning in Kitasu Bay (a portion of Statistical Area 6), Statistical Area 7, and part of Statistical Area 8 (Kwakshua Channel and Fitzhugh Sound) are assumed to be part of the Central Coast major stock.
 \item There were no commercial roe fisheries in 2017. Spawn-on-kelp operations occurred in all statistical areas in 2017.
-\item The spawn index decreased from 32,508 t in \Sexpr{max(yrRange)-1} to 23,517 t in \Sexpr{max(yrRange)}. Biological samples (seine-caught) in \Sexpr{max(yrRange)} contained 3\% age-2 fish, 17\% age-3 fish, and 80\% age-4 and older.
+\item The spawn index decreased from 32,508 t in \Sexpr{max(yrRange)-1} to 23,517 t in \Sexpr{max(yrRange)}. \item Biological samples (seine-caught) in \Sexpr{max(yrRange)} contained 3\% age-2 fish, 17\% age-3 fish, and 80\% age-4 and older.
 \end{itemize}
 \framebreak
 
 \emph{Stock productivity and recruitment}
 \begin{itemize}
-\item AM2 and AM1 base case assessments estimate an increasing trend in spawning stock biomass since 2012, including 2017.
-\item From 2012 onward, including the most recent estimate for 2016, spawning biomass production for the CC stock has been positive, indicating stock growth.
+\item AM2 and AM1 both estimated an increasing trend in spawning stock biomass since 2012, including 2017.
+\item From 2012 onward the spawning biomass production for the CC stock has been positive, indicating stock growth.
 \item The \Sexpr{max(yrRange)} age-2 recruits were estimated to be average-to-below-average. Age-5 fish were estimated to comprise the highest proportion of fish, arising from the 2012 cohort.
 \item Although model estimates of natural mortality remain highly uncertain, there is a decreasing trend in the median estimates of natural mortality since 2008.
 \end{itemize}
