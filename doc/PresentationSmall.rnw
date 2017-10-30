@@ -665,7 +665,7 @@ make.decision.table(wcvi.b,
 \end{frame}
 
 % New subsection: references
-\subsection{References}
+\subsection*{References}
 
 % New slide
 \begin{frame}[allowframebreaks]%{References}
