@@ -120,11 +120,6 @@ locOutput <- file.path( "..", "models", .Platform$file.sep )
 # Load the herring data
 load( file=file.path("..", locOutput, "Image.RData") )
 
-# Font size for decision tables
-dec.table.font.size <- 8
-dec.table.font.space <- 9
-
-
 # Reset the working directory
 setwd( dir=".." )
 
@@ -137,8 +132,8 @@ setwd( dir=".." )
 % Variables for the cover page
 \title[\Sexpr{fish.name}: Assessment in \Sexpr{max(yrRange)} and forecast for \Sexpr{nextYr}]{Stock Assessment for \Sexpr{fish.name} (\emph{Clupea pallasi}) in British Columbia in \Sexpr{max(yrRange)} and forecast for \Sexpr{nextYr}}
 \author[Cleary \emph{et al}. (\Sexpr{max(yrRange)})]{Jaclyn Cleary \and Sarah Hawkshaw \and Matthew Grinnell \and Chris Grandin}
-\institute{CSAP Working paper 2017PEL01}
-\date{}
+\institute{CSAP Working paper 2017PEL01\\Pacific Biological Station}
+\date{}  % No date (this will be presented several times)
 
 %%% Title page %%%
 \begin{frame}
@@ -314,7 +309,7 @@ Data
 %\item All herring spawning from Cumshewa Inlet in the north to Louscoone Inlet in the south are assumed to be part of the Haida Gwaii major stock.
 \item Closed to commercial roe fisheries from 2002-2013 and 2015-2017, and commercial spawn-on-kelp (SOK) fisheries from 2004-2013 and 2015-2017. 
 \item Fishing opportunities were available in 2014 for commercial roe and SOK fishing -- not pursued due to an agreement between the commercial sector and local First Nations.
-\item The spawn index decreased from 6,888 t in 2016 to 3,016 t in \Sexpr{max(yrRange)}. 
+\item The spawn index decreased from 6,888 t in \Sexpr{max(yrRange)-1} to 3,016 t in \Sexpr{max(yrRange)}. 
 \item Biological samples (seine caught) in \Sexpr{max(yrRange)} contained 14\% age-2 fish, 32\% age-3 fish, and 54\% age-4 and older.
 \end{itemize}
 Stock productivity and recruitment
@@ -343,7 +338,7 @@ Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \begin{itemize}
-\item Posterior distributions (median and \Sexpr{ciLevel*100}\% CI):
+\item Posterior distributions (median and \Sexpr{ciLevel*100}\% CI) for the entire time series, \Sexpr{paste(range(yrRange), collapse=" to ")}:
 \begin{enumerate}[a]
 \item Model fit to spawn survey index
 \item Instantanteous natural mortality, $M$
@@ -351,7 +346,7 @@ Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR
 \item Spawning biomass, $\mli{SB}_t$, and catch, $C_t$
 \setcounter{storyboard}{\value{enumi}}
 \end{enumerate}
-\item Maximum posterior density (MPD) estimates for the dive survey period, \Sexpr{qYrs$q2}:
+\item Maximum posterior density (MPD) estimates for the dive survey period, \Sexpr{newSurvYr} to \Sexpr{max(yrRange)-1}:
 \begin{enumerate}[a]
 \setcounter{enumi}{\value{storyboard}}
 \item Spawning biomass production
@@ -402,7 +397,7 @@ Stock characterization and data
 \begin{itemize}
 \item All herring spawning in Statistical Areas 3 to 5 are assumed to belong to the Prince Rupert District major stock.
 \item The combined total validated catch for the seine roe, the gillnet roe, and the food and bait fisheries was 2,849 t for the 2016/17 herring season. Commercial spawn-on-kelp operations also occurred in 2017.
-\item The spawn index increased from 18,985 t in 2016 to 19,235 t in \Sexpr{max(yrRange)}. Biological samples (seine-caught) in \Sexpr{max(yrRange)} contained ~1\% age-2 fish, 16\% age-3 fish, and 8\% age-4 and older.
+\item The spawn index increased from 18,985 t in \Sexpr{max(yrRange)-1} to 19,235 t in \Sexpr{max(yrRange)}. Biological samples (seine-caught) in \Sexpr{max(yrRange)} contained ~1\% age-2 fish, 16\% age-3 fish, and 8\% age-4 and older.
 \end{itemize}
 Stock productivity and recruitment
 \begin{itemize}
@@ -460,7 +455,7 @@ Stock characterization and data
 \begin{itemize}
 \item All herring spawning in Kitasu Bay (a portion of Statistical Area 6), Statistical Area 7, and part of Statistical Area 8 (Kwakshua Channel and Fitzhugh Sound) are assumed to be part of the Central Coast major stock.
 \item There were no commercial roe fisheries in 2017. Spawn-on-kelp operations occurred in all statistical areas in 2017.
-\item The spawn index decreased from 32,508 t in 2016 to 23,517 t in \Sexpr{max(yrRange)}. Biological samples (seine-caught) in \Sexpr{max(yrRange)} contained 3\% age-2 fish, 17\% age-3 fish, and 80\% age-4 and older.
+\item The spawn index decreased from 32,508 t in \Sexpr{max(yrRange)-1} to 23,517 t in \Sexpr{max(yrRange)}. Biological samples (seine-caught) in \Sexpr{max(yrRange)} contained 3\% age-2 fish, 17\% age-3 fish, and 80\% age-4 and older.
 \end{itemize}
 Stock productivity and recruitment
 \begin{itemize}
@@ -518,7 +513,7 @@ Stock characterization and data
 \begin{itemize}
 \item All herring spawning in Statistical Areas 14 to 19, 28 and 29 (excluding Section 293), and part of 13 (Herring Sections 132 and 135, Deepwater Bay area south) are assumed to belong to the Strait of Georgia major stock.
 \item The combined total validated catch for the seine roe, the gillnet roe, and the food and bait and special use fisheries was 25,279 t for the 2016/17 herring season, which is the largest removal in the roe herring fishery era.
-\item The spawn index decreased from 129,502 t in 2016 to 81,064 t in \Sexpr{max(yrRange)}. Biological samples (seine-caught) in \Sexpr{max(yrRange)} contained relatively even proportions of age-3 (28\%), age-4 (29\%), and age-5 (23\%) fish.
+\item The spawn index decreased from 129,502 t in \Sexpr{max(yrRange)-1} to 81,064 t in \Sexpr{max(yrRange)}. Biological samples (seine-caught) in \Sexpr{max(yrRange)} contained relatively even proportions of age-3 (28\%), age-4 (29\%), and age-5 (23\%) fish.
 \end{itemize}
 Stock productivity and recruitment
 \begin{itemize}
@@ -576,7 +571,7 @@ Stock characterization and data
 \begin{itemize}
 \item All herring spawning in Statistical Areas 23 to 25 are assumed to belong to the West Coast of Vancouver Island herring stock.
 \item This area was closed to commercial fisheries since 2006, with SOK permitted in 2011.
-\item The spawn index decreased from 20,528 t in 2016 to 15,734 t in \Sexpr{max(yrRange)}. Biological samples (seine-caught) contained a high proportion of age-4 fish (66\%), with 3\% age-2 and 8\% age-3 fish.
+\item The spawn index decreased from 20,528 t in \Sexpr{max(yrRange)-1} to 15,734 t in \Sexpr{max(yrRange)}. Biological samples (seine-caught) contained a high proportion of age-4 fish (66\%), with 3\% age-2 and 8\% age-3 fish.
 \end{itemize}
 Stock productivity and recruitment
 \begin{itemize}

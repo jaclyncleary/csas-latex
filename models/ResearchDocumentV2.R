@@ -1401,16 +1401,14 @@ cat( "done\n" )
 ##### xTables #####
 ###################
 
-# Format fixed cutoffs
+# Format and print fixed cutoffs
 xCutOffs <- tibble( SAR=names(fixedCutoffs), Cutoff=unlist(fixedCutoffs) ) %>%
     mutate( Cutoff=format(Cutoff*1000, big.mark=",", digits=0, 
-            scientific=FALSE)  ) %>%
+            scientific=FALSE) ) %>%
     rename( `Cut-off (t)`=Cutoff ) %>%
-    xtable()
-
-# Write fixed cutoffs to disc
-print( x=xCutOffs, file="Cutoffs.tex", include.rownames=FALSE, booktabs=TRUE, 
-    only.contents=TRUE, NA.string=NA )
+    xtable() %>%
+    print( file="Cutoffs.tex", include.rownames=FALSE, booktabs=TRUE, 
+        only.contents=TRUE, NA.string=NA )
 
 # Print catch
 PrintCatch <- function( SARs, dat ) {
