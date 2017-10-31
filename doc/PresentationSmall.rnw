@@ -722,5 +722,10 @@ make.decision.table(wcvi.b,
 \bibliography{all}
 \end{frame}
 
+% New slide (empty, black)
+{\setbeamercolor{background canvas}{bg=black}
+\begin{frame}[plain]
+\end{frame}}
+
 % Fin
 \end{document}
