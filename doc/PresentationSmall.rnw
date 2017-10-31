@@ -78,7 +78,7 @@
 \newcounter{storyboard}
 
 % Background row colours (tables)
-\rowcolors{2}{}{lightgray}
+\rowcolors{2}{lightgray}{}
 
 % % Reduce space between table columns
 % \setlength{\tabcolsep}{1pt}
@@ -136,8 +136,8 @@ load( file=file.path("..", locOutput, "Image.RData") )
 setwd( dir=".." )
 
 # Font size for decision tables
-dec.table.font.size <- 8
-dec.table.font.space <- 9
+dec.table.font.size <- 7
+dec.table.font.space <- 8
 
 @
 

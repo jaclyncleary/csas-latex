@@ -405,6 +405,9 @@ ArrangeOutput <- function( SARs, models ) {
       mcmcPattern <- "*.csv"
       # If there is already a folder called 'mcmc': assume already processed and
       # skip to the next iteration
+      # TODO: Should be an error if there are mcmc files in the main director,
+      # and an mcmc folder -- two sets of mcmc files probably indicates that
+      # there is old data
       if( "mcmc" %in% list.files(path=fn) )  next
       # If there are files to move, print a message
       cat( "\n\t", fn, sep="" )
