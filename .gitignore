@@ -21,13 +21,12 @@ res-doc.lot
 doc/figure
 doc/res-doc.tex
 doc/knitr-cache
-res-doc.synctex(busy)
-Presentation.synctex(busy)
 models-backup
 models-mwe
 models-arrowtooth
 *-concordance.tex
 *.synctex.gz
+*.synctex(busy)
 .DS_Store
 doc/knitr-cache/
 models-backup/
