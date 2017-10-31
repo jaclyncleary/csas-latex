@@ -1356,6 +1356,7 @@ PlotHarvestRate <- function( hr, SARs, models, fn ) {
           labeller=label_wrap_gen(multi_line=FALSE) ) +
       labs( y="Effective harvest rate" ) +
       expand_limits( y=c(0, 1) ) +
+      scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
       myTheme +
       ggsave( filename=paste(fn, ".png", sep=""), dpi=pDPI, width=figWidth, 
           height=figWidth )
