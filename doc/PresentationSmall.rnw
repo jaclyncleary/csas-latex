@@ -341,6 +341,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{
 \item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 3,963 t (equal to 17\% of $\mli{SB}_0$) and AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 7,336 t (25\% of $\mli{SB}_0$).
 \item Based on a comparison of median estimates, both AM2 and AM1 models estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be below the LRP of $0.3\mli{SB}_0$ with greater than a 50\% probability.
 \end{itemize}
+\framebreak
 
 \emph{Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics}
 \begin{itemize}
