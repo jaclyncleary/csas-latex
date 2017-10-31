@@ -2,8 +2,8 @@ make.decision.table <- function(model,
                                 digits = 3,
                                 xcaption = "default",
                                 xlabel   = "default",
-                                font.size = 9,
-                                space.size = 10,
+                                font.size = 10,
+                                space.size = 11,
                                 placement = "H"){
   ## digits - number of decimal places for the values
   ## xcaption - caption to appear in the calling document
