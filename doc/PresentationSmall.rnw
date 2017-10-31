@@ -299,8 +299,8 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{
 \end{itemize}
 \item \citet{kronlund2017} recommend $\text{LRP}=\Sexpr{propB0}\mli{SB}_0$
 \item Uncertainty: median and \Sexpr{ciLevel*100}\% CI
-\item Red: LRP ($\Sexpr{propB0}\mli{SB}_0$)
-\item Blue: 1996 fixed cut-offs
+\item \color{red} Red: LRP ($\Sexpr{propB0}\mli{SB}_0$)
+\item \color{blue} Blue: 1996 fixed cut-off
 \end{itemize}
 \end{column}
 \begin{column}{0.25\textwidth}
@@ -330,7 +330,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{
 \emph{Stock productivity and recruitment}
 \begin{itemize}
 \item AM2 and AM1 estimated a declining trend in $\mli{SB}$ since 2013. $\mli{SB}$ has remained low in most years since 2000, including 2017.
-\item HG stock has been in a low productivity low biomass state in most years since 2000, indicating negative stock growth.
+\item HG has been in a low productivity low biomass state in most years since 2000, indicating negative stock growth.
 \item Age-2 recruitment in \Sexpr{max(yrRange)} is low, as expected given the current low biomass state.
 \item Although model estimates of natural mortality remain highly uncertain, there is an increasing trend in the median estimates of natural mortality since 2012.
 \end{itemize}
@@ -339,7 +339,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{
 \emph{Estimated stock status and status relative to biological reference points}
 \begin{itemize}
 \item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 3,963 t (equal to 17\% of $\mli{SB}_0$) and AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 7,336 t (25\% of $\mli{SB}_0$).
-\item Based on a comparison of median estimates, both AM2 and AM1 models estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be below the LRP of $0.3\mli{SB}_0$ with greater than a 50\% probability.
+\item Based on a comparison of median estimates, both AM2 and AM1 estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be below the LRP of $0.3\mli{SB}_0$ with greater than a 50\% probability.
 \end{itemize}
 \framebreak
 
@@ -360,9 +360,9 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{
 \item Posterior distributions (median and \Sexpr{ciLevel*100}\% CI) for the entire time series, \Sexpr{paste(range(yrRange), collapse=" to ")}:
 \begin{enumerate}[a]
 \item Model fit to spawn survey index
-\item Instantanteous natural mortality, $M$
+\item Instantanteous natural mortality, $M_t$
 \item Age-\Sexpr{ageRec} recruitment
-\item Spawning biomass, $\mli{SB}_t$, and catch, $C_t$
+\item Spawning biomass, $\mli{SB}_t$ including prediction for \Sexpr{nextYr}, $\mli{SB}_{\Sexpr{nextYr}}$, and catch, $C_t$
 \setcounter{storyboard}{\value{enumi}}
 \end{enumerate}
 \item Maximum posterior density (MPD) estimates for the dive survey period, \Sexpr{newSurvYr} to \Sexpr{max(yrRange)-1}:
@@ -424,8 +424,8 @@ make.decision.table(hg.b,
 
 \emph{Stock productivity and recruitment}
 \begin{itemize}
-\item Since the mid-1990s, the PRD stock is characterized by two periods of consistent and stable spawning biomass: 1996-2003 and 2006-2017. 
-\item From 2005 onward spawning biomass production for the PRD stock has been positive, indicating stock growth.
+\item Since the mid-1990s, PRD is characterized by two periods of consistent and stable spawning biomass: 1996-2003 and 2006-2017. 
+\item From 2005 onward, spawning biomass production for PRD has been positive, indicating stock growth.
 \item Both AM2 and AM1 estimated a large recruitment of age-2 fish to the population in 2014, relative to the last 10 years, owing largely to the age composition information showing a high proportion of samples consisting of this age class. 
 \item The \Sexpr{max(yrRange)} age-2 recruits are estimated to be around the average with a higher proportion of age-4 and -5 fish relative to age-2 and -3 fish.  
 \item There has been a decreasing trend in the median estimates of natural mortality since 2006. 
@@ -435,7 +435,7 @@ make.decision.table(hg.b,
 \emph{Estimated stock status and status relative to biological reference points}
 \begin{itemize}
 \item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 21,738 t (equal to 34\% of $\mli{SB}_0$). AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 22,821 t (36\% of $\mli{SB}_0$).
-\item Based on a comparison of median estimates, both AM2 and AM1 models estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be above the LRP of $0.3\mli{SB}_0$ with greater than a 50\% probability and less than a 95\% probability.
+\item Based on a comparison of median estimates, both AM2 and AM1 estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be above the LRP of $0.3\mli{SB}_0$ with greater than a 50\% probability and less than a 95\% probability.
 \end{itemize}
 \framebreak
 
@@ -490,7 +490,7 @@ make.decision.table(pr.b,
 \emph{Stock productivity and recruitment}
 \begin{itemize}
 \item AM2 and AM1 both estimated an increasing trend in spawning stock biomass since 2012, including 2017.
-\item From 2012 onward the spawning biomass production for the CC stock has been positive, indicating stock growth.
+\item From 2012 onward the spawning biomass production for CC has been positive, indicating stock growth.
 \item The \Sexpr{max(yrRange)} age-2 recruits were estimated to be average-to-below-average. Age-5 fish were estimated to comprise the highest proportion of fish, arising from the 2012 cohort.
 \item There has been a decreasing trend in the median estimates of natural mortality since 2008.
 \end{itemize}
@@ -499,7 +499,7 @@ make.decision.table(pr.b,
 \emph{Estimated stock status and status relative to biological reference points}
 \begin{itemize}
 \item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 30,474 t (equal to 55\% of $\mli{SB}_0$). AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 49,624 t (80\% of $\mli{SB}_0$).
-\item Based on a comparison of median estimates, both AM2 and AM1 models estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be above the LRP of $0.3\mli{SB}_0$ with greater than a 95\% probability.
+\item Based on a comparison of median estimates, both AM2 and AM1 estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be above the LRP of $0.3\mli{SB}_0$ with greater than a 95\% probability.
 \end{itemize}
 \framebreak
 
@@ -553,8 +553,8 @@ make.decision.table(cc.b,
 
 \emph{Stock productivity and recruitment}
 \begin{itemize}
-\item Both AM2 and AM1 base case assessment models estimate an increasing trend in spawning stock biomass since 2010.
-\item The spawning biomass production for the SOG stock has been positive since 2008, indicating stock growth.
+\item Both AM2 and AM1 estimate an increasing trend in spawning stock biomass since 2010.
+\item The spawning biomass production for SOG has been positive since 2008, indicating stock growth.
 \item Both models estimate an above-average number of age-2 recruits in \Sexpr{max(yrRange)} and age-3 and -4 fish comprise the highest estimated proportion of fish, which is consistent with the previous 5 years.
 \item AM2 estimates a decreasing trend in the median estimates of natural mortality since 2008, and AM1 estimates an increasing trend in the median estimates of natural mortality since 2015.
 \end{itemize}
@@ -563,7 +563,7 @@ make.decision.table(cc.b,
 \emph{Estimated stock status and status relative to biological reference points}
 \begin{itemize}
 \item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 114,626 t (equal to 81\% of $\mli{SB}_0$). AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 175,962 t (108\% of $\mli{SB}_0$).
-\item Based on a comparison of median estimates, both AM2 and AM1 models estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be above the LRP of $0.3\mli{SB}_0$ by greater than 95\% probability.
+\item Based on a comparison of median estimates, both AM2 and AM1 estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be above the LRP of $0.3\mli{SB}_0$ by greater than 95\% probability.
 \end{itemize}
 \framebreak
 
@@ -618,7 +618,7 @@ make.decision.table(sog.b,
 \emph{Stock productivity and recruitment}
 \begin{itemize}
 \item AM2 and AM1 base case assessments estimate a decline in spawning stock biomass from 2016 to 2017.
-\item In most years since 2005, including the most recent estimate for 2016, the WCVI stock has been in a prolonged low productivity low biomass state, indicating negative stock growth. At these low biomass levels, the WCVI stock is characterized by seemingly abrupt differences in year-to-year survey biomass.
+\item In most years since 2005, including the most recent estimate for 2016, WCVI has been in a prolonged low productivity low biomass state, indicating negative stock growth. At these low biomass levels, WCVI is characterized by seemingly abrupt differences in year-to-year survey biomass.
 \item The number of age-2 recruits estimated is below-average and there was a higher proportion of age-4 fish relative to age-2 and -3 fish. 
 \item There has been an increasing trend in the median estimates of natural mortality since 2014.
 \end{itemize}
@@ -627,7 +627,7 @@ make.decision.table(sog.b,
 \emph{Estimated stock status and status relative to biological reference points}
 \begin{itemize}
 \item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 17,742 t (equal to 37\% of $\mli{SB}_0$). AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 32,805 t (56\% of $\mli{SB}_0$). 
-\item Based on a comparison of median estimates, both AM2 and AM1 models estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be above the LRP of $0.3\mli{SB}_0$, by greater than 50\% probability but less than 95\% probability.
+\item Based on a comparison of median estimates, both AM2 and AM1 estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be above the LRP of $0.3\mli{SB}_0$, by greater than 50\% probability but less than 95\% probability.
 \end{itemize}
 \framebreak
 

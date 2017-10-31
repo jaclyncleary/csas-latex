@@ -78,6 +78,8 @@ UsePackages( pkgs=c("tidyverse", "zoo", "Hmisc", "scales", "sp", "cowplot",
 # Model names (correspond to folder names)
 mNames <- c( "AM2", "AM1" )
 
+# Plot resolution (dpi)
+pDPI <- 600
 
 ##################
 #### Sources #####
@@ -942,7 +944,7 @@ PlotCatch <- function( SARs, dat ){
       facet_wrap( ~ RegionName, ncol=2, dir="v" ) +
       myTheme +
       theme( legend.position="top" ) +
-      ggsave( filename=file.path("Catch.png"), width=figWidth, 
+      ggsave( filename=file.path("Catch.png"), dpi=pDPI, width=figWidth, 
           height=figWidth+0.5 )
 }  # End PlotCatch function
 
@@ -966,7 +968,8 @@ PlotSpawn <- function( SARs, dat, fn, ht ){
       facet_wrap( ~ RegionName, ncol=2, dir="v", scales="free_y" ) +
       myTheme +
       theme( legend.position="top" ) +
-      ggsave( filename=paste(fn, ".png", sep=""), width=figWidth, height=ht )
+      ggsave( filename=paste(fn, ".png", sep=""), dpi=pDPI, width=figWidth, 
+          height=ht )
 }  # End PlotSpawn function
 
 # Plot spawn index (major SARs)
@@ -993,7 +996,7 @@ PlotAge <- function( SARs, dat ) {
       facet_wrap( ~ RegionName, ncol=2, dir="v" ) +
       myTheme +
       theme( legend.position="top" ) +
-      ggsave( filename=file.path("ProportionAge.png"), width=figWidth, 
+      ggsave( filename=file.path("ProportionAge.png"), dpi=pDPI, width=figWidth, 
           height=figWidth+0.5 )
 }  # End PlotAge function
 
@@ -1017,7 +1020,7 @@ PlotWeight <- function( SARs, dat ){
       coord_cartesian( ylim=wtRange ) +
       facet_wrap( ~ RegionName, ncol=2, dir="v" ) +
       myTheme +
-      ggsave( filename=file.path("WeightAge.png"), width=figWidth, 
+      ggsave( filename=file.path("WeightAge.png"), dpi=pDPI, width=figWidth, 
           height=figWidth )
 }  # End PlotWeight function
 
@@ -1036,7 +1039,7 @@ PlotNumber <- function( SARs, dat ){
       scale_y_continuous( labels=comma ) + 
       facet_wrap( ~ RegionName, ncol=2, dir="v" ) +
       myTheme +
-      ggsave( filename=file.path("NumberAged.png"), width=figWidth, 
+      ggsave( filename=file.path("NumberAged.png"), dpi=pDPI, width=figWidth, 
           height=figWidth )
 }  # End PlotNumber function
 
@@ -1256,7 +1259,7 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
 #          pStory <- plot_grid( pTitle, storyboard, ncol=1, 
 #              rel_heights=c(0.1, 1.8) ) +
           ggsave( filename=file.path(SAR, paste("Storyboard", model, ".png", 
-                      sep="")), width=figWidth, height=figWidth )
+                      sep="")), dpi=pDPI, width=figWidth, height=figWidth )
     }  # End i loop over models
   }  # End k loop over regions
 }  # End PlotStoryboard function
@@ -1319,8 +1322,8 @@ PlotSSB <- function( SARs, models, SSB, SB0, probs=ciLevel, m="" ) {
           labeller=label_wrap_gen(multi_line=FALSE) ) +
       labs( x=bquote("SB"[.(yr)]~" (t"%*%10^3*")"), y="Density" ) +
       myTheme +
-      ggsave( filename=paste("SSB", yr, m, ".png", sep=""), width=figWidth, 
-          height=figWidth )
+      ggsave( filename=paste("SSB", yr, m, ".png", sep=""), dpi=pDPI, 
+          width=figWidth, height=figWidth )
 }  # End PlotSSB function
 
 # Show current SSB
@@ -1351,7 +1354,7 @@ PlotHarvestRate <- function( hr, SARs, models, fn ) {
       labs( y="Effective harvest rate" ) +
       expand_limits( y=c(0, 1) ) +
       myTheme +
-      ggsave( filename=paste(fn, ".png", sep=""), width=figWidth, 
+      ggsave( filename=paste(fn, ".png", sep=""), dpi=pDPI, width=figWidth, 
           height=figWidth )
 }  # End PlotHarvestRate function
 
@@ -1388,7 +1391,7 @@ PlotBevertonHolt <- function( bh, bhPred, SARs, models ) {
       expand_limits( x=0, y=0 ) +
       guides( colour=FALSE, shape=FALSE ) +
       myTheme +
-      ggsave( filename=file.path("BevertonHolt.png"), width=figWidth, 
+      ggsave( filename=file.path("BevertonHolt.png"), dpi=pDPI, width=figWidth, 
           height=figWidth )
 }  # End PlotBevertonHolt function
 
