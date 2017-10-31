@@ -171,7 +171,7 @@ dec.table.font.space <- 9
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \begin{itemize}
-\item Time series from \Sexpr{min(yrRange)} to \Sexpr{max(yrRange)}: catch, biological data, and spawn index
+\item Time series from \Sexpr{paste(range(yrRange), collapse=" to ")}: catch, biological data, and spawn index
 \item The `spawn index' has two distinct periods defined by the dominant survey type:
 \begin{description}
 \item[Surface] From \Sexpr{qYrs$q1} ($q_1$)
@@ -194,11 +194,11 @@ dec.table.font.space <- 9
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \begin{itemize}
-\item Time series of catch in thousands of metric tonnes ($\text{t} \times 10^{3}$) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the major stock assessment regions (SARs):
+\item Time series of catch in thousands of metric tonnes ($\text{t} \times 10^{3}$) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), collapse=" to ")} in the major stock assessment regions (SARs):
 \begin{description} 
-\item [Gear 1] Other fisheries
-\item [Gear 2] Roe seine 
-\item [Gear 3] Roe gillnet
+\item [Gear1] Other fisheries
+\item [Gear2] Roe seine 
+\item [Gear3] Roe gillnet
 \end{description}
 \item Currently, SOK catch is not used in the assessment
 \end{itemize}
@@ -218,7 +218,7 @@ dec.table.font.space <- 9
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \begin{itemize}
-\item Time series of proportion-at-age for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the major stock assessment regions (SARs)
+\item Time series of proportion-at-age for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), collapse=" to ")} in the major stock assessment regions (SARs)
 \begin{itemize}
 \item Age-\Sexpr{agePlusProp} is a `plus group'
 \end{itemize}
@@ -237,7 +237,7 @@ dec.table.font.space <- 9
 \begin{column}{0.5\textwidth}
 \begin{itemize}
 \item Time series of weight-at-age in kilograms (kg) for age-\Sexpr{ageShow} (circles) and \Sexpr{nRoll}-year running mean
-weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{max(yrRange)} in the major stock assessment regions (SARs)
+weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), collapse=" to ")} in the major stock assessment regions (SARs)
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
@@ -255,7 +255,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \begin{itemize}
-\item Time series of spawn index in thousands of metric tonnes ($\text{t} \times 10^{3}$) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the major stock assessment regions (SARs)
+\item Time series of spawn index in thousands of metric tonnes ($\text{t} \times 10^{3}$) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), collapse=" to ")} in the major stock assessment regions (SARs)
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
@@ -702,7 +702,7 @@ make.decision.table(wcvi.b,
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \begin{itemize}
-\item Harvest rate, $U_t$ for \Sexpr{fish.name} in the major stock assessment regions (SARs)
+\item Harvest rate, $U_t$ for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), collapse=" to ")} in the major stock assessment regions (SARs)
 \item Since \Sexpr{intendUYrs}, the intended harvest rate has been \Sexpr{intendU*100}\%, $U_t=0.2$
 \end{itemize}
 \end{column}

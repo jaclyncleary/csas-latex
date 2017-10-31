@@ -938,7 +938,8 @@ PlotCatch <- function( SARs, dat ){
   # Plot all the regions together
   catchPlotAll <- ggplot( data=df, aes(x=Year, y=Catch) ) + 
       geom_bar( stat="identity", position="stack", aes(fill=Period), width=1 ) +
-      labs( y=expression(paste("Catch (t"%*%10^3, ")", sep="")) )  +
+      labs( fill="Catch type",
+          y=expression(paste("Catch (t"%*%10^3, ")", sep="")) )  +
       scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
       scale_y_continuous( labels=comma ) +
       scale_fill_grey( start=0, end=0.8 ) +
@@ -961,7 +962,8 @@ PlotSpawn <- function( SARs, dat, fn, ht ){
   spawnIndexPlotAll <- ggplot( data=df, aes(x=Year, y=Spawn) ) +
       geom_point( aes(shape=Survey) ) + 
       geom_line( aes(group=Survey) ) +
-      labs( y=expression(paste("Spawn index (t"%*%10^3, ")", sep="")) )  +
+      labs( shape="Survey period", 
+          y=expression(paste("Spawn index (t"%*%10^3, ")", sep="")) )  +
       scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
       scale_y_continuous( labels=comma ) +
       scale_shape_manual( values=c(1, 2) ) +
