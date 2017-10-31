@@ -77,11 +77,11 @@
 % Start a counter: clunky way to 'resume' enumeration when I can't load 'enumitem'
 \newcounter{storyboard}
 
-% Background row colours (tables)
-\rowcolors{2}{lightgray}{}
+% Background row colours (put it before each table to make sure)
+\newcommand{\stripes}{\rowcolors{2}{lightgray}{}}
 
-% % Reduce space between table columns
-% \setlength{\tabcolsep}{1pt}
+% Reduce space between table columns
+\setlength{\tabcolsep}{4pt}
 
 % No caption labels
 \captionsetup{labelformat=empty}
@@ -304,6 +304,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{
 \end{itemize}
 \end{column}
 \begin{column}{0.25\textwidth}
+\stripes
 \begin{table}
 \caption{1996 fixed cut-offs in metric tonnes (t)}
 \inputsp{\Sexpr{locOutput}Cutoffs.tex}
@@ -397,6 +398,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{
 
 % New slide
 \begin{frame}{Decision table}
+\stripes
 <<hg.decision.table, results='asis', echo=FALSE>>=
 make.decision.table(hg.b,
                     xcaption = NULL,
@@ -464,6 +466,7 @@ make.decision.table(hg.b,
 
 % New slide
 \begin{frame}{Decision table}
+\stripes
 <<prd.decision.table, results='asis', echo=FALSE>>=
 make.decision.table(pr.b,
                     xcaption = NULL,
@@ -528,6 +531,7 @@ make.decision.table(pr.b,
 
 % New slide
 \begin{frame}{Decision table}
+\stripes
 <<cc.decision.table, results='asis', echo=FALSE>>=
 make.decision.table(cc.b,
                     xcaption = NULL,
@@ -592,6 +596,7 @@ make.decision.table(cc.b,
 
 % New slide
 \begin{frame}{Decision table}
+\stripes
 <<sog.decision.table, results='asis', echo=FALSE>>=
 make.decision.table(sog.b,
                     xcaption = NULL,
@@ -657,6 +662,7 @@ make.decision.table(sog.b,
 
 % New slide
 \begin{frame}{Decision table}
+\stripes
 <<wcvi.decision.table, results='asis', echo=FALSE>>=
 make.decision.table(wcvi.b,
                     xcaption = NULL,
