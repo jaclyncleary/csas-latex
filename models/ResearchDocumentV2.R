@@ -927,6 +927,10 @@ predBH <- bhPars %>%
 ##### Figures #####
 ###################
 
+# Update the theme
+myTheme <- myTheme + 
+    theme( plot.margin=unit(c(0.25, 0.75, 0, 0), "lines") )
+
 # Message
 cat( "Printing figures... " )
 
@@ -1068,10 +1072,6 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
       pSize <- 0.75
       # Defauly line thickness
       lSize <- 0.5
-      # Update the theme for the storyboard
-      myTheme2 <- myTheme + 
-          theme( plot.margin=unit(c(0.25, 0.75, 0, 0), "lines"),
-              text=element_text(size=8) )
       # Need to extend the year range by 1
       rangeX <- c( min(yrRange-1), max(yrRange)+1 )
       # Data wrangling: abundance
@@ -1146,8 +1146,8 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
           guides( shape=FALSE, linetype=FALSE ) +
           annotate( geom="text", x=-Inf, y=Inf, label="(a)", vjust=1.3, 
               hjust=-0.1, size=2.5 ) +
-          myTheme2 +
-          theme( axis.text.x=element_blank() )
+          myTheme +
+          theme( axis.text.x=element_blank(), text=element_text(size=8) )
       # Plot b: natural mortality
       plotB <- ggplot( data=MSub, aes(x=Year, y=Median) ) + 
           geom_ribbon( aes(ymin=Lower, ymax=Upper), alpha=0.5 ) +
@@ -1157,8 +1157,8 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
           scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
           annotate( geom="text", x=-Inf, y=Inf, label="(b)", vjust=1.3, 
               hjust=-0.1, size=2.5 ) +
-          myTheme2 +
-          theme( axis.text.x=element_blank() )
+          myTheme +
+          theme( axis.text.x=element_blank(), text=element_text(size=8) )
       # Plot c: recruitment
       plotC <- ggplot( data=recSub, aes(x=Year, y=Median) ) +
           geom_point( size=pSize ) +
@@ -1170,7 +1170,8 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
           scale_y_continuous( labels=comma ) +
           annotate( geom="text", x=-Inf, y=Inf, label="(c)", vjust=1.3, 
               hjust=-0.1, size=2.5 ) +
-          myTheme2
+          myTheme +
+          theme( text=element_text(size=8) )
       # Plot d: spawning biomass and catch
       plotD <- ggplot( data=SSBSub, aes(x=Year, y=Median) ) +
           geom_hline( yintercept=LRP$Median, colour="red" ) +
@@ -1195,7 +1196,8 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
           scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
           annotate( geom="text", x=-Inf, y=Inf, label="(d)", vjust=1.3, 
               hjust=-0.1, size=2.5 ) +
-          myTheme2
+          myTheme +
+          theme( text=element_text(size=8) )
       # Plot e: surplus production
       plotE <- ggplot( data=pDat, aes(x=SSB, y=Production) ) +
           geom_vline( xintercept=LRP$Median, colour="red" ) +
@@ -1222,8 +1224,8 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
               sec.axis=sec_axis(~./LRP$Estimate) ) +
           annotate( geom="text", x=-Inf, y=Inf, label="(e)", vjust=1.3, 
               hjust=-0.1, size=2.5 ) +
-          myTheme2 #+
-#          theme( axis.text.x=element_blank() )
+          myTheme +
+          theme( text=element_text(size=8) )
       # Plot f: surplus production rate
       plotF <- ggplot( data=pDat, aes(x=SSB, y=ProdRate) ) +
           geom_vline( xintercept=LRP$Median, colour="red" ) +
@@ -1249,8 +1251,8 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
               sec.axis=sec_axis(~./LRP$Estimate) ) +
           annotate( geom="text", x=-Inf, y=Inf, label="(f)", vjust=1.3, 
               hjust=-0.1, size=2.5 ) +
-          myTheme2
-      
+          myTheme +
+          theme( text=element_text(size=8) )
       # Make a title
       # pTitle <- ggdraw( ) + 
       #   draw_label( label=paste(unique(areas$RegionName), " (", model, ")", 
