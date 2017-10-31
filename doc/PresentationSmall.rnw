@@ -1,5 +1,5 @@
 % Document class
-\documentclass[aspectratio=169,xcolor=table]{beamer}  % 169, 1610, 149, 54, 43, or 32
+\documentclass[aspectratio=169, xcolor=table]{beamer}  % 169, 1610, 149, 54, 43, or 32
 
 % Load packages
 \usepackage{booktabs}
@@ -12,46 +12,22 @@
 % \usepackage{enumitem}
 \usepackage{xcolor}
 
-% Multi-line cell (table column names)
-\newcommand{\mlc}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
-
-% For subscripts in text mode (table column names)
-\newcommand{\subscr}[1]{$_{\text{#1}}$}
-
-% Better treatment of input (no extra trailing space)
-\newcommand{\inputsp}[1]{\input{#1}\unskip}
-
-% Start a counter: clunky way to 'resume' enumeration when I can't load 'enumitem'
-\newcounter{storyboard}
-
-% Background row colours (tables)
-\rowcolors{2}{}{lightgray}
-
-% Multi-letter identifier (i.e., multi-character variable
-\newcommand{\mli}[1]{\mathit{#1}}
-
-% Shortcuts
-\newcommand{\bc}{\begin{center}}
-\newcommand{\ec}{\end{center}}
-\newcommand{\bn}{\begin{enumerate}}
-\newcommand{\en}{\end{enumerate}}
-\newcommand{\bi}{\begin{itemize}}
-\newcommand{\ei}{\end{itemize}}
-
 % Choose a theme
 \usetheme{Darmstadt}  % http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
 
 % Set the components
-\usecolortheme{whale}  % https://hartwork.org/beamer-theme-matrix/
-\useoutertheme{smoothbars}
-% \useinnertheme{rectangles}
-% \usefonttheme{professionalfonts}
+% \usecolortheme{whale}  % https://hartwork.org/beamer-theme-matrix/
+% \useoutertheme{smoothbars}
+% \useinnertheme{rounded}
 
-% Set transparency: complete
-\setbeamercovered{transparent=0}
+% Decrease margins globally
+\setbeamersize{text margin left=1.5em, text margin right=1.5em}
 
 % Set indent for description environment
 \setbeamersize{description width=1.5cm}
+
+% Set transparency: complete
+\setbeamercovered{transparent=0}
 
 % No navigation symbols
 \setbeamertemplate{navigation symbols}{}
@@ -75,14 +51,40 @@
 % Change spacing between output chunk paragraphs
 \renewenvironment{knitrout}{\setlength{\topsep}{0mm}}{}
 
+% Multi-line cell (table column names)
+\newcommand{\mlc}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+% For subscripts in text mode (table column names)
+\newcommand{\subscr}[1]{$_{\text{#1}}$}
+
+% Better treatment of input (no extra trailing space)
+\newcommand{\inputsp}[1]{\input{#1}\unskip}
+
+% Multi-letter identifier (i.e., multi-character variable
+\newcommand{\mli}[1]{\mathit{#1}}
+
+% Shortcuts
+\newcommand{\bc}{\begin{center}}
+\newcommand{\ec}{\end{center}}
+\newcommand{\bn}{\begin{enumerate}}
+\newcommand{\en}{\end{enumerate}}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+
 % Small font for references
 \renewcommand*{\bibfont}{\scriptsize}
 
-% Decrease margins globally
-\setbeamersize{text margin left=1.5em, text margin right=1.5em}
+% Start a counter: clunky way to 'resume' enumeration when I can't load 'enumitem'
+\newcounter{storyboard}
 
-% Reduce space between table columns
-\setlength{\tabcolsep}{1pt}
+% Background row colours (tables)
+\rowcolors{2}{}{lightgray}
+
+% % Reduce space between table columns
+% \setlength{\tabcolsep}{1pt}
+
+% No caption labels
+\captionsetup{labelformat=empty}
 
 % Let it begin
 \begin{document}
@@ -286,7 +288,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{
 % New slide
 \begin{frame}{Overview of results}
 \begin{columns}
-\begin{column}{0.8\textwidth}
+\begin{column}{0.75\textwidth}
 \begin{itemize}
 \item Here we show results for the major SARs: \Sexpr{PasteNicely(allRegions$major)}
 \item Production analysis:
@@ -301,13 +303,10 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{
 \item Blue: 1996 fixed cut-offs
 \end{itemize}
 \end{column}
-\begin{column}{0.2\textwidth}
+\begin{column}{0.25\textwidth}
 \begin{table}
-\centering
-\begin{tabular}{lr}
-\toprule
+\caption{1996 fixed cut-offs in metric tonnes (t)}
 \inputsp{\Sexpr{locOutput}Cutoffs.tex}
-\end{tabular}
 \end{table}
 \end{column}
 \end{columns}

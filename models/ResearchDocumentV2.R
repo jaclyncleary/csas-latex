@@ -1406,9 +1406,9 @@ xCutOffs <- tibble( SAR=names(fixedCutoffs), Cutoff=unlist(fixedCutoffs) ) %>%
     mutate( Cutoff=format(Cutoff*1000, big.mark=",", digits=0, 
             scientific=FALSE) ) %>%
     rename( `Cut-off (t)`=Cutoff ) %>%
-    xtable() %>%
+    xtable( align="llr" ) %>%
     print( file="Cutoffs.tex", include.rownames=FALSE, booktabs=TRUE, 
-        only.contents=TRUE, NA.string=NA )
+        NA.string=NA, floating=FALSE )
 
 # Print catch
 PrintCatch <- function( SARs, dat ) {
