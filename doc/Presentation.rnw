@@ -254,7 +254,7 @@ DFO Science continues to address improvements to data inputs, assumptions for st
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.3\textwidth}
+\begin{column}{0.5\textwidth}
 Figure 3.
 \begin{itemize} 
 \item Catch data used in assessment:
@@ -266,9 +266,9 @@ Figure 3.
 \item SOK catch currently not used in assessment
 \end{itemize} 
 \end{column}
-\begin{column}{0.7\textwidth}
+\begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CatchWide.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}Catch.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -279,12 +279,12 @@ Figure 3.
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.3\textwidth}
+\begin{column}{0.5\textwidth}
 Figure 5. Time series of proportion-at-age for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the major stock assessment regions (SARs).
 \end{column}
-\begin{column}{0.7\textwidth}
+\begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}ProportionAgeWide.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}ProportionAge.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -314,13 +314,13 @@ make.age.comp.estimates.plot(sog.b, 2)
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.3\textwidth}
+\begin{column}{0.5\textwidth}
 Figure 4. Time series of weight-at-age in kilograms (kg) for age-\Sexpr{ageShow} (circles) and \Sexpr{nRoll}-year running mean
 weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{max(yrRange)} in the major stock assessment regions (SARs).
 \end{column}
-\begin{column}{0.7\textwidth}
+\begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WeightAgeWide.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WeightAge.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -331,12 +331,12 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.3\textwidth}
+\begin{column}{0.5\textwidth}
 Figure 7. Time series of spawn index in thousands of metric tonnes ($\text{t} \times 10^{3}$) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the major stock assessment regions (SARs).
 \end{column}
-\begin{column}{0.7\textwidth}
+\begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SpawnIndexWide.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SpawnIndexMajor.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -1390,19 +1390,19 @@ make.decision.table(wcvi.am1,
 \end{frame}
 
 % New slide
-%\begin{frame}
-%\begin{columns}
-%\begin{column}{0.5\textwidth}
-%\begin{itemize}
-%\item Since \Sexpr{intendUYrs}, the intended harvest rate $U$ has been \Sexpr{intendU*100}\%
-%\end{itemize}
-%\end{column}
-%\begin{column}{0.5\textwidth}
-%\centering
-%\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HarvestRate.png}
-%\end{column}
-%\end{columns}
-%\end{frame}
+\begin{frame}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\begin{itemize}
+\item Since \Sexpr{intendUYrs}, the intended harvest rate $U$ has been \Sexpr{intendU*100}\%
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HarvestRate.png}
+\end{column}
+\end{columns}
+\end{frame}
 
 % New slide
 %\begin{frame}{Natural mortality}
@@ -1426,82 +1426,32 @@ make.decision.table(wcvi.am1,
 %@
 %\end{frame}
 
-%% New slide
-%\begin{frame}{Spawn on kelp (SOK)}
-%\begin{itemize}
-%\item Female \Sexpr{fish.name} produce an average of approximately $200,000$ eggs per kilogram, kg of total body weight \citep{hay1985, hay1988}.
-%\end{itemize}
-%We assume that females account for 50\% of spawners, and we use the following egg conversion factor, $\mli{ECF}$ to convert eggs to tonnes, t of spawners
-%\begin{equation*}
-%\mli{ECF} = \mli{fecundity} \cdot \mli{pFemale} \cdot \frac{10^{3}~\text{kg}} {\text{t}}
-%\end{equation*}
-%where $\mli{fecundity}$ is the number of eggs per kilogram of total female body weight in $\text{eggs} \cdot \text{kg}^{-1}$, $\mli{pFemale}$ is the proportion of spawners that are female, and $\mli{ECF}$ is in $\text{eggs} \cdot \text{t}^{-1}$.
-%Thus, we convert eggs to the spawn index in tonnes by dividing the number of eggs by $\mli{ECF} = \text{eggs} \cdot 10^{8} \cdot \text{t}^{-1}$.
-%\end{frame}
+% New slide
+\begin{frame}{Spawn on kelp (SOK)}
+\begin{itemize}
+\item Female \Sexpr{fish.name} produce an average of approximately $200,000$ eggs per kilogram, kg of total body weight \citep{hay1985, hay1988}.
+\end{itemize}
+We assume that females account for 50\% of spawners, and we use the following egg conversion factor, $\mli{ECF}$ to convert eggs to tonnes, t of spawners
+\begin{equation*}
+\mli{ECF} = \mli{fecundity} \cdot \mli{pFemale} \cdot \frac{10^{3}~\text{kg}} {\text{t}}
+\end{equation*}
+where $\mli{fecundity}$ is the number of eggs per kilogram of total female body weight in $\text{eggs} \cdot \text{kg}^{-1}$, $\mli{pFemale}$ is the proportion of spawners that are female, and $\mli{ECF}$ is in $\text{eggs} \cdot \text{t}^{-1}$.
+Thus, we convert eggs to the spawn index in tonnes by dividing the number of eggs by $\mli{ECF} = \text{eggs} \cdot 10^{8} \cdot \text{t}^{-1}$.
+\end{frame}
 
 % New slide
-%\begin{frame}{Spawn on kelp (SOK)}
-%\begin{itemize}
-%\item About 12\% of SOK product weight is kelp \citep{shields1985}
-%\item Salt uptake increases the wet product weight by about 13\% \citep{whyte1977}
-%\item The mean fertilized egg weight is $2.38 \cdot 10^{-6}\,\text{kg}$ \citep{hay1982}
-%\end{itemize}
-%We estimate spawning biomass removed from the population by the SOK fishery as
-%\begin{equation*}
-%\mli{SB} = \frac{\mli{SOK} \cdot eggKelpProp \cdot \mli{eggBrineProp}}{\mli{eggWt} \cdot \mli{ECF}}
-%\end{equation*}
-%where $\mli{SOK}$ is the weight in kg of SOK harvest, $\mli{eggKelpProp}$ is the proportion of the SOK product that is eggs, not kelp (0.88), $\mli{eggBrineProp}$ is the proportion of SOK product that is eggs after brining (0.87), $\mli{eggWt}$ is the average weight in kilograms of a fertilized egg ($\text{kg} \cdot \text{egg}^{-1}$), and $\mli{SB}$ is the estimated spawning biomass in tonnes.
-%\end{frame}
-
-% New slide
-%\begin{frame}{Spawn on kelp (SOK)}
-%\begin{columns}
-%\begin{column}{0.4\textwidth}
-%\begin{itemize}
-%\item SOK harvest and estimated spawning biomass in recent years
-%\end{itemize}
-%\end{column}
-%\begin{column}{0.3\textwidth}
-%\centering
-%\scriptsize
-%\begin{tabular}{lrrrrr}
-%\toprule
-%& \multicolumn{5}{c}{Harvest (kg)}\\
-%\cmidrule{2-6}
-%\inputsp{\Sexpr{noquote(locOutput)}HarvSOK.tex}
-%\end{tabular}
-%\end{column}
-%\begin{column}{0.3\textwidth}
-%\centering
-%\scriptsize
-%\begin{tabular}{lrrrrr}
-%\toprule
-%& \multicolumn{5}{c}{Biomass (t)}\\
-%\cmidrule{2-6}
-%\inputsp{\Sexpr{noquote(locOutput)}BioSOK.tex}
-%\end{tabular}
-%\end{column}
-%\end{columns}
-%\end{frame}
-
-% % New slide
-% \begin{frame}
-% \begin{columns}
-% \begin{column}{0.25\textwidth}
-% Legend:
-% \begin{itemize}
-% \item Gear1: Other fisheries
-% \item Gear2: Roe seine
-% \item Gear3: Roe gillnet
-% \item Gear4: SOK
-% \end{itemize}
-% \end{column}
-% \begin{column}{0.75\textwidth}
-% \centering
-% \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CatchSOKWide.png}
-% \end{column}
-% \end{columns}
-% \end{frame}
+\begin{frame}{Spawn on kelp (SOK)}
+\begin{itemize}
+\item About 12\% of SOK product weight is kelp \citep{shields1985}
+\item Salt uptake increases the wet product weight by about 13\% \citep{whyte1977}
+\item The mean fertilized egg weight is $2.38 \cdot 10^{-6}\,\text{kg}$ \citep{hay1982}
+\end{itemize}
+We estimate spawning biomass removed from the population by the SOK fishery as
+\begin{equation*}
+\mli{SB} = \frac{\mli{SOK} \cdot eggKelpProp \cdot \mli{eggBrineProp}}{\mli{eggWt} \cdot \mli{ECF}}
+\end{equation*}
+where $\mli{SOK}$ is the weight in kg of SOK harvest, $\mli{eggKelpProp}$ is the proportion of the SOK product that is eggs, not kelp (0.88), $\mli{eggBrineProp}$ is the proportion of SOK product that is eggs after brining (0.87), $\mli{eggWt}$ is the average weight in kilograms of a fertilized egg ($\text{kg} \cdot \text{egg}^{-1}$), and $\mli{SB}$ is the estimated spawning biomass in tonnes.
+\end{frame}
 
 % Fin
 \end{document}

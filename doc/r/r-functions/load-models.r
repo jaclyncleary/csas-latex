@@ -1501,18 +1501,16 @@ calc.probabilities <- function(model,
 
     if(t == 1){
       col.names <- c(latex.mlc(c(e.yr.1,
-                                 "TAC",
-                                 "(metric",
-                                 "tonnes)")),
+                                 "TAC (t)")),
                      latex.mlc(c(paste0("P(SB_{",
                                         e.yr.1,
                                         "}<"),
-                                 "LRP=0.30SB_0)"),
+                                 "0.3SB_0)"),
                                math.bold = TRUE),
                      latex.mlc(c(paste0("Med(SB_{",
                                         e.yr.1,
                                         "}/"),
-                                 "0.30SB_0)"),
+                                 "0.3SB_0)"),
                                math.bold = TRUE))
     }
     if(which.model == 2){
@@ -1525,13 +1523,13 @@ calc.probabilities <- function(model,
                                           e.yr.1,
                                           "} <"),
                                    paste0(f(fc[which.stock] * 1000),
-                                          ")")),
+                                          "~t)")),
                                  math.bold = TRUE),
                        latex.mlc(c(paste0("Med(SB_{",
                                           e.yr.1,
                                           "} /"),
                                    paste0(f(fc[which.stock] * 1000),
-                                          ")")),
+                                          "~t)")),
                                  math.bold = TRUE))
       }
     }

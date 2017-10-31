@@ -81,7 +81,7 @@
 \textbf{Status of B.C. Pacific Herring (\emph{Clupea pallasii}) in 2017 and forecasts for 2018}
 \vspace{.35cm}
 
-J.S. Cleary\textsuperscript{1}, S. Hawkshaw\textsuperscript{2}, M. Grinnell\textsuperscript{1}, and C. Grandin\textsuperscript{1}
+J.S. Cleary\textsuperscript{1}, S. Hawkshaw\textsuperscript{2}, M.H. Grinnell\textsuperscript{1}, and C. Grandin\textsuperscript{1}
 
 \vspace{.35cm}
 
@@ -147,7 +147,7 @@ ISSN 1919-5044
 
 \textbf{Correct citation for this publication:}\\
 \vspace{0.2cm}
-\hangindent=0.6cm Cleary, J.S., Hawkshaw, S., Grinnell, M., Grandin, C. 2017.
+\hangindent=0.6cm Cleary, J.S., Hawkshaw, S., Grinnell, M.H., Grandin, C. 2017.
 Status of B.C. Pacific Herring (\emph{Clupea pallasii}) in 2017 and forecasts for 2018
 DFO Can.\ Sci.\ Advis.\ Sec.\ Res.\ Doc. 2017/nnn. vii + 273 p.
 \vspace*{\fill}

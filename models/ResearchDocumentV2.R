@@ -9,7 +9,7 @@
 # Code name:    Model.R
 # Version:      2.0
 # Date started: Jun 12, 2017
-# Date edited:  Jun 12, 2017
+# Date edited:  Oct 27, 2017
 # 
 # Overview: 
 # Make tables and figures of input data, and summarise stock assessment model
@@ -101,8 +101,9 @@ mNames <- c( "AM2", "AM1" )
 ######################
 
 # Possible regions by type
-allRegions <- list(major=c("HG", "PRD", "CC", "SoG", "WCVI"),
-    minor=c("A27", "A2W"))
+allRegions <- list(
+    major=c("HG", "PRD", "CC", "SoG", "WCVI"),
+    minor=c("A27", "A2W") )
 
 # Sensitivity runs
 sens <- c("HG-natural-mortality",
@@ -164,9 +165,6 @@ smLine <- "loess"
 
 # Level of confidence interval
 ciLevel <- 0.9
-
-## SSB quantile for production plots (grey points)
-#quantSSB <- 0.2
 
 # Get ylimits (e.g., weight in kg) for the weight-at-age plot
 wtRange <- c( 35, 130 ) / 1000
@@ -382,39 +380,6 @@ LoadNBio <- function( SARs ) {
 
 # Load the number of biosamples
 nBio <- LoadNBio( SARs=unlist(allRegions, use.names=FALSE) )
-
-# Load SOK harvest
-LoadSOK <- function( SARs ) {
-  # Progress message
-  cat( "Loading SOK... " )
-  # Start a loop over regions
-  for( k in 1:length(SARs) ) {
-    # Get the region
-    SAR <- SARs[k]
-    # Get the number of biosamples
-    sok <- fread( input=paste("allHarvSOK", SAR, ".csv", sep=""),
-        verbose=FALSE)
-    # If it's the first region
-    if( k == 1 ) {
-      # Start data frame
-      dat <- sok
-    } else {  # End if it's the first region, otherwise
-      # Append to the data frame
-      dat <- bind_rows( dat, sok )
-    }  # End if it's not the first region
-  }  # End k loop over regions
-  # Wrangle
-  res <- dat %>%
-      as_tibble( ) %>%
-      filter( Year %in% yrRange )
-  # Update the progress message
-  cat( "done\n" )
-  # Return the list
-  return( res )
-}  # End LoadSOK function
-
-# Load SOK harvest
-SOK <- LoadSOK( SARs=unlist(allRegions, use.names=FALSE) )
 
 # Arrange the ADMB output files
 ArrangeOutput <- function( SARs, models ) {
@@ -851,20 +816,6 @@ catch <- inputData$catch %>%
         Gear=paste("Gear", Gear, sep="") ) %>%
     rename( Period=Gear )
 
-# Format SOK for plotting
-SOK <- SOK %>%
-    left_join( y=regions, by="Region" ) %>%
-    mutate( RegionName=factor(RegionName, levels=regions$RegionName) )
-
-# Wrangle SOK to merge with catch
-newSOK <- SOK %>%
-    select( -Harvest ) %>%
-    mutate( Period="Gear4", Biomass=Biomass/1000 ) %>%
-    rename( Catch=Biomass )
-
-# Combine catch with SOK
-catchSOK <- bind_rows( catch, newSOK )
-
 # Format spawn index data for plotting
 spawn <- inputData$spawn %>%
     mutate( Survey=factor(Survey, levels=c("Surface", "Dive"), ordered=TRUE) )%>%
@@ -970,38 +921,16 @@ predBH <- bhPars %>%
 ##### Figures #####
 ###################
 
-# TODO: All figures: remove plots that aren't used (i.e., single stock catch
-# plots)
-
 # Message
 cat( "Printing figures... " )
 
 # Plot catch by year and gear type (i.e., period)
 PlotCatch <- function( SARs, dat ){ 
-  # Loop over regions
-  for( k in 1:length(SARs) ) {
-    # Get region name
-    SAR <- SARs[k]
-    # Subset the data
-    datSub <- dat %>%
-        filter( Region==SARs[k] )  # Why does 'Region==SAR' no longer work?
-    # The plot
-    catchGearPlot <- ggplot( data=datSub, aes(x=Year, y=Catch) ) + 
-        geom_bar( stat="identity", position="stack", aes(fill=Period) ) +
-        labs( y=expression(paste("Catch (t"%*%10^3, ")", sep="")) )  +
-        scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
-        scale_y_continuous( labels=comma ) +
-        scale_fill_grey( start=0, end=0.8 ) + 
-        myTheme +
-        theme( legend.position=c(0.99, 0.98), legend.justification=c(1, 1) ) +
-        ggsave( filename=file.path(SAR, "CatchGear.png"), width=figWidth, 
-            height=figWidth*0.67 )
-  }  # End k loop over regions
-  # Get major stocks
-  datMajor <- dat %>%
-      filter( Region%in%allRegions$major )
+  # Get stocks of interest
+  df <- dat %>%
+      filter( Region%in%SARs )
   # Plot all the regions together
-  catchPlotAll <- ggplot( data=datMajor, aes(x=Year, y=Catch) ) + 
+  catchPlotAll <- ggplot( data=df, aes(x=Year, y=Catch) ) + 
       geom_bar( stat="identity", position="stack", aes(fill=Period), width=1 ) +
       labs( y=expression(paste("Catch (t"%*%10^3, ")", sep="")) )  +
       scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
@@ -1012,69 +941,18 @@ PlotCatch <- function( SARs, dat ){
       theme( legend.position="top" ) +
       ggsave( filename=file.path("Catch.png"), width=figWidth, 
           height=figWidth+0.5 )
-  # Plot all the regions together (wide version)
-  catchPlotAll <- ggplot( data=datMajor, aes(x=Year, y=Catch) ) + 
-      geom_bar( aes(fill=Period), stat="identity", position="stack", width=1 ) +
-      labs( y=expression(paste("Catch (t"%*%10^3, ")", sep="")) )  +
-      scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
-      scale_y_continuous( labels=comma ) +
-      scale_fill_grey( start=0, end=0.8 ) +
-      facet_wrap( ~ RegionName, nrow=2, dir="h" ) +
-      myTheme +
-      theme( text=element_text(size=14), 
-          axis.text.x=element_text(angle=45, hjust=1),
-          panel.spacing=unit(1, "lines") ) +
-      ggsave( filename=file.path("CatchWide.png"), width=figWidth*1.5, 
-          height=figWidth )
 }  # End PlotCatch function
 
-# Plot catch (major and minor SARs)
-PlotCatch( SARs=regions$Region, dat=catch )
-
-## Plot catch and SOK (major SARs)
-#catchSOKPlotAll <- ggplot( data=filter(catchSOK, Region%in%allRegions$major),
-#        aes(x=Year, y=Catch, fill=Period) ) +
-#    geom_bar( stat="identity", position="stack", width=1 ) +
-#    labs( y=expression(paste("Catch (t"%*%10^3, ")", sep="")) )  +
-#    scale_fill_brewer( type="qual", palette=3 ) +
-#    scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
-#    scale_y_continuous( labels=comma ) +
-#    facet_wrap( ~ RegionName, nrow=2, dir="h" ) +
-#    myTheme +
-#    theme( text=element_text(size=14),
-#        axis.text.x=element_text(angle=45, hjust=1),
-#        panel.spacing=unit(1, "lines") ) +
-#    ggsave( filename=file.path("CatchSOKWide.png"), width=figWidth*1.5,
-#        height=figWidth )
+# Plot catch (major SARs)
+PlotCatch( SARs=allRegions$major, dat=catch )
 
 # Plot total spawn index by year
-PlotSpawn <- function( SARs, dat ){ 
-  # Loop over regions
-  for( k in 1:length(SARs) ) {
-    # Get region name
-    SAR <- SARs[k]
-    # Subset the data
-    datSub <- dat %>%
-        filter( Region==SARs[k] )  # Why does 'Region==SAR' no longer work?
-    # The plot
-    spawnIndexPlot <- ggplot( data=datSub, aes(x=Year, y=Spawn) ) +
-        geom_point( aes(shape=Survey) ) + 
-        geom_line( aes(group=Survey) ) +
-        labs( x=NULL, y=expression(paste("Spawn index (t"%*%10^3, ")", sep="")) )  +
-        scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
-        scale_y_continuous( labels=comma ) +
-        scale_shape_manual( values=c(1, 2) ) +
-        expand_limits( y=0 ) +
-        myTheme +
-        theme( legend.position=c(0.01, 0.98), legend.justification=c(0, 1) ) +
-        ggsave( filename=file.path(SAR, "SpawnIndex.png"), width=figWidth, 
-            height=figWidth*0.67 )
-  }  # End k loop over regions
-  # Get major stocks
-  datMajor <- dat %>%
-      filter( Region%in%allRegions$major )
+PlotSpawn <- function( SARs, dat, fn, ht ){ 
+  # Get stocks of interest
+  df <- dat %>%
+      filter( Region%in%SARs )
   # The plot
-  spawnIndexPlotAll <- ggplot( data=datMajor, aes(x=Year, y=Spawn) ) +
+  spawnIndexPlotAll <- ggplot( data=df, aes(x=Year, y=Spawn) ) +
       geom_point( aes(shape=Survey) ) + 
       geom_line( aes(group=Survey) ) +
       labs( y=expression(paste("Spawn index (t"%*%10^3, ")", sep="")) )  +
@@ -1085,72 +963,24 @@ PlotSpawn <- function( SARs, dat ){
       facet_wrap( ~ RegionName, ncol=2, dir="v", scales="free_y" ) +
       myTheme +
       theme( legend.position="top" ) +
-      ggsave( filename=file.path("SpawnIndex.png"), width=figWidth, 
-          height=figWidth+0.5 )
-  # Get minor stocks
-  datMinor <- dat %>%
-      filter( Region%in%allRegions$minor )
-  # The plot
-  spawnIndexPlotAll <- ggplot( data=datMinor, aes(x=Year, y=Spawn) ) +
-      geom_point( aes(shape=Survey) ) + 
-      geom_line( aes(group=Survey) ) +
-      labs( y=expression(paste("Spawn index (t"%*%10^3, ")", sep="")) )  +
-      scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
-      scale_y_continuous( labels=comma ) +
-      scale_shape_manual( values=c(1, 2) ) +
-      expand_limits( y=0 ) +
-      facet_wrap( ~ RegionName, ncol=2, dir="v", scales="free_y" ) +
-      myTheme +
-      theme( legend.position="top" ) +
-      ggsave( filename=file.path("SpawnIndexMinor.png"), width=figWidth, 
-          height=figWidth*0.5 )
-  # The plot (wide version)
-  spawnIndexPlotAll <- ggplot( data=datMajor, aes(x=Year, y=Spawn) ) +
-      geom_point( aes(shape=Survey) ) + 
-      geom_line( aes(group=Survey) ) +
-      labs( y=expression(paste("Spawn index (t"%*%10^3, ")", sep="")) )  +
-      scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
-      scale_y_continuous( labels=comma ) +
-      scale_shape_manual( values=c(1, 2) ) +
-      expand_limits( y=0 ) +
-      facet_wrap( ~ RegionName, nrow=2, dir="h", scales="free_y" ) +
-      myTheme +
-      theme( legend.position="top", text=element_text(size=14), 
-          axis.text.x=element_text(angle=45, hjust=1) ) +
-      ggsave( filename=file.path("SpawnIndexWide.png"), width=figWidth*1.5, 
-          height=figWidth )
+      ggsave( filename=paste(fn, ".png", sep=""), width=figWidth, height=ht )
 }  # End PlotSpawn function
 
-# Plot spawn index (major and minor SARs)
-PlotSpawn( SARs=unlist(allRegions, use.names=FALSE), dat=spawn )
+# Plot spawn index (major SARs)
+PlotSpawn( SARs=allRegions$major, dat=spawn, fn="SpawnIndexMajor", 
+    ht=figWidth+0.5 )
+
+# Plot spawn index (minor SARs)
+PlotSpawn( SARs=allRegions$minor, dat=spawn, fn="SpawnIndexMinor", 
+    ht=figWidth*0.5 )
 
 # Plot proportion-at-age
 PlotAge <- function( SARs, dat ) {
-  # Loop over regions
-  for( k in 1:length(SARs) ) {
-    # Get region name
-    SAR <- SARs[k]
-    # Subset the data
-    datSub <- dat %>%
-        filter( Region==SARs[k] )  # Why does 'Region==SAR' no longer work?
-    # The plot
-    propPlot <- ggplot( data=datSub, aes(x=Year, y=Proportion, group=Age) ) +
-        geom_bar( aes(fill=Age), stat="identity" ) +
-        scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
-        expand_limits( y=0 ) +
-        labs( y="Proportion-at-age" ) +
-        scale_fill_brewer( type="qual", palette="Set1", 
-            guide=guide_legend(nrow=1) ) +
-        myTheme +
-        theme( legend.position="top" ) +
-        ggsave( filename=file.path(SAR, "ProportionAge.png"), width=figWidth, 
-            height=figWidth*0.67 )
-  }  # End k loop over regions
-  # Get major stocks
-  datMajor <- dat %>%
-      filter( Region%in%allRegions$major )
+  # Get stocks of interest
+  df <- dat %>%
+      filter( Region%in%SARs )
   # The plot
-  propPlot <- ggplot( data=datMajor, aes(x=Year, y=Proportion, group=Age) ) +
+  propPlot <- ggplot( data=df, aes(x=Year, y=Proportion, group=Age) ) +
       geom_bar( aes(fill=Age), stat="identity" ) +
       scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
       expand_limits( y=0 ) +
@@ -1162,58 +992,22 @@ PlotAge <- function( SARs, dat ) {
       theme( legend.position="top" ) +
       ggsave( filename=file.path("ProportionAge.png"), width=figWidth, 
           height=figWidth+0.5 )
-  # The plot (wide version)
-  propPlot <- ggplot( data=datMajor, aes(x=Year, y=Proportion, group=Age) ) +
-      geom_bar( aes(fill=Age), stat="identity" ) +
-      scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
-      expand_limits( y=0 ) +
-      labs( y="Proportion-at-age" ) +
-      scale_fill_brewer( type="qual", palette="Set1", 
-          guide=guide_legend(nrow=1) ) +
-      facet_wrap( ~ RegionName, nrow=2, dir="h" ) +
-      myTheme +
-      theme( legend.position="top", text=element_text(size=14), 
-          axis.text.x=element_text(angle=45, hjust=1),
-          panel.spacing=unit(1, "lines") ) +
-      ggsave( filename=file.path("ProportionAgeWide.png"), width=figWidth*1.5, 
-          height=figWidth )
 }  # End PlotAge function
 
-# Plot proportion-at-age (major and minor SARs)
-PlotAge( SARs=unlist(allRegions, use.names=FALSE), dat=numAgedYear )
+# Plot proportion-at-age (major SARs)
+PlotAge( SARs=allRegions$major, dat=numAgedYear )
 
 # Plot weight-at-age by year
 PlotWeight <- function( SARs, dat ){ 
-  # Loop over regions
-  for( k in 1:length(SARs) ) {
-    # Get region name
-    SAR <- SARs[k]
-    # Subset the data
-    datSub <- dat %>%
-        filter( Region==SARs[k] )  # Why does 'Region==SAR' no longer work?
-    # The plot
-    weightAgePlot <- ggplot( data=datSub ) + 
-        geom_line( aes(x=Year, y=muWeight, group=Age) ) +
-        geom_point( data=filter(.data=datSub, Age == ageShow), 
-            aes(x=Year, y=Weight), shape=1, size=1 ) +
-        geom_line( data=filter(.data=datSub, Age == ageShow), 
-            aes(x=Year, y=muWeight), size=1 ) +
-        labs( y="Weight-at-age (kg)" ) +
-        scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
-        coord_cartesian( ylim=wtRange ) +
-        myTheme +
-        ggsave( filename=file.path(SAR, "WeightAge.png"), width=figWidth, 
-            height=figWidth*0.67 )
-  }  # End k loop over regions
-  # Get major stocks
-  datMajor <- dat %>%
-      filter( Region%in%allRegions$major )
+  # Get stocks of interest
+  df <- dat %>%
+      filter( Region%in%SARs )
   # Plot all the regions together
-  weightAgePlotAll <- ggplot( data=datMajor ) + 
+  weightAgePlotAll <- ggplot( data=df ) + 
       geom_line( aes(x=Year, y=muWeight, group=Age) ) +
-      geom_point( data=filter(.data=datMajor, Age == ageShow), 
-          aes(x=Year, y=Weight), shape=1, size=1 ) +
-      geom_line( data=filter(.data=datMajor, Age == ageShow), 
+      geom_point( data=filter(.data=df, Age == ageShow), aes(x=Year, y=Weight), 
+          shape=1, size=1 ) +
+      geom_line( data=filter(.data=df, Age == ageShow), 
           aes(x=Year, y=muWeight), size=1 ) +
       labs( y="Weight-at-age (kg)" ) +
       scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
@@ -1222,51 +1016,18 @@ PlotWeight <- function( SARs, dat ){
       myTheme +
       ggsave( filename=file.path("WeightAge.png"), width=figWidth, 
           height=figWidth )
-  # Plot all the regions together (wide version)
-  weightAgePlotAll <- ggplot( data=datMajor ) + 
-      geom_line( aes(x=Year, y=muWeight, group=Age) ) +
-      geom_point( data=filter(.data=datMajor, Age == ageShow), 
-          aes(x=Year, y=Weight), shape=1, size=1 ) +
-      geom_line( data=filter(.data=datMajor, Age == ageShow), 
-          aes(x=Year, y=muWeight), size=1 ) +
-      labs( y="Weight-at-age (kg)" ) +
-      scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
-      coord_cartesian( ylim=wtRange ) +
-      facet_wrap( ~ RegionName, nrow=2, dir="h" ) +
-      myTheme +
-      theme( legend.position="top", text=element_text(size=14), 
-          axis.text.x=element_text(angle=45, hjust=1),
-          panel.spacing=unit(1, "lines") ) +
-      ggsave( filename=file.path("WeightAgeWide.png"), width=figWidth*1.5, 
-          height=figWidth )
 }  # End PlotWeight function
 
-# Plot weight-at-age (major and minor SARs)
-PlotWeight( SARs=unlist(allRegions, use.names=FALSE), dat=muWeightAge )
+# Plot weight-at-age (major SARs)
+PlotWeight( SARs=allRegions$major, dat=muWeightAge )
 
 # Plot number aged by year
 PlotNumber <- function( SARs, dat ){ 
-  # Loop over regions
-  for( k in 1:length(SARs) ) {
-    # Get region name
-    SAR <- SARs[k]
-    # Subset the data
-    datSub <- dat %>%
-        filter( Region==SARs[k] )  # Why does 'Region==SAR' no longer work?
-    # The plot
-    numberAgedPlot <- ggplot( data=datSub, aes(x=Year, y=Number, group=Year) ) + 
-        geom_bar( stat="identity" ) +
-        scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
-        scale_y_continuous( labels=comma ) + 
-        myTheme +
-        ggsave( filename=file.path(SAR, "NumberAged.png"), width=figWidth, 
-            height=figWidth*0.67 )
-  }  # End k loop over regions
-  # Get major stocks
-  datMajor <- dat %>%
-      filter( Region%in%allRegions$major )
+  # Get stocks of interest
+  df <- dat %>%
+      filter( Region%in%SARs )
   # Plot all the regions together
-  numberAgePlotAll <- ggplot( data=datMajor, aes(x=Year, y=Number, group=Year) ) + 
+  numberAgePlotAll <- ggplot( data=df, aes(x=Year, y=Number, group=Year) ) + 
       geom_bar( stat="identity", width=1 ) +
       scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
       scale_y_continuous( labels=comma ) + 
@@ -1276,8 +1037,8 @@ PlotNumber <- function( SARs, dat ){
           height=figWidth )
 }  # End PlotNumber function
 
-# Plot number aged (major and minor SARs)
-PlotNumber( SARs=unlist(allRegions, use.names=FALSE), dat=numAgedYear )
+# Plot number aged (major SARs)
+PlotNumber( SARs=allRegions$major, dat=numAgedYear )
 
 # Story-board plot: 6 panels (abundance, recruitment, M, SSB with catch,
 # production, and production rate)
@@ -1502,7 +1263,7 @@ PlotStoryboard( SARs=allRegions$major, models=mNames, si=spawn, qp=qPars,
     rec=recruits, M=natMort, SSB=spBio, C=catch, bp=bPars )
 
 # Plot distribution of spawning biomass, and the LRP
-PlotSSB <- function( SARs, models, SSB, SB0, probs=ciLevel ) {
+PlotSSB <- function( SARs, models, SSB, SB0, probs=ciLevel, m="" ) {
   # Get the year
   yr <- unique( SSB$Year )
   # Get lower CI level
@@ -1514,25 +1275,29 @@ PlotSSB <- function( SARs, models, SSB, SB0, probs=ciLevel ) {
           Cutoff=unlist(fixedCutoffs) ) %>%
       complete( Model=mNames, Region=names(fixedCutoffs) ) %>%
       mutate( Region=factor(Region, levels=regions$Region),
-          Model=factor(Model, levels=mNames) )
+          Model=factor(Model, levels=mNames) ) %>%
+      filter( Region %in% SARs, Model %in% models )
   # Update SSB
   SSB <- SSB %>%
       mutate( Region=factor(Region, levels=regions$Region),
           RegionName=factor(RegionName, levels=regions$RegionName),
-          Model=factor(Model, levels=mNames) )
+          Model=factor(Model, levels=mNames) ) %>%
+      filter( Region %in% SARs, Model %in% models )
   # Calculate LRP
   LRP <- SB0 %>%
       mutate( Lower=Lower*propB0, Median=Median*propB0, Upper=Upper*propB0 ) %>%
       left_join( y=regions, by="Region" ) %>%
       mutate( Region=factor(Region, levels=regions$Region),
-          Model=factor(Model, levels=mNames) )
+          Model=factor(Model, levels=mNames) ) %>%
+      filter( Region %in% SARs, Model %in% models )
   # SSB quantiles
   quantSSB <- SSB %>%
       group_by( RegionName, Region, Model ) %>%
       summarise( Lower=quantile(Value, probs=lo),
           Median=quantile(Value, probs=0.5),
           Upper=quantile(Value, probs=up) ) %>%
-      ungroup( )
+      ungroup( ) %>%
+      filter( Region %in% SARs, Model %in% models )
   # The plot
   plotSSB <- ggplot( data=SSB ) + 
       geom_density( aes(x=Value), fill="grey" ) + 
@@ -1551,33 +1316,7 @@ PlotSSB <- function( SARs, models, SSB, SB0, probs=ciLevel ) {
           labeller=label_wrap_gen(multi_line=FALSE) ) +
       labs( x=bquote("SB"[.(yr)]~" (t"%*%10^3*")"), y="Density" ) +
       myTheme +
-      ggsave( filename=paste("SSB", yr, ".png", sep=""), width=figWidth, 
-          height=figWidth )
-  # Subset data: SSB
-  subSSB <- SSB %>%
-      filter( Model == "AM2" ) %>%
-      mutate( RegionName=factor(RegionName, levels=regions$RegionName) )
-  # Subset data: SSB
-  subLRP <- LRP %>%
-      filter( Model == "AM2" )
-  # Subset data: SSB
-  subQuantSSB <- quantSSB %>%
-      filter( Model == "AM2" )
-  # The plot (wide)
-  plotSSB <- ggplot( data=subSSB ) + 
-      geom_density( aes(x=Value), fill="grey" ) + 
-      geom_vline( data=subLRP, aes(xintercept=Median), colour="red" ) +
-      geom_rect( data=subLRP, aes(xmin=Lower, xmax=Upper, ymin=-Inf, ymax=Inf),
-          colour="transparent", fill="red", alpha=0.3 ) + 
-      geom_vline( data=subQuantSSB, aes(xintercept=Lower), linetype="dashed" ) +
-      geom_vline( data=subQuantSSB, aes(xintercept=Median) ) +
-      geom_vline( data=subQuantSSB, aes(xintercept=Upper), linetype="dashed" ) +
-      facet_wrap( ~ RegionName, scales="free", nrow=2, dir="h" ) +
-      labs( x=expression(paste("SB"[yr]," (t"%*%10^3, ")")), 
-          y="Density" ) +
-      myTheme +
-      theme( text=element_text(size=14) ) +
-      ggsave( filename=paste("SSB", yr, "Wide.png", sep=""), width=figWidth*1.5, 
+      ggsave( filename=paste("SSB", yr, m, ".png", sep=""), width=figWidth, 
           height=figWidth )
 }  # End PlotSSB function
 
@@ -1589,8 +1328,12 @@ PlotSSB( SARs=allRegions$major, models=mNames, SSB=spBioVals2017,
 PlotSSB( SARs=allRegions$major, models=mNames, SSB=spBioVals2018, 
     SB0=filter(bPars, Parameter=="SB0") )
 
+# Show forecast SSB
+PlotSSB( SARs=allRegions$major, models=mNames[1], SSB=spBioVals2018, 
+    SB0=filter(bPars, Parameter=="SB0"), m=mNames[1] )
+
 # Plot effective harvest rate
-PlotHarvestRate <- function( hr, SARs, models ) {
+PlotHarvestRate <- function( hr, SARs, models, fn ) {
   # Filter for desired regions and areas
   hrSub <- hr %>%
       filter( Region %in% SARs, Model %in% models )
@@ -1600,16 +1343,22 @@ PlotHarvestRate <- function( hr, SARs, models ) {
       geom_line( aes(y=MedianHR) ) +
       annotate( geom="segment", x=intendUYrs, y=intendU, xend=max(yrRange), 
           yend=intendU, linetype="dashed" ) +
-      facet_grid( Region ~ Model ) +
+      facet_wrap( Model ~ Region, scales="free", ncol=2, dir="v", 
+          labeller=label_wrap_gen(multi_line=FALSE) ) +
       labs( y="Effective harvest rate" ) +
       expand_limits( y=c(0, 1) ) +
       myTheme +
-      ggsave( filename=file.path("HarvestRate.png"), width=figWidth, 
+      ggsave( filename=paste(fn, ".png", sep=""), width=figWidth, 
           height=figWidth )
 }  # End PlotHarvestRate function
 
-# Plot harvest rate
-PlotHarvestRate( hr=harvRate, SARs=allRegions$major, models=mNames )
+# Plot harvest rate: all models
+PlotHarvestRate( hr=harvRate, SARs=allRegions$major, models=mNames, 
+    fn="HarvestRate" )
+
+# Plot harvest rate: AM2
+PlotHarvestRate( hr=harvRate, SARs=allRegions$major, models=mNames[1], 
+    fn=paste("HarvestRate", mNames[1], sep="") )
 
 # Plot Beverton-Holt stock-recruitment relationship
 PlotBevertonHolt <- function( bh, bhPred, SARs, models ) {
@@ -1652,34 +1401,14 @@ cat( "done\n" )
 ##### xTables #####
 ###################
 
-# Format q values table
-xQPars <- qPars %>%
-    mutate( Lower=format(Lower, digits=4, nsmall=4),
-        Median=format(Median, digits=4, nsmall=4),
-        Upper=format(Upper, digits=4, nsmall=4),
-        Parameter=ifelse(Survey=="Surface", "$q_{1}$", "$q_{2}$") ) %>%
-    select( Region, Model, Survey, Parameter, Lower, Median, Upper ) %>%
-    xtable( )
-
-# Write q parameters to disc
-print( x=xQPars, file="QPars.tex", include.rownames=FALSE, booktabs=TRUE, 
-    only.contents=TRUE, NA.string=NA, sanitize.text.function=identity, 
-    sanitize.colnames.function=identity )
-
-# Format biomass values table
-xBPars <- bPars %>%
-    mutate( Lower=format(Lower, digits=2, nsmall=2, big.mark=","),
-        Median=format(Median, digits=2, nsmall=2, big.mark=","),
-        Upper=format(Upper, digits=2, nsmall=2, big.mark=","),
-        Parameter=ifelse(Parameter=="SB0", "$\\mli{SB}_{0}$", 
-            paste("$\\mli{SB}_{", Year, "}$", sep="")) ) %>%
-    select( Region, Model, Parameter, Lower, Median, Upper ) %>%
-    xtable( )
-
-# Write biomass parameters to disc
-print( x=xBPars, file="BPars.tex", include.rownames=FALSE, booktabs=TRUE, 
-    only.contents=TRUE, NA.string=NA, sanitize.text.function=identity, 
-    sanitize.colnames.function=identity )
+# Format and print fixed cutoffs
+xCutOffs <- tibble( SAR=names(fixedCutoffs), Cutoff=unlist(fixedCutoffs) ) %>%
+    mutate( Cutoff=format(Cutoff*1000, big.mark=",", digits=0, 
+            scientific=FALSE) ) %>%
+    rename( `Cut-off (t)`=Cutoff ) %>%
+    xtable() %>%
+    print( file="Cutoffs.tex", include.rownames=FALSE, booktabs=TRUE, 
+        only.contents=TRUE, NA.string=NA )
 
 # Print catch
 PrintCatch <- function( SARs, dat ) {
@@ -1708,36 +1437,6 @@ PrintCatch <- function( SARs, dat ) {
 # Print catch and get column names
 namesCatch <- PrintCatch( SARs=unlist(allRegions, use.names=FALSE), 
     dat=inputData$catch )
-
-# Format SOK harvest
-xHarvSOK <- SOK %>%
-    select( Year, Region, Harvest ) %>%
-    filter( Region %in% allRegions$major ) %>%
-    mutate( Harvest=format(Harvest, digits=0, nsmall=0, big.mark=",",
-            scientific=FALSE) ) %>%
-    spread( key=Region, value=Harvest, fill=0 ) %>%
-    tail( n=16 ) %>%
-    xtable( )
-
-# Write SOK harvest to disc
-print( x=xHarvSOK, file="HarvSOK.tex", include.rownames=FALSE, booktabs=TRUE,
-    only.contents=TRUE, NA.string=NA, sanitize.text.function=identity,
-    sanitize.colnames.function=identity )
-
-# Format SOK harvest
-xBioSOK <- SOK %>%
-    select( Year, Region, Biomass ) %>%
-    filter( Region %in% allRegions$major ) %>%
-    mutate( Biomass=format(Biomass, digits=0, nsmall=0, big.mark=",",
-            scientific=FALSE) ) %>%
-    spread( key=Region, value=Biomass, fill=0 ) %>%
-    tail( n=16 ) %>%
-    xtable( )
-
-# Write SOK harvest to disc
-print( x=xBioSOK, file="BioSOK.tex", include.rownames=FALSE, booktabs=TRUE,
-    only.contents=TRUE, NA.string=NA, sanitize.text.function=identity,
-    sanitize.colnames.function=identity )
 
 # Print spawn index
 PrintSpawn <- function( SARs, dat ) {
@@ -1871,8 +1570,7 @@ prevYrSpawn <- inputData$spawn %>%
     mutate( Spawn=format(Spawn*1000, big.mark=",", digits=0, scientific=FALSE) )
 
 # Spawn direction (increased or decreased from last year)
-# TODO: Update the name to `directionSpawn` -- this sounds like a directory
-dirSpawn <- inputData$spawn %>% 
+directionSpawn <- inputData$spawn %>% 
     filter( Year %in% (max(yrRange)-1):max(yrRange) ) %>% 
     group_by( Region ) %>% 
     mutate( Direction=ifelse(Spawn>lag(Spawn, n=1), "increased", 
@@ -1888,20 +1586,6 @@ finalYrPropAge <- numAgedYear %>%
 # Number of biosamples in current year
 finalYrNBio <- nBio %>%
     filter( Year == max(yrRange) )
-
-
-############################
-##### Production (ARK) #####
-############################
-
-## Source Rob's production analysis
-#source( file="herrSP.r" )
-
-
-##################
-##### Tables #####
-##################
-
 
 
 ##################

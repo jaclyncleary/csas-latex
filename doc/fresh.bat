@@ -12,13 +12,16 @@ del *.txt
 del *.out
 del *.snm
 del *.nav
+del *.upa
 del *.vrb
 del *-concordance.tex
 del *.synctex.gz*
 del res-doc.tex
 del res-doc.pdf
 del Presentation.tex
+del PresentationSmall.tex
 del Presentation.pdf
+del PresentationSmall.pdf
 del HandOut.tex
 del HandOut.pdf
 rmdir out-csv /S /Q

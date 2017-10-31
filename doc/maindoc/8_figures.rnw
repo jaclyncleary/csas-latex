@@ -62,11 +62,11 @@ Missing weight-at-age values (i.e., years where there are no biological samples)
 % Spawn index
 \begin{figure}[H]
 \centering
-\includegraphics[width=\linewidth]{\Sexpr{locOutput}SpawnIndex.png}
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}SpawnIndexMajor.png}
 \caption{Time series of spawn index in thousands of metric tonnes ($\text{t} \times 10^{3}$) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the major stock assessment regions (SARs).
 \qPeriods{}
 \spawnIndex{}}
-\label{figSpawnIndex}
+\label{figSpawnIndexMajor}
 \end{figure}
 
 % Start a loop over stocks for storyboard
@@ -75,7 +75,7 @@ Missing weight-at-age values (i.e., years where there are no biological samples)
 \foreach \y in {\Sexpr{paste(mNames, sep=",")}} {
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.95\linewidth]{\Sexpr{locOutput}\x/Storyboard\y.png}
+\includegraphics[width=0.90\linewidth]{\Sexpr{locOutput}\x/Storyboard\y.png}
 % \ifnum\x=1
 \caption{Model output for \Sexpr{fish.name} in the \x{} major stock assessment region (SAR) for \y.
 Panel (a): model fit to time series of scaled spawn survey data in thousands of metric tonnes ($\text{t} \times 10^{3})$.
@@ -96,7 +96,7 @@ Panels (e \& f): phase plots of spawning biomass production and spawning biomass
 The triangle indicates \Sexpr{max(yrRange)-1}.
 The axis scale at the top of panels (e \& f) is spawning biomass depletion, $\mli{SB}/\mli{SB}_0$.
 Panels (a, d, e, \& f): red lines indicate medians, and red shading indicate \Sexpr{ciLevel*100}\% confidence intervals for the limit reference point (LRP), $0.3\mli{SB}_0$, where $\mli{SB}_0$ is estimated unfished biomass;
-if present, the blue line indicates the 1996 fixed cutoff.
+if present, the blue lines indicates the 1996 fixed cutoffs.
 Scales are different between \Sexpr{PasteNicely(mNames)} (show in separate figures).}
 % \else
 % \caption{This is a short caption}
