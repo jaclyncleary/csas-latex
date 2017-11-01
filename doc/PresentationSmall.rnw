@@ -313,13 +313,10 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \end{columns}
 \end{frame}
 
-
-%\item Uncertainty: median and \Sexpr{ciLevel*100}\% CI
-%\item \color{red} Red: LRP ($\Sexpr{propB0}\mli{SB}_0$)
-%\item \color{blue} Blue: 1996 fixed cut-off
-
 % New subsection: summary
-\subsection{Haida Gwaii}
+
+
+
 
 % New slide
 \begin{frame}[allowframebreaks]{Haida Gwaii: Summary of results}
@@ -333,50 +330,27 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \end{itemize}
 \framebreak
 
-\emph{Stock productivity and recruitment}
-\begin{itemize}
-\item AM2 and AM1 estimated a declining trend in $\mli{SB}$ since 2013. $\mli{SB}$ has remained low in most years since 2000, including 2017.
-\item HG has been in a low productivity low biomass state in most years since 2000, indicating negative stock growth.
-\item Age-2 recruitment in \Sexpr{max(yrRange)} is low, as expected given the current low biomass state.
-\item Although model estimates of natural mortality remain highly uncertain, there is an increasing trend in the median estimates of natural mortality since 2012.
-\end{itemize}
-\framebreak
-
-\emph{Estimated stock status and status relative to biological reference points}
-\begin{itemize}
-\item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 3,963 t (equal to 17\% of $\mli{SB}_0$) and AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 7,336 t (25\% of $\mli{SB}_0$).
-\item Based on a comparison of median estimates, both AM2 and AM1 estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be below the LRP of $0.3\mli{SB}_0$ with greater than a 50\% probability.
-\end{itemize}
-\framebreak
-
-\emph{Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics}
-\begin{itemize}
-\item There is very little estimated age-2 recruitment entering the spawning population in \Sexpr{max(yrRange)} indicating low predicted age-3 recruitment in \Sexpr{nextYr}.
-\item The projected pre-fishery spawning biomass in \Sexpr{nextYr}, $\mli{SB}_{\Sexpr{nextYr}}$, is 4,346 t (AM2; median) or 7,302 t (AM1), similar to $\mli{SB}_{\Sexpr{max(yrRange)}}$ levels, consisting of 34\% (median; AM2) age-3 fish and 38\% age-4 and older fish (median, AM2).
-\item In \Sexpr{nextYr}, there is an 81\% (AM2) and 65\% (AM1) probability the stock will be below the LRP of $0.3\mli{SB}_0$ in the absence of fishing.
-\item Under AM2, the projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ has a 94\% chance of being below the 1996 fixed cutoff (10,700 t).
-\end{itemize}
-\end{frame}
-
 % New slide
-\begin{frame}
+%\begin{frame}{Haida Gwaii}
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \begin{itemize}
-\item Posterior distributions (median and \Sexpr{ciLevel*100}\% CI) for the entire time series, \Sexpr{paste(range(yrRange), collapse=" to ")}:
+\item Posterior distributions (median and \Sexpr{ciLevel*100}\% CI), \Sexpr{paste(range(yrRange), collapse=" to ")}:
 \begin{enumerate}[a]
 \item Model fit to spawn survey index
 \item Instantanteous natural mortality, $M_t$
 \item Age-\Sexpr{ageRec} recruitment
-\item Spawning biomass, $\mli{SB}_t$ including prediction for \Sexpr{nextYr}, $\mli{SB}_{\Sexpr{nextYr}}$, and catch, $C_t$
+\item $\mli{SB}_t$ including $\mli{SB}_{\Sexpr{nextYr}}$ and $C_t$
 \setcounter{storyboard}{\value{enumi}}
 \end{enumerate}
-\item Maximum posterior density (MPD) estimates for the dive survey period, \Sexpr{newSurvYr} to \Sexpr{max(yrRange)-1}:
+\item Maximum posterior density (MPD) estimates for \Sexpr{newSurvYr} to \Sexpr{max(yrRange)-1}:
 \begin{enumerate}[a]
 \setcounter{enumi}{\value{storyboard}}
 \item Spawning biomass production
 \item Spawning biomass production rate
 \end{enumerate}
+\item \color{red} Red: LRP ($\Sexpr{propB0}\mli{SB}_0$)
+\item \color{blue} Blue: 1996 fixed cut-off
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
@@ -384,14 +358,19 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
 \end{column}
 \end{columns}
-\end{frame}
+%\end{frame}
+\framebreak
 
 % New slide
-\begin{frame}
 \begin{columns}
 \begin{column}{0.5\textwidth}
+\emph{Stock productivity and recruitment}
 \begin{itemize}
-\item Placeholder for summary bullets
+%\item Placeholder for summary bullets
+\item Declining trend in $\mli{SB}$ since 2013. $\mli{SB}$ has remained low in most years since 2000, including 2017.
+\item Low productivity low biomass state in most years since 2000, indicating negative stock growth.
+\item Age-2 recruitment in \Sexpr{max(yrRange)} is low. 
+\item Increasing trend in the median estimates of natural mortality since 2012.
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
@@ -399,10 +378,71 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
 \end{column}
 \end{columns}
-\end{frame}
+\framebreak
+%\emph{Stock productivity and recruitment}
+%\begin{itemize}
+%\item AM2 and AM1 estimated a declining trend in $\mli{SB}$ since 2013. $\mli{SB}$ has remained low in most years since 2000, including 2017.
+%\item HG has been in a low productivity low biomass state in most years since 2000, indicating negative stock growth.
+%\item Age-2 recruitment in \Sexpr{max(yrRange)} is low, as expected given the current low biomass state.
+%\item Although model estimates of natural mortality remain highly uncertain, there is an increasing trend in the median estimates of natural mortality since 2012.
+%\end{itemize}
 
 % New slide
-\begin{frame}{Decision table}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\emph{Estimated stock status and status relative to biological reference points}
+\begin{itemize}
+%\item Placeholder for summary bullets
+\item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 3,963 t (equal to 17\% of $\mli{SB}_0$) and AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 7,336 t (25\% of $\mli{SB}_0$).
+\item Based on a comparison of median estimates, both AM2 and AM1 estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be below the LRP of $0.3\mli{SB}_0$ with greater than a 50\% probability.
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
+\end{column}
+\end{columns}
+\framebreak
+
+%\emph{Estimated stock status and status relative to biological reference points}
+%\begin{itemize}
+%\item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 3,963 t (equal to 17\% of $\mli{SB}_0$) and AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 7,336 t (25\% of $\mli{SB}_0$).
+%\item Based on a comparison of median estimates, both AM2 and AM1 estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be below the LRP of $0.3\mli{SB}_0$ with greater than a 50\% probability.
+%\end{itemize}
+%\framebreak
+
+% New slide
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\emph{Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics}
+\begin{itemize}
+%\item Placeholder for summary bullets
+\item Low age-2 recruitment in \Sexpr{max(yrRange)} indicating low age-3 recruitment in \Sexpr{nextYr}.
+\item Projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ is 4,346 t (AM2) or 7,302 t (AM1), consisting of 34\% age-3 and 38\% age-4+ fish.
+\item In \Sexpr{nextYr}, there is an 81\% (AM2) and 65\% (AM1) probability the stock will be below the LRP of $0.3\mli{SB}_0$ in the absence of fishing.
+\item AM2 projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ has a 94\% chance of being below the 1996 fixed cutoff (10,700 t).
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
+\end{column}
+\end{columns}
+\framebreak
+
+%\emph{Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics}
+%\begin{itemize}
+%\item There is very little estimated age-2 recruitment entering the spawning population in \Sexpr{max(yrRange)} indicating low predicted age-3 recruitment in \Sexpr{nextYr}.
+%\item The projected pre-fishery spawning biomass in \Sexpr{nextYr}, $\mli{SB}_{\Sexpr{nextYr}}$, is 4,346 t (AM2; median) or 7,302 t (AM1), similar to $\mli{SB}_{\Sexpr{max(yrRange)}}$ levels, consisting of 34\% (median; AM2) age-3 fish and 38\% age-4 and older fish (median, AM2).
+%\item In \Sexpr{nextYr}, there is an 81\% (AM2) and 65\% (AM1) probability the stock will be below the LRP of $0.3\mli{SB}_0$ in the absence of fishing.
+%\item Under AM2, the projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ has a 94\% chance of being below the 1996 fixed cutoff (10,700 t).
+%\end{itemize}
+\end{frame}
+
+
+
+% New slide
+\begin{frame}{Haida Gwaii: AM2 Decision table}
 \stripes
 <<hg.decision.table, results='asis', echo=FALSE>>=
 make.decision.table(hg.b,
@@ -415,10 +455,10 @@ make.decision.table(hg.b,
 \end{frame}
 
 % New subsection: Prince Rupert District
-\subsection{Prince Rupert District}
+%\subsection{Prince Rupert District}
 
 % New slide
-\begin{frame}[allowframebreaks]{Summary of results}
+\begin{frame}[allowframebreaks]{Prince Rupert District: Summary of results}
 \emph{Data}
 \begin{itemize}
 %\item All herring spawning in Statistical Areas 3 to 5 are assumed to belong to the Prince Rupert District major stock.
@@ -470,7 +510,7 @@ make.decision.table(hg.b,
 \end{frame}
 
 % New slide
-\begin{frame}{Decision table}
+\begin{frame}{Prince Rupert District: AM2 Decision table}
 \stripes
 <<prd.decision.table, results='asis', echo=FALSE>>=
 make.decision.table(pr.b,
@@ -483,10 +523,10 @@ make.decision.table(pr.b,
 \end{frame}
 
 % New subsection: Central Coast
-\subsection{Central Coast}
+%\subsection{Central Coast}
 
 % New slide
-\begin{frame}[allowframebreaks]{Summary of results}
+\begin{frame}[allowframebreaks]{Central Coast: Summary of results}
 \emph{Data}
 \begin{itemize}
 %\item All herring spawning in Kitasu Bay (a portion of Statistical Area 6), Statistical Area 7, and part of Statistical Area 8 (Kwakshua Channel and Fitzhugh Sound) are assumed to be part of the Central Coast major stock.
@@ -535,7 +575,7 @@ make.decision.table(pr.b,
 \end{frame}
 
 % New slide
-\begin{frame}{Decision table}
+\begin{frame}{Central Coast: AM2 Decision table}
 \stripes
 <<cc.decision.table, results='asis', echo=FALSE>>=
 make.decision.table(cc.b,
@@ -551,7 +591,7 @@ make.decision.table(cc.b,
 \subsection{Strait of Georgia}
 
 % New slide
-\begin{frame}[allowframebreaks]{Summary of results}
+\begin{frame}[allowframebreaks]{Strait of Georgia: Summary of results}
 \emph{Data}
 \begin{itemize}
 %\item All herring spawning in Statistical Areas 14 to 19, 28 and 29 (excluding Section 293), and part of 13 (Herring Sections 132 and 135, Deepwater Bay area south) are assumed to belong to the Strait of Georgia major stock.
@@ -600,7 +640,7 @@ make.decision.table(cc.b,
 \end{frame}
 
 % New slide
-\begin{frame}{Decision table}
+\begin{frame}{Strait of Georgia: AM2 Decision table}
 \stripes
 <<sog.decision.table, results='asis', echo=FALSE>>=
 make.decision.table(sog.b,
@@ -613,10 +653,10 @@ make.decision.table(sog.b,
 \end{frame}
 
 % New subsection: West Coast of Vancouver Island
-\subsection{West Coast of Vancouver Island}
+%\subsection{West Coast of Vancouver Island}
 
 % New slide
-\begin{frame}[allowframebreaks]{Summary of results}
+\begin{frame}[allowframebreaks]{West Coast of Vancouver Island: Summary of results}
 \emph{Data}
 \begin{itemize}
 %\item All herring spawning in Statistical Areas 23 to 25 are assumed to belong to the West Coast of Vancouver Island herring stock.
@@ -666,7 +706,7 @@ make.decision.table(sog.b,
 \end{frame}
 
 % New slide
-\begin{frame}{Decision table}
+\begin{frame}{West Coast of Vancouver Island: AM2 Decision table}
 \stripes
 <<wcvi.decision.table, results='asis', echo=FALSE>>=
 make.decision.table(wcvi.b,
