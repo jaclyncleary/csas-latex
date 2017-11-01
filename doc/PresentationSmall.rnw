@@ -88,7 +88,6 @@
 
 % Let it begin
 \begin{document}
-\SweaveOpts{concordance=TRUE}
 
 %% This is the initial code chunk where you load your R workspace.
 %% This gives access to all objects in the RData file for the entirety
@@ -292,7 +291,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \begin{columns}
 \begin{column}{0.75\textwidth}
 \begin{itemize}
-Preliminary results presented for HG, PRD, CC, SoG, and WCVI
+\item Preliminary results presented for \Sexpr{PasteNicely(allRegions$major)}
 \item DRAFT SAR circulated to CSAS participants for 2-week review period
 \item SAR advice is considered preliminary and is subject to change until the SAR is approved
 \item Production analysis:
@@ -301,10 +300,7 @@ Preliminary results presented for HG, PRD, CC, SoG, and WCVI
 \item $\mli{P}_t = \mli{SB}_{t+1} - \mli{SB}_t + \mli{C}_{t+1}$
 \item Catch, $C$ does not include SOK
 \end{itemize}
-\item \citet{kronlund2017} recommend $\text{LRP}=\Sexpr{propB0}\mli{SB}_0$
-\item Uncertainty: median and \Sexpr{ciLevel*100}\% CI
-\item \color{red} Red: LRP ($\Sexpr{propB0}\mli{SB}_0$)
-\item \color{blue} Blue: 1996 fixed cut-off
+\item CSAS 2017 recommended $\text{LRP}=\Sexpr{propB0}\mli{SB}_0$
 \end{itemize}
 \end{column}
 \begin{column}{0.25\textwidth}
@@ -317,11 +313,16 @@ Preliminary results presented for HG, PRD, CC, SoG, and WCVI
 \end{columns}
 \end{frame}
 
+
+%\item Uncertainty: median and \Sexpr{ciLevel*100}\% CI
+%\item \color{red} Red: LRP ($\Sexpr{propB0}\mli{SB}_0$)
+%\item \color{blue} Blue: 1996 fixed cut-off
+
 % New subsection: summary
 \subsection{Haida Gwaii}
 
 % New slide
-\begin{frame}[allowframebreaks]{Summary of results}
+\begin{frame}[allowframebreaks]{Haida Gwaii: Summary of results}
 \emph{Data}
 \begin{itemize}
 %\item All herring spawning from Cumshewa Inlet in the north to Louscoone Inlet in the south are assumed to be part of the Haida Gwaii major stock.
