@@ -281,17 +281,16 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 % New slide
 \begin{frame}{Stock assessment models}
 \begin{itemize}
-\item AM1 denoting the case where surface (1951 to 1987) and dive (1988 to 2017) survey catchability
-parameters ($q_1$ and $q_2$) are estimated using a prior distribution.
-\item AM2 denoting the case where the surface survey catchability ($q_1$) is estimated and the dive survey catchability is fixed at ($q_2$) = 1.
-\item Explanation: why we only show results for AM2?
+\item AM1: surface (1951 to 1987) and dive (1988 to 2017) survey catchability parameters ($q_1$ and $q_2$) are estimated using a prior distribution.
+\item AM2: surface survey catchability ($q_1$) is estimated and the dive survey catchability is fixed at ($q_2$) = 1.
+\item SAR includes estimates of current SB and one-year projections for AM2 and AM1 due to concerns around the choice of q prior and interactions with HCR. Analytical concerns with AM2 and AM1 parameterizations of q are provided in the 2016 SR (provided by the HTWG).
+\item Merits of AM2 and AM1 approaches to parameterizing q were examined in part through sensitivity analyses, however sensitivity analyses alone are insufficient for understanding the complex interplay between q and management parameters, and resolution between AM2 and AM1 parameterization of q will require simulation-evaluation.
+\item AM2 results presented here
 \end{itemize}
 \end{frame}
 
 % New slide
 \begin{frame}{Overview of results}
-\begin{columns}
-\begin{column}{0.75\textwidth}
 \begin{itemize}
 \item Preliminary results presented for \Sexpr{PasteNicely(allRegions$major)}
 \item DRAFT SAR circulated to CSAS participants for 2-week review period
@@ -304,15 +303,6 @@ parameters ($q_1$ and $q_2$) are estimated using a prior distribution.
 \end{itemize}
 \item CSAS 2017 recommended $\text{LRP}=\Sexpr{propB0}\mli{SB}_0$
 \end{itemize}
-\end{column}
-\begin{column}{0.25\textwidth}
-\stripes
-\begin{table}
-\caption{1996 fixed cut-offs in metric tonnes (t)}
-\inputsp{\Sexpr{locOutput}Cutoffs.tex}
-\end{table}
-\end{column}
-\end{columns}
 \end{frame}
 
 % New subsection: summary
@@ -903,16 +893,16 @@ make.decision.table(wcvi.b,
 \subsection{Prediction for \Sexpr{nextYr}}
 
 % New slide
-\begin{frame}
+\begin{frame}{Projected pre-fishery spawning biomass in 2018}
 \begin{columns}
 \begin{column}{0.5\textwidth}
-\begin{itemize}
-\item Predicted spawning biomass in \Sexpr{nextYr}, $\mli{SB}_{\Sexpr{nextYr}}$ in thousands of metric tonnes ($\text{t} \times 10^{3}$) for \Sexpr{fish.name} in the major stock assessment regions (SARs)
-\end{itemize}
+\centering
+AM1 Matt I can not find the figure for this...
+%\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}/SSB\Sexpr{nextYr}AM1.png}
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}/SSB\Sexpr{nextYr}AM2.png}
+\includegraphics[width=7.1cm,height=6.8cm]{\Sexpr{locOutput}/SSB\Sexpr{nextYr}AM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -935,6 +925,12 @@ make.decision.table(wcvi.b,
 \end{column}
 \end{columns}
 \end{frame}
+
+%New slide
+\begin{frame}{Reference points: LRP and USR}
+Placeholder
+\end{frame}
+
 
 % New subsection: references
 \subsection*{References}
