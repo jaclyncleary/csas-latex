@@ -355,7 +355,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}HG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -375,7 +375,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}HG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \framebreak
@@ -390,7 +390,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 % New slide
 \begin{columns}
 \begin{column}{0.5\textwidth}
-\emph{Estimated stock status and status relative to biological reference points}
+\emph{Stock status}
 \begin{itemize}
 %\item Placeholder for summary bullets
 \item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 3,963 t (equal to 17\% of $\mli{SB}_0$) and AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 7,336 t (25\% of $\mli{SB}_0$).
@@ -399,7 +399,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}HG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \framebreak
@@ -414,7 +414,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 % New slide
 \begin{columns}
 \begin{column}{0.5\textwidth}
-\emph{Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics}
+\emph{Projected spawning biomass in \Sexpr{nextYr}}
 \begin{itemize}
 %\item Placeholder for summary bullets
 %\item Low age-2 recruitment in \Sexpr{max(yrRange)} indicating low age-3 recruitment in \Sexpr{nextYr}.
@@ -426,7 +426,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}HG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \framebreak
@@ -439,8 +439,6 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 %\item Under AM2, the projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ has a 94\% chance of being below the 1996 fixed cutoff (10,700 t).
 %\end{itemize}
 \end{frame}
-
-
 
 % New slide
 \begin{frame}{Haida Gwaii: AM2 Decision table}
@@ -486,7 +484,7 @@ make.decision.table(hg.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -506,7 +504,7 @@ make.decision.table(hg.b,
 
 \begin{columns}
 \begin{column}{0.5\textwidth}
-\emph{Estimated stock status and status relative to biological reference points}
+\emph{Stock status}
 \begin{itemize}
 \item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 21,738 t (equal to 34\% of $\mli{SB}_0$). AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 22,821 t (36\% of $\mli{SB}_0$).
 \item Based on a comparison of median estimates, both AM2 and AM1 estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be above the LRP of $0.3\mli{SB}_0$ with greater than a 50\% probability and less than a 95\% probability.
@@ -515,7 +513,7 @@ make.decision.table(hg.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -530,7 +528,7 @@ make.decision.table(hg.b,
 
 \begin{columns}
 \begin{column}{0.5\textwidth}
-\emph{Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics}
+\emph{Projected spawning biomass in \Sexpr{nextYr}}
 \begin{itemize}
 \item Continued stable trend in SB, with projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ of 23,924 t (AM2; median) and 24,903 t (AM1), consisting of 23\% age-3 fish and 68\% age-4 and older fish.
 \item In \Sexpr{nextYr}, there is a 27\% (AM2) and 26\% (AM1) probability the stock will be below the LRP of $0.3\mli{SB}_0$ in the absence of fishing.
@@ -540,7 +538,7 @@ make.decision.table(hg.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -598,7 +596,7 @@ make.decision.table(pr.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}CC/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -618,7 +616,7 @@ make.decision.table(pr.b,
 %\begin{frame}
 \begin{columns}
 \begin{column}{0.5\textwidth}
-\emph{Estimated stock status and status relative to biological reference points}
+\emph{Stock status}
 \begin{itemize}
 \item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 30,474 t (equal to 55\% of $\mli{SB}_0$). AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 49,624 t (80\% of $\mli{SB}_0$).
 \item Based on a comparison of median estimates, both AM2 and AM1 estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be above the LRP of $0.3\mli{SB}_0$ with greater than a 95\% probability.
@@ -626,7 +624,7 @@ make.decision.table(pr.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}CC/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -642,7 +640,7 @@ make.decision.table(pr.b,
 %\begin{frame}
 \begin{columns}
 \begin{column}{0.5\textwidth}
-\emph{Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics}
+\emph{Projected spawning biomass in \Sexpr{nextYr}}
 \begin{itemize}
 \item The projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ is 32,458 t (median; AM2) or 50,259 t (AM1), similar to $\mli{SB}_{\Sexpr{max(yrRange)}}$ levels, consisting of 25\% (median; AM2) age-3 fish and 66\% age-4 and older fish (AM2).
 \item In \Sexpr{nextYr}, there is a 3\% (AM2; median) and 1\% (AM1) probability the stock will be below the LRP of $0.3\mli{SB}_0$ in the absence of fishing.
@@ -651,7 +649,7 @@ make.decision.table(pr.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}CC/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -699,14 +697,14 @@ make.decision.table(cc.b,
 \emph{Stock productivity and recruitment}
 \begin{itemize}
 \item Increasing trend in SB since 2010.
-\item The spawning biomass production for SOG has been positive since 2008, indicating stock growth.
-\item Both models estimate an above-average number of age-2 recruits in \Sexpr{max(yrRange)} and age-3 and -4 fish comprise the highest estimated proportion of fish, which is consistent with the previous 5 years.
-\item AM2 estimates a decreasing trend in the median estimates of natural mortality since 2008, and AM1 estimates an increasing trend in the median estimates of natural mortality since 2015.
+\item The SB production for SOG has been positive since 2008, indicating stock growth.
+\item An above-average number of age-2 recruits estimated in \Sexpr{max(yrRange)} and age-3/-4 fish comprise the highest proportion of fish, consistent with last 5 years.
+\item AM2 estimated a decreasing trend in the median estimates of natural mortality since 2008, and AM1 estimated an increasing trend since 2015.
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -724,7 +722,7 @@ make.decision.table(cc.b,
 %\begin{frame}
 \begin{columns}
 \begin{column}{0.5\textwidth}
-\emph{Estimated stock status and status relative to biological reference points}
+\emph{Stock status}
 \begin{itemize}
 \item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 114,626 t (equal to 81\% of $\mli{SB}_0$). AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 175,962 t (108\% of $\mli{SB}_0$).
 \item Based on a comparison of median estimates, both AM2 and AM1 estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be above the LRP of $0.3\mli{SB}_0$ by greater than 95\% probability.
@@ -732,7 +730,7 @@ make.decision.table(cc.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -749,7 +747,7 @@ make.decision.table(cc.b,
 %\begin{frame}
 \begin{columns}
 \begin{column}{0.5\textwidth}
-\emph{Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics}
+\emph{Projected spawning biomass in \Sexpr{nextYr}}
 \begin{itemize}
 \item The projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ is 125,285 t (median; AM2) or 169,910 t (AM1), declining from \Sexpr{max(yrRange)}, consisting of 25\% (median; AM2) age-3 fish and 67\% age-4 and older fish (AM2).
 \item In \Sexpr{nextYr}, under both AM2 and AM1, there is a 0\% probability the stock will be below the LRP of $0.3\mli{SB}_0$ in the absence of fishing.
@@ -758,7 +756,7 @@ make.decision.table(cc.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -814,7 +812,7 @@ make.decision.table(sog.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -840,7 +838,7 @@ make.decision.table(sog.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -867,7 +865,7 @@ make.decision.table(sog.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -912,7 +910,7 @@ make.decision.table(wcvi.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}/SSB\Sexpr{nextYr}AM2.png}
+\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}/SSB\Sexpr{nextYr}AM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -931,7 +929,7 @@ make.decision.table(wcvi.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HarvestRateAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}HarvestRateAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
