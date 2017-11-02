@@ -417,7 +417,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \emph{Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics}
 \begin{itemize}
 %\item Placeholder for summary bullets
-\item Low age-2 recruitment in \Sexpr{max(yrRange)} indicating low age-3 recruitment in \Sexpr{nextYr}.
+%\item Low age-2 recruitment in \Sexpr{max(yrRange)} indicating low age-3 recruitment in \Sexpr{nextYr}.
 \item Projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ is 4,346 t (AM2) or 7,302 t (AM1).
 %, consisting of 34\% age-3 and 38\% age-4+ fish.
 \item In \Sexpr{nextYr}, there is an 81\% (AM2) and 65\% (AM1) probability the stock will be below the LRP of $0.3\mli{SB}_0$ in the absence of fishing.
@@ -528,13 +528,32 @@ make.decision.table(hg.b,
 %\end{itemize}
 %\framebreak
 
+\begin{columns}
+\begin{column}{0.5\textwidth}
 \emph{Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics}
 \begin{itemize}
-\item Both AM2 and AM1 predict a continued stable trend in spawning biomass, with projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ of 23,924 t (AM2; median) and 24,903 t (AM1), consisting of 23\% (median, AM2) age-3 fish and 68\% age-4 and older fish (AM2).
+\item Continued stable trend in SB, with projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ of 23,924 t (AM2; median) and 24,903 t (AM1), consisting of 23\% age-3 fish and 68\% age-4 and older fish.
 \item In \Sexpr{nextYr}, there is a 27\% (AM2) and 26\% (AM1) probability the stock will be below the LRP of $0.3\mli{SB}_0$ in the absence of fishing.
 \item Under AM2, the projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ has a 3\% chance of being below the 1996 fixed cutoff (12,100 t).
+
 \end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
+\end{column}
+\end{columns}
 \end{frame}
+
+
+
+%\emph{Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics}
+%\begin{itemize}
+%\item Both AM2 and AM1 predict a continued stable trend in spawning biomass, with projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ of 23,924 t (AM2; median) and 24,903 t (AM1), consisting of 23\% (median, AM2) age-3 fish and 68\% age-4 and older fish (AM2).
+%\item In \Sexpr{nextYr}, there is a 27\% (AM2) and 26\% (AM1) probability the stock will be below the LRP of $0.3\mli{SB}_0$ in the absence of fishing.
+%\item Under AM2, the projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ has a 3\% chance of being below the 1996 fixed cutoff (12,100 t).
+%\end{itemize}
+%\end{frame}
 
 
 
@@ -564,36 +583,17 @@ make.decision.table(pr.b,
 \end{itemize}
 \framebreak
 
+
+% New slide
+%\begin{frame}
+\begin{columns}
+\begin{column}{0.5\textwidth}
 \emph{Stock productivity and recruitment}
 \begin{itemize}
 \item AM2 and AM1 both estimated an increasing trend in spawning stock biomass since 2012, including 2017.
-\item From 2012 onward the spawning biomass production for CC has been positive, indicating stock growth.
+\item Positive SB production since 2012, indicating stock growth.
 \item The \Sexpr{max(yrRange)} age-2 recruits were estimated to be average-to-below-average. Age-5 fish were estimated to comprise the highest proportion of fish, arising from the 2012 cohort.
-\item There has been a decreasing trend in the median estimates of natural mortality since 2008.
-\end{itemize}
-\framebreak
-
-\emph{Estimated stock status and status relative to biological reference points}
-\begin{itemize}
-\item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 30,474 t (equal to 55\% of $\mli{SB}_0$). AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 49,624 t (80\% of $\mli{SB}_0$).
-\item Based on a comparison of median estimates, both AM2 and AM1 estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be above the LRP of $0.3\mli{SB}_0$ with greater than a 95\% probability.
-\end{itemize}
-\framebreak
-
-\emph{Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics}
-\begin{itemize}
-\item The projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ is 32,458 t (median; AM2) or 50,259 t (AM1), similar to $\mli{SB}_{\Sexpr{max(yrRange)}}$ levels, consisting of 25\% (median; AM2) age-3 fish and 66\% age-4 and older fish (AM2).
-\item In \Sexpr{nextYr}, there is a 3\% (AM2; median) and 1\% (AM1) probability the stock will be below the LRP of $0.3\mli{SB}_0$ in the absence of fishing.
-\item Under AM2, the projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ has a 5\% chance of being below the 1996 fixed cutoff (17,600 t).
-\end{itemize}
-\end{frame}
-
-% New slide
-\begin{frame}
-\begin{columns}
-\begin{column}{0.5\textwidth}
-\begin{itemize}
-\item Placeholder for summary bullets
+\item Decreasing trend in the median estimates of natural mortality since 2008.
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
@@ -601,7 +601,70 @@ make.decision.table(pr.b,
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
 \end{column}
 \end{columns}
+%\end{frame}
+\framebreak
+
+%\emph{Stock productivity and recruitment}
+%\begin{itemize}
+%\item AM2 and AM1 both estimated an increasing trend in spawning stock biomass since 2012, including 2017.
+%\item From 2012 onward the spawning biomass production for CC has been positive, indicating stock growth.
+%\item The \Sexpr{max(yrRange)} age-2 recruits were estimated to be average-to-below-average. Age-5 fish were estimated to comprise the highest proportion of fish, arising from the 2012 cohort.
+%\item There has been a decreasing trend in the median estimates of natural mortality since 2008.
+%\end{itemize}
+
+
+
+% New slide
+%\begin{frame}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\emph{Estimated stock status and status relative to biological reference points}
+\begin{itemize}
+\item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 30,474 t (equal to 55\% of $\mli{SB}_0$). AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 49,624 t (80\% of $\mli{SB}_0$).
+\item Based on a comparison of median estimates, both AM2 and AM1 estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be above the LRP of $0.3\mli{SB}_0$ with greater than a 95\% probability.
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
+\end{column}
+\end{columns}
+%\end{frame}
+
+%\emph{Estimated stock status and status relative to biological reference points}
+%\begin{itemize}
+%\item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 30,474 t (equal to 55\% of $\mli{SB}_0$). AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 49,624 t (80\% of $\mli{SB}_0$).
+%\item Based on a comparison of median estimates, both AM2 and AM1 estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be above the LRP of $0.3\mli{SB}_0$ with greater than a 95\% probability.
+%\end{itemize}
+\framebreak
+
+% New slide
+%\begin{frame}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\emph{Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics}
+\begin{itemize}
+\item The projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ is 32,458 t (median; AM2) or 50,259 t (AM1), similar to $\mli{SB}_{\Sexpr{max(yrRange)}}$ levels, consisting of 25\% (median; AM2) age-3 fish and 66\% age-4 and older fish (AM2).
+\item In \Sexpr{nextYr}, there is a 3\% (AM2; median) and 1\% (AM1) probability the stock will be below the LRP of $0.3\mli{SB}_0$ in the absence of fishing.
+\item Under AM2, the projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ has a 5\% chance of being below the 1996 fixed cutoff (17,600 t).
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
+\end{column}
+\end{columns}
+%\end{frame}
+
+%\emph{Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics}
+%\begin{itemize}
+%\item The projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ is 32,458 t (median; AM2) or 50,259 t (AM1), similar to $\mli{SB}_{\Sexpr{max(yrRange)}}$ levels, consisting of 25\% (median; AM2) age-3 fish and 66\% age-4 and older fish (AM2).
+%\item In \Sexpr{nextYr}, there is a 3\% (AM2; median) and 1\% (AM1) probability the stock will be below the LRP of $0.3\mli{SB}_0$ in the absence of fishing.
+%\item Under AM2, the projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ has a 5\% chance of being below the 1996 fixed cutoff (17,600 t).
+%\end{itemize}
 \end{frame}
+
+
 
 % New slide
 \begin{frame}{Central Coast: AM2 Decision table}
@@ -617,7 +680,7 @@ make.decision.table(cc.b,
 \end{frame}
 
 % New subsection: Strait of Georgia
-\subsection{Strait of Georgia}
+%\subsection{Strait of Georgia}
 
 % New slide
 \begin{frame}[allowframebreaks]{Strait of Georgia: Summary of results}
@@ -629,36 +692,16 @@ make.decision.table(cc.b,
 \end{itemize}
 \framebreak
 
+% New slide
+%\begin{frame}
+\begin{columns}
+\begin{column}{0.5\textwidth}
 \emph{Stock productivity and recruitment}
 \begin{itemize}
-\item Both AM2 and AM1 estimate an increasing trend in spawning stock biomass since 2010.
+\item Increasing trend in SB since 2010.
 \item The spawning biomass production for SOG has been positive since 2008, indicating stock growth.
 \item Both models estimate an above-average number of age-2 recruits in \Sexpr{max(yrRange)} and age-3 and -4 fish comprise the highest estimated proportion of fish, which is consistent with the previous 5 years.
 \item AM2 estimates a decreasing trend in the median estimates of natural mortality since 2008, and AM1 estimates an increasing trend in the median estimates of natural mortality since 2015.
-\end{itemize}
-\framebreak
-
-\emph{Estimated stock status and status relative to biological reference points}
-\begin{itemize}
-\item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 114,626 t (equal to 81\% of $\mli{SB}_0$). AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 175,962 t (108\% of $\mli{SB}_0$).
-\item Based on a comparison of median estimates, both AM2 and AM1 estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be above the LRP of $0.3\mli{SB}_0$ by greater than 95\% probability.
-\end{itemize}
-\framebreak
-
-\emph{Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics}
-\begin{itemize}
-\item The projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ is 125,285 t (median; AM2) or 169,910 t (AM1), declining from \Sexpr{max(yrRange)}, consisting of 25\% (median; AM2) age-3 fish and 67\% age-4 and older fish (AM2).
-\item In \Sexpr{nextYr}, under both AM2 and AM1, there is a 0\% probability the stock will be below the LRP of $0.3\mli{SB}_0$ in the absence of fishing.
-\item Under AM2, the projected pre-fishery spawning biomass in \Sexpr{nextYr}, $\mli{SB}_{\Sexpr{nextYr}}$ has a 0\% chance of being below the 1996 fixed cutoff (21,200 t).
-\end{itemize}
-\end{frame}
-
-% New slide
-\begin{frame}
-\begin{columns}
-\begin{column}{0.5\textwidth}
-\begin{itemize}
-\item Placeholder for summary bullets
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
@@ -666,6 +709,69 @@ make.decision.table(cc.b,
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
 \end{column}
 \end{columns}
+%\end{frame}
+\framebreak
+
+%\emph{Stock productivity and recruitment}
+%\begin{itemize}
+%\item Both AM2 and AM1 estimate an increasing trend in spawning stock biomass since 2010.
+%\item The spawning biomass production for SOG has been positive since 2008, indicating stock growth.
+%\item Both models estimate an above-average number of age-2 recruits in \Sexpr{max(yrRange)} and age-3 and -4 fish comprise the highest estimated proportion of fish, which is consistent with the previous 5 years.
+%\item AM2 estimates a decreasing trend in the median estimates of natural mortality since 2008, and AM1 estimates an increasing trend in the median estimates of natural mortality since 2015.
+%\end{itemize}
+
+% New slide
+%\begin{frame}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\emph{Estimated stock status and status relative to biological reference points}
+\begin{itemize}
+\item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 114,626 t (equal to 81\% of $\mli{SB}_0$). AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 175,962 t (108\% of $\mli{SB}_0$).
+\item Based on a comparison of median estimates, both AM2 and AM1 estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be above the LRP of $0.3\mli{SB}_0$ by greater than 95\% probability.
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
+\end{column}
+\end{columns}
+%\end{frame}
+\framebreak
+
+%\emph{Estimated stock status and status relative to biological reference points}
+%\begin{itemize}
+%\item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 114,626 t (equal to 81\% of $\mli{SB}_0%$). AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 175,962 t (108\% of $\mli{SB}_0$).
+%\item Based on a comparison of median estimates, both AM2 and AM1 estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be above the LRP of $0.3\mli{SB}_0$ by greater than 95\% probability.
+%\end{itemize}
+%\framebreak
+
+% New slide
+%\begin{frame}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\emph{Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics}
+\begin{itemize}
+\item The projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ is 125,285 t (median; AM2) or 169,910 t (AM1), declining from \Sexpr{max(yrRange)}, consisting of 25\% (median; AM2) age-3 fish and 67\% age-4 and older fish (AM2).
+\item In \Sexpr{nextYr}, under both AM2 and AM1, there is a 0\% probability the stock will be below the LRP of $0.3\mli{SB}_0$ in the absence of fishing.
+\item Under AM2, the projected pre-fishery spawning biomass in \Sexpr{nextYr}, $\mli{SB}_{\Sexpr{nextYr}}$ has a 0\% chance of being below the 1996 fixed cutoff (21,200 t).
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
+\end{column}
+\end{columns}
+%\end{frame}
+
+
+%\emph{Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics}
+%\begin{itemize}
+%\item The projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ is 125,285 t (median; AM2) or 169,910 t (AM1), declining from \Sexpr{max(yrRange)}, consisting of 25\% (median; AM2) age-3 fish and 67\% age-4 and older fish (AM2).
+%\item In \Sexpr{nextYr}, under both AM2 and AM1, there is a 0\% probability the stock will be below the LRP of $0.3\mli{SB}_0$ in the absence of fishing.
+%\item Under AM2, the projected pre-fishery spawning biomass in \Sexpr{nextYr}, $\mli{SB}_{\Sexpr{nextYr}}$ has a 0\% chance of being below the 1996 fixed cutoff (21,200 t).
+%\end{itemize}
+%\end{frame}
+
 \end{frame}
 
 % New slide
@@ -694,6 +800,10 @@ make.decision.table(sog.b,
 \end{itemize}
 \framebreak
 
+% New slide
+%\begin{frame}
+\begin{columns}
+\begin{column}{0.5\textwidth}
 \emph{Stock productivity and recruitment}
 \begin{itemize}
 \item AM2 and AM1 base case assessments estimate a decline in spawning stock biomass from 2016 to 2017.
@@ -701,30 +811,31 @@ make.decision.table(sog.b,
 \item The number of age-2 recruits estimated is below-average and there was a higher proportion of age-4 fish relative to age-2 and -3 fish. 
 \item There has been an increasing trend in the median estimates of natural mortality since 2014.
 \end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
+\end{column}
+\end{columns}
+%\end{frame}
 \framebreak
 
+%\emph{Stock productivity and recruitment}
+%\begin{itemize}
+%\item AM2 and AM1 base case assessments estimate a decline in spawning stock biomass from 2016 to 2017.
+%\item In most years since 2005, including the most recent estimate for 2016, WCVI has been in a prolonged low productivity low biomass state, indicating negative stock growth. At these low biomass levels, WCVI is characterized by seemingly abrupt differences in year-to-year survey biomass.
+%\item The number of age-2 recruits estimated is below-average and there was a higher proportion of age-4 fish relative to age-2 and -3 fish. 
+%\item There has been an increasing trend in the median estimates of natural mortality since 2014.
+%\end{itemize}
+
+% New slide
+%\begin{frame}
+\begin{columns}
+\begin{column}{0.5\textwidth}
 \emph{Estimated stock status and status relative to biological reference points}
 \begin{itemize}
 \item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 17,742 t (equal to 37\% of $\mli{SB}_0$). AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 32,805 t (56\% of $\mli{SB}_0$). 
 \item Based on a comparison of median estimates, both AM2 and AM1 estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be above the LRP of $0.3\mli{SB}_0$, by greater than 50\% probability but less than 95\% probability.
-\end{itemize}
-\framebreak
-
-\emph{Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics}
-\begin{itemize}
-\item There is very little estimated age-2 recruitment entering the spawning population in \Sexpr{max(yrRange)} indicating low predicted age-3 recruitment in \Sexpr{nextYr}.
-\item The projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ is 20,003 t (AM2; median) or 34,886 t (AM1), similar to $\mli{SB}_{\Sexpr{max(yrRange)}}$ levels, consisting of 32\% (median; AM2) age-3 fish and 48\% age-4 and older fish (AM2).
-\item In \Sexpr{nextYr}, there is a 20\% (AM2) and 5\% (AM1) probability the stock will be below the LRP of $0.3\mli{SB}_0$ in the absence of fishing.
-\item Under AM2, the projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ has a 45\% chance of being below the 1996 fixed cutoff (18,800 t).
-\end{itemize}
-\end{frame}
-
-% New slide
-\begin{frame}
-\begin{columns}
-\begin{column}{0.5\textwidth}
-\begin{itemize}
-\item Placeholder for summary bullets
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
@@ -732,7 +843,45 @@ make.decision.table(sog.b,
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
 \end{column}
 \end{columns}
+%\end{frame}
+\framebreak
+
+%\emph{Estimated stock status and status relative to biological reference points}
+%\begin{itemize}
+%\item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 17,742 t (equal to 37\% of $\mli{SB}_0$). AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 32,805 t (56\% of $\mli{SB}_0$). 
+%\item Based on a comparison of median estimates, both AM2 and AM1 estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be above the LRP of $0.3\mli{SB}_0$, by greater than 50\% probability but less than 95\% probability.
+%\end{itemize}
+%\framebreak
+
+% New slide
+%\begin{frame}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+\emph{Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics}
+\begin{itemize}
+\item There is very little estimated age-2 recruitment entering the spawning population in \Sexpr{max(yrRange)} indicating low predicted age-3 recruitment in \Sexpr{nextYr}.
+\item The projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ is 20,003 t (AM2; median) or 34,886 t (AM1), similar to $\mli{SB}_{\Sexpr{max(yrRange)}}$ levels, consisting of 32\% (median; AM2) age-3 fish and 48\% age-4 and older fish (AM2).
+\item In \Sexpr{nextYr}, there is a 20\% (AM2) and 5\% (AM1) probability the stock will be below the LRP of $0.3\mli{SB}_0$ in the absence of fishing.
+\item Under AM2, the projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ has a 45\% chance of being below the 1996 fixed cutoff (18,800 t).
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
+\end{column}
+\end{columns}
+%\end{frame}
+%\framebreak
+
+%\emph{Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics}
+%\begin{itemize}
+%\item There is very little estimated age-2 recruitment entering the spawning population in \Sexpr{max(yrRange)} indicating low predicted age-3 recruitment in \Sexpr{nextYr}.
+%\item The projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ is 20,003 t (AM2; median) or 34,886 t (AM1), similar to $\mli{SB}_{\Sexpr{max(yrRange)}}$ levels, consisting of 32\% (median; AM2) age-3 fish and 48\% age-4 and older fish (AM2).
+%\item In \Sexpr{nextYr}, there is a 20\% (AM2) and 5\% (AM1) probability the stock will be below the LRP of $0.3\mli{SB}_0$ in the absence of fishing.
+%\item Under AM2, the projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ has a 45\% chance of being below the 1996 fixed cutoff (18,800 t).
+%\end{itemize}
 \end{frame}
+
 
 % New slide
 \begin{frame}{West Coast of Vancouver Island: AM2 Decision table}
