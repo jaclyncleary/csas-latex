@@ -894,17 +894,17 @@ make.decision.table(wcvi.b,
 
 % New slide
 \begin{frame}{Projected pre-fishery spawning biomass in 2018}
-\begin{columns}
-\begin{column}{0.5\textwidth}
+%\begin{columns}
+%\begin{column}{0.5\textwidth}
 \centering
-AM1 Matt I can not find the figure for this...
-%\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}/SSB\Sexpr{nextYr}AM1.png}
-\end{column}
-\begin{column}{0.5\textwidth}
-\centering
-\includegraphics[width=7.1cm,height=6.8cm]{\Sexpr{locOutput}/SSB\Sexpr{nextYr}AM2.png}
-\end{column}
-\end{columns}
+%AM1 Matt I can not find the figure for this...I just added this into the figures folder for now
+\includegraphics[width=8.5cm,height=6.8cm]{maindoc/figures/SSB2018.png}
+%\end{column}
+%\begin{column}{0.5\textwidth}
+%\centering
+%\includegraphics[width=7.1cm,height=6.8cm]{\Sexpr{locOutput}/SSB\Sexpr{nextYr}AM2.png}
+%\end{column}
+%\end{columns}
 \end{frame}
 
 % New subsection: harvest
@@ -928,9 +928,83 @@ AM1 Matt I can not find the figure for this...
 
 %New slide
 \begin{frame}{Reference points: LRP and USR}
-Placeholder
+\begin{columns}
+\begin{column}{0.5\textwidth}
+DFO's decision-making framework (DMF) incorporating the precautionary approach:
+\begin{itemize}
+\item Reference points should be established using as long a time series as possible:
+\begin{description}
+\item[LRP] Should be positioned before a state of serious harm occurs, and must be avoided with high probability
+\item[USR] The boundary between the Cautious and Healthy zones
+\end{description}
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA.png}
+\end{column}
+\end{columns}
 \end{frame}
 
+% New slide
+\begin{frame}{Reference points: LRP and USR}
+\begin{columns}
+\begin{column}{0.5\linewidth}
+\begin{itemize}
+\item DMF defines an example where operational control points (in the HCR) are coupled with biological reference points
+\item DMF and \citet{kronlund2017} describe the LRP as a state to be avoided with high probability, emphasizing the need to decouple biological reference points and operational control points
+\item Need to differentiate between control points and reference points
+\end{itemize}
+\end{column}
+\begin{column}{0.5\linewidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA2.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+% New slide
+\begin{frame}{Reference points: LRP and USR}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+LRP
+\begin{itemize} 
+\item Steps to incorporate LRP of $0.3\mli{SB}_0$ into advice \citep{kronlund2017}
+\end{itemize} 
+USR
+\begin{itemize} 
+\item Proposed candidate USRs:
+\begin{enumerate}
+\item Long-term average spawning biomass, $\mli{SB}_\text{avg}$
+\item Long-term average spawning biomass during a productive period, $\mli{SB}_\text{avg-prod}$
+\item $2 \times \text{LRP}$ (i.e., $0.6\mli{SB}_0$) 
+\item $\mli{SB}_0$
+\end{enumerate}
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA2.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+% New slide
+\begin{frame}{Reference points: LRP and USR}
+\begin{columns}
+\begin{column}{0.5\textwidth}
+MSY-based reference points
+\begin{itemize}
+\item \citet{kronlund2017} found MSY statistics were not plausible for \Sexpr{fish.name} in BC
+\item Analysis here supports continued non-use of MSY-based reference points based on estimates confounding with maturity at age and time-varying $M$
+\end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{maindoc/figures/DFOPA2.png}
+\end{column}
+\end{columns}
+\end{frame}
 
 % New subsection: references
 \subsection*{References}
