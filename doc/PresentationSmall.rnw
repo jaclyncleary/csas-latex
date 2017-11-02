@@ -315,7 +315,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 
 % New subsection: summary
 
-
+%\subsection{Haida Gwaii: Summary of results}
 
 
 % New slide
@@ -418,7 +418,8 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \begin{itemize}
 %\item Placeholder for summary bullets
 \item Low age-2 recruitment in \Sexpr{max(yrRange)} indicating low age-3 recruitment in \Sexpr{nextYr}.
-\item Projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ is 4,346 t (AM2) or 7,302 t (AM1), consisting of 34\% age-3 and 38\% age-4+ fish.
+\item Projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ is 4,346 t (AM2) or 7,302 t (AM1).
+%, consisting of 34\% age-3 and 38\% age-4+ fish.
 \item In \Sexpr{nextYr}, there is an 81\% (AM2) and 65\% (AM1) probability the stock will be below the LRP of $0.3\mli{SB}_0$ in the absence of fishing.
 \item AM2 projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ has a 94\% chance of being below the 1996 fixed cutoff (10,700 t).
 \end{itemize}
@@ -469,22 +470,63 @@ make.decision.table(hg.b,
 \end{itemize}
 \framebreak
 
+% New slide
+%\begin{frame}
+\begin{columns}
+\begin{column}{0.5\textwidth}
 \emph{Stock productivity and recruitment}
 \begin{itemize}
-\item Since the mid-1990s, PRD is characterized by two periods of consistent and stable spawning biomass: 1996-2003 and 2006-2017. 
-\item From 2005 onward, spawning biomass production for PRD has been positive, indicating stock growth.
-\item Both AM2 and AM1 estimated a large recruitment of age-2 fish to the population in 2014, relative to the last 10 years, owing largely to the age composition information showing a high proportion of samples consisting of this age class. 
-\item The \Sexpr{max(yrRange)} age-2 recruits are estimated to be around the average with a higher proportion of age-4 and -5 fish relative to age-2 and -3 fish.  
-\item There has been a decreasing trend in the median estimates of natural mortality since 2006. 
+\item Two periods of consistent and stable SB: 1996-2003 and 2006-2017. 
+\item Positive SB production since 2005, indicating stock growth.
+\item Relatively large estimated age-2 recruitment in 2014.
+\item Average estimated number of age-2 recruits in \Sexpr{max(yrRange)} with a higher proportion of age-4 and -5 fish.  
+\item Decreasing trend in the median estimates of natural mortality since 2006. 
+
 \end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
+\end{column}
+\end{columns}
+%\end{frame}
 \framebreak
 
+%\emph{Stock productivity and recruitment}
+%\begin{itemize}
+%\item Since the mid-1990s, PRD is characterized by two periods of consistent and stable spawning biomass: 1996-2003 and 2006-2017. 
+%\item From 2005 onward, spawning biomass production for PRD has been positive, indicating stock growth.
+%\item Both AM2 and AM1 estimated a large recruitment of age-2 fish to the population in 2014, relative to the last 10 years, owing largely to the age composition information showing a high proportion of samples %consisting of this age class. 
+%\item The \Sexpr{max(yrRange)} age-2 recruits are estimated to be around the average with a higher proportion of age-4 and -5 fish relative to age-2 and -3 fish.  
+%\item There has been a decreasing trend in the median estimates of natural mortality since 2006. 
+%\end{itemize}
+%\framebreak
+% New slide
+%\begin{frame}
+
+\begin{columns}
+\begin{column}{0.5\textwidth}
 \emph{Estimated stock status and status relative to biological reference points}
 \begin{itemize}
 \item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 21,738 t (equal to 34\% of $\mli{SB}_0$). AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 22,821 t (36\% of $\mli{SB}_0$).
 \item Based on a comparison of median estimates, both AM2 and AM1 estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be above the LRP of $0.3\mli{SB}_0$ with greater than a 50\% probability and less than a 95\% probability.
+
 \end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
+\end{column}
+\end{columns}
+%\end{frame}
 \framebreak
+
+%\emph{Estimated stock status and status relative to biological reference points}
+%\begin{itemize}
+%\item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 21,738 t (equal to 34\% of $\mli{SB}_0$). AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 22,821 t (36\% of $\mli{SB}_0$).
+%\item Based on a comparison of median estimates, both AM2 and AM1 estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be above the LRP of $0.3\mli{SB}_0$ with greater than a 50\% probability and less than a 95\% probability.
+%\end{itemize}
+%\framebreak
 
 \emph{Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics}
 \begin{itemize}
@@ -494,20 +536,7 @@ make.decision.table(hg.b,
 \end{itemize}
 \end{frame}
 
-% New slide
-\begin{frame}
-\begin{columns}
-\begin{column}{0.5\textwidth}
-\begin{itemize}
-\item Placeholder for summary bullets
-\end{itemize}
-\end{column}
-\begin{column}{0.5\textwidth}
-\centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
-\end{column}
-\end{columns}
-\end{frame}
+
 
 % New slide
 \begin{frame}{Prince Rupert District: AM2 Decision table}
