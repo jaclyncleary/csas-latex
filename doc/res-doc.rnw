@@ -7,17 +7,6 @@
 
 % https://tex.stackexchange.com/questions/311132/how-to-style-hrefs-underlined-and-coloured-throughout-the-document
 \usepackage{xcolor,soul}
-\usepackage{hyperref}
-\hypersetup{colorlinks,urlcolor=blue}
-\urlstyle{sf}
-
-\makeatletter
-\patchcmd{\hyper@link@}
-{{\Hy@tempb}{#4}}
-{{\Hy@tempb}{\ul{#4}}}
-{}{}
-\makeatother
-
 \usepackage{pdfcomment}
 
 % Multi-letter identifier (i.e., multi-character variable
@@ -85,11 +74,12 @@ J.S. Cleary\textsuperscript{1}, S. Hawkshaw\textsuperscript{2}, M.H. Grinnell\te
 
 \vspace{.35cm}
 
-\textsuperscript{1}Pacific Biological Station, Science Branch,\\
+\textsuperscript{1}Pacific Biological Station,\\
 Fisheries and Oceans Canada, 3190 Hammond Bay Road,\\
 Nanaimo, British Columbia, V9T 6N7, Canada.
 
-\textsuperscript{2}Institute of Ocean Science,\\
+\textsuperscript{2}Institute of Ocean Sciences,\\
+Fisheries and Oceans Canada,
 9860 W Saanich Rd, Sidney, BC V8L 5T5, Canada.
 
 \end{center}
