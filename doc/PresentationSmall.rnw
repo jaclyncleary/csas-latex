@@ -1,5 +1,5 @@
 % Document class
-\documentclass[aspectratio=169, xcolor=table]{beamer}  % 169, 1610, 149, 54, 43, or 32
+\documentclass[aspectratio=149, xcolor=table]{beamer}  % 169, 1610, 149, 54, 43, or 32
 
 % Load packages
 \usepackage{booktabs}
@@ -83,6 +83,9 @@
 % Background row colours (put it before each table to make sure)
 \newcommand{\stripes}{\rowcolors{2}{lightgray}{}}
 
+% Height for figures in frames with titles
+\newcommand{\textheightsmall}{0.9\textheight}
+
 % Reduce space between table columns
 \setlength{\tabcolsep}{4pt}
 
@@ -139,8 +142,8 @@ load( file=file.path("..", locOutput, "Image.RData") )
 setwd( dir=".." )
 
 # Font size for decision tables
-dec.table.font.size <- 8
-dec.table.font.space <- 9
+dec.table.font.size <- 7
+dec.table.font.space <- 8
 
 @
 
@@ -344,7 +347,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -358,7 +361,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \framebreak
@@ -371,7 +374,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \framebreak
@@ -384,7 +387,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -420,7 +423,7 @@ make.decision.table(hg.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -433,7 +436,7 @@ make.decision.table(hg.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -446,7 +449,7 @@ make.decision.table(hg.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -482,7 +485,7 @@ make.decision.table(pr.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -497,7 +500,7 @@ make.decision.table(pr.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -513,7 +516,7 @@ make.decision.table(pr.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -551,7 +554,7 @@ make.decision.table(cc.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -566,7 +569,7 @@ make.decision.table(cc.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -581,7 +584,7 @@ make.decision.table(cc.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -619,7 +622,7 @@ make.decision.table(sog.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -633,7 +636,7 @@ make.decision.table(sog.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -648,19 +651,11 @@ make.decision.table(sog.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
-%\framebreak
 
-%\emph{Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics}
-%\begin{itemize}
-%\item There is very little estimated age-2 recruitment entering the spawning population in \Sexpr{max(yrRange)} indicating low predicted age-3 recruitment in \Sexpr{nextYr}.
-%\item The projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ is 20,003 t (AM2; median) or 34,886 t (AM1), similar to $\mli{SB}_{\Sexpr{max(yrRange)}}$ levels, consisting of 32\% (median; AM2) age-3 fish and 48\% age-4 and older fish (AM2).
-%\item In \Sexpr{nextYr}, there is a 20\% (AM2) and 5\% (AM1) probability the stock will be below the LRP of $0.3\mli{SB}_0$ in the absence of fishing.
-%\item Under AM2, the projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ has a 45\% chance of being below the 1996 fixed cutoff (18,800 t).
-%\end{itemize}
 \end{frame}
 
 % New slide
@@ -680,15 +675,15 @@ make.decision.table(wcvi.b,
 \section{Summary results}
 
 % New subsection: prediction
-\subsection{Prediction for \Sexpr{nextYr}}
+\subsection{Projected pre-fishery spawning biomass in \Sexpr{nextYr}}
 
 % New slide
-\begin{frame}{Projected pre-fishery spawning biomass in 2018}
+\begin{frame}
 %\begin{columns}
 %\begin{column}{0.5\textwidth}
 \centering
 %AM1 Matt I can not find the figure for this...I just added this into the figures folder for now
-\includegraphics[width=8.5cm,height=6.8cm,keepaspectratio]{\Sexpr{locOutput}/SSB\Sexpr{nextYr}AM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}/SSB\Sexpr{nextYr}AM2.png}
 % \includegraphics[width=7.1cm,height=6.8cm]{\Sexpr{locOutput}/SSB\Sexpr{nextYr}AM2.png}
 %\end{column}
 %\begin{column}{0.5\textwidth}
@@ -712,13 +707,16 @@ make.decision.table(wcvi.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}HarvestRateAM2.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HarvestRateAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
 
-%New slide
-\begin{frame}{Reference points: LRP and USR}
+% Subsection: reference points
+\subsection{Reference points: LRP and USR}
+
+% New slide
+\begin{frame}
 \begin{columns}
 \begin{column}{0.5\textwidth}
 DFO's decision-making framework (DMF) incorporating the precautionary approach:
@@ -738,7 +736,7 @@ DFO's decision-making framework (DMF) incorporating the precautionary approach:
 \end{frame}
 
 % New slide
-\begin{frame}{Reference points: LRP and USR}
+\begin{frame}
 \begin{columns}
 \begin{column}{0.5\linewidth}
 \begin{itemize}
@@ -755,7 +753,7 @@ DFO's decision-making framework (DMF) incorporating the precautionary approach:
 \end{frame}
 
 % New slide
-\begin{frame}{Reference points: LRP and USR}
+\begin{frame}
 \begin{columns}
 \begin{column}{0.5\textwidth}
 LRP
@@ -781,7 +779,7 @@ USR
 \end{frame}
 
 % New slide
-\begin{frame}{Reference points: LRP and USR}
+\begin{frame}
 \begin{columns}
 \begin{column}{0.5\textwidth}
 MSY-based reference points
