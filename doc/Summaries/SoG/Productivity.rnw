@@ -1,0 +1,6 @@
+\begin{itemize}
+\item Increasing trend in SB since 2010.
+\item The SB production for SOG has been positive since 2008, indicating stock growth.
+\item An above-average number of age-2 recruits estimated in \Sexpr{max(yrRange)} and age-3/-4 fish comprise the highest proportion of fish, consistent with last 5 years.
+\item AM2 estimated a decreasing trend in the median estimates of natural mortality since 2008, and AM1 estimated an increasing trend since 2015.
+\end{itemize}

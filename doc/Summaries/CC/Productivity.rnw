@@ -1,0 +1,6 @@
+\begin{itemize}
+\item AM2 and AM1 both estimated an increasing trend in spawning stock biomass since 2012, including 2017.
+\item Positive SB production since 2012, indicating stock growth.
+\item The \Sexpr{max(yrRange)} age-2 recruits were estimated to be average-to-below-average. Age-5 fish were estimated to comprise the highest proportion of fish, arising from the 2012 cohort.
+\item Decreasing trend in the median estimates of natural mortality since 2008.
+\end{itemize}

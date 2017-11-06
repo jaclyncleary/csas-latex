@@ -1,0 +1,5 @@
+\begin{itemize}
+\item The projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ is 125,285 t (median; AM2) or 169,910 t (AM1), declining from \Sexpr{max(yrRange)}, consisting of 25\% (median; AM2) age-3 fish and 67\% age-4 and older fish (AM2).
+\item In \Sexpr{nextYr}, there is a 0\% probability (AM1 and AM2) the stock will be below the LRP of $0.3\mli{SB}_0$ in the absence of fishing.
+\item Under AM2, the projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ has a 0\% chance of being below the 1996 fixed cutoff (21,200 t).
+\end{itemize}

@@ -1,0 +1,6 @@
+\begin{itemize}
+\item Both models estimate a decline in SB from 2016 to 2017.
+\item In most years since 2005 WCVI has been in a prolonged low productivity low biomass state, indicating negative stock growth. 
+\item The number of age-2 recruits estimated is below-average and there was a higher proportion of age-4 fish relative to age-2 and -3 fish. 
+\item There has been an increasing trend in the median estimates of natural mortality since 2014.
+\end{itemize}

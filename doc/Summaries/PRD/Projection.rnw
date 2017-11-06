@@ -1,0 +1,5 @@
+\begin{itemize}
+\item Continued stable trend in SB, with projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ of 23,924 t (AM2; median) and 24,903 t (AM1), consisting of 23\% age-3 fish and 68\% age-4 and older fish.
+\item In \Sexpr{nextYr}, there is a 27\% (AM2) and 26\% (AM1) probability the stock will be below the LRP of $0.3\mli{SB}_0$ in the absence of fishing.
+\item Under AM2, the projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ has a 3\% chance of being below the 1996 fixed cutoff (12,100 t).
+\end{itemize}

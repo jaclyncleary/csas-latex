@@ -1,0 +1,6 @@
+\begin{itemize}
+\item Declining trend in $\mli{SB}$ since 2013. $\mli{SB}$ has remained low in most years since 2000, including 2017.
+\item Low productivity low biomass state in most years since 2000, indicating negative stock growth.
+\item Age-2 recruitment in \Sexpr{max(yrRange)} is low.
+\item Increasing trend in the median estimates of natural mortality since 2012.
+\end{itemize}

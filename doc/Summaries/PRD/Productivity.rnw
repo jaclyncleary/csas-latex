@@ -1,0 +1,7 @@
+\begin{itemize}
+\item Two periods of consistent and stable SB: 1996-2003 and 2006-2017.
+\item Positive SB production since 2005, indicating stock growth.
+\item Relatively large estimated age-2 recruitment in 2014.
+\item Average estimated number of age-2 recruits in \Sexpr{max(yrRange)} with a higher proportion of age-4 and -5 fish.
+\item Decreasing trend in the median estimates of natural mortality since 2006.
+\end{itemize}

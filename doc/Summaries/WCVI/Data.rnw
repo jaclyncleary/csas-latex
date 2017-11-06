@@ -1,0 +1,4 @@
+\begin{itemize}
+\item This area was closed to commercial fisheries since 2006, with SOK permitted in 2011.
+\item The spawn index decreased from 20,528 t in \Sexpr{max(yrRange)-1} to 15,734 t in \Sexpr{max(yrRange)}. Biological samples (seine-caught) contained a high proportion of age-4 fish (66\%), with 3\% age-2 and 8\% age-3 fish.
+\end{itemize}

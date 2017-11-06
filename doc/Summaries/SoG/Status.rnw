@@ -1,0 +1,4 @@
+\begin{itemize}
+\item AM2 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 114,626 t (equal to 81\% of $\mli{SB}_0$). AM1 estimates the median $\mli{SB}_{\Sexpr{max(yrRange)}}$ at 175,962 t (108\% of $\mli{SB}_0$).
+\item Based on a comparison of median estimates, both AM2 and AM1 estimate $\mli{SB}_{\Sexpr{max(yrRange)}}$ to be above the LRP of $0.3\mli{SB}_0$ by greater than 95\% probability.
+\end{itemize}

@@ -1,0 +1,5 @@
+\begin{itemize}
+\item Projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ is 4,346 t (AM2) or 7,302 t (AM1).
+\item In \Sexpr{nextYr}, there is an 81\% (AM2) and 65\% (AM1) probability the stock will be below the LRP of $0.3\mli{SB}_0$ in the absence of fishing.
+\item AM2 projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ has a 94\% chance of being below the 1996 fixed cutoff (10,700 t).
+\end{itemize}
