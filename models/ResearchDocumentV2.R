@@ -1253,18 +1253,22 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
               hjust=-0.1, size=2.5 ) +
           myTheme +
           theme( text=element_text(size=8) )
-      # Make a title
-      # pTitle <- ggdraw( ) + 
-      #   draw_label( label=paste(unique(areas$RegionName), " (", model, ")", 
-      #                           sep=""), size=8 )
       # Combine the plots
       storyboard <- plot_grid( plotA, plotB, plotC, plotD, plotE, plotF, 
               align="v", ncol=2, nrow=3, rel_heights=c(1.0, 1.1, 1.3) ) +
-          # Add the title and write to disc
-#          pStory <- plot_grid( pTitle, storyboard, ncol=1, 
-#              rel_heights=c(0.1, 1.8) ) +
           ggsave( filename=file.path(SAR, paste("Storyboard", model, ".png", 
                       sep="")), dpi=pDPI, width=figWidth, height=figWidth )
+      # First set of plots
+      a2dGrid <- plot_grid( plotA, plotB, plotC, plotD, 
+          align="v", ncol=2, nrow=2, rel_heights=c(1.0, 1.1) )
+      eGrid <- plot_grid( NULL, plotE, NULL, 
+          ncol=1, nrow=3, rel_heights=c(1, 2, 1) )
+      # Combine the plots
+      storyboardWide <- plot_grid( a2dGrid, eGrid, align="h", ncol=2, nrow=1,
+              rel_widths=c(2, 1)) +
+#          plot_grid( plotE, ncol=3 ) +
+          ggsave( filename=file.path(SAR, paste("StoryboardWide", model, ".png", 
+                      sep="")), dpi=pDPI, width=figWidth*1.67, height=figWidth )
     }  # End i loop over models
   }  # End k loop over regions
 }  # End PlotStoryboard function
