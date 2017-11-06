@@ -26,6 +26,9 @@
 % Set indent for description environment
 \setbeamersize{description width=1.5cm}
 
+% Update fonts for sections, subsections, titles
+\setbeamerfont{frametitle}{size=\tiny}
+
 % Set transparency: complete
 \setbeamercovered{transparent=0}
 
