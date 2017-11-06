@@ -1261,6 +1261,7 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
       # First set of plots
       a2dGrid <- plot_grid( plotA, plotB, plotC, plotD, 
           align="v", ncol=2, nrow=2, rel_heights=c(1.0, 1.1) )
+      # Second set of plots
       eGrid <- plot_grid( NULL, plotE, NULL, 
           ncol=1, nrow=3, rel_heights=c(1, 2, 1) )
       # Combine the plots
