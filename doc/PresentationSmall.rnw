@@ -310,7 +310,6 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 
 %\subsection{Haida Gwaii: Summary of results}
 
-
 % New slide
 \begin{frame}[allowframebreaks]{Haida Gwaii: Summary of results}
 \emph{Data}
@@ -574,7 +573,6 @@ make.decision.table(pr.b,
 \end{itemize}
 \framebreak
 
-
 % New slide
 %\begin{frame}
 \begin{columns}
@@ -602,8 +600,6 @@ make.decision.table(pr.b,
 %\item The \Sexpr{max(yrRange)} age-2 recruits were estimated to be average-to-below-average. Age-5 fish were estimated to comprise the highest proportion of fish, arising from the 2012 cohort.
 %\item There has been a decreasing trend in the median estimates of natural mortality since 2008.
 %\end{itemize}
-
-
 
 % New slide
 %\begin{frame}
@@ -654,8 +650,6 @@ make.decision.table(pr.b,
 %\item Under AM2, the projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ has a 5\% chance of being below the 1996 fixed cutoff (17,600 t).
 %\end{itemize}
 \end{frame}
-
-
 
 % New slide
 \begin{frame}{Central Coast: AM2 Decision table}
@@ -753,7 +747,6 @@ make.decision.table(cc.b,
 \end{column}
 \end{columns}
 %\end{frame}
-
 
 %\emph{Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics}
 %\begin{itemize}
@@ -872,7 +865,6 @@ make.decision.table(sog.b,
 %\item Under AM2, the projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ has a 45\% chance of being below the 1996 fixed cutoff (18,800 t).
 %\end{itemize}
 \end{frame}
-
 
 % New slide
 \begin{frame}{West Coast of Vancouver Island: AM2 Decision table}
