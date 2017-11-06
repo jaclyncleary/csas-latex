@@ -347,7 +347,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}HG/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -367,7 +367,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}HG/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \framebreak
@@ -391,7 +391,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}HG/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \framebreak
@@ -418,7 +418,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}HG/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \framebreak
@@ -476,7 +476,7 @@ make.decision.table(hg.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -505,7 +505,7 @@ make.decision.table(hg.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -530,7 +530,7 @@ make.decision.table(hg.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -588,7 +588,7 @@ make.decision.table(pr.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}CC/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -616,7 +616,7 @@ make.decision.table(pr.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}CC/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -641,7 +641,7 @@ make.decision.table(pr.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}CC/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -696,7 +696,7 @@ make.decision.table(cc.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -722,7 +722,7 @@ make.decision.table(cc.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -748,7 +748,7 @@ make.decision.table(cc.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -804,7 +804,7 @@ make.decision.table(sog.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -830,7 +830,7 @@ make.decision.table(sog.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -857,7 +857,7 @@ make.decision.table(sog.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
 \end{column}
 \end{columns}
 %\end{frame}
@@ -898,7 +898,8 @@ make.decision.table(wcvi.b,
 %\begin{column}{0.5\textwidth}
 \centering
 %AM1 Matt I can not find the figure for this...I just added this into the figures folder for now
-\includegraphics[width=8.5cm,height=6.8cm]{maindoc/figures/SSB2018.png}
+\includegraphics[width=8.5cm,height=6.8cm,keepaspectratio]{\Sexpr{locOutput}/SSB\Sexpr{nextYr}AM2.png}
+% \includegraphics[width=7.1cm,height=6.8cm]{\Sexpr{locOutput}/SSB\Sexpr{nextYr}AM2.png}
 %\end{column}
 %\begin{column}{0.5\textwidth}
 %\centering
@@ -921,7 +922,7 @@ make.decision.table(wcvi.b,
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=6.5cm,height=6.9cm]{\Sexpr{locOutput}HarvestRateAM2.png}
+\includegraphics[width=6.5cm,height=6.9cm,keepaspectratio]{\Sexpr{locOutput}HarvestRateAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
