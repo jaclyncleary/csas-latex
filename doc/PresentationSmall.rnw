@@ -535,8 +535,6 @@ make.decision.table(hg.b,
 \end{columns}
 \end{frame}
 
-
-
 %\emph{Projected spawning biomass in \Sexpr{nextYr} and spawning biomass related to HCR metrics}
 %\begin{itemize}
 %\item Both AM2 and AM1 predict a continued stable trend in spawning biomass, with projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ of 23,924 t (AM2; median) and 24,903 t (AM1), consisting of 23\% (median, AM2) age-3 fish and 68\% age-4 and older fish (AM2).
@@ -544,8 +542,6 @@ make.decision.table(hg.b,
 %\item Under AM2, the projected pre-fishery $\mli{SB}_{\Sexpr{nextYr}}$ has a 3\% chance of being below the 1996 fixed cutoff (12,100 t).
 %\end{itemize}
 %\end{frame}
-
-
 
 % New slide
 \begin{frame}{Prince Rupert District: AM2 Decision table}
