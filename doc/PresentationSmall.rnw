@@ -257,7 +257,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \begin{itemize}
 \item Time series of spawn index in thousands of metric tonnes ($\text{t} \times 10^{3}$) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), collapse=" to ")} in the major stock assessment regions (SARs)
 \item Survey index declined from 2016 to 2017 in HG, SOG, CC
-\itme Survey index was nearly identical for PRD and WCVI (2016 vs 2017)
+\item Survey index was nearly identical for PRD and WCVI (2016 vs 2017)
 \end{itemize}
 \end{column}
 \begin{column}{0.5\textwidth}
