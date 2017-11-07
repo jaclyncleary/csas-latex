@@ -1,4 +1,4 @@
 \begin{itemize}
-\item There were no commercial roe fisheries in 2017. Spawn-on-kelp operations occurred in all statistical areas in 2017.
-\item The spawn index decreased from 32,508 t in \Sexpr{max(yrRange)-1} to 23,517 t in \Sexpr{max(yrRange)}. \item Biological samples (seine-caught) in \Sexpr{max(yrRange)} contained 3\% age-2 fish, 17\% age-3 fish, and 80\% age-4 and older.
+\item No commercial roe fisheries in 2017. Spawn-on-kelp operations occurred in all statistical areas in 2017.
+\item Spawn index decreased from 32,508 t in \Sexpr{max(yrRange)-1} to 23,517 t in \Sexpr{max(yrRange)}. \item Biological samples (seine-caught) in \Sexpr{max(yrRange)} contained 3\% age-2 fish, 17\% age-3 fish, and 80\% age-4 and older.
 \end{itemize}

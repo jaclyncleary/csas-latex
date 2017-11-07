@@ -1,6 +1,6 @@
 \begin{itemize}
 \item Closed to commercial roe fisheries from 2002-2013 and 2015-2017, and commercial spawn-on-kelp (SOK) fisheries from 2004-2013 and 2015-2017.
 \item Fishing opportunities were available in 2014 for commercial roe and SOK fishing -- not pursued due to an agreement between the commercial sector and local First Nations.
-\item The spawn index decreased from 6,888 t in \Sexpr{max(yrRange)-1} to 3,016 t in \Sexpr{max(yrRange)}.
+\item Spawn index decreased from 6,888 t in \Sexpr{max(yrRange)-1} to 3,016 t in \Sexpr{max(yrRange)}.
 \item Biological samples (seine caught) in \Sexpr{max(yrRange)} contained 14\% age-2 fish, 32\% age-3 fish, and 54\% age-4 and older.
 \end{itemize}

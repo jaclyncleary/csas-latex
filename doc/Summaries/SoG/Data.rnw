@@ -1,4 +1,4 @@
 \begin{itemize}
-\item The combined total validated catch for the seine roe, the gillnet roe, and the food and bait and special use fisheries was 25,279 t for the 2016/17 herring season, which is the largest removal in the roe herring fishery era.
-\item The spawn index decreased from 129,502 t in \Sexpr{max(yrRange)-1} to 81,064 t in \Sexpr{max(yrRange)}. \item Biological samples (seine-caught) in \Sexpr{max(yrRange)} contained relatively even proportions of age-3 (28\%), age-4 (29\%), and age-5 (23\%) fish.
+\item Combined total validated catch for the seine roe, the gillnet roe, and the food and bait and special use fisheries was 25,279 t for the 2016/17 herring season, which is the largest removal in the roe herring fishery era.
+\item Spawn index decreased from 129,502 t in \Sexpr{max(yrRange)-1} to 81,064 t in \Sexpr{max(yrRange)}. \item Biological samples (seine-caught) in \Sexpr{max(yrRange)} contained relatively even proportions of age-3 (28\%), age-4 (29\%), and age-5 (23\%) fish.
 \end{itemize}

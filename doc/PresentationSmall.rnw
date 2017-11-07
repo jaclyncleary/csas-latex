@@ -164,9 +164,7 @@ dec.table.font.space <- 7
 \end{frame}
 
 %%% Table of contents %%%
-
-\begin{frame}
-Outline
+\begin{frame}{Outline}
 \begin{multicols}{2}
 \tableofcontents
 \end{multicols}
@@ -278,8 +276,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 
 % Show table of contents at each section
 \AtBeginSection[]{
-\begin{frame}<beamer>
-Outline
+\begin{frame}<beamer>{Outline}
 \begin{multicols}{2}
 \tableofcontents[currentsection]
 \end{multicols}
@@ -358,14 +355,14 @@ Outline
 % New slide
 \begin{frame}[plain]
 \begin{columns}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.35\textwidth}
 \subsecname{} (AM2)\\
 \emph{Stock productivity and recruitment}
 \Sexpr{knit_child('Summaries/HG/Productivity.rnw')}
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.65\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -373,14 +370,14 @@ Outline
 % New slide
 \begin{frame}[plain]
 \begin{columns}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.35\textwidth}
 \subsecname{} (AM2)\\
 \emph{Stock status}
 \Sexpr{knit_child('Summaries/HG/Status.rnw')}
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.65\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -388,14 +385,14 @@ Outline
 % New slide
 \begin{frame}[plain]
 \begin{columns}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.35\textwidth}
 \subsecname{} (AM2)\\
 \emph{Projected spawning biomass in \Sexpr{nextYr}}
 \Sexpr{knit_child('Summaries/HG/Projection.rnw')}
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.65\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -435,14 +432,14 @@ make.ref.points.table(hg.b,
 % New slide
 \begin{frame}[plain]
 \begin{columns}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.35\textwidth}
 \subsecname{} (AM2)\\
 \emph{Stock productivity and recruitment}
 \Sexpr{knit_child('Summaries/PRD/Productivity.rnw')}
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.65\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -450,14 +447,14 @@ make.ref.points.table(hg.b,
 % New slide
 \begin{frame}[plain]
 \begin{columns}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.35\textwidth}
 \subsecname{} (AM2)\\
 \emph{Stock status}
 \Sexpr{knit_child('Summaries/PRD/Status.rnw')}
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.65\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -465,14 +462,14 @@ make.ref.points.table(hg.b,
 % New slide
 \begin{frame}[plain]
 \begin{columns}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.35\textwidth}
 \subsecname{} (AM2)\\
 \emph{Projected spawning biomass in \Sexpr{nextYr}}
 \Sexpr{knit_child('Summaries/PRD/Projection.rnw')}
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.65\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -512,14 +509,14 @@ make.ref.points.table(pr.b,
 % New slide
 \begin{frame}[plain]
 \begin{columns}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.35\textwidth}
 \subsecname{} (AM2)\\
 \emph{Stock productivity and recruitment}
 \Sexpr{knit_child('Summaries/CC/Productivity.rnw')}
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.65\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -527,14 +524,14 @@ make.ref.points.table(pr.b,
 % New slide
 \begin{frame}[plain]
 \begin{columns}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.35\textwidth}
 \subsecname{} (AM2)\\
 \emph{Stock status}
 \Sexpr{knit_child('Summaries/CC/Status.rnw')}
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.65\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -542,14 +539,14 @@ make.ref.points.table(pr.b,
 % New slide
 \begin{frame}[plain]
 \begin{columns}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.35\textwidth}
 \subsecname{} (AM2)\\
 \emph{Projected spawning biomass in \Sexpr{nextYr}}
 \Sexpr{knit_child('Summaries/CC/Projection.rnw')}
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.65\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -589,14 +586,14 @@ make.ref.points.table(cc.b,
 % New slide
 \begin{frame}[plain]
 \begin{columns}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.35\textwidth}
 \subsecname{} (AM2)\\
 \emph{Stock productivity and recruitment}
 \Sexpr{knit_child('Summaries/SoG/Productivity.rnw')}
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.65\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -604,14 +601,14 @@ make.ref.points.table(cc.b,
 % New slide
 \begin{frame}[plain]
 \begin{columns}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.35\textwidth}
 \subsecname{} (AM2)\\
 \emph{Stock status}
 \Sexpr{knit_child('Summaries/SoG/Status.rnw')}
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.65\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -619,14 +616,14 @@ make.ref.points.table(cc.b,
 % New slide
 \begin{frame}[plain]
 \begin{columns}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.35\textwidth}
 \subsecname{} (AM2)\\
 \emph{Projected spawning biomass in \Sexpr{nextYr}}
 \Sexpr{knit_child('Summaries/SoG/Projection.rnw')}
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.65\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -666,14 +663,14 @@ make.ref.points.table(sog.b,
 % New slide
 \begin{frame}[plain]
 \begin{columns}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.35\textwidth}
 \subsecname{} (AM2)\\
 \emph{Stock productivity and recruitment}
 \Sexpr{knit_child('Summaries/WCVI/Productivity.rnw')}
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.65\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -681,13 +678,13 @@ make.ref.points.table(sog.b,
 % New slide
 \begin{frame}[plain]
 \begin{columns}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.35\textwidth}
 \subsecname{} (AM2)\\
 \Sexpr{knit_child('Summaries/WCVI/Status.rnw')}
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.65\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \end{frame}
@@ -695,14 +692,14 @@ make.ref.points.table(sog.b,
 % New slide
 \begin{frame}[plain]
 \begin{columns}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.35\textwidth}
 \subsecname{} (AM2)\\
 \emph{Projected spawning biomass in \Sexpr{nextYr}}
 \Sexpr{knit_child('Summaries/WCVI/Projection.rnw')}
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.65\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
+\includegraphics[width=\linewidth,height=\paperheight,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
 \end{column}
 \end{columns}
 \end{frame}

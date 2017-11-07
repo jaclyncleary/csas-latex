@@ -1,6 +1,6 @@
 \begin{itemize}
-\item The combined total validated catch for the seine roe, the gillnet roe, and the food and bait fisheries was 2,849 t for 2016/17. 
+\item Combined total validated catch for the seine roe, the gillnet roe, and the food and bait fisheries was 2,849 t for 2016/17. 
 \item Commercial spawn-on-kelp operations also occurred in 2017.
-\item The spawn index increased from 18,985 t in 2016 to 19,235 t in \Sexpr{max(yrRange)}. 
+\item Spawn index increased from 18,985 t in 2016 to 19,235 t in \Sexpr{max(yrRange)}. 
 \item Biological samples (seine-caught) in \Sexpr{max(yrRange)} contained ~1\% age-2 fish, 16\% age-3 fish, and 8\% age-4 and older.
 \end{itemize}
