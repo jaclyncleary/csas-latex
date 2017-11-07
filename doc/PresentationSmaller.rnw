@@ -269,7 +269,7 @@ Time series from \Sexpr{paste(range(yrRange), collapse=" to ")}: catch, biologic
 \begin{columns}
 \begin{column}{0.3\textwidth}
 \begin{itemize}
-\item Haida Gwaii
+\item Haida Gwaii (AM2)
 \end{itemize}
 \end{column}
 \begin{column}{0.7\textwidth}
@@ -330,7 +330,7 @@ make.ref.points.table(hg.b,
 \begin{columns}
 \begin{column}{0.3\textwidth}
 \begin{itemize}
-\item Prince Rupert District
+\item Prince Rupert District (AM2)
 \end{itemize}
 \end{column}
 \begin{column}{0.7\textwidth}
@@ -391,7 +391,7 @@ make.ref.points.table(pr.b,
 \begin{columns}
 \begin{column}{0.3\textwidth}
 \begin{itemize}
-\item Central Coast
+\item Central Coast (AM2)
 \end{itemize}
 \end{column}
 \begin{column}{0.7\textwidth}
@@ -452,7 +452,7 @@ make.ref.points.table(cc.b,
 \begin{columns}
 \begin{column}{0.3\textwidth}
 \begin{itemize}
-\item Strait of Georgia
+\item Strait of Georgia (AM2)
 \end{itemize}
 \end{column}
 \begin{column}{0.7\textwidth}
@@ -513,7 +513,7 @@ make.ref.points.table(sog.b,
 \begin{columns}
 \begin{column}{0.3\textwidth}
 \begin{itemize}
-\item West Coast of Vancouver Island
+\item West Coast of Vancouver Island (AM2)
 \end{itemize}
 \end{column}
 \begin{column}{0.7\textwidth}
