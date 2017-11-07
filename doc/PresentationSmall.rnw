@@ -679,18 +679,17 @@ make.decision.table(wcvi.b,
 
 % New slide
 \begin{frame}
-%\begin{columns}
-%\begin{column}{0.5\textwidth}
+\begin{columns}
+\begin{column}{0.4\textwidth}
+\begin{itemize}
+\item Predicted spawning biomass assuming no fishing in \Sexpr{nextYr}, $\mli{SB}_{\Sexpr{nextYr}}$ in thousands of tonnes, t for \Sexpr{fish.name} in the major stock assessment regions
+\end{itemize}
+\end{column}
+\begin{column}{0.6\textwidth}
 \centering
-%AM1 Matt I can not find the figure for this...I just added this into the figures folder for now
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}/SSB\Sexpr{nextYr}.png}
-% \includegraphics[width=7.1cm,height=6.8cm]{\Sexpr{locOutput}/SSB\Sexpr{nextYr}AM2.png}
-%\end{column}
-%\begin{column}{0.5\textwidth}
-%\centering
-%\includegraphics[width=7.1cm,height=6.8cm]{\Sexpr{locOutput}/SSB\Sexpr{nextYr}AM2.png}
-%\end{column}
-%\end{columns}
+\end{column}
+\end{columns}
 \end{frame}
 
 % New subsection: harvest
@@ -699,13 +698,13 @@ make.decision.table(wcvi.b,
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.4\textwidth}
 \begin{itemize}
 \item Harvest rate, $U_t$ for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), collapse=" to ")} in the major stock assessment regions (SARs)
 \item Since \Sexpr{intendUYrs}, the intended harvest rate has been \Sexpr{intendU*100}\%, $U_t=0.2$
 \end{itemize}
 \end{column}
-\begin{column}{0.5\textwidth}
+\begin{column}{0.6\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HarvestRateAM2.png}
 \end{column}
