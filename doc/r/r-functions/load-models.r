@@ -1355,7 +1355,7 @@ calc.mcmc <- function(model,
   r.quants <- cbind.data.frame(desc.col, r.quants)
   col.names <- colnames(r.quants)
   col.names <- latex.bold(latex.perc(col.names))
-  col.names[1] <- latex.bold("Reference Point")
+  col.names[1] <- latex.bold("Reference point")
   colnames(r.quants) <- col.names
 
   proj.dat <- NULL

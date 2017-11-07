@@ -308,7 +308,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \item $\mli{P}_t = \mli{SB}_{t+1} - \mli{SB}_t + \mli{C}_{t+1}$
 \item Catch, $C$ does not include SOK
 \end{itemize}
-\item CSAS Feb 2017 recommended $\text{LRP}=\Sexpr{propB0}\mli{SB}_0$
+\item CSAS Feb 2017 recommended $\text{LRP}=\Sexpr{propB0}\mli{SB}_0$ \citep{kronlund2017}
 \end{itemize}
 \end{frame}
 

@@ -1,5 +1,5 @@
 % Document class
-\documentclass[aspectratio=149, xcolor=table, 8pt]{beamer}  % 169, 1610, 149, 54, 43, or 32
+\documentclass[aspectratio=149, xcolor=table, 9pt]{beamer}  % 169, 1610, 149, 54, 43, or 32
 
 % Load packages
 \usepackage{booktabs}
@@ -22,7 +22,7 @@
 % \useinnertheme{rounded}
 
 % Decrease margins globally
-\setbeamersize{text margin left=1em, text margin right=1em}
+\setbeamersize{text margin left=1.5em, text margin right=1.5em}
 
 % % Set indent for description environment
 % \setbeamersize{description width=1.5cm}
@@ -91,7 +91,7 @@
 \setlength{\tabcolsep}{4pt}
 
 % No caption labels
-\captionsetup{labelformat=empty}
+\captionsetup{labelformat=empty, skip=0pt}
 
 % Let it begin
 \begin{document}
@@ -143,8 +143,8 @@ load( file=file.path("..", locOutput, "Image.RData") )
 setwd( dir=".." )
 
 # Font size for decision tables
-dec.table.font.size <- 7
-dec.table.font.space <- 8
+dec.table.font.size <- 6
+dec.table.font.space <- 7
 
 @
 
@@ -154,6 +154,7 @@ dec.table.font.space <- 8
 
 % Variables for the cover page
 \title[\Sexpr{fish.name}: Assessment in \Sexpr{max(yrRange)} and forecast for \Sexpr{nextYr}]{Stock Assessment for \Sexpr{fish.name} (\emph{Clupea pallasi}) in British Columbia in \Sexpr{max(yrRange)} and forecast for \Sexpr{nextYr}}
+\subtitle{These results are preliminary until the SAR is finalized}
 \author[Cleary \emph{et al}. (\Sexpr{max(yrRange)})]{Jaclyn Cleary \and Sarah Hawkshaw \and Matthew Grinnell \and Chris Grandin}
 \institute{CSAP Working paper 2017PEL01\\Pacific Biological Station}
 \date{}  % No date (this will be presented several times)
@@ -195,7 +196,7 @@ Time series from \Sexpr{paste(range(yrRange), collapse=" to ")}: catch, biologic
 \item[Surface] From \Sexpr{qYrs$q1} ($q_1$)
 \item[Dive] From \Sexpr{qYrs$q2} ($q_2$)
 \end{description}
-\item Spawn index declined from 2016 to 2017 in HG, SoG, and CC
+\item Spawn index declined from 2016 to 2017 in HG, CC, and SoG
 \item Spawn index was nearly identical in 2016 and 2017 for PRD and WCVI
 \end{itemize}
 \end{itemize}
@@ -221,6 +222,12 @@ Time series from \Sexpr{paste(range(yrRange), collapse=" to ")}: catch, biologic
 \item SAR includes estimates of current $\mli{SB}$ and one-year projections for AM2 and AM1 due to concerns around the choice of $q$ prior and interactions with HCR. Analytical concerns with AM2 and AM1 parameterizations of $q$ are provided in the 2016 SR (provided by the HTWG).
 \item Merits of AM2 and AM1 approaches to parameterizing $q$ were examined in part through sensitivity analyses, however sensitivity analyses alone are insufficient for understanding the complex interplay between $q$ and management parameters, and resolution between AM2 and AM1 parameterization of $q$ will require simulation-evaluation.
 \item AM2 results presented here
+\end{itemize}
+\end{frame}
+
+% New slide
+\begin{frame}
+\begin{itemize}
 \item Preliminary results presented for \Sexpr{PasteNicely(allRegions$major)}
 \item DRAFT SAR circulated to CSAS participants for 2-week review period
 \item SAR advice is considered preliminary and is subject to change until the SAR is approved
@@ -230,7 +237,7 @@ Time series from \Sexpr{paste(range(yrRange), collapse=" to ")}: catch, biologic
 \item $\mli{P}_t = \mli{SB}_{t+1} - \mli{SB}_t + \mli{C}_{t+1}$
 \item Catch, $C$ does not include SOK
 \end{itemize}
-\item CSAS Feb 2017 recommended $\text{LRP}=\Sexpr{propB0}\mli{SB}_0$
+\item CSAS Feb 2017 recommended $\text{LRP}=\Sexpr{propB0}\mli{SB}_0$ \citep{kronlund2017}
 \end{itemize}
 \end{frame}
 
@@ -241,10 +248,18 @@ Time series from \Sexpr{paste(range(yrRange), collapse=" to ")}: catch, biologic
 \begin{frame}[allowframebreaks]
 \emph{Data}
 \Sexpr{knit_child('Summaries/HG/Data.rnw')}
+\end{frame}
+
+% New slide
+\begin{frame}[allowframebreaks]
 \emph{Stock productivity and recruitment}
 \Sexpr{knit_child('Summaries/HG/Productivity.rnw')}
 \emph{Stock status}
 \Sexpr{knit_child('Summaries/HG/Status.rnw')}
+\end{frame}
+
+% New slide
+\begin{frame}[allowframebreaks]
 \emph{Projected spawning biomass in \Sexpr{nextYr}}
 \Sexpr{knit_child('Summaries/HG/Projection.rnw')}
 \end{frame}
@@ -260,6 +275,291 @@ Time series from \Sexpr{paste(range(yrRange), collapse=" to ")}: catch, biologic
 \begin{column}{0.7\textwidth}
 \centering
 \includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+% New slide
+\begin{frame}[plain]
+\stripes
+<<hg.decision.table, results='asis', echo=FALSE>>=
+make.decision.table(hg.b,
+                    xcaption = "Probabilistic decision table for Haida Gwaii (AM2)",
+                    xlabel = "tab:hg-am2-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+\stripes
+<<hg.ref.points.table, results='asis', echo=FALSE>>=
+make.ref.points.table(hg.b,
+                      hg.am1,
+                      xcaption = "Reference points table for Haida Gwaii",
+                      xlabel = "tab:hg-ref-points",
+                      font.size = dec.table.font.size,
+                      space.size = dec.table.font.space,
+                      placement = "H")
+@
+\end{frame}
+
+%%% New subsection %%%
+\subsection{Prince Rupert District}
+
+% New slide
+\begin{frame}[allowframebreaks]
+\emph{Data}
+\Sexpr{knit_child('Summaries/PRD/Data.rnw')}
+\end{frame}
+
+% New slide
+\begin{frame}[allowframebreaks]
+\emph{Stock productivity and recruitment}
+\Sexpr{knit_child('Summaries/PRD/Productivity.rnw')}
+\emph{Stock status}
+\Sexpr{knit_child('Summaries/PRD/Status.rnw')}
+\end{frame}
+
+% New slide
+\begin{frame}[allowframebreaks]
+\emph{Projected spawning biomass in \Sexpr{nextYr}}
+\Sexpr{knit_child('Summaries/PRD/Projection.rnw')}
+\end{frame}
+
+% New slide
+\begin{frame}[plain]
+\begin{columns}
+\begin{column}{0.3\textwidth}
+\begin{itemize}
+\item Prince Rupert District
+\end{itemize}
+\end{column}
+\begin{column}{0.7\textwidth}
+\centering
+\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+% New slide
+\begin{frame}[plain]
+\stripes
+<<prd.decision.table, results='asis', echo=FALSE>>=
+make.decision.table(pr.b,
+                    xcaption = "Probabilistic decision table for Prince Rupert District (AM2)",
+                    xlabel = "tab:prd-am2-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+\stripes
+<<prd.ref.points.table, results='asis', echo=FALSE>>=
+make.ref.points.table(pr.b,
+                      pr.am1,
+                      xcaption = "Reference points table for Prince Rupert District",
+                      xlabel = "tab:prd-ref-points",
+                      font.size = dec.table.font.size,
+                      space.size = dec.table.font.space,
+                      placement = "H")
+@
+\end{frame}
+
+%%% New subsection %%%
+\subsection{Central Coast}
+
+% New slide
+\begin{frame}[allowframebreaks]
+\emph{Data}
+\Sexpr{knit_child('Summaries/CC/Data.rnw')}
+\end{frame}
+
+% New slide
+\begin{frame}[allowframebreaks]
+\emph{Stock productivity and recruitment}
+\Sexpr{knit_child('Summaries/CC/Productivity.rnw')}
+\emph{Stock status}
+\Sexpr{knit_child('Summaries/CC/Status.rnw')}
+\end{frame}
+
+% New slide
+\begin{frame}[allowframebreaks]
+\emph{Projected spawning biomass in \Sexpr{nextYr}}
+\Sexpr{knit_child('Summaries/CC/Projection.rnw')}
+\end{frame}
+
+% New slide
+\begin{frame}[plain]
+\begin{columns}
+\begin{column}{0.3\textwidth}
+\begin{itemize}
+\item Central Coast
+\end{itemize}
+\end{column}
+\begin{column}{0.7\textwidth}
+\centering
+\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+% New slide
+\begin{frame}[plain]
+\stripes
+<<cc.decision.table, results='asis', echo=FALSE>>=
+make.decision.table(cc.b,
+                    xcaption = "Probabilistic decision table for Central Coast (AM2)",
+                    xlabel = "tab:cc-am2-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+\stripes
+<<cc.ref.points.table, results='asis', echo=FALSE>>=
+make.ref.points.table(cc.b,
+                      cc.am1,
+                      xcaption = "Reference points table for Central Coast",
+                      xlabel = "tab:cc-ref-points",
+                      font.size = dec.table.font.size,
+                      space.size = dec.table.font.space,
+                      placement = "H")
+@
+\end{frame}
+
+%%% New subsection %%%
+\subsection{Strait of Georgia}
+
+% New slide
+\begin{frame}[allowframebreaks]
+\emph{Data}
+\Sexpr{knit_child('Summaries/SoG/Data.rnw')}
+\end{frame}
+
+% New slide
+\begin{frame}[allowframebreaks]
+\emph{Stock productivity and recruitment}
+\Sexpr{knit_child('Summaries/SoG/Productivity.rnw')}
+\emph{Stock status}
+\Sexpr{knit_child('Summaries/SoG/Status.rnw')}
+\end{frame}
+
+% New slide
+\begin{frame}[allowframebreaks]
+\emph{Projected spawning biomass in \Sexpr{nextYr}}
+\Sexpr{knit_child('Summaries/SoG/Projection.rnw')}
+\end{frame}
+
+% New slide
+\begin{frame}[plain]
+\begin{columns}
+\begin{column}{0.3\textwidth}
+\begin{itemize}
+\item Strait of Georgia
+\end{itemize}
+\end{column}
+\begin{column}{0.7\textwidth}
+\centering
+\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+% New slide
+\begin{frame}[plain]
+\stripes
+<<sog.decision.table, results='asis', echo=FALSE>>=
+make.decision.table(sog.b,
+                    xcaption = "Probabilistic decision table for Strait of Georgia (AM2)",
+                    xlabel = "tab:sog-am2-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+\stripes
+<<sog.ref.points.table, results='asis', echo=FALSE>>=
+make.ref.points.table(sog.b,
+                      sog.am1,
+                      xcaption = "Reference points table for Strait of Georgia",
+                      xlabel = "tab:sog-ref-points",
+                      font.size = dec.table.font.size,
+                      space.size = dec.table.font.space,
+                      placement = "H")
+@
+\end{frame}
+
+%%% New subsection %%%
+\subsection{West Coast of Vancouver Island}
+
+% New slide
+\begin{frame}[allowframebreaks]
+\emph{Data}
+\Sexpr{knit_child('Summaries/WCVI/Data.rnw')}
+\end{frame}
+
+% New slide
+\begin{frame}[allowframebreaks]
+\emph{Stock productivity and recruitment}
+\Sexpr{knit_child('Summaries/WCVI/Productivity.rnw')}
+\emph{Stock status}
+\Sexpr{knit_child('Summaries/WCVI/Status.rnw')}
+\end{frame}
+
+% New slide
+\begin{frame}[allowframebreaks]
+\emph{Projected spawning biomass in \Sexpr{nextYr}}
+\Sexpr{knit_child('Summaries/WCVI/Projection.rnw')}
+\end{frame}
+
+% New slide
+\begin{frame}[plain]
+\begin{columns}
+\begin{column}{0.3\textwidth}
+\begin{itemize}
+\item West Coast of Vancouver Island
+\end{itemize}
+\end{column}
+\begin{column}{0.7\textwidth}
+\centering
+\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+% New slide
+\begin{frame}[plain]
+\stripes
+<<wcvi.decision.table, results='asis', echo=FALSE>>=
+make.decision.table(wcvi.b,
+                    xcaption = "Probabilistic decision table for West Coast of Vancouver Island (AM2)",
+                    xlabel = "tab:wcvi-am2-decision",
+                    font.size = dec.table.font.size,
+                    space.size = dec.table.font.space,
+                    placement = "H")
+@
+\stripes
+<<wcvi.ref.points.table, results='asis', echo=FALSE>>=
+make.ref.points.table(wcvi.b,
+                      wcvi.am1,
+                      xcaption = "Reference points table for West Coast of Vancouver Island",
+                      xlabel = "tab:wcvi-ref-points",
+                      font.size = dec.table.font.size,
+                      space.size = dec.table.font.space,
+                      placement = "H")
+@
+\end{frame}
+
+%%% New subsection %%%
+\subsection{Projected biomass}
+
+% New slide
+\begin{frame}
+\begin{columns}
+\begin{column}{0.4\textwidth}
+\begin{itemize}
+\item Projected spawning biomass assuming no fishing in \Sexpr{nextYr}, $\mli{SB}_{\Sexpr{nextYr}}$ in thousands of tonnes, t for \Sexpr{fish.name} in the major stock assessment regions
+\end{itemize}
+\end{column}
+\begin{column}{0.6\textwidth}
+\centering
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}/SSB\Sexpr{nextYr}AM2.png}
 \end{column}
 \end{columns}
 \end{frame}
