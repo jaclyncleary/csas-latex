@@ -12,19 +12,20 @@
 % \usepackage{enumitem}
 \usepackage{xcolor}
 
-% Choose a theme
-\usetheme{Darmstadt}  % http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+% Choose a theme (http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html)
+\usetheme{Darmstadt}
 
-% Set the components
-% \usecolortheme{whale}  % https://hartwork.org/beamer-theme-matrix/
+% Set the components (https://hartwork.org/beamer-theme-matrix/)
+% \usecolortheme{orchid}
+% \usecolortheme{whale}
 % \useoutertheme{smoothbars}
 % \useinnertheme{rounded}
 
 % Decrease margins globally
 \setbeamersize{text margin left=1em, text margin right=1em}
 
-% Set indent for description environment
-\setbeamersize{description width=1.5cm}
+% % Set indent for description environment
+% \setbeamersize{description width=1.5cm}
 
 % Update fonts for sections, subsections, titles
 \setbeamerfont{frametitle}{size=\tiny} 
@@ -162,14 +163,14 @@ dec.table.font.space <- 8
 \titlepage
 \end{frame}
 
-%%% Table of contents %%%
-\begin{frame}{Outline}  % [allowframebreaks]
-\begin{multicols}{2}
-\tableofcontents
-\end{multicols}
-\end{frame}
+% %%% Table of contents %%%
+% \begin{frame}{Outline}  % [allowframebreaks]
+% \begin{multicols}{2}
+% \tableofcontents
+% \end{multicols}
+% \end{frame}
 
-%%% New section: data %%%
+%%% New section %%%
 \section{Input data}
 
 % New slide
@@ -178,9 +179,9 @@ Time series from \Sexpr{paste(range(yrRange), collapse=" to ")}: catch, biologic
 \begin{itemize}
 \item Catch by gear type:
 \begin{description} 
-\item [Other] Reduction, food and bait, special use
-\item [Roe seine] Roe seine
-\item [Roe gillnet] Roe gillnet
+\item [Other fisheries] Reduction, food and bait, special use
+\item [Roe seine]
+\item [Roe gillnet]
 \end{description}
 \begin{itemize}
 \item Currently, SOK catch is not used in the assessment
@@ -194,22 +195,22 @@ Time series from \Sexpr{paste(range(yrRange), collapse=" to ")}: catch, biologic
 \item[Surface] From \Sexpr{qYrs$q1} ($q_1$)
 \item[Dive] From \Sexpr{qYrs$q2} ($q_2$)
 \end{description}
-\item Survey index declined from 2016 to 2017 in HG, SOG, CC
-\item Survey index was nearly identical for PRD and WCVI (2016 vs 2017)
+\item Spawn index declined from 2016 to 2017 in HG, SoG, and CC
+\item Spawn index was nearly identical in 2016 and 2017 for PRD and WCVI
 \end{itemize}
 \end{itemize}
 \end{frame}
 
-% Show table of contents at each section
-\AtBeginSection[]{
-\begin{frame}<beamer>{Outline}
-\begin{multicols}{2}
-\tableofcontents[currentsection]
-\end{multicols}
-\end{frame}
-}
+% % Show table of contents at each section
+% \AtBeginSection[]{
+% \begin{frame}<beamer>{Outline}
+% \begin{multicols}{2}
+% \tableofcontents[currentsection]
+% \end{multicols}
+% \end{frame}
+% }
 
-%%% New section: stock assessment results %%%
+%%% New section %%%
 \section{Stock assessment results}
 
 % New slide
@@ -233,11 +234,11 @@ Time series from \Sexpr{paste(range(yrRange), collapse=" to ")}: catch, biologic
 \end{itemize}
 \end{frame}
 
-% New subsection
+%%% New subsection %%%
 \subsection{Haida Gwaii}
 
 % New slide
-\begin{frame}
+\begin{frame}[allowframebreaks]
 \emph{Data}
 \Sexpr{knit_child('Summaries/HG/Data.rnw')}
 \emph{Stock productivity and recruitment}
@@ -263,7 +264,7 @@ Time series from \Sexpr{paste(range(yrRange), collapse=" to ")}: catch, biologic
 \end{columns}
 \end{frame}
 
-% New subsection: references
+%%% New subsection %%%
 \subsection*{References}
 
 % New slide
