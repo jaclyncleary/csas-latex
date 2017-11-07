@@ -1267,7 +1267,6 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
       # Combine the plots
       storyboardWide <- plot_grid( a2dGrid, eGrid, align="h", ncol=2, nrow=1,
               rel_widths=c(2, 1)) +
-#          plot_grid( plotE, ncol=3 ) +
           ggsave( filename=file.path(SAR, paste("StoryboardWide", model, ".png", 
                       sep="")), dpi=pDPI, width=figWidth*1.67, height=figWidth )
     }  # End i loop over models
