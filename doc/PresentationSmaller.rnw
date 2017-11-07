@@ -269,7 +269,7 @@ Time series from \Sexpr{paste(range(yrRange), collapse=" to ")}: catch, biologic
 \begin{columns}
 \begin{column}{0.3\textwidth}
 \begin{itemize}
-\item Haida Gwaii (AM2)
+\item \subsecname{} (AM2)
 \end{itemize}
 \end{column}
 \begin{column}{0.7\textwidth}
@@ -330,7 +330,7 @@ make.ref.points.table(hg.b,
 \begin{columns}
 \begin{column}{0.3\textwidth}
 \begin{itemize}
-\item Prince Rupert District (AM2)
+\item \subsecname{} (AM2)
 \end{itemize}
 \end{column}
 \begin{column}{0.7\textwidth}
@@ -391,7 +391,7 @@ make.ref.points.table(pr.b,
 \begin{columns}
 \begin{column}{0.3\textwidth}
 \begin{itemize}
-\item Central Coast (AM2)
+\item \subsecname{} (AM2)
 \end{itemize}
 \end{column}
 \begin{column}{0.7\textwidth}
@@ -452,7 +452,7 @@ make.ref.points.table(cc.b,
 \begin{columns}
 \begin{column}{0.3\textwidth}
 \begin{itemize}
-\item Strait of Georgia (AM2)
+\item \subsecname{} (AM2)
 \end{itemize}
 \end{column}
 \begin{column}{0.7\textwidth}
@@ -513,7 +513,7 @@ make.ref.points.table(sog.b,
 \begin{columns}
 \begin{column}{0.3\textwidth}
 \begin{itemize}
-\item West Coast of Vancouver Island (AM2)
+\item \subsecname{} (AM2)
 \end{itemize}
 \end{column}
 \begin{column}{0.7\textwidth}
@@ -554,7 +554,7 @@ make.ref.points.table(wcvi.b,
 \begin{columns}
 \begin{column}{0.4\textwidth}
 \begin{itemize}
-\item Projected spawning biomass assuming no fishing in \Sexpr{nextYr}, $\mli{SB}_{\Sexpr{nextYr}}$ in thousands of tonnes, t for \Sexpr{fish.name} in the major stock assessment regions
+\item Projected spawning biomass assuming no fishing in \Sexpr{nextYr}, $\mli{SB}_{\Sexpr{nextYr}}$ in thousands of tonnes, t for \Sexpr{fish.name} in the major stock assessment regions (AM2)
 \end{itemize}
 \end{column}
 \begin{column}{0.6\textwidth}

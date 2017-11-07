@@ -1,5 +1,5 @@
 % Document class
-\documentclass[aspectratio=149, xcolor=table]{beamer}  % 169, 1610, 149, 54, 43, or 32
+\documentclass[aspectratio=149, xcolor=table, 9pt]{beamer}  % 169, 1610, 149, 54, 43, or 32
 
 % Load packages
 \usepackage{booktabs}
@@ -90,7 +90,7 @@
 \setlength{\tabcolsep}{4pt}
 
 % No caption labels
-\captionsetup{labelformat=empty}
+\captionsetup{labelformat=empty, skip=0pt}
 
 % Let it begin
 \begin{document}
@@ -142,8 +142,8 @@ load( file=file.path("..", locOutput, "Image.RData") )
 setwd( dir=".." )
 
 # Font size for decision tables
-dec.table.font.size <- 7
-dec.table.font.space <- 8
+dec.table.font.size <- 6
+dec.table.font.space <- 7
 
 @
 
@@ -153,6 +153,7 @@ dec.table.font.space <- 8
 
 % Variables for the cover page
 \title[\Sexpr{fish.name}: Assessment in \Sexpr{max(yrRange)} and forecast for \Sexpr{nextYr}]{Stock Assessment for \Sexpr{fish.name} (\emph{Clupea pallasi}) in British Columbia in \Sexpr{max(yrRange)} and forecast for \Sexpr{nextYr}}
+\subtitle{These results are preliminary until the SAR is finalized}
 \author[Cleary \emph{et al}. (\Sexpr{max(yrRange)})]{Jaclyn Cleary \and Sarah Hawkshaw \and Matthew Grinnell \and Chris Grandin}
 \institute{CSAP Working paper 2017PEL01\\Pacific Biological Station}
 \date{}  % No date (this will be presented several times)
@@ -169,7 +170,7 @@ dec.table.font.space <- 8
 \end{multicols}
 \end{frame}
 
-%%% New section: data %%%
+%%% New section %%%
 \section{Input data}
 
 % New slide
@@ -192,7 +193,7 @@ dec.table.font.space <- 8
 \end{columns}
 \end{frame}
 
-% New subsection: catch
+%%% New subsection %%%
 \subsection{Catch}
 
 % New slide
@@ -216,7 +217,7 @@ dec.table.font.space <- 8
 \end{columns}
 \end{frame}
 
-% New subsection: biosamples
+%%% New subsection %%%
 \subsection{Biological data}
 
 % New slide
@@ -253,7 +254,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \end{columns}
 \end{frame}
 
-% New subsection: abundance
+%%% New subsection %%%
 \subsection{Spawn index}
 
 % New slide
@@ -262,8 +263,8 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \begin{column}{0.4\textwidth}
 \begin{itemize}
 \item Time series of spawn index in thousands of metric tonnes ($\text{t} \times 10^{3}$) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), collapse=" to ")} in the major stock assessment regions (SARs)
-\item Survey index declined from 2016 to 2017 in HG, SOG, CC
-\item Survey index was nearly identical for PRD and WCVI (2016 vs 2017)
+\item Survey index declined from 2016 to 2017 in HG, CC, and SoG
+\item Survey index was nearly identical in 2016 and 2017 for PRD and WCVI
 \end{itemize}
 \end{column}
 \begin{column}{0.6\textwidth}
@@ -282,7 +283,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \end{frame}
 }
 
-%%% New section: stock assessment results %%%
+%%% New section %%%
 \section{Stock assessment results}
 
 % New slide
@@ -312,18 +313,17 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \end{itemize}
 \end{frame}
 
-% New subsection: summary
-
-%\subsection{Haida Gwaii: Summary of results}
+%%% New subsection %%%
+\subsection{Haida Gwaii}
 
 % New slide
-\begin{frame}[allowframebreaks]{Haida Gwaii: Summary of results}
+\begin{frame}
 \emph{Data}
 \Sexpr{knit_child('Summaries/HG/Data.rnw')}
-\framebreak
+\end{frame}
 
 % New slide
-%\begin{frame}{Haida Gwaii}
+\begin{frame}
 \begin{columns}
 \begin{column}{0.5\textwidth}
 \begin{itemize}
@@ -350,12 +350,13 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
 \end{column}
 \end{columns}
-%\end{frame}
-\framebreak
+\end{frame}
 
 % New slide
+\begin{frame}[plain]
 \begin{columns}
 \begin{column}{0.5\textwidth}
+\subsecname{} (AM2)\\
 \emph{Stock productivity and recruitment}
 \Sexpr{knit_child('Summaries/HG/Productivity.rnw')}
 \end{column}
@@ -364,11 +365,13 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
 \end{column}
 \end{columns}
-\framebreak
+\end{frame}
 
 % New slide
+\begin{frame}[plain]
 \begin{columns}
 \begin{column}{0.5\textwidth}
+\subsecname{} (AM2)\\
 \emph{Stock status}
 \Sexpr{knit_child('Summaries/HG/Status.rnw')}
 \end{column}
@@ -377,11 +380,13 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
 \end{column}
 \end{columns}
-\framebreak
+\end{frame}
 
 % New slide
+\begin{frame}[plain]
 \begin{columns}
 \begin{column}{0.5\textwidth}
+\subsecname{} (AM2)\\
 \emph{Projected spawning biomass in \Sexpr{nextYr}}
 \Sexpr{knit_child('Summaries/HG/Projection.rnw')}
 \end{column}
@@ -393,31 +398,42 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \end{frame}
 
 % New slide
-\begin{frame}{Haida Gwaii: AM2 Decision table}
+\begin{frame}[plain]
 \stripes
 <<hg.decision.table, results='asis', echo=FALSE>>=
 make.decision.table(hg.b,
-                    xcaption = NULL,
+                    xcaption = "Probabilistic decision table for Haida Gwaii (AM2)",
                     xlabel = "tab:hg-am2-decision",
                     font.size = dec.table.font.size,
                     space.size = dec.table.font.space,
                     placement = "H")
 @
+\stripes
+<<hg.ref.points.table, results='asis', echo=FALSE>>=
+make.ref.points.table(hg.b,
+                      hg.am1,
+                      xcaption = "Reference points table for Haida Gwaii",
+                      xlabel = "tab:hg-ref-points",
+                      font.size = dec.table.font.size,
+                      space.size = dec.table.font.space,
+                      placement = "H")
+@
 \end{frame}
 
-% New subsection: Prince Rupert District
-%\subsection{Prince Rupert District}
+%%% New subsection %%%
+\subsection{Prince Rupert District}
 
 % New slide
-\begin{frame}[allowframebreaks]{Prince Rupert District: Summary of results}
+\begin{frame}
 \emph{Data}
 \Sexpr{knit_child('Summaries/PRD/Data.rnw')}
-\framebreak
+\end{frame}
 
 % New slide
-%\begin{frame}
+\begin{frame}[plain]
 \begin{columns}
 \begin{column}{0.5\textwidth}
+\subsecname{} (AM2)\\
 \emph{Stock productivity and recruitment}
 \Sexpr{knit_child('Summaries/PRD/Productivity.rnw')}
 \end{column}
@@ -426,11 +442,13 @@ make.decision.table(hg.b,
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
 \end{column}
 \end{columns}
-%\end{frame}
-\framebreak
+\end{frame}
 
+% New slide
+\begin{frame}[plain]
 \begin{columns}
 \begin{column}{0.5\textwidth}
+\subsecname{} (AM2)\\
 \emph{Stock status}
 \Sexpr{knit_child('Summaries/PRD/Status.rnw')}
 \end{column}
@@ -439,11 +457,13 @@ make.decision.table(hg.b,
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}PRD/StoryboardAM2.png}
 \end{column}
 \end{columns}
-%\end{frame}
-\framebreak
+\end{frame}
 
+% New slide
+\begin{frame}[plain]
 \begin{columns}
 \begin{column}{0.5\textwidth}
+\subsecname{} (AM2)\\
 \emph{Projected spawning biomass in \Sexpr{nextYr}}
 \Sexpr{knit_child('Summaries/PRD/Projection.rnw')}
 \end{column}
@@ -455,31 +475,42 @@ make.decision.table(hg.b,
 \end{frame}
 
 % New slide
-\begin{frame}{Prince Rupert District: AM2 Decision table}
+\begin{frame}[plain]
 \stripes
 <<prd.decision.table, results='asis', echo=FALSE>>=
 make.decision.table(pr.b,
-                    xcaption = NULL,
+                    xcaption = "Probabilistic decision table for Prince Rupert District (AM2)",
                     xlabel = "tab:prd-am2-decision",
                     font.size = dec.table.font.size,
                     space.size = dec.table.font.space,
                     placement = "H")
 @
+\stripes
+<<prd.ref.points.table, results='asis', echo=FALSE>>=
+make.ref.points.table(pr.b,
+                      pr.am1,
+                      xcaption = "Reference points table for Prince Rupert District",
+                      xlabel = "tab:prd-ref-points",
+                      font.size = dec.table.font.size,
+                      space.size = dec.table.font.space,
+                      placement = "H")
+@
 \end{frame}
 
-% New subsection: Central Coast
-%\subsection{Central Coast}
+%%% New subsection %%%
+\subsection{Central Coast}
 
 % New slide
-\begin{frame}[allowframebreaks]{Central Coast: Summary of results}
+\begin{frame}
 \emph{Data}
 \Sexpr{knit_child('Summaries/CC/Data.rnw')}
-\framebreak
+\end{frame}
 
 % New slide
-%\begin{frame}
+\begin{frame}[plain]
 \begin{columns}
 \begin{column}{0.5\textwidth}
+\subsecname{} (AM2)\\
 \emph{Stock productivity and recruitment}
 \Sexpr{knit_child('Summaries/CC/Productivity.rnw')}
 \end{column}
@@ -488,13 +519,13 @@ make.decision.table(pr.b,
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
 \end{column}
 \end{columns}
-%\end{frame}
-\framebreak
+\end{frame}
 
 % New slide
-%\begin{frame}
+\begin{frame}[plain]
 \begin{columns}
 \begin{column}{0.5\textwidth}
+\subsecname{} (AM2)\\
 \emph{Stock status}
 \Sexpr{knit_child('Summaries/CC/Status.rnw')}
 \end{column}
@@ -503,14 +534,13 @@ make.decision.table(pr.b,
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
 \end{column}
 \end{columns}
-%\end{frame}
-
-\framebreak
+\end{frame}
 
 % New slide
-%\begin{frame}
+\begin{frame}[plain]
 \begin{columns}
 \begin{column}{0.5\textwidth}
+\subsecname{} (AM2)\\
 \emph{Projected spawning biomass in \Sexpr{nextYr}}
 \Sexpr{knit_child('Summaries/CC/Projection.rnw')}
 \end{column}
@@ -519,36 +549,45 @@ make.decision.table(pr.b,
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CC/StoryboardAM2.png}
 \end{column}
 \end{columns}
-%\end{frame}
-
 \end{frame}
 
 % New slide
-\begin{frame}{Central Coast: AM2 Decision table}
+\begin{frame}[plain]
 \stripes
 <<cc.decision.table, results='asis', echo=FALSE>>=
 make.decision.table(cc.b,
-                    xcaption = NULL,
+                    xcaption = "Probabilistic decision table for Central Coast (AM2)",
                     xlabel = "tab:cc-am2-decision",
                     font.size = dec.table.font.size,
                     space.size = dec.table.font.space,
                     placement = "H")
 @
+\stripes
+<<cc.ref.points.table, results='asis', echo=FALSE>>=
+make.ref.points.table(cc.b,
+                      cc.am1,
+                      xcaption = "Reference points table for Central Coast",
+                      xlabel = "tab:cc-ref-points",
+                      font.size = dec.table.font.size,
+                      space.size = dec.table.font.space,
+                      placement = "H")
+@
 \end{frame}
 
-% New subsection: Strait of Georgia
-%\subsection{Strait of Georgia}
+%%% New subsection %%%
+\subsection{Strait of Georgia}
 
 % New slide
-\begin{frame}[allowframebreaks]{Strait of Georgia: Summary of results}
+\begin{frame}
 \emph{Data}
 \Sexpr{knit_child('Summaries/SoG/Data.rnw')}
-\framebreak
+\end{frame}
 
 % New slide
-%\begin{frame}
+\begin{frame}[plain]
 \begin{columns}
 \begin{column}{0.5\textwidth}
+\subsecname{} (AM2)\\
 \emph{Stock productivity and recruitment}
 \Sexpr{knit_child('Summaries/SoG/Productivity.rnw')}
 \end{column}
@@ -557,13 +596,13 @@ make.decision.table(cc.b,
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
 \end{column}
 \end{columns}
-%\end{frame}
-\framebreak
+\end{frame}
 
 % New slide
-%\begin{frame}
+\begin{frame}[plain]
 \begin{columns}
 \begin{column}{0.5\textwidth}
+\subsecname{} (AM2)\\
 \emph{Stock status}
 \Sexpr{knit_child('Summaries/SoG/Status.rnw')}
 \end{column}
@@ -572,13 +611,13 @@ make.decision.table(cc.b,
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
 \end{column}
 \end{columns}
-%\end{frame}
-\framebreak
+\end{frame}
 
 % New slide
-%\begin{frame}
+\begin{frame}[plain]
 \begin{columns}
 \begin{column}{0.5\textwidth}
+\subsecname{} (AM2)\\
 \emph{Projected spawning biomass in \Sexpr{nextYr}}
 \Sexpr{knit_child('Summaries/SoG/Projection.rnw')}
 \end{column}
@@ -587,36 +626,45 @@ make.decision.table(cc.b,
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}SoG/StoryboardAM2.png}
 \end{column}
 \end{columns}
-%\end{frame}
-
 \end{frame}
 
 % New slide
-\begin{frame}{Strait of Georgia: AM2 Decision table}
+\begin{frame}[plain]
 \stripes
 <<sog.decision.table, results='asis', echo=FALSE>>=
 make.decision.table(sog.b,
-                    xcaption = NULL,
+                    xcaption = "Probabilistic decision table for Strait of Georgia (AM2)",
                     xlabel = "tab:sog-am2-decision",
                     font.size = dec.table.font.size,
                     space.size = dec.table.font.space,
                     placement = "H")
 @
+\stripes
+<<sog.ref.points.table, results='asis', echo=FALSE>>=
+make.ref.points.table(sog.b,
+                      sog.am1,
+                      xcaption = "Reference points table for Strait of Georgia",
+                      xlabel = "tab:sog-ref-points",
+                      font.size = dec.table.font.size,
+                      space.size = dec.table.font.space,
+                      placement = "H")
+@
 \end{frame}
 
-% New subsection: West Coast of Vancouver Island
-%\subsection{West Coast of Vancouver Island}
+%%% New subsection %%%
+\subsection{West Coast of Vancouver Island}
 
 % New slide
-\begin{frame}[allowframebreaks]{West Coast of Vancouver Island: Summary of results}
+\begin{frame}
 \emph{Data}
 \Sexpr{knit_child('Summaries/WCVI/Data.rnw')}
-\framebreak
+\end{frame}
 
 % New slide
-%\begin{frame}
+\begin{frame}[plain]
 \begin{columns}
 \begin{column}{0.5\textwidth}
+\subsecname{} (AM2)\\
 \emph{Stock productivity and recruitment}
 \Sexpr{knit_child('Summaries/WCVI/Productivity.rnw')}
 \end{column}
@@ -625,13 +673,13 @@ make.decision.table(sog.b,
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
 \end{column}
 \end{columns}
-%\end{frame}
-\framebreak
+\end{frame}
 
 % New slide
-%\begin{frame}
+\begin{frame}[plain]
 \begin{columns}
 \begin{column}{0.5\textwidth}
+\subsecname{} (AM2)\\
 \Sexpr{knit_child('Summaries/WCVI/Status.rnw')}
 \end{column}
 \begin{column}{0.5\textwidth}
@@ -639,13 +687,13 @@ make.decision.table(sog.b,
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
 \end{column}
 \end{columns}
-%\end{frame}
-\framebreak
+\end{frame}
 
 % New slide
-%\begin{frame}
+\begin{frame}[plain]
 \begin{columns}
 \begin{column}{0.5\textwidth}
+\subsecname{} (AM2)\\
 \emph{Projected spawning biomass in \Sexpr{nextYr}}
 \Sexpr{knit_child('Summaries/WCVI/Projection.rnw')}
 \end{column}
@@ -654,35 +702,40 @@ make.decision.table(sog.b,
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}WCVI/StoryboardAM2.png}
 \end{column}
 \end{columns}
-%\end{frame}
-
 \end{frame}
 
 % New slide
-\begin{frame}{West Coast of Vancouver Island: AM2 Decision table}
+\begin{frame}[plain]
 \stripes
 <<wcvi.decision.table, results='asis', echo=FALSE>>=
 make.decision.table(wcvi.b,
-                    xcaption = NULL,
+                    xcaption = "Probabilistic decision table for West Coast of Vancouver Island (AM2)",
                     xlabel = "tab:wcvi-am2-decision",
                     font.size = dec.table.font.size,
                     space.size = dec.table.font.space,
                     placement = "H")
 @
+\stripes
+<<wcvi.ref.points.table, results='asis', echo=FALSE>>=
+make.ref.points.table(wcvi.b,
+                      wcvi.am1,
+                      xcaption = "Reference points table for West Coast of Vancouver Island",
+                      xlabel = "tab:wcvi-ref-points",
+                      font.size = dec.table.font.size,
+                      space.size = dec.table.font.space,
+                      placement = "H")
+@
 \end{frame}
 
-%%% New section: summary results %%%
-\section{Summary results}
-
-% New subsection: prediction
-\subsection{Projected pre-fishery spawning biomass in \Sexpr{nextYr}}
+%%% New subsection %%%
+\subsection{Projected biomass}
 
 % New slide
 \begin{frame}
 \begin{columns}
 \begin{column}{0.4\textwidth}
 \begin{itemize}
-\item Predicted spawning biomass assuming no fishing in \Sexpr{nextYr}, $\mli{SB}_{\Sexpr{nextYr}}$ in thousands of tonnes, t for \Sexpr{fish.name} in the major stock assessment regions
+\item Projected spawning biomass assuming no fishing in \Sexpr{nextYr}, $\mli{SB}_{\Sexpr{nextYr}}$ in thousands of tonnes, t for \Sexpr{fish.name} in the major stock assessment regions
 \end{itemize}
 \end{column}
 \begin{column}{0.6\textwidth}
@@ -692,15 +745,15 @@ make.decision.table(wcvi.b,
 \end{columns}
 \end{frame}
 
-% New subsection: harvest
-\subsection{Harvest rate (AM2)}
+%%% New subsection %%%
+\subsection{Harvest rate}
  
 % New slide
 \begin{frame}
 \begin{columns}
 \begin{column}{0.4\textwidth}
 \begin{itemize}
-\item Harvest rate, $U_t$ for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), collapse=" to ")} in the major stock assessment regions (SARs)
+\item Harvest rate, $U_t$ for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), collapse=" to ")} in the major stock assessment regions (SARs) for AM2
 \item Since \Sexpr{intendUYrs}, the intended harvest rate has been \Sexpr{intendU*100}\%, $U_t=0.2$
 \end{itemize}
 \end{column}
@@ -711,8 +764,8 @@ make.decision.table(wcvi.b,
 \end{columns}
 \end{frame}
 
-% Subsection: reference points
-\subsection{Reference points: LRP and USR}
+%%% New section %%%
+\section{Reference points: LRP and USR}
 
 % New slide
 \begin{frame}
@@ -794,7 +847,7 @@ MSY-based reference points
 \end{columns}
 \end{frame}
 
-% New subsection: references
+%%% New subsection %%%
 \subsection*{References}
 
 % New slide
