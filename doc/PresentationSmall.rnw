@@ -74,8 +74,8 @@
 \newcommand{\bi}{\begin{itemize}}
 \newcommand{\ei}{\end{itemize}}
 
-% Small font for references
-\renewcommand*{\bibfont}{\scriptsize}
+% % Small font for references
+% \renewcommand*{\bibfont}{\scriptsize}
 
 % Start a counter: clunky way to 'resume' enumeration when I can't load 'enumitem'
 \newcounter{storyboard}
@@ -153,7 +153,7 @@ dec.table.font.space <- 7
 
 % Variables for the cover page
 \title[\Sexpr{fish.name}: Assessment in \Sexpr{max(yrRange)} and forecast for \Sexpr{nextYr}]{Stock Assessment for \Sexpr{fish.name} (\emph{Clupea pallasi}) in British Columbia in \Sexpr{max(yrRange)} and forecast for \Sexpr{nextYr}}
-\subtitle{These results are preliminary until the SAR is finalized}
+\subtitle{\textbf{These results are preliminary until the SAR is finalized}}
 \author[Cleary \emph{et al}. (\Sexpr{max(yrRange)})]{Jaclyn Cleary \and Sarah Hawkshaw \and Matthew Grinnell \and Chris Grandin}
 \institute{CSAP Working paper 2017PEL01\\Pacific Biological Station}
 \date{}  % No date (this will be presented several times)
@@ -263,8 +263,8 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \begin{column}{0.4\textwidth}
 \begin{itemize}
 \item Time series of spawn index in thousands of metric tonnes ($\text{t} \times 10^{3}$) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), collapse=" to ")} in the major stock assessment regions (SARs)
-\item Survey index declined from 2016 to 2017 in HG, CC, and SoG
-\item Survey index was nearly identical in 2016 and 2017 for PRD and WCVI
+\item Spawn index declined from 2016 to 2017 for HG, CC, and SoG
+\item Spawn index was nearly identical in 2016 and 2017 for PRD and WCVI
 \end{itemize}
 \end{column}
 \begin{column}{0.6\textwidth}
@@ -398,7 +398,7 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 \end{frame}
 
 % New slide
-\begin{frame}[plain]
+\begin{frame}
 \stripes
 <<hg.decision.table, results='asis', echo=FALSE>>=
 make.decision.table(hg.b,
@@ -409,7 +409,7 @@ make.decision.table(hg.b,
                     placement = "H")
 @
 \stripes
-<<hg.ref.points.table, results='asis', echo=FALSE>>=
+<<hg.ref.points.table, results='hide', echo=FALSE>>=
 make.ref.points.table(hg.b,
                       hg.am1,
                       xcaption = "Reference points table for Haida Gwaii",
@@ -475,7 +475,7 @@ make.ref.points.table(hg.b,
 \end{frame}
 
 % New slide
-\begin{frame}[plain]
+\begin{frame}
 \stripes
 <<prd.decision.table, results='asis', echo=FALSE>>=
 make.decision.table(pr.b,
@@ -486,7 +486,7 @@ make.decision.table(pr.b,
                     placement = "H")
 @
 \stripes
-<<prd.ref.points.table, results='asis', echo=FALSE>>=
+<<prd.ref.points.table, results='hide', echo=FALSE>>=
 make.ref.points.table(pr.b,
                       pr.am1,
                       xcaption = "Reference points table for Prince Rupert District",
@@ -552,7 +552,7 @@ make.ref.points.table(pr.b,
 \end{frame}
 
 % New slide
-\begin{frame}[plain]
+\begin{frame}
 \stripes
 <<cc.decision.table, results='asis', echo=FALSE>>=
 make.decision.table(cc.b,
@@ -563,7 +563,7 @@ make.decision.table(cc.b,
                     placement = "H")
 @
 \stripes
-<<cc.ref.points.table, results='asis', echo=FALSE>>=
+<<cc.ref.points.table, results='hide', echo=FALSE>>=
 make.ref.points.table(cc.b,
                       cc.am1,
                       xcaption = "Reference points table for Central Coast",
@@ -629,7 +629,7 @@ make.ref.points.table(cc.b,
 \end{frame}
 
 % New slide
-\begin{frame}[plain]
+\begin{frame}
 \stripes
 <<sog.decision.table, results='asis', echo=FALSE>>=
 make.decision.table(sog.b,
@@ -640,7 +640,7 @@ make.decision.table(sog.b,
                     placement = "H")
 @
 \stripes
-<<sog.ref.points.table, results='asis', echo=FALSE>>=
+<<sog.ref.points.table, results='hide', echo=FALSE>>=
 make.ref.points.table(sog.b,
                       sog.am1,
                       xcaption = "Reference points table for Strait of Georgia",
@@ -705,7 +705,7 @@ make.ref.points.table(sog.b,
 \end{frame}
 
 % New slide
-\begin{frame}[plain]
+\begin{frame}
 \stripes
 <<wcvi.decision.table, results='asis', echo=FALSE>>=
 make.decision.table(wcvi.b,
@@ -716,7 +716,7 @@ make.decision.table(wcvi.b,
                     placement = "H")
 @
 \stripes
-<<wcvi.ref.points.table, results='asis', echo=FALSE>>=
+<<wcvi.ref.points.table, results='hide', echo=FALSE>>=
 make.ref.points.table(wcvi.b,
                       wcvi.am1,
                       xcaption = "Reference points table for West Coast of Vancouver Island",
