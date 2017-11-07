@@ -1,0 +1,276 @@
+% Document class
+\documentclass[aspectratio=149, xcolor=table, 8pt]{beamer}  % 169, 1610, 149, 54, 43, or 32
+
+% Load packages
+\usepackage{booktabs}
+\usepackage{beamerthemesplit}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage{caption}
+\usepackage{natbib}
+\usepackage{multicol}
+% \usepackage{enumitem}
+\usepackage{xcolor}
+
+% Choose a theme
+\usetheme{Darmstadt}  % http://deic.uab.es/~iblanes/beamer_gallery/index_by_theme.html
+
+% Set the components
+% \usecolortheme{whale}  % https://hartwork.org/beamer-theme-matrix/
+% \useoutertheme{smoothbars}
+% \useinnertheme{rounded}
+
+% Decrease margins globally
+\setbeamersize{text margin left=1em, text margin right=1em}
+
+% Set indent for description environment
+\setbeamersize{description width=1.5cm}
+
+% Update fonts for sections, subsections, titles
+\setbeamerfont{frametitle}{size=\tiny} 
+
+% Set transparency: complete
+\setbeamercovered{transparent=0}
+
+% No navigation symbols
+\setbeamertemplate{navigation symbols}{}
+
+% Generate a footer: short title, short author, and slide number/total
+\setbeamertemplate{footline}{%
+  \begin{beamercolorbox}[colsep=1.5pt]{upper separation line foot}
+  \end{beamercolorbox}
+  \begin{beamercolorbox}[ht=2.5ex,dp=1.125ex,%
+    leftskip=.3cm,rightskip=.3cm plus1fil]{title in head/foot}%
+    \leavevmode{\usebeamerfont{title in head/foot}\insertshorttitle}%
+    \hfill%
+    {\usebeamerfont{author in head/foot}\usebeamercolor[fg]{author in head/foot}\insertshortauthor}%
+    \hfill%
+    {\usebeamerfont{author in head/foot}\usebeamercolor[fg]{author in head/foot}\insertframenumber~/~\inserttotalframenumber}%
+  \end{beamercolorbox}%
+  \begin{beamercolorbox}[colsep=1.5pt]{lower separation line foot}
+  \end{beamercolorbox}
+}
+
+% Change spacing between output chunk paragraphs
+\renewenvironment{knitrout}{\setlength{\topsep}{0mm}}{}
+
+% Multi-line cell (table column names)
+\newcommand{\mlc}[2][c]{\begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+% For subscripts in text mode (table column names)
+\newcommand{\subscr}[1]{$_{\text{#1}}$}
+
+% Better treatment of input (no extra trailing space)
+\newcommand{\inputsp}[1]{\input{#1}\unskip}
+
+% Multi-letter identifier (i.e., multi-character variable
+\newcommand{\mli}[1]{\mathit{#1}}
+
+% Shortcuts
+\newcommand{\bc}{\begin{center}}
+\newcommand{\ec}{\end{center}}
+\newcommand{\bn}{\begin{enumerate}}
+\newcommand{\en}{\end{enumerate}}
+\newcommand{\bi}{\begin{itemize}}
+\newcommand{\ei}{\end{itemize}}
+
+% Small font for references
+\renewcommand*{\bibfont}{\scriptsize}
+
+% Start a counter: clunky way to 'resume' enumeration when I can't load 'enumitem'
+\newcounter{storyboard}
+
+% Background row colours (put it before each table to make sure)
+\newcommand{\stripes}{\rowcolors{2}{lightgray}{}}
+
+% Height for figures in frames with titles
+\newcommand{\textheightsmall}{0.9\textheight}
+
+% Reduce space between table columns
+\setlength{\tabcolsep}{4pt}
+
+% No caption labels
+\captionsetup{labelformat=empty}
+
+% Let it begin
+\begin{document}
+
+%% This is the initial code chunk where you load your R workspace.
+%% This gives access to all objects in the RData file for the entirety
+%%  of the document. Use \Sexpr{objname} to put values in text.
+<<load-everything, echo=FALSE,  message=FALSE, results='hide', warning=FALSE>>=
+opts_chunk$set(dev = 'png',
+               fig.path = 'knitr-cache/',
+               fig.dpi = 96,
+               fig.width = 7.5,
+               fig.height = 4,
+               dpi = 100,
+               echo = FALSE,
+               results = FALSE,
+               message = FALSE,
+               warning = FALSE,
+               results = 'hide',
+               cache = TRUE,
+               cache.path = 'knitr-cache/')
+
+# Get original working directory
+origWD <- getwd( )
+
+# Set the working directory (temporary)
+setwd("r")
+
+# Load all R code and the package libraries.
+source("all.r")
+
+# If you want to reload all model outputs, set to TRUE
+# The load.models.into.parent.env function is located at bottom of model-setup.r.
+load.models.into.parent.env()
+
+# This has to be sourced after loading the models in because it depends on the model output
+source("custom-knitr-variables.r")
+
+# Load required packages
+require( tidyverse )
+
+# Locations of herring-specific R output (trailing separator for latex)
+locOutput <- file.path( "..", "models", .Platform$file.sep )
+
+# Load the herring data
+load( file=file.path("..", locOutput, "Image.RData") )
+
+# Reset the working directory
+setwd( dir=".." )
+
+# Font size for decision tables
+dec.table.font.size <- 7
+dec.table.font.space <- 8
+
+@
+
+% More custom variables
+<<variables, child='maindoc/variables.rnw'>>=
+@
+
+% Variables for the cover page
+\title[\Sexpr{fish.name}: Assessment in \Sexpr{max(yrRange)} and forecast for \Sexpr{nextYr}]{Stock Assessment for \Sexpr{fish.name} (\emph{Clupea pallasi}) in British Columbia in \Sexpr{max(yrRange)} and forecast for \Sexpr{nextYr}}
+\author[Cleary \emph{et al}. (\Sexpr{max(yrRange)})]{Jaclyn Cleary \and Sarah Hawkshaw \and Matthew Grinnell \and Chris Grandin}
+\institute{CSAP Working paper 2017PEL01\\Pacific Biological Station}
+\date{}  % No date (this will be presented several times)
+
+%%% Title page %%%
+\begin{frame}
+\titlepage
+\end{frame}
+
+%%% Table of contents %%%
+\begin{frame}{Outline}  % [allowframebreaks]
+\begin{multicols}{2}
+\tableofcontents
+\end{multicols}
+\end{frame}
+
+%%% New section: data %%%
+\section{Input data}
+
+% New slide
+\begin{frame}
+Time series from \Sexpr{paste(range(yrRange), collapse=" to ")}: catch, biological data, and spawn index
+\begin{itemize}
+\item Catch by gear type:
+\begin{description} 
+\item [Other] Reduction, food and bait, special use
+\item [Roe seine] Roe seine
+\item [Roe gillnet] Roe gillnet
+\end{description}
+\begin{itemize}
+\item Currently, SOK catch is not used in the assessment
+\end{itemize}
+\item Proportion-at-age 
+\item Weight-at-age
+\item Spawn index
+\begin{itemize}
+\item Two distinct periods defined by the dominant survey type:
+\begin{description}
+\item[Surface] From \Sexpr{qYrs$q1} ($q_1$)
+\item[Dive] From \Sexpr{qYrs$q2} ($q_2$)
+\end{description}
+\item Survey index declined from 2016 to 2017 in HG, SOG, CC
+\item Survey index was nearly identical for PRD and WCVI (2016 vs 2017)
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+% Show table of contents at each section
+\AtBeginSection[]{
+\begin{frame}<beamer>{Outline}
+\begin{multicols}{2}
+\tableofcontents[currentsection]
+\end{multicols}
+\end{frame}
+}
+
+%%% New section: stock assessment results %%%
+\section{Stock assessment results}
+
+% New slide
+\begin{frame}
+\begin{itemize}
+\item AM1: surface (\Sexpr{qYrs$q1}) and dive (\Sexpr{qYrs$q2}) survey catchability parameters ($q_1$ and $q_2$) are estimated using a prior distribution.
+\item AM2: surface survey catchability ($q_1$) is estimated and the dive survey catchability is fixed at ($q_2=1$).
+\item SAR includes estimates of current $\mli{SB}$ and one-year projections for AM2 and AM1 due to concerns around the choice of $q$ prior and interactions with HCR. Analytical concerns with AM2 and AM1 parameterizations of $q$ are provided in the 2016 SR (provided by the HTWG).
+\item Merits of AM2 and AM1 approaches to parameterizing $q$ were examined in part through sensitivity analyses, however sensitivity analyses alone are insufficient for understanding the complex interplay between $q$ and management parameters, and resolution between AM2 and AM1 parameterization of $q$ will require simulation-evaluation.
+\item AM2 results presented here
+\item Preliminary results presented for \Sexpr{PasteNicely(allRegions$major)}
+\item DRAFT SAR circulated to CSAS participants for 2-week review period
+\item SAR advice is considered preliminary and is subject to change until the SAR is approved
+\item Production analysis:
+\begin{itemize}
+\item Measures whether or not the stock is replacing itself
+\item $\mli{P}_t = \mli{SB}_{t+1} - \mli{SB}_t + \mli{C}_{t+1}$
+\item Catch, $C$ does not include SOK
+\end{itemize}
+\item CSAS Feb 2017 recommended $\text{LRP}=\Sexpr{propB0}\mli{SB}_0$
+\end{itemize}
+\end{frame}
+
+% New subsection
+\subsection{Haida Gwaii}
+
+% New slide
+\begin{frame}
+\emph{Data}
+\Sexpr{knit_child('Summaries/HG/Data.rnw')}
+\emph{Stock productivity and recruitment}
+\Sexpr{knit_child('Summaries/HG/Productivity.rnw')}
+\emph{Stock status}
+\Sexpr{knit_child('Summaries/HG/Status.rnw')}
+\emph{Projected spawning biomass in \Sexpr{nextYr}}
+\Sexpr{knit_child('Summaries/HG/Projection.rnw')}
+\end{frame}
+
+% New slide
+\begin{frame}[plain]
+\begin{columns}
+\begin{column}{0.3\textwidth}
+\begin{itemize}
+\item Haida Gwaii
+\end{itemize}
+\end{column}
+\begin{column}{0.7\textwidth}
+\centering
+\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{\Sexpr{locOutput}HG/StoryboardAM2.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+% New subsection: references
+\subsection*{References}
+
+% New slide
+\begin{frame}[allowframebreaks]%{References}
+\bibliographystyle{res-doc}
+\bibliography{all}
+\end{frame}
+
+% Fin
+\end{document}

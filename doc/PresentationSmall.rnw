@@ -288,10 +288,10 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 % New slide
 \begin{frame}{Stock assessment models}
 \begin{itemize}
-\item AM1: surface (1951 to 1987) and dive (1988 to 2017) survey catchability parameters ($q_1$ and $q_2$) are estimated using a prior distribution.
-\item AM2: surface survey catchability ($q_1$) is estimated and the dive survey catchability is fixed at ($q_2$) = 1.
-\item SAR includes estimates of current SB and one-year projections for AM2 and AM1 due to concerns around the choice of q prior and interactions with HCR. Analytical concerns with AM2 and AM1 parameterizations of q are provided in the 2016 SR (provided by the HTWG).
-\item Merits of AM2 and AM1 approaches to parameterizing q were examined in part through sensitivity analyses, however sensitivity analyses alone are insufficient for understanding the complex interplay between q and management parameters, and resolution between AM2 and AM1 parameterization of q will require simulation-evaluation.
+\item AM1: surface (\Sexpr{qYrs$q1}) and dive (\Sexpr{qYrs$q2}) survey catchability parameters ($q_1$ and $q_2$) are estimated using a prior distribution.
+\item AM2: surface survey catchability ($q_1$) is estimated and the dive survey catchability is fixed at ($q_2=1$).
+\item SAR includes estimates of current $\mli{SB}$ and one-year projections for AM2 and AM1 due to concerns around the choice of $q$ prior and interactions with HCR. Analytical concerns with AM2 and AM1 parameterizations of $q$ are provided in the 2016 SR (provided by the HTWG).
+\item Merits of AM2 and AM1 approaches to parameterizing $q$ were examined in part through sensitivity analyses, however sensitivity analyses alone are insufficient for understanding the complex interplay between $q$ and management parameters, and resolution between AM2 and AM1 parameterization of $q$ will require simulation-evaluation.
 \item AM2 results presented here
 \end{itemize}
 \end{frame}
