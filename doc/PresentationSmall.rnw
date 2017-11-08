@@ -733,12 +733,12 @@ make.ref.points.table(wcvi.b,
 % New slide
 \begin{frame}
 \begin{columns}
-\begin{column}{0.4\textwidth}
+\begin{column}{0.3\textwidth}
 \begin{itemize}
-\item Projected spawning biomass assuming no fishing in \Sexpr{nextYr}, $\mli{SB}_{\Sexpr{nextYr}}$ in thousands of tonnes, t for \Sexpr{fish.name} in the major stock assessment regions
+\item Projected  $\mli{SB}_{\Sexpr{nextYr}}$ assuming no fishing
 \end{itemize}
 \end{column}
-\begin{column}{0.6\textwidth}
+\begin{column}{0.7\textwidth}
 \centering
 \includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}/SSB\Sexpr{nextYr}.png}
 \end{column}
