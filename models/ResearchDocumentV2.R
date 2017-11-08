@@ -1438,6 +1438,45 @@ PlotBevertonHolt <- function( bh, bhPred, SARs, models ) {
 PlotBevertonHolt( bh=filter(BevHolt, Model==mNames[1]), SARs=allRegions$major,
     bhPred=filter(predBH, Model==mNames[1]) )
 
+# Plot unfished spawning biomass
+PlotSB0 <- function( dat, SARs, models, probs=ciLevel ) {
+  # Get lower CI level
+  lo <- (1 - probs) / 2
+  # Get upper CI level
+  up <- 1 - lo
+  # Filter the data
+  SB0 <- dat %>%
+      filter( Parameter=="SB0" ) %>%
+      left_join( y=regions, by="Region" ) %>%
+      mutate( Region=factor(Region, levels=regions$Region), 
+          RegionName=factor(RegionName, levels=regions$RegionName),
+          Model=factor(Model, levels=mNames) ) %>%
+      filter( Region %in% SARs, Model %in% models )
+  # SB0 quantiles
+  quantSB0 <- SB0 %>%
+      group_by( RegionName, Region, Model ) %>%
+      summarise( Lower=quantile(Value, probs=lo),
+          Median=quantile(Value, probs=0.5),
+          Upper=quantile(Value, probs=up) ) %>%
+      ungroup( ) %>%
+      filter( Region %in% SARs, Model %in% models )
+  # The plot
+  plotSSB <- ggplot( data=SB0 ) + 
+      geom_density( aes(x=Value), fill="grey" ) + 
+      geom_vline( data=quantSB0, aes(xintercept=Lower), linetype="dashed" ) +
+      geom_vline( data=quantSB0, aes(xintercept=Median) ) +
+      geom_vline( data=quantSB0, aes(xintercept=Upper), linetype="dashed" ) +
+      facet_wrap( Model ~ Region, scales="free", ncol=2, dir="v", 
+          labeller=label_wrap_gen(multi_line=FALSE) ) +
+      labs( x=bquote("SB"[0]~" (t"%*%10^3*")"), y="Density" ) +
+      myTheme +
+      ggsave( filename=paste("SB0", ".png", sep=""), dpi=pDPI, 
+          width=figWidth, height=figWidth )
+}  # End PlotSB0 function
+
+# Plot SB0
+PlotSB0( dat=mRaw, SARs=allRegions$major, models=mNames )
+
 # Message
 cat( "done\n" )
 
