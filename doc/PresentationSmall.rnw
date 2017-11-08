@@ -165,9 +165,9 @@ dec.table.font.space <- 7
 
 %%% Table of contents %%%
 \begin{frame}{Outline}
-\begin{multicols}{2}
+% \begin{multicols}{2}
 \tableofcontents
-\end{multicols}
+% \end{multicols}
 \end{frame}
 
 %%% New section %%%
@@ -277,9 +277,9 @@ weight-at-age (lines) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), co
 % Show table of contents at each section
 \AtBeginSection[]{
 \begin{frame}<beamer>{Outline}
-\begin{multicols}{2}
+% \begin{multicols}{2}
 \tableofcontents[currentsection]
-\end{multicols}
+% \end{multicols}
 \end{frame}
 }
 
