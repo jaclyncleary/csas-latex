@@ -182,6 +182,9 @@ hiProdYrs <- list( HG=1970:1979, PRD=1988:2016, CC=1988:2002, SoG=1988:2016,
 # Proportion of B_0 for LRP
 propB0 <- 0.3
 
+# Multiplyer of LRP for USR
+multLRP <- 2
+
 
 #####################
 ##### Functions #####
@@ -489,22 +492,32 @@ GetModelPars <- function( fn, SARs, models=mNames, probs=ciLevel ) {
           ungroup( )
       # If it's the first region and model
       if( k == 1 & i == 1 ) {
-        # Start a data frame
-        res <- mp
+        # Start data frame (raw values)
+        resRaw <- rLong
+        # Start data frame (summarised values)
+        resSummary <- mp
       } else {  # End if it's the first region and model, otherwise
-        # Append to the data frame
-        res <- bind_rows( res, mp )
+        # Append to the data frame (raw values)
+        resRaw <- bind_rows( resRaw, rLong )
+        # Append to the data frame (summarised values)
+        resSummary <- bind_rows( resSummary, mp )
       }  # End if it's not the first region and model
     }  # End i loop over models
   }  # End k loop over regions
   # Message
   cat( "done\n" )
   # Return the data
-  return( res )
+  return( res=list( resRaw=resRaw, resSummary=resSummary) )
 }  # End GetModelPars function
 
 # Get model parameters (major SARs only)
-mPars <- GetModelPars( fn="iscam_mcmc.csv", SARs=allRegions$major )
+modelPars <- GetModelPars( fn="iscam_mcmc.csv", SARs=allRegions$major )
+
+# Extract raw data
+mRaw <- modelPars$resRaw
+
+# Extract summary data
+mPars <- modelPars$resSummary
 
 # Assemble model parameters
 GetPars <- function( fn, SARs, models=mNames, varName, probs=ciLevel ) {
@@ -1139,18 +1152,18 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp ) {
           summarise( Lower=mean(Lower), Median=mean(Median), 
               Upper=mean(Upper) ) %>%
           mutate( Value="bar(italic('SB'))[prod]" )
-      # Calcuate USR: double the LRP
+      # Calcuate USR: multiplyer of LRP
       USRc <- LRP %>%
-          transmute( Lower=Lower*2, Median=Median*2, Upper=Upper*2 ) %>%
-          mutate( Value="2*LRP" )
+          transmute( Lower=Lower*multLRP, Median=Median*multLRP, 
+              Upper=Upper*multLRP ) %>%
+          mutate( Value=paste(multLRP, "*LRP") )
       # Calcuate USR: B0
       USRd <- bp %>%
           filter( Model==model, Parameter=="SB0", Region==SARs[k] ) %>%
           select( Lower, Median, Upper ) %>%
           mutate( Value="italic('SB')[0]" )
       # Combine the USRs
-      USRs <- bind_rows( USRa, USRb, USRc, USRd ) %>%
-          rename( LoUSR=Lower, MedUSR=Median, UpUSR=Upper )
+      USRs <- bind_rows( USRa, USRb, USRc, USRd )
       # Data wrangling: SB_projected
       SBProjSub <- bp %>%
           filter( Model==model, Parameter=="SBProj", Region==SARs[k] )
@@ -1279,9 +1292,9 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp ) {
                       sep="")), dpi=pDPI, width=figWidth, height=figWidth )
       # Make a second set of plots for USRs
       plotUSR <- plotTemp + 
-          geom_hline( aes(yintercept=MedUSR), colour="green" ) +
-#          geom_rect( aes(xmin=-Inf, xmax=Inf, ymin=LoUSR, 
-#                  ymax=UpUSR), colour="transparent", fill="green", alpha=0.3 ) +
+          geom_hline( aes(yintercept=Median), colour="green" ) +
+#          geom_rect( aes(xmin=-Inf, xmax=Inf, ymin=Lower, 
+#                  ymax=Upper), colour="transparent", fill="green", alpha=0.3 ) +
           facet_wrap( ~ Value, labeller=label_parsed ) +
           ggsave( filename=file.path(SAR, paste("USRs", model, ".png", 
                       sep="")), dpi=pDPI, width=figWidth, height=figWidth*0.67 )
