@@ -6,10 +6,10 @@
 # Address:      3190 Hammond Bay Road, Nanaimo, BC, Canada, V9T 6N7
 # Contact:      e-mail: Matthew.Grinnell@dfo-mpo.gc.ca | tel: (250) 756.7055
 # Project:      Herring
-# Code name:    Model.R
+# Code name:    ResearchDocumentV2.R
 # Version:      2.0
 # Date started: Jun 12, 2017
-# Date edited:  Oct 27, 2017
+# Date edited:  Nov 08, 2017
 # 
 # Overview: 
 # Make tables and figures of input data, and summarise stock assessment model
@@ -176,7 +176,8 @@ wtRange <- c( 35, 130 ) / 1000
 fixedCutoffs <- list( HG=10.7, PRD=12.1, CC=17.6, SoG=21.2, WCVI=18.8 )
 
 # High-productivity years
-hiProdYrs <- list( HG=NA, PRD=NA, CC=NA, SoG=NA, WCVI=1991:1996 )
+hiProdYrs <- list( HG=1970:1979, PRD=1988:2016, CC=1988:2002, SoG=1988:2016, 
+    WCVI=1991:1996 )
 
 # Proportion of B_0 for LRP
 propB0 <- 0.3
@@ -1141,7 +1142,7 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp ) {
       # Calcuate USR: double the LRP
       USRc <- LRP %>%
           transmute( Lower=Lower*2, Median=Median*2, Upper=Upper*2 ) %>%
-          mutate( Value="2 %*% LRP" )
+          mutate( Value="2*LRP" )
       # Calcuate USR: B0
       USRd <- bp %>%
           filter( Model==model, Parameter=="SB0", Region==SARs[k] ) %>%
@@ -1279,8 +1280,8 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp ) {
       # Make a second set of plots for USRs
       plotUSR <- plotTemp + 
           geom_hline( aes(yintercept=MedUSR), colour="green" ) +
-          geom_rect( aes(xmin=-Inf, xmax=Inf, ymin=LoUSR, 
-                  ymax=UpUSR), colour="transparent", fill="green", alpha=0.3 ) +
+#          geom_rect( aes(xmin=-Inf, xmax=Inf, ymin=LoUSR, 
+#                  ymax=UpUSR), colour="transparent", fill="green", alpha=0.3 ) +
           facet_wrap( ~ Value, labeller=label_parsed ) +
           ggsave( filename=file.path(SAR, paste("USRs", model, ".png", 
                       sep="")), dpi=pDPI, width=figWidth, height=figWidth*0.67 )
@@ -1632,4 +1633,5 @@ save.image( file="Image.RData" )
 ############### 
 
 # Print end of file message and elapsed time
-cat( "End of file Model.R: ", sep="" ) ;  print( Sys.time( ) - sTime )
+cat( "End of file ResearchDocumentV2.R: ", sep="" )
+print( Sys.time( ) - sTime )

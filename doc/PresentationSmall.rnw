@@ -203,7 +203,7 @@ dec.table.font.space <- 7
 \begin{itemize}
 \item Time series of catch in thousands of metric tonnes ($\text{t} \times 10^{3}$) for \Sexpr{fish.name} from \Sexpr{paste(range(yrRange), collapse=" to ")} in the major stock assessment regions (SARs):
 \begin{description} 
-\item [Gear1] Other fisheries
+\item [Gear1] Reduction, food and bait, special use
 \item [Gear2] Roe seine 
 \item [Gear3] Roe gillnet
 \end{description}
