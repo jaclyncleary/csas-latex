@@ -551,18 +551,21 @@ make.ref.points.table <- function(model.am2,
   colnames(tab) <- c(col.names.am2, col.names.am1[-1])
 
   addtorow <- list()
-  addtorow$pos <- list(-1)
-  addtorow$command <- paste0("\\toprule",
-                             latex.amp(),
-                             latex.mcol(3,
-                                        "c",
-                                        latex.bold("AM2")),
-                             latex.amp(),
-                             latex.mcol(3,
-                                        "c",
-                                        latex.bold("AM1")),
-                             latex.nline)
-
+  addtorow$pos <- list(-1, nrow(tab))
+  addtorow$command <- c(paste0("\\toprule",
+                               latex.amp(),
+                               latex.mcol(3,
+                                          "c",
+                                          latex.bold("AM2")),
+                               latex.amp(),
+                               latex.mcol(3,
+                                          "c",
+                                          latex.bold("AM1")),
+                               latex.nline,
+                               latex.cmidr("2-4", "lr"),
+                               " ",
+                               latex.cmidr("5-7", "lr")),
+                        "\\bottomrule")
   size.string <- latex.size.str(font.size, space.size)
   print(xtable(tab,
                caption = xcaption,
@@ -573,6 +576,7 @@ make.ref.points.table <- function(model.am2,
         sanitize.text.function = function(x){x},
         size = size.string,
         table.placement = placement,
+        hline.after = c(0),
         add.to.row = addtorow,
         booktabs = TRUE)
 }
@@ -683,18 +687,21 @@ make.biomass.depletion.table <- function(model,
   colnames(tab) <- col.names
 
   addtorow <- list()
-  addtorow$pos <- list()
-  addtorow$pos[[1]] <- -1
-  addtorow$command <- paste0("\\toprule",
-                             latex.amp(),
-                             latex.mcol(4,
-                                        "c",
-                                        latex.bold("Spawning Biomass")),
-                             latex.amp(),
-                             latex.mcol(4,
-                                        "c",
-                                        latex.bold("Depletion (SB\\subscr{t}/SB\\subscr{0})")),
-                             latex.nline)
+  addtorow$pos <- list(-1, nrow(tab))
+  addtorow$command <- c(paste0("\\toprule",
+                               latex.amp(),
+                               latex.mcol(4,
+                                          "c",
+                                          latex.bold("Spawning Biomass")),
+                               latex.amp(),
+                               latex.mcol(4,
+                                          "c",
+                                          latex.bold("Depletion (SB\\subscr{t}/SB\\subscr{0})")),
+                               latex.nline,
+                               latex.cmidr("2-5", "lr"),
+                               " ",
+                               latex.cmidr("6-9", "lr")),
+                        "\\bottomrule")
 
   size.string <- latex.size.str(font.size, space.size)
   print(xtable(tab,
@@ -707,6 +714,7 @@ make.biomass.depletion.table <- function(model,
         size = size.string,
         add.to.row = addtorow,
         table.placement = placement,
+        hline.after = c(0),
         booktabs = TRUE,
         tabular.environment = tabular.environment)
 }
