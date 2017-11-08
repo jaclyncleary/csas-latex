@@ -1200,17 +1200,17 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp ) {
           myTheme +
           theme( text=element_text(size=8) )
       # Temprary plot: spawning biomass and catch
-      plotTemp <- ggplot( data=USRs, aes(x=Year, y=Median) ) +
+      plotTemp <- ggplot( data=USRs ) +
           geom_hline( yintercept=LRP$Median, colour="red" ) +
           annotate( geom="rect", xmin=-Inf, xmax=Inf, ymin=LRP$Lower, 
               ymax=LRP$Upper, colour="transparent", fill="red", alpha=0.3 ) +
           geom_hline( yintercept=coSub$Cutoff, colour="blue" ) +
           geom_bar( data=CSub, aes(x=Year, y=Catch), stat="identity", 
               width=lSize, fill="black" ) +
-          geom_ribbon( data=SSBSub, aes(ymin=Lower, ymax=Upper), alpha=0.5 ) +
-          geom_line( data=SSBSub, size=lSize ) + 
+          geom_ribbon( data=SSBSub, aes(x=Year, ymin=Lower, ymax=Upper), alpha=0.5 ) +
+          geom_line( data=SSBSub, aes(x=Year, y=Median), size=lSize ) + 
           geom_point( data=SBProjSub, aes(x=Year, y=Median), size=pSize ) +
-          geom_errorbar( data=SBProjSub, aes(ymin=Lower, ymax=Upper), 
+          geom_errorbar( data=SBProjSub, aes(x=Year, ymin=Lower, ymax=Upper), 
               size=lSize/2, width=0 ) +
           expand_limits( x=rangeX, y=0 ) +
           labs( y=expression(paste("Spawning biomass (t"%*%10^3,")", 
@@ -1279,7 +1279,7 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp ) {
       # Make a second set of plots for USRs
       plotUSR <- plotTemp + 
           geom_hline( aes(yintercept=MedUSR), colour="green" ) +
-          geom_rect( aes(x=NULL, y=NULL, xmin=-Inf, xmax=Inf, ymin=LoUSR, 
+          geom_rect( aes(xmin=-Inf, xmax=Inf, ymin=LoUSR, 
                   ymax=UpUSR), colour="transparent", fill="green", alpha=0.3 ) +
           facet_wrap( ~ Value, labeller=label_parsed ) +
           ggsave( filename=file.path(SAR, paste("USRs", model, ".png", 
