@@ -175,6 +175,9 @@ wtRange <- c( 35, 130 ) / 1000
 # 1996 fixed cutoff values (thousands of metric tonnes)
 fixedCutoffs <- list( HG=10.7, PRD=12.1, CC=17.6, SoG=21.2, WCVI=18.8 )
 
+# High-productivity years
+hiProdYrs <- list( HG=NA, PRD=NA, CC=NA, SoG=NA, WCVI=1991:1996 )
+
 # Proportion of B_0 for LRP
 propB0 <- 0.3
 
@@ -1055,7 +1058,7 @@ PlotNumber( SARs=allRegions$major, dat=numAgedYear )
 
 # Story-board plot: 6 panels (abundance, recruitment, M, SSB with catch,
 # production, and production rate)
-PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
+PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp ) {
   # Fixed cut-offs (1996; only apply to AM2)
   cutOffs <- tibble( Model="AM2", Region=names(fixedCutoffs), 
           Cutoff=unlist(fixedCutoffs) ) %>%
@@ -1122,6 +1125,31 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
           filter( Model==model, Parameter=="SB0", Region==SARs[k] ) %>%
           mutate( Estimate=Median, Lower=Lower*propB0, Median=Median*propB0, 
               Upper=Upper*propB0 )
+      # Get 'high productivity' years -- kinda clunky
+      hpYrs <- hiProdYrs[which(names(hiProdYrs)==SAR)][[1]]
+      # Calcuate USR: average SB
+      USRa <- SSBSub %>%
+          summarise( Lower=mean(Lower), Median=mean(Median), 
+              Upper=mean(Upper) ) %>%
+          mutate( Value="bar(italic('SB'))" )
+      # Calcuate USR: average SB in high productivity years
+      USRb <- SSBSub %>%
+          filter( Year %in% hpYrs ) %>%
+          summarise( Lower=mean(Lower), Median=mean(Median), 
+              Upper=mean(Upper) ) %>%
+          mutate( Value="bar(italic('SB'))[prod]" )
+      # Calcuate USR: double the LRP
+      USRc <- LRP %>%
+          transmute( Lower=Lower*2, Median=Median*2, Upper=Upper*2 ) %>%
+          mutate( Value="2 %*% LRP" )
+      # Calcuate USR: B0
+      USRd <- bp %>%
+          filter( Model==model, Parameter=="SB0", Region==SARs[k] ) %>%
+          select( Lower, Median, Upper ) %>%
+          mutate( Value="italic('SB')[0]" )
+      # Combine the USRs
+      USRs <- bind_rows( USRa, USRb, USRc, USRd ) %>%
+          rename( LoUSR=Lower, MedUSR=Median, UpUSR=Upper )
       # Data wrangling: SB_projected
       SBProjSub <- bp %>%
           filter( Model==model, Parameter=="SBProj", Region==SARs[k] )
@@ -1142,7 +1170,6 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
               y=expression(paste("Scaled abundance (t"%*%10^3,")", sep="")) ) +
           scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
           scale_shape_manual( values=c(2, 1) ) +
-          #      scale_linetype_manual( values=c(2, 1) ) +
           guides( shape=FALSE, linetype=FALSE ) +
           annotate( geom="text", x=-Inf, y=Inf, label="(a)", vjust=1.3, 
               hjust=-0.1, size=2.5 ) +
@@ -1172,21 +1199,16 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
               hjust=-0.1, size=2.5 ) +
           myTheme +
           theme( text=element_text(size=8) )
-      # Plot d: spawning biomass and catch
-      plotD <- ggplot( data=SSBSub, aes(x=Year, y=Median) ) +
+      # Temprary plot: spawning biomass and catch
+      plotTemp <- ggplot( data=USRs, aes(x=Year, y=Median) ) +
           geom_hline( yintercept=LRP$Median, colour="red" ) +
           annotate( geom="rect", xmin=-Inf, xmax=Inf, ymin=LRP$Lower, 
               ymax=LRP$Upper, colour="transparent", fill="red", alpha=0.3 ) +
           geom_hline( yintercept=coSub$Cutoff, colour="blue" ) +
           geom_bar( data=CSub, aes(x=Year, y=Catch), stat="identity", 
               width=lSize, fill="black" ) +
-          geom_ribbon( aes(ymin=Lower, ymax=Upper), alpha=0.5 ) +
-          geom_line( size=lSize ) + 
-#          # SB_0
-#          geom_point( data=SB0Sub, aes(x=Year, y=Median), size=pSize ) +
-#          geom_errorbar( data=SB0Sub, aes(ymin=Lower, ymax=Upper), size=lSize/2, 
-#              width=0 ) +
-          # SB_Proj
+          geom_ribbon( data=SSBSub, aes(ymin=Lower, ymax=Upper), alpha=0.5 ) +
+          geom_line( data=SSBSub, size=lSize ) + 
           geom_point( data=SBProjSub, aes(x=Year, y=Median), size=pSize ) +
           geom_errorbar( data=SBProjSub, aes(ymin=Lower, ymax=Upper), 
               size=lSize/2, width=0 ) +
@@ -1194,10 +1216,12 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
           labs( y=expression(paste("Spawning biomass (t"%*%10^3,")", 
                       sep="")) ) +
           scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
-          annotate( geom="text", x=-Inf, y=Inf, label="(d)", vjust=1.3, 
-              hjust=-0.1, size=2.5 ) +
           myTheme +
           theme( text=element_text(size=8) )
+      # Plot d: spawning biomass and catch
+      plotD <- plotTemp + 
+          annotate( geom="text", x=-Inf, y=Inf, label="(d)", vjust=1.3, 
+              hjust=-0.1, size=2.5 )
       # Plot e: surplus production
       plotE <- ggplot( data=pDat, aes(x=SSB, y=Production) ) +
           geom_vline( xintercept=LRP$Median, colour="red" ) +
@@ -1210,9 +1234,6 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
           geom_text_repel( aes(label=Year), segment.colour="grey", size=2 ) +
           geom_path( size=0.4 ) +
           geom_hline( yintercept=0, linetype="dashed" ) + 
-#          geom_vline( xintercept=B0, colour="black", linetype="dashed" ) +
-#          geom_vline( xintercept=B0*pB0[1], colour="red", linetype="dashed" ) +
-#          geom_vline( xintercept=B0*pB0[2], colour="blue", linetype="dashed" ) +
           expand_limits( x=0 ) +
           scale_colour_gradient( low="lightgrey", high="black" ) +
           labs( x=expression(paste("Spawning biomass (t"%*%10^3, ")", sep="")), 
@@ -1238,9 +1259,6 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
           geom_text_repel( aes(label=Year), segment.colour="grey", size=2 ) +
           geom_path( size=0.4 ) +
           geom_hline( yintercept=0, linetype="dashed" ) +
-#          geom_vline( xintercept=B0, colour="black", linetype="dashed" ) +
-#          geom_vline( xintercept=B0*pB0[1], colour="red", linetype="dashed" ) +
-#          geom_vline( xintercept=B0*pB0[2], colour="blue", linetype="dashed" ) +
           expand_limits( x=0 ) +
           scale_colour_gradient( low="lightgrey", high="black" ) +
           labs( x=expression(paste("Spawning biomass (t"%*%10^3, ")", sep="")), 
@@ -1258,17 +1276,14 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp, mName ) {
               align="v", ncol=2, nrow=3, rel_heights=c(1.0, 1.1, 1.3) ) +
           ggsave( filename=file.path(SAR, paste("Storyboard", model, ".png", 
                       sep="")), dpi=pDPI, width=figWidth, height=figWidth )
-      # First set of plots
-      a2dGrid <- plot_grid( plotA, plotB, plotC, plotD, 
-          align="v", ncol=2, nrow=2, rel_heights=c(1.0, 1.1) )
-      # Second set of plots
-      eGrid <- plot_grid( NULL, plotE, NULL, 
-          ncol=1, nrow=3, rel_heights=c(1, 2, 1) )
-      # Combine the plots
-      storyboardWide <- plot_grid( a2dGrid, eGrid, align="h", ncol=2, nrow=1,
-              rel_widths=c(2, 1)) +
-          ggsave( filename=file.path(SAR, paste("StoryboardWide", model, ".png", 
-                      sep="")), dpi=pDPI, width=figWidth*1.67, height=figWidth )
+      # Make a second set of plots for USRs
+      plotUSR <- plotTemp + 
+          geom_hline( aes(yintercept=MedUSR), colour="green" ) +
+          geom_rect( aes(x=NULL, y=NULL, xmin=-Inf, xmax=Inf, ymin=LoUSR, 
+                  ymax=UpUSR), colour="transparent", fill="green", alpha=0.3 ) +
+          facet_wrap( ~ Value, labeller=label_parsed ) +
+          ggsave( filename=file.path(SAR, paste("USRs", model, ".png", 
+                      sep="")), dpi=pDPI, width=figWidth, height=figWidth*0.67 )
     }  # End i loop over models
   }  # End k loop over regions
 }  # End PlotStoryboard function
