@@ -1463,10 +1463,11 @@ PlotSB0 <- function( dat, SARs, models, probs=ciLevel ) {
   # The plot
   plotSSB <- ggplot( data=SB0 ) + 
       geom_density( aes(x=Value), fill="grey" ) + 
+      coord_cartesian( xlim=c(0, 250) ) +
       geom_vline( data=quantSB0, aes(xintercept=Lower), linetype="dashed" ) +
       geom_vline( data=quantSB0, aes(xintercept=Median) ) +
       geom_vline( data=quantSB0, aes(xintercept=Upper), linetype="dashed" ) +
-      facet_wrap( Model ~ Region, scales="free", ncol=2, dir="v", 
+      facet_wrap( Model ~ Region, scales="free_y", ncol=2, dir="v", 
           labeller=label_wrap_gen(multi_line=FALSE) ) +
       labs( x=bquote("SB"[0]~" (t"%*%10^3*")"), y="Density" ) +
       myTheme +
@@ -1475,7 +1476,7 @@ PlotSB0 <- function( dat, SARs, models, probs=ciLevel ) {
 }  # End PlotSB0 function
 
 # Plot SB0
-PlotSB0( dat=mRaw, SARs=allRegions$major, models=mNames )
+PlotSB0( dat=mRaw, SARs=allRegions$major, models=mNames[1] )
 
 # Message
 cat( "done\n" )
