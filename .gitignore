@@ -15,6 +15,7 @@
 *.nav
 *.snm
 *.upa
+*.upb
 res-doc.pdf
 res-doc.lof
 res-doc.lot
