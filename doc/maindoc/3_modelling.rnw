@@ -23,12 +23,12 @@ Tables of all the data inputs are in Appendix \ref{chap:input}.
 This section describes sources of fishery-dependent data: validated catch and biological samples from commercial fisheries, and fishery-independent data: biological samples from the test fishery program and a herring egg deposition survey (aka spawn survey) used to estimate a relative index of spawner biomass  \Sexpr{common.name}.
 Time series of commercial catch, spawn survey data, average weight-at-age data, and proportion-at-age data are used as input for the assessment model.
 Observed trends in the data are presented in this section but key observations are interpreted in association with assessment model results (Section \ref{secModelResults}).
-To help readers view the collective data sets we summarize them by major stock area in Figures \ref{figCatch} to \ref{figSpawnIndexMajor}.
+To help readers view the collective data sets we summarize them by major stock area in Figures \ref{figCatchMajor} to \ref{figSpawnIndexMajor}.
 %JC: completed.
 
 \subsubsection{Catch data}
 
-Commercial fishing data are presented in this document from \Sexpr{paste(range(yrRange), collapse=" to ")} (Figure \ref{figCatch}).
+Commercial fishing data are presented in this document from \Sexpr{paste(range(yrRange), collapse=" to ")} (Figure \ref{figCatchMajor}).
 
 Catch information is obtained from landing slips or dockside monitoring.
 Historically, landing slip data were summed by fishery season with seasons running from July 1 to June 30.
@@ -53,7 +53,7 @@ Commercial catch data are aggregated into three gear types/ fishery periods:
 The same aggregation is applied to the biological sampling data to calculate proportions-at-age data input.
 
 A summary of recent fishing activity is described below by major SAR.
-For areas where commercial food and bait, special use and roe fisheries have occurred, catches by fishery are summarized by stock area in Figure \ref{figCatch}.
+For areas where commercial food and bait, special use and roe fisheries have occurred, catches by fishery are summarized by stock area in Figure \ref{figCatchMajor}.
 Raw catch data for each stock area from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} are included in Appendix \ref{chap:input}.
 
 \textbf{Haida Gwaii}
@@ -195,7 +195,7 @@ We provide tables of these timeseries in Appendix \ref{chap:input}.
 
 \textbf{Haida Gwaii}
 
-There were no commercial fisheries in \Sexpr{max(yrRange)} (Figure \ref{figCatch}).
+There were no commercial fisheries in \Sexpr{max(yrRange)} (Figure \ref{figCatchMajor}).
 The spawn index
 \Sexpr{directionSpawn %>% filter( Region == "HG" ) %>% select( Direction )}
 from
@@ -216,7 +216,7 @@ biological samples used to calculate mean weight-at-age and proportion-at-age da
 
 The total commercial catch in \Sexpr{max(yrRange)} was
 \Sexpr{finalYrCatch %>% filter( Region == "PRD") %>% select( Catch )}
-tonnes (Figure \ref{figCatch}).
+tonnes (Figure \ref{figCatchMajor}).
 The spawn index
 \Sexpr{directionSpawn %>% filter( Region == "PRD" ) %>% select( Direction )}
 from
@@ -235,7 +235,7 @@ biological samples used to calculate mean weight-at-age and proportion-at-age da
 
 \textbf{Central Coast}
 
-There were no commercial roe fisheries in \Sexpr{max(yrRange)} (Figure \ref{figCatch}), thus the catch input for 2017 is zero.
+There were no commercial roe fisheries in \Sexpr{max(yrRange)} (Figure \ref{figCatchMajor}), thus the catch input for 2017 is zero.
 The spawn index
 \Sexpr{directionSpawn %>% filter( Region == "CC" ) %>% select( Direction )}
 from
@@ -256,7 +256,7 @@ biological samples used to calculate mean weight-at-age and proportion-at-age da
 
 The total commercial catch in \Sexpr{max(yrRange)} was
 \Sexpr{finalYrCatch %>% filter( Region == "SoG") %>% select( Catch )}
-tonnes (Figure \ref{figCatch}).
+tonnes (Figure \ref{figCatchMajor}).
 The spawn index
 \Sexpr{directionSpawn %>% filter( Region == "SoG" ) %>% select( Direction )}
 from
@@ -275,7 +275,7 @@ biological samples used to calculate mean weight-at-age and proportion-at-age da
 
 \textbf{West Coast of Vancouver Island}
 
-There were no commercial fisheries in \Sexpr{max(yrRange)} (Figure \ref{figCatch}).
+There were no commercial fisheries in \Sexpr{max(yrRange)} (Figure \ref{figCatchMajor}).
 The spawn index
 \Sexpr{directionSpawn %>% filter( Region == "WCVI" ) %>% select( Direction )}
 from

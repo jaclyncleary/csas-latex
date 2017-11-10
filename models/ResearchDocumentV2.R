@@ -952,7 +952,7 @@ myTheme <- myTheme +
 cat( "Printing figures... " )
 
 # Plot catch by year and gear type (i.e., period)
-PlotCatch <- function( SARs, dat ){ 
+PlotCatch <- function( SARs, dat, fn, ht ){ 
   # Get stocks of interest
   df <- dat %>%
       filter( Region%in%SARs )
@@ -963,16 +963,20 @@ PlotCatch <- function( SARs, dat ){
           y=expression(paste("Catch (t"%*%10^3, ")", sep="")) )  +
       scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
       scale_y_continuous( labels=comma ) +
+      expand_limits( x=yrRange ) +
       scale_fill_grey( start=0, end=0.8 ) +
       facet_wrap( ~ RegionName, ncol=2, dir="v" ) +
       myTheme +
       theme( legend.position="top" ) +
-      ggsave( filename=file.path("Catch.png"), dpi=pDPI, width=figWidth, 
-          height=figWidth+0.5 )
+      ggsave( filename=paste(fn, ".png", sep=""), dpi=pDPI, width=figWidth, 
+          height=ht )
 }  # End PlotCatch function
 
 # Plot catch (major SARs)
-PlotCatch( SARs=allRegions$major, dat=catch )
+PlotCatch( SARs=allRegions$major, dat=catch, fn="CatchMajor", ht=figWidth+0.5 )
+
+# Plot catch (minor SARs)
+PlotCatch( SARs=allRegions$minor, dat=catch, fn="CatchMinor", ht=figWidth*0.5 )
 
 # Plot total spawn index by year
 PlotSpawn <- function( SARs, dat, fn, ht ){ 
@@ -988,7 +992,7 @@ PlotSpawn <- function( SARs, dat, fn, ht ){
       scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
       scale_y_continuous( labels=comma ) +
       scale_shape_manual( values=c(1, 2) ) +
-      expand_limits( y=0 ) +
+      expand_limits( y=0, x=yrRange ) +
       facet_wrap( ~ RegionName, ncol=2, dir="v", scales="free_y" ) +
       myTheme +
       theme( legend.position="top" ) +
@@ -1013,7 +1017,7 @@ PlotAge <- function( SARs, dat ) {
   propPlot <- ggplot( data=df, aes(x=Year, y=Proportion, group=Age) ) +
       geom_bar( aes(fill=Age), stat="identity" ) +
       scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
-      expand_limits( y=0 ) +
+      expand_limits( y=0, x=yrRange ) +
       labs( y="Proportion-at-age" ) +
       scale_fill_brewer( type="qual", palette="Set1", 
           guide=guide_legend(nrow=1) ) +
@@ -1039,6 +1043,7 @@ PlotWeight <- function( SARs, dat ){
           shape=1, size=1 ) +
       geom_line( data=filter(.data=df, Age == ageShow), 
           aes(x=Year, y=muWeight), size=1 ) +
+      expand_limits( x=yrRange ) +
       labs( y="Weight-at-age (kg)" ) +
       scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
       coord_cartesian( ylim=wtRange ) +
@@ -1061,6 +1066,7 @@ PlotNumber <- function( SARs, dat ){
       geom_bar( stat="identity", width=1 ) +
       scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
       scale_y_continuous( labels=comma ) + 
+      expand_limits( x=yrRange ) +
       facet_wrap( ~ RegionName, ncol=2, dir="v" ) +
       myTheme +
       ggsave( filename=file.path("NumberAged.png"), dpi=pDPI, width=figWidth, 

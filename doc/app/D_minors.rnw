@@ -10,12 +10,21 @@ The Terms of Reference states:
 \end{resdoclist}
 
 There was insufficient time to conduct a formal analysis of stock trend information for the \Sexpr{fish.name} minor stocks, \Sexpr{PasteNicely(allRegionNames$minor)}.
-However, catch data, spawn index data, and biological sampling information is presented in Appendix \ref{chap:input}.
-In addition, we show a timeseries of the spawn index in Figure \ref{figSpawnIndexMinor}.
+However, catch data, spawn index data, and biological sampling information are presented in Appendix \ref{chap:input}.
+In addition, we provide timeseries of catch and spawn index (Figures \ref{figCatchMinor} \& \ref{figSpawnIndexMinor}, respectively).
 
 \clearpage
 
 \appsection{FIGURES}
+
+% Catch
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}CatchMinor.png}
+\caption{Time series of total landed catch in thousands of metric tonnes ($\text{t} \times 10^{3}$) of \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the minor stock assessment regions (SARs).
+\legendPeriod{}}
+\label{figCatchMinor}
+\end{figure}
 
 % Spawn index
 \begin{figure}[H]

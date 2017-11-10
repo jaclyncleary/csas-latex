@@ -22,10 +22,10 @@ Units: kilometres (km).}
 % Catch
 \begin{figure}[H]
 \centering
-\includegraphics[width=\linewidth]{\Sexpr{locOutput}Catch.png}
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}CatchMajor.png}
 \caption{Time series of total landed catch in thousands of metric tonnes ($\text{t} \times 10^{3}$) of \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the major stock assessment regions (SARs).
 \legendPeriod{}}
-\label{figCatch}
+\label{figCatchMajor}
 \end{figure}
 
 % Weight-at-age

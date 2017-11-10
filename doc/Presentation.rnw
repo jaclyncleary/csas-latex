@@ -268,7 +268,7 @@ Figure 3.
 \end{column}
 \begin{column}{0.5\textwidth}
 \centering
-\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}Catch.png}
+\includegraphics[width=\linewidth,height=\textheight,keepaspectratio]{\Sexpr{locOutput}CatchMajor.png}
 \end{column}
 \end{columns}
 \end{frame}
