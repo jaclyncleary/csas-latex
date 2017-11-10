@@ -1422,6 +1422,8 @@ PlotBevertonHolt <- function( bh, bhPred, SARs, models ) {
           colour="black", fill="white") +
       geom_point( data=bhPredSub, aes(x=sbo, y=ro), shape=8 ) +
       geom_line( data=bhPredSub ) + 
+#      geom_text_repel( aes(label=Year), segment.colour="grey", size=2 ) +
+#      geom_path( size=0.4 ) +
       scale_colour_gradient( low="lightgrey", high="black" ) +
       facet_wrap( ~ RegionName, ncol=2, scales="free", dir="v" ) +
       labs( x=expression(paste("Spawning biomass (t"%*%10^3, ")")), 
@@ -1462,8 +1464,8 @@ PlotSB0 <- function( dat, SARs, models, probs=ciLevel ) {
       filter( Region %in% SARs, Model %in% models )
   # The plot
   plotSSB <- ggplot( data=SB0 ) + 
-      geom_density( aes(x=Value), fill="grey" ) + 
-      coord_cartesian( xlim=c(0, 250) ) +
+      geom_density( aes(x=Value), fill="grey", trim=TRUE ) + 
+      coord_cartesian( xlim=c(10, 200) ) +
       geom_vline( data=quantSB0, aes(xintercept=Lower), linetype="dashed" ) +
       geom_vline( data=quantSB0, aes(xintercept=Median) ) +
       geom_vline( data=quantSB0, aes(xintercept=Upper), linetype="dashed" ) +

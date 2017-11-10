@@ -41,12 +41,8 @@ test.rnw
 doc/eso-pic.sty
 doc/pdfpages.sty
 retrospectives/
-Presentation.pdf
-Presentation.tex
-PresentationSmall.pdf
-PresentationSmall.tex
-PresentationSmaller.pdf
-PresentationSmaller.tex
+Presentation*.pdf
+Presentation*.tex
 HandOut.pdf
 HandOut.tex
 test.rnw
