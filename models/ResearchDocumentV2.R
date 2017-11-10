@@ -1503,6 +1503,14 @@ xCutOffs <- tibble( SAR=names(fixedCutoffs), Cutoff=unlist(fixedCutoffs) ) %>%
     print( file="Cutoffs.tex", include.rownames=FALSE, booktabs=TRUE, 
         NA.string=NA, floating=FALSE )
 
+# Format and print 'high productivity' years
+xHiProd <- tibble( SAR=names(hiProdYrs), Start=lapply( X=hiProdYrs, FUN=min),
+        End=lapply( X=hiProdYrs, FUN=max) ) %>%
+    mutate( Start=as.integer(Start), End=as.integer(End) ) %>%
+    xtable( align="llrr" ) %>%
+    print( file="HiProd.tex", include.rownames=FALSE, booktabs=TRUE,
+        NA.string=NA, floating=FALSE )
+
 # Print catch
 PrintCatch <- function( SARs, dat ) {
   # Loop over regions
