@@ -119,7 +119,7 @@ Prior to this change Pacific Herring were aged with a July-1 birthday coinciding
 Herring ageing data arising from catch samples collected July-1 to Dec-31 are ``+1 age-incremented''.
 That is, during data import, +1 ages are added to the ages of fish collected from July-1 to Dec-31 (e.g., age-2 fish become age-3 fish).
 This protocol has been in place since 1985, recognizing that these summer-fall collected fish would be 1-year older had they been removed from the population during roe season (March-April).
-Herring aged prior to 1985 have been age-adjusted for consistency across all years.
+Herring aged prior to 1985 have been age-adjusted in this way as well for consistency across all years.
 
 Mean weight-at-age data are important to the assessment in several ways (Figure \ref{figWeightAge}).
 Firstly, using a time series of weight-at-age allows the assessment model to capture the effects of time-varying changes in weight-at-age, which are relevant and significant for Pacific Herring (also referred to as non-stationarity).
@@ -180,11 +180,10 @@ Stock specific trends are discussed in the sections below.
 
 \subsubsection{Assumed biological parameters}\label{secAssumedBiolPars}
 
-Model inputs of asymptotic growth $L_\infty=27$, alpha, $\alpha$ and beta, $\beta$ for the length-weight allometry ($\alpha=4.5e-06$, $\beta=3.127$), and Brody growth coefficient ($k=0.48$) were taken from \citet{fishbase}.
-Age at 50\% maturity was estimated at 2.055.
-
 As described in Section \ref{secLifeHist}, indications from histological assessment of developing ovaries suggest that about 25\% of \Sexpr{fish.name} mature at age 2, and at least 90\% mature at age 3 (D. Hay, unpublished data).
-For the assessment, a fixed maturity schedule is used for all herring stocks: 25\% mature for age-2s, 90\% mature for age-3s, and 100\% mature for ages 4 and older (see description in Section \ref{secMatAge}.
+For the assessment, a fixed maturity schedule is used for all herring stocks: 25\% mature for age-2s, 90\% mature for age-3s, and 100\% mature for ages 4 and older (see description in Section \ref{secMatAge}).
+
+Weight and length-at-age are currently analyzed external to the assessment model which requires inputs of asymptotic growth $L_\infty=27$, alpha, $\alpha$ and beta, $\beta$ for the length-weight allometry ($\alpha=4.5e-06$, $\beta=3.127$), and Brody growth coefficient ($k=0.48$) were taken from \citet{fishbase}. Age at 50\% maturity was estimated at 2.055. A matrix of empirically derived proportion-at-age data is generated from this analysis and required as input into the assessment catch-age model.
 
 \subsubsection{Data summaries for major SARs}
 
