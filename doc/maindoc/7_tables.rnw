@@ -428,12 +428,43 @@ make.value.table(hg.b,
                  placement = "H")
                  ##tabular.environment = "longtable")
 @
+%%------------------------------------------------------------------------------SARAHADDED
+<<hg.recruitment.table.AM1, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of ",
+              "recruitment (millions) for the Haida Gwaii AM1 model.")
+make.value.table(hg.am1,
+                 type = 2,
+                 syr = 2007,
+                 xcaption = cap,
+                 xlabel = "tab:hg-recruitment",
+                 font.size = 11,
+                 space.size = 12,
+                 placement = "H")
+                 ##tabular.environment = "longtable")
+@
 
 <<prd.recruitment.table, results='asis', echo=FALSE>>=
 cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
               "95\\textsuperscript{th} percentile) and MPD estimates of ",
               "recruitment (millions) for the Prince Rupert District AM2 model.")
 make.value.table(pr.b,
+                 type = 2,
+                 syr = 2007,
+                 xcaption = cap,
+                 xlabel = "tab:prd-recruitment",
+                 font.size = 11,
+                 space.size = 12,
+                 placement = "H")
+                 ##tabular.environment = "longtable")
+@
+
+%%------------------------------------------------------------------------------SARAHADDED
+<<prd.recruitment.table.AM1, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of ",
+              "recruitment (millions) for the Prince Rupert District AM1 model.")
+make.value.table(pr.am1,
                  type = 2,
                  syr = 2007,
                  xcaption = cap,
@@ -459,6 +490,22 @@ make.value.table(cc.b,
                  ##tabular.environment = "longtable")
 @
 
+%%------------------------------------------------------------------------------SARAHADDED
+<<cc.recruitment.table.AM1, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of ",
+              "recruitment (millions) for the Central Coast AM1 model.")
+make.value.table(cc.am1,
+                 type = 2,
+                 syr = 2007,
+                 xcaption = cap,
+                 xlabel = "tab:cc-recruitment",
+                 font.size = 11,
+                 space.size = 12,
+                 placement = "H")
+                 ##tabular.environment = "longtable")
+@
+
 <<sog.recruitment.table, results='asis', echo=FALSE>>=
 cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
               "95\\textsuperscript{th} percentile) and MPD estimates of ",
@@ -474,11 +521,43 @@ make.value.table(sog.b,
                  ##tabular.environment = "longtable")
 @
 
+%%------------------------------------------------------------------------------SARAHADDED
+<<sog.recruitment.table.AM1, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of ",
+              "recruitment (millions) for the Strait of Georgia AM1 model.")
+make.value.table(sog.am1,
+                 type = 2,
+                 syr = 2007,
+                 xcaption = cap,
+                 xlabel = "tab:sog-recruitment",
+                 font.size = 11,
+                 space.size = 12,
+                 placement = "H")
+                 ##tabular.environment = "longtable")
+@
+
 <<wcvi.recruitment.table, results='asis', echo=FALSE>>=
 cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
               "95\\textsuperscript{th} percentile) and MPD estimates of ",
               "recruitment (millions) for the WCVI AM2 model.")
 make.value.table(wcvi.b,
+                 type = 2,
+                 syr = 2007,
+                 xcaption = cap,
+                 xlabel = "tab:wcvi-recruitment",
+                 font.size = 11,
+                 space.size = 12,
+                 placement = "H")
+                 ##tabular.environment = "longtable")
+@
+
+%%------------------------------------------------------------------------------SARAHADDED
+<<wcvi.recruitment.table.AM1, results='asis', echo=FALSE>>=
+cap <- paste0("Posterior (5\\textsuperscript{th} percentile, Median, and ",
+              "95\\textsuperscript{th} percentile) and MPD estimates of ",
+              "recruitment (millions) for the WCVI AM1 model.")
+make.value.table(wcvi.am1,
                  type = 2,
                  syr = 2007,
                  xcaption = cap,
