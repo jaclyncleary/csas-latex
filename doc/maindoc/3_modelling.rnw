@@ -387,6 +387,8 @@ MCMC trace plots, autocorrelation plots, and pairs plots were very similar betwe
 See time varying $M$, Figure \ref{fig:hg-traces} to \ref{fig:wcvi-pairs}; constant $M$ not shown.
 The exception was for HG AM2 where trace plots, autocorrelation plots, and pairs plots showed signs of persistent drift and autocorrelation (Figures \ref{fig:hg-constm-priors}, \ref{fig:hg-constm-traces}, \& \ref{fig:hg-constm-pairs}, respectively).
 
+The total likelihood, Akaike information criterion (AIC) values and the difference in likelihood from the base model were also examined for all models and for each stock group (Table 54).  With the exception of SOG the AM1 and AM2 time-vaying M models have higher total likelihoods, lower AIC values indicating that overall the time-varying models provide a better fit to the data.  
+
 There is support for continued inclusion of time varying $M$ as the base case for the assessment in this analysis, as well as from the Bridging Analysis (Appendix \ref{chap:bridge}) based on the reduction improved coherence between assumed and empirical fits to the spawn survey index and issues of autocorrelation between parameters and model convergence with constant $M$.
 
 \subsubsection{Variance parameters}
