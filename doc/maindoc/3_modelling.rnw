@@ -51,7 +51,7 @@ Commercial catch data are aggregated into three gear types/ fishery periods:
 (2) Seine roe and test, and
 (3) Gillnet roe.
 The same aggregation is applied to the biological sampling data to calculate proportions-at-age data input.
-Note that the seine and gillnet roe fisheries catch whole fish, but the product is for the roe.
+Note that seine and gillnet roe fisheries catch whole fish, but the product is for the roe.
 
 A summary of recent fishing activity is described below by major SAR.
 For areas where commercial food and bait, special use and roe fisheries have occurred, catches by fishery are summarized by stock area in Figure \ref{figCatchMajor}.
