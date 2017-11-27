@@ -74,13 +74,13 @@ J.S. Cleary\textsuperscript{1}, S. Hawkshaw\textsuperscript{2}, M.H. Grinnell\te
 
 \vspace{.35cm}
 
-\textsuperscript{1}Pacific Biological Station,\\
-Fisheries and Oceans Canada, 3190 Hammond Bay Road,\\
-Nanaimo, British Columbia, V9T 6N7, Canada.
+\textsuperscript{1}Pacific Biological Station\\
+Fisheries and Oceans Canada, 3190 Hammond Bay Road\\
+Nanaimo, British Columbia, V9T 6N7, Canada
 
-\textsuperscript{2}Institute of Ocean Sciences,\\
-Fisheries and Oceans Canada,
-9860 W Saanich Rd, Sidney, BC V8L 5T5, Canada.
+\textsuperscript{2}Institute of Ocean Sciences\\
+Fisheries and Oceans Canada, 9860 W Saanich Rd\\
+Sidney, BC V8L 5T5, Canada
 
 \end{center}
 \vspace*{\fill}

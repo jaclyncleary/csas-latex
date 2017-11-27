@@ -859,7 +859,7 @@ make.selex.comparison.plot(hg.b, gear.names, leg = "bottomright")
 %\end{figure}
 
 %%------------------------------------------------------------------------------
-%\begin{figure}[H]
+\begin{figure}[H]
 \begin{center}
 <<prd.selex, fig.height=5,fig.width=8>>=
 make.selex.comparison.plot(pr.b, gear.names, leg = "bottomright")
@@ -903,7 +903,7 @@ make.selex.comparison.plot(cc.b, gear.names, leg = "bottomright")
 %\end{figure}
 
 %%------------------------------------------------------------------------------
-%\begin{figure}[H]
+\begin{figure}[H]
 \begin{center}
 <<sog.selex, fig.height=5,fig.width=8>>=
 make.selex.comparison.plot(sog.b, gear.names, leg = "bottomright")
