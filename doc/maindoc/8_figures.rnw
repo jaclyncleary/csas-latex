@@ -282,6 +282,19 @@ make.priors.posts.plot(hg.b, priors.only = FALSE)
   survey. The dotted red lines are the MPD estimates.}
 \label{fig:hg-priors}
 \end{figure}
+%%------------------------------------------------------------------------------SARAHADDED
+\begin{figure}[H]
+\begin{center}
+<<hg.priors.AM1>>=
+make.priors.posts.plot(hg.am1, priors.only = FALSE)
+@
+\end{center}
+\caption{Prior probability distributions (lines) with comparative posterior
+  histograms (bars) used in the Haida Gwaii AM1 model. Parameters $q_k$
+  represent gears where: $k=1$ is the surface survey and $k=2$ is the dive
+  survey. The dotted red lines are the MPD estimates.}
+\label{fig:hg-priors}
+\end{figure}
 %%------------------------------------------------------------------------------
 \begin{figure}[H]
 \begin{center}
@@ -295,6 +308,21 @@ make.priors.posts.plot(pr.b, priors.only = FALSE)
   survey. The dotted red lines are the MPD estimates.}
 \label{fig:prd-priors}
 \end{figure}
+
+%%------------------------------------------------------------------------------SARAHADDED
+\begin{figure}[H]
+\begin{center}
+<<prd.priors.AM1>>=
+make.priors.posts.plot(pr.am1, priors.only = FALSE)
+@
+\end{center}
+\caption{Prior probability distributions (lines) with comparative posterior
+  histograms (bars) used in the Prince Rupert District AM1 model. Parameters $q_k$
+  represent gears where: $k=1$ is the surface survey and $k=2$ is the dive
+  survey. The dotted red lines are the MPD estimates.}
+\label{fig:prd-priors}
+\end{figure}
+
 %%------------------------------------------------------------------------------
 \begin{figure}[H]
 \begin{center}
@@ -308,6 +336,21 @@ make.priors.posts.plot(cc.b, priors.only = FALSE)
   survey. The dotted red lines are the MPD estimates.}
 \label{fig:cc-priors}
 \end{figure}
+
+%%------------------------------------------------------------------------------SARAHADDED
+\begin{figure}[H]
+\begin{center}
+<<cc.priors.AM1>>=
+make.priors.posts.plot(cc.am1, priors.only = FALSE)
+@
+\end{center}
+\caption{Prior probability distributions (lines) with comparative posterior
+  histograms (bars) used in the Central Coast AM1 model. Parameters $q_k$
+  represent gears where: $k=1$ is the surface survey and $k=2$ is the dive
+  survey. The dotted red lines are the MPD estimates.}
+\label{fig:cc-priors}
+\end{figure}
+
 %%------------------------------------------------------------------------------
 \begin{figure}[H]
 \begin{center}
@@ -321,6 +364,21 @@ make.priors.posts.plot(sog.b, priors.only = FALSE)
   survey. The dotted red lines are the MPD estimates.}
 \label{fig:sog-priors}
 \end{figure}
+
+%%------------------------------------------------------------------------------SARAHADDED
+\begin{figure}[H]
+\begin{center}
+<<sog.priors.AM1>>=
+make.priors.posts.plot(sog.am1, priors.only = FALSE)
+@
+\end{center}
+\caption{Prior probability distributions (lines) with comparative posterior
+  histograms (bars) used in the Strait of Georgia AM1 model. Parameters $q_k$
+  represent gears where: $k=1$ is the surface survey and $k=2$ is the dive
+  survey. The dotted red lines are the MPD estimates.}
+\label{fig:sog-priors}
+\end{figure}
+
 %%------------------------------------------------------------------------------
 \begin{figure}[H]
 \begin{center}
@@ -334,6 +392,21 @@ make.priors.posts.plot(wcvi.b, priors.only = FALSE)
   survey. The dotted red lines are the MPD estimates.}
 \label{fig:wcvi-priors}
 \end{figure}
+
+%%------------------------------------------------------------------------------SARAHADDED
+\begin{figure}[H]
+\begin{center}
+<<wcvi.priors.AM1>>=
+make.priors.posts.plot(wcvi.am1, priors.only = FALSE)
+@
+\end{center}
+\caption{Prior probability distributions (lines) with comparative posterior
+  histograms (bars) used in the WCVI AM1 model. Parameters $q_k$
+  represent gears where: $k=1$ is the surface survey and $k=2$ is the dive
+  survey. The dotted red lines are the MPD estimates.}
+\label{fig:wcvi-priors}
+\end{figure}
+
 %%------------------------------------------------------------------------------
 %% MCMC Trace plots
 %%------------------------------------------------------------------------------
@@ -352,6 +425,26 @@ make.traces.plot(hg.b, axis.lab.freq = 200)
   follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
 \label{fig:hg-traces}
 \end{figure}
+
+
+%%------------------------------------------------------------------------------SARAHADDED
+\begin{figure}[H]
+\begin{center}
+<<hg.traces.AM1, fig.height=8, fig.width=8>>=
+make.traces.plot(hg.am1, axis.lab.freq = 200)
+@
+\end{center}
+\caption{Trace plots for MCMC output of estimated parameters for the Haida Gwaii
+  AM1 model. The MCMC run had chain length \Sexpr{mcmc.length}, with
+  a sample taken at every \Sexpr{mcmc.samp.freq}th iteration.
+  The catchability parameter $q_1$ represents the surface survey and $q_2$
+  the dive survey. Parameters $\hat{a}_k$ (selectivity-at-age-50\%), and
+  $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
+  follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
+\label{fig:hg-traces}
+\end{figure}
+
+
 %%------------------------------------------------------------------------------
 \begin{figure}[H]
 \begin{center}
@@ -368,6 +461,23 @@ make.traces.plot(pr.b, axis.lab.freq = 200)
   follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
 \label{fig:prd-traces}
 \end{figure}
+%%------------------------------------------------------------------------------SARAHADDED
+\begin{figure}[H]
+\begin{center}
+<<prd.traces.AM1, fig.height=8, fig.width=8>>=
+make.traces.plot(pr.am1, axis.lab.freq = 200)
+@
+\end{center}
+\caption{Trace plots for MCMC output of estimated parameters for the Prince
+  Rupert District AM1 model. The MCMC run had chain length \Sexpr{mcmc.length},
+  with a sample taken at every \Sexpr{mcmc.samp.freq}th iteration.
+  The catchability parameter $q_1$ represents the surface survey and $q_2$
+  the dive survey. Parameters $\hat{a}_k$ (selectivity-at-age-50\%), and
+  $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
+  follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
+\label{fig:prd-traces}
+\end{figure}
+
 %%------------------------------------------------------------------------------
 \begin{figure}[H]
 \begin{center}
@@ -384,6 +494,25 @@ make.traces.plot(cc.b, axis.lab.freq = 200)
   follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
 \label{fig:cc-traces}
 \end{figure}
+
+%%------------------------------------------------------------------------------SARAHADDED
+\begin{figure}[H]
+\begin{center}
+<<cc.traces.AM1, fig.height=8, fig.width=8>>=
+make.traces.plot(cc.am1, axis.lab.freq = 200)
+@
+\end{center}
+\caption{Trace plots for MCMC output of estimated parameters for the Central
+  Coast AM1 model. The MCMC run had chain length \Sexpr{mcmc.length}, with
+  a sample taken at every \Sexpr{mcmc.samp.freq}th iteration.
+  The catchability parameter $q_1$ represents the surface survey and $q_2$
+  the dive survey. Parameters $\hat{a}_k$ (selectivity-at-age-50\%), and
+  $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
+  follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
+\label{fig:cc-traces}
+\end{figure}
+
+
 %%------------------------------------------------------------------------------
 \begin{figure}[H]
 \begin{center}
@@ -400,6 +529,24 @@ make.traces.plot(sog.b, axis.lab.freq = 200)
   follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
 \label{fig:sog-traces}
 \end{figure}
+
+%%------------------------------------------------------------------------------SARAHADDED
+\begin{figure}[H]
+\begin{center}
+<<sog.traces.AM1, fig.height=8, fig.width=8>>=
+make.traces.plot(sog.am1, axis.lab.freq = 200)
+@
+\end{center}
+\caption{Trace plots for MCMC output of estimated parameters for the Strait of
+  Georgia AM1 model. The MCMC run had chain length \Sexpr{mcmc.length}, with
+  a sample taken at every \Sexpr{mcmc.samp.freq}th iteration.
+  The catchability parameter $q_1$ represents the surface survey and $q_2$
+  the dive survey. Parameters $\hat{a}_k$ (selectivity-at-age-50\%), and
+  $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
+  follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
+\label{fig:sog-traces}
+\end{figure}
+
 %%------------------------------------------------------------------------------
 \begin{figure}[H]
 \begin{center}
@@ -416,6 +563,24 @@ make.traces.plot(wcvi.b, axis.lab.freq = 200)
   follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
 \label{fig:wcvi-traces}
 \end{figure}
+
+%%------------------------------------------------------------------------------SARAHADDED
+\begin{figure}[H]
+\begin{center}
+<<wcvi.traces.AM1, fig.height=8, fig.width=8>>=
+make.traces.plot(wcvi.am1, axis.lab.freq = 200)
+@
+\end{center}
+\caption{Trace plots for MCMC output of estimated parameters for the WCVI
+  AM1 model. The MCMC run had chain length \Sexpr{mcmc.length}, with
+  a sample taken at every \Sexpr{mcmc.samp.freq}th iteration.
+  The catchability parameter $q_1$ represents the surface survey and $q_2$
+  the dive survey. Parameters $\hat{a}_k$ (selectivity-at-age-50\%), and
+  $\hat{\gamma}_k$ (selectivity standard deviation-at-50\%) represent gears as
+  follows: $k=1$: Other fisheries, $k=2$: Roe seine, $k=3$: Gillnet roe.}
+\label{fig:wcvi-traces}
+\end{figure}
+
 %%------------------------------------------------------------------------------
 %% Autocorrelation plots
 %%------------------------------------------------------------------------------
@@ -430,6 +595,21 @@ make.autocor.plot(hg.b)
   descriptions.}
 \label{fig:hg-autocor}
 \end{figure}
+
+%%------------------------------------------------------------------------------SARAHADDED
+\begin{figure}[H]
+\begin{center}
+<<hg-autocor.AM1, fig.height=8, fig.width=8>>=
+make.autocor.plot(hg.am1)
+@
+\end{center}
+\caption{Autocorrelation plots for MCMC output of estimated parameters for the
+  Haida Gwaii AM1 model. See Figure~\ref{fig:hg-traces} for parameter
+  descriptions.}
+\label{fig:hg-autocor}
+\end{figure}
+
+
 %%------------------------------------------------------------------------------
 \begin{figure}[H]
 \begin{center}
@@ -442,6 +622,20 @@ make.autocor.plot(pr.b)
   descriptions.}
 \label{fig:prd-autocor}
 \end{figure}
+
+%%------------------------------------------------------------------------------SARAHADDED
+\begin{figure}[H]
+\begin{center}
+<<prd-autocor.AM1, fig.height=8, fig.width=8>>=
+make.autocor.plot(pr.am1)
+@
+\end{center}
+\caption{Autocorrelation plots for MCMC output of estimated parameters for the
+  Prince Rupert District AM1 model. See Figure~\ref{fig:prd-traces} for parameter
+  descriptions.}
+\label{fig:prd-autocor}
+\end{figure}
+
 %%------------------------------------------------------------------------------
 \begin{figure}[H]
 \begin{center}
@@ -454,6 +648,20 @@ make.autocor.plot(cc.b)
   descriptions.}
 \label{fig:cc-autocor}
 \end{figure}
+
+%%------------------------------------------------------------------------------SARAHADDED
+\begin{figure}[H]
+\begin{center}
+<<cc-autocor.AM1, fig.height=8, fig.width=8>>=
+make.autocor.plot(cc.am1)
+@
+\end{center}
+\caption{Autocorrelation plots for MCMC output of estimated parameters for the
+  Central Coast AM1 model. See Figure~\ref{fig:cc-traces} for parameter
+  descriptions.}
+\label{fig:cc-autocor}
+\end{figure}
+
 %%------------------------------------------------------------------------------
 \begin{figure}[H]
 \begin{center}
@@ -463,6 +671,19 @@ make.autocor.plot(sog.b)
 \end{center}
 \caption{Autocorrelation plots for MCMC output of estimated parameters for the
   Strait of Georgia AM2 model. See Figure~\ref{fig:sog-traces} for parameter
+  descriptions.}
+\label{fig:sog-autocor}
+\end{figure}
+
+%%------------------------------------------------------------------------------SARAHADDED
+\begin{figure}[H]
+\begin{center}
+<<sog-autocor.AM1, fig.height=8, fig.width=8>>=
+make.autocor.plot(sog.am1)
+@
+\end{center}
+\caption{Autocorrelation plots for MCMC output of estimated parameters for the
+  Strait of Georgia AM1 model. See Figure~\ref{fig:sog-traces} for parameter
   descriptions.}
 \label{fig:sog-autocor}
 \end{figure}
@@ -478,6 +699,20 @@ make.autocor.plot(wcvi.b)
   descriptions.}
 \label{fig:wcvi-autocor}
 \end{figure}
+
+%%------------------------------------------------------------------------------SARAHADDED
+\begin{figure}[H]
+\begin{center}
+<<wcvi-autocor.AM1, fig.height=8, fig.width=8>>=
+make.autocor.plot(wcvi.am1)
+@
+\end{center}
+\caption{Autocorrelation plots for MCMC output of estimated parameters for the
+  WCVI AM1 model. See Figure~\ref{fig:wcvi-traces} for parameter
+  descriptions.}
+\label{fig:wcvi-autocor}
+\end{figure}
+
 %%------------------------------------------------------------------------------
 %% MCMC Pairs plots
 %%------------------------------------------------------------------------------
@@ -491,6 +726,20 @@ make.pairs.plot(hg.b)
   Gwaii AM2 model. See Figure~\ref{fig:hg-traces} for parameter descriptions.}
 \label{fig:hg-pairs}
 \end{figure}
+
+%%------------------------------------------------------------------------------SARAHADDED
+\begin{figure}[H]
+\begin{center}
+<<hg-pairs.AM1, fig.height=8, fig.width=8>>=
+make.pairs.plot(hg.am1)
+@
+\end{center}
+\caption{Pairs plots for MCMC output of estimated parameters in for the Haida
+  Gwaii AM1 model. See Figure~\ref{fig:hg-traces} for parameter descriptions.}
+\label{fig:hg-pairs}
+\end{figure}
+
+
 %%------------------------------------------------------------------------------
 \begin{figure}[H]
 \begin{center}
@@ -502,6 +751,18 @@ make.pairs.plot(pr.b)
   Rupert AM2 model. See Figure~\ref{fig:prd-traces} for parameter descriptions.}
 \label{fig:prd-pairs}
 \end{figure}
+%%------------------------------------------------------------------------------SARAHADDED
+\begin{figure}[H]
+\begin{center}
+<<prd-pairs.AM1, fig.height=8, fig.width=8>>=
+make.pairs.plot(pr.am1)
+@
+\end{center}
+\caption{Pairs plots for MCMC output of estimated parameters in for the Prince
+  Rupert AM1 model. See Figure~\ref{fig:prd-traces} for parameter descriptions.}
+\label{fig:prd-pairs}
+\end{figure}
+
 %%------------------------------------------------------------------------------
 \begin{figure}[H]
 \begin{center}
@@ -513,6 +774,19 @@ make.pairs.plot(cc.b)
   Coast AM2 model. See Figure~\ref{fig:cc-traces} for parameter descriptions.}
 \label{fig:cc-pairs}
 \end{figure}
+
+%%------------------------------------------------------------------------------SARAHADDED
+\begin{figure}[H]
+\begin{center}
+<<cc-pairs.AM1, fig.height=8, fig.width=8>>=
+make.pairs.plot(cc.am1)
+@
+\end{center}
+\caption{Pairs plots for MCMC output of estimated parameters in for the Central
+  Coast AM1 model. See Figure~\ref{fig:cc-traces} for parameter descriptions.}
+\label{fig:cc-pairs}
+\end{figure}
+
 %%------------------------------------------------------------------------------
 \begin{figure}[H]
 \begin{center}
@@ -522,6 +796,18 @@ make.pairs.plot(sog.b)
 \end{center}
 \caption{Pairs plots for MCMC output of estimated parameters in for the Strait
   of Georgia AM2 model. See Figure~\ref{fig:sog-traces} for parameter
+  descriptions.}
+\label{fig:sog-pairs}
+\end{figure}
+%%------------------------------------------------------------------------------SARAHADDED
+\begin{figure}[H]
+\begin{center}
+<<sog-pairs.AM1, fig.height=8, fig.width=8>>=
+make.pairs.plot(sog.am1)
+@
+\end{center}
+\caption{Pairs plots for MCMC output of estimated parameters in for the Strait
+  of Georgia AM1 model. See Figure~\ref{fig:sog-traces} for parameter
   descriptions.}
 \label{fig:sog-pairs}
 \end{figure}
@@ -536,6 +822,19 @@ make.pairs.plot(wcvi.b)
   AM2 model. See Figure~\ref{fig:wcvi-traces} for parameter descriptions.}
 \label{fig:wcvi-pairs}
 \end{figure}
+
+%%------------------------------------------------------------------------------SARAHADDED
+\begin{figure}[H]
+\begin{center}
+<<wcvi-pairs.AM1, fig.height=8, fig.width=8>>=
+make.pairs.plot(wcvi.am1)
+@
+\end{center}
+\caption{Pairs plots for MCMC output of estimated parameters in for the WCVI
+  AM1 model. See Figure~\ref{fig:wcvi-traces} for parameter descriptions.}
+\label{fig:wcvi-pairs}
+\end{figure}
+
 %%------------------------------------------------------------------------------
 %% Selectivity plots
 %%------------------------------------------------------------------------------
@@ -547,7 +846,18 @@ make.selex.comparison.plot(hg.b, gear.names, leg = "bottomright")
 \end{center}
 \caption{Estimated and Fixed selectivities for the Haida Gwaii AM2 model.}
 \label{fig:hg-selex}
+\end{figure}
+%%------------------------------------------------------------------------------SARAHADDED
+%\begin{figure}[H]
+%\begin{center}
+%<<hg.selex.AM1, fig.height=5,fig.width=8>>=
+%make.selex.comparison.plot(hg.am1, gear.names, leg = "bottomright")
+%@
+%\end{center}
+%\caption{Estimated and Fixed selectivities for the Haida Gwaii AM1 model.}
+%\label{fig:hg-selex}
 %\end{figure}
+
 %%------------------------------------------------------------------------------
 %\begin{figure}[H]
 \begin{center}
@@ -555,9 +865,21 @@ make.selex.comparison.plot(hg.b, gear.names, leg = "bottomright")
 make.selex.comparison.plot(pr.b, gear.names, leg = "bottomright")
 @
 \end{center}
-\caption{Estimated and Fixed selectivities for the Prince Rupert District model.}
+\caption{Estimated and Fixed selectivities for the Prince Rupert District AM2 model.}
 \label{fig:prd-selex}
 \end{figure}
+
+%%------------------------------------------------------------------------------SARAHADDED
+%\begin{figure}[H]
+%\begin{center}
+%<<prd.selex.AM1, fig.height=5,fig.width=8>>=
+%make.selex.comparison.plot(pr.am1, gear.names, leg = "bottomright")
+%@
+%\end{center}
+%\caption{Estimated and Fixed selectivities for the Prince Rupert District %AM1 model.}
+%\label{fig:prd-selex}
+%\end{figure}
+
 %%------------------------------------------------------------------------------
 \begin{figure}[H]
 \begin{center}
@@ -567,7 +889,19 @@ make.selex.comparison.plot(cc.b, gear.names, leg = "bottomright")
 \end{center}
 \caption{Estimated and Fixed selectivities for the Central Coast AM2 model.}
 \label{fig:cc-selex}
+\end{figure}
+
+%%------------------------------------------------------------------------------SARAHADDED
+%\begin{figure}[H]
+%\begin{center}
+%<<cc.selex.AM1, fig.height=5,fig.width=8>>=
+%make.selex.comparison.plot(cc.am1, gear.names, leg = "bottomright")
+%@
+%\end{center}
+%\caption{Estimated and Fixed selectivities for the Central Coast AM1 model.}
+%\label{fig:cc-selex}
 %\end{figure}
+
 %%------------------------------------------------------------------------------
 %\begin{figure}[H]
 \begin{center}
@@ -578,6 +912,16 @@ make.selex.comparison.plot(sog.b, gear.names, leg = "bottomright")
 \caption{Estimated and Fixed selectivities for the Strait of Georgia AM2 model.}
 \label{fig:sog-selex}
 \end{figure}
+%%------------------------------------------------------------------------------SARAHADDED
+%\begin{figure}[H]
+%\begin{center}
+%<<sog.selex.AM1, fig.height=5,fig.width=8>>=
+%make.selex.comparison.plot(sog.am1, gear.names, leg = "bottomright")
+%@
+%\end{center}
+%\caption{Estimated and Fixed selectivities for the Strait of Georgia AM1 model.}
+%\label{fig:sog-selex}
+%\end{figure}
 %%------------------------------------------------------------------------------
 \begin{figure}[H]
 \begin{center}
@@ -588,6 +932,17 @@ make.selex.comparison.plot(wcvi.b, gear.names, leg = "bottomright")
 \caption{Estimated and Fixed selectivities for the WCVI AM2 model.}
 \label{fig:wcvi-selex}
 \end{figure}
+%%------------------------------------------------------------------------------SARAHADDED
+%\begin{figure}[H]
+%\begin{center}
+%<<wcvi.selex.AM1, fig.height=5,fig.width=8>>=
+%make.selex.comparison.plot(wcvi.am1, gear.names, leg = "bottomright")
+%@
+%\end{center}
+%\caption{Estimated and Fixed selectivities for the WCVI AM1 model.}
+%\label{fig:wcvi-selex}
+%\end{figure}
+
 %%------------------------------------------------------------------------------
 
 %%------------------------------------------------------------------------------
