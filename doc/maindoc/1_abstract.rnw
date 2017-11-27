@@ -10,7 +10,7 @@ The model estimated stock-recruitment parameters, time-varying natural mortality
 Median posterior estimates and \Sexpr{mcmc.ci} credible intervals of spawning biomass, recruitment, time-varying natural mortality, and unfished equilibrium spawning biomass are presented for \Sexpr{PasteNicely(mNames)} model parameterizations.
 Unfished equilibrium spawning biomass ($\mli{SB}_0$) is the main biological reference point used for \Sexpr{fish.name} and it is estimated from a  Beverton-Holt stock-recruitment relationship (parameterized within the assessment model) fitted to longterm average trends in weight at age and natural mortality.
 One-year projections of spawning biomass \Sexpr{assess.yr+1} were performed for each major stock area over a range of constant catches to estimate probabilities that spawning biomass and harvest rate metrics are below and above control points historically used in the management of \Sexpr{fish.name}, as specified in the herring harvest control rule.
-This assessment also includes presentation of current stock status and projected stock status in \Sexpr{assess.yr+1} relative to a Limit Reference Point of $\Sexpr{propB0}\cdot\mli{SB}_0$.
+This assessment also includes presentation of current stock status and projected stock status in \Sexpr{assess.yr+1} relative to a Limit Reference Point (LRP) of $\Sexpr{propB0}\cdot\mli{SB}_0$.
 
 Some assessment results by stock area are briefly listed below.
 
