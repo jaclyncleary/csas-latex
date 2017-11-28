@@ -27,7 +27,7 @@ The documentation presented here is a revised version of the ISCAM user guide av
 Much of the text and many of the equations have been taken directly from the original ISCAM user guide.
 
 Note that all the model equations are presented for a sex structured model with $S$ sexes.
-Models can therefore be constructed with data for females only, for males and females, or with unsexed data.
+Models can therefore be constructed with data for females only, for males and females, or with combined sex data.
 
 The model documentation describes all features of the ISCAM catch-age model, some of which are not implemented for \Sexpr{fish.name}.
 The following list describes modifications specific to the assessment of \Sexpr{fish.name}.
