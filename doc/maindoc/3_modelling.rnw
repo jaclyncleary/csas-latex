@@ -122,9 +122,9 @@ That is, during data import, +1 ages are added to the ages of fish collected fro
 This protocol has been in place since 1985, recognizing that these summer-fall collected fish would be 1-year older had they been removed from the population during roe season (March-April).
 Herring aged prior to 1985 have been age-adjusted in this way as well for consistency across all years.
 
-Ageing errors can occur, and age data are corrected before being input to the assessment model.
+Ageing errors are currently analyzed and corrected for outside the assessment model.
 Typically, about 10\% of herring samples are independently aged by two technicians.
-If there is disagreement between technicians, additional samples are aged to [...] %MG: more info here
+If there is disagreement between technicians, additional samples are aged by two technicians until agreement is reached.
 Ageing errors are most common in young fish, for example differentiating between 2 and 3 year old fish, or between 3 and 4 year old fish.
 This is in part due to faster growth in young fish, and the presence of checks which can be confused with annuli.
 Fish that are 4 years and older generally have fewer errors because growth patterns are more easily recognized, and growth is slower, more compact, and has less variation.
