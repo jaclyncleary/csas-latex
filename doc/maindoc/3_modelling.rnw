@@ -375,12 +375,14 @@ We did not consider such a scenario here as undertaking an analysis to determine
 The constant estimated natural mortality scenario was applied to all major stocks and both parameterizations of the assessment model (\Sexpr{PasteNicely(mNames)}) and compared with time varying $M$ model runs.
 Results are shown in Figures \ref{fig:hg-index-surface-fit} to \ref{fig:wcvi-q-m}.
 
-Model outcomes were influenced by the method used to estimate $M$. 
+Model estimates were influenced by the method used to estimate $M$. 
 The addition of time varying $M$ appears to improve model and empirical fits to the spawn index for both \Sexpr{PasteNicely(mNames)} versions of the assessment model for all stocks (Figures \ref{fig:hg-index-surface-fit} to \ref{fig:wcvi-index-dive-fit}).
 The biggest difference between estimating time varying $M$ and constant $M$ occurs in the recent 5-years of model fits to the spawn index.
 For example, for HG (Figure \ref{fig:hg-index-dive-fit}), for both AM1 and AM2, the constant $M$ sensitivity runs show a significant lack of fit to declining spawn index from 2014 -- 2017.
 For CC, both AM1 and AM2, the constant $M$ sensitivity runs appear to overestimate the magnitude of increase in the survey data (Figure \ref{fig:cc-index-dive-fit}).
 The lack of fit to the declining survey index also carries through to the estimation of spawning biomass, e.g., HG: Figure \ref{fig:hg-biomass-m}.
+ 
+The estimated time-varying natural mortality values do show high variability in some stocks over short time periods (Figures \ref{fig:hg-m} to \ref{fig:wcvi-m}) and this can likely be attributed to either periods of heavy predation, trophic interactions and/or model variance.
 
 When examining estimated spawning biomass between all four model runs (AM1- constant $M$, AM1- time varying $M$, AM2- constant $M$, AM2- time varying $M$), trends in spawning biomass over time were most similar within the AM1 and AM2 categories.
 That is, it does not appear that the method used to estimate $M$ is confounded with the choice of $q$ prior.
@@ -395,7 +397,7 @@ MCMC trace plots, autocorrelation plots, and pairs plots were very similar betwe
 See time varying $M$, Figure \ref{fig:hg-traces} to \ref{fig:wcvi-pairs}; constant $M$ not shown.
 The exception was for HG AM2 where trace plots, autocorrelation plots, and pairs plots showed signs of persistent drift and autocorrelation (Figures \ref{fig:hg-constm-priors}, \ref{fig:hg-constm-traces}, \& \ref{fig:hg-constm-pairs}, respectively).
 
-The total likelihood, Akaike information criterion (AIC) values and the difference in likelihood from the base model were also examined for all models and for each stock group (Table 54).  With the exception of SOG the AM1 and AM2 time-vaying M models have higher total likelihoods, lower AIC values indicating that overall the time-varying models provide a better fit to the data.  
+The total likelihood, Akaike information criterion (AIC) values and the difference in likelihood from the base model were also examined for all models and for each stock group (Table 54).  With the exception of SOG the AM1 and AM2 time-vaying M models have higher total likelihoods and lower AIC values indicating that overall the time-varying models provide a better fit to the data.  
 
 There is support for continued inclusion of time varying $M$ as the base case for the assessment in this analysis, as well as from the Bridging Analysis (Appendix \ref{chap:bridge}) based on the reduction improved coherence between assumed and empirical fits to the spawn survey index and issues of autocorrelation between parameters and model convergence with constant $M$.
 
