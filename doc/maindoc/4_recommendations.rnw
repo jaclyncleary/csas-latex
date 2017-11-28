@@ -25,8 +25,7 @@ Here we explain performance metrics/column headings to interpret the decision ta
 \item $\text{P}(\mli{SB}_{\Sexpr{max(yrRange)+1}} < \text{[value]})$ is the probability that spawning biomass after harvest is below the 1996 fixed cut-off value in \Sexpr{max(yrRange)+1},
 \item $\text{Med}(\mli{SB}_{\Sexpr{max(yrRange)+1}} / \text{[value]})$ is the median ratio of projected post-harvest biomass to the 1996 fixed cut-off value in \Sexpr{max(yrRange)+1},
 \item $\text{P}(U_{\Sexpr{max(yrRange)+1}} > 20\%)$ is the probability that the removal rate will be greater than the targe harvest rate of 20\% in \Sexpr{max(yrRange)+1},
-\item $\text{P}(U_{\Sexpr{max(yrRange)+1}} > 10\%)$ is the probability that the removal rate will be greater than the targe harvest rate of 10\% in \Sexpr{max(yrRange)+1},
-\item $\text{P}(U_{\Sexpr{max(yrRange)+1}} > 5\%)$ is the probability that the removal rate will be greater than the targe harvest rate of 5\% in \Sexpr{max(yrRange)+1}, and
+\item $\text{P}(U_{\Sexpr{max(yrRange)+1}} > 10\%)$ is the probability that the removal rate will be greater than the targe harvest rate of 10\% in \Sexpr{max(yrRange)+1}, and
 \item $\text{Med}(U_{\Sexpr{max(yrRange)+1}})$ is the median removal rate in \Sexpr{max(yrRange)+1}.
 \end{resdoclist}
 

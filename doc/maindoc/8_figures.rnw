@@ -280,7 +280,7 @@ make.priors.posts.plot(hg.b, priors.only = FALSE)
   histograms (bars) used in the Haida Gwaii AM2 model. Parameters $q_k$
   represent gears where: $k=1$ is the surface survey and $k=2$ is the dive
   survey. The dotted red lines are the MPD estimates.}
-\label{fig:hg-priors}
+\label{fig:hg-priors.am2}
 \end{figure}
 %%------------------------------------------------------------------------------SARAHADDED
 \begin{figure}[H]
@@ -293,7 +293,7 @@ make.priors.posts.plot(hg.am1, priors.only = FALSE)
   histograms (bars) used in the Haida Gwaii AM1 model. Parameters $q_k$
   represent gears where: $k=1$ is the surface survey and $k=2$ is the dive
   survey. The dotted red lines are the MPD estimates.}
-\label{fig:hg-priors}
+\label{fig:hg-priors.am1}
 \end{figure}
 %%------------------------------------------------------------------------------
 \begin{figure}[H]
@@ -306,7 +306,7 @@ make.priors.posts.plot(pr.b, priors.only = FALSE)
   histograms (bars) used in the Prince Rupert District AM2 model. Parameters $q_k$
   represent gears where: $k=1$ is the surface survey and $k=2$ is the dive
   survey. The dotted red lines are the MPD estimates.}
-\label{fig:prd-priors}
+\label{fig:prd-priors.am2}
 \end{figure}
 
 %%------------------------------------------------------------------------------SARAHADDED
@@ -320,7 +320,7 @@ make.priors.posts.plot(pr.am1, priors.only = FALSE)
   histograms (bars) used in the Prince Rupert District AM1 model. Parameters $q_k$
   represent gears where: $k=1$ is the surface survey and $k=2$ is the dive
   survey. The dotted red lines are the MPD estimates.}
-\label{fig:prd-priors}
+\label{fig:prd-priors.am1}
 \end{figure}
 
 %%------------------------------------------------------------------------------
@@ -334,7 +334,7 @@ make.priors.posts.plot(cc.b, priors.only = FALSE)
   histograms (bars) used in the Central Coast AM2 model. Parameters $q_k$
   represent gears where: $k=1$ is the surface survey and $k=2$ is the dive
   survey. The dotted red lines are the MPD estimates.}
-\label{fig:cc-priors}
+\label{fig:cc-priors.am2}
 \end{figure}
 
 %%------------------------------------------------------------------------------SARAHADDED
@@ -348,7 +348,7 @@ make.priors.posts.plot(cc.am1, priors.only = FALSE)
   histograms (bars) used in the Central Coast AM1 model. Parameters $q_k$
   represent gears where: $k=1$ is the surface survey and $k=2$ is the dive
   survey. The dotted red lines are the MPD estimates.}
-\label{fig:cc-priors}
+\label{fig:cc-priors.am1}
 \end{figure}
 
 %%------------------------------------------------------------------------------
@@ -362,7 +362,7 @@ make.priors.posts.plot(sog.b, priors.only = FALSE)
   histograms (bars) used in the Strait of Georgia AM2 model. Parameters $q_k$
   represent gears where: $k=1$ is the surface survey and $k=2$ is the dive
   survey. The dotted red lines are the MPD estimates.}
-\label{fig:sog-priors}
+\label{fig:sog-priors.am2}
 \end{figure}
 
 %%------------------------------------------------------------------------------SARAHADDED
@@ -376,7 +376,7 @@ make.priors.posts.plot(sog.am1, priors.only = FALSE)
   histograms (bars) used in the Strait of Georgia AM1 model. Parameters $q_k$
   represent gears where: $k=1$ is the surface survey and $k=2$ is the dive
   survey. The dotted red lines are the MPD estimates.}
-\label{fig:sog-priors}
+\label{fig:sog-priors.am1}
 \end{figure}
 
 %%------------------------------------------------------------------------------
@@ -390,7 +390,7 @@ make.priors.posts.plot(wcvi.b, priors.only = FALSE)
   histograms (bars) used in the WCVI AM2 model. Parameters $q_k$
   represent gears where: $k=1$ is the surface survey and $k=2$ is the dive
   survey. The dotted red lines are the MPD estimates.}
-\label{fig:wcvi-priors}
+\label{fig:wcvi-priors.am2}
 \end{figure}
 
 %%------------------------------------------------------------------------------SARAHADDED
@@ -404,7 +404,7 @@ make.priors.posts.plot(wcvi.am1, priors.only = FALSE)
   histograms (bars) used in the WCVI AM1 model. Parameters $q_k$
   represent gears where: $k=1$ is the surface survey and $k=2$ is the dive
   survey. The dotted red lines are the MPD estimates.}
-\label{fig:wcvi-priors}
+\label{fig:wcvi-priors.am1}
 \end{figure}
 
 %%------------------------------------------------------------------------------

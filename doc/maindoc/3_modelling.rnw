@@ -122,6 +122,8 @@ That is, during data import, +1 ages are added to the ages of fish collected fro
 This protocol has been in place since 1985, recognizing that these summer-fall collected fish would be 1-year older had they been removed from the population during roe season (March-April).
 Herring aged prior to 1985 have been age-adjusted in this way as well for consistency across all years.
 
+Ageing errors do exists and are dealt with outside the assessment model.
+
 Mean weight-at-age data are important to the assessment in several ways (Figure \ref{figWeightAge}).
 Firstly, using a time series of weight-at-age allows the assessment model to capture the effects of time-varying changes in weight-at-age, which are relevant and significant for Pacific Herring (also referred to as non-stationarity).
 Second, these data are an important determinant in estimating current biomass because this quantity is given by the sum of the element wise product of numbers-at-age and weight-at-age vectors so that even given fixed numbers-at-age, biomass will change considerably with changes in weight-at-age.
@@ -336,7 +338,7 @@ Then, these samples are used to construct marginal distributions for derived qua
 
 \subsubsection{Prior probability distributions}
 
-Prior probability distributions for leading parameters for each major stock are shown in Tables \ref{tab:parameters} \& \ref{tab:q-params}, and Figures \ref{fig:hg-priors} to \ref{fig:wcvi-priors}.
+Prior probability distributions for leading parameters for each major stock are shown in Tables \ref{tab:parameters} \& \ref{tab:q-params}, and Figures \ref{fig:hg-priors.am2} to \ref{fig:wcvi-priors.am1}.
 The form of each distribution remains the same as was implemented in \citet{martell2011} and as has been implemented in each subsequent assessment.
 The initial values for each leading parameter were set equal to the MPD estimates from the 2016 assessment for each stock area.
 Prior values and standard deviations in priors remain the same.
