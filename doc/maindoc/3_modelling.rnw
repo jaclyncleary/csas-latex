@@ -6,7 +6,7 @@ A matrix of average weight-at-age from \Sexpr{paste(range(yrRange), collapse=" t
 Additional biological parameters such as growth parameters and maturity schedules were taken from external analyses and input to the assessment model as fixed parameters that were assumed to remain constant over time (Section \ref{secAssumedBiolPars}).
 
 Reference points based on estimated long-term average unfished equilibrium spawning biomass ($\mli{SB}_0$) and estimates of current stock status relative to estimated unfished spawning biomass ($\mli{SB}_{2017} / \mli{SB}_0$) are presented in Tables \ref{tab:hg-ref-points} to \ref{tab:wcvi-ref-points}. 
-Estimates of $\mli{SB}$ and depletion levels ($\mli{SB}_{2017} / \mli{SB}_0$) for the recent 10 years are presented for models \Sexpr{PasteNicely(mNames)} in Tables \ref{tab:hg-spawn-biomass-am2} to \ref{tab:wcvi-spawn-biomass-am1}.
+Estimates of $\mli{SB}$ and depletion levels ($\mli{SB}_{2017} / \mli{SB}_0$) for the most recent 10 years are presented for models \Sexpr{PasteNicely(mNames)} in Tables \ref{tab:hg-spawn-biomass-am2} to \ref{tab:wcvi-spawn-biomass-am1}.
 
 Maximum Sustainable Yield (MSY) and the annual harvest rate producing MSY ($U_\text{MSY}$), were presented only within the context of the Sensitivity Analysis investigating interactions between maturity-at-age and selectivity-at-age (Section \ref{secMatAge}).
 
@@ -464,7 +464,7 @@ The Base Case models for this years \Sexpr{fish.name} assessment were chosen bas
 The 2016 assessment implemented two versions of the base stock assessment model that differ in the treatment of spawn survey catchability parameters ($q_1$ and $q_2$) for the surface survey period (\Sexpr{qYrs$q1}) and dive survey period (\Sexpr{qYrs$q2}), respectively.  
 The two models are labelled AM1 ($q_1$ and $q_2$ estimated with prior probability distributions) and AM2 ($q_1$ estimated, $q_2=1$). 
 Both the Bridging Analysis (Appendix \ref{chap:bridge}) and the Sensitivity Analyses (Section \ref{secSensitivity}) support continued use of these two base case models  for each of the 5 major herring stocks.
-Sensitivity analyses alone are insufficient for understanding the complex interplay between $q$ and management parameters, and resolution between AM1 and AM2 parameterization of $q$ will require simulation-evaluation. 
+These analyses alone were insufficient for understanding the complex interplay between $q$ and management parameters, and resolution between AM1 and AM2 parameterization of $q$ will require simulation-evaluation. 
 It would however be possible to pursue alternative sources of data for developing stock-specific Bayesian priors for $q$, e.g., based on new analyses or expert opinion.
 
 The sensitivity analyses supports continued use of time-varying natural mortality based on the 
