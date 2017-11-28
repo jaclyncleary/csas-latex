@@ -122,13 +122,13 @@ That is, during data import, +1 ages are added to the ages of fish collected fro
 This protocol has been in place since 1985, recognizing that these summer-fall collected fish would be 1-year older had they been removed from the population during roe season (March-April).
 Herring aged prior to 1985 have been age-adjusted in this way as well for consistency across all years.
 
-Ageing errors can occur, and they are dealt with outside the assessment model.
-Typically, about 10\% of herring are independently aged by two technicians.
-If there is disagreement between technicians, additional samples are aged to... %MG: more info here
+Ageing errors can occur, and age data are corrected before being input to the assessment model.
+Typically, about 10\% of herring samples are independently aged by two technicians.
+If there is disagreement between technicians, additional samples are aged to [...] %MG: more info here
 Ageing errors are most common in young fish, for example differentiating between 2 and 3 year old fish, or between 3 and 4 year old fish.
-This is in part due to faster growth in young fish, and the presence of checks which can be hard to differentiate from annuli.
-Fish that are 4 years and older generally have fewer errors because growth patterns are more easily recognized, and growth is slower, more compact, and has less noise.
-Herring from certain stocks can have growth patterns that are more difficult to interpred, such as Statistical Areas 14, 17, and 23 to 25.
+This is in part due to faster growth in young fish, and the presence of checks which can be confused with annuli.
+Fish that are 4 years and older generally have fewer errors because growth patterns are more easily recognized, and growth is slower, more compact, and has less variation.
+Herring from certain stocks can have growth patterns that are more difficult to interpret, such as fish from Statistical Areas 14, 17, and 23 to 25.
 
 Mean weight-at-age data are important to the assessment in several ways (Figure \ref{figWeightAge}).
 Firstly, using a time series of weight-at-age allows the assessment model to capture the effects of time-varying changes in weight-at-age, which are relevant and significant for Pacific Herring (also referred to as non-stationarity).
@@ -501,7 +501,7 @@ Figures \ref{fig:hg-ageest-gear1} to \ref{fig:wcvi-ageest-gear3} present model e
 
 \subsubsection{Parameter estimates}
 
-Prior and marginal posterior probability distributions of estimated parameters are shown in Figures \ref{fig:hg-priors} to \ref{fig:wcvi-priors}.
+Prior and marginal posterior probability distributions of estimated parameters are shown in Figures \ref{fig:hg-priors.am2} to \ref{fig:wcvi-priors.am1}.
 %JC: prior and posterior distributions are only included for AM2. Add AM1 for final Res Doc.
 The median, 5th percentile and 95th percentile posterior parameter estimates, and MPDs are given in Tables \ref{tab:hg-parameters-posts} to \ref{tab:wcvi-am1-parameters-posts}.
 Choice of prior and prior distribution is described in Appendix \ref{chap:equations}.
