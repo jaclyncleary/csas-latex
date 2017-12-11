@@ -123,19 +123,14 @@ This protocol has been in place since 1985, recognizing that these summer-fall c
 Herring aged prior to 1985 have been age-adjusted in this way as well for consistency across all years.
 
 Ageing errors are currently analyzed and corrected during the ageing process.
-Appproximately 10\% of herring scales in each sample are independently aged by two technicians to determine sample precision and
-ensure consistency between technicians.
+Appproximately 10\% of herring scales in each sample are independently aged by two technicians to determine sample precision and ensure consistency between technicians.
 Further action is taken if technicians disagree on the age of a scale.
-The second technician (i.e., the technician doing the precision test) reviews the age;
-if they agree with the first technician, the age is resolved.
-If they disagree, the first technician (i.e., the technician that initially aged the scale) reviews the age;
-if they agree with the second technician, the age is resolved.
+The second technician (i.e., the technician doing the precision test) reviews the age; if they agree with the first technician, the age is resolved.
+If they disagree, the first technician (i.e., the technician that initially aged the scale) reviews the age; if they agree with the second technician, the age is resolved.
 If they still disagree, the scale is labelled `unresolved.'
 Unresolved ages are often associated with scales that have unclear or confusing patterns which prevent definitive interpretation.
-If sample precision is less than 80\%, the second technician will double-check more scales to ensure that the first technician is not
-biased or misinterpreting patterns.
-The final resolved age is the only source of age data for the assessment model, and data-derived precision estimates are not
-included as a source of error.
+If sample precision is less than 80\%, the second technician will double-check more scales to ensure that the first technician is not biased or misinterpreting patterns.
+The final resolved age is the only source of age data for the assessment model, and data-derived precision estimates are not included as a source of error.
 
 Ageing errors are most common in young fish, for example differentiating between 2 and 3 year old fish, or between 3 and 4 year old fish.
 This is in part due to faster growth in young fish, and the presence of checks which can be confused with annuli.
