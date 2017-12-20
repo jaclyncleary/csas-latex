@@ -12,7 +12,7 @@ Maximum Sustainable Yield (MSY) and the annual harvest rate producing MSY ($U_\t
 
 Harvest decision tables were created by projecting the assessment model one year into the future, given range of assumed catch levels (Tables \ref{tab:hg-am2-decision} to \ref{tab:wcvi-am1-decision}).
 One year projections of spawning biomass assume recent 5-year average estimates of natural mortality and weight-at-age.
-For each level of catch, decision tables show the probability that projected spawning biomass in 2018 will be less than the LRP ($0.30\cdot\mli{SB}_0$), the fixed cut-off (for AM2), and the probability that the effective harvest rate for each catch level will be greater than target harvest rates of 5\%, 10\% and 20\% (Section \ref{secDecisionTables}).
+For each level of catch, decision tables show the probability that projected spawning biomass in 2018 will be less than the LRP ($0.30\cdot\mli{SB}_0$), the fixed cut-off (for AM2), and the probability that the effective harvest rate for each catch level will be greater than target harvest rates of 10\% and 20\% (Section \ref{secDecisionTables}).
 %JC: completed.
 
 \subsection{INPUT DATA}
