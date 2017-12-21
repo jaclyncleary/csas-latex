@@ -7,7 +7,7 @@
 
 ################################################################################
 fish.name <- "Pacific Herring"
-science.name <- "Clupea pallasi"
+science.name <- "Clupea pallasii"
 family.name <- "Clupeidae"
 common.name <- "herring"
 Common.name <- "Herring"
