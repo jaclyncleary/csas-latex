@@ -839,6 +839,18 @@ catch <- inputData$catch %>%
         Gear=paste("Gear", Gear, sep="") ) %>%
     rename( Period=Gear )
 
+#spBioAM2 <- spBio %>% 
+#    filter( Model=="AM2" ) %>% mutate( Year=as.integer(Year) ) %>%
+#    arrange( Region, Year )
+#write_csv( x=spBioAM2, path="spBioAM2.csv" )
+#catch <- inputData$catch %>%
+#    filter( Region %in% allRegions$major ) %>%
+#    mutate( Gear=paste("Gear", Gear, sep="") ) %>%
+#    spread( key=Gear, value=Catch, fill=0 ) %>%
+#    complete( Region, Year, fill=list(Gear1=0, Gear2=0, Gear3=0) ) %>%
+#    arrange( Region, Year )
+#write_csv( x=catch, path="catch.csv" )
+
 # Format spawn index data for plotting
 spawn <- inputData$spawn %>%
     mutate( Survey=factor(Survey, levels=c("Surface", "Dive"), ordered=TRUE) )%>%
