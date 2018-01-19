@@ -43,8 +43,10 @@ For the purposes of stock assessment, catch data are summarized by gear type and
 \item[Gear 3: roe gillnet] Commercial catch and test fishery catch from the roe gillnet fishery (1972--\Sexpr{assess.yr})
 \end{description}
 
-Currently, catch input to the stock assessment model does not include mortality from the commercial SOK fishery, nor any recreational or FSC fisheries.  The FSC and SU catches are minuscule.
-The commercial SOK fishery is licensed based on pounds of validated SOK product, not tonnes of fish used or spawned, and there is currently no basis for verifying mortality imposed on the population by this fishery.
+Currently, catch input to the stock assessment model does not include mortality from the commercial SOK fishery, nor any recreational or FSC fisheries.
+The FSC and recreational catches are minuscule.
+The commercial SOK fishery is licensed based on pounds of validated SOK product (i.e., eggs adhered to kelp), not tonnes of fish used or spawned.
+Currently there is no basis for verifying mortality imposed on the population by this fishery, however methods for estimating SOK mortality are being developed.
 
 Commercial catch data are aggregated into three gear types/ fishery periods:
 (1) Historic reduction fishery and FB,
