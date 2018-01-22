@@ -227,7 +227,7 @@ The DFO has committed to a management strategy evaluation process for \Sexpr{fis
 
 Annual stock assessments for the BC Pacific Herring major stocks have been conducted using a catch-age model since the mid-2000s \citep{haist2006}. 
 Since then, the design of the model has undergone re-structuring various model components, as often as every 2-3 years, to address issues identified during peer-review.
-One major change introduced in 2011 \citep{martell2011} was setting the model to estimate the spawn dive survey scaling parameter $q_2$, rather than setting it fixed at $q_2=1.0$, as was done in previous assessment models. 
+One major change introduced in 2011 \citep{martell2011} was setting the model to estimate the spawn dive survey scaling parameter $q_2$, rather than setting it fixed at $q_2=1.0$, as was done in some previous assessment models. 
 Another major change introduced in 2011 was to make the fishery cut-offs in the harvest control rule dependent on the model’s most recent estimate of unfished spawning biomass $\mli{SB}_0$ (i.e., cease fishing when the stock is estimated to be below $0.25\cdot\mli{SB}_0$). 
 In previous model iterations, the fishery cut-offs were fixed at absolute biomass levels based on 1996 estimates of $0.25\cdot\mli{SB}_0$ \citep{schweigert1997}.  
 Throughout this document, the term Assessment Model 1 (AM1) describes the more recent management procedure (MP), which estimates the scaling factor for the surface survey $q_1$ (1951-1987) and dive survey $q_2$ (1988-2017) using informative priors; and uses estimated fishery cut-offs.
