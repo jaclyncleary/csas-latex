@@ -15,9 +15,9 @@ How well a particular management procedure performs depends on what objectives a
 Accordingly, the performance of any given management procedure cannot be viewed without understanding management objectives.
 
 \Sexpr{fish.name}{} has been managed using a set harvest control rule but according to our definition above, the management procedure applied in practice has been in a constant state of flux.
-Since it was implemented in 1986 and formally tested in \citet{hall1988}, there is no single element that has not changed:
+Since it was implemented in 1986 and formally tested \citep{haist1988, hall1988}, there is no single element that has not changed: % Jake says that the MP was not based on Hall et al. 1988, but on Haist 1988 (see issue #2 on GitHub WorkPlanningHerring)
 the survey data changed in \Sexpr{newSurvYr} to the dive survey;
-the harvest control rule changed from being applied to the current spawning biomass estimate to the projected spawning stock biomass estimate; and
+the harvest control rule changed from being applied to the current spawning biomass estimate to the projected spawning stock biomass estimate (for minor stocks); and
 assessment model assumptions have changed on multiple occasions with different discrete and instantaneous formulations, alternative assumptions about $q$, and others that included empirical weight at age and time-varying estimates of natural mortality;
 plus many others.
 In addition to operational changes in the application of management procedures, there is some evidence for environmental and ecological changes that resulted in apparent changes in size at age and natural mortality that would have affected management procedure performance even if it had been consistently applied.
@@ -124,8 +124,8 @@ The output from the harvest control rule is the intended annual harvest rate, wh
 
 For the major stock areas, the harvest control rule is a hybrid that combines both constant escapement and constant harvest rate policies, allowing for a reduced harvest rate in areas where the intended 20\% annual harvest rate would bring the forecast pre-fishery mature spawning biomass (i.e., the `escapement') to levels below the cut-off value of $0.25\cdot\mli{SB}_0$ \citep{cleary2010,cleary2012}.
 
-This cut-off value was selected based on simulation work \citep{hall1986, hall1988, zheng1993, haist1993}  suggesting that for stocks above the $0.25\cdot\mli{SB}_0$ level, that the hybrid HCR would produce lower catch variance and fewer fishery closures than a constant escapement rule.
-The simulation work focussed on an analysis of stock dynamics for the SOG stock only.
+This cut-off value was selected based on simulation work \citep{hall1986, haist1988, hall1988, zheng1993, haist1993}  suggesting that for stocks above the $0.25\cdot\mli{SB}_0$ level, that the hybrid HCR would produce lower catch variance and fewer fishery closures than a constant escapement rule.
+%The simulation work focussed on an analysis of stock dynamics for the SOG stock only. % See issue #2 on GitHub WorkPlanningHerring
 
 Contrary to the predictions of the analyses done in the late 1980s, some \Sexpr{common.name} stocks appear to have been below cut-off levels relatively frequently.
 Since 1986 there have been several different stock assessments models used, each of which had different assumptions and new data so that for each assessment, in each year, there were new estimates of current and unfished spawning biomass levels; it is therefore not possible to compare the current stock assessments estimates to what would have been estimated historically.
