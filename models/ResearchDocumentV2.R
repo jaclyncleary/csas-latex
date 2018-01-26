@@ -850,6 +850,47 @@ catch <- inputData$catch %>%
 #    complete( Region, Year, fill=list(Gear1=0, Gear2=0, Gear3=0) ) %>%
 #    arrange( Region, Year )
 #write_csv( x=catch, path="catch.csv" )
+#catch <- inputData$catch %>%
+#    filter( Region %in% allRegions$major ) %>%
+#    group_by( Region, Year ) %>%
+#    summarise( Catch=SumNA(Catch) ) %>%
+#    ungroup( ) %>%
+#    complete( Region, Year, fill=list(Catch=0) ) %>%
+#    mutate( Parameter="Catch" ) %>%
+#    rename( Value=Catch ) %>%
+#    arrange( Region, Year ) %>%
+#    select( Region, Year, Parameter, Value )
+#write_csv( x=catch, path="Catch.csv" )
+#recruitment <- recruits %>%
+#    filter( Model=="AM2", Region %in% c("PRD", "SoG") ) %>%
+#    select( -Model ) %>%
+#    mutate( Year=as.integer(Year) ) %>%
+#    arrange( Region, Year )
+#write_csv( x=recruitment, path="RecruitsAge2.csv" )
+#spawnBio <- spBio %>% 
+#    filter( Model=="AM2", Region %in% c("PRD", "SoG") ) %>% 
+#    mutate( Year=as.integer(Year) ) %>%
+#    select( Region, Year, Parameter, Survey, Lower, Median, Upper ) %>%
+#    arrange( Region, Year )
+#write_csv( x=spawnBio, path="SpawningBiomass.csv" )
+#recruitmentMPD <- recMPD %>%
+#    filter( Region %in% c("PRD", "SoG") ) %>%
+#    rename( MPD=Recruitment ) %>%
+#    mutate( Parameter="Recruitment" ) %>%
+#    arrange( Region, Year ) %>%
+#    select( Region, Year, Parameter, MPD )
+#recruitment <- full_join( x=recruitment, y=recruitmentMPD, 
+#    by=c("Region", "Year", "Parameter") )
+#write_csv( x=recruitment, path="RecruitsAge2.csv" )
+#spBioMPD <- abundMPD %>%
+#    filter( Region %in% c("PRD", "SoG") ) %>%
+#    rename( MPD=Abundance ) %>%
+#    mutate( Parameter="Abundance" ) %>%
+#    arrange( Region, Year ) %>%
+#    select( Region, Year, Parameter, MPD )
+#spawnBio <- full_join( x=spawnBio, y=spBioMPD,
+#    by=c("Region", "Year", "Parameter") )
+#write_csv( x=spawnBio, path="SpawningBiomass.csv" )
 
 # Format spawn index data for plotting
 spawn <- inputData$spawn %>%
