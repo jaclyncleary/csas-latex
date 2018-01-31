@@ -38,9 +38,9 @@ Landings from the minor herring fisheries (SU and SOK) are based on landing slip
 
 For the purposes of stock assessment, catch data are summarized by gear type and fishing category as follows:
 \begin{description}
-\item[Gear 1: other fisheries] Commercial catch from the historical reduction fishery (1951--1967), winter seine fishery (FB, 1968--\Sexpr{assess.yr}), and the SU fishery (up to \Sexpr{assess.yr}).
-\item[Gear 2: roe seine] Commercial catch and test fishery catch from the roe seine fishery (1972--\Sexpr{assess.yr})
-\item[Gear 3: roe gillnet] Commercial catch and test fishery catch from the roe gillnet fishery (1972--\Sexpr{assess.yr})
+\item[Gear 1: other fisheries] Commercial catch from the historical reduction fishery (1951--1967), winter seine fishery (FB, 1968--\Sexpr{max(yrRange)}), and the SU fishery (up to \Sexpr{max(yrRange)}).
+\item[Gear 2: roe seine] Commercial catch and test fishery catch from the roe seine fishery (1972--\Sexpr{max(yrRange)})
+\item[Gear 3: roe gillnet] Commercial catch and test fishery catch from the roe gillnet fishery (1972--\Sexpr{max(yrRange)})
 \end{description}
 
 Currently, catch input to the stock assessment model does not include mortality from the commercial SOK fishery, nor any recreational or FSC fisheries.
@@ -57,7 +57,7 @@ Note that seine and gillnet roe fisheries catch whole fish, but the product is f
 
 A summary of recent fishing activity is described below by major SAR.
 For areas where commercial food and bait, special use and roe fisheries have occurred, catches by fishery are summarized by stock area in Figure \ref{figCatchMajor}.
-Raw catch data for each stock area from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} are included in Appendix \ref{chap:input}.
+Raw catch data for each stock area from \Sexpr{min(yrRange)} to \Sexpr{max(yrRange)} are included in Appendix \ref{chap:input}.
 
 \textbf{Haida Gwaii}
 
@@ -649,10 +649,10 @@ Figure \ref{figHarvestRate} presents time series estimates of effective harvest 
 
 \citet{kronlund2017} use an analysis of surplus production to evaluate whether the major \Sexpr{fish.name} stocks in BC show stock states consistent with signs of possible serious harm, the result of which identified recent persistent states of low production and low biomass (LP-LB states) for the Central Coast (CC), Haida Gwaii (HG) and West Coast of Vancouver Island (WCVI) management areas.
 
-The production analysis was updated for the major Pacific Herring stocks with the addition of \Sexpr{assess.yr} catch data and MPD spawning biomass estimates for \Sexpr{PasteNicely(mNames)}.  
+The production analysis was updated for the major Pacific Herring stocks with the addition of \Sexpr{max(yrRange)} catch data and MPD spawning biomass estimates for \Sexpr{PasteNicely(mNames)}.  
 Figures \ref{figStoryboard\Sexpr{mNames[1]}\Sexpr{allRegions$major[1]}} to \ref{figStoryboard\Sexpr{mNames[length(mNames)]}\Sexpr{allRegions$major[length(allRegions$major)]}} show \Sexpr{PasteNicely(mNames)} production analyses for the \Sexpr{length(allRegionNames$major)} major SARs: \Sexpr{PasteNicely(allRegionNames$major)}, respectively.
 The updated production analysis was compared to results presented in \citet{kronlund2017} and the key results are the same and provide continued support to the recommendations of \citet{kronlund2017}.
-Median posterior distributions of the estimated spawning biomass in \Sexpr{assess.yr} for each major stock, and juxtaposition of the estimated LRP are presented in Figure \ref{figCurrentSSB}.
+Median posterior distributions of the estimated spawning biomass in \Sexpr{max(yrRange)} for each major stock, and juxtaposition of the estimated LRP are presented in Figure \ref{figCurrentSSB}.
 The following bullets report estimated $\mli{SB}_{2017}$ relative to the LRP ($0.30\cdot\mli{SB}_0$):
 
 \begin{resdoclist}

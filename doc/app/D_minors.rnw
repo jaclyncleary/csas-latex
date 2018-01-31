@@ -21,7 +21,7 @@ In addition, we provide timeseries of catch and spawn index (Figures \ref{figCat
 \begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{\Sexpr{locOutput}CatchMinor.png}
-\caption{Time series of total landed catch in thousands of metric tonnes ($\text{t} \times 10^{3}$) of \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the minor stock assessment regions (SARs).
+\caption{Time series of total landed catch in thousands of metric tonnes ($\text{t} \times 10^{3}$) of \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{max(yrRange)} in the minor stock assessment regions (SARs).
 \legendPeriod{}}
 \label{figCatchMinor}
 \end{figure}
@@ -30,7 +30,7 @@ In addition, we provide timeseries of catch and spawn index (Figures \ref{figCat
 \begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{\Sexpr{locOutput}SpawnIndexMinor.png}
-\caption{Time series of spawn index in thousands of metric tonnes ($\text{t} \times 10^{3}$) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{assess.yr} in the minor stock assessment regions (SARs).
+\caption{Time series of spawn index in thousands of metric tonnes ($\text{t} \times 10^{3}$) for \Sexpr{fish.name} from \Sexpr{min(yrRange)} to \Sexpr{max(yrRange)} in the minor stock assessment regions (SARs).
 \qPeriods{}
 \spawnIndex{}}
 \label{figSpawnIndexMinor}

@@ -1,6 +1,6 @@
 \section{RECOMMENDATIONS AND YIELD OPTIONS}
 
-\subsection{PROJECTED BIOMASS IN \Sexpr{assess.yr+1}}
+\subsection{PROJECTED BIOMASS IN \Sexpr{max(yrRange)+1}}
 
 Projected pre-fishery spawning biomass estimates (i.e., prior to any harvest in \Sexpr{max(yrRange)+1}), and the relative contribution of fish aged 3 and aged 4-10 are presented in Tables \ref{tab:hg-ref-points} to \ref{tab:wcvi-ref-points}.
 Advice to managers for \Sexpr{max(yrRange)+1} for each stock area is presented in the stock-specific sections below, as two sets of decision tables, one for each assessment model (\Sexpr{PasteNicely(mNames)}; Tables \ref{tab:hg-am2-decision} to \ref{tab:wcvi-am1-decision}).

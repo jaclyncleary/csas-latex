@@ -1,6 +1,6 @@
 \section{INTRODUCTION}
 
-\subsection{CONTEXT FOR THE \Sexpr{assess.yr} ASSESSMENT}
+\subsection{CONTEXT FOR THE \Sexpr{max(yrRange)} ASSESSMENT}
 
 Assessments of \Sexpr{fish.name} stocks in \Sexpr{bc} were done for \Sexpr{length(allRegionNames$major)} major stock assessment regions (SARs): \Sexpr{PasteNicely(allRegionNames$major)}.
 We also present data for \Sexpr{length(allRegionNames$minor)} minor SARs: \Sexpr{PasteNicely(allRegionNames$minor)}.
@@ -24,7 +24,7 @@ In addition to operational changes in the application of management procedures, 
 As a result, it is difficult to attribute departures from the original predictions of management procedure performance (in terms of probability of fisheries closures, average annual variability of catch) to any single cause.
 
 This year's assessment presents two base cases assessments for each of the 5 major stocks: ``AM1'' denoting the case where surface (\Sexpr{min(yrRange)}--\Sexpr{newSurvYr-1}) and dive (\Sexpr{newSurvYr}--\Sexpr{max(yrRange)}) survey catchability parameters ($q_1$ and $q_2$) are estimated using a prior distribution, and ``AM2'' denoting the case where the surface survey catchability ($q_1$) is estimated and the dive survey catchability is fixed at $q_2 = 1$.
-The ISCAM modelling code used in \Sexpr{assess.yr} has been updated to the new platform, the details of which are described in the Bridging Analysis (Appendix \ref{chap:bridge}).
+The ISCAM modelling code used in \Sexpr{max(yrRange)} has been updated to the new platform, the details of which are described in the Bridging Analysis (Appendix \ref{chap:bridge}).
 
 Sensitivity cases for \Sexpr{PasteNicely(mNames)} investigate:
 \begin{resdoclist}
