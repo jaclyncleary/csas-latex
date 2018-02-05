@@ -60,21 +60,6 @@ UsePackages( pkgs=c("tidyverse", "zoo", "Hmisc", "scales", "sp", "cowplot",
 ##### Controls ##### 
 ####################     
 
-## Location of the shared network drive (or local databases)
-## TODO: Need a better way to do this (maybe like Spawn.R?). With one location
-## for the access database, and another for the shapefiles.
-#dirShare <- file.path( "\\\\dcbcpbsna01a", "hdata$" )
-#
-## Input coordinate reference system
-#inCRS <- "+proj=longlat +datum=WGS84 +no_defs +ellps=WGS84 +towgs84=0,0,0"
-#
-## Coordinate reference system (http://spatialreference.org/ref/sr-org/82/)
-#outCRS <- "+proj=aea +lat_1=50 +lat_2=58.5 +lat_0=45 +lon_0=-126 +x_0=1000000
-#    +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs"
-#
-## Geographic projection
-#geoProj <- "Projection: BC Albers (NAD 1983)"
-
 # Model names (correspond to folder names)
 mNames <- c( "AM2", "AM1" )
 
@@ -413,22 +398,18 @@ ArrangeOutput <- function( SARs, models ) {
       fn <- file.path( SAR, model )
       # Pattern for mcmc files
       mcmcPattern <- "*.csv"
+      # Get names of mcmc files
+      mcmcFNs <- list.files( path=fn, pattern=mcmcPattern, full.names=TRUE )
+      # Error if there are mcmc files in the main directory and an mcmc folder
+      if( length(mcmcFNs) > 0 & "mcmc" %in% list.files(path=fn) ) 
+        stop( "Two sets of MCMC output found in '", fn, "'", call.=FALSE )
       # If there is already a folder called 'mcmc': assume already processed and
       # skip to the next iteration
-      # TODO: Should be an error if there are mcmc files in the main director,
-      # and an mcmc folder -- two sets of mcmc files probably indicates that
-      # there is old data
       if( "mcmc" %in% list.files(path=fn) )  next
       # If there are files to move, print a message
       cat( "\n\t", fn, sep="" )
       # Make a subfolder called 'mcmc'
       dir.create( path=file.path(fn, "mcmc") )
-      # Get names of batch files
-      batFNs <- list.files( path="Executables", pattern="*.bat", full.names=TRUE )
-      # Copy bat files to 'mcmc' directory
-      file.copy( from=batFNs, to=file.path(fn, "mcmc") )
-      # Get names of mcmc files
-      mcmcFNs <- list.files( path=fn, pattern=mcmcPattern, full.names=TRUE )
       # Warning if there are no files
       if( length(mcmcFNs) == 0 )  warning( "No mcmc output files found in '",
             fn, "'", call.=FALSE )
