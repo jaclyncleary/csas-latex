@@ -402,7 +402,7 @@ ArrangeOutput <- function( SARs, models ) {
       mcmcFNs <- list.files( path=fn, pattern=mcmcPattern, full.names=TRUE )
       # Error if there are mcmc files in the main directory and an mcmc folder
       if( length(mcmcFNs) > 0 & "mcmc" %in% list.files(path=fn) ) 
-        stop( "Two sets of MCMC output found in '", fn, "'", call.=FALSE )
+        stop( "Two sets of mcmc output files found in '", fn, "'", call.=FALSE )
       # If there is already a folder called 'mcmc': assume already processed and
       # skip to the next iteration
       if( "mcmc" %in% list.files(path=fn) )  next
