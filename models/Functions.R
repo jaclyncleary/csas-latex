@@ -283,7 +283,12 @@ LoadAreaData <- function( where ) {
       as_tibble( )
   # Intialize an additional column for groups: NA
   locations$Group <- NA
-  # Manually determine groups: Central Coast
+  # Manually determine groups: Haida Gwaii
+  locations$Group[locations$Section %in% c(21, 25)] <- "21+25"
+  locations$Group[locations$Section %in% c(6)] <- "6"
+  locations$Group[locations$Section %in% c(23)] <- "23"
+  locations$Group[locations$Section %in% c(24)] <- "24"
+    # Manually determine groups: Central Coast
   locations$Group[locations$Section %in% c(67, 70:79)] <- "6&7"
   locations$Group[locations$Section %in% c(85, 86)] <- "8"
   # Manually determine groups: Strait of Georgia
@@ -347,9 +352,7 @@ LoadShapefiles <- function( where, a, bMax=5000 ) {
           Section=formatC(Section, width=3, flag="0") ) %>%
       arrange( SAR, StatArea, Group, Section )
   # Load the Section shapefile (has Statistical Areas and Regions)
-  secRaw <- readShapePoly( 
-      fn=file.path(where$locSec, where$fns$sections),
-      proj4string=CRS(outCRS) )
+  secRaw <- readOGR( dsn=where$locSec, layer=where$fns$sections, verbose=FALSE )
   # Function to perform some light wrangling
   UpdateSections <- function( dat, keepAll ) {
     # Subset the sections to the region(s) in question, and perform some light
@@ -462,8 +465,7 @@ LoadShapefiles <- function( where, a, bMax=5000 ) {
   # Determine x:y aspect ratio (for plotting)
   xyRatio <- diff(extDF$Eastings) / diff(extDF$Northings)
   # Read the polygon data: land
-  landSPDF <- readShapePoly( fn=file.path(where$locLand, where$fns$land),
-      proj4string=CRS(outCRS) )
+  landSPDF <- readOGR( dsn=where$locLand, layer=where$fns$land, verbose=FALSE )
   # Clip the land to the buffer: big
   landCropSPDF <- crop( x=landSPDF, y=extBuff )
   # Convert to data frame
