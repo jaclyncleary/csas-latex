@@ -113,7 +113,7 @@ The same aggregation is applied to the commercial catch data.
 
 A stock-specific matrix of weight-at-age exists for each of the five major stocks.  
 The matrix of weight-at-age for years \Sexpr{paste(range(yrRange), collapse=" to ")} is the average weight over all seine-caught fish (Gear 1 and 2, where available) for each age categories 2 to 10+. 
-Gillnet caught fish are excluded from the calculation of average weight-at-age.
+Gillnet caught fish are excluded from the calculation of average weight-at-age because gillnet gear is size-selective.
 The number of biological samples used in the calculation of proportions-at-age and weight-at-age by year and SAR is summarized in Appendix \ref{chap:input}.
 
 Herring are aged at the DFO Sclerochronology Lab at the Pacific Biological Station, Nanaimo, B.C.
