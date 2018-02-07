@@ -1,5 +1,5 @@
 \label{chap:minors}
-\starredchapter{APPENDIX~\thechapter. ASSESSMENT OF MINOR STOCKS}
+\starredchapter{APPENDIX~\thechapter. TIME SERIES DATA FOR MINOR STOCKS}
 \lfoot{\Sexpr{fish.name}}
 \rfoot{Appendix~\thechapter~-- Assessment of minor stocks}
 
