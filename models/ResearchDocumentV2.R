@@ -1113,6 +1113,10 @@ PlotNumber( SARs=allRegions$major, dat=numAgedYear )
 # Story-board plot: 6 panels (abundance, recruitment, M, SSB with catch,
 # production, and production rate)
 PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp ) {
+  # List to hold biomas plots
+  lBiomass <- list()
+  # Counter for biomass plots
+  iCount <- 0
   # Fixed cut-offs (1996; only apply to AM2)
   cutOffs <- tibble( Model="AM2", Region=names(fixedCutoffs), 
           Cutoff=unlist(fixedCutoffs) ) %>%
@@ -1121,6 +1125,8 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp ) {
   for( k in 1:length(SARs) ) {
     # Loop over models
     for( i in 1:length(models) ) {
+      # Update the counter
+      iCount <- iCount + 1
       # Get region name
       SAR <- SARs[k]
       # Get model name
@@ -1272,6 +1278,11 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp ) {
           scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
           myTheme +
           theme( text=element_text(size=8) )
+      # Put the plot in the list
+      lBiomass[[iCount]] <- plotTemp + 
+          annotate( geom="text", x=-Inf, y=Inf, 
+              label=paste(SAR, model, sep=" "), vjust=1.3, hjust=-0.1, 
+              size=2.5 )
       # Plot d: spawning biomass and catch
       plotD <- plotTemp + 
           annotate( geom="text", x=-Inf, y=Inf, label="(d)", vjust=1.3, 
@@ -1340,6 +1351,11 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp ) {
                       sep="")), dpi=pDPI, width=figWidth, height=figWidth*0.67 )
     }  # End i loop over models
   }  # End k loop over regions
+  # Combine the plots
+  biomassPlots <- plot_grid( lBiomass[[1]], lBiomass[[7]], lBiomass[[3]], 
+          lBiomass[[9]], lBiomass[[5]], align="hv", ncol=2 ) +
+      ggsave( filename="BiomassAM2.png", dpi=pDPI, width=figWidth, 
+          height=figWidth )
 }  # End PlotStoryboard function
 
 # Make the storyboard (major SARs only)
