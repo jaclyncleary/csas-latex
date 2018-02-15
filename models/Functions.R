@@ -288,7 +288,7 @@ LoadAreaData <- function( where ) {
   locations$Group[locations$Section %in% c(6)] <- "6"
   locations$Group[locations$Section %in% c(23)] <- "23"
   locations$Group[locations$Section %in% c(24)] <- "24"
-    # Manually determine groups: Central Coast
+  # Manually determine groups: Central Coast
   locations$Group[locations$Section %in% c(67, 70:79)] <- "6&7"
   locations$Group[locations$Section %in% c(85, 86)] <- "8"
   # Manually determine groups: Strait of Georgia
@@ -310,6 +310,22 @@ LoadAreaData <- function( where ) {
   locations$Group[locations$Section %in% c(251, 252)] <- "Nootka"
   locations$Group[locations$Section %in% c(253)] <- "Nuchatlitz"
   locations$Group[locations$Section %in% c(250, 259)] <- "SA 25 Unkn"
+  # If some groups are NA, check is *some* are missing (i.e., incomplete)
+  if( any(is.na(locations$Group)) ) {
+    # Get distinct rows
+    grpU <- locations %>%
+        select( StatArea, Section, Group ) %>%
+        distinct( ) %>%
+        arrange( StatArea, Section )
+    # Get distinct rows with no missing groups
+    grpUNA <- grpU %>%
+        filter( is.na(Group) )
+    # Check if none or all have groups
+    noneOrAll <- nrow( grpU ) == nrow( grpUNA )
+    # Message re some sections(s) missing group info
+    if( !noneOrAll )  cat( "Some section(s) are missing `group' info: ", 
+        paste(grpUNA$Section, collapse=", "), "\n", sep="" )
+  }  # End if groups are NA
   # Extract required data
   res <- locations %>%
       right_join( y=sections, by="Section" ) %>%
@@ -405,7 +421,7 @@ LoadShapefiles <- function( where, a, bMax=5000 ) {
       mutate( Section=formatC(secSPDF$Section, width=3, flag="0") ) %>%
       arrange( Section )
   # If 'Groups' has info, dissolve to Groups
-  if( !(all(is.na(aSm$Group))) & region!="JS" ) {
+  if( !(all(is.na(aSm$Group))) & region!="JS" & all(is.na(sectionSub)) ) {
     # First, remove NAs
     aSmC <- aSm %>%
         filter( !is.na(Group), !is.na(Section) ) %>%
