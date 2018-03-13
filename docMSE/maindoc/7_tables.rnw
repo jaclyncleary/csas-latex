@@ -1,0 +1,20 @@
+\section{TABLES}
+
+\begin{table}[H]
+\centering
+\caption{Spawn index scaling parameters $q$, for \fishName{} stock assessment models in the major stock assessment regions (SARs).
+\qPeriods{}
+Lower and upper estimates indicate the \Sexpr{ciLevel*100}\% credible interval.
+Legend: $q_{1}$ and $q_{2}$ are the surface and dive spawn index scaling parameters, respectively.
+Note that we refer to setting $q_{2} = 1$ in AM2, but in practice this is implemented as $q_{2} \sim \mathcal{N}(\mu,\,\sigma)$, where $\mathcal{N}$ is a normal distribution with mean $\mu = 1.0$, and standard deviation $\sigma = 0.01$.}
+\begin{tabular}{lllrrr}
+\toprule
+& & & \multicolumn{3}{c}{\textbf{Estimate}}\\
+\cmidrule{4-6}
+\inputsp{\Sexpr{noquote(locOutput)}QPars.tex}
+\end{tabular}
+\label{tabQPars}
+\end{table}
+
+% Start a new page
+\clearpage

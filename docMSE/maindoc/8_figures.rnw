@@ -1,0 +1,15 @@
+\section{FIGURES}
+
+% Map of BC
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}BC.png}
+\caption{Boundaries for \Sexpr{bc} \fishName{} stock assessment regions (SARs).
+The major SARs are \Sexpr{PasteNicely(allRegionNames$major)}.
+The minor SARs are \Sexpr{PasteNicely(allRegionNames$minor)}.
+Units: kilometres (km).}
+\label{figBC}
+\end{figure}
+
+% Start a new page
+\clearpage

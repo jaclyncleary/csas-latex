@@ -1,0 +1,14 @@
+\abstract{}
+
+[Abstract will go here.]
+
+\frenchabstract{
+French title  % Unicode error with the 
+%?tat du hareng du Pacifique (\emph{\Sexpr{science.name}}) de la Colombie-Britannique en \Sexpr{end.yr} et pr?visions pour \Sexpr{end.yr + 1}
+}
+
+[French abstract.]
+
+\label{TRlastRoman}
+
+\clearpage

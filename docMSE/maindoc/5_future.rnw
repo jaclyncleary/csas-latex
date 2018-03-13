@@ -1,0 +1,6 @@
+\section{FUTURE RESEARCH AND DATA REQUIREMENTS}
+
+\begin{resdoclist}
+  \item First item
+\end{resdoclist}
+
