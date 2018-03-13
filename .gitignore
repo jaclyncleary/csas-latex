@@ -19,8 +19,12 @@
 res-doc.pdf
 res-doc.lof
 res-doc.lot
+res-docMSE.pdf
+res-docMSE.lof
+res-docMSE.lot
 doc/figure
 doc/res-doc.tex
+doc/res-docMSE.tex
 doc/knitr-cache
 models-backup
 models-mwe
