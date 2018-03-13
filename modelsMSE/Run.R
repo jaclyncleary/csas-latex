@@ -64,7 +64,7 @@ UsePackages( pkgs=c("tidyverse", "sp", "scales", "ggforce", "lubridate",
 spRegions <- c( "SoG", "WCVI" ) 
 
 # File name for dive transect XY
-diveFN <- "dive_transects_with_lat_long_June2_2017.xlsx"
+diveFN <- file.path( "Data", "dive_transects_with_lat_long_June2_2017.xlsx" )
 
 # File name for q parameteres
 qFN <- file.path( "Data", "qPars.csv" )
