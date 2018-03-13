@@ -30,7 +30,6 @@ models-arrowtooth
 *.synctex(busy)
 .DS_Store
 doc/knitr-cache/
-models*/
 retrospectives*/
 Grandin-Arrowtooth-CSAS-ResDoc-July-2017-WebAccessible.pdf
 Grandin-Arrowtooth-CSAS-ResDoc-March07-2017-WebAccessible.pdf
