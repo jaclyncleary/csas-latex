@@ -24,7 +24,7 @@ res-docMSE.lof
 res-docMSE.lot
 doc/figure
 doc/res-doc.tex
-doc/res-docMSE.tex
+docMSE/res-docMSE.tex
 doc/knitr-cache
 models-backup
 models-mwe

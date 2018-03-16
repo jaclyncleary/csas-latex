@@ -288,8 +288,10 @@ LoadAreaData <- function( where ) {
   locations$Group[locations$Section %in% c(6)] <- "6"
   locations$Group[locations$Section %in% c(23)] <- "23"
   locations$Group[locations$Section %in% c(24)] <- "24"
+  # Manually determine groups: Prince Rupert District
+  locations$Group[locations$Section %in% c(31:33, 41:43, 51:53)] <- "No group"
   # Manually determine groups: Central Coast
-  locations$Group[locations$Section %in% c(67, 70:79)] <- "6&7"
+  locations$Group[locations$Section %in% c(67, 71:78)] <- "6&7"
   locations$Group[locations$Section %in% c(85, 86)] <- "8"
   # Manually determine groups: Strait of Georgia
   locations$Group[locations$Section %in% c(132, 135, 141)] <- "Lazo"
@@ -297,20 +299,25 @@ LoadAreaData <- function( where ) {
   locations$Group[locations$Section %in% c(151, 152, 161:165, 280, 291, 292)] <- 
       "ESoG"
   locations$Group[locations$Section %in% c(173, 181, 182, 191:193)] <- "Dodd"
-  # Manually determine gruops: West Coast Vancouver Island
+  # Manually determine groups: West Coast Vancouver Island
   locations$Group[locations$Section %in% c(231)] <- "Alberni Inlet"
   locations$Group[locations$Section %in% c(232, 233)] <- "Barkley"
-  locations$Group[locations$Section %in% c(230, 239)] <- "SA 23 Unkn"
+#  locations$Group[locations$Section %in% c(230, 239)] <- "SA 23 Unkn"
   locations$Group[locations$Section %in% c(241)] <- "Tofino Inlet"
   locations$Group[locations$Section %in% c(242)] <- "Hesquiat"
   locations$Group[locations$Section %in% c(243)] <- "Hootla Kootla"
   locations$Group[locations$Section %in% c(244)] <- "Ahousaht"
   locations$Group[locations$Section %in% c(245)] <- "Vargas Island"
-  locations$Group[locations$Section %in% c(240, 249)] <- "SA 24 Unkn"
+#  locations$Group[locations$Section %in% c(240, 249)] <- "SA 24 Unkn"
   locations$Group[locations$Section %in% c(251, 252)] <- "Nootka"
   locations$Group[locations$Section %in% c(253)] <- "Nuchatlitz"
-  locations$Group[locations$Section %in% c(250, 259)] <- "SA 25 Unkn"
-  # If some groups are NA, check is *some* are missing (i.e., incomplete)
+#  locations$Group[locations$Section %in% c(250, 259)] <- "SA 25 Unkn"
+  # Manually determine groups: Area 2 West
+  locations$Group[locations$Section %in% c(1:5)] <- "No group"
+  # Manually determine groups: Area 27
+  locations$Group[locations$Section %in% c(271:274)] <- "No Group"
+  
+  # If any groups are NA, check if *some* are missing (i.e., incomplete)
   if( any(is.na(locations$Group)) ) {
     # Get distinct rows
     grpU <- locations %>%
@@ -323,9 +330,9 @@ LoadAreaData <- function( where ) {
     # Check if none or all have groups
     noneOrAll <- nrow( grpU ) == nrow( grpUNA )
     # Message re some sections(s) missing group info
-    if( !noneOrAll )  cat( "Some section(s) are missing `group' info: ", 
+    if( !noneOrAll )  cat( "Incomplete `Group' info for Section(s): ", 
         paste(grpUNA$Section, collapse=", "), "\n", sep="" )
-  }  # End if groups are NA
+  }  # End if any groups are NA
   # Extract required data
   res <- locations %>%
       right_join( y=sections, by="Section" ) %>%
@@ -695,7 +702,9 @@ myTheme <- theme(
     legend.key=element_blank(), legend.margin=margin(), legend.text.align=1,
     panel.grid.major=element_line(colour="darkgrey", size=0.2),
     panel.grid.minor=element_line(colour="darkgrey", size=0.1),
-    legend.background=element_rect(fill="transparent") )
+    legend.background=element_rect(fill="transparent"),
+    #panel.spacing.x=unit(3, "lines"),
+    plot.margin=unit(c(0.1, 0.6, 0.1, 0.1), "lines") )
 
 
 ############### 

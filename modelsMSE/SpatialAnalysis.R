@@ -466,6 +466,16 @@ PlotSIEtAl <- function( dat1, dat2, dat3, siThresh=siThreshold,
 # Plot the proportions at age
 PlotSIEtAl( dat1=allYrSp, dat2=propAge, dat3=numAge )
 
+# Make proportion-at-age bubble plots
+PlotPropAgeBubble <- ggplot( data=npAgedYear, aes(x=Year, y=Age) ) +
+    geom_point( aes(size=Proportion), shape=21, colour="black", fill="white" ) + 
+    scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
+    facet_wrap( ~ SpUnit, ncol=1 ) +
+    myTheme + 
+    theme( legend.position="top" ) +
+    ggsave( filename=file.path(region, "AgeBubbles.png"), width=figWidth, 
+        height=figWidth )
+
 # Make a default map for the area
 plotMap <- ggplot( data=shapes$landCropDF, aes(x=Eastings, y=Northings) ) +
     geom_polygon( data=shapes$landCropDF, aes(group=group), fill="lightgrey" ) +
