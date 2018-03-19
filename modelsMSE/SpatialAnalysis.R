@@ -476,7 +476,7 @@ PlotPropAgeBubble <- ggplot( data=npAgedYear, aes(x=Year, y=Age) ) +
     myTheme + 
     theme( legend.position="top" ) +
     ggsave( filename=file.path(region, "AgeBubbles.png"), width=figWidth, 
-        height=figWidth )
+        height=min(9, n_distinct(npAgedYear$SpUnit)*2+1) )
 
 # Make a default map for the area
 plotMap <- ggplot( data=shapes$landCropDF, aes(x=Eastings, y=Northings) ) +
@@ -753,8 +753,8 @@ siPlot <- ggplot( data=filter(allYrSp, !is.na(Survey)),
         aes(x=Year, group=Survey) ) +
     geom_ribbon( aes(ymin=BiomassLower, ymax=BiomassUpper), fill="lightgrey" ) +
     geom_line( aes(y=BiomassMedian), colour="darkgrey" ) +
-#    geom_path( aes(y=SITotal) ) +
-#    geom_point( aes(y=SITotal, shape=Survey) ) +
+    geom_path( aes(y=SITotal) ) +
+    geom_point( aes(y=SITotal, shape=Survey) ) +
     scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
     scale_y_continuous( labels=function(x) comma(x/1000) ) +
     labs( y=expression(paste("Spawning biomass (t"%*%10^3, ")", sep="")) ) +
