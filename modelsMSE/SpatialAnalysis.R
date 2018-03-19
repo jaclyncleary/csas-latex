@@ -467,7 +467,7 @@ PlotSIEtAl <- function( dat1, dat2, dat3, siThresh=siThreshold,
 PlotSIEtAl( dat1=allYrSp, dat2=propAge, dat3=numAge )
 
 # Make proportion-at-age bubble plots
-PlotPropAgeBubble <- ggplot( data=propAge, aes(x=Year, y=Age) ) +
+PlotPropAgeBubble <- ggplot( data=npAgedYear, aes(x=Year, y=Age) ) +
     geom_point( aes(size=Proportion) ) + 
     scale_size_area( max_size=3 ) + 
     scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +

@@ -11,5 +11,23 @@ Units: kilometres (km).}
 \label{figBC}
 \end{figure}
 
+% Map of SoG
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}SoG/MapSpUnits.png}
+\caption{Boundary and spatial units for the Strait of Georgia major stock assessment region (SAR).
+Units: kilometres (km).}
+\label{figSoG}
+\end{figure}
+
+% Map of WCVI
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}WCVI/MapSpUnits.png}
+\caption{Boundary and spatial units for the West Coast of Vancouver Island major stock assessment region (SAR).
+Units: kilometres (km).}
+\label{figWCVI}
+\end{figure}
+
 % Start a new page
 \clearpage
