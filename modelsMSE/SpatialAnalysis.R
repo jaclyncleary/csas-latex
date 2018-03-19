@@ -69,7 +69,7 @@ if( region %in% list.files() ) {
 # Get data from the data summary
 LoadSavedObjects <- function( loc ) {
   # Load the saved object
-  load( file=file.path("Data", loc, "Image.RData") )
+  load( file=file.path("Data", paste("Image.", loc, ".RData", sep="")) )
   # Confirm the region (from the saved data -- should match!)
   if( regName != spRegions[reg] )
     stop( "Region mismatch -- check saved image", call.=FALSE )
@@ -788,7 +788,7 @@ wtMeanPlot <- plotMap +
 ##################
 
 # Save the workspace image
-save.image( file=file.path(region, "Image.RData") ) 
+save.image( file=file.path(region, paste("Image.", region, ".RData", sep="")) ) 
 
 
 ############### 
