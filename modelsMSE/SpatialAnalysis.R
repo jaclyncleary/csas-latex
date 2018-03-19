@@ -259,7 +259,8 @@ year( siYrSp$DateLast ) <- 0000
 # Combine catch with spawn index by year and spatial unit
 allYrSp <- full_join( x=catchYrSp, y=siYrSp, by=c("Year", "SpUnit") ) %>%
     arrange( Year, SpUnit ) %>%
-    replace_na( replace=list(NConsec=-1) )
+    replace_na( replace=list(NConsec=-1) ) %>%
+    mutate( Survey=factor(Survey, levels=c("Surface", "Dive")) )
 
 # Count the number of fish aged by year (and as a proportion) by seine gear:
 # use the 'SampWt' column to fix unrepresentative sampling if identified
@@ -748,21 +749,26 @@ BarStatArea <- function( df, yVar ) {
 }  # End BarStatArea function
 
 # Spawn index time series
-siPlot <- ggplot( data=allYrSp, aes(x=Year, y=SITotal) ) +
-    geom_path( ) +
-    geom_point( size=2.5 ) +
+siPlot <- ggplot( data=filter(allYrSp, !is.na(Survey)), 
+        aes(x=Year, group=Survey) ) +
+    geom_ribbon( aes(ymin=BiomassLower, ymax=BiomassUpper), fill="lightgrey" ) +
+    geom_line( aes(y=BiomassMedian), colour="darkgrey" ) +
+#    geom_path( aes(y=SITotal) ) +
+#    geom_point( aes(y=SITotal, shape=Survey) ) +
     scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
-    scale_y_continuous( labels=comma ) +
+    scale_y_continuous( labels=function(x) comma(x/1000) ) +
+    labs( y=expression(paste("Spawning biomass (t"%*%10^3, ")", sep="")) ) +
     expand_limits( x=yrRange ) +
     myTheme +
     facet_wrap( ~ SpUnit, ncol=1 ) +
-    theme( text=element_text(size=24) )
-# Add the reference line if supplied
-if( !is.na(siThreshold) )  siPlot <- siPlot + 
-      geom_hline( yintercept=siThreshold, linetype="dashed", size=0.5 )
-# Save the plot
-siPlot <- siPlot + 
-    ggsave( filename=file.path(region, "SpawnIndex.png"), height=figWidth, 
+    theme( legend.position="top" ) +
+## Add the reference line if supplied
+#if( !is.na(siThreshold) )  siPlot <- siPlot + 
+#      geom_hline( yintercept=siThreshold, linetype="dashed", size=0.5 )
+## Save the plot
+#siPlot <- siPlot + 
+    ggsave( filename=file.path(region, "SpawnIndex.png"), 
+        height=min(9, n_distinct(allYrSp$SpUnit)*2+1), 
         width=figWidth )
 
 # Weighted mean spawn index by year

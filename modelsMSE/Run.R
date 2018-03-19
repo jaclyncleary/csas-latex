@@ -97,15 +97,15 @@ maxBuff <- 10000
 # Load helper functions
 source( file=file.path("..", "models", "Functions.R") )
 
-# Make latex bold (e.g., for table column names)
+# Latex bold (e.g., for table column names)
 boldLatex <- function( x )  paste( '\\textbf{', x, '}', sep ='' )
 
-# Make latex math (e.g., for table contents)
-mathLatex <- function( x ) paste( '$', x, '$', sep ='' )
+# Latex math (e.g., for table contents)
+mathLatex <- function( x )  paste( '$', x, '$', sep ='' )
 
-# Subscript (_) for latex in math mode (e.g., q1 to q_1)
+# Latex subscript in math mode (e.g., change q1 to q_1)
 subLatex <- function( x )  
-  gsub( pattern="([a-zA-Z])([0-9])", replacement="\\1_\\2", x=x )
+  gsub( pattern="([a-zA-Z]+)([0-9]+)", replacement='\\\\mli{\\1}_{\\2}', x=x )
 
 
 ################
