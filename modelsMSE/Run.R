@@ -149,8 +149,13 @@ for( reg in 1:length(spRegions) ) {
   # Get the ith region
   region <- spRegions[reg]
   # Spatial unit: Region, StatArea, Section, or Group
+  if( region == "HG" )   spUnitName <- "Group"
+  if( region == "PRD" )   spUnitName <- "StatArea"
+  if( region == "CC" )   spUnitName <- "Group"
   if( region == "SoG" )   spUnitName <- "Group"
   if( region == "WCVI" )  spUnitName <- "StatArea"
+  if( region == "A27" )   spUnitName <- "StatArea"
+  if( region == "A2W" )   spUnitName <- "StatArea"
   # Message re spatial info
   cat( "\nInvestigate ", region, " by ", spUnitName, "\n", sep="" )
   # Run the spatial analysis

@@ -509,26 +509,35 @@ mapPersistence <- plotMap +
         height=min(8, 6/shapes$xyRatio)*2 )  
 
 # Show spawn index locations by year
-PlotLocationsYear <- function( dat, yVar, tDir, rmTemp=TRUE ) {
+PlotLocationsYear <- function( dat, yVar, yLegend ) {
   # Update the temporary directory: within the region folder
-  tDirReg <- file.path( region, tDir )
-  # Temporary directory to hold plots
-  dir.create( path=tDirReg )
+  tDirReg <- file.path("GIFs", region )
+  # If old directory exists
+  if( file.exists(tDirReg) ) {
+    # Remove the old directory
+    unlink( tDirReg, recursive=TRUE )
+    # Create the main directory for output
+    dir.create( tDirReg, recursive=TRUE )
+  } else {  # End if directory exists, otherwise
+    # Create the main directory for output
+    dir.create( tDirReg, recursive=TRUE )
+  }  # End if directory doesn't exists
   # Get the number of plots
   uPages <- unique( dat$Year )
   # Start a progress message
   cat( "Plotting ", length(uPages), " pages: ", sep="" )
   # Get indices to print
   pIndices <- round( x=quantile(x=1:length(uPages), probs=1:9/10) )
-  # Loop over pages
+  # Loop over pages/years
   for( i in 1:length(uPages) ) { 
-    # Get the index (up to 999)
-    iLong <- formatC(i, width=3, flag="0")
+    # Get the index (up to 9999)
+    iLong <- formatC( uPages[i], width=4, flag="0" )
     # The plot
     layersPlot <- plotMap +
         facet_wrap_paginate( ~ Year, ncol=1, nrow=1, page=i ) +
         geom_point( data=dat, aes_string(colour=yVar), size=7 ) +
-        scale_colour_distiller( type="seq", palette="Spectral", labels=comma ) + 
+        scale_colour_distiller( type="seq", palette="Spectral", labels=comma ) +
+        labs( colour=yLegend ) +
         theme( legend.position=c(0.99, 0.99), legend.justification=c(1, 1),
             legend.box="horizontal", legend.text.align=1 ) +
         ggsave( file=file.path(tDirReg, 
@@ -537,27 +546,24 @@ PlotLocationsYear <- function( dat, yVar, tDir, rmTemp=TRUE ) {
     # Update progress message
     if( i %in% pIndices )  cat( i, ", ", sep="" )
   }  # End i loop over decades
-  # Update progressEnd message
-  cat( "done; making GIF...", sep="" )
-  # Get the list of plot names
-  pNames <- list.files( tDirReg )
-  # Read the plots as images
-  images <- lapply( file.path(tDirReg, pNames), image_read )
-  # Animate the images
-  anim <- image_animate( image=image_join(images), fps=1 )
-  # Save images as a gif
-  image_write( image=anim, path=file.path("GIFs", 
-          paste("LocationsYear", yVar, " - ", region, ".gif", sep="")), 
-      quality=100 )
-  # Remove the temporary directory if requested
-  if( rmTemp )  unlink( tDirReg, recursive=TRUE )
+#  # Update progressEnd message
+#  cat( "done; making GIF...", sep="" )
+#  # Get the list of plot names
+#  pNames <- list.files( tDirReg )
+#  # Read the plots as images
+#  images <- lapply( file.path(tDirReg, pNames), image_read )
+#  # Animate the images
+#  anim <- image_animate( image=image_join(images), fps=1 )
+#  # Save images as a gif
+#  image_write( image=anim, path=file.path("GIFs", 
+#          paste("LocationsYear", yVar, region, ".gif", sep="")), quality=100 )
   # End message
   cat( " done\n", sep="" )
 }  # End PlotLocationsYear
 
 # Show spawn locations (this takes a few minutes!)
 if( makeGIF )  PlotLocationsYear( dat=siYearLoc, yVar="SITotal", 
-      tDir="LocationsYearSITotal", rmTemp=FALSE )
+      yLegend="Spawn\nindex (t)" )
 
 # Show spawn index locations by decade
 PlotLocationsDecade <- function( dat, yVar ) {
@@ -768,7 +774,7 @@ siPlot <- ggplot( data=filter(allYrSp, !is.na(Survey)),
 ## Save the plot
 #siPlot <- siPlot + 
     ggsave( filename=file.path(region, "SpawnIndex.png"), 
-        height=min(9, n_distinct(allYrSp$SpUnit)*2+1), 
+        height=min(8, n_distinct(allYrSp$SpUnit)*1.75+1), 
         width=figWidth )
 
 # Weighted mean spawn index by year

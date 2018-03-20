@@ -34,6 +34,7 @@ Units: kilometres (km).}
 \centering
 \includegraphics[width=\linewidth]{\Sexpr{locOutput}SoG/SpawnIndex.png}
 \caption{Spawn index (black lines) from \Sexpr{paste(range(yrRange), collapse=" to ")} by spatial unit in thousands of tonnes ($\text{t} \times 10^3$) for \fishName{} in the Strait of Georgia major stock assessment region (SAR).
+\spawnIndex{}
 \qPeriods{}
 Grey lines and shaded areas indicate the median and \Sexpr{ciLevel*100}\% credible interval of scaled biomass (i.e., the spawn index scaled by $q$; Table~\ref{tabQPars}), respectively.}
 \label{figSpawnIndexSoG}
@@ -44,6 +45,7 @@ Grey lines and shaded areas indicate the median and \Sexpr{ciLevel*100}\% credib
 \centering
 \includegraphics[width=\linewidth]{\Sexpr{locOutput}WCVI/SpawnIndex.png}
 \caption{Spawn index from \Sexpr{paste(range(yrRange), collapse=" to ")} by spatial unit in thousands of tonnes ($\text{t} \times 10^3$) for \fishName{} in the West Coast of Vancouver Island major stock assessment region (SAR).
+\spawnIndex{}
 \qPeriods{}
 Grey lines and shaded areas indicate the median and \Sexpr{ciLevel*100}\% credible interval of scaled biomass (i.e., the spawn index scaled by $q$; Table~\ref{tabQPars}), respectively.}
 \label{figSpawnIndexWCVI}
@@ -68,6 +70,17 @@ Grey lines and shaded areas indicate the median and \Sexpr{ciLevel*100}\% credib
 \plusGroup{}}
 \label{figAgeBubblesWCVI}
 \end{figure}
+
+% % SoG animation: spawn index by location and year
+% \begin{figure}[H]
+% \centering
+% \includegraphics[width=\linewidth]{\Sexpr{locOutput}GIFs/SoG/LocationsYearSITotal1951.png}
+% % \animategraphics[width=\linewidth,type="png"]{1}{\Sexpr{locOutput}GIFs/SoG/LocationsYearSITotal}{1951}{2017}
+% \caption{Animation... spawn index from \Sexpr{paste(range(yrRange), collapse=" to ")} by location in tonnes (t) for \fishName{} in the Strait of Georgia major stock assessment region (SAR).
+% \spawnIndex{}
+% \qPeriods{}}
+% \label{figAnimSITotalSoG}
+% \end{figure}
 
 % Start a new page
 \clearpage

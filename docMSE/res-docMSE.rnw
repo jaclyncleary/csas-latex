@@ -5,6 +5,7 @@
 \usepackage{../../csas-style/res-doc}
 \usepackage{textcomp}
 \usepackage{lastpage}
+% \usepackage{animate}
 
 % https://tex.stackexchange.com/questions/311132/how-to-style-hrefs-underlined-and-coloured-throughout-the-document
 \usepackage{xcolor,soul}
