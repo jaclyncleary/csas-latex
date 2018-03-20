@@ -71,6 +71,24 @@ Grey lines and shaded areas indicate the median and \Sexpr{ciLevel*100}\% credib
 \label{figAgeBubblesWCVI}
 \end{figure}
 
+% SoG spawn timing
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}SoG/SpawnTiming.png}
+\caption{Spawn timing from \Sexpr{paste(range(yrRange), collapse=" to ")} by spatial unit for \fishName{} in the Strait of Georgia major stock assessment region (SAR).
+\qPeriods{}}
+\label{figSpawnTimingSoG}
+\end{figure}
+
+% WCVI spawn timing
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}WCVI/SpawnTiming.png}
+\caption{Spawn timing from \Sexpr{paste(range(yrRange), collapse=" to ")} by spatial unit for \fishName{} in the West Coast of Vancouver Island major stock assessment region (SAR).
+\qPeriods{}}
+\label{figSpawnTimingWCVI}
+\end{figure}
+
 % % SoG animation: spawn index by location and year
 % \begin{figure}[H]
 % \centering

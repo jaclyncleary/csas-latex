@@ -66,7 +66,7 @@ spRegions <- c( "SoG", "WCVI" )
 # File name for dive transect XY
 diveFN <- file.path( "Data", "dive_transects_with_lat_long_June2_2017.xlsx" )
 
-# File name for q parameteres
+# File name for q parameters
 qFN <- file.path( "Data", "qPars.csv" )
 
 # Model: AM1 and/or AM2
