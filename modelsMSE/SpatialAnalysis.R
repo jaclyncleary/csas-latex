@@ -244,7 +244,8 @@ siYrSp <- siAll %>%
     arrange( Year, SpUnit ) %>%
     left_join( y=qParsSub, by="Survey" ) %>%
     mutate( BiomassLower=SITotal/qUpper, BiomassMedian=SITotal/qMedian,
-        BiomassUpper=SITotal/qLower )
+        BiomassUpper=SITotal/qLower, 
+        Survey=factor(Survey, levels=c("Surface", "Dive")) )
 
 # Update years (use the same year to compare timing among years)
 year( siYrSp$DateFirst ) <- 0000
@@ -521,7 +522,7 @@ PlotLocationsYear <- function( dat, yVar, yLegend ) {
   } else {  # End if directory exists, otherwise
     # Create the main directory for output
     dir.create( tDirReg, recursive=TRUE )
-  }  # End if directory doesn't exists
+  }  # End if directory doesn't exist
   # Get the number of plots
   uPages <- unique( dat$Year )
   # Start a progress message
@@ -579,9 +580,9 @@ PlotLocationsDecade <- function( dat, yVar ) {
         scale_colour_distiller( type="seq", palette="Spectral", labels=comma ) + 
         theme( legend.position=c(0.99, 0.99), legend.justification=c(1, 1),
             legend.box="horizontal" ) +
-    ggsave( file=file.path(region, 
-            paste("LocationsDecade", yVar, i, ".png", sep="")), 
-        width=figWidth, height=figWidth/shapes$xyRatio+0.25 )
+        ggsave( file=file.path(region, 
+                paste("LocationsDecade", yVar, i, ".png", sep="")), 
+            width=figWidth, height=figWidth/shapes$xyRatio+0.25 )
   }  # End i loop over decades  
 }  # End PlotLocationsDecade
 
@@ -625,7 +626,7 @@ ScatterSI <- function( df, yVar, siThresh=siThreshold, nYrs=nYrsConsec ) {
           facet_wrap( ~ Age, ncol=2, labeller=label_both ) +
           labs( title=uPages[i] ) +
           theme( plot.title=element_text(hjust=0.5) )# +
-          #geom_smooth( )
+      #geom_smooth( )
     } else {  # End if proportion at age, otherwise business as usual
       plt <- plt +
           facet_wrap( ~ SpUnit )
@@ -768,13 +769,13 @@ siPlot <- ggplot( data=filter(allYrSp, !is.na(Survey)),
     myTheme +
     facet_wrap( ~ SpUnit, ncol=1 ) +
     theme( legend.position="top" ) +
-## Add the reference line if supplied
+    ## Add the reference line if supplied
 #if( !is.na(siThreshold) )  siPlot <- siPlot + 
 #      geom_hline( yintercept=siThreshold, linetype="dashed", size=0.5 )
-## Save the plot
+    ## Save the plot
 #siPlot <- siPlot + 
     ggsave( filename=file.path(region, "SpawnIndex.png"), 
-        height=min(8, n_distinct(allYrSp$SpUnit)*1.75+1), 
+        height=min(8.75, n_distinct(allYrSp$SpUnit)*1.9+1), 
         width=figWidth )
 
 # Weighted mean spawn index by year
@@ -787,6 +788,20 @@ wtMeanPlot <- plotMap +
     facet_wrap( ~ Year, ncol=14 ) +
     ggsave( file=file.path(region, "WeightedMeanSpawnIndex.png"), 
         width=figWidth*14/5, height=figWidth*5/shapes$xyRatio/5 )
+
+# Spawn timing by year and spatial unit
+timingPlot <- ggplot( data=filter(siYrSp, !is.na(Survey)), aes(x=Year) ) +
+    geom_errorbar( aes(ymin=DateFirst, ymax=DateLast), width=0, size=0.5 ) +
+    geom_point( aes(y=DateFirst, shape=Survey) ) +
+    geom_point( aes(y=DateLast, shape=Survey) ) +
+    scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
+    expand_limits( x=yrRange ) +
+    labs( y="Date" ) +
+    facet_wrap( ~ SpUnit, ncol=1 ) +
+    myTheme +
+    theme( legend.position="top" ) +
+    ggsave( filename=file.path(region, "SpawnTiming.png"), 
+        height=min(8.75, n_distinct(siAll$SpUnit)*1.9+1), width=figWidth )
 
 
 ##################
