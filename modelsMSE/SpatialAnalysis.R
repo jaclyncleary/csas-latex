@@ -223,6 +223,14 @@ catchYrSp <- catch %>%
     complete( Year, SpUnit ) %>%
     arrange( Year, SpUnit ) 
 
+# Update years (use the same year to compare timing among years)
+year( siAll$Start ) <- 0000
+year( siAll$End ) <- 0000
+
+# Make it long (for plots)
+siAllLong <- siAll %>%
+    gather( 'Start', 'End', key="Timing", value="Date" )
+
 # Aggregate spawn index by year and spatial unit
 siYrSp <- siAll %>%
     group_by( Year, SpUnit ) %>%
@@ -246,10 +254,6 @@ siYrSp <- siAll %>%
     mutate( BiomassLower=SITotal/qUpper, BiomassMedian=SITotal/qMedian,
         BiomassUpper=SITotal/qLower, 
         Survey=factor(Survey, levels=c("Surface", "Dive")) )
-
-# Update years (use the same year to compare timing among years)
-year( siYrSp$DateFirst ) <- 0000
-year( siYrSp$DateLast ) <- 0000
 
 ## Convert spawn index to scaled biomass
 #siScaledYrSp <- siYrSp %>%
@@ -790,10 +794,9 @@ wtMeanPlot <- plotMap +
         width=figWidth*14/5, height=figWidth*5/shapes$xyRatio/5 )
 
 # Spawn timing by year and spatial unit
-timingPlot <- ggplot( data=filter(siYrSp, !is.na(Survey)), aes(x=Year) ) +
-    geom_errorbar( aes(ymin=DateFirst, ymax=DateLast), width=0, size=0.5 ) +
-    geom_point( aes(y=DateFirst, shape=Survey) ) +
-    geom_point( aes(y=DateLast, shape=Survey) ) +
+timingPlot <- ggplot( data=filter(siAll, !is.na(Survey)), aes(x=Year) ) +
+    geom_point( aes(y=Start, shape=Survey), colour="red" ) +
+    geom_point( aes(y=End, shape=Survey), colour="blue" ) +
     scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
     expand_limits( x=yrRange ) +
     labs( y="Date" ) +
