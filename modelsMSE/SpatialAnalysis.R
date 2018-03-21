@@ -794,9 +794,8 @@ wtMeanPlot <- plotMap +
         width=figWidth*14/5, height=figWidth*5/shapes$xyRatio/5 )
 
 # Spawn timing by year and spatial unit
-timingPlot <- ggplot( data=filter(siAll, !is.na(Survey)), aes(x=Year) ) +
-    geom_point( aes(y=Start, shape=Survey), colour="red" ) +
-    geom_point( aes(y=End, shape=Survey), colour="blue" ) +
+timingPlot <- ggplot( data=filter(siAllLong, !is.na(Survey)), aes(x=Year) ) +
+    geom_point( aes(y=Date, shape=Survey, colour=Timing), alpha=0.5 ) +
     scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
     expand_limits( x=yrRange ) +
     labs( y="Date" ) +

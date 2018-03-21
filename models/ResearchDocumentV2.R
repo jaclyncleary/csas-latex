@@ -170,6 +170,12 @@ propB0 <- 0.3
 # Multiplyer of LRP for USR
 multLRP <- 2
 
+# Years for calculating mean catch (i.e., recent)
+recentCatchYrs <- 35
+
+# Years for calculating mean catch (i.e., early)
+earlyCatchYrs <- 1951:1965
+
 
 #####################
 ##### Functions #####
@@ -819,6 +825,12 @@ catch <- inputData$catch %>%
     mutate( RegionName=factor(RegionName, levels=regions$RegionName),
         Gear=paste("Gear", Gear, sep="") ) %>%
     rename( Period=Gear )
+
+# Annual catch
+annualCatch <- catch %>%
+    group_by( Year ) %>%
+    summarise( Catch=SumNA(Catch) ) %>%
+    ungroup( )
 
 #spBioAM2 <- spBio %>% 
 #    filter( Model=="AM2" ) %>% mutate( Year=as.integer(Year) ) %>%
@@ -1737,6 +1749,18 @@ finalYrPropAge <- numAgedYear %>%
 # Number of biosamples in current year
 finalYrNBio <- nBio %>%
     filter( Year == max(yrRange) )
+
+# Early mean catch
+earlyMeanCatch <- annualCatch %>%
+    filter( Year %in% earlyCatchYrs ) %>%
+    select( Catch ) %>%
+    summarise( Mean=mean(Catch) )
+
+# Recent mean catch
+recentMeanCatch <- annualCatch %>%
+    filter( Year %in% (max(yrRange)-recentCatchYrs+1):max(yrRange) ) %>%
+    select( Catch ) %>%
+    summarise( Mean=mean(Catch) )
 
 
 ##################

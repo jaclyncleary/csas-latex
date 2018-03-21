@@ -99,7 +99,8 @@ Testing the performance of management procedures in the face such ecosystem chan
 First Nations have traditionally harvested whole \Sexpr{common.name} and \Sexpr{common.name} spawn for food, social and ceremonial (FSC) purposes.
 The commercial \Sexpr{fish.name} fishery started in BC in the 19th century for the local food market, and quickly expanded into a dry salt fishery for the orient.
 In 1937 a reduction fishery was also established to produce fishmeal and fish oil \citep{hourston1980}.
-After the collapse of the Pacific Sardine in the late 1940s, \Sexpr{fish.name} became the major fishery off Canada's Pacific coast, and catches steadily increased to over 200,000 tonnes in the early 1960s \citep{beamish2004}.
+%After the collapse of the Pacific Sardine in the late 1940s, \Sexpr{fish.name} became the major fishery off Canada's Pacific coast, and catches steadily increased to over 200,000 tonnes in the early 1960s \citep{beamish2004}. % This statement appears to be inaccurate
+The average catch of \Sexpr{fish.name} from \Sexpr{paste(range(earlyCatchYrs), collapse=" to ")} was \Sexpr{formatC(x=earlyMeanCatch$Mean, digits=0, big.mark=",", format="f")} thousand tonnes.
 
 From the early 1930s to the late 1960s, \Sexpr{common.name} were commercially harvested and processed (reduced) into relatively low-value products such as fishmeal and oil.
 Commercial catches increased dramatically in the early 1960s, but were unsustainable.
@@ -109,6 +110,7 @@ During the closure from 1967 to 1971, limited fishing activity occurred at low l
 At this time, there was a growing interest in harvesting roe \Sexpr{common.name} for export to Japan, where \Sexpr{common.name} stocks had been decimated.
 A small experimental roe harvest began in 1971 and expanded rapidly until 1983, when a fixed harvest rate was introduced to regulate catch.
 A series of above average year-classes occurred in the early 1970s, rapidly rebuilding stocks and permitting the re-opening of all areas for commercial fishing.
+In comparison to the average catch from \Sexpr{paste(range(earlyCatchYrs), collapse=" to ")}, the average catch over the past \Sexpr{recentCatchYrs} years (\Sexpr{max(yrRange)-recentCatchYrs+1} to \Sexpr{max(yrRange)}) is \Sexpr{formatC(x=recentMeanCatch$Mean, digits=0, big.mark=",", format="f")} thousand tonnes.
 
 \subsection{MANAGEMENT OF MAJOR HERRING STOCKS}\label{secMgmtMajorStocks}
 
@@ -134,10 +136,10 @@ On the basis of this analysis, three of the major \Sexpr{common.name} stocks, WC
 The relative contribution of harvest, environmental and ecological interactions causing changes in natural mortality and growth, or alternative assessment models (in particular more conservative models applied before 2011), and/or other factors to the stocks having been estimated to be below cut-offs is currently not well understood.
 
 Since the introduction of the HCR for \Sexpr{fish.name} the policy environment for Canadian fisheries has changed with the introduction of the \href{http://www.dfo-mpo.gc.ca/reports-rapports/regs/sff-cpd/overview-cadre-eng.htm}{sustainable fisheries framework} in 2009 which includes a \href{http://www.dfo-mpo.gc.ca/reports-rapports/regs/sff-cpd/precaution-eng.htm}{fisheries decision-making framework incorporating the precautionary approach}, hereafter called the DFO PA Framework.
-The DMF policy is one component of the Sustainable Fisheries Framework, the Department's national strategy for moving DFO towards an ecosystem approach to management of Canadian fisheries.
-The 2017 Request for Scientific Information and Advice (RSIA) submitted by Fisheries Management has requested that advice for Pacific Herring be consistent with the DMF policy requirement to characterize uncertainty and risk.
+The Framework is one component of the Sustainable Fisheries Framework, the Department's national strategy for moving DFO towards an ecosystem approach to management of Canadian fisheries.
+The 2017 Request for Scientific Information and Advice (RSIA) submitted by Fisheries Management has requested that advice for Pacific Herring be consistent with the Framework requirement to characterize uncertainty and risk.
 DFO Pacific Region has committed to Renewal of the Management Framework for \Sexpr{fish.name}, including updated simulation analyses of harvest control rules.
-Although the \Sexpr{common.name} HCR was not originally designed to address the intent of the DMF policy, the form of the rule does meet the requirement to reduce the fishing rate as stock status declines to low levels of abundance, a tactic intended to encourage stock growth towards the target biomass reference point.
+Although the \Sexpr{common.name} HCR was not originally designed to address the intent of the Framework, the form of the rule does meet the requirement to reduce the fishing rate as stock status declines to low levels of abundance, a tactic intended to encourage stock growth towards the target biomass reference point.
 Simulation analyses of HCR will occur within a Management Strategy Evaluation (MSE) process, focussing on establishing Management Procedures compliant with the DMF policy, including avoiding Limit Reference Points (LRP) with high probability and establishing Upper Stock Reference (USR) points or target biomass levels.
 
 \subsection{BIOLOGICAL REFERENCE POINTS}
@@ -160,7 +162,7 @@ The recently reviewed and approved CSAS publication ``The Selection and Role of 
 The DFO PA Framework specifies that a Limit Reference Point (LRP) should be positioned before a state of serious harm occurs, rather than at the state of serious harm and that it must be avoided with high probability.
 \citet{kronlund2017} use an evidence-based production analysis conditional on current data and stock assessment model assumptions, to evaluate whether the major \Sexpr{fish.name} stocks in British Columbia show stock states consistent with signs of possible serious harm.
 The production analysis identified recent persistent states of low production and low biomass (LP-LB states) for the Central Coast (CC), Haida Gwaii (HG) and West Coast of Vancouver Island (WCVI) management areas.
-The outcome of the research and the review meeting support for the recommended spawning biomass-based LRP of $0.30\cdot\mli{SB}_0$ for the CC, HG, and WCVI stocks based on results of the production analysis and consistency with international best practice recommendations.
+A spawning biomass-based LRP of $0.30\cdot\mli{SB}_0$ for the CC, HG, and WCVI stocks was recommended based on results of the production analysis and consistency with international best practice recommendations.
 Persistent LP-LB states were not diagnosed for stocks in the Prince Rupert District (PRD) and Strait of Georgia (SOG) management areas, however a LRP of $0.30\cdot\mli{SB}_0$ is also recommended for the PRD and SOG stocks as it aligns with best practice recommendations, and because these stocks are geographically adjacent to stocks for which recent low LP-LB states were detected.
 
 The authors recommend the phasing-in of any new management procedure (i.e., changes to data collection, stock assessment models and/or harvest control rules) designed to avoid LRPs and achieve targets in order to mitigate short-term consequences to resource users.
@@ -179,9 +181,9 @@ The management actions are expressed by a management procedure that includes a c
 
 While the Framework defines the USR as the boundary between the Cautious and Healthy zones, it does not provide guidance on how to identify an appropriate choice of the breakpoint between these zones. 
 
-The hybrid constant escapement/instant harvest rate feature of the herring HCR was intended to maintain a minimum escapement level equal to the commercial fishery cut-off.
+The hybrid constant escapement/constant harvest rate feature of the herring HCR was intended to maintain a minimum escapement level equal to the commercial fishery cut-off.
 In this case, the management procedure has treated the LRP as an operational control point (OCP) where management action is taken.
-In the design of the HCR, this ``ramp-down'' of the harvest rate is intended to avoid commercial fishery closures and encourage stock growth, however the reduction from $0.31\mli{SB}_0$ to $0.25\mli{SB}_0$ is so steep that there is a very limited range of estimated biomass where reduced harvest rates might arrest stock decline before closure of the commercial fisheries.
+In the design of the current HCR \citep{cleary2010}, this ``ramping-down'' of the harvest rate is intended to avoid commercial fishery closures and encourage stock growth, however the reduction from $0.31\mli{SB}_0$ to $0.25\mli{SB}_0$ is so steep that there is a very limited range of estimated biomass where reduced harvest rates might arrest stock decline before closure of the commercial fisheries.
 The effect of this feature of the HCR is the ``on or of'' behaviour seen in the simulation results of Cox et al. (2015),%
 \footnote{Cox, S.P., Benson, A.J., Cleary, J.S., and Taylor, N.G. 2015. Candidate limit reference points as a basis for choosing among alternate harvest control rules for Pacific Herring (Clupea pallasii) in British Columbia. CSAS Working Paper 2013PEL01 (Accepted WP, final revisions stage).}%
 ; \citet{herring2015}.
@@ -194,7 +196,7 @@ Examples for establishing the USR include:
 \item	The USR, referred to as $B_\text{BUF}$, is defined as the lowest observed historical spawning-stock biomass which produced good recruitment; recommended for West coast of Newfoundland (NAFO Div 4R) Atlantic Herring \citep{mcquinn1999}, and
 \item	The biological limit, $B_\text{lim}$ is established as the minimum spawning stock biomass that would ensure adequate recruitment based on available stock-recruitment information, and the $B_\text{pa}$, the precautionary level for stock biomass, is set at 5.0 million tonnes which is $2\times$ the $B_\text{lim}$ of 2.5 million tonnes; recommended for Norwegian spring-spawning herring \citep{tjelmeland2009}.
 \end{resdoclist}
-In these examples, the biological references points are implemented as the lower and upper operational control points (OCPs) in a hockey-stick shaped harvest control rule.
+In these examples, the biological reference points are implemented as the lower and upper operational control points (OCPs) in a hockey-stick shaped harvest control rule.
 
 For Canadian fisheries in the Maritimes Region, a commonly used approach to defining the USR (and the boundary between the cautious and healthy zones) is to set the USR equal to $2\times$ the LRP.
 The following model-based approaches are used \citep{dfo2012}: 

@@ -624,7 +624,7 @@ The projected pre-fishery spawning biomass in 2018 is 20,003 t (AM2) or 34,886 t
 
 \subsubsection{Recruitment}
 
-Recruitment is defined as the number of age-2 fish recruiting into the population at the beginning of each year, defined as July 1st based on ageing conventions.
+Recruitment is defined as the number of age-2 fish recruiting into the population at the beginning of each year, defined as January 1st based on ageing conventions.
 This age-2 recruitment is estimated as a free parameter within the model, subject to the constraint that annual estimates vary around a Beverton-Holt stock recruitment relationship with an estimated unknown standard deviation (Figure \ref{figBevertonHolt}).
 For HG, PRD, CC and WCVI stocks, age-2 recruitment is estimated to be average-to-below average in 2017.
 Age-2 recruitment for the SOG stock is estimated to be above average in 2017.
