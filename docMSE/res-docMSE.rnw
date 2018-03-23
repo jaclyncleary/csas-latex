@@ -41,7 +41,7 @@
 % \rfoot{DRAFT - DO NOT CITE}
 
 % Commands for title page etc
-\newcommand{\rdTitle}{Developing quantitative methods and analytical tools for modelling B.C. Pacific Herring (\emph{Clupea pallasii})}
+\newcommand{\rdTitle}{Evaluation of management procedures for Pacific Herring (\emph{Clupea pallasii}) in the Strait of Georgia and West Coast of Vancouver Island management areas of British Columbia}
 \newcommand{\rdNumber}{nnn}
 
 % Get rid of annoying warnings -- we can remove this later when the document is running smoother

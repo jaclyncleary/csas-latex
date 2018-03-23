@@ -336,6 +336,15 @@ siSurvey <- siAll %>%
         Eastings=unique(Eastings), Northings=unique(Northings) ) %>%
     ungroup( )
 
+# Get spawn index by survey method
+siMethod <- siAll %>%
+    filter( Method %in% c("Surface", "Dive") ) %>%
+    group_by( Year, SpUnit, Method ) %>%
+    summarise( SITotal=SumNA(SITotal), Survey=unique(Survey) ) %>%
+    ungroup( ) %>%
+    mutate( Method=factor(Method, levels=c("Surface", "Dive")) )
+
+
 #siSummary <- siAll %>%
 #    filter( Survey=="Dive" ) %>%
 #    group_by( Year ) %>%
@@ -803,6 +812,21 @@ timingPlot <- ggplot( data=filter(siAllLong, !is.na(Survey)), aes(x=Year) ) +
     myTheme +
     theme( legend.position="top" ) +
     ggsave( filename=file.path(region, "SpawnTiming.png"), 
+        height=min(8.75, n_distinct(siAll$SpUnit)*1.9+1), width=figWidth )
+
+# Annual spawn index by method and spatial unit
+methodPlot <- ggplot( data=siMethod, aes(x=Year, y=SITotal) ) +
+    geom_bar( aes(fill=Method), stat="identity", width=1 ) + 
+    geom_vline( x= ) +
+    scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
+    scale_y_continuous( labels=function(x) comma(x/1000) ) +
+    labs( y=expression(paste("Spawning biomass (t"%*%10^3, ")", sep="")) ) +
+    scale_fill_grey( ) +
+    expand_limits( x=yrRange ) +
+    facet_wrap( ~ SpUnit, ncol=1 ) +
+    myTheme +
+    theme( legend.position="top" ) +
+    ggsave( filename=file.path(region, "SpawnMethod.png"), 
         height=min(8.75, n_distinct(siAll$SpUnit)*1.9+1), width=figWidth )
 
 
