@@ -121,7 +121,7 @@ Since 1985, ageing convention for aged finfish species is to use a January-1 bir
 Prior to this change Pacific Herring were aged with a July-1 birthday coinciding with their biological birthday ranging from mid March (southern stocks) to early June (northern stocks).
 Herring ageing data arising from catch samples collected July-1 to Dec-31 are ``+1 age-incremented''.
 That is, during data import, +1 ages are added to the ages of fish collected from July-1 to Dec-31 (e.g., age-2 fish become age-3 fish).
-This protocol has been in place since 1985, recognizing that these summer-fall collected fish would be 1-year older had they been removed from the population during roe season (March-April).
+This protocol has been in place since 1985, recognizing that these summer-fall collected fish would be 1-year older had they been removed from the population during the following roe season (March-April).
 Herring aged prior to 1985 have been age-adjusted in this way as well for consistency across all years.
 
 Ageing errors are currently analyzed and corrected during the ageing process.
