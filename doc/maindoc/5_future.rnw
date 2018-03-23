@@ -1,8 +1,9 @@
 \section{FUTURE RESEARCH AND DATA REQUIREMENTS}
 
 \begin{resdoclist}
-  \item Simulation-testing of management procedures
-  \item SOK/SOB: quantify mortality and removed spawn
-  \item Investigate appropriateness of stock-specific maturity ogive
+\item Continue engagement in the MSE process.
+Proceed with simulation-testing of management procedures for each major \Sexpr{fish.name} stock.
+\item Quantify all sources of herring mortality, including herring mortality and egg removal from SOK operations, and egg removal from SOB activity.
+\item Collect new data to investigate maturity-at-age for individual BC \Sexpr{fish.name} stocks.
 \end{resdoclist}
 

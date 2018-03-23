@@ -551,17 +551,17 @@ PlotLocationsYear <- function( dat, yVar, yLegend ) {
     # Update progress message
     if( i %in% pIndices )  cat( i, ", ", sep="" )
   }  # End i loop over decades
-#  # Update progressEnd message
-#  cat( "done; making GIF...", sep="" )
-#  # Get the list of plot names
-#  pNames <- list.files( tDirReg )
-#  # Read the plots as images
-#  images <- lapply( file.path(tDirReg, pNames), image_read )
-#  # Animate the images
-#  anim <- image_animate( image=image_join(images), fps=1 )
-#  # Save images as a gif
-#  image_write( image=anim, path=file.path("GIFs", 
-#          paste("LocationsYear", yVar, region, ".gif", sep="")), quality=100 )
+  # Update progressEnd message
+  cat( "done; making GIF...", sep="" )
+  # Get the list of plot names
+  pNames <- list.files( tDirReg )
+  # Read the plots as images
+  images <- lapply( file.path(tDirReg, pNames), image_read )
+  # Animate the images
+  anim <- image_animate( image=image_join(images), fps=1 )
+  # Save images as a gif
+  image_write( image=anim, path=file.path("GIFs", 
+          paste("LocationsYear", yVar, region, ".gif", sep="")), quality=100 )
   # End message
   cat( " done\n", sep="" )
 }  # End PlotLocationsYear
