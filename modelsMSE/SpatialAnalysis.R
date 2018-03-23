@@ -817,7 +817,7 @@ timingPlot <- ggplot( data=filter(siAllLong, !is.na(Survey)), aes(x=Year) ) +
 # Annual spawn index by method and spatial unit
 methodPlot <- ggplot( data=siMethod, aes(x=Year, y=SITotal) ) +
     geom_bar( aes(fill=Method), stat="identity", width=1 ) + 
-    geom_vline( x= ) +
+    geom_vline( xintercept=newSurvYr-0.5, linetype="dashed", size=0.25 ) +
     scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
     scale_y_continuous( labels=function(x) comma(x/1000) ) +
     labs( y=expression(paste("Spawning biomass (t"%*%10^3, ")", sep="")) ) +

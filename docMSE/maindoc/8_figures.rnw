@@ -51,6 +51,26 @@ Grey lines and shaded areas indicate the median and \Sexpr{ciLevel*100}\% credib
 \label{figSpawnIndexWCVI}
 \end{figure}
 
+% SoG spawn index by method
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}SoG/SpawnMethod.png}
+\caption{Spawn index from \Sexpr{paste(range(yrRange), collapse=" to ")} by spatial unit and survey method in thousands of tonnes ($\text{t} \times 10^3$) for \fishName{} in the Strait of Georgia major stock assessment region (SAR).
+\spawnIndex{}
+\qPeriods{}}
+\label{figSpawnMethodSoG}
+\end{figure}
+
+% WCVI spawn index by method
+\begin{figure}[H]
+\centering
+\includegraphics[width=\linewidth]{\Sexpr{locOutput}WCVI/SpawnMethod.png}
+\caption{Spawn index from \Sexpr{paste(range(yrRange), collapse=" to ")} by spatial unit and survey method in thousands of tonnes ($\text{t} \times 10^3$) for \fishName{} in the Strait of Georgia major stock assessment region (SAR).
+\spawnIndex{}
+\qPeriods{}}
+\label{figSpawnMethodWCVI}
+\end{figure}
+
 % SoG proportion-at-age bubbles
 \begin{figure}[H]
 \centering
