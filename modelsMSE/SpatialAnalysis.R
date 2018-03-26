@@ -793,10 +793,12 @@ siPlot <- ggplot( data=filter(allYrSp, !is.na(Survey)),
 
 # Weighted mean spawn index by year
 wtMeanPlot <- plotMap + 
-    geom_point( data=siWeightedYear, aes(colour=SITotal), size=6 ) +
-    geom_point( data=siWeightedYear, aes(x=EastingsPrev, y=NorthingsPrev) ) +
+    geom_point( data=siAll, size=0.75 ) + 
+    geom_point( data=siWeightedYear, aes(colour=SITotal), size=5, alpha=0.9 ) +
+    geom_point( data=siWeightedYear, aes(x=EastingsPrev, y=NorthingsPrev),
+        size=2, colour="darkgrey", alpha=0.8 ) +
     geom_segment( data=siWeightedYear, aes(xend=EastingsPrev, 
-            yend=NorthingsPrev) ) +
+            yend=NorthingsPrev), alpha=0.7 ) +
     scale_colour_distiller( type="seq", palette="Spectral", labels=comma ) +
     facet_wrap( ~ Year, ncol=14 ) +
     ggsave( file=file.path(region, "WeightedMeanSpawnIndex.png"), 

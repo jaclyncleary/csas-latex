@@ -73,7 +73,7 @@ qFN <- file.path( "Data", "qPars.csv" )
 mNames <- "AM2"
 
 # Generate GIF -- this can take a long time!
-makeGIF <- TRUE
+makeGIF <- FALSE
 
 
 ######################
