@@ -61,7 +61,7 @@ UsePackages( pkgs=c("tidyverse", "sp", "scales", "ggforce", "lubridate",
 ####################
 
 # Select region(s): major (HG, PRD, CC, SoG, WCVI); or minor (A27, A2W)
-spRegions <- c( "SoG", "WCVI" )  # c( "HG", "PRD", "CC", "SoG", "WCVI", "A27", "A2W" ) 
+spRegions <- c( "SoG", "WCVI" )
 
 # File name for dive transect XY
 diveFN <- file.path( "Data", "dive_transects_with_lat_long_June2_2017.xlsx" )
@@ -73,7 +73,7 @@ qFN <- file.path( "Data", "qPars.csv" )
 mNames <- "AM2"
 
 # Generate GIF -- this can take a long time!
-makeGIF <- FALSE
+makeGIF <- TRUE
 
 
 ######################
