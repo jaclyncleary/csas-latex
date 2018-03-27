@@ -244,8 +244,10 @@ setwd( dir=file.path("..", "..", "docMSE") )
 
 % References
 \clearpage
-\bibliographystyle{../doc/res-doc}
-\bibliography{../doc/all}
+ \bibliographystyle{../doc/res-doc}
+ \bibliography{../doc/all}
+%\bibliographystyle{res-doc}
+%\bibliography{all}
 \clearpage
 
 <<tables, child='maindoc/7_tables.rnw'>>=

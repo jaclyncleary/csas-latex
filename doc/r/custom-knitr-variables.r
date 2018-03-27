@@ -26,7 +26,7 @@ hg.qa <- sens.models.6[[1]][[1]]
 hg.qb <- sens.models.7[[1]][[1]]
 hg.qc <- sens.models.8[[1]][[1]]
 
-hg.b.params <- as.data.frame(hg.b$mcmc$params)
+hg.b.params <- as.data.frame(hg.b$mcmc$params) 
 hg.b.mcc <- hg.b$mcmccalcs
 hg.b.p.quants <- as.data.frame(hg.b.mcc$p.quants)
 hg.b.r.quants <- as.data.frame(hg.b.mcc$r.quants)

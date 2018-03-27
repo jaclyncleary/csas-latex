@@ -19,14 +19,14 @@ source(file.path(func.dir, "utilities.r"))
 install.packages.if.needed("coda")
 install.packages.if.needed("knitr")
 install.packages.if.needed("lubridate")
-install.packages.if.needed("PBSmodelling")
+# install.packages.if.needed("PBSmodelling")
 install.packages.if.needed("xtable")
 install.packages.if.needed("RColorBrewer")
 
 require(coda)
 require(knitr)
 require(lubridate)
-require(PBSmodelling)
+# require(PBSmodelling)
 require(xtable)
 require(tidyverse)
 require(RColorBrewer)
@@ -78,3 +78,4 @@ source("model-setup.r")
 
 ## Set up variables for data tables from csv files
 source("data-tables.r")
+
