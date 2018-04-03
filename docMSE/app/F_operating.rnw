@@ -3,8 +3,13 @@
 \lfoot{\Sexpr{fish.name}}
 \rfoot{Appendix~\thechapter~-- Operating Model}
 
-
-
+\begin{resdoclist}
+\item Technical description of operating model, assumptions \& error distributions, and objective function
+\item Table of notation
+\item Table of operating model equations
+\item Perfect information configuration
+\item Model conditioning fits and diagnostics
+\end{resdoclist}
 
 % Dirty hack to maintain correct appendix letters
 \newpage

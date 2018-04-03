@@ -3,8 +3,11 @@
 \lfoot{\Sexpr{fish.name}}
 \rfoot{Appendix~\thechapter~-- Management Procedures}
 
-
-
+\begin{resdoclist}
+\item Technical description of management procedure
+\item Table of notation
+\item Example plots of MP components (survey ratio, various caps)
+\end{resdoclist}
 
 % Dirty hack to maintain correct appendix letters
 \newpage

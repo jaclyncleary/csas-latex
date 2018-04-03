@@ -3,8 +3,11 @@
 \lfoot{\Sexpr{fish.name}}
 \rfoot{Appendix~\thechapter~-- Fishery Independent Data}
 
-
-
+\begin{resdoclist}
+\item Survey data
+\item Survey biological data
+\item Data preparation
+\end{resdoclist}
 
 % Dirty hack to maintain correct appendix letters
 \newpage

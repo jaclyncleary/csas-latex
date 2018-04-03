@@ -3,8 +3,14 @@
 \lfoot{\Sexpr{fish.name}}
 \rfoot{Appendix~\thechapter~-- Fishery-Dependent Data}
 
-
-
+\begin{resdoclist}
+\item Commercial retained and released catch (includes target species and bycatch?)
+\item Commercial biological sampling data
+\item Data preparation
+\begin{resdoclist}
+\item Estimates of released (discarded) catch (might be by citation)
+\end{resdoclist}
+\end{resdoclist}
 
 % Dirty hack to maintain correct appendix letters
 \newpage

@@ -3,8 +3,11 @@
 \lfoot{\Sexpr{fish.name}}
 \rfoot{Appendix~\thechapter~-- History of Management and Assessment}
 
-
-
+\begin{resdoclist}
+\item TACs and other management measures (e.g., size limits, gear restrictions over time)
+\item History of assessment
+\item Bycatch considerations (valuable and vulnerablel)
+\end{resdoclist}
 
 % Dirty hack to maintain correct appendix letters
 \newpage
