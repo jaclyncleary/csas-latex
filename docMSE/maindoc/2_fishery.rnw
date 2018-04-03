@@ -1,0 +1,9 @@
+\section{FISHERY OBJECTIVES AND PERFORMANCE STATISTICS}
+
+\begin{resdoclist}
+\item Listing of goals, and their translation to measurable objectives with outcome, probability of achieving the outcome, and time frame for evaluation
+\item Possible categorization into conservation, yield, or socio-cultural categories
+\item Table of objectives with ID labels
+\item Table of performance statistics corresponding to each objective (may need a table of notation)
+\item Candidate reference points and basis for choice (policy, international best practice, symptoms of recruitment overfishing or other productivity impairment?)
+\end{resdoclist}

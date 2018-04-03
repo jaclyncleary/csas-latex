@@ -1,0 +1,10 @@
+\section{OPERATING MODEL}
+
+\begin{resdoclist}
+\item Refers to appendix for details
+\item Short description of model type and key structural assumptions, why relevant
+\item Key axes of uncertainty
+\item Operating models configurations (structural, parameter and future fleet allocations)
+\item Table of operating models that provides ID labels, any structural differences, and parameter differences
+\item Categorization of OMs into ``perfect information'', ``reference set'' and ``stress test set''
+\end{resdoclist}

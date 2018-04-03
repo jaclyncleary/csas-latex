@@ -1,0 +1,13 @@
+\section{DISCUSSION}
+
+\begin{resdoclist}
+\item Reference points
+\item Acceptable MPs: which are viable for application (circle back to Introduction - what is the key decision that has to be made)
+\item Key trade-offs
+\item Frequency of MSE cycle: review of objectives, OMs, MPs
+\item Exceptional circumstances
+\item Default action in exceptional circumstances
+\item Bycatch considerations (valuable species, vulnerable species)
+\item Fleet allocations will affect bycatch including new gears
+\item What has been learned, some prioritised research questions and data collection
+\end{resdoclist}

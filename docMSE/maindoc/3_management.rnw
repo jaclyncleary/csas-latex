@@ -1,0 +1,8 @@
+\section{MANAGEMENT PROCEDURES}
+
+\begin{resdoclist}
+\item Refers to appendix for details
+\item Short description motivating data-based choice for this MSE cycle
+\item Description of how MP provides feedback for two species
+\item Table of candidate MPs for simulation testing, provides ID labels and lists parameter differences
+\end{resdoclist}

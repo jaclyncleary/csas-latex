@@ -1,0 +1,8 @@
+\section{RECOMMENDATIONS}
+
+\begin{resdoclist}
+\item Key trade-offs for top performing MPs
+\item Next MSE cycle to revisit performance, objectives, OM hypotheses, MPs
+\item Extraordinary circumstance criteria and recommended actions when process out of simulation predictions
+\item Value of information - data collection
+\end{resdoclist}

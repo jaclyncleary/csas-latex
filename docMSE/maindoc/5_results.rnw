@@ -1,0 +1,9 @@
+\section{SIMULATION RESULTS}
+
+\begin{resdoclist}
+\item Specifics of simulation, times, what varies
+\item Relative performance of MPs
+\item Key tuning parameters to yield operational control points where management action is taken (i.e., at what point is effective harvest rate reduced and eventually set to minimum possible)
+\item Hierarchy of objectives - the order of priority of objectives in determining viability of an MP
+\item Ranking MP performance
+\end{resdoclist}

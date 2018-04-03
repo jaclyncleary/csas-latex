@@ -220,38 +220,38 @@ setwd( dir=file.path("..", "..", "docMSE") )
 % Main body
 \Main
 
-<<abstract, child='maindoc/1_abstract.rnw'>>=
+<<abstract, child='maindoc/0_abstract.rnw'>>=
 @
 
 % The next two lines are required to start off numbering
 \pagenumbering{arabic}
 \setcounter{page}{1}
 
-<<introduction, child='maindoc/2_introduction.rnw'>>=
+<<introduction, child='maindoc/1_introduction.rnw'>>=
 @
 
-<<fishery, child='maindoc/3_fishery.rnw'>>=
+<<fishery, child='maindoc/2_fishery.rnw'>>=
 @
 
-<<management, child='maindoc/4_management.rnw'>>=
+<<management, child='maindoc/3_management.rnw'>>=
 @
 
-<<operating, child='maindoc/5_operating.rnw'>>=
+<<operating, child='maindoc/4_operating.rnw'>>=
 @
 
-<<results, child='maindoc/6_results.rnw'>>=
+<<results, child='maindoc/5_results.rnw'>>=
 @
 
-<<discussion, child='maindoc/7_discussion.rnw'>>=
+<<discussion, child='maindoc/6_discussion.rnw'>>=
 @
 
-<<recommendations, child='maindoc/8_recommendations.rnw'>>=
+<<recommendations, child='maindoc/7_recommendations.rnw'>>=
 @
 
-<<future, child='maindoc/9_future.rnw'>>=
+<<future, child='maindoc/8_future.rnw'>>=
 @
 
-<<acknowledgements, child='maindoc/10_acknowledgements.rnw'>>=
+<<acknowledgements, child='maindoc/9_acknowledgements.rnw'>>=
 @
 
 % References
@@ -260,10 +260,10 @@ setwd( dir=file.path("..", "..", "docMSE") )
 \bibliography{../doc/all}
 \clearpage
 
-<<tables, child='maindoc/11_tables.rnw'>>=
+<<tables, child='maindoc/10_tables.rnw'>>=
 @
 
-<<figures, child='maindoc/12_figures.rnw'>>=
+<<figures, child='maindoc/11_figures.rnw'>>=
 @
 
 % Start the appendices
