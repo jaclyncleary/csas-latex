@@ -260,10 +260,10 @@ setwd( dir=file.path("..", "..", "docMSE") )
 \bibliography{../doc/all}
 \clearpage
 
-<<tables, child='maindoc/10_tables.rnw'>>=
+<<tables, child='maindoc/11_tables.rnw'>>=
 @
 
-<<figures, child='maindoc/11_figures.rnw'>>=
+<<figures, child='maindoc/12_figures.rnw'>>=
 @
 
 % Start the appendices
