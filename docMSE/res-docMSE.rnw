@@ -76,7 +76,7 @@
 \textbf{\rdTitle{}}
 \vspace{.35cm}
 
-A.J. Benson\textsuperscript{1}, J.S. Cleary\textsuperscript{2}, S.P. Cox\textsuperscript{1}, and M.H. Grinnell\textsuperscript{2} [alphabetical for now]
+A.J. Benson\textsuperscript{1}, J.S. Cleary\textsuperscript{2}, S.P. Cox\textsuperscript{3}, and M.H. Grinnell\textsuperscript{2} [alphabetical for now]
 
 \vspace{.35cm}
 
@@ -87,6 +87,10 @@ Port Moody, British Columbia, V3H 0H6, Canada
 \textsuperscript{2}Pacific Biological Station\\
 Fisheries and Oceans Canada, 3190 Hammond Bay Road\\
 Nanaimo, British Columbia, V9T 6N7, Canada
+
+\textsuperscript{3}School of Resource and Environmental Management\\
+Simon Fraser University, 8888 University Drive\\
+Burnaby, British Columbia, V5A 1S6, Canada
 
 \end{center}
 \vspace*{\fill}
