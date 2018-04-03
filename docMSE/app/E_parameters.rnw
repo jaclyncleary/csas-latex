@@ -1,0 +1,10 @@
+\label{chap:parameters}
+\starredchapter{APPENDIX~\thechapter. PARAMETERS ESTIMATED INDEPENDENTLY}
+\lfoot{\Sexpr{fish.name}}
+\rfoot{Appendix~\thechapter~-- Parameters Estimated Independently}
+
+
+
+
+% Dirty hack to maintain correct appendix letters
+\newpage

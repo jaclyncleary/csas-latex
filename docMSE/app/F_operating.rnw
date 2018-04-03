@@ -1,0 +1,10 @@
+\label{chap:operating}
+\starredchapter{APPENDIX~\thechapter. OPERATING MODEL}
+\lfoot{\Sexpr{fish.name}}
+\rfoot{Appendix~\thechapter~-- Operating Model}
+
+
+
+
+% Dirty hack to maintain correct appendix letters
+\newpage

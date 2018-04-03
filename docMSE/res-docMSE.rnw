@@ -230,16 +230,28 @@ setwd( dir=file.path("..", "..", "docMSE") )
 <<introduction, child='maindoc/2_introduction.rnw'>>=
 @
 
-% <<modelling, child='maindoc/3_modelling.rnw'>>=
-% @
-
-<<recommendations, child='maindoc/4_recommendations.rnw'>>=
+<<fishery, child='maindoc/3_fishery.rnw'>>=
 @
 
-<<future, child='maindoc/5_future.rnw'>>=
+<<management, child='maindoc/4_management.rnw'>>=
 @
 
-<<acknowledgements, child='maindoc/6_acknowledgements.rnw'>>=
+<<operating, child='maindoc/5_operating.rnw'>>=
+@
+
+<<results, child='maindoc/6_results.rnw'>>=
+@
+
+<<discussion, child='maindoc/7_discussion.rnw'>>=
+@
+
+<<recommendations, child='maindoc/8_recommendations.rnw'>>=
+@
+
+<<future, child='maindoc/9_future.rnw'>>=
+@
+
+<<acknowledgements, child='maindoc/10_acknowledgements.rnw'>>=
 @
 
 % References
@@ -248,10 +260,10 @@ setwd( dir=file.path("..", "..", "docMSE") )
 \bibliography{../doc/all}
 \clearpage
 
-<<tables, child='maindoc/7_tables.rnw'>>=
+<<tables, child='maindoc/11_tables.rnw'>>=
 @
 
-<<figures, child='maindoc/8_figures.rnw'>>=
+<<figures, child='maindoc/12_figures.rnw'>>=
 @
 
 % Start the appendices
@@ -261,6 +273,29 @@ setwd( dir=file.path("..", "..", "docMSE") )
 <<equations, child='app/A_equations.rnw'>>=
 @
 
+\refstepcounter{chapter}
+<<history, child='app/B_history.rnw'>>=
+@
+
+\refstepcounter{chapter}
+<<dependent, child='app/C_dependent.rnw'>>=
+@
+
+\refstepcounter{chapter}
+<<independent, child='app/D_independent.rnw'>>=
+@
+
+\refstepcounter{chapter}
+<<parameters, child='app/E_parameters.rnw'>>=
+@
+
+\refstepcounter{chapter}
+<<operating, child='app/F_operating.rnw'>>=
+@
+
+\refstepcounter{chapter}
+<<management, child='app/G_management.rnw'>>=
+@
 
 % Fin
 \end{document}

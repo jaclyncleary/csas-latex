@@ -1,0 +1,10 @@
+\label{chap:management}
+\starredchapter{APPENDIX~\thechapter. MANAGEMENT PROCEDURES}
+\lfoot{\Sexpr{fish.name}}
+\rfoot{Appendix~\thechapter~-- Management Procedures}
+
+
+
+
+% Dirty hack to maintain correct appendix letters
+\newpage

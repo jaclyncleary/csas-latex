@@ -1,0 +1,10 @@
+\label{chap:independent}
+\starredchapter{APPENDIX~\thechapter. FISHERY INDEPENDENT DATA}
+\lfoot{\Sexpr{fish.name}}
+\rfoot{Appendix~\thechapter~-- Fishery Independent Data}
+
+
+
+
+% Dirty hack to maintain correct appendix letters
+\newpage

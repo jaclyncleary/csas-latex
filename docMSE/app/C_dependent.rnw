@@ -1,0 +1,10 @@
+\label{chap:dependent}
+\starredchapter{APPENDIX~\thechapter. FISHERY-DEPENDENT DATA}
+\lfoot{\Sexpr{fish.name}}
+\rfoot{Appendix~\thechapter~-- Fishery-Dependent Data}
+
+
+
+
+% Dirty hack to maintain correct appendix letters
+\newpage

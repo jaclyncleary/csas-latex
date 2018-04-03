@@ -1,0 +1,10 @@
+\label{chap:history}
+\starredchapter{APPENDIX~\thechapter. HISTORY OF MANAGEMENT AND ASSESSMENT}
+\lfoot{\Sexpr{fish.name}}
+\rfoot{Appendix~\thechapter~-- History of Management and Assessment}
+
+
+
+
+% Dirty hack to maintain correct appendix letters
+\newpage
