@@ -65,7 +65,7 @@ Grey lines and shaded areas indicate the median and \Sexpr{ciLevel*100}\% credib
 \begin{figure}[H]
 \centering
 \includegraphics[width=\linewidth]{\Sexpr{locOutput}WCVI/SpawnMethod.png}
-\caption{Spawn index from \Sexpr{paste(range(yrRange), collapse=" to ")} by spatial unit and survey method in thousands of tonnes ($\text{t} \times 10^3$) for \fishName{} in the Strait of Georgia major stock assessment region (SAR).
+\caption{Spawn index from \Sexpr{paste(range(yrRange), collapse=" to ")} by spatial unit and survey method in thousands of tonnes ($\text{t} \times 10^3$) for \fishName{} in the West Coast of Vancouver Island major stock assessment region (SAR).
 \spawnIndex{}
 \qPeriods{}}
 \label{figSpawnMethodWCVI}
