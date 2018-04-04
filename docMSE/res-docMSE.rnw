@@ -40,46 +40,28 @@
 \rhead{}
 % \rfoot{DRAFT - DO NOT CITE}
 
-% Commands for title page etc
-\newcommand{\rdTitle}{Evaluation of management procedures for Pacific Herring (\emph{Clupea pallasii}) in the Strait of Georgia and West Coast of Vancouver Island management areas of British Columbia}
+%%%% Commands for title page etc %%%%%
+
+% Publication year
+\newcommand{\rdYearPub}{2018}
+
+% Report number
 \newcommand{\rdNumber}{nnn}
 
-% Get rid of annoying warnings -- we can remove this later when the document is running smoother
-\setlength{\headheight}{13.6pt}
+% Meeting date (month year)
+\newcommand{\rdDateMeeting}{June 2018}
 
-\fancypagestyle{nofooter}{%
-\fancyfoot{}%
-}
+% Title
+\newcommand{\rdTitle}{Evaluation of management procedures for Pacific Herring (\emph{Clupea pallasii}) in the Strait of Georgia and West Coast of Vancouver Island management areas of British Columbia}
 
-% Let it begin
-\begin{document}
-\thispagestyle{empty}
+% Author names separated by commas and ', and' for the last author in the format 'M.H. Grinnell' (use \textsuperscript{n} for addresses)
+\newcommand{\rdAuth}{A.J. Benson\textsuperscript{1}, J.S. Cleary\textsuperscript{2}, S.P. Cox\textsuperscript{3}, and M.H. Grinnell\textsuperscript{2} [alphabetical for now]}
 
-\includegraphics[width=9.14cm]{../doc/title-images/title-header.png}
+% Author names reversed separated by commas in the format 'Grinnell, M.H.'
+\newcommand{\rdAuthRev}{Benson, A.J., Cleary, J.S., Cox, S.P., Grinnell, M.H.}
 
-\textbf{Canadian Science Advisory Secretariat (CSAS)}
-\vspace{0.5mm}
-
-\hrule
-
-\vspace{-1.5mm}
-
-\textbf{Research Document 2018/\rdNumber{}}\\
-
-\vspace{0.2cm}
-
-\textbf{Pacific Region}
-
-\vspace*{\fill}
-\begin{center}
-
-\textbf{\rdTitle{}}
-\vspace{.35cm}
-
-A.J. Benson\textsuperscript{1}, J.S. Cleary\textsuperscript{2}, S.P. Cox\textsuperscript{3}, and M.H. Grinnell\textsuperscript{2} [alphabetical for now]
-
-\vspace{.35cm}
-
+% Author addresses (use \textsuperscript{n})
+\newcommand{\rdAuthAddress}{
 \textsuperscript{1}Landmark Fisheries Research\\
 Suite 301, 220 Brew Street\\
 Port Moody, British Columbia, V3H 0H6, Canada
@@ -90,69 +72,19 @@ Nanaimo, British Columbia, V9T 6N7, Canada
 
 \textsuperscript{3}School of Resource and Environmental Management\\
 Simon Fraser University, 8888 University Drive\\
-Burnaby, British Columbia, V5A 1S6, Canada
+Burnaby, British Columbia, V5A 1S6, Canada}
 
-\end{center}
-\vspace*{\fill}
+%%%% End of title page commands %%%%%
 
-\hrule
+% Get rid of annoying warnings -- we can remove this later when the document is running smoother
+\setlength{\headheight}{13.6pt}
 
-\vspace{-4.0mm}
-\parbox{9cm}{June 2018}%
-\begin{minipage}[t]{7.48cm}
-\flushright
-\includegraphics[width=3.54cm]{../doc/title-images/title-footer.png}%
-\end{minipage}
+\fancypagestyle{nofooter}{%
+\fancyfoot{}%
+}
 
-\clearpage
-
-\vspace*{\fill}
-
-\begin{center}
-\textbf{Foreword}
-\end{center}
-\vspace{-1.5mm}
-
-This series documents the scientific basis for the evaluation of aquatic resources and
-ecosystems in Canada.
-As such, it addresses the issues of the day in the time frames required and the documents it contains are not intended as definitive statements on the subjects addressed but rather as progress reports on ongoing investigations.
-
-Research documents are produced in the official language in which they are provided to the Secretariat.
-
-\vspace{1.5mm}
-
-\begin{center}
-\textbf{Published by:\\}
-\vspace{0.2cm}
-Fisheries and Oceans Canada\\
-Canadian Science Advisory Secretariat\\
-200 Kent Street\\
-Ottawa ON K1A 0E6\\
-\vspace{0.17cm}
-
-\href{http://www.dfo-mpo.gc.ca/csas-sccs/}{http://www.dfo-mpo.gc.ca/csas-sccs/}\\
-\href{mailto://csas-sccs@dfo-mpo.gc.ca}{csas-sccs@dfo-mpo.gc.ca}
-
-\vspace{-3mm}
-\includegraphics[scale=0.96]{../doc/title-images/recycle.png}
-
-\vspace{-3mm}
-\textcopyright\ Her Majesty the Queen in Right of Canada, 2018\\
-ISSN 1919-5044
-\end{center}
-
-\vspace{-3mm}
-
-\textbf{Correct citation for this publication:}\\
-\vspace{0.2cm}
-\hangindent=0.6cm Benson, A.J., Cleary, J.S., Cox, S.P., Grinnell, M.H.
-\rdTitle{}.
-DFO Can.\ Sci.\ Advis.\ Sec.\ Res.\ Doc. 2018/\rdNumber{}. \pageref{TRlastRoman}{} + \pageref{LastPage} p.
-\vspace*{\fill}
-
-\thispagestyle{nofooter}
-
-\clearpage
+% Let it begin
+\begin{document}
 
 %% This is the initial code chunk where you load your R workspace.
 %% This gives access to all objects in the RData file for the entirety
@@ -211,18 +143,8 @@ setwd( dir=file.path("..", "..", "docMSE") )
 <<variables, child='variables.rnw'>>=
 @
 
-% TOC
-\TableOfContents
-
-%% \Citation{
-%% Cleary, J.S., Hawkshaw, S., Grinnell, M.H., and Grandin, C.
-%% Stock Assessment for \Sexpr{fish.name} (\emph{\Sexpr{science.name}}) in British Columbia in \Sexpr{assess.yr} and forecast for \Sexpr{assess.yr+1}.
-%% CSAP Working Paper 2017PEL01.
-%% %DFO Can. Sci. Advis. Sec. Res. Doc. 2017/xxx. xii + XX p.
-%% }
-
-% Main body
-\Main
+% Make the first few pages
+\frontmatter
 
 <<abstract, child='maindoc/0_abstract.rnw'>>=
 @
