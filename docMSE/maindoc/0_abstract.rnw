@@ -1,14 +1,9 @@
 \abstract{}
 
-[Abstract will go here.]
+[English abstract here.]
 
 \frenchabstract{
-French title  % Unicode error with the 
-%?tat du hareng du Pacifique (\emph{\Sexpr{science.name}}) de la Colombie-Britannique en \Sexpr{end.yr} et pr?visions pour \Sexpr{end.yr + 1}
+[French title ici.]
 }
 
-[French abstract.]
-
-\label{TRlastRoman}
-
-\clearpage
+[French abstract ici.]
