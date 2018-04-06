@@ -32,7 +32,7 @@
 % Publication year
 \newcommand{\rdYear}{YYYY}
 
-% Publication month (month and year)
+% Publication month
 \newcommand{\rdMonth}{Month}
 
 % Report number
