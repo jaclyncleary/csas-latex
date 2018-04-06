@@ -16,7 +16,7 @@ del *.upa
 del *.vrb
 del *-concordance.tex
 del *.synctex.gz*
-del res-docMSE.tex
-del res-docMSE.pdf
+del mwe.tex
+del mwe.pdf
 rmdir out-csv /S /Q
 rmdir /S /Q knitr-cache
