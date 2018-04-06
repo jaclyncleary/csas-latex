@@ -1,3 +1,4 @@
-Brief minimal working example of a CSAS Research Document that works with the [csas-style](https://github.com/grinnellm/csas-style) `frontmatter` branch.
+Minimum working example of a CSAS Research Document that works with the [csas-style](https://github.com/grinnellm/csas-style) `frontmatter` branch.
 This branch formats the first few pages (i.e., pages with roman numerals) of the document when you supply a few required variables, such as the year, title, report number, author names, etc.
-The code to format the title page and second page was done by Sean Anderson; I don't know if these two pages have been vetted by CSAS yet. 
+Sean Anderson wrote the code to format the title page and second page; I don't know if these two pages have been vetted by CSAS yet.
+Essentially I moved Sean's code into `res-doc.sty` and replaced the hard-coded text with variables that you supply in the main document (e.g., `res-doc.rnw`).
