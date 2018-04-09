@@ -3,7 +3,7 @@
 [English abstract here.]
 
 \frenchabstract{
-[French title ici.]
+[French title ici]
 }
 
 [French abstract ici.]

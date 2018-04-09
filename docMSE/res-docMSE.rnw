@@ -27,7 +27,7 @@
 \rhead{}
 % \rfoot{DRAFT - DO NOT CITE}
 
-%%%% Commands for title page etc %%%%%
+%%%% Commands for frontmatter (title page etc) %%%%%
 
 % Publication year
 \newcommand{\rdYear}{YYYY}
@@ -64,7 +64,7 @@ Burnaby, British Columbia, V5A 1S6, Canada}
 % Name of file with abstract and resume (see \abstract and \frenchabstract for requirements)
 \newcommand{\rdAbstract}{\Sexpr{knit_child('maindoc/0_abstract.rnw')}}
 
-%%%% End of title page commands %%%%%
+%%%% End of frontmatter commands %%%%%
 
 % Let it begin
 \begin{document}
