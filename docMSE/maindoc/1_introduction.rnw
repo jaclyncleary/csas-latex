@@ -1,5 +1,13 @@
 \section{INTRODUCTION}
 
+\subsection{SPATIAL BOUNDARIES}
+
+\subsubsection{Strait of Georgia}
+
+Describe the SoG boundaries (2017base), the 4 groups (Lazo, 14/17B, Dodd, ESoG) and compare assessment model outputs from 2017base with what we are using for SoG MSE
+
+\subsubsection{West Coast of Vancouver Island}
+
 \subsection{CONTEXT}
 
 \begin{resdoclist}

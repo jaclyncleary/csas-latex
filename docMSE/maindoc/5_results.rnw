@@ -7,3 +7,11 @@
 \item Hierarchy of objectives - the order of priority of objectives in determining viability of an MP
 \item Ranking MP performance
 \end{resdoclist}
+
+\subsection{PROPORTION OF SPAWN AND CATCH BY AREA IN THE STRAIT OF GEORGIA}
+
+Justification for why we are using Group `14/17' for this first cycle of the MSE:
+\begin{resdoclist}
+\item Compare proportion of spawn by area
+\item Compare proportion of fishing activity/catch by area
+\end{resdoclist}

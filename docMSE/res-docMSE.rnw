@@ -108,7 +108,7 @@ setwd( dir=file.path("..", "..", "docMSE") )
 @
 
 % More custom variables
-<<variables, child='maindoc/99_variables.rnw'>>=
+<<variables, child='maindoc/variables.rnw'>>=
 @
 
 % Make the first few pages
