@@ -33,13 +33,13 @@
 \newcommand{\bM}[1]{\mathlarger{\mathlarger{#1}}}
 
 % Headers and footers
-\lhead{Draft working paper -- Do not cite or circulate}
-% \lhead{}
+% \lhead{Draft working paper -- Do not cite or circulate}
+\lhead{}
 \rhead{}
 % \rfoot{DRAFT - DO NOT CITE}
 
 % Get rid of annoying warnings -- we can remove this later when the document is running smoother
-\setlength{\headheight}{13.6pt}
+% \setlength{\headheight}{13.6pt}
 
 \fancypagestyle{nofooter}{%
 \fancyfoot{}%
