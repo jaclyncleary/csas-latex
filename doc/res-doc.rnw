@@ -58,7 +58,7 @@
 
 \vspace{-1.5mm}
 
-\textbf{Research Document 2017/nnn}\\
+\textbf{Research Document 2018/028}\\
 
 \vspace{0.2cm}
 
@@ -129,7 +129,7 @@ Ottawa ON K1A 0E6\\
 \includegraphics[scale=0.96]{title-images/recycle.png}
 
 \vspace{-3mm}
-\textcopyright\ Her Majesty the Queen in Right of Canada, 2017\\
+\textcopyright\ Her Majesty the Queen in Right of Canada, 2018\\
 ISSN 1919-5044
 \end{center}
 
@@ -139,7 +139,7 @@ ISSN 1919-5044
 \vspace{0.2cm}
 \hangindent=0.6cm Cleary, J.S., Hawkshaw, S., Grinnell, M.H., Grandin, C. 2017.
 Status of B.C. Pacific Herring (\emph{Clupea pallasii}) in 2017 and forecasts for 2018
-DFO Can.\ Sci.\ Advis.\ Sec.\ Res.\ Doc. 2017/nnn. vii + 273 p.
+DFO Can.\ Sci.\ Advis.\ Sec.\ Res.\ Doc. 2018/028. v + 295 p.
 \vspace*{\fill}
 
 \thispagestyle{nofooter}
