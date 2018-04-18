@@ -88,7 +88,7 @@ Sidney, BC V8L 5T5, Canada
 \hrule
 
 \vspace{-4.0mm}
-\parbox{9cm}{October 2017}%
+\parbox{9cm}{May 2018}%
 \begin{minipage}[t]{7.48cm}
 \flushright
 \includegraphics[width=3.54cm]{title-images/title-footer.png}%
