@@ -820,16 +820,52 @@ siBarplot <- ggplot( data=siYrSpProp, aes(x=Year, y=SITotal) ) +
     ggsave( filename=file.path(region, "SpawnIndexBar.png"), 
         height=figWidth*0.7, width=figWidth )
 
-siBarplotProp <- ggplot( data=siYrSpProp, aes(x=Year, y=Proportion) ) +
-    geom_col( aes(fill=SpUnit) ) + 
-    labs( y="Spawning biomass (proportion)", fill=NULL ) +
-    geom_vline( xintercept=newSurvYr-0.5, linetype="dashed", size=0.25 ) +
-    scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
-    expand_limits( x=yrRange ) +
-    myTheme +
-    theme( legend.position="top" ) +
-    ggsave( filename=file.path(region, "SpawnIndexBarProp.png"), 
-        height=figWidth*0.7, width=figWidth )
+# Plot the spawn index showing proportion of spawn by spatial group
+PlotSIBarProp <- function( df ) {
+  browser()
+  # Get aggregate spawn
+  dfAgg <- df %>%
+      group_by( Year ) %>%
+      summarise( SITotal=SumNA(SITotal) ) %>%
+      ungroup( ) %>%
+      mutate( Survey=ifelse(Year < newSurvYr, "Surface", "Dive"), 
+          Survey=factor(Survey, levels=c("Surface", "Dive")) )
+  # First plot: aggregate spawn
+  plot1 <- ggplot( data=dfAgg, aes(x=Year, y=SITotal, group=Survey) ) +
+      geom_path( aes(y=SITotal) ) +
+      geom_point( aes(y=SITotal, shape=Survey) ) +
+      geom_vline( xintercept=newSurvYr-0.5, linetype="dashed", size=0.25 ) +
+      scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
+      scale_y_continuous( labels=function(x) comma(x/1000) ) +
+      labs( y=expression(paste("Spawning biomass (t"%*%10^3, ")", sep="")),
+          x=NULL ) +
+      expand_limits( x=yrRange ) +
+      guides( shape=FALSE ) +
+      myTheme + 
+      theme( axis.text.x=element_blank() )
+  # Second plot: proportion
+  plot2 <- ggplot( data=df, aes(x=Year, y=Proportion) ) +
+      geom_col( aes(fill=SpUnit) ) + 
+      labs( y="Spawning biomass (proportion)", fill=NULL ) +
+      geom_vline( xintercept=newSurvYr-0.5, linetype="dashed", size=0.25 ) +
+      scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
+      expand_limits( x=yrRange ) +
+      myTheme +
+      theme( legend.position="top" ) 
+  
+#  # Combine the two plots
+#  tsPlots <- plot_grid( tsSI, ts2, align="v", ncol=1, rel_heights=1 ) +
+#      ggsave( file=file.path(region, 
+#              paste("Timeseries", yVar, i, ".png", sep="")), 
+#          width=figWidth, height=figWidth )
+  siBarplotProp <- plot_grid( plot1, plot2, align="v", ncol=1, 
+          rel_heights=c(1, 2) ) +
+      ggsave( filename=file.path(region, "SpawnIndexBarProp.png"), 
+          height=figWidth, width=figWidth )
+}  # End PlotSIBarProp function
+
+# Plot spawn index proportion (and total)
+PlotSIBarProp( df=siYrSpProp )
 
 # Weighted mean spawn index by year
 wtMeanPlot <- plotMap + 
