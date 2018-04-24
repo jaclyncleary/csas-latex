@@ -364,6 +364,14 @@ siWeightedYear <- siAll %>%
     ungroup( ) %>%
     mutate( EastingsPrev=lag(Eastings, n=1), NorthingsPrev=lag(Northings, n=1) )
 
+# Calculate spawn index by spatial group, and as a proportion
+siYrSpProp <- siYrSp %>%
+    select( Year, SpUnit, SITotal ) %>%
+    group_by( Year ) %>%
+    mutate( Proportion=SITotal/sum(SITotal, na.rm=TRUE) ) %>%
+    ungroup( ) %>%
+    mutate( SpUnit=factor(SpUnit) )
+
 
 ###################
 ##### Figures #####
@@ -797,6 +805,31 @@ siPlot <- ggplot( data=filter(allYrSp, !is.na(Survey)),
     ggsave( filename=file.path(region, "SpawnIndex.png"), 
         height=min(8.75, n_distinct(allYrSp$SpUnit)*1.9+1), 
         width=figWidth )
+
+# Plot the spawn index showing proportion of spawn by spatial group
+siBarplot <- ggplot( data=siYrSpProp, aes(x=Year, y=SITotal) ) +
+    geom_col( aes(fill=SpUnit) ) + 
+    labs( y=expression(paste("Spawning biomass (t"%*%10^3, ")", sep="")), 
+        fill=NULL ) +
+    geom_vline( xintercept=newSurvYr-0.5, linetype="dashed", size=0.25 ) +
+    scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
+    scale_y_continuous( labels=function(x) comma(x/1000) ) +
+    expand_limits( x=yrRange ) +
+    myTheme +
+    theme( legend.position="top" ) +
+    ggsave( filename=file.path(region, "SpawnIndexBar.png"), 
+        height=figWidth*0.7, width=figWidth )
+
+siBarplotProp <- ggplot( data=siYrSpProp, aes(x=Year, y=Proportion) ) +
+    geom_col( aes(fill=SpUnit) ) + 
+    labs( y="Spawning biomass (proportion)", fill=NULL ) +
+    geom_vline( xintercept=newSurvYr-0.5, linetype="dashed", size=0.25 ) +
+    scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
+    expand_limits( x=yrRange ) +
+    myTheme +
+    theme( legend.position="top" ) +
+    ggsave( filename=file.path(region, "SpawnIndexBarProp.png"), 
+        height=figWidth*0.7, width=figWidth )
 
 # Weighted mean spawn index by year
 wtMeanPlot <- plotMap + 
