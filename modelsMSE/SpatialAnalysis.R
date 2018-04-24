@@ -457,7 +457,6 @@ PlotSIEtAl <- function( dat1, dat2, dat3, siThresh=siThreshold,
         scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
         expand_limits( x=yrRange, y=c(0, 1) ) +
         geom_bar( aes(fill=Age), stat="identity", width=1 ) +
-        geom_vline( xintercept=newSurvYr-0.5, linetype="dashed", size=0.25 ) +
         labs( x=NULL ) +
         scale_fill_brewer( type="qual", palette="Set1", 
             guide=guide_legend(nrow=1) ) +
@@ -467,7 +466,6 @@ PlotSIEtAl <- function( dat1, dat2, dat3, siThresh=siThreshold,
     # Plot number aged (3)
     naPlot <- ggplot( data=df3, aes(x=Year, y=nAged) ) +
         geom_bar( stat="identity", width=1 ) + 
-        geom_vline( xintercept=newSurvYr-0.5, linetype="dashed", size=0.25 ) +
         scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
         scale_y_continuous( labels=comma ) +
         expand_limits( x=yrRange, y=naRange ) +
@@ -488,7 +486,6 @@ PlotSIEtAl( dat1=allYrSp, dat2=propAge, dat3=numAge )
 # Make proportion-at-age bubble plots
 PlotPropAgeBubble <- ggplot( data=npAgedYear, aes(x=Year, y=Age) ) +
     geom_point( aes(size=Proportion) ) + 
-    geom_vline( xintercept=newSurvYr-0.5, linetype="dashed", size=0.25 ) +
     scale_size_area( max_size=3 ) + 
     scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
     facet_wrap( ~ SpUnit, ncol=1 ) +
