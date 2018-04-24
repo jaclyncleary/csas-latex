@@ -438,12 +438,14 @@ PlotSIEtAl <- function( dat1, dat2, dat3, siThresh=siThreshold,
     df3 <- filter( .data=dat3, SpUnit==uPages[i] )
     # Plot spawn index (1)
     siPlot <- ggplot( dat=df1, aes(x=Year, y=SITotal) ) +
-        geom_path( ) +
-        geom_point( size=2.5 ) +
+        geom_path( aes(group=Survey) ) +
+        geom_point( aes(shape=Survey), size=2.5 ) +
+        geom_vline( xintercept=newSurvYr-0.5, linetype="dashed", size=0.25 ) +
         scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
         scale_y_continuous( labels=comma ) +
         expand_limits( x=yrRange, y=siRange ) +
         labs( x=NULL ) +
+        guides( shape=FALSE ) +
         myTheme +
         facet_wrap( ~ SpUnit ) +
         theme( axis.text.x=element_blank(), text=element_text(size=24) )
@@ -455,6 +457,7 @@ PlotSIEtAl <- function( dat1, dat2, dat3, siThresh=siThreshold,
         scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
         expand_limits( x=yrRange, y=c(0, 1) ) +
         geom_bar( aes(fill=Age), stat="identity", width=1 ) +
+        geom_vline( xintercept=newSurvYr-0.5, linetype="dashed", size=0.25 ) +
         labs( x=NULL ) +
         scale_fill_brewer( type="qual", palette="Set1", 
             guide=guide_legend(nrow=1) ) +
@@ -464,6 +467,7 @@ PlotSIEtAl <- function( dat1, dat2, dat3, siThresh=siThreshold,
     # Plot number aged (3)
     naPlot <- ggplot( data=df3, aes(x=Year, y=nAged) ) +
         geom_bar( stat="identity", width=1 ) + 
+        geom_vline( xintercept=newSurvYr-0.5, linetype="dashed", size=0.25 ) +
         scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
         scale_y_continuous( labels=comma ) +
         expand_limits( x=yrRange, y=naRange ) +
@@ -484,6 +488,7 @@ PlotSIEtAl( dat1=allYrSp, dat2=propAge, dat3=numAge )
 # Make proportion-at-age bubble plots
 PlotPropAgeBubble <- ggplot( data=npAgedYear, aes(x=Year, y=Age) ) +
     geom_point( aes(size=Proportion) ) + 
+    geom_vline( xintercept=newSurvYr-0.5, linetype="dashed", size=0.25 ) +
     scale_size_area( max_size=3 ) + 
     scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
     facet_wrap( ~ SpUnit, ncol=1 ) +
@@ -680,12 +685,14 @@ TimeseriesSI <- function( df, yVar, siThresh=siThreshold, nYrs=nYrsConsec ) {
         filter( SpUnit == uPages[i] )
     # Spawn index time series
     tsSI <- ggplot( data=dat, aes(x=Year, y=SITotal) ) +
-        geom_path( ) +
-        geom_point( size=2.5 ) +
+        geom_path( aes(group=Survey) ) +
+        geom_point( aes(shape=Survey), size=2.5 ) +
+        geom_vline( xintercept=newSurvYr-0.5, linetype="dashed", size=0.25 ) +
         scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
         scale_y_continuous( labels=comma ) +
         expand_limits( x=yrRange, y=siRange ) +
         labs( x=NULL ) +
+        guides( shape=FALSE ) +
         myTheme +
         facet_wrap( ~ SpUnit, nrow=1, ncol=1 ) +
         theme( axis.text.x=element_blank(), text=element_text(size=28) )
@@ -694,11 +701,13 @@ TimeseriesSI <- function( df, yVar, siThresh=siThreshold, nYrs=nYrsConsec ) {
           geom_hline( yintercept=siThresh, linetype="dashed", size=0.5 )
     # The second timeseries
     ts2 <- ggplot( data=dat, aes_string(x="Year", y=yVar) ) +
-        geom_path( ) +
-        geom_point( size=2.5 ) +
+        geom_path( aes(group=Survey) ) +
+        geom_point( aes(shape=Survey), size=2.5 ) +
+        geom_vline( xintercept=newSurvYr-0.5, linetype="dashed", size=0.25 ) +
         scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
         scale_y_continuous( labels=comma ) +
         expand_limits( x=yrRange, y=yRange ) +
+        guides( shape=FALSE ) +
         myTheme +
         theme( text=element_text(size=28) )
     # Combine the two plots
@@ -775,6 +784,7 @@ siPlot <- ggplot( data=filter(allYrSp, !is.na(Survey)),
     geom_line( aes(y=BiomassMedian), colour="darkgrey" ) +
     geom_path( aes(y=SITotal) ) +
     geom_point( aes(y=SITotal, shape=Survey) ) +
+    geom_vline( xintercept=newSurvYr-0.5, linetype="dashed", size=0.25 ) +
     scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
     scale_y_continuous( labels=function(x) comma(x/1000) ) +
     labs( y=expression(paste("Spawning biomass (t"%*%10^3, ")", sep="")) ) +
@@ -807,6 +817,7 @@ wtMeanPlot <- plotMap +
 # Spawn timing by year and spatial unit
 timingPlot <- ggplot( data=filter(siAllLong, !is.na(Survey)), aes(x=Year) ) +
     geom_point( aes(y=Date, shape=Survey, colour=Timing), alpha=0.5 ) +
+    geom_vline( xintercept=newSurvYr-0.5, linetype="dashed", size=0.25 ) +
     scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
     expand_limits( x=yrRange ) +
     labs( y="Date" ) +
