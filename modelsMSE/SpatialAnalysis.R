@@ -822,7 +822,6 @@ siBarplot <- ggplot( data=siYrSpProp, aes(x=Year, y=SITotal) ) +
 
 # Plot the spawn index showing proportion of spawn by spatial group
 PlotSIBarProp <- function( df ) {
-  browser()
   # Get aggregate spawn
   dfAgg <- df %>%
       group_by( Year ) %>%
