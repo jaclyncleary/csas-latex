@@ -157,7 +157,7 @@ for( reg in 1:length(spRegions) ) {
   if( region == "A27" )   spUnitName <- "StatArea"
   if( region == "A2W" )   spUnitName <- "StatArea"
   # Message re spatial info
-  cat( "\nInvestigate ", region, " by ", spUnitName, "\n", sep="" )
+  cat( "\nInvestigate", region, "by", spUnitName, "\n" )
   # Run the spatial analysis
   source( file="SpatialAnalysis.R" )
 }  # End reg loop over region(s)
