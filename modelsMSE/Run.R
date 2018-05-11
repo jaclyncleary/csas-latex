@@ -61,7 +61,7 @@ UsePackages( pkgs=c("tidyverse", "sp", "scales", "ggforce", "lubridate",
 ####################
 
 # Select region(s): major (HG, PRD, CC, SoG, WCVI); or minor (A27, A2W)
-spRegions <- c( "SoG", "WCVI" )
+spRegions <- c( "WCVI" )
 
 # File name for dive transect XY
 diveFN <- file.path( "Data", "dive_transects_with_lat_long_June2_2017.xlsx" )
@@ -74,6 +74,12 @@ mNames <- "AM2"
 
 # Generate GIF -- this can take a long time!
 makeGIF <- FALSE
+
+# Reference years
+refYrsAll <- read_csv( file=
+        "SAR, Start, End
+        WCVI, 1990, 1999", 
+    col_types=cols("c", "i", "i") )
 
 
 ######################
@@ -156,6 +162,9 @@ for( reg in 1:length(spRegions) ) {
   if( region == "WCVI" )  spUnitName <- "StatArea"
   if( region == "A27" )   spUnitName <- "StatArea"
   if( region == "A2W" )   spUnitName <- "StatArea"
+  # Extract correct region for reference years
+  refYrs <- refYrsAll %>%
+      filter( SAR==region )
   # Message re spatial info
   cat( "\nInvestigate", region, "by", spUnitName, "\n" )
   # Run the spatial analysis

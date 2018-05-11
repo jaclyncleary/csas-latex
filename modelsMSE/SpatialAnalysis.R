@@ -372,6 +372,17 @@ siYrSpProp <- siYrSp %>%
     ungroup( ) %>%
     mutate( SpUnit=factor(SpUnit) )
 
+# Reference period years
+refYears <- refYrs$Start:refYrs$End
+
+# Calculate reference period biomass
+refBiomass <- siYrSp %>%
+    select( Year, SpUnit, SITotal ) %>%
+    filter( Year %in% refYears ) %>%
+    group_by( SpUnit ) %>%
+    summarise( MeanSI=MeanNA(SITotal) ) %>%
+    ungroup( )
+
 
 ###################
 ##### Figures #####
@@ -788,10 +799,13 @@ siPlot <- ggplot( data=filter(allYrSp, !is.na(Survey)),
     geom_ribbon( aes(ymin=BiomassLower, ymax=BiomassUpper), fill="lightgrey" ) +
     geom_line( aes(y=BiomassMedian), colour="darkgrey" ) +
     geom_path( aes(y=SITotal) ) +
-    geom_point( aes(y=SITotal, shape=Survey) ) +
+    geom_point( aes(y=SITotal, shape=Survey, colour=Year%in%refYears) ) +
     geom_vline( xintercept=newSurvYr-0.5, linetype="dashed", size=0.25 ) +
     scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
     scale_y_continuous( labels=function(x) comma(x/1000) ) +
+    scale_colour_manual( values=c("black", "red"), guide=FALSE ) +
+    geom_hline( data=refBiomass, aes(yintercept=MeanSI), linetype="dashed", 
+        size=0.5, colour="red" ) +
     labs( y=expression(paste("Spawning biomass (t"%*%10^3, ")", sep="")) ) +
     expand_limits( x=yrRange ) +
     myTheme +
