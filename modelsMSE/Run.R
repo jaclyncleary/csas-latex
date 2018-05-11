@@ -61,7 +61,7 @@ UsePackages( pkgs=c("tidyverse", "sp", "scales", "ggforce", "lubridate",
 ####################
 
 # Select region(s): major (HG, PRD, CC, SoG, WCVI); or minor (A27, A2W)
-spRegions <- c( "WCVI" )
+spRegions <- c( "SoG", "WCVI" )
 
 # File name for dive transect XY
 diveFN <- file.path( "Data", "dive_transects_with_lat_long_June2_2017.xlsx" )
@@ -78,6 +78,7 @@ makeGIF <- FALSE
 # Reference years
 refYrsAll <- read_csv( file=
         "SAR, Start, End
+        SoG, 1951, 2017 
         WCVI, 1990, 1999", 
     col_types=cols("c", "i", "i") )
 
@@ -162,9 +163,13 @@ for( reg in 1:length(spRegions) ) {
   if( region == "WCVI" )  spUnitName <- "StatArea"
   if( region == "A27" )   spUnitName <- "StatArea"
   if( region == "A2W" )   spUnitName <- "StatArea"
-  # Extract correct region for reference years
+  # Extract reference years for required region
   refYrs <- refYrsAll %>%
       filter( SAR==region )
+  # Error if no reference years present
+  if( nrow(refYrs) == 0 ) 
+    stop( "Specify reference years for biomass threshold (refYrs): ", region,
+        call.=FALSE )
   # Message re spatial info
   cat( "\nInvestigate", region, "by", spUnitName, "\n" )
   # Run the spatial analysis
