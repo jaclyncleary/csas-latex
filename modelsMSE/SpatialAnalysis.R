@@ -810,13 +810,26 @@ siPlot <- ggplot( data=filter(allYrSp, !is.na(Survey)),
     expand_limits( x=yrRange ) +
     myTheme +
     facet_wrap( ~ SpUnit, ncol=1 ) +
-    theme( legend.position="top" ) +
-    ## Add the reference line if supplied
-#if( !is.na(siThreshold) )  siPlot <- siPlot + 
-#      geom_hline( yintercept=siThreshold, linetype="dashed", size=0.5 )
-    ## Save the plot
-#siPlot <- siPlot + 
+    theme( legend.position="top" )
+
+# Basic plot
+siPlotBase <- siPlot +
     ggsave( filename=file.path(region, "SpawnIndex.png"), 
+        height=min(8.75, n_distinct(allYrSp$SpUnit)*1.9+1), 
+        width=figWidth )
+
+# Basic plot with catch
+siPlotCatch <- siPlot +
+    geom_col( aes(y=Catch), alpha=0.5 ) +
+    ggsave( filename=file.path(region, "SpawnIndexCatch.png"), 
+        height=min(8.75, n_distinct(allYrSp$SpUnit)*1.9+1), 
+        width=figWidth )
+
+# Basic plot with catch >= 1972
+siPlotCatch1972 <- siPlot +
+    geom_col( data=filter(allYrSp, !is.na(Survey), Year>=1972), 
+        aes(y=Catch), alpha=0.5 ) +
+    ggsave( filename=file.path(region, "SpawnIndexCatch1972.png"), 
         height=min(8.75, n_distinct(allYrSp$SpUnit)*1.9+1), 
         width=figWidth )
 

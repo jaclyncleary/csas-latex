@@ -61,7 +61,7 @@ UsePackages( pkgs=c("tidyverse", "sp", "scales", "ggforce", "lubridate",
 ####################
 
 # Select region(s): major (HG, PRD, CC, SoG, WCVI); or minor (A27, A2W)
-spRegions <- c( "SoG" )
+spRegions <- c( "WCVI" )
 
 # File name for dive transect XY
 diveFN <- file.path( "Data", "dive_transects_with_lat_long_June2_2017.xlsx" )
@@ -69,7 +69,7 @@ diveFN <- file.path( "Data", "dive_transects_with_lat_long_June2_2017.xlsx" )
 # File name for q parameters
 qFN <- file.path( "Data", "qPars.csv" )
 
-# Model: AM1 and/or AM2
+# Model: AM1 and/or AM2 (Note: I haven't tried this with more than one model!)
 mNames <- "AM2"
 
 # Generate GIF -- this can take a long time!
