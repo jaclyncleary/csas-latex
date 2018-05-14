@@ -827,8 +827,8 @@ siPlotCatch <- siPlot +
 
 # Basic plot with catch >= 1972
 siPlotCatch1972 <- siPlot +
-    geom_col( data=filter(allYrSp, !is.na(Survey), Year>=1972), 
-        aes(y=Catch), alpha=0.5 ) +
+    geom_col( data=filter(allYrSp, !is.na(Survey), Year>=1972), aes(y=Catch), 
+        alpha=0.5 ) +
     ggsave( filename=file.path(region, "SpawnIndexCatch1972.png"), 
         height=min(8.75, n_distinct(allYrSp$SpUnit)*1.9+1), 
         width=figWidth )
