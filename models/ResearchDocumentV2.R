@@ -1220,10 +1220,6 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp ) {
           filter( Model==model, Parameter=="SB0", Region==SARs[k] ) %>%
           select( Lower, Median, Upper ) %>%
           mutate( Value="italic('SB')[0]" )
-      USRWCVI <- bp %>%
-          filter( Model==model, Parameter=="SB0", Region==SARs[k] ) %>%
-          select( Median ) %>%
-          mutate( USR=Median*0.75 )
       # Combine the USRs
       USRs <- bind_rows( USRa, USRb, USRc, USRd )
       # Data wrangling: SB_projected
@@ -1278,10 +1274,9 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp ) {
       # Temprary plot: spawning biomass and catch
       plotTemp <- ggplot( data=USRs ) +
           geom_hline( yintercept=LRP$Median, colour="red" ) +
-#          annotate( geom="rect", xmin=-Inf, xmax=Inf, ymin=LRP$Lower, 
-#              ymax=LRP$Upper, colour="transparent", fill="red", alpha=0.3 ) +
+          annotate( geom="rect", xmin=-Inf, xmax=Inf, ymin=LRP$Lower, 
+              ymax=LRP$Upper, colour="transparent", fill="red", alpha=0.3 ) +
           geom_hline( yintercept=coSub$Cutoff, colour="blue" ) +
-          geom_hline( yintercept=USRWCVI$USR, colour="green" ) +
           geom_bar( data=CSub, aes(x=Year, y=Catch), stat="identity", 
               width=lSize, fill="black" ) +
           geom_ribbon( data=SSBSub, aes(x=Year, ymin=Lower, ymax=Upper), alpha=0.5 ) +
@@ -1294,11 +1289,7 @@ PlotStoryboard <- function( SARs, models, si, qp, rec, M, SSB, C, bp ) {
                       sep="")) ) +
           scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
           myTheme +
-          theme( text=element_text(size=8) ) + 
-          ggsave( filename="WCVIAM2.png", height=4, width=6, dpi=pDPI )
-      
-      if( SAR=="WCVI" & model=="AM2" ) browser()
-      
+          theme( text=element_text(size=8) )
       # Put the plot in the list
       lBiomass[[iCount]] <- plotTemp + 
           annotate( geom="text", x=-Inf, y=Inf, 
