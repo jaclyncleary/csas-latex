@@ -812,20 +812,20 @@ siPlot <- ggplot( data=filter(allYrSp, !is.na(Survey)),
     facet_wrap( ~ SpUnit, ncol=1 ) +
     theme( legend.position="top" )
 
-# Basic plot
+# Spawn index plot: basic
 siPlotBase <- siPlot +
     ggsave( filename=file.path(region, "SpawnIndex.png"), 
         height=min(8.75, n_distinct(allYrSp$SpUnit)*1.9+1), 
         width=figWidth )
 
-# Basic plot with catch
+# Spawn index plot: with catch
 siPlotCatch <- siPlot +
     geom_col( aes(y=Catch), alpha=0.5 ) +
     ggsave( filename=file.path(region, "SpawnIndexCatch.png"), 
         height=min(8.75, n_distinct(allYrSp$SpUnit)*1.9+1), 
         width=figWidth )
 
-# Basic plot with catch >= 1972
+# Spawn index plot: with catch >= 1972
 siPlotCatch1972 <- siPlot +
     geom_col( data=filter(allYrSp, !is.na(Survey), Year>=1972), aes(y=Catch), 
         alpha=0.5 ) +
