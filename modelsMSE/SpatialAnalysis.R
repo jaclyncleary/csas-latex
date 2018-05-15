@@ -950,3 +950,17 @@ save.image( file=file.path(region, paste("Image.", region, ".RData", sep="")) )
 # Print end of file message and elapsed time
 cat( "End of file SpatialAnalysis.R: ", sep="" )
 print( Sys.time( ) - sTime2 )
+
+## Spawn index data for Beau
+#siYrSpOut <- siYrSp %>% 
+#    rename( Group=SpUnit, SI=SITotal ) %>% 
+#    select( Year, Group, SI ) %>% 
+#    write_csv( path="GroupSI.csv" )
+## Spawn index data for Beau
+#siAllOut <- siAll %>% 
+#    rename( Group=SpUnit ) %>% 
+#    select( Year, Region, StatArea, Group, Section, LocationCode, LocationName, 
+#        SpawnNumber, Eastings, Northings, Start, End, Length, Width, Depth, 
+#        Method, SurfLyrs, SurfSI, MacroLyrs, MacroSI, UnderLyrs, UnderSI, 
+#        Survey ) %>% 
+#    write_csv( path="siAll.csv" )

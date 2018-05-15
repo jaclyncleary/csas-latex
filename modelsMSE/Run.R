@@ -69,7 +69,7 @@ diveFN <- file.path( "Data", "dive_transects_with_lat_long_June2_2017.xlsx" )
 # File name for q parameters
 qFN <- file.path( "Data", "qPars.csv" )
 
-# Model: AM1 and/or AM2 (Note: I haven't tried this with more than one model!)
+# Model: AM1 and/or AM2 (Note: This has not been tested this with > 1 model.)
 mNames <- "AM2"
 
 # Generate GIF -- this can take a long time!
