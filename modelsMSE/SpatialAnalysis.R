@@ -809,7 +809,7 @@ siPlot <- ggplot( data=filter(allYrSp, !is.na(Survey)),
     labs( y=expression(paste("Spawning biomass (t"%*%10^3, ")", sep="")) ) +
     expand_limits( x=yrRange ) +
     myTheme +
-    facet_wrap( ~ SpUnit, ncol=1 ) +
+    facet_wrap( ~ SpUnit, nrow=5 ) +
     theme( legend.position="top" )
 
 # Spawn index plot: basic
