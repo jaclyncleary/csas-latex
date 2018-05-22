@@ -383,6 +383,94 @@ refBiomass <- siYrSp %>%
     summarise( MeanSI=MeanNA(SITotal) ) %>%
     ungroup( )
 
+# Calculate proportion of spawn by area and various time frames
+ProportionSpawn <- function( dat ) {
+  # Extract required info
+  df <- dat %>%
+      select( Year, SpUnit, SITotal ) %>%
+      rename( Group=SpUnit, Spawn=SITotal ) %>%
+      replace_na( replace=list(Spawn=0) )
+  # Proportion of spawn in 2017
+  p2017 <- df %>%
+      filter( Year==2017 ) %>%
+      mutate( Total=SumNA(Spawn) ) %>%
+      group_by( Group ) %>%
+      summarise( Prop2017=SumNA(Spawn)/unique(Total) ) %>% 
+      ungroup( )
+  # Proportion of spawn in 2016
+  p2016 <- df %>%
+      filter( Year==2016 ) %>%
+      mutate( Total=SumNA(Spawn) ) %>%
+      group_by( Group ) %>%
+      summarise( Prop2016=SumNA(Spawn)/unique(Total) ) %>% 
+      ungroup( )
+  # Proportion of spawn in 2015
+  p2015 <- df %>%
+      filter( Year==2015 ) %>%
+      mutate( Total=SumNA(Spawn) ) %>%
+      group_by( Group ) %>%
+      summarise( Prop2015=SumNA(Spawn)/unique(Total) ) %>% 
+      ungroup( )
+  # Proportion of spawn in 2014
+  p2014 <- df %>%
+      filter( Year==2014 ) %>%
+      mutate( Total=SumNA(Spawn) ) %>%
+      group_by( Group ) %>%
+      summarise( Prop2014=SumNA(Spawn)/unique(Total) ) %>% 
+      ungroup( )
+  # Proportion of spawn in last 10 years
+  p2008to2017 <- df %>%
+      filter( Year %in% 2008:2017 ) %>%
+      mutate( Total=SumNA(Spawn) ) %>%
+      group_by( Group ) %>%
+      summarise( Prop2008to2017=SumNA(Spawn)/unique(Total) ) %>%
+      ungroup( )
+  # Proportion of spawn in last 25 years
+  p1993to2017 <- df %>%
+      filter( Year %in% 1993:2017 ) %>%
+      mutate( Total=SumNA(Spawn) ) %>%
+      group_by( Group ) %>%
+      summarise( Prop1993to2017=SumNA(Spawn)/unique(Total) ) %>%
+      ungroup( )
+  # Proportion of spawn in 1980s
+  p1980s <- df %>%
+      filter( Year %in% 1980:1989 ) %>%
+      mutate( Total=SumNA(Spawn) ) %>%
+      group_by( Group ) %>%
+      summarise( Prop1980s=SumNA(Spawn)/unique(Total) ) %>%
+      ungroup( )
+  # Proportion of spawn in 1970s
+  p1970s <- df %>%
+      filter( Year %in% 1970:1979 ) %>%
+      mutate( Total=SumNA(Spawn) ) %>%
+      group_by( Group ) %>%
+      summarise( Prop1970s=SumNA(Spawn)/unique(Total) ) %>%
+      ungroup( )
+  # Proportion of spawn in 1960s
+  p1960s <- df %>%
+      filter( Year %in% 1960:1969 ) %>%
+      mutate( Total=SumNA(Spawn) ) %>%
+      group_by( Group ) %>%
+      summarise( Prop1960s=SumNA(Spawn)/unique(Total) ) %>%
+      ungroup( )
+  # Proportion of spawn in 1950s
+  p1950s <- df %>%
+      filter( Year %in% 1950:1959 ) %>%
+      mutate( Total=SumNA(Spawn) ) %>%
+      group_by( Group ) %>%
+      summarise( Prop1950s=SumNA(Spawn)/unique(Total) ) %>%
+      ungroup( )
+  # Combine the tables
+  res <- Reduce( function(...) merge(..., by='Group', all.x=TRUE), 
+      list(p2017, p2016, p2015, p2014, p2008to2017, p1993to2017, p1980s, 
+          p1970s, p1960s, p1950s) )
+  # Return the results
+  return( res )
+}  # End ProportionSpawn function
+
+# Calculate proportions of spawn by group
+spawnProps <- ProportionSpawn( dat=siYrSp )
+
 
 ###################
 ##### Figures #####
@@ -809,7 +897,7 @@ siPlot <- ggplot( data=filter(allYrSp, !is.na(Survey)),
     labs( y=expression(paste("Spawning biomass (t"%*%10^3, ")", sep="")) ) +
     expand_limits( x=yrRange ) +
     myTheme +
-    facet_wrap( ~ SpUnit, nrow=5 ) +
+    facet_wrap( ~ SpUnit, nrow=5, scales="free_y" ) +
     theme( legend.position="top" )
 
 # Spawn index plot: basic

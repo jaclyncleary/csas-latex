@@ -61,7 +61,7 @@ UsePackages( pkgs=c("tidyverse", "sp", "scales", "ggforce", "lubridate",
 ####################
 
 # Select region(s): major (HG, PRD, CC, SoG, WCVI); or minor (A27, A2W)
-spRegions <- c( "WCVI" )
+spRegions <- c( "SoG" )
 
 # File name for dive transect XY
 diveFN <- file.path( "Data", "dive_transects_with_lat_long_June2_2017.xlsx" )
@@ -78,7 +78,7 @@ makeGIF <- FALSE
 # Reference years
 refYrsAll <- read_csv( file=
         "SAR, Start, End
-        SoG, 1951, 2017 
+        SoG, 1990, 1999 
         WCVI, 1990, 1999", 
     col_types=cols("c", "i", "i") )
 
