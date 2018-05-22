@@ -1548,6 +1548,41 @@ PlotSB0 <- function( dat, SARs, models, probs=ciLevel ) {
 # Plot SB0
 PlotSB0( dat=mRaw, SARs=allRegions$major, models=mNames[1] )
 
+# Plot coastwide biomass and proportion
+PlotCoastwideBiomass <- function( dat, model ) {
+  # Filter for the requested model
+  df <- dat %>%
+      filter( Model==model ) %>%
+      select( Region, Year, Median ) %>%
+      mutate( Region=factor(Region, levels=regions$Region) ) %>%
+      rename( SSB=Median ) %>%
+      group_by( Year ) %>%
+      mutate( PropSSB=SSB/sum(SSB) ) %>%
+      ungroup( )
+  # Plot 1: stacked biomass
+  pBio <- ggplot( data=df, aes(x=Year, y=SSB) ) +
+      geom_col( aes(fill=Region), width=1 ) +
+      labs( x=NULL, 
+          y=expression(paste("Spawning biomass (t"%*%10^3, ")", sep="")) ) +
+      scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
+      myTheme + 
+      theme( legend.position="top", axis.text.x=element_blank() )
+  # Plot 2: biomass proportion
+  pProp <- ggplot( data=df, aes(x=Year, y=PropSSB) ) +
+      geom_line( aes(color=Region), size=0.75 ) +
+      labs( y="Proportion of spawning biomass" ) +
+      scale_x_continuous( breaks=seq(from=1000, to=3000, by=10) ) +
+      guides( color=FALSE ) +
+      myTheme
+  # Combine the plots
+  pGrid <- plot_grid( pBio, pProp, align="v", ncol=1, rel_heights=c(1.05, 1) ) +
+      ggsave( filename=paste("CoastwideBiomass", model, ".png", sep=""),
+          dpi=pDPI, height=figWidth, width=figWidth )
+}  # End PlotCoastwideBiomass function
+
+# Coastwide biomass
+PlotCoastwideBiomass( dat=spBio, model="AM2" )
+
 # Message
 cat( "done\n" )
 
