@@ -78,7 +78,7 @@ makeGIF <- FALSE
 # Reference years
 refYrsAll <- read_csv( file=
         "SAR, Start, End
-        SoG, 1990, 1999 
+        SoG, 1951, 2017 
         WCVI, 1990, 1999", 
     col_types=cols("c", "i", "i") )
 
