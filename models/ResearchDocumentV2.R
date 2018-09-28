@@ -204,7 +204,7 @@ LoadADMB <- function( SARs ) {
     # should be the same
     datLoc <- file.path( SAR, mNames[1] )
     # Look for *.dat files in the directory
-    fName <- list.files( path=datLoc, pattern="*v2.dat" )
+    fName <- list.files( path=datLoc, pattern="Herring[[:alnum:]]+.dat" )
     # Read the entire file
     dat <- readLines( con=file.path(datLoc, fName) )
     # Get model dimensions index
