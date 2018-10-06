@@ -1,6 +1,6 @@
 ## all.r
 ## This is the master file - it loads all packages and sources all
-##  other R source code files.
+##  other R source code files.d
 ## To debug in an R session, run these commands first:
 ## source("all.r");load.models.into.parent.env();source("custom-knitr-variables.r")
 
